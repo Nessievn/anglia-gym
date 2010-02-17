@@ -26,3 +26,6 @@ G:\ARU\GDP - 2009 - 2010\Gym administration\Gym administration\bin\Debug\Gym adm
 G:\ARU\GDP - 2009 - 2010\Gym administration\Gym administration\bin\Debug\Gym administration.pdb
 G:\ARU\GDP - 2009 - 2010\Gym administration\Gym administration\obj\Debug\Gym administration.pdb
 F:\ARU\GDP - 2009 - 2010\Gym administration\Gym administration\bin\Debug\Gym administration.exe.config
+F:\ARU\GDP - 2009 - 2010\Code\anglia-gym\VisualStudioProject\Gym administration\bin\Debug\Gym administration.exe.config
+F:\ARU\GDP - 2009 - 2010\Code\anglia-gym\VisualStudioProject\Gym administration\obj\Debug\Gym administration.exe
+F:\ARU\GDP - 2009 - 2010\Code\anglia-gym\VisualStudioProject\Gym administration\obj\Debug\Gym administration.pdb
