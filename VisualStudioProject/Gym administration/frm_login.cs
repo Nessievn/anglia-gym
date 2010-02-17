@@ -42,6 +42,7 @@ namespace Gym_administration
             else
             {
                 MessageBox.Show("IN!!");
+                this.Close();
             }
 
         }
