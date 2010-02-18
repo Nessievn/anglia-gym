@@ -64,14 +64,17 @@ namespace Gym_administration
                 command.CommandText = query;
                 connection.Open();
                 Reader = command.ExecuteReader();
-                
+                Hashtable resultset_tmp;
+                int i;
 
                 while (Reader.Read())
-                {
-                    for (int i = 0; i < Reader.FieldCount; i++)
+                { 
+                    resultset_tmp = new Hashtable();
+                    for (i = 0; i < Reader.FieldCount; i++)
                     {
-                        resultset.Add(Reader.GetName(i).ToString(), Reader.GetValue(i).ToString());
-                    }
+                        resultset_tmp.Add(Reader.GetName(i).ToString(), Reader.GetValue(i).ToString()); 
+                    } 
+                    resultset.Add(i.ToString(), resultset_tmp);
                 }
             }
             catch (Exception ex)
