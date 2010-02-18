@@ -13,9 +13,13 @@ namespace Gym_administration
 {
     public partial class frm_login : Form
     {
-        public frm_login()
+        private frm_main m_parent;
+
+        public frm_login(frm_main frmMain)
         {
             InitializeComponent();
+            m_parent = frmMain;
+
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -32,16 +36,23 @@ namespace Gym_administration
         {
             mySqlConn conn = new mySqlConn("localhost", "gym", "gym", "gym");
             conn.connect();
+/*
+            List<Hashtable> lhResultset2 = new List<Hashtable>();
+            lhResultset2 = conn.lhSqlQuery("SELECT * FROM members");
+
+            foreach (record ht in lhResultset2)
+                MessageBox.Show(record["name"].ToString());
+            */
 
             // We launch the query
-            Hashtable htResultset = conn.htSqlQuery("Select * from users where user='"+txt_username.Text+"' and password = '"+txt_password.Text+"'");
+            List<Hashtable> lhResultset = conn.lhSqlQuery("Select * from users where user='" + txt_username.Text + "' and password = '" + txt_password.Text + "'");
             
             // Check if we found the user
-            if ((int)htResultset.Count == 0)
+            if ((int)lhResultset.Count != 1)
                 MessageBox.Show("The username or passowrd are wrong, please use the correct credentials and try it again");
             else
             {
-                MessageBox.Show("IN!!");
+                m_parent.ShowUserOptions("manager");
                 this.Close();
             }
 

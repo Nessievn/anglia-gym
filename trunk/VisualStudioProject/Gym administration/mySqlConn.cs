@@ -50,12 +50,15 @@ namespace Gym_administration
 
         }
 
-        public Hashtable htSqlQuery(string query)
+        public List<Hashtable> lhSqlQuery(string query)
         {
             // The connection is forced when its not connected
             if (this.connection.State.ToString() == "Closed")
                 this.connect();
-            Hashtable resultset = new Hashtable();
+
+            // Create and populate a List.
+            List<Hashtable> resultset = new List<Hashtable>();
+
       
             try
             {
@@ -74,7 +77,7 @@ namespace Gym_administration
                     {
                         resultset_tmp.Add(Reader.GetName(i).ToString(), Reader.GetValue(i).ToString()); 
                     } 
-                    resultset.Add(i.ToString(), resultset_tmp);
+                    resultset.Add(resultset_tmp);
                 }
             }
             catch (Exception ex)
