@@ -42,23 +42,18 @@ CREATE TABLE `members` (
   `emerg_contact_relation` varchar(45) DEFAULT NULL,
   `emerg_contact_phone` varchar(45) DEFAULT NULL,
   `emerg_contact_mobile` varchar(45) DEFAULT NULL,
-  `allergies` text,
+  `medical_allergies` text,
   `medical_notes` text,
-  `picture` varchar(150) NOT NULL,
+  `picture` varchar(150) DEFAULT NULL,
+  `medical_doctor_name` varchar(45) DEFAULT NULL,
+  `medical_phone` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_member`),
   KEY `id_user` (`id_user`),
   CONSTRAINT `members_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `members`
---
 
-LOCK TABLES `members` WRITE;
-/*!40000 ALTER TABLE `members` DISABLE KEYS */;
-/*!40000 ALTER TABLE `members` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `rooms`
@@ -128,9 +123,9 @@ CREATE TABLE `members_equipment_bookings` (
   PRIMARY KEY (`id_mbr_eq_booking`),
   KEY `id_equipment` (`id_equipment`),
   KEY `id_member` (`id_member`),
-  CONSTRAINT `id_member` FOREIGN KEY (`id_member`) REFERENCES `members` (`id_member`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `id_equipment` FOREIGN KEY (`id_equipment`) REFERENCES `equipment` (`id_equipment`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `id_equipment` FOREIGN KEY (`id_equipment`) REFERENCES `equipment` (`id_equipment`),
+  CONSTRAINT `id_member` FOREIGN KEY (`id_member`) REFERENCES `members` (`id_member`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2147483647 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -272,10 +267,10 @@ CREATE TABLE `class_instance` (
   KEY `id_staff` (`id_staff`),
   KEY `class_instance_ibfk_3` (`id_room`),
   KEY `FK_class_instance_4` (`id_staff_eq_booking`),
-  CONSTRAINT `FK_class_instance_4` FOREIGN KEY (`id_staff_eq_booking`) REFERENCES `staff_equipment_bookings` (`id_staff_eq_booking`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `class_instance_ibfk_1` FOREIGN KEY (`id_class`) REFERENCES `classes` (`id_class`),
   CONSTRAINT `class_instance_ibfk_2` FOREIGN KEY (`id_staff`) REFERENCES `staff` (`id_staff`),
-  CONSTRAINT `class_instance_ibfk_3` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id_room`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `class_instance_ibfk_3` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id_room`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_class_instance_4` FOREIGN KEY (`id_staff_eq_booking`) REFERENCES `staff_equipment_bookings` (`id_staff_eq_booking`) ON DELETE SET NULL ON UPDATE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -346,18 +341,16 @@ CREATE TABLE `users` (
   `password` varchar(33) NOT NULL,
   `profile` varchar(50) DEFAULT NULL,
   `active` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id_user`),
+  UNIQUE KEY `login_UNIQUE` (`login`)
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `users`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
+
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -368,4 +361,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-02-27 23:41:12
+-- Dump completed on 2010-02-28 20:03:00
