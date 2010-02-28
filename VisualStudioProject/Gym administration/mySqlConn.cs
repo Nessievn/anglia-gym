@@ -25,6 +25,14 @@ namespace Gym_administration
             this.user = user;
             this.password = password;
         }
+        public mySqlConn()
+        {
+            this.server = "localhost";
+            this.database = "gym";
+            this.user = "gym";
+            this.password = "gym";
+        }
+        
         public void connect()
         {
             string MyConString = "server=" + this.server + ";User Id=" + this.user + ";password=" + this.password + ";Persist Security Info=True;database=" + this.database + ";";
@@ -54,7 +62,10 @@ namespace Gym_administration
         {
             // The connection is forced when its not connected
             if (this.connection.State.ToString() == "Closed")
+            {
                 this.connect();
+                connection.Open();
+            }
 
             // Create and populate a List.
             List<Hashtable> resultset = new List<Hashtable>();
@@ -65,7 +76,7 @@ namespace Gym_administration
                 MySqlCommand command = this.connection.CreateCommand();
                 MySqlDataReader Reader;
                 command.CommandText = query;
-                connection.Open();
+                
                 Reader = command.ExecuteReader();
                 Hashtable resultset_tmp;
                 int i;
@@ -87,30 +98,67 @@ namespace Gym_administration
 
             return resultset;
         }
-        // TODO: Need to be adapted!!!
-        public bool vInsert(string query)
+    
+        // This function returns the id of the record inserted
+        public int iInsert(string query)
         {
-        
-            string connStr = "server=localhost;user=root;database=world;port=3306;password=******;";
-            MySqlConnection conn = new MySqlConnection(connStr);
+            string sLastInsertId = "0";
+            // The connection is forced when its not connected
+            if (this.connection.State.ToString() == "Closed")
+            {
+                this.connect();
+                connection.Open();
+            }
             try
             {
-                Console.WriteLine("Connecting to MySQL...");
-                conn.Open();
+                MySqlCommand command = this.connection.CreateCommand();
+                
+                
+                command.CommandText = query;
+                
 
-                string sql = "INSERT INTO Country (Name, HeadOfState, Continent) VALUES ('Disneyland','Mickey Mouse', 'North America')";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.ExecuteNonQuery();
+                command.ExecuteNonQuery();
+                
+              
+
+                List <Hashtable> result = this.lhSqlQuery("SELECT LAST_INSERT_ID() id");
+                sLastInsertId = result[0]["id"].ToString();
+               
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                // We don't want to show that to the user
+                MessageBox.Show(ex.ToString());
             }
 
-            conn.Close();
-            Console.WriteLine("Done.");
-            return true;
+            this.connection.Close();
+            return int.Parse(sLastInsertId);
         }
-            
+        // This function returns the id of the the modified records 
+        // affected by a Delete or Update sql statement
+        public int iDeleteOrUpdate(string query)
+        {
+            int iAffectedRows = 0;
+            // The connection is forced when its not connected
+            if (this.connection.State.ToString() == "Closed")
+            {
+                this.connect();
+                connection.Open();
+            }
+            try
+            {
+                MySqlCommand command = this.connection.CreateCommand();
+                command.CommandText = query;
+                iAffectedRows = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                // We don't want to show that to the user
+                MessageBox.Show(ex.ToString());
+            }
+
+            this.connection.Close();
+            return iAffectedRows;
+        }
         }
 }

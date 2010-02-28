@@ -34,25 +34,18 @@ namespace Gym_administration
 
         private void btn_accept_Click(object sender, EventArgs e)
         {
-            mySqlConn conn = new mySqlConn("localhost", "gym", "gym", "gym");
+            mySqlConn conn = new mySqlConn();
             conn.connect();
-/*
-            List<Hashtable> lhResultset2 = new List<Hashtable>();
-            lhResultset2 = conn.lhSqlQuery("SELECT * FROM members");
-
-            foreach (record ht in lhResultset2)
-                MessageBox.Show(record["name"].ToString());
-            */
-
             // We launch the query
-            List<Hashtable> lhResultset = conn.lhSqlQuery("Select * from users where user='" + txt_username.Text + "' and password = '" + txt_password.Text + "'");
+            string md5Hash = Utils.CreateMD5Hash(txt_password.Text.Trim());
+            List<Hashtable> lhResultset = conn.lhSqlQuery("Select * from users where login='" + txt_username.Text + "' and password = '" + md5Hash + "' and active = 1");
             
             // Check if we found the user
             if ((int)lhResultset.Count != 1)
                 MessageBox.Show("The username or passowrd are wrong, please use the correct credentials and try it again");
             else
             {
-                m_parent.ShowUserOptions("manager");
+                m_parent.ShowUserOptions(lhResultset[0]["profile"].ToString());
                 this.Close();
             }
 

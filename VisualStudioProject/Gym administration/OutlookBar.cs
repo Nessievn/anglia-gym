@@ -162,6 +162,8 @@ namespace OutlookBarNm
 	{
 		protected int iconSpacing;
 		protected int margin;
+        public string sBandName;
+        
 
 		public int IconSpacing
 		{
@@ -179,10 +181,12 @@ namespace OutlookBarNm
 			}
 		}
 
-		public IconPanel()
+		public IconPanel(string sBandName)
 		{
+            this.sBandName = sBandName;
+
 			margin=10;
-			iconSpacing=32+15+10;	// icon height + text height + margin
+			iconSpacing=64+15+10;	// icon height + text height + margin
 			BackColor=Color.LightBlue;
 			AutoScroll=true;
 		}
@@ -220,6 +224,7 @@ namespace OutlookBarNm
 				return index;
 			}
 		}
+
 
 		public PanelIcon(IconPanel parent, Image image, int index, EventHandler onClickEvent)
 		{
