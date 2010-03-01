@@ -275,16 +275,13 @@ CREATE TABLE `class_instance` (
   `end_time` time DEFAULT NULL,
   `frequency` varchar(40) DEFAULT NULL,
   `id_room` int(11) DEFAULT NULL,
-  `id_staff_eq_booking` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_class_instance`),
   KEY `id_class` (`id_class`),
   KEY `id_staff` (`id_staff`),
   KEY `class_instance_ibfk_3` (`id_room`),
-  KEY `FK_class_instance_4` (`id_staff_eq_booking`),
   CONSTRAINT `class_instance_ibfk_1` FOREIGN KEY (`id_class`) REFERENCES `classes` (`id_class`),
   CONSTRAINT `class_instance_ibfk_2` FOREIGN KEY (`id_staff`) REFERENCES `staff` (`id_staff`),
-  CONSTRAINT `class_instance_ibfk_3` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id_room`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_class_instance_4` FOREIGN KEY (`id_staff_eq_booking`) REFERENCES `staff_equipment_bookings` (`id_staff_eq_booking`) ON DELETE SET NULL ON UPDATE SET NULL
+  CONSTRAINT `class_instance_ibfk_3` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id_room`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -351,4 +348,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-03-01 20:33:35
+-- Dump completed on 2010-03-01 20:37:50
