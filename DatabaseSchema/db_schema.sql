@@ -32,7 +32,7 @@ CREATE TABLE `users` (
   `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_user`),
   UNIQUE KEY `login_UNIQUE` (`login`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','21232f297a57a5a743894a0e4a801fc3','manager',1),(2,'test@test.co.uk','123123123','staff',1),(4,'','5b3b99ceb6aa2e259dcd97b8002a74e7','member',1),(7,'skarvin@gmail.com','84ea85a09c9e3c5f74c4b378eae465f8','member',1),(8,'main','84ea85a09c9e3c5f74c4b378eae465f8','member',1),(9,'sdfsdf','84ea85a09c9e3c5f74c4b378eae465f8','member',1),(10,'asdasd','17df4fc8d0efbd01f72042cf33a7ec24','member',1),(12,'mmimails','605e2f424b4f64e9f530e72560cfd128','member',1),(15,'asd','84ea85a09c9e3c5f74c4b378eae465f8','member',1),(18,'mimail','940bd22a3dbefc966d26fde1bfdfcef5','member',1),(20,'asdas','41ab3103b6f1cfd8f9afbacc50abe089','member',1),(22,'asdasa','41ab3103b6f1cfd8f9afbacc50abe089','member',1),(23,'asfdfad','940bd22a3dbefc966d26fde1bfdfcef5','member',1),(25,'asfdfada','940bd22a3dbefc966d26fde1bfdfcef5','member',1),(27,'asfdfadaa','940bd22a3dbefc966d26fde1bfdfcef5','member',1),(28,'fsdfsdf','dc06d566c2e4d0da90f1f044de4a7e75','member',1),(30,'fsdfsdfa','dc06d566c2e4d0da90f1f044de4a7e75','member',1),(32,'fsdfsdfaa','dc06d566c2e4d0da90f1f044de4a7e75','member',1),(51,'asdasdga','940bd22a3dbefc966d26fde1bfdfcef5','member',1);
+INSERT INTO `users` VALUES (1,'admin','21232f297a57a5a743894a0e4a801fc3','manager',1),(60,'pam@pam.com','c29b2d78629b6e875de4975aa4c19019','member',1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,8 +110,8 @@ CREATE TABLE `class_bookings` (
   PRIMARY KEY (`id_class_booking`),
   KEY `FK_class_bookings_1` (`id_class_instance`),
   KEY `FK_class_bookings_2` (`id_member`),
-  CONSTRAINT `FK_class_bookings_2` FOREIGN KEY (`id_member`) REFERENCES `members` (`id_member`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_class_bookings_1` FOREIGN KEY (`id_class_instance`) REFERENCES `class_instance` (`id_class_instance`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `FK_class_bookings_1` FOREIGN KEY (`id_class_instance`) REFERENCES `class_instance` (`id_class_instance`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_class_bookings_2` FOREIGN KEY (`id_member`) REFERENCES `members` (`id_member`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -243,10 +243,11 @@ CREATE TABLE `members` (
   `picture` varchar(150) DEFAULT NULL,
   `medical_doctor_name` varchar(45) DEFAULT NULL,
   `medical_phone` varchar(45) DEFAULT NULL,
+  `email` varchar(75) NOT NULL,
   PRIMARY KEY (`id_member`),
   KEY `id_user` (`id_user`),
-  CONSTRAINT `members_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  CONSTRAINT `members_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -255,7 +256,7 @@ CREATE TABLE `members` (
 
 LOCK TABLES `members` WRITE;
 /*!40000 ALTER TABLE `members` DISABLE KEYS */;
-INSERT INTO `members` VALUES (1,'Isidro','Catalan','1981-06-24','My house','Cambridge','Cambridgeshire','CB4 2NJ',NULL,'debit card',7,1,'My house 2','Rose','Mother','091230912309','081230912390','None','None',NULL,'House','0912092'),(2,'asdasdfsd','sdfsdf','1232-12-12','','','','     ','','',51,0,'','','','','','','',NULL,'','');
+INSERT INTO `members` VALUES (4,'Pam','McDonovan','1981-06-24','my house','Cambridge','Cambrdigeshire','CB2  2AS','Individual','Debit Card',60,1,'my house','Jennah Jameson','Mother','081231232','071231231','Clorhyne','I have had 4 heart attacks.',NULL,'Dr. House','612361263','pam@pam.com');
 /*!40000 ALTER TABLE `members` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -326,7 +327,7 @@ CREATE TABLE `staff` (
   `qualifications` text,
   PRIMARY KEY (`id_staff`),
   KEY `id_user` (`id_user`),
-  CONSTRAINT `staff_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`)
+  CONSTRAINT `staff_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -348,4 +349,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-03-01 20:37:50
+-- Dump completed on 2010-03-04 19:12:48
