@@ -42,7 +42,7 @@ namespace Gym_administration
             
             // Check if we found the user
             if ((int)lhResultset.Count != 1)
-                MessageBox.Show("The username or passowrd are wrong, please use the correct credentials and try it again");
+                MessageBox.Show("The username or password are wrong, please use the correct credentials and try it again");
             else
             {
                 m_parent.ShowUserOptions(lhResultset[0]["profile"].ToString());

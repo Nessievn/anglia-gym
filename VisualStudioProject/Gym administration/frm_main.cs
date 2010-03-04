@@ -243,5 +243,10 @@ namespace Gym_administration
                     break;
             }
         }
+
+        private void statusStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }
