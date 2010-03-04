@@ -113,6 +113,14 @@ namespace Gym_administration
             get { return sMedical_phone; }
             set { sMedical_phone = value; }
         }
+        private User usrUser;
+
+        internal User UUser
+        {
+            get { return usrUser; }
+            set { usrUser = value; }
+        }
+
         /*
          * This method will save the object into the database
          */
@@ -123,7 +131,7 @@ namespace Gym_administration
             string sQuery;
             if (sMysqlDate != "0000-00-00")
             {
-                User usrUser = new User();
+                this.usrUser = new User();
                 // First the user object is filled
                 usrUser.BActive = (this.BIs_active) ? true : false;
                 usrUser.SLogin = this.SEmail;
