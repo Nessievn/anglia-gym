@@ -58,7 +58,7 @@ namespace Gym_administration
 
         }
 
-        public List<Hashtable> lhSqlQuery(string query)
+        public List<Hashtable> lhSqlQuery(string sQuery)
         {
             // The connection is forced when its not connected
             if (this.connection.State.ToString() == "Closed")
@@ -75,7 +75,7 @@ namespace Gym_administration
             {
                 MySqlCommand command = this.connection.CreateCommand();
                 MySqlDataReader Reader;
-                command.CommandText = query;
+                command.CommandText = sQuery;
                 
                 Reader = command.ExecuteReader();
                 Hashtable resultset_tmp;
@@ -98,9 +98,16 @@ namespace Gym_administration
 
             return resultset;
         }
-    
-        // This function returns the id of the record inserted
-        public int iInsert(string query)
+
+        /*
+         * @desc: This function returns the id of the the modified 
+         * records affected by a Delete or Update sql statement 
+         * @params: [string] sQuery
+         * @return: [int] The number of modified rows by the delete
+         * or the update
+         */
+
+        public int iInsert(string sQuery)
         {
             string sLastInsertId = "0";
             // The connection is forced when its not connected
@@ -112,14 +119,8 @@ namespace Gym_administration
             try
             {
                 MySqlCommand command = this.connection.CreateCommand();
-                
-                
-                command.CommandText = query;
-                
-
+                command.CommandText = sQuery;
                 command.ExecuteNonQuery();
-                
-              
 
                 List <Hashtable> result = this.lhSqlQuery("SELECT LAST_INSERT_ID() id");
                 sLastInsertId = result[0]["id"].ToString();
@@ -134,9 +135,15 @@ namespace Gym_administration
             this.connection.Close();
             return int.Parse(sLastInsertId);
         }
-        // This function returns the id of the the modified records 
-        // affected by a Delete or Update sql statement
-        public int iDeleteOrUpdate(string query)
+
+        /*
+         * @desc: This function returns the id of the the modified 
+         * records affected by a Delete or Update sql statement 
+         * @params: [string] sQuery
+         * @return: [int] The number of modified rows by the delete
+         * or the update
+         */
+        public int iDeleteOrUpdate(string sQuery)
         {
             int iAffectedRows = 0;
             // The connection is forced when its not connected
@@ -148,7 +155,7 @@ namespace Gym_administration
             try
             {
                 MySqlCommand command = this.connection.CreateCommand();
-                command.CommandText = query;
+                command.CommandText = sQuery;
                 iAffectedRows = command.ExecuteNonQuery();
             }
             catch (Exception ex)
