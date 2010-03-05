@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Collections;
 
+
 namespace Gym_administration
 {
     class Member : Person
@@ -118,6 +119,7 @@ namespace Gym_administration
         }
         public Member()
         {
+            this.iId_member = 0;
         }
 
         public Member(int iMemberId)
@@ -169,7 +171,16 @@ namespace Gym_administration
             // Field checking
             string sMysqlDate = Utils.sGetMysqlDate(this.SBirthdate);
             string sQuery;
-            if (sMysqlDate != "0000-00-00")
+
+            if (sMysqlDate == "0000-00-00")
+            {
+                MessageBox.Show("The birth date is in incorrect format");
+            }
+            else if (Utils.bValidateEmail(this.SEmail) == false)
+            {
+                MessageBox.Show("The E-Mail address is incorrect");
+            }
+            else
             {
                 this.usrUser = new User();
                 // First the user object is filled
@@ -183,9 +194,9 @@ namespace Gym_administration
                 {
                     mySqlConn conn = new mySqlConn();
                     conn.connect();
-                    sQuery = "insert into `gym`.`members` (`id_member`, `firstName`, `lastName`, `birthdate`, `address_1`, `city`, `county`, `postalcode`, `type`, `payment_method`, `id_user`, `is_active`, `address_2`, `emerg_contact_name`, `emerg_contact_relation`, `emerg_contact_phone`, `emerg_contact_mobile`, `medical_allergies`, `medical_notes`, `picture`, `medical_doctor_name`, `medical_phone`, `email`) values "+
-                             "(NULL, '" + this.SFirstName + "', '" + this.SLastName + "', '" + sMysqlDate + "', '" + this.SAddress_1 + "', '" + this.SCity + "', '" + this.SCounty + "', '" + this.SPostalcode + "', '" + this.SType + "', '" + this.SPayment_method + "', '" + usrUser.IId_user + "', '" + ((this.BIs_active) ? "1" : "0") + "', '" + this.SAaddress_2 + "', '" + this.SEmerg_contact_name + "', '" + this.SEmerg_contact_relation + "', '" + this.SEmerg_contact_phone + "', '" + this.SEmerg_contact_mobile + "', '" + this.SMedical_allergies + "', '" + this.SMedical_notes + "', NULL, '" + this.SMedical_doctor_name + "', '" + this.SMedical_phone + "', '" + this.SEmail + "')";
-       
+                    sQuery = "insert into `gym`.`members` (`id_member`, `firstName`, `lastName`, `birthdate`, `address_1`, `city`, `county`, `postalcode`, `type`, `payment_method`, `id_user`, `is_active`, `address_2`, `emerg_contact_name`, `emerg_contact_relation`, `emerg_contact_phone`, `emerg_contact_mobile`, `medical_allergies`, `medical_notes`, `picture`, `medical_doctor_name`, `medical_phone`, `email`, `member_number`) values " +
+                             "(NULL, '" + this.SFirstName + "', '" + this.SLastName + "', '" + sMysqlDate + "', '" + this.SAddress_1 + "', '" + this.SCity + "', '" + this.SCounty + "', '" + this.SPostalcode + "', '" + this.SType + "', '" + this.SPayment_method + "', '" + usrUser.IId_user + "', '" + ((this.BIs_active) ? "1" : "0") + "', '" + this.SAaddress_2 + "', '" + this.SEmerg_contact_name + "', '" + this.SEmerg_contact_relation + "', '" + this.SEmerg_contact_phone + "', '" + this.SEmerg_contact_mobile + "', '" + this.SMedical_allergies + "', '" + this.SMedical_notes + "', NULL, '" + this.SMedical_doctor_name + "', '" + this.SMedical_phone + "', '" + this.SEmail + "', '" + this.SMemberNumber + "')";
+
                     int iMbrId = conn.iInsert(sQuery);
                     if (iMbrId > 1)
                     {
@@ -207,6 +218,63 @@ namespace Gym_administration
 
             }
              return true;
+        }
+
+        /*
+     * This method will udate the object into the database
+     */
+        public bool bUpdate()
+        {
+            // Field checking
+            string sMysqlDate = Utils.sGetMysqlDate(this.SBirthdate);
+            string sQuery;
+
+            if (sMysqlDate == "0000-00-00")
+            {
+                MessageBox.Show("The birth date is in incorrect format");
+            }
+            else if (Utils.bValidateEmail(this.SEmail) == false)
+            {
+                MessageBox.Show("The E-Mail address is incorrect");
+            }
+            else
+            {
+                this.usrUser = new User();
+                // First the user object is filled
+                usrUser.BActive = (this.BIs_active) ? true : false;
+                usrUser.SLogin = this.SEmail;
+                usrUser.SPassword = sMysqlDate;
+                usrUser.SProfile = "member";
+
+                // then the bSave method is called
+                if (usrUser.bSave())
+                {
+                    mySqlConn conn = new mySqlConn();
+                    conn.connect();
+                    sQuery = "insert into `gym`.`members` (`id_member`, `firstName`, `lastName`, `birthdate`, `address_1`, `city`, `county`, `postalcode`, `type`, `payment_method`, `id_user`, `is_active`, `address_2`, `emerg_contact_name`, `emerg_contact_relation`, `emerg_contact_phone`, `emerg_contact_mobile`, `medical_allergies`, `medical_notes`, `picture`, `medical_doctor_name`, `medical_phone`, `email`, `member_number`) values " +
+                             "(NULL, '" + this.SFirstName + "', '" + this.SLastName + "', '" + sMysqlDate + "', '" + this.SAddress_1 + "', '" + this.SCity + "', '" + this.SCounty + "', '" + this.SPostalcode + "', '" + this.SType + "', '" + this.SPayment_method + "', '" + usrUser.IId_user + "', '" + ((this.BIs_active) ? "1" : "0") + "', '" + this.SAaddress_2 + "', '" + this.SEmerg_contact_name + "', '" + this.SEmerg_contact_relation + "', '" + this.SEmerg_contact_phone + "', '" + this.SEmerg_contact_mobile + "', '" + this.SMedical_allergies + "', '" + this.SMedical_notes + "', NULL, '" + this.SMedical_doctor_name + "', '" + this.SMedical_phone + "', '" + this.SEmail + "', '" + this.SMemberNumber + "')";
+
+                    int iMbrId = conn.iInsert(sQuery);
+                    if (iMbrId > 1)
+                    {
+                        MessageBox.Show("The new member has been added to the databse succesfully!");
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("There was a problem adding the new user, please check your data!");
+                        usrUser.bDelete();
+                        return false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("The e-mail already exists in the database!, please choose another one.");
+                    return false;
+                }
+
+            }
+            return true;
         }
     }
 }

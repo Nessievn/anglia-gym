@@ -63,7 +63,21 @@ namespace Gym_administration
             }
 
         }
-        
+        /**
+        * Opens a connection to the database
+        *
+        * Do not use this function for INSERT, UPDATE, or DELETE queries. Those should
+        * be handled via the appropriate query builder factory. Use this function for
+        * SELECT queries that do not require a query builder.
+        *
+        * @param string sQuery
+        *   The prepared statement query to run. 
+        *
+        * @return List<Hashtable>
+        *   A List<HashTable> containing the data retrieved from the databse. This
+        *   date can be used with a foreach loop or directly htResultset[index][fieldName]
+        *
+        */
         public MySqlConnection mycGetConnection()
         {
             // The connection is forced when its not connected
@@ -74,6 +88,23 @@ namespace Gym_administration
             }
             return this.connection;
         }
+
+        /**
+        * Execute an arbitrary query string against the active database, very similar
+        * to the PHP way.
+        *
+        * Do not use this function for INSERT, UPDATE, or DELETE queries. Those should
+        * be handled via the appropriate query builder factory. Use this function for
+        * SELECT queries that do not require a query builder.
+        *
+        * @param string sQuery
+        *   The prepared statement query to run. 
+        *
+        * @return List<Hashtable>
+        *   A List<HashTable> containing the data retrieved from the databse. This
+        *   date can be used with a foreach loop or directly htResultset[index][fieldName]
+        *
+        */
         public List<Hashtable> lhSqlQuery(string sQuery)
         {
             // The connection is forced when its not connected
@@ -154,12 +185,19 @@ namespace Gym_administration
 
         public DataTable dtGetTableForDataGrid(string sQuery)
         {
-            MySqlDataAdapter MyDA = new MySqlDataAdapter();
-           
-            MyDA.SelectCommand = new MySqlCommand(sQuery, this.mycGetConnection());
-
             DataTable table = new DataTable();
-            MyDA.Fill(table);
+            MySqlDataAdapter MyDA = new MySqlDataAdapter();
+            try
+            {
+                MyDA.SelectCommand = new MySqlCommand(sQuery, this.mycGetConnection());
+                
+                MyDA.Fill(table);
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show(e.ToString());
+                return new DataTable();
+            }
             return table;
         }
 

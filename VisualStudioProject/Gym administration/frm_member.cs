@@ -13,16 +13,21 @@ namespace Gym_administration
 {
     public partial class frm_member : Form
     {
+        Member mbrMember;
+
         public frm_member()
         {
+            mbrMember = new Member();
             InitializeComponent();
+            txt_membernum.Text = Utils.sGenerateNewMemberNumber();
+            txt_membernum.ReadOnly = true;
         }
         
         public frm_member(int iMemberId)
         {
             InitializeComponent();
-           
-            Member mbrMember = new Member(iMemberId);
+
+            mbrMember = new Member(iMemberId);
             if (mbrMember.IId_member < 1)
                 MessageBox.Show("The member could not be found");
             else
@@ -84,7 +89,6 @@ namespace Gym_administration
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Member mbrMember = new Member();
             mbrMember.SFirstName = txt_firstName.Text;
             mbrMember.SLastName = txt_lastName.Text;
             mbrMember.BIs_active = (chk_active.Checked) ? true : false;
@@ -107,7 +111,15 @@ namespace Gym_administration
             mbrMember.SPostalcode = txt_pc.Text;
             mbrMember.SType = cmb_type.Text;
             mbrMember.SEmail = txt_email.Text;
-            mbrMember.bSave();
+
+            if (mbrMember.IId_member == 0)
+            {
+                MessageBox.Show("Saving");
+                mbrMember.bSave();
+            }
+            else
+                mbrMember.bUpdate();
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -115,6 +127,16 @@ namespace Gym_administration
             frm_member_list frm = new frm_member_list();
             frm.MdiParent = this.MdiParent;
             frm.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
