@@ -5,8 +5,9 @@ using System.Linq;
 using System.Text;
 // MySql Connector must be installed at this point
 using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 using System.Windows.Forms;
-
+using System.Data;
 
 namespace Gym_administration
 {
@@ -16,6 +17,7 @@ namespace Gym_administration
         string database;
         string user;
         string password;
+        string sMyConString;
         MySqlConnection connection;
 
         public mySqlConn(string server, string database, string user, string password)
@@ -32,13 +34,17 @@ namespace Gym_administration
             this.user = "gym";
             this.password = "gym";
         }
+        public string sGetMyConnString()
+        {
+            return this.sMyConString;
+        }
         
         public void connect()
         {
-            string MyConString = "server=" + this.server + ";User Id=" + this.user + ";password=" + this.password + ";Persist Security Info=True;database=" + this.database + ";";
+            this.sMyConString = "server=" + this.server + ";User Id=" + this.user + ";password=" + this.password + ";Persist Security Info=True;database=" + this.database + ";";
             try
             {
-                this.connection = new MySqlConnection(MyConString);
+                this.connection = new MySqlConnection(this.sMyConString);
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
@@ -57,7 +63,17 @@ namespace Gym_administration
             }
 
         }
-
+        
+        public MySqlConnection mycGetConnection()
+        {
+            // The connection is forced when its not connected
+            if (this.connection.State.ToString() == "Closed")
+            {
+                this.connect();
+                connection.Open();
+            }
+            return this.connection;
+        }
         public List<Hashtable> lhSqlQuery(string sQuery)
         {
             // The connection is forced when its not connected
@@ -134,6 +150,17 @@ namespace Gym_administration
 
             this.connection.Close();
             return int.Parse(sLastInsertId);
+        }
+
+        public DataTable dtGetTableForDataGrid(string sQuery)
+        {
+            MySqlDataAdapter MyDA = new MySqlDataAdapter();
+           
+            MyDA.SelectCommand = new MySqlCommand(sQuery, this.mycGetConnection());
+
+            DataTable table = new DataTable();
+            MyDA.Fill(table);
+            return table;
         }
 
         /*

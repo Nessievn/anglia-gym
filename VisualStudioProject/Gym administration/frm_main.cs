@@ -65,16 +65,22 @@ namespace Gym_administration
                 frm_member mdiFrmMember = new frm_member();
                 // Set the Parent Form of the Child window.
                 mdiFrmMember.MdiParent = this;
-                mdiFrmMember.Left = outlookBar.Width + 100;
+
                 // Display the new form.
                 mdiFrmMember.Show();  
             }
-            // Class Search
+            // Member Search
             else if (sSelectedBand == "staff" && panelIcon.Index.ToString() == "1")
             {
+                // Creating the child form login
+                frm_member_list mdiFrmMemberList = new frm_member_list();
+                // Set the Parent Form of the Child window.
+                mdiFrmMemberList.MdiParent = this;
 
+                // Display the new form.
+                mdiFrmMemberList.Show();  
             }
-            // Staff Search
+            // Class Search
             else if (sSelectedBand == "staff" && panelIcon.Index.ToString() == "2")
             {
 

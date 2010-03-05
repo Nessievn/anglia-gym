@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace Gym_administration
 {
@@ -13,6 +14,7 @@ namespace Gym_administration
         public int IId_member
         {
             get { return iId_member; }
+            set { iId_member = value; }
         }
         private string sMemberNumber;
 
@@ -36,13 +38,7 @@ namespace Gym_administration
             get { return sPayment_method; }
             set { sPayment_method = value; }
         }
-        private string sId_user;
-
-        public string SId_user
-        {
-            get { return sId_user; }
-            set { sId_user = value; }
-        }
+       
         private bool bIs_active;
 
         public bool BIs_active
@@ -119,6 +115,50 @@ namespace Gym_administration
         {
             get { return usrUser; }
             set { usrUser = value; }
+        }
+        public Member()
+        {
+        }
+
+        public Member(int iMemberId)
+        {
+            mySqlConn conn = new mySqlConn();
+            conn.connect();
+            // We launch the query
+            List<Hashtable> lhResultset = conn.lhSqlQuery("Select u.id_user, login, password, profile, active, id_member, firstName, lastName, birthdate, address_1, city, county, postalcode, type, payment_method, is_active, address_2, emerg_contact_name, emerg_contact_relation, emerg_contact_phone, emerg_contact_mobile, medical_allergies, medical_notes, picture, medical_doctor_name, medical_phone, email, member_number from members m, users u where u.id_user = m.id_user AND m.id_member = '" + iMemberId + "'");
+
+            // Check if we found the member
+            if ((int)lhResultset.Count > 0)
+            {
+                this.BIs_active = (lhResultset[0]["is_active"].ToString() == "True") ? true : false;
+                this.IId_member = int.Parse(lhResultset[0]["id_member"].ToString());
+                this.SAaddress_2 = lhResultset[0]["address_2"].ToString();
+                this.SAddress_1 = lhResultset[0]["address_1"].ToString();
+                this.SBirthdate = lhResultset[0]["birthdate"].ToString();
+                this.SCity = lhResultset[0]["city"].ToString();
+                this.SCounty = lhResultset[0]["county"].ToString();
+                this.SEmail = lhResultset[0]["email"].ToString();
+                this.SEmerg_contact_mobile = lhResultset[0]["emerg_contact_mobile"].ToString();
+                this.SEmerg_contact_name = lhResultset[0]["emerg_contact_name"].ToString();
+                this.SEmerg_contact_phone = lhResultset[0]["emerg_contact_phone"].ToString();
+                this.SEmerg_contact_relation = lhResultset[0]["emerg_contact_relation"].ToString();
+                this.SFirstName = lhResultset[0]["firstName"].ToString();
+                this.SLastName = lhResultset[0]["lastName"].ToString();
+                this.SMedical_allergies = lhResultset[0]["medical_allergies"].ToString();
+                this.SMedical_doctor_name = lhResultset[0]["medical_doctor_name"].ToString();
+                this.SMedical_notes = lhResultset[0]["medical_notes"].ToString();
+                this.SMedical_phone = lhResultset[0]["medical_phone"].ToString();
+                this.SMemberNumber = lhResultset[0]["member_number"].ToString();
+                this.SPayment_method = lhResultset[0]["payment_method"].ToString();
+                this.SPicture = lhResultset[0]["picture"].ToString();
+                this.SPostalcode = lhResultset[0]["postalcode"].ToString();
+                this.SType = lhResultset[0]["type"].ToString();
+                this.usrUser = new User();
+                this.usrUser.IId_user = int.Parse(lhResultset[0]["id_user"].ToString());
+                this.usrUser.SLogin = lhResultset[0]["login"].ToString();
+                this.usrUser.SPassword = lhResultset[0]["password"].ToString();
+                this.usrUser.SProfile = lhResultset[0]["profile"].ToString();
+            }
         }
 
         /*

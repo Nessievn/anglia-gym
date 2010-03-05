@@ -67,6 +67,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frm_member_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_member_list.Designer.cs">
+      <DependentUpon>frm_member_list.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_member.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,10 @@
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frm_member_list.resx">
+      <DependentUpon>frm_member_list.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_login.resx">
       <DependentUpon>frm_login.cs</DependentUpon>
       <SubType>Designer</SubType>
