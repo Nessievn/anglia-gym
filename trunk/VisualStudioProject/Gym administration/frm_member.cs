@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -15,6 +16,40 @@ namespace Gym_administration
         public frm_member()
         {
             InitializeComponent();
+        }
+        
+        public frm_member(int iMemberId)
+        {
+            InitializeComponent();
+           
+            Member mbrMember = new Member(iMemberId);
+            if (mbrMember.IId_member < 1)
+                MessageBox.Show("The member could not be found");
+            else
+            {
+                 txt_firstName.Text = mbrMember.SFirstName;
+                 txt_lastName.Text = mbrMember.SLastName;
+                 chk_active.Checked = mbrMember.BIs_active;
+                 txt_dob.Text = mbrMember.SBirthdate;
+                 txt_address1.Text = mbrMember.SAddress_1;
+                 txt_address2.Text = mbrMember.SAaddress_2;
+                 txt_city.Text = mbrMember.SCity;
+                 txt_county.Text = mbrMember.SCounty;
+                 txt_emerg_mobile.Text = mbrMember.SEmerg_contact_mobile;
+                 txt_emerg_name.Text = mbrMember.SEmerg_contact_name;
+                 txt_emerg_telephone.Text = mbrMember.SEmerg_contact_phone;
+                 txt_emerg_relation.Text = mbrMember.SEmerg_contact_relation;
+                 txt_allergies.Text = mbrMember.SMedical_allergies;
+                 txt_doctor_name.Text = mbrMember.SMedical_doctor_name;
+                 txt_medical_notes.Text = mbrMember.SMedical_notes;
+                 txt_doctor_phone.Text = mbrMember.SMedical_phone;
+                 txt_membernum.Text = mbrMember.SMemberNumber;
+                 cmb_payment.Text = mbrMember.SPayment_method;
+                 txt_pc.Text = mbrMember.SPostalcode;
+                 cmb_type.Text = mbrMember.SType;
+                 txt_email.Text = mbrMember.SEmail;
+            }
+    
         }
 
         private void frm_member_Load(object sender, EventArgs e)
@@ -54,7 +89,7 @@ namespace Gym_administration
             mbrMember.SLastName = txt_lastName.Text;
             mbrMember.BIs_active = (chk_active.Checked) ? true : false;
             mbrMember.SBirthdate = txt_dob.Text;
-            mbrMember.SAaddress_2 = txt_address1.Text;
+            mbrMember.SAaddress_2 = txt_address2.Text;
             mbrMember.SAddress_1 = txt_address1.Text;
             mbrMember.SCity = txt_city.Text;
             mbrMember.SCounty = txt_county.Text;
@@ -73,6 +108,13 @@ namespace Gym_administration
             mbrMember.SType = cmb_type.Text;
             mbrMember.SEmail = txt_email.Text;
             mbrMember.bSave();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            frm_member_list frm = new frm_member_list();
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
         }
     }
 }
