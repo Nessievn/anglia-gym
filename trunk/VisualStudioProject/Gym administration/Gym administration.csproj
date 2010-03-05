@@ -79,11 +79,6 @@
     <Compile Include="frm_member.Designer.cs">
       <DependentUpon>frm_member.cs</DependentUpon>
     </Compile>
-    <Compile Include="gymDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>gymDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Member.cs" />
     <Compile Include="mySqlConn.cs" />
     <Compile Include="frm_login.cs">
@@ -129,17 +124,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="app.config" />
-    <None Include="gymDataSet.xsc">
-      <DependentUpon>gymDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="gymDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>gymDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="gymDataSet.xss">
-      <DependentUpon>gymDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -25,7 +25,7 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
-            string sQuery = "SELECT id_member MID, member_number NO, firstName as 'First Name', lastName 'Last Name', birthdate DOB, email 'EMail' FROM members ORDER BY firstName";
+            string sQuery = "SELECT id_member MID, member_number NO, firstName as 'First Name', lastName 'Last Name', DATE_FORMAT(birthdate,\"%d/%m/%Y\") DOB, email 'EMail' FROM members ORDER BY id_member";
             bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
             dg_members.DataSource = bSource;
             dg_members.AllowUserToAddRows = false;
@@ -35,24 +35,41 @@ namespace Gym_administration
 
         private void dg_members_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string sMemberId = dg_members.Rows[e.RowIndex].Cells[0].Value.ToString();
-            int iMbrId = int.Parse(sMemberId);
-            frm_member frm_mbr = new frm_member(iMbrId);
-            frm_mbr.MdiParent = this.MdiParent;
-            frm_mbr.Show();
+            try
+            {
+                string sMemberId = dg_members.Rows[e.RowIndex].Cells[0].Value.ToString();
+                int iMbrId = int.Parse(sMemberId);
+                frm_member frm_mbr = new frm_member(iMbrId);
+                frm_mbr.MdiParent = this.MdiParent;
+                frm_mbr.Show();
+            }catch(Exception)
+            {
+                return;
+            }
         }
 
-        private void dg_members_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
-            string sQuery = "SELECT id_member MID, member_number NO, firstName as 'First Name', lastName 'Last Name', birthdate DOB, email 'EMail' FROM members WHERE id_member > 4  ORDER BY firstName";
+            string sQuery = "SELECT id_member MID, member_number NO, firstName as 'First Name', lastName 'Last Name', DATE_FORMAT(birthdate,\"%d/%m/%Y\") DOB, email 'EMail' FROM members WHERE id_member > 0 ";
+            if (txt_firstName.Text != "")
+                sQuery += " AND firstName LIKE '%"+txt_firstName.Text+"%'";
+            if (txt_lastName.Text != "")
+                sQuery += " AND lastName LIKE '%" + txt_lastName.Text + "%'";
+            if (txt_email.Text != "")
+                sQuery += " AND email LIKE '%" + txt_email.Text + "%'";
+            if (txt_membernum.Text != "")
+                sQuery += " AND member_number LIKE '%" + txt_membernum.Text + "%'";
+            string sDate = Utils.sGetMysqlDate(txt_dob.Text);
+            if (sDate != "0000-00-00")
+                sQuery += " AND birthdate = '" + sDate + "'";
+
+            sQuery += "  ORDER BY id_member";
+
             bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
             dg_members.DataSource = bSource;
             dg_members.AllowUserToAddRows = false;
