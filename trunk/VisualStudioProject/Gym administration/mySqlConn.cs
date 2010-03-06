@@ -20,6 +20,18 @@ namespace Gym_administration
         string sMyConString;
         MySqlConnection connection;
 
+        /**
+        * @desc The constructor specifying the connection parameters
+        *
+        * @param string server
+        *   Server IP 
+        * @param string database
+        *   The database Name 
+        * @param string user
+        *   The username
+        * @param string password
+        *   The password
+        */
         public mySqlConn(string server, string database, string user, string password)
         {
             this.server = server;
@@ -27,6 +39,10 @@ namespace Gym_administration
             this.user = user;
             this.password = password;
         }
+        /**
+        * @desc The constructor by default with the connection information
+        *
+        */
         public mySqlConn()
         {
             this.server = "localhost";
@@ -34,11 +50,22 @@ namespace Gym_administration
             this.user = "gym";
             this.password = "gym";
         }
+        /**
+        * @desc Returns the connection string.
+        *
+        * @return [string]
+        *   The connection string returned 
+        *
+        */
         public string sGetMyConnString()
         {
             return this.sMyConString;
         }
-        
+
+        /**
+        * @desc Connects to the databse using the specified query string
+        *
+        */
         public void connect()
         {
             this.sMyConString = "server=" + this.server + ";User Id=" + this.user + ";password=" + this.password + ";Persist Security Info=True;database=" + this.database + ";";
@@ -64,18 +91,11 @@ namespace Gym_administration
 
         }
         /**
-        * Opens a connection to the database
+        * @desc Returns the connection to the database, if it is closed, it
+        * opens it.
         *
-        * Do not use this function for INSERT, UPDATE, or DELETE queries. Those should
-        * be handled via the appropriate query builder factory. Use this function for
-        * SELECT queries that do not require a query builder.
-        *
-        * @param string sQuery
-        *   The prepared statement query to run. 
-        *
-        * @return List<Hashtable>
-        *   A List<HashTable> containing the data retrieved from the databse. This
-        *   date can be used with a foreach loop or directly htResultset[index][fieldName]
+        * @return [MySqlConnection]
+        *   The mysql connection object returned 
         *
         */
         public MySqlConnection mycGetConnection()
@@ -90,17 +110,13 @@ namespace Gym_administration
         }
 
         /**
-        * Execute an arbitrary query string against the active database, very similar
-        * to the PHP way.
-        *
-        * Do not use this function for INSERT, UPDATE, or DELETE queries. Those should
-        * be handled via the appropriate query builder factory. Use this function for
-        * SELECT queries that do not require a query builder.
+        * @desc Execute an arbitrary query string against the active database, very similar
+        * to the PHP way. Do not use this function for INSERT, UPDATE, or DELETE queries. 
         *
         * @param string sQuery
         *   The prepared statement query to run. 
         *
-        * @return List<Hashtable>
+        * @return [List<Hashtable>]
         *   A List<HashTable> containing the data retrieved from the databse. This
         *   date can be used with a foreach loop or directly htResultset[index][fieldName]
         *
@@ -116,8 +132,6 @@ namespace Gym_administration
 
             // Create and populate a List.
             List<Hashtable> resultset = new List<Hashtable>();
-
-      
             try
             {
                 MySqlCommand command = this.connection.CreateCommand();
@@ -146,14 +160,13 @@ namespace Gym_administration
             return resultset;
         }
 
-        /*
-         * @desc: This function returns the id of the the modified 
-         * records affected by a Delete or Update sql statement 
-         * @params: [string] sQuery
-         * @return: [int] The number of modified rows by the delete
+        /**
+         * @desc This function performs an insert statement on the database
+         * and returns the id of the the last record inserted 
+         * @params [string] sQuery
+         * @return [int] The id of the last record inserted
          * or the update
          */
-
         public int iInsert(string sQuery)
         {
             string sLastInsertId = "0";
@@ -182,7 +195,13 @@ namespace Gym_administration
             this.connection.Close();
             return int.Parse(sLastInsertId);
         }
-
+        /**
+         * @desc This function executes the specified query on the database and
+         * returns a DataTable ready to use in a DataGridView component.
+         * @params [string] sQuery
+         * @return [DataTable] The DataTable object if there is no data, the object
+         * will be returned empty.
+         */
         public DataTable dtGetTableForDataGrid(string sQuery)
         {
             DataTable table = new DataTable();
@@ -190,7 +209,6 @@ namespace Gym_administration
             try
             {
                 MyDA.SelectCommand = new MySqlCommand(sQuery, this.mycGetConnection());
-                
                 MyDA.Fill(table);
             }
             catch (MySqlException e)
@@ -201,11 +219,11 @@ namespace Gym_administration
             return table;
         }
 
-        /*
-         * @desc: This function returns the id of the the modified 
+        /**
+         * @desc This function returns the id of the the modified 
          * records affected by a Delete or Update sql statement 
-         * @params: [string] sQuery
-         * @return: [int] The number of modified rows by the delete
+         * @params [string] sQuery
+         * @return [int] The number of modified rows by the delete
          * or the update
          */
         public int iDeleteOrUpdate(string sQuery)
@@ -232,5 +250,5 @@ namespace Gym_administration
             this.connection.Close();
             return iAffectedRows;
         }
-        }
+      }
 }
