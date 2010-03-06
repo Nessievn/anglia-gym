@@ -8,6 +8,12 @@ namespace Gym_administration
 {
     static class Utils
     {
+        /**
+        * @desc Returns true when the email received is valid 
+        * @params [string] sEmail
+        * @return [bool] True when the e-mail is a valid e-mail address
+        * otherwise it will return false
+        */
         static public bool bValidateEmail(string sEmail)
         {
             try
@@ -25,6 +31,13 @@ namespace Gym_administration
         
             return true;
         }
+
+        /**
+        * @desc It creates and md5hash useful to generate hashes for the password
+        * to be stored in the database
+        * @params [string] input
+        * @return [string] The md5 string hash
+        */
         static public string CreateMD5Hash(string input)
         {
             // Use input string to calculate MD5 hash
@@ -43,6 +56,10 @@ namespace Gym_administration
             }
             return sb.ToString().ToLower();
         }
+        /**
+        * @desc It generates the a new random member number
+        * @return [string] The new member number
+        */
         static public string sGenerateNewMemberNumber()
         {
             // TODO: Check for existing number
@@ -55,6 +72,12 @@ namespace Gym_administration
             return sRandomNumber1 + " " + sRandomNumber2 + " " + sRandomNumber3;
         }
 
+        /**
+        * @desc It returns a valid formated date [YYYY-MM-DD] to be stored in the 
+        * database from a U.K format [DD/MM/YYYY]
+        * @params [string] date in [DD/MM/YYYY] format
+        * @return [string] date in [YYYY-MM-DD] format
+        */
         static public string sGetMysqlDate(string date)
         {
             try
@@ -71,7 +94,12 @@ namespace Gym_administration
             }
           
         }
-
+        /**
+        * @desc It returns a valid formated date [DD/MM/YYYY] to be used in the c sharp forms
+        * from a mysql formated date [YYYY-MM-DD]
+        * @params [string] date in [YYYY-MM-DD] format
+        * @return [string] date in [DD/MM/YYYY] format
+        */
         static public string sGetCsharpDateFromMysqlDate(string date)
         {
             try
