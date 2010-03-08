@@ -380,6 +380,7 @@
             this.txt_medical_notes.Location = new System.Drawing.Point(344, 245);
             this.txt_medical_notes.Multiline = true;
             this.txt_medical_notes.Name = "txt_medical_notes";
+            this.txt_medical_notes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txt_medical_notes.Size = new System.Drawing.Size(297, 136);
             this.txt_medical_notes.TabIndex = 23;
             // 
