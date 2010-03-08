@@ -73,5 +73,22 @@ namespace Gym_administration
             set { sEmail = value; }
         }
 
+
+        private string sPhone;
+
+        public string SPhone
+        {
+            get { return sPhone; }
+            set { sPhone = value; }
+        }
+
+        private string sMobile;
+
+        public string SMobile
+        {
+            get { return sMobile; }
+            set { sMobile = value; }
+        }
+
     }
 }

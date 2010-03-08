@@ -63,6 +63,8 @@ namespace Gym_administration
             {
                 // Creating the child form login
                 frm_member mdiFrmMember = new frm_member();
+                // We check if the form is already opened
+                if (Utils.bIsAlreadyOpened(mdiFrmMember)) return;
                 // Set the Parent Form of the Child window.
                 mdiFrmMember.MdiParent = this;
 
@@ -74,6 +76,8 @@ namespace Gym_administration
             {
                 // Creating the child form login
                 frm_member_list mdiFrmMemberList = new frm_member_list();
+                // We check if the form is already opened
+                if (Utils.bIsAlreadyOpened(mdiFrmMemberList)) return;
                 // Set the Parent Form of the Child window.
                 mdiFrmMemberList.MdiParent = this;
 

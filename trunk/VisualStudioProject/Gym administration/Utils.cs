@@ -86,7 +86,7 @@ namespace Gym_administration
                 CultureInfo ukCulture = new CultureInfo("en-GB");
                 // pass the DateTimeFormat information to DateTime.Parse
                 DateTime dateTime = DateTime.Parse(date, ukCulture.DateTimeFormat);
-                return String.Format("{0:yyyy-M-d}", dateTime);
+                return String.Format("{0:yyyy-MM-dd}", dateTime);
             }
             catch (FormatException)
             {
@@ -108,13 +108,32 @@ namespace Gym_administration
                 CultureInfo usCulture = new CultureInfo("en-US");
                 // pass the DateTimeFormat information to DateTime.Parse
                 DateTime dateTime = DateTime.Parse(date, usCulture.DateTimeFormat);
-                return String.Format("{0:d/M/yyyy}", dateTime);
+                return String.Format("{0:dd/MM/yyyy}", dateTime);
             }
             catch (FormatException)
             {
                 return "00/00/0000";
             }
+        }
 
+        /**
+         * @desc It checks if the form is already opened, it it is, it shows it on top
+         * @params [Form] The form to check
+         * @return [bool] True if it is opened
+         */
+        static public bool bIsAlreadyOpened(Form frmMyForm)
+        {
+            foreach (Form frmOpenForm in Application.OpenForms)
+            {
+                if (frmOpenForm.GetType() == frmMyForm.GetType())
+                {
+                    frmOpenForm.TopMost = true;
+                    frmOpenForm.Visible = true;
+                    frmOpenForm.Activate();
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

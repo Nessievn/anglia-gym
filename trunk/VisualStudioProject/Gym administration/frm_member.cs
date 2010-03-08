@@ -35,7 +35,7 @@ namespace Gym_administration
                  txt_firstName.Text = mbrMember.SFirstName;
                  txt_lastName.Text = mbrMember.SLastName;
                  chk_active.Checked = mbrMember.BIs_active;
-                 txt_dob.Text = mbrMember.SBirthdate;
+                 txt_dob.Text = Utils.sGetCsharpDateFromMysqlDate(mbrMember.SBirthdate);
                  txt_address1.Text = mbrMember.SAddress_1;
                  txt_address2.Text = mbrMember.SAaddress_2;
                  txt_city.Text = mbrMember.SCity;
@@ -53,8 +53,9 @@ namespace Gym_administration
                  txt_pc.Text = mbrMember.SPostalcode;
                  cmb_type.Text = mbrMember.SType;
                  txt_email.Text = mbrMember.SEmail;
+                 txt_mobile.Text = mbrMember.SMobile;
+                 txt_telephone.Text = mbrMember.SPhone;
             }
-    
         }
 
         private void frm_member_Load(object sender, EventArgs e)
@@ -111,14 +112,11 @@ namespace Gym_administration
             mbrMember.SPostalcode = txt_pc.Text;
             mbrMember.SType = cmb_type.Text;
             mbrMember.SEmail = txt_email.Text;
+            mbrMember.SPhone = txt_telephone.Text;
+            mbrMember.SMobile = txt_mobile.Text;
 
-            if (mbrMember.IId_member == 0)
-            {
-                MessageBox.Show("Saving");
-                mbrMember.bSave();
-            }
-            else
-                mbrMember.bUpdate();
+            mbrMember.bSave();
+
 
         }
 
