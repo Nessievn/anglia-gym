@@ -216,7 +216,7 @@ namespace Gym_administration
                     this.outlookBar.AddBand("Management Functions", iconPanel1);
                     
                     iconPanel1.AddIcon("Edit Staff List", Image.FromFile(Application.StartupPath + "/../../icons/staff.png"), new EventHandler(PanelEvent));
-                    iconPanel1.AddIcon("Edit Class List", Image.FromFile(Application.StartupPath + "/../../icons/addressbook64.png"), new EventHandler(PanelEvent));
+                    iconPanel1.AddIcon("Edit Class List", Image.FromFile(Application.StartupPath + "/../../icons/calendar_64.png"), new EventHandler(PanelEvent));
                     iconPanel1.AddIcon("Membership Fees", Image.FromFile(Application.StartupPath + "/../../icons/14_64x64.png"), new EventHandler(PanelEvent));
                     iconPanel1.AddIcon("Edit Room List", Image.FromFile(Application.StartupPath + "/../../icons/Vista_icons_03.png"), new EventHandler(PanelEvent));
                     this.outlookBar.SelectBand(0);
@@ -227,7 +227,7 @@ namespace Gym_administration
                     this.outlookBar.AddBand("Staff Functions", iconPanel2);
 
                     iconPanel2.AddIcon("Add Member", Image.FromFile(Application.StartupPath + "/../../icons/staff.png"), new EventHandler(PanelEvent));
-                    iconPanel2.AddIcon("Member Search", Image.FromFile(Application.StartupPath + "/../../icons/addressbook64.png"), new EventHandler(PanelEvent));
+                    iconPanel2.AddIcon("Member Search", Image.FromFile(Application.StartupPath + "/../../icons/calendar_64.png"), new EventHandler(PanelEvent));
                     iconPanel2.AddIcon("Class Search", Image.FromFile(Application.StartupPath + "/../../icons/14_64x64.png"), new EventHandler(PanelEvent));
                     iconPanel2.AddIcon("Room Search", Image.FromFile(Application.StartupPath + "/../../icons/Vista_icons_03.png"), new EventHandler(PanelEvent));
                     this.outlookBar.SelectBand(0);
