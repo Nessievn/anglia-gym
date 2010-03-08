@@ -204,6 +204,7 @@ namespace Gym_administration
                         int iMbrId = conn.iInsert(sQuery);
                         if (iMbrId > 1)
                         {
+                            this.IId_member = iMbrId;
                             MessageBox.Show("The new member has been added to the databse succesfully!");
                             return true;
                         }

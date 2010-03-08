@@ -17,6 +17,7 @@ namespace Gym_administration
 
         public frm_login(frm_main frmMain)
         {
+            
             InitializeComponent();
             m_parent = frmMain;
 
