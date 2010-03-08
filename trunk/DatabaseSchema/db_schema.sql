@@ -32,7 +32,7 @@ CREATE TABLE `users` (
   `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_user`),
   UNIQUE KEY `login_UNIQUE` (`login`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','21232f297a57a5a743894a0e4a801fc3','manager',1),(60,'pam@pam.com','c29b2d78629b6e875de4975aa4c19019','member',1),(61,'asdasd','c29b2d78629b6e875de4975aa4c19019','member',0);
+INSERT INTO `users` VALUES (1,'admin','21232f297a57a5a743894a0e4a801fc3','manager',1),(60,'pam@pam.com','c29b2d78629b6e875de4975aa4c19019','member',1),(61,'asdasd@asd.es','c29b2d78629b6e875de4975aa4c19019','member',0),(62,'skarvin@asd.es','2a157d0eb15265b90c76ce6cbaaddb4e','member',1),(66,'skarvin@asdfas.es','c29b2d78629b6e875de4975aa4c19019','member',1),(68,'skarvin@asd.esa','e6af806a6406a15e0c71035f176e46d3','member',1),(69,'asdasd@asdasd.es','14e1a4e1dca3afa182db7005365ea7a4','member',1),(71,'skarvin@gmail.com','09e3701a258c25ea16514fb4272a81d3','member',0),(72,'skarvin@marca.es','74803fdf0df9cc0dbc5748743bce962a','member',1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -245,10 +245,12 @@ CREATE TABLE `members` (
   `medical_phone` varchar(45) DEFAULT NULL,
   `email` varchar(75) NOT NULL DEFAULT 'N/A',
   `member_number` varchar(75) NOT NULL DEFAULT 'N/A',
+  `phone` varchar(45) DEFAULT NULL,
+  `mobile` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_member`),
   KEY `id_user` (`id_user`),
   CONSTRAINT `members_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -257,7 +259,7 @@ CREATE TABLE `members` (
 
 LOCK TABLES `members` WRITE;
 /*!40000 ALTER TABLE `members` DISABLE KEYS */;
-INSERT INTO `members` VALUES (4,'Pam','McDonovan','1981-06-24','my house','Cambridge','Cambrdigeshire','CB2  2AS','Individual','Debit Card',60,1,'my house','Jennah Jameson','Mother','081231232','071231231','Clorhyne','I have had 4 heart attacks.',NULL,'Dr. House','612361263','pam@pam.com','N/A'),(5,'lkjg','lkjh','1981-06-24','kh','','','     ','','',61,0,'kh','ñlkhñ','ñlk','kl','jh','hlkj','ñlkh',NULL,'lkh','lkj','asdasd','N/A');
+INSERT INTO `members` VALUES (4,'Pam','McDonovan','1091-06-24','my house','Cambridge','Cambrdigeshire','CB2  2AS','Individual','Debit Card',60,1,'my house','Jennah Jameson','Mother','081231232','071231231','Clorhyne','I have had 4 heart attacks.',NULL,'Dr. House','612361263','pam@pam.com','N/A',NULL,NULL),(5,'lkjg','lkjh','1991-05-15','kh','','','     ','','',61,0,'kh','ñlkhñ','ñlk','kl','jh','hlkj','ñlkh',NULL,'lkh','lkj','asdasd@asd.es','N/A',NULL,NULL),(6,'Joana','Ferras','1012-11-12','','','','CB4  2NJ','Individual','Debit Card',62,1,'','Cuenca','','','','','None She is fine!!!',NULL,'House','','skarvin@asd.es','N/A','123123123','123123123'),(10,'sadasd','asdasd','1221-12-12','','','','     ','','',66,1,'','','','','','','',NULL,'','','skarvin@asdfas.es','714 271 422',NULL,NULL),(11,'joan','asda','1990-09-14','','','','     ','','',68,1,'','','','','','','',NULL,'','','skarvin@asd.esa','698 911 330',NULL,NULL),(12,'Isidro','Catalan','1111-01-01','ñlkñlknlkjb','ñkmmkljbgfgjhguigh','ghukghbkghhl','CB4  2SQ','Group','Debit Card',69,1,'ñljnblkn´ñlkñklbjknñjhlj','fas dfad f','asdfsd fasd','sdaf sdf ','asd fasd','lots','alsdj lasfakjsfdn sladfn lasdkng fñasldbgadfg sdfg',NULL,'asdas d','asd fasd fasd','asdasd@asdasd.es','972 513 629',NULL,NULL),(16,'','','1981-06-24','','','','     ','','',71,0,'','','','','','','',NULL,'','','skarvin@gmail.com','330 568 590','',''),(17,'Mr Joan','Donovan','1990-07-12','House 1','Cambrdige','Cambrdigeshire','CB4  2NA','Individual','Cash',72,1,'House 2','My Contact','None','1231231','1231241','Lots and Lots','You dont care mate\r\n\r\n\r\nHAHAHAHA',NULL,'House','','skarvin@marca.es','393 620 591','921231231','666666666');
 /*!40000 ALTER TABLE `members` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -326,6 +328,8 @@ CREATE TABLE `staff` (
   `allergies` varchar(90) DEFAULT NULL,
   `medicalNotes` text,
   `qualifications` text,
+  `phone` varchar(45) DEFAULT NULL,
+  `mobile` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_staff`),
   KEY `id_user` (`id_user`),
   CONSTRAINT `staff_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -350,4 +354,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-03-05 15:47:33
+-- Dump completed on 2010-03-08  1:32:52
