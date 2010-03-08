@@ -473,6 +473,7 @@
             // 
             // cmb_type
             // 
+            this.cmb_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_type.FormattingEnabled = true;
             this.cmb_type.Items.AddRange(new object[] {
             "Individual",
@@ -489,6 +490,8 @@
             // chk_active
             // 
             this.chk_active.AutoSize = true;
+            this.chk_active.Checked = true;
+            this.chk_active.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_active.Location = new System.Drawing.Point(12, 349);
             this.chk_active.Name = "chk_active";
             this.chk_active.Size = new System.Drawing.Size(62, 17);
@@ -498,6 +501,7 @@
             // 
             // cmb_payment
             // 
+            this.cmb_payment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_payment.FormattingEnabled = true;
             this.cmb_payment.Items.AddRange(new object[] {
             "Debit Card",

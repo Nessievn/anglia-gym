@@ -120,6 +120,7 @@ namespace Gym_administration
         public Member()
         {
             this.iId_member = 0;
+            this.usrUser = new User();
         }
 
         public Member(int iMemberId)
@@ -127,11 +128,16 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             // We launch the query
-            List<Hashtable> lhResultset = conn.lhSqlQuery("Select u.id_user, login, password, profile, active, id_member, firstName, lastName, birthdate, address_1, city, county, postalcode, type, payment_method, is_active, address_2, emerg_contact_name, emerg_contact_relation, emerg_contact_phone, emerg_contact_mobile, medical_allergies, medical_notes, picture, medical_doctor_name, medical_phone, email, member_number from members m, users u where u.id_user = m.id_user AND m.id_member = '" + iMemberId + "'");
+            List<Hashtable> lhResultset = conn.lhSqlQuery("Select u.id_user, login, password, profile, active, id_member, firstName, lastName, birthdate, address_1, city, county, postalcode, type, payment_method, is_active, address_2, emerg_contact_name, emerg_contact_relation, emerg_contact_phone, emerg_contact_mobile, medical_allergies, medical_notes, picture, medical_doctor_name, medical_phone, email, member_number, phone, mobile from members m, users u where u.id_user = m.id_user AND m.id_member = '" + iMemberId + "'");
 
             // Check if we found the member
             if ((int)lhResultset.Count > 0)
             {
+                this.usrUser = new User();
+                this.usrUser.IId_user = int.Parse(lhResultset[0]["id_user"].ToString());
+                this.usrUser.SLogin = lhResultset[0]["login"].ToString();
+                this.usrUser.SPassword = lhResultset[0]["password"].ToString();
+                this.usrUser.SProfile = lhResultset[0]["profile"].ToString();
                 this.BIs_active = (lhResultset[0]["is_active"].ToString() == "True") ? true : false;
                 this.IId_member = int.Parse(lhResultset[0]["id_member"].ToString());
                 this.SAaddress_2 = lhResultset[0]["address_2"].ToString();
@@ -155,16 +161,13 @@ namespace Gym_administration
                 this.SPicture = lhResultset[0]["picture"].ToString();
                 this.SPostalcode = lhResultset[0]["postalcode"].ToString();
                 this.SType = lhResultset[0]["type"].ToString();
-                this.usrUser = new User();
-                this.usrUser.IId_user = int.Parse(lhResultset[0]["id_user"].ToString());
-                this.usrUser.SLogin = lhResultset[0]["login"].ToString();
-                this.usrUser.SPassword = lhResultset[0]["password"].ToString();
-                this.usrUser.SProfile = lhResultset[0]["profile"].ToString();
+                this.SMobile = lhResultset[0]["mobile"].ToString();
+                this.SPhone = lhResultset[0]["phone"].ToString();
             }
         }
 
-        /*
-         * This method will save the object into the database
+        /**
+         * @desc This method will save the object into the database
          */
         public bool bSave()
         {
@@ -182,7 +185,6 @@ namespace Gym_administration
             }
             else
             {
-                this.usrUser = new User();
                 // First the user object is filled
                 usrUser.BActive = (this.BIs_active) ? true : false;
                 usrUser.SLogin = this.SEmail;
@@ -194,20 +196,41 @@ namespace Gym_administration
                 {
                     mySqlConn conn = new mySqlConn();
                     conn.connect();
-                    sQuery = "insert into `gym`.`members` (`id_member`, `firstName`, `lastName`, `birthdate`, `address_1`, `city`, `county`, `postalcode`, `type`, `payment_method`, `id_user`, `is_active`, `address_2`, `emerg_contact_name`, `emerg_contact_relation`, `emerg_contact_phone`, `emerg_contact_mobile`, `medical_allergies`, `medical_notes`, `picture`, `medical_doctor_name`, `medical_phone`, `email`, `member_number`) values " +
-                             "(NULL, '" + this.SFirstName + "', '" + this.SLastName + "', '" + sMysqlDate + "', '" + this.SAddress_1 + "', '" + this.SCity + "', '" + this.SCounty + "', '" + this.SPostalcode + "', '" + this.SType + "', '" + this.SPayment_method + "', '" + usrUser.IId_user + "', '" + ((this.BIs_active) ? "1" : "0") + "', '" + this.SAaddress_2 + "', '" + this.SEmerg_contact_name + "', '" + this.SEmerg_contact_relation + "', '" + this.SEmerg_contact_phone + "', '" + this.SEmerg_contact_mobile + "', '" + this.SMedical_allergies + "', '" + this.SMedical_notes + "', NULL, '" + this.SMedical_doctor_name + "', '" + this.SMedical_phone + "', '" + this.SEmail + "', '" + this.SMemberNumber + "')";
-
-                    int iMbrId = conn.iInsert(sQuery);
-                    if (iMbrId > 1)
+                    if (this.IId_member == 0)
                     {
-                        MessageBox.Show("The new member has been added to the databse succesfully!");
-                        return true;
+                        sQuery = "insert into `gym`.`members` (`id_member`, `firstName`, `lastName`, `birthdate`, `address_1`, `city`, `county`, `postalcode`, `type`, `payment_method`, `id_user`, `is_active`, `address_2`, `emerg_contact_name`, `emerg_contact_relation`, `emerg_contact_phone`, `emerg_contact_mobile`, `medical_allergies`, `medical_notes`, `picture`, `medical_doctor_name`, `medical_phone`, `email`, `member_number`, `phone`,`mobile`) values " +
+                                 "(NULL, '" + this.SFirstName + "', '" + this.SLastName + "', '" + sMysqlDate + "', '" + this.SAddress_1 + "', '" + this.SCity + "', '" + this.SCounty + "', '" + this.SPostalcode + "', '" + this.SType + "', '" + this.SPayment_method + "', '" + usrUser.IId_user + "', '" + ((this.BIs_active) ? "1" : "0") + "', '" + this.SAaddress_2 + "', '" + this.SEmerg_contact_name + "', '" + this.SEmerg_contact_relation + "', '" + this.SEmerg_contact_phone + "', '" + this.SEmerg_contact_mobile + "', '" + this.SMedical_allergies + "', '" + this.SMedical_notes + "', NULL, '" + this.SMedical_doctor_name + "', '" + this.SMedical_phone + "', '" + this.SEmail + "', '" + this.SMemberNumber + "','"+this.SPhone+"','"+this.SMobile+"')";
+
+                        int iMbrId = conn.iInsert(sQuery);
+                        if (iMbrId > 1)
+                        {
+                            MessageBox.Show("The new member has been added to the databse succesfully!");
+                            return true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("There was a problem adding the new user, please check your data!");
+                            usrUser.bDelete();
+                            return false;
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("There was a problem adding the new user, please check your data!");
-                        usrUser.bDelete();
-                        return false;
+                        sQuery = "UPDATE members SET firstName = '" + this.SFirstName + "', lastName = '" + this.SLastName + "', birthdate = '" + sMysqlDate + "', address_1 = '"+this.SAddress_1+"', city = '"+this.SCity+"', county = '"+this.SCounty+"', postalcode = '"+this.SPostalcode+"', type = '"+this.sType+"', payment_method = '"+this.SPayment_method+"', is_active = '"+((this.BIs_active) ? "1" : "0")+"', address_2 = '"+this.SAaddress_2+"', emerg_contact_name = '"+this.SEmerg_contact_name+"', emerg_contact_relation = '"+this.SEmerg_contact_relation+"', emerg_contact_phone = '"+this.SEmerg_contact_phone+"', emerg_contact_mobile = '"+this.SEmerg_contact_mobile+"', medical_allergies = '"+this.SMedical_allergies+"', medical_notes = '"+this.SMedical_notes+"', medical_doctor_name = '"+this.SMedical_doctor_name+"', medical_phone = '"+this.SMedical_phone+"', email = '"+this.SEmail+"', phone = '"+this.SPhone+"', mobile = '"+this.SMobile+"' " +
+                                 " WHERE id_member = '"+this.IId_member+"'";
+     
+                        int iRes = conn.iDeleteOrUpdate(sQuery);
+                        if (iRes > 0)
+                        {
+                            MessageBox.Show("The member data has been updated succesfully!");
+                            return true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("There was a problem updating the user information, please check your data!");
+                            usrUser.bDelete();
+                            return false;
+                        }
                     }
                 }
                 else
@@ -218,63 +241,6 @@ namespace Gym_administration
 
             }
              return true;
-        }
-
-        /*
-     * This method will udate the object into the database
-     */
-        public bool bUpdate()
-        {
-            // Field checking
-            string sMysqlDate = Utils.sGetMysqlDate(this.SBirthdate);
-            string sQuery;
-
-            if (sMysqlDate == "0000-00-00")
-            {
-                MessageBox.Show("The birth date is in incorrect format");
-            }
-            else if (Utils.bValidateEmail(this.SEmail) == false)
-            {
-                MessageBox.Show("The E-Mail address is incorrect");
-            }
-            else
-            {
-                this.usrUser = new User();
-                // First the user object is filled
-                usrUser.BActive = (this.BIs_active) ? true : false;
-                usrUser.SLogin = this.SEmail;
-                usrUser.SPassword = sMysqlDate;
-                usrUser.SProfile = "member";
-
-                // then the bSave method is called
-                if (usrUser.bSave())
-                {
-                    mySqlConn conn = new mySqlConn();
-                    conn.connect();
-                    sQuery = "insert into `gym`.`members` (`id_member`, `firstName`, `lastName`, `birthdate`, `address_1`, `city`, `county`, `postalcode`, `type`, `payment_method`, `id_user`, `is_active`, `address_2`, `emerg_contact_name`, `emerg_contact_relation`, `emerg_contact_phone`, `emerg_contact_mobile`, `medical_allergies`, `medical_notes`, `picture`, `medical_doctor_name`, `medical_phone`, `email`, `member_number`) values " +
-                             "(NULL, '" + this.SFirstName + "', '" + this.SLastName + "', '" + sMysqlDate + "', '" + this.SAddress_1 + "', '" + this.SCity + "', '" + this.SCounty + "', '" + this.SPostalcode + "', '" + this.SType + "', '" + this.SPayment_method + "', '" + usrUser.IId_user + "', '" + ((this.BIs_active) ? "1" : "0") + "', '" + this.SAaddress_2 + "', '" + this.SEmerg_contact_name + "', '" + this.SEmerg_contact_relation + "', '" + this.SEmerg_contact_phone + "', '" + this.SEmerg_contact_mobile + "', '" + this.SMedical_allergies + "', '" + this.SMedical_notes + "', NULL, '" + this.SMedical_doctor_name + "', '" + this.SMedical_phone + "', '" + this.SEmail + "', '" + this.SMemberNumber + "')";
-
-                    int iMbrId = conn.iInsert(sQuery);
-                    if (iMbrId > 1)
-                    {
-                        MessageBox.Show("The new member has been added to the databse succesfully!");
-                        return true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("There was a problem adding the new user, please check your data!");
-                        usrUser.bDelete();
-                        return false;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("The e-mail already exists in the database!, please choose another one.");
-                    return false;
-                }
-
-            }
-            return true;
         }
     }
 }
