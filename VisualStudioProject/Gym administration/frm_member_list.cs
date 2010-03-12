@@ -7,7 +7,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
 
 
@@ -55,7 +54,7 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
-            string sQuery = "SELECT id_member MID, member_number NO, firstName as 'First Name', lastName 'Last Name', DATE_FORMAT(birthdate,\"%d/%m/%Y\") DOB, email 'EMail' FROM members WHERE id_member > 0 ";
+            string sQuery = "SELECT id_member MID, member_number NO, firstName as 'First Name', lastName 'Last Name', DATE_FORMAT(birthdate,\"%d/%m/%Y\") DOB, email 'EMail' FROM members WHERE 1 = 1 ";
             if (txt_firstName.Text != "")
                 sQuery += " AND firstName LIKE '%"+txt_firstName.Text+"%'";
             if (txt_lastName.Text != "")
@@ -75,5 +74,6 @@ namespace Gym_administration
             dg_members.AllowUserToAddRows = false;
             dg_members.ReadOnly = true;
         }
+
     }
 }

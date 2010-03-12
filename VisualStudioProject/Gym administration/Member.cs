@@ -128,7 +128,7 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             // We launch the query
-            List<Hashtable> lhResultset = conn.lhSqlQuery("Select u.id_user, login, password, profile, active, id_member, firstName, lastName, birthdate, address_1, city, county, postalcode, type, payment_method, is_active, address_2, emerg_contact_name, emerg_contact_relation, emerg_contact_phone, emerg_contact_mobile, medical_allergies, medical_notes, picture, medical_doctor_name, medical_phone, email, member_number, phone, mobile from members m, users u where u.id_user = m.id_user AND m.id_member = '" + iMemberId + "'");
+            List<Hashtable> lhResultset = conn.lhSqlQuery("Select * from members m, users u where u.id_user = m.id_user AND m.id_member = '" + iMemberId + "'");
 
             // Check if we found the member
             if ((int)lhResultset.Count > 0)
