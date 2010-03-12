@@ -147,7 +147,9 @@ namespace Gym_administration
                     resultset_tmp = new Hashtable();
                     for (i = 0; i < Reader.FieldCount; i++)
                     {
-                        resultset_tmp.Add(Reader.GetName(i).ToString(), Reader.GetValue(i).ToString()); 
+                        // We check first if the key exists
+                        if(!resultset_tmp.ContainsKey(Reader.GetName(i).ToString()))
+                            resultset_tmp.Add(Reader.GetName(i).ToString(), Reader.GetValue(i).ToString()); 
                     } 
                     resultset.Add(resultset_tmp);
                 }
