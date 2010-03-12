@@ -44,19 +44,27 @@ namespace Gym_administration
  
             }
             // Edit Class List
-            else if (sSelectedBand == "manager" && panelIcon.Index.ToString() == "2")
+            else if (sSelectedBand == "manager" && panelIcon.Index.ToString() == "1")
             {
 
             }
             // Membership fees
-            else if (sSelectedBand == "manager" && panelIcon.Index.ToString() == "3")
+            else if (sSelectedBand == "manager" && panelIcon.Index.ToString() == "2")
             {
 
             }
             // Edit Room List
-            else if (sSelectedBand == "manager" && panelIcon.Index.ToString() == "4")
+            else if (sSelectedBand == "manager" && panelIcon.Index.ToString() == "3")
             {
+                // Creating the child form login
+                frm_room_list mdiFrmRoomList = new frm_room_list();
+                // We check if the form is already opened
+                if (Utils.bIsAlreadyOpened(mdiFrmRoomList)) return;
+                // Set the Parent Form of the Child window.
+                mdiFrmRoomList.MdiParent = this;
 
+                // Display the new form.
+                mdiFrmRoomList.Show();  
             }
             // Add Member
             else if (sSelectedBand == "staff" && panelIcon.Index.ToString() == "0")
