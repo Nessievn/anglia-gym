@@ -171,7 +171,7 @@ namespace Gym_administration
          */
         public int iInsert(string sQuery)
         {
-            string sLastInsertId = "0";
+            string sLastInsertId = "-1";
             // The connection is forced when its not connected
             if (this.connection.State.ToString() == "Closed")
             {
