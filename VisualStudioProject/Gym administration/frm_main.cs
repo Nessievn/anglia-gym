@@ -46,7 +46,15 @@ namespace Gym_administration
             // Edit Class List
             else if (sSelectedBand == "manager" && panelIcon.Index.ToString() == "1")
             {
+                // Creating the child form login
+                frm_class_list mdiFrmClassList = new frm_class_list();
+                // We check if the form is already opened
+                if (Utils.bIsAlreadyOpened(mdiFrmClassList)) return;
+                // Set the Parent Form of the Child window.
+                mdiFrmClassList.MdiParent = this;
 
+                // Display the new form.
+                mdiFrmClassList.Show();  
             }
             // Membership fees
             else if (sSelectedBand == "manager" && panelIcon.Index.ToString() == "2")

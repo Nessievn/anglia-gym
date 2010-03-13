@@ -49,7 +49,7 @@ namespace Gym_administration
 
         public User()
         {
-            this.IId_user = 0;
+            this.IId_user = -1;
         }
 
         public bool bSave()
@@ -57,7 +57,7 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
 
-            if (this.IId_user == 0)
+            if (this.IId_user == -1)
             {
                 string sQuery = "insert into users (id_user, login, password, profile, active) " +
                 "values (NULL, '" + this.SLogin + "', MD5('" + this.SPassword +

@@ -37,6 +37,7 @@ namespace Gym_administration
         private void button2_Click(object sender, EventArgs e)
         {
             frm_room frmRoom = new frm_room();
+            frmRoom.MdiParent = this.MdiParent;
             frmRoom.Show();
         }
 
