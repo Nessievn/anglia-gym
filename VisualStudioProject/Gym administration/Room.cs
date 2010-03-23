@@ -103,7 +103,7 @@ namespace Gym_administration
                              "(NULL, '" + this.SName + "', '" + this.ISize + "', '" + this.SDescription + "')";
 
                     int iIdRoom = conn.iInsert(sQuery);
-                    if (iIdRoom > 1)
+                    if (iIdRoom != 1)
                     {
                         this.Id_room = iIdRoom;
                         MessageBox.Show("The new room has been added to the databse succesfully!");
