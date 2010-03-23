@@ -153,12 +153,13 @@ namespace Gym_administration
                     } 
                     resultset.Add(resultset_tmp);
                 }
+                Reader.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-
+            
             return resultset;
         }
 
@@ -219,6 +220,23 @@ namespace Gym_administration
                 return new DataTable();
             }
             return table;
+        }
+
+        /**
+         * @desc This function Returns the datasource ready to be used in a combobox.
+         * @params [string] sQuery
+         * @return [ArrayList] ArrayList containing the items 
+         */
+        public ArrayList alGetComboFromDb(string sQuery, string sFieldId, string sFieldValue)
+        {
+            ArrayList alMyItems = new ArrayList();
+
+            List<Hashtable> result = this.lhSqlQuery(sQuery);
+            foreach (Hashtable record in result)
+                alMyItems.Add(new DictionaryEntry(record[sFieldId].ToString(), record[sFieldValue].ToString()));
+
+            return alMyItems;
+
         }
 
         /**
