@@ -202,7 +202,7 @@ namespace Gym_administration
                                  "(NULL, '" + this.SFirstName + "', '" + this.SLastName + "', '" + sMysqlDate + "', '" + this.SAddress_1 + "', '" + this.SCity + "', '" + this.SCounty + "', '" + this.SPostalcode + "', '" + this.SType + "', '" + this.SPayment_method + "', '" + usrUser.IId_user + "', '" + ((this.BIs_active) ? "1" : "0") + "', '" + this.SAaddress_2 + "', '" + this.SEmerg_contact_name + "', '" + this.SEmerg_contact_relation + "', '" + this.SEmerg_contact_phone + "', '" + this.SEmerg_contact_mobile + "', '" + this.SMedical_allergies + "', '" + this.SMedical_notes + "', NULL, '" + this.SMedical_doctor_name + "', '" + this.SMedical_phone + "', '" + this.SEmail + "', '" + this.SMemberNumber + "','"+this.SPhone+"','"+this.SMobile+"')";
 
                         int iMbrId = conn.iInsert(sQuery);
-                        if (iMbrId > 1)
+                        if (iMbrId != -1)
                         {
                             this.IId_member = iMbrId;
                             MessageBox.Show("The new member has been added to the databse succesfully!");

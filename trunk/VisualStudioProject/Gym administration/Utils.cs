@@ -94,6 +94,30 @@ namespace Gym_administration
             }
           
         }
+
+        /**
+        * @desc It validates a string to see if it's in a time format
+        * @params [string] time in [HH:MM] format
+        * @return [bool] only true if the time is correct
+        * */
+        static public bool bValidateTime(string sTime)
+        {
+            try
+            {
+                // fetch the en-GB culture
+                CultureInfo ukCulture = new CultureInfo("en-GB");
+                // pass the DateTimeFormat information to DateTime.Parse
+                DateTime dateTime = DateTime.Parse(sTime, ukCulture.DateTimeFormat);
+
+                string sFormat =  String.Format("{0:HH:mm}", dateTime);
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+
         /**
         * @desc It returns a valid formated date [DD/MM/YYYY] to be used in the c sharp forms
         * from a mysql formated date [YYYY-MM-DD]

@@ -74,6 +74,19 @@ namespace Gym_administration
                 // Display the new form.
                 mdiFrmRoomList.Show();  
             }
+            // Arrange Class
+            else if (sSelectedBand == "manager" && panelIcon.Index.ToString() == "4")
+            {
+                // Creating the child form login
+                frm_class_arrange mdiFrmClassArrange = new frm_class_arrange();
+                // We check if the form is already opened
+                if (Utils.bIsAlreadyOpened(mdiFrmClassArrange)) return;
+                // Set the Parent Form of the Child window.
+                mdiFrmClassArrange.MdiParent = this;
+
+                // Display the new form.
+                mdiFrmClassArrange.Show();
+            }
             // Add Member
             else if (sSelectedBand == "staff" && panelIcon.Index.ToString() == "0")
             {
@@ -235,6 +248,7 @@ namespace Gym_administration
                     iconPanel1.AddIcon("Edit Class List", Image.FromFile(Application.StartupPath + "/../../icons/calendar_64.png"), new EventHandler(PanelEvent));
                     iconPanel1.AddIcon("Membership Fees", Image.FromFile(Application.StartupPath + "/../../icons/14_64x64.png"), new EventHandler(PanelEvent));
                     iconPanel1.AddIcon("Edit Room List", Image.FromFile(Application.StartupPath + "/../../icons/Vista_icons_03.png"), new EventHandler(PanelEvent));
+                    iconPanel1.AddIcon("Arrange Class", Image.FromFile(Application.StartupPath + "/../../icons/Vista_icons_03.png"), new EventHandler(PanelEvent));
                     this.outlookBar.SelectBand(0);
                     outlookBar.Show();
                     break;
