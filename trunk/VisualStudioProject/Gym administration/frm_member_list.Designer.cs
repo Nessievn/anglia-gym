@@ -53,6 +53,7 @@
             this.dg_members.Size = new System.Drawing.Size(641, 305);
             this.dg_members.TabIndex = 0;
             this.dg_members.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_members_CellDoubleClick);
+            this.dg_members.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_members_CellContentClick);
             // 
             // button1
             // 
