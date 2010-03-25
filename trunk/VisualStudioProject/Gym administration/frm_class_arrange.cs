@@ -12,11 +12,29 @@ namespace Gym_administration
 {
     public partial class frm_class_arrange : Form
     {
+        ClassBooked clbClassBooked;
+
         public frm_class_arrange()
         {
             InitializeComponent();
+            clbClassBooked = new ClassBooked();
+            btn_attendants.Enabled = false;
         }
+        public frm_class_arrange(int iIdClassBooked)
+        {
+            InitializeComponent();
 
+            clbClassBooked = new ClassBooked(iIdClassBooked);
+            if (clbClassBooked.Id_class_instance == -1)
+                MessageBox.Show("The class instance could not be found");
+            else
+            {
+                txt_end_time.Text = clbClassBooked.SEndTime;
+                txt_start.Text = clbClassBooked.SDateStart;
+                txt_start_time.Text = clbClassBooked.SStartTime;
+                btn_attendants.Enabled = true;
+            }
+        }
         private void frm_class_arrange_Load(object sender, EventArgs e)
         {
             mySqlConn conn = new mySqlConn();
@@ -40,7 +58,16 @@ namespace Gym_administration
             myItems = conn.alGetComboFromDb(sQuery, "id_staff", "name");
             cmb_instructors.DisplayMember = "Value";
             cmb_instructors.DataSource = myItems;
+            
+            // HERE we select the options with the class instance
+            if (this.clbClassBooked.Id_class_instance != -1)
+            {
+                cmb_classes.SelectedIndex = cmb_classes.FindString(clbClassBooked.SClass.SName);
+                //cmb_instructors.SelectedIndex = cmb_instructors.FindString(clbClassBooked..SName+' ');
+                cmb_rooms.SelectedIndex = cmb_rooms.FindString(clbClassBooked.RRoom.SName);
+                cmb_repeats.SelectedIndex = cmb_repeats.FindString(clbClassBooked.SFrequency);
 
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -65,7 +92,6 @@ namespace Gym_administration
                 MessageBox.Show("Check the time format!");
                 return;
             }
-
             
             // Check class overlapping
             ClassBooked cbClassBooked = new ClassBooked();
@@ -83,11 +109,28 @@ namespace Gym_administration
                 cbClassBooked.SFrequency = cmb_repeats.Text;
                 cbClassBooked.SStartTime = txt_start_time.Text;
                 if (cbClassBooked.bSave())
+                {
                     MessageBox.Show("The class instance has been created!");
+                    this.clbClassBooked = cbClassBooked;
+                    btn_attendants.Enabled = true;
+                }
             }
 
             // Check Equipment availability
 
         }
+
+        private void btn_attendants_Click(object sender, EventArgs e)
+        {
+            frm_member_list frmMemberList = new frm_member_list(clbClassBooked);
+            frmMemberList.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

@@ -116,7 +116,15 @@ namespace Gym_administration
             // Class Search
             else if (sSelectedBand == "staff" && panelIcon.Index.ToString() == "2")
             {
+                // Creating the child form login
+                frm_class_arrange_list mdiFrmClassArrangeList = new frm_class_arrange_list();
+                // We check if the form is already opened
+                if (Utils.bIsAlreadyOpened(mdiFrmClassArrangeList)) return;
+                // Set the Parent Form of the Child window.
+                mdiFrmClassArrangeList.MdiParent = this;
 
+                // Display the new form.
+                mdiFrmClassArrangeList.Show();  
             }
             // Room Search
             else if (sSelectedBand == "staff" && panelIcon.Index.ToString() == "3")
