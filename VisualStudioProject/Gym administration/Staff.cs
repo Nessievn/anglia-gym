@@ -216,8 +216,8 @@ namespace Gym_administration
                 // then the bSave method is called
                 if (usrUser.bSave())
                 {
-            mySqlConn conn = new mySqlConn();
-            conn.connect();
+                    mySqlConn conn = new mySqlConn();
+                    conn.connect();
 
                      if (this.IId_staff == 0)
                     {
@@ -263,9 +263,7 @@ namespace Gym_administration
                     return false;
                 }
             }
-
             return true;
-
         }
     }
 }

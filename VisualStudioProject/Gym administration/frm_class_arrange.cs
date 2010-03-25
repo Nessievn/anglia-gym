@@ -122,13 +122,14 @@ namespace Gym_administration
 
         private void btn_attendants_Click(object sender, EventArgs e)
         {
-            frm_member_list frmMemberList = new frm_member_list(clbClassBooked);
+            frm_member_list frmMemberList = new frm_member_list(clbClassBooked,false);
             frmMemberList.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            frm_member_list frmMemberList = new frm_member_list(clbClassBooked, true);
+            frmMemberList.Show();
         }
 
 
