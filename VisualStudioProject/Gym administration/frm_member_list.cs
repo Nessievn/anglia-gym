@@ -14,11 +14,18 @@ namespace Gym_administration
 {
     public partial class frm_member_list : Form
     {
+        public ClassBooked cb;
+        public frm_member_list(ClassBooked cb_t)
+        {
+            InitializeComponent();
+            this.cb = cb_t;
+        }
+       
         public frm_member_list()
         {
             InitializeComponent();
+            this.cb = new ClassBooked();
         }
-        
         private void Form1_Load(object sender, EventArgs e)
         {
             mySqlConn conn = new mySqlConn();
@@ -38,9 +45,23 @@ namespace Gym_administration
             {
                 string sMemberId = dg_members.Rows[e.RowIndex].Cells[0].Value.ToString();
                 int iMbrId = int.Parse(sMemberId);
-                frm_member frm_mbr = new frm_member(iMbrId);
-                frm_mbr.MdiParent = this.MdiParent;
-                frm_mbr.Show();
+
+                if (this.cb.Id_class_instance != -1)
+                {
+                    DialogResult res = MessageBox.Show("Enroll this member to the class?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (res == DialogResult.Yes)
+                    {
+                        Member mbr_t = new Member(iMbrId);
+                        this.cb.lmAttendants.Add(mbr_t);
+                        this.cb.bSave();
+                    }
+                }
+                else
+                {
+                    frm_member frm_mbr = new frm_member(iMbrId);
+                    frm_mbr.MdiParent = this.MdiParent;
+                    frm_mbr.Show();
+                }
             }catch(Exception)
             {
                 return;
