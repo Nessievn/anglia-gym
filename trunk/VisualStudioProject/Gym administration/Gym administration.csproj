@@ -117,6 +117,18 @@
     <Compile Include="frm_room_list.Designer.cs">
       <DependentUpon>frm_room_list.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_staff.Designer.cs">
+      <DependentUpon>frm_staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_staff_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_staff_list.Designer.cs">
+      <DependentUpon>frm_staff_list.cs</DependentUpon>
+    </Compile>
     <Compile Include="Member.cs" />
     <Compile Include="mySqlConn.cs" />
     <Compile Include="frm_login.cs">
@@ -167,6 +179,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_member.resx">
       <DependentUpon>frm_member.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_room.resx">
       <DependentUpon>frm_room.cs</DependentUpon>
@@ -174,6 +187,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_room_list.resx">
       <DependentUpon>frm_room_list.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_staff.resx">
+      <DependentUpon>frm_staff.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_staff_list.resx">
+      <DependentUpon>frm_staff_list.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

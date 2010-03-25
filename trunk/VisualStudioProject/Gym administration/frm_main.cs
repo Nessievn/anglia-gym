@@ -41,7 +41,15 @@ namespace Gym_administration
             // Edit Staff List
             if (sSelectedBand == "manager" && panelIcon.Index.ToString() == "0")
             {
- 
+                // Creating the child form login
+                frm_staff_list mdiFrmStaffList = new frm_staff_list();
+                // We check if the form is already opened
+                if (Utils.bIsAlreadyOpened(mdiFrmStaffList)) return;
+                // Set the Parent Form of the Child window.
+                mdiFrmStaffList.MdiParent = this;
+
+                // Display the new form.
+                mdiFrmStaffList.Show();  
             }
             // Edit Class List
             else if (sSelectedBand == "manager" && panelIcon.Index.ToString() == "1")
