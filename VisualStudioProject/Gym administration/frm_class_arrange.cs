@@ -66,7 +66,12 @@ namespace Gym_administration
                 //cmb_instructors.SelectedIndex = cmb_instructors.FindString(clbClassBooked..SName+' ');
                 cmb_rooms.SelectedIndex = cmb_rooms.FindString(clbClassBooked.RRoom.SName);
                 cmb_repeats.SelectedIndex = cmb_repeats.FindString(clbClassBooked.SFrequency);
-
+                sQuery = "SELECT COUNT(*) q FROM gym.class_bookings WHERE id_class_instance = '" + this.clbClassBooked.Id_class_instance + "'";
+                List<Hashtable> lhRes = conn.lhSqlQuery(sQuery);
+                lbl_current.Text = lhRes[0]["q"].ToString();
+                sQuery = "SELECT r.size FROM gym.class_instance ci, gym.rooms r WHERE ci.id_room = r.id_room AND ci.id_class_instance = '" + this.clbClassBooked.Id_class_instance + "'";
+                lhRes = conn.lhSqlQuery(sQuery);
+                lbl_max.Text = lhRes[0]["size"].ToString();
             }
         }
 
@@ -132,6 +137,15 @@ namespace Gym_administration
             frmMemberList.Show();
         }
 
-
+        private void cmb_rooms_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            mySqlConn conn = new mySqlConn();
+            conn.connect();
+            DictionaryEntry de = (DictionaryEntry)cmb_rooms.SelectedItem;
+            string sIdRoom = de.Key.ToString();
+            string sQuery = "SELECT size FROM gym.rooms WHERE id_room = '" + sIdRoom + "'";
+            List<Hashtable> lhRes = conn.lhSqlQuery(sQuery);
+            lbl_max.Text = lhRes[0]["size"].ToString();
+        }
     }
 }
