@@ -54,12 +54,28 @@ namespace Gym_administration
             {
                 string sMemberId = dg_members.Rows[e.RowIndex].Cells[0].Value.ToString();
                 int iMbrId = int.Parse(sMemberId);
+                mySqlConn conn = new mySqlConn();
+                conn.connect();
 
                 if (this.cb.Id_class_instance != -1 && this.bViewAttendants == false)
                 {
                     DialogResult res = MessageBox.Show("Enroll this member to the class?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (res == DialogResult.Yes)
                     {
+
+                        // Check the room size
+                        string sQuery = "SELECT COUNT(*) q FROM gym.class_bookings WHERE id_class_instance = '" + this.cb.Id_class_instance + "'";
+                        List<Hashtable> lhRes = conn.lhSqlQuery(sQuery);
+                        int iCurrMembers = int.Parse(lhRes[0]["q"].ToString());
+                        sQuery = "SELECT r.size FROM gym.class_instance ci, gym.rooms r WHERE ci.id_room = r.id_room AND ci.id_class_instance = '" + this.cb.Id_class_instance + "'";
+                        lhRes = conn.lhSqlQuery(sQuery);
+                        int iMaxMembers = int.Parse(lhRes[0]["size"].ToString());
+                        if (iMaxMembers < iCurrMembers + 1)
+                        {
+                            MessageBox.Show("Sorry! This room does not allow more bookings!");
+                            return;
+                        }
+
                         Member mbr_t = new Member(iMbrId);
                         this.cb.lmAttendants.Add(mbr_t);
                         this.cb.bSave();
