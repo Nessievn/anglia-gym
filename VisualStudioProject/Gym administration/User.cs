@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace Gym_administration
 {
@@ -50,6 +51,40 @@ namespace Gym_administration
         public User()
         {
             this.IId_user = -1;
+        }
+
+        public User(int iIdUser)
+        {
+            mySqlConn conn = new mySqlConn();
+            conn.connect();
+            string sQuery = "SELECT * FROM users WHERE id_user = '"+iIdUser.ToString()+"'";
+            // We launch the query
+            List<Hashtable> lhResultset = conn.lhSqlQuery(sQuery);
+
+            // Check if we found the User
+            if ((int)lhResultset.Count > 0)
+            {
+                this.IId_user = int.Parse(lhResultset[0]["id_user"].ToString());
+                this.BActive = true;
+                this.SLogin = lhResultset[0]["login"].ToString();
+                this.SPassword = lhResultset[0]["password"].ToString();
+                this.SProfile = lhResultset[0]["profile"].ToString();
+            }
+            else
+                MessageBox.Show("The User could not be found!");
+        }
+
+        public bool bUpdatePassword(int iIdUser, string old_password, string new_password)
+        {
+            mySqlConn conn = new mySqlConn();
+            conn.connect();
+            string sQuery = "UPDATE users SET password = MD5('" + new_password + "') WHERE id_user = '" + iIdUser + "' AND password = MD5('" + old_password + "')";
+            int iMod = conn.iDeleteOrUpdate(sQuery);
+
+            if (iMod > 0)
+                return true;
+            else
+                return false;
         }
 
         public bool bSave()

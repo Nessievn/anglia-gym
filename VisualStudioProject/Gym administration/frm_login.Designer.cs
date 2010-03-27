@@ -38,9 +38,9 @@
             // 
             // btn_accept
             // 
-            this.btn_accept.Location = new System.Drawing.Point(137, 154);
+            this.btn_accept.Location = new System.Drawing.Point(125, 96);
             this.btn_accept.Name = "btn_accept";
-            this.btn_accept.Size = new System.Drawing.Size(75, 23);
+            this.btn_accept.Size = new System.Drawing.Size(100, 23);
             this.btn_accept.TabIndex = 0;
             this.btn_accept.Text = "Accept";
             this.btn_accept.UseVisualStyleBackColor = true;
@@ -48,14 +48,14 @@
             // 
             // txt_username
             // 
-            this.txt_username.Location = new System.Drawing.Point(137, 79);
+            this.txt_username.Location = new System.Drawing.Point(125, 44);
             this.txt_username.Name = "txt_username";
             this.txt_username.Size = new System.Drawing.Size(100, 20);
             this.txt_username.TabIndex = 1;
             // 
             // txt_password
             // 
-            this.txt_password.Location = new System.Drawing.Point(137, 114);
+            this.txt_password.Location = new System.Drawing.Point(125, 70);
             this.txt_password.Name = "txt_password";
             this.txt_password.Size = new System.Drawing.Size(100, 20);
             this.txt_password.TabIndex = 2;
@@ -64,7 +64,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(56, 82);
+            this.label1.Location = new System.Drawing.Point(44, 47);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 3;
@@ -73,7 +73,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(56, 121);
+            this.label2.Location = new System.Drawing.Point(44, 73);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 4;
@@ -82,7 +82,7 @@
             // login_info
             // 
             this.login_info.AutoSize = true;
-            this.login_info.Location = new System.Drawing.Point(42, 28);
+            this.login_info.Location = new System.Drawing.Point(12, 9);
             this.login_info.Name = "login_info";
             this.login_info.Size = new System.Drawing.Size(291, 13);
             this.login_info.TabIndex = 5;
@@ -93,7 +93,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(351, 205);
+            this.ClientSize = new System.Drawing.Size(307, 154);
             this.Controls.Add(this.login_info);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

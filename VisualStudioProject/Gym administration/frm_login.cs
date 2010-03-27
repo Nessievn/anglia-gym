@@ -46,7 +46,9 @@ namespace Gym_administration
                 MessageBox.Show("The username or password are wrong, please use the correct credentials and try it again");
             else
             {
+                User userLogged = new User(int.Parse(lhResultset[0]["id_user"].ToString()));
                 m_parent.ShowUserOptions(lhResultset[0]["profile"].ToString());
+                m_parent.UserLogged = userLogged;
                 this.Close();
             }
 
