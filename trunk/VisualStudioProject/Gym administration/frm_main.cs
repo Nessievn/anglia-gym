@@ -15,6 +15,13 @@ namespace Gym_administration
     {
         private int childFormNumber = 0;
         private OutlookBar outlookBar;
+        private User userLogged;
+
+        internal User UserLogged
+        {
+            get { return userLogged; }
+            set { userLogged = value; }
+        }
 
         public frm_main()
         {
@@ -138,6 +145,20 @@ namespace Gym_administration
             else if (sSelectedBand == "staff" && panelIcon.Index.ToString() == "3")
             {
 
+            }
+            // Login Options
+            // Class Search
+            else if (sSelectedBand == "all" && panelIcon.Index.ToString() == "0")
+            {
+                // Creating the child form login
+                frm_login_options mdiFrmLoginOptions = new frm_login_options(this);
+                // We check if the form is already opened
+                if (Utils.bIsAlreadyOpened(mdiFrmLoginOptions)) return;
+                // Set the Parent Form of the Child window.
+                mdiFrmLoginOptions.MdiParent = this;
+
+                // Display the new form.
+                mdiFrmLoginOptions.Show();
             }
 
         }
@@ -279,6 +300,13 @@ namespace Gym_administration
                     this.outlookBar.SelectBand(0);
                     outlookBar.Show();
                     break;
+                case "all":
+                    IconPanel iconPanel3 = new IconPanel("all");
+                    this.outlookBar.AddBand("Login Options", iconPanel3);
+                    iconPanel3.AddIcon("Change password", Image.FromFile(Application.StartupPath + "/../../icons/staff.png"), new EventHandler(PanelEvent));
+                    this.outlookBar.SelectBand(0);
+                    outlookBar.Show();
+                    break;
             }
         }
 
@@ -298,6 +326,12 @@ namespace Gym_administration
                     this.loadOutlookBarButtons("staff");
                     break;
             }
+            this.loadOutlookBarButtons("all");
+        }
+
+        private void vSetUserLogged(User user)
+        {
+            this.userLogged = user;
         }
 
         private void statusStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
