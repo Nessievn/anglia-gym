@@ -16,19 +16,27 @@ namespace Gym_administration
     {
         public ClassBooked cb;
         public bool bViewAttendants;
+        public bool bPayments;
         
         public frm_member_list(ClassBooked cb_t, bool bViewAttendants)
         {
             InitializeComponent();
             this.cb = cb_t;
             this.bViewAttendants = bViewAttendants;
+            this.bPayments = false;
         }
 
+        public frm_member_list(bool bPayments)
+        {
+            InitializeComponent();
+            this.bPayments = bPayments;
+        }
        
         public frm_member_list()
         {
             InitializeComponent();
             this.cb = new ClassBooked();
+            this.bPayments = false;
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -57,12 +65,21 @@ namespace Gym_administration
                 mySqlConn conn = new mySqlConn();
                 conn.connect();
 
+                if (this.bPayments == true)
+                {
+                    
+                    frm_add_payment frmAddPayment = new frm_add_payment(iMbrId);
+                    frmAddPayment.MdiParent = this.MdiParent;
+                    frmAddPayment.Show();
+                    this.Close();
+                    return;
+                }
+
                 if (this.cb.Id_class_instance != -1 && this.bViewAttendants == false)
                 {
                     DialogResult res = MessageBox.Show("Enroll this member to the class?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (res == DialogResult.Yes)
                     {
-
                         // Check the room size
                         string sQuery = "SELECT COUNT(*) q FROM gym.class_bookings WHERE id_class_instance = '" + this.cb.Id_class_instance + "'";
                         List<Hashtable> lhRes = conn.lhSqlQuery(sQuery);

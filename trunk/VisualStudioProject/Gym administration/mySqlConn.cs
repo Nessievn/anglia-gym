@@ -261,10 +261,18 @@ namespace Gym_administration
                 command.CommandText = sQuery;
                 iAffectedRows = command.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch (MySql.Data.MySqlClient.MySqlException ex)
             {
                 // We don't want to show that to the user
-                MessageBox.Show(ex.ToString());
+                switch (ex.Number)
+                {
+                    case 1451:
+                        return -1;
+                    default:
+                        MessageBox.Show(ex.ToString());
+                        break;
+                }
+                
             }
 
             this.connection.Close();

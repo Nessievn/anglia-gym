@@ -123,6 +123,25 @@ namespace Gym_administration
             this.usrUser = new User();
         }
 
+        public bool bAddPayment(Decimal dAmount, string sDate, string sDesc)
+        {
+            if (this.IId_member != -1)
+            {
+                Payment p = new Payment();
+                p.DAmount = dAmount;
+                p.SDate = sDate;
+                p.MMember = this;
+                p.SDetails = sDesc;
+                if (p.bSave())
+                    return true;
+                else
+                    return false;
+            }
+            else
+                return false;
+
+        }
+
         public Member(int iMemberId)
         {
             mySqlConn conn = new mySqlConn();
@@ -242,6 +261,16 @@ namespace Gym_administration
 
             }
              return true;
+        }
+        public bool bRemove()
+        {
+            if (this.IId_member != 0)
+            {
+                this.BIs_active = false;
+                this.bSave();
+            }
+            return true;
+                
         }
     }
 }

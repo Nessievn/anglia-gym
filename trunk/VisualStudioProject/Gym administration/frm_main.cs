@@ -75,7 +75,15 @@ namespace Gym_administration
             // Membership fees
             else if (sSelectedBand == "manager" && panelIcon.Index.ToString() == "2")
             {
+                // Creating the child form login
+                frm_payments mdiFrmPayments = new frm_payments();
+                // We check if the form is already opened
+                if (Utils.bIsAlreadyOpened(mdiFrmPayments)) return;
+                // Set the Parent Form of the Child window.
+                mdiFrmPayments.MdiParent = this;
 
+                // Display the new form.
+                mdiFrmPayments.Show();  
             }
             // Edit Room List
             else if (sSelectedBand == "manager" && panelIcon.Index.ToString() == "3")

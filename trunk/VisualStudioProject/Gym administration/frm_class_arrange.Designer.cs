@@ -53,6 +53,7 @@
             this.lbl_current = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -230,7 +231,7 @@
             // 
             // btn_attendants
             // 
-            this.btn_attendants.Location = new System.Drawing.Point(129, 309);
+            this.btn_attendants.Location = new System.Drawing.Point(217, 309);
             this.btn_attendants.Name = "btn_attendants";
             this.btn_attendants.Size = new System.Drawing.Size(108, 23);
             this.btn_attendants.TabIndex = 31;
@@ -240,7 +241,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(14, 309);
+            this.button2.Location = new System.Drawing.Point(102, 309);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(109, 23);
             this.button2.TabIndex = 32;
@@ -297,11 +298,22 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Current members:";
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(10, 309);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 34;
+            this.button3.Text = "Remove";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // frm_class_arrange
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(424, 349);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btn_attendants);
@@ -362,5 +374,6 @@
         private System.Windows.Forms.Label lbl_current;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button button3;
     }
 }

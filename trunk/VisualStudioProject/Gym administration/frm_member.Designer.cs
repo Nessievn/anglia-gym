@@ -78,6 +78,8 @@
             this.chk_active = new System.Windows.Forms.CheckBox();
             this.cmb_payment = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -523,11 +525,32 @@
             this.label23.TabIndex = 54;
             this.label23.Text = "Payment Type";
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(395, 401);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(87, 26);
+            this.button3.TabIndex = 55;
+            this.button3.Text = "Payments";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(131, 401);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(72, 26);
+            this.button4.TabIndex = 56;
+            this.button4.Text = "Remove";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // frm_member
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(659, 443);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.cmb_payment);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.chk_active);
@@ -640,5 +663,7 @@
         private System.Windows.Forms.CheckBox chk_active;
         private System.Windows.Forms.ComboBox cmb_payment;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }
