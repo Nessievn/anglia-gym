@@ -69,6 +69,8 @@
   <ItemGroup>
     <Compile Include="Class.cs" />
     <Compile Include="ClassBooked.cs" />
+    <Compile Include="Equipment.cs" />
+    <Compile Include="EquipmentBooked.cs" />
     <Compile Include="frm_add_payment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,11 +101,23 @@
     <Compile Include="frm_class_list.Designer.cs">
       <DependentUpon>frm_class_list.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_equipment.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frm_login_options.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_login_options.Designer.cs">
       <DependentUpon>frm_login_options.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_equipment.Designer.cs">
+      <DependentUpon>frm_equipment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_equipment_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_equipment_list.Designer.cs">
+      <DependentUpon>frm_equipment_list.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_member_list.cs">
       <SubType>Form</SubType>
@@ -188,6 +202,13 @@
       <DependentUpon>frm_class_list.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_equipment.resx">
+      <DependentUpon>frm_equipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_equipment_list.resx">
+      <DependentUpon>frm_equipment_list.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_login_options.resx">
       <DependentUpon>frm_login_options.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -238,6 +259,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
