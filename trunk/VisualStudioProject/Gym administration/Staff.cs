@@ -210,8 +210,9 @@ namespace Gym_administration
             {
                 // First the user object is filled
                 usrUser.SLogin = this.SEmail;
-                usrUser.SPassword = sMysqlDate;
+                usrUser.SPassword = this.SBirthdate;
                 usrUser.SProfile = "staff";
+                usrUser.BActive = true;
 
                 // then the bSave method is called
                 if (usrUser.bSave())
