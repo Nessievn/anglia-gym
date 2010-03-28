@@ -98,25 +98,20 @@ namespace Gym_administration
                 return;
             }
             
-            // Check class overlapping
-            ClassBooked cbClassBooked = new ClassBooked();
-            
             // Check if we found the user
-            if (cbClassBooked.bCheckOverlap(sDate, sIdRoom, sIdStaff, txt_start_time.Text, txt_end_time.Text))
+            if (this.clbClassBooked.bCheckOverlap(sDate, sIdRoom, sIdStaff, txt_start_time.Text, txt_end_time.Text))
                 MessageBox.Show("The class is overlapping with another class, please specify another date, room or instructor.");
             else
             {
-                cbClassBooked.Id_staff = int.Parse(sIdStaff);
-                cbClassBooked.RRoom = new Room(int.Parse(sIdRoom));
-                cbClassBooked.SClass = new Class(int.Parse(sIdClass));
-                cbClassBooked.SDateStart = sDate;
-                cbClassBooked.SEndTime = txt_end_time.Text;
-                cbClassBooked.SFrequency = cmb_repeats.Text;
-                cbClassBooked.SStartTime = txt_start_time.Text;
-                if (cbClassBooked.bSave())
+                this.clbClassBooked.Id_staff = int.Parse(sIdStaff);
+                this.clbClassBooked.RRoom = new Room(int.Parse(sIdRoom));
+                this.clbClassBooked.SClass = new Class(int.Parse(sIdClass));
+                this.clbClassBooked.SDateStart = sDate;
+                this.clbClassBooked.SEndTime = txt_end_time.Text;
+                this.clbClassBooked.SFrequency = cmb_repeats.Text;
+                this.clbClassBooked.SStartTime = txt_start_time.Text;
+                if (this.clbClassBooked.bSave())
                 {
-                    MessageBox.Show("The class instance has been created!");
-                    this.clbClassBooked = cbClassBooked;
                     btn_attendants.Enabled = true;
                 }
             }

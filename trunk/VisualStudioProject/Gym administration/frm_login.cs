@@ -47,11 +47,18 @@ namespace Gym_administration
             else
             {
                 User userLogged = new User(int.Parse(lhResultset[0]["id_user"].ToString()));
+                m_parent.vLoadOutlookBar();
                 m_parent.ShowUserOptions(lhResultset[0]["profile"].ToString());
                 m_parent.UserLogged = userLogged;
+                
                 this.Close();
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -123,7 +123,7 @@ namespace Gym_administration
                             "(start_time BETWEEN '" + sStartTime + "' AND '" + sEndTime + "') OR " +
                             "(end_time BETWEEN '" + sStartTime + "' AND '" + sEndTime + "') OR " +
                             "(start_time < '" + sStartTime + "' AND end_time > '" + sEndTime + "') OR " +
-                            "(start_time > '" + sStartTime + "' AND end_time < '" + sEndTime + "'))";
+                            "(start_time > '" + sStartTime + "' AND end_time < '" + sEndTime + "'))" + ((this.Id_class_instance != -1)?"  AND id_class_instance != '"+this.Id_class_instance+"'":"");
             List<Hashtable> lhResultset = conn.lhSqlQuery(sQuery);
 
             // Check if we found the user
@@ -148,10 +148,28 @@ namespace Gym_administration
                 if (iIdClassInstance != -1)
                 {
                     this.Id_class_instance = iIdClassInstance;
+                    MessageBox.Show("The class has been saved!");
+                    return true;
                 }
                 else
                 {
                     MessageBox.Show("There has been an error creating the class instance! Contact with your administrator.");
+                }
+            }
+            else
+            {
+                string sQuery = "UPDATE class_instance SET id_staff= '" + this.Id_staff + "', date = '" + Utils.sGetMysqlDate(this.SDateStart) + "', start_time = '" + this.SStartTime + "', end_time = '" + this.SEndTime + "', frequency = '" + this.SFrequency + "', id_room = '" + this.RRoom.Id_room + "' " +
+                                "WHERE id_class_instance = '" + this.Id_class_instance + "'";
+                int iRes = conn.iDeleteOrUpdate(sQuery);
+                if (iRes > 0)
+                {
+                    MessageBox.Show("The class data has been updated succesfully!");
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("There was a problem updating the class information, please check your data!");
+                    return false;
                 }
             }
                 if (this.lmAttendants.Count > 0)
