@@ -26,7 +26,6 @@ namespace Gym_administration
         public frm_main()
         {
             InitializeComponent();
-
             // OUTLOOK BAR!!
             this.outlookBar = new OutlookBar();
             outlookBar.Location = new Point(0, 50);
@@ -36,7 +35,6 @@ namespace Gym_administration
             Controls.Add(outlookBar);
             outlookBar.Initialize();
             outlookBar.Hide();
-            
         }
 
         public void PanelEvent(object sender, EventArgs e)
@@ -44,7 +42,10 @@ namespace Gym_administration
             Control ctrl = (Control)sender;
             PanelIcon panelIcon = ctrl.Tag as PanelIcon;
             string sSelectedBand = panelIcon.iconPanel.sBandName;
-        
+
+            foreach (Form childForm in MdiChildren)
+                childForm.Close();
+
             // Edit Staff List
             if (sSelectedBand == "manager" && panelIcon.Index.ToString() == "0")
             {
@@ -144,10 +145,17 @@ namespace Gym_administration
             // Room Search
             else if (sSelectedBand == "staff" && panelIcon.Index.ToString() == "3")
             {
+                // Creating the child form room
+                frm_room_list mdiFrmRoomList = new frm_room_list();
+                // We check if the form is already opened
+                if (Utils.bIsAlreadyOpened(mdiFrmRoomList)) return;
+                // Set the Parent Form of the Child window.
+                mdiFrmRoomList.MdiParent = this;
 
+                // Display the new form.
+                mdiFrmRoomList.Show();  
             }
             // Login Options
-            // Class Search
             else if (sSelectedBand == "all" && panelIcon.Index.ToString() == "0")
             {
                 // Creating the child form login
@@ -160,6 +168,22 @@ namespace Gym_administration
                 // Display the new form.
                 mdiFrmLoginOptions.Show();
             }
+              // Log Out
+            else if (sSelectedBand == "all" && panelIcon.Index.ToString() == "1")
+            {
+                Controls.Remove(this.outlookBar);
+
+                foreach (Form childForm in MdiChildren)
+                    childForm.Close();
+
+                // Creating the child form login
+                frm_login mdiFrmLogin = new frm_login(this);
+                // Set the Parent Form of the Child window.
+                mdiFrmLogin.MdiParent = this;
+                // Display the new form.
+                mdiFrmLogin.Show();   
+            }
+
 
         }
 
@@ -296,7 +320,7 @@ namespace Gym_administration
                     iconPanel2.AddIcon("Add Member", Image.FromFile(Application.StartupPath + "/../../icons/staff.png"), new EventHandler(PanelEvent));
                     iconPanel2.AddIcon("Member Search", Image.FromFile(Application.StartupPath + "/../../icons/calendar_64.png"), new EventHandler(PanelEvent));
                     iconPanel2.AddIcon("Class Search", Image.FromFile(Application.StartupPath + "/../../icons/14_64x64.png"), new EventHandler(PanelEvent));
-                    iconPanel2.AddIcon("Room Search", Image.FromFile(Application.StartupPath + "/../../icons/Vista_icons_03.png"), new EventHandler(PanelEvent));
+                    //iconPanel2.AddIcon("Room Search", Image.FromFile(Application.StartupPath + "/../../icons/Vista_icons_03.png"), new EventHandler(PanelEvent));
                     this.outlookBar.SelectBand(0);
                     outlookBar.Show();
                     break;
@@ -304,10 +328,25 @@ namespace Gym_administration
                     IconPanel iconPanel3 = new IconPanel("all");
                     this.outlookBar.AddBand("Login Options", iconPanel3);
                     iconPanel3.AddIcon("Change password", Image.FromFile(Application.StartupPath + "/../../icons/staff.png"), new EventHandler(PanelEvent));
+                    iconPanel3.AddIcon("Log Out", Image.FromFile(Application.StartupPath + "/../../icons/staff.png"), new EventHandler(PanelEvent));
                     this.outlookBar.SelectBand(0);
                     outlookBar.Show();
                     break;
             }
+        }
+        public void vLoadOutlookBar()
+        {
+            // OUTLOOK BAR!!
+            this.outlookBar = new OutlookBar();
+            outlookBar.Location = new Point(0, 50);
+            outlookBar.Height = 10;
+            outlookBar.Width = 150;
+            outlookBar.BorderStyle = BorderStyle.FixedSingle;
+            Controls.Add(outlookBar);
+            outlookBar.Initialize();
+            outlookBar.Hide();
+            this.WindowState = FormWindowState.Normal;
+            this.WindowState = FormWindowState.Maximized;
         }
 
         // Loads form options depending on the user profile

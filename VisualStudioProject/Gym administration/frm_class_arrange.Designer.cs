@@ -49,10 +49,10 @@
             this.btn_attendants = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.lbl_current = new System.Windows.Forms.Label();
             this.lbl_max = new System.Windows.Forms.Label();
+            this.lbl_current = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -261,23 +261,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Members enrolled";
             // 
-            // label9
+            // lbl_max
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(17, 31);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(89, 13);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Current members:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(241, 31);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(79, 13);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Max. Members:";
+            this.lbl_max.AutoSize = true;
+            this.lbl_max.Location = new System.Drawing.Point(316, 31);
+            this.lbl_max.Name = "lbl_max";
+            this.lbl_max.Size = new System.Drawing.Size(13, 13);
+            this.lbl_max.TabIndex = 3;
+            this.lbl_max.Text = "0";
             // 
             // lbl_current
             // 
@@ -288,14 +279,23 @@
             this.lbl_current.TabIndex = 2;
             this.lbl_current.Text = "0";
             // 
-            // lbl_max
+            // label10
             // 
-            this.lbl_max.AutoSize = true;
-            this.lbl_max.Location = new System.Drawing.Point(316, 31);
-            this.lbl_max.Name = "lbl_max";
-            this.lbl_max.Size = new System.Drawing.Size(13, 13);
-            this.lbl_max.TabIndex = 3;
-            this.lbl_max.Text = "0";
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(241, 31);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(79, 13);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Max. Members:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(17, 31);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(89, 13);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Current members:";
             // 
             // frm_class_arrange
             // 
