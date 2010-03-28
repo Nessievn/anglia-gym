@@ -108,5 +108,10 @@ namespace Gym_administration
         {
             this.Close();
         }
+
+        private void txt_firstName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

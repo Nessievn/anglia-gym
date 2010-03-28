@@ -70,7 +70,8 @@ namespace Gym_administration
             string sRandomNumber2 = RandomClass.Next(100, 999).ToString();
             string sRandomNumber3 = RandomClass.Next(100, 999).ToString();
             return sRandomNumber1 + " " + sRandomNumber2 + " " + sRandomNumber3;
-        }
+        }       
+
 
         /**
         * @desc It returns a valid formated date [YYYY-MM-DD] to be stored in the 

@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-
 namespace Gym_administration
 {
     public partial class frm_member : Form

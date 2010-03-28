@@ -27,6 +27,8 @@ namespace Gym_administration
             {
                 txt_classdesc.Text = clClass.SDescription;
                 txt_classname.Text = clClass.SName;
+                //txt_classname.Text = clClass.SName;
+
                 if (clClass.SType == "Personal")
                     rd_personal.Checked = true;
                 else
@@ -34,12 +36,12 @@ namespace Gym_administration
                     
             }
         }
-
+        //Set radiobutton to default state
         private void frm_class_Load(object sender, EventArgs e)
         {
             rd_group.Checked = true;
         }
-
+        //SAVE
         private void button1_Click(object sender, EventArgs e)
         {
             string sType = (rd_group.Checked)?"Group":"Personal";
@@ -57,7 +59,7 @@ namespace Gym_administration
             clClass.bSave();
 
         }
-
+        //CANCEL
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -74,6 +76,41 @@ namespace Gym_administration
                 }
                 this.Close();
             }
+        }
+
+        private void txt_classdesc_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_classname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rd_personal_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rd_group_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
 
     }

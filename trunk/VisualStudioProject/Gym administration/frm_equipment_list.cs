@@ -10,35 +10,32 @@ using MySql.Data.MySqlClient;
 
 namespace Gym_administration
 {
-    public partial class frm_class_list : Form
+    public partial class frm_equipment_list : Form
     {
-        public frm_class_list()
+        public frm_equipment_list()
         {
             InitializeComponent();
         }
 
-   
-
-
-        private void frm_class_list_Load(object sender, EventArgs e)
+        private void frm_equipment_list_Load(object sender, EventArgs e)
         {
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
-            string sQuery = "SELECT id_class CID, name Name, type Type, description Description FROM classes ORDER BY id_class";
+            string sQuery = "SELECT id_equipment EID, name Name, id_set Id_Set, description Description FROM equipment ORDER BY name";
             bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
-            dg_classes.DataSource = bSource;
-            dg_classes.AllowUserToAddRows = false;
-            dg_classes.ReadOnly = true;
+            dg_equipment.DataSource = bSource;
+            dg_equipment.AllowUserToAddRows = false;
+            dg_equipment.ReadOnly = true;
         }
 
         private void dg_classes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                string sClassId = dg_classes.Rows[e.RowIndex].Cells[0].Value.ToString();
-                int iClassId = int.Parse(sClassId);
-                frm_class frm_class = new frm_class(iClassId);
+                string sEquipmentId = dg_equipment.Rows[e.RowIndex].Cells[0].Value.ToString();
+                int iEquipmentId = int.Parse(sEquipmentId);
+                frm_class frm_class = new frm_class(iEquipmentId);
                 frm_class.MdiParent = this.MdiParent;
                 frm_class.Show();
             }
@@ -51,9 +48,9 @@ namespace Gym_administration
 
         private void button2_Click(object sender, EventArgs e)
         {
-            frm_class frmClass = new frm_class();
-            frmClass.MdiParent = this.MdiParent;
-            frmClass.Show();
+            frm_equipment frmEquipment = new frm_equipment();
+            frmEquipment.MdiParent = this.MdiParent;
+            frmEquipment.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -61,17 +58,18 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
-            string sQuery = "SELECT id_class CID, name Name, type Type, description Description FROM classes WHERE 1 = 1";
-            if (txt_classname.Text != "")
-                sQuery += " AND name LIKE '%" + txt_classname.Text + "%'";
+            string sQuery = "SELECT id_equipment EID, name Name, id_set Id_Set, description Description FROM equipment WHERE 1 = 1";
+            if (txt_equipmentname.Text != "")
+                sQuery += " AND name LIKE '%" + txt_equipmentname.Text + "%'";
 
-            sQuery += "  ORDER BY id_class";
+            sQuery += "  ORDER BY name";
 
             bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
-            dg_classes.DataSource = bSource;
-            dg_classes.AllowUserToAddRows = false;
-            dg_classes.ReadOnly = true;
+            dg_equipment.DataSource = bSource;
+            dg_equipment.AllowUserToAddRows = false;
+            dg_equipment.ReadOnly = true;
         }
+
 
 
     }

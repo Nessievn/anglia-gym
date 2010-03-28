@@ -4,17 +4,7 @@ using System.Windows.Forms;
 
 namespace OutlookBarNm
 {
-	internal class BandTagInfo
-	{
-		public OutlookBar outlookBar;
-		public int index;
 
-		public BandTagInfo(OutlookBar ob, int index)
-		{
-			outlookBar=ob;
-			this.index=index;
-		}
-	}
 
 	public class OutlookBar : Panel
 	{
@@ -117,7 +107,17 @@ namespace OutlookBarNm
 			RedrawBands();
 		}
 	}
+    internal class BandTagInfo
+    {
+        public OutlookBar outlookBar;
+        public int index;
 
+        public BandTagInfo(OutlookBar ob, int index)
+        {
+            outlookBar = ob;
+            this.index = index;
+        }
+    }
 	internal class BandPanel : Panel
 	{
 		public BandPanel(string caption, ContentPanel content, BandTagInfo bti)
@@ -186,7 +186,7 @@ namespace OutlookBarNm
             this.sBandName = sBandName;
 
 			margin=10;
-			iconSpacing=64+15+10;	// icon height + text height + margin
+			iconSpacing=128+15+10;	// icon height + text height + margin
 			BackColor=Color.LightBlue;
 			AutoScroll=true;
 		}
@@ -200,7 +200,7 @@ namespace OutlookBarNm
 			Label label=new Label();
 			label.Text=caption;
 			label.Visible=true;
-			label.Location=new Point(0, margin+image.Size.Height+index*iconSpacing);
+			label.Location=new Point(-12, margin+image.Size.Height+index*iconSpacing);
 			label.Size=new Size(Size.Width, 15);
 			label.TextAlign=ContentAlignment.TopCenter;
 			label.Click+=onClickEvent;
@@ -232,7 +232,7 @@ namespace OutlookBarNm
 			this.iconPanel=parent;
 			Image=image;
 			Visible=true;
-			Location=new Point(iconPanel.outlookBar.Size.Width/2-image.Size.Width/2,
+			Location=new Point(iconPanel.outlookBar.Size.Width/2-image.Size.Width/2-12,
 							iconPanel.Margin + index*iconPanel.IconSpacing);
 			Size=image.Size;
 			Click+=onClickEvent;
