@@ -96,7 +96,7 @@ namespace Gym_administration
             {
                 string sQuery = "insert into users (id_user, login, password, profile, active) " +
                 "values (NULL, '" + this.SLogin + "', MD5('" + this.SPassword +
-                "'), 'member', '" + ((this.BActive) ? "1" : "0") + "')";
+                "'), '" + this.SProfile + "', '" + ((this.BActive) ? "1" : "0") + "')";
 
                 this.iId_user = conn.iInsert(sQuery);
 
