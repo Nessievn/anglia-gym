@@ -163,8 +163,7 @@ namespace Gym_administration
                 int iRes = conn.iDeleteOrUpdate(sQuery);
                 if (iRes > 0)
                 {
-                    MessageBox.Show("The class data has been updated succesfully!");
-                    return true;
+                    //MessageBox.Show("The class data has been updated succesfully!");
                 }
                 else
                 {
@@ -192,12 +191,28 @@ namespace Gym_administration
                         MessageBox.Show("The attendant has been enrolled!");
                     }
                 }
-                
-
-
-                
-
             return true;
+        }
+        public bool bRemove()
+        {
+            if (this.Id_class_instance != 0)
+            {
+                mySqlConn conn = new mySqlConn();
+                conn.connect();
+                string sQuery = "DELETE FROM class_instance WHERE id_class_instance = '" + this.Id_class_instance + "'";
+                int iRes = conn.iDeleteOrUpdate(sQuery);
+                if (iRes > 0)
+                {
+                    MessageBox.Show("The class data has been deleted succesfully!");
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("There was a problem deleting the class!");
+                    return false;
+                }
+            }
+            return false;
         }
     }
 }

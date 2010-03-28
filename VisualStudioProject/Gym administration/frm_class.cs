@@ -68,7 +68,10 @@ namespace Gym_administration
             DialogResult res = MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (res == DialogResult.Yes)
             {
-                clClass.bRemove();
+                if (clClass.bRemove() == false)
+                {
+                    MessageBox.Show("Please make sure that there aren't any class instances for this class.");
+                }
                 this.Close();
             }
         }

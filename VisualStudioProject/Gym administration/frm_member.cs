@@ -136,5 +136,15 @@ namespace Gym_administration
         {
 
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (res == DialogResult.Yes)
+            {
+                mbrMember.bRemove();
+                this.Close();
+            }
+        }
     }
 }

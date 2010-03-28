@@ -13,6 +13,7 @@ namespace Gym_administration
     public partial class frm_class_arrange : Form
     {
         ClassBooked clbClassBooked;
+        frm_class_arrange_list frmClArrList;
 
         public frm_class_arrange()
         {
@@ -20,10 +21,10 @@ namespace Gym_administration
             clbClassBooked = new ClassBooked();
             btn_attendants.Enabled = false;
         }
-        public frm_class_arrange(int iIdClassBooked)
+        public frm_class_arrange(int iIdClassBooked, frm_class_arrange_list frmClArrList)
         {
             InitializeComponent();
-
+            this.frmClArrList = frmClArrList;
             clbClassBooked = new ClassBooked(iIdClassBooked);
             if (clbClassBooked.Id_class_instance == -1)
                 MessageBox.Show("The class instance could not be found");
@@ -141,6 +142,20 @@ namespace Gym_administration
             string sQuery = "SELECT size FROM gym.rooms WHERE id_room = '" + sIdRoom + "'";
             List<Hashtable> lhRes = conn.lhSqlQuery(sQuery);
             lbl_max.Text = lhRes[0]["size"].ToString();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (res == DialogResult.Yes)
+            {
+                if (this.clbClassBooked.bRemove() == false)
+                {
+                    MessageBox.Show("Please make sure that there aren't any class instances for this class.");
+                }
+                frmClArrList.vLoadDgClassList();
+                this.Close();
+            }
         }
     }
 }

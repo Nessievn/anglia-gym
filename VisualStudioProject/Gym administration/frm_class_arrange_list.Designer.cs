@@ -59,6 +59,7 @@
             this.button1.TabIndex = 23;
             this.button1.Text = "Search";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dg_classes
             // 
@@ -67,7 +68,7 @@
             this.dg_classes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg_classes.Location = new System.Drawing.Point(12, 53);
             this.dg_classes.Name = "dg_classes";
-            this.dg_classes.Size = new System.Drawing.Size(712, 244);
+            this.dg_classes.Size = new System.Drawing.Size(783, 255);
             this.dg_classes.TabIndex = 22;
             this.dg_classes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_classes_CellDoubleClick);
             // 
@@ -75,7 +76,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(736, 309);
+            this.ClientSize = new System.Drawing.Size(807, 320);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_classname);
             this.Controls.Add(this.button1);
