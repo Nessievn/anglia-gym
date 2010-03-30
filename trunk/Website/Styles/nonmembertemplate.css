@@ -1,0 +1,70 @@
+body
+{
+	font-family:arial,helvetica,sans-serif;
+	font-size:12px;
+	background-color:white;
+	color:black;
+}
+
+#wrapper
+{
+	width:1000px;
+	margin:0px auto;
+	border:1px solid #bbb;
+	padding:2px;
+}
+
+#masthead
+{
+	border:1px solid #bbb;
+	padding:2px;
+	height:104px;
+}
+
+#content
+{
+	margin-top:5px;
+	padding-bottom:5px;
+}
+
+#content div
+{
+	border:1px solid #bbb;
+	padding:5px;
+	float:left;
+}
+
+#leftpanel
+{
+	width:285px;
+	float:left;
+	padding:5px;
+}
+
+#centre
+{
+	margin-left:5px;
+	width:690px;
+	float:left;
+	padding:5px;
+}
+
+#footer
+{
+	clear:both;
+}
+
+#login
+{
+	padding:5px;
+	background-color:#FFC;
+}
+
+#menu
+{
+	padding:5px;
+	background-color:#FFF;
+	color:#FFF;
+}
+
+
