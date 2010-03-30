@@ -13,22 +13,43 @@ namespace Gym_administration
     public partial class frm_equipment : Form
     {
         Equipment mbrEquipment;
-        
-  
+        frm_equipment_list frmEqList;
+
+        //loading from main menu
         public frm_equipment()
         {
-            mbrEquipment = new Equipment();
             InitializeComponent();
+            mbrEquipment = new Equipment();
+            this.frmEqList = null;
             button_vehicle.Show();
             rd_item.Checked = true;
             rd_item_Checked();
-           
+
         }
 
-        public frm_equipment(int iEquipmentId)
+        //loading from equipment list to refresh list after saving new item
+        public frm_equipment(frm_equipment_list frmEqList)
         {
             InitializeComponent();
+            mbrEquipment = new Equipment();
+            this.frmEqList = frmEqList;
+            button_vehicle.Show();
+            rd_item.Checked = true;
+            rd_item_Checked();
+
+        }
+
+        //loading from equipment list to refresh list after saving edited item
+        public frm_equipment(int iEquipmentId, frm_equipment_list frmEqList)
+        {
+
+            InitializeComponent();
             mbrEquipment = new Equipment(iEquipmentId);
+            this.frmEqList = frmEqList;
+
+
+
+
             if (mbrEquipment.Id_equipment < 1)
                 MessageBox.Show("The equipment could not be found");
             else
@@ -160,8 +181,10 @@ namespace Gym_administration
 
 
             mbrEquipment.bSave();
-
-
+            //call list reload in parent form
+                //if frmEqlist is null, then this form was called from the main menu and list reload is not necessary
+            if (this.frmEqList != null) frmEqList.vLoadEqList(mbrEquipment.SType);
+            this.Close();
         }
 
         //CANCEL
@@ -176,6 +199,9 @@ namespace Gym_administration
             DialogResult res = MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (res == DialogResult.Yes)
             {
+                //call list reload in parent form
+                    //if frmEqlist is null, then this form was called from the main menu and list reload is not necessary
+                if (this.frmEqList != null) frmEqList.vLoadEqList(mbrEquipment.SType);
                 mbrEquipment.bRemove();
                 this.Close();
             }

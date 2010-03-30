@@ -21,8 +21,25 @@ namespace Gym_administration
 
         private void frm_equipment_list_Load(object sender, EventArgs e)
         {
-            //??
+            //..
         }
+
+        public void vLoadEqList(string type)
+        {
+            if (type == "item")
+            {
+                rd_item.Checked = true;
+                rd_item_Checked();
+            }
+            else if (type == "set")
+            {
+                rd_set.Checked = true;
+                rd_set_Checked();
+            }
+
+        }
+
+
 
         private void dg_equipment_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -31,7 +48,7 @@ namespace Gym_administration
                 {
                     string sEquipmentId = dg_equipment.Rows[e.RowIndex].Cells[0].Value.ToString();
                     int iEquipmentId = int.Parse(sEquipmentId);
-                    frm_equipment frm_equipment = new frm_equipment(iEquipmentId);
+                    frm_equipment frm_equipment = new frm_equipment(iEquipmentId, this);
                     frm_equipment.MdiParent = this.MdiParent;
                     frm_equipment.Show();
                 }
@@ -47,7 +64,7 @@ namespace Gym_administration
 
         private void button_addequipment_Click(object sender, EventArgs e)
         {
-            frm_equipment frmEquipment = new frm_equipment();
+            frm_equipment frmEquipment = new frm_equipment(this);
             frmEquipment.MdiParent = this.MdiParent;
             frmEquipment.Show();
         }
