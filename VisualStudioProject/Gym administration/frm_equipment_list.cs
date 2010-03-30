@@ -15,45 +15,44 @@ namespace Gym_administration
         public frm_equipment_list()
         {
             InitializeComponent();
+            rd_item.Checked = true;
+            rd_item_Checked();
         }
 
         private void frm_equipment_list_Load(object sender, EventArgs e)
         {
-            mySqlConn conn = new mySqlConn();
-            conn.connect();
-            BindingSource bSource = new BindingSource();
-            string sQuery = "SELECT id_equipment EID, name Name, id_set Id_Set, description Description FROM equipment ORDER BY name";
-            bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
-            dg_equipment.DataSource = bSource;
-            dg_equipment.AllowUserToAddRows = false;
-            dg_equipment.ReadOnly = true;
+            //??
         }
 
-        private void dg_classes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dg_equipment_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                string sEquipmentId = dg_equipment.Rows[e.RowIndex].Cells[0].Value.ToString();
-                int iEquipmentId = int.Parse(sEquipmentId);
-                frm_class frm_class = new frm_class(iEquipmentId);
-                frm_class.MdiParent = this.MdiParent;
-                frm_class.Show();
-            }
-            catch (Exception ea)
-            {
-                MessageBox.Show(ea.ToString());
-                return;
-            }
+
+                try
+                {
+                    string sEquipmentId = dg_equipment.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    int iEquipmentId = int.Parse(sEquipmentId);
+                    frm_equipment frm_equipment = new frm_equipment(iEquipmentId);
+                    frm_equipment.MdiParent = this.MdiParent;
+                    frm_equipment.Show();
+                }
+                catch (Exception ea)
+                {
+                    MessageBox.Show(ea.ToString());
+                    return;
+                }
+
+
+
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button_addequipment_Click(object sender, EventArgs e)
         {
             frm_equipment frmEquipment = new frm_equipment();
             frmEquipment.MdiParent = this.MdiParent;
             frmEquipment.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button_search_Click(object sender, EventArgs e)
         {
             mySqlConn conn = new mySqlConn();
             conn.connect();
@@ -71,6 +70,41 @@ namespace Gym_administration
         }
 
 
+        private void rd_item_Checked(object sender, EventArgs e)
+        {
+            rd_item_Checked();
+        }
+        private void rd_item_Checked()
+        {
+            mySqlConn conn = new mySqlConn();
+            conn.connect();
+            BindingSource itemsSource = new BindingSource();
+            string sQuery = "SELECT id_equipment EID, name Name, description Description, currentlyinstock Stock FROM equipment WHERE type = 'item' ORDER BY id_equipment";
+            itemsSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
+            dg_equipment.DataSource = itemsSource;
+            dg_equipment.AllowUserToAddRows = false;
+            dg_equipment.ReadOnly = true;
 
+        }
+
+
+        private void rd_set_Checked(object sender, EventArgs e)
+        {
+            rd_set_Checked();
+        }
+
+        private void rd_set_Checked()
+        {
+
+            mySqlConn conn = new mySqlConn();
+            conn.connect();
+            BindingSource setsSource = new BindingSource();
+            string sQuery = "SELECT id_equipment EID, name Name, description Description, iteminset1 Setitem1, amountinset1 Amount, iteminset2 Setitem2, amountinset2 Amount, iteminset3 Setitem3, amountinset3 Amount, iteminset4 Setitem4, amountinset4 Amount, iteminset5 Setitem5, amountinset5 Amount FROM equipment WHERE type = 'set' ORDER BY id_equipment";
+            setsSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
+            dg_equipment.DataSource = setsSource;
+            dg_equipment.AllowUserToAddRows = false;
+            dg_equipment.ReadOnly = true;
+
+        }
     }
 }

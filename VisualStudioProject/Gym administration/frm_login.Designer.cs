@@ -49,6 +49,7 @@
             // 
             // txt_username
             // 
+            this.txt_username.Text = "admin";
             this.txt_username.Location = new System.Drawing.Point(133, 35);
             this.txt_username.Name = "txt_username";
             this.txt_username.Size = new System.Drawing.Size(100, 20);
@@ -56,6 +57,7 @@
             // 
             // txt_password
             // 
+            this.txt_password.Text = "admin";
             this.txt_password.Location = new System.Drawing.Point(133, 61);
             this.txt_password.Name = "txt_password";
             this.txt_password.Size = new System.Drawing.Size(100, 20);
@@ -88,7 +90,7 @@
             this.login_info.Size = new System.Drawing.Size(116, 13);
             this.login_info.TabIndex = 5;
             this.login_info.Text = "Please log in to access";
-            this.login_info.Click += new System.EventHandler(this.label3_Click);
+            
             // 
             // button1
             // 

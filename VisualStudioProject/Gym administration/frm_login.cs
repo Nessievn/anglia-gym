@@ -23,10 +23,6 @@ namespace Gym_administration
 
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void frm_login_Load(object sender, EventArgs e)
         {
