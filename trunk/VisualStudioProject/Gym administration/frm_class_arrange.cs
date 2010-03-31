@@ -74,6 +74,8 @@ namespace Gym_administration
                 lhRes = conn.lhSqlQuery(sQuery);
                 lbl_max.Text = lhRes[0]["size"].ToString();
             }
+            else
+                button3.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
