@@ -119,7 +119,7 @@ namespace Gym_administration
                 }
                 else
                 {
-                    sQuery = "UPDATE classes SET name = '" + this.SName + "', size = '" + this.SType + "', description = '" + this.SDescription + "' " +
+                    sQuery = "UPDATE classes SET name = '" + this.SName + "', description = '" + this.SDescription + "' " +
                              " WHERE id_class = '" + this.Id_class + "'";
 
                     int iRes = conn.iDeleteOrUpdate(sQuery);

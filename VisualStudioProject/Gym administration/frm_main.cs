@@ -44,6 +44,10 @@ namespace Gym_administration
             Control ctrl = (Control)sender;
             PanelIcon panelIcon = ctrl.Tag as PanelIcon;
             string sSelectedBand = panelIcon.iconPanel.sBandName;
+
+            foreach (Form childForm in MdiChildren)
+                childForm.Close();
+
         
 // Edit Staff List
             if (sSelectedBand == "manager" && panelIcon.Index.ToString() == "0")
@@ -216,6 +220,21 @@ namespace Gym_administration
 
                 // Display the new form.
                 mdiFrmLoginOptions.Show();
+            }
+                // Log Out
+            else if (sSelectedBand == "all" && panelIcon.Index.ToString() == "1")
+            {
+                Controls.Remove(this.outlookBar);
+
+                foreach (Form childForm in MdiChildren)
+                    childForm.Close();
+
+                // Creating the child form login
+                frm_login mdiFrmLogin = new frm_login(this);
+                // Set the Parent Form of the Child window.
+                mdiFrmLogin.MdiParent = this;
+                // Display the new form.
+                mdiFrmLogin.Show();
             }
 
         }

@@ -59,7 +59,6 @@ namespace Gym_administration
             if (this.mbMember.bAddPayment(dAmount, sDate, txt_details.Text))
             {
                 MessageBox.Show("The payment has been added succesfully!");
-                //this.frmMemberList.vloadDgPayments();
                 this.Close();
             }
             else
