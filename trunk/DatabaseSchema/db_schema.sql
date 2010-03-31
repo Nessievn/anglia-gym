@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `gym` /*!40100 DEFAULT CHARACTER SET latin1 */;
+﻿CREATE DATABASE  IF NOT EXISTS `gym` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `gym`;
 -- MySQL dump 10.13  Distrib 5.1.40, for Win32 (ia32)
 --
@@ -63,7 +63,7 @@ CREATE TABLE `equipment_vehicle` (
   `bookedintogarage` binary(1) DEFAULT NULL,
   PRIMARY KEY (`id_vehicle`),
   UNIQUE KEY `id_vehicle_UNIQUE` (`id_vehicle`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,7 +90,7 @@ CREATE TABLE `users` (
   `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_user`),
   UNIQUE KEY `login_UNIQUE` (`login`)
-) ENGINE=MyISAM AUTO_INCREMENT=76 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -138,7 +138,7 @@ CREATE TABLE `equipment` (
   `amountinset9` int(11) DEFAULT NULL,
   `amountinset10` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_equipment`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -164,7 +164,7 @@ CREATE TABLE `rooms` (
   `description` text,
   `size` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_room`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -190,9 +190,10 @@ CREATE TABLE `class_bookings` (
   `booking_date` date DEFAULT NULL,
   PRIMARY KEY (`id_class_booking`) USING BTREE,
   UNIQUE KEY `unique_ind` (`id_member`,`id_class_instance`),
-  KEY `FK_class_bookings_1` (`id_class_instance`),
-  KEY `FK_class_bookings_2` (`id_member`)
-) ENGINE=MyISAM AUTO_INCREMENT=86 DEFAULT CHARSET=latin1;
+  KEY `FK_class_bookings_1` (`id_class_instance`),  
+  CONSTRAINT `FK_class_bookings_1` FOREIGN KEY (`id_class_instance`) REFERENCES `class_instance` (`id_class_instance`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_class_bookings_2` FOREIGN KEY (`id_member`) REFERENCES `members` (`id_member`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -221,7 +222,7 @@ CREATE TABLE `equipment_bookings` (
   `date_due` datetime DEFAULT NULL,
   `isset` binary(1) DEFAULT NULL,
   PRIMARY KEY (`id_eq_booking`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -246,7 +247,7 @@ CREATE TABLE `classes` (
   `description` text,
   `type` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_class`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -273,8 +274,10 @@ CREATE TABLE `payments` (
   `amount` decimal(6,2) NOT NULL,
   `details` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id_payment`),
-  KEY `id_member` (`id_member`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  KEY `id_member` (`id_member`),
+  CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`id_member`) REFERENCES `members` (`id_member`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -285,14 +288,10 @@ LOCK TABLES `payments` WRITE;
 /*!40000 ALTER TABLE `payments` DISABLE KEYS */;
 /*!40000 ALTER TABLE `payments` ENABLE KEYS */;
 UNLOCK TABLES;
-
+DROP TABLE IF EXISTS `members`;
 --
 -- Table structure for table `members`
 --
-
-DROP TABLE IF EXISTS `members`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `members` (
   `id_member` int(11) NOT NULL AUTO_INCREMENT,
   `firstName` varchar(60) NOT NULL,
@@ -321,9 +320,9 @@ CREATE TABLE `members` (
   `phone` varchar(45) DEFAULT NULL,
   `mobile` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_member`),
-  KEY `id_user` (`id_user`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  KEY `id_user` (`id_user`),
+  CONSTRAINT `members_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `members`
@@ -331,7 +330,7 @@ CREATE TABLE `members` (
 
 LOCK TABLES `members` WRITE;
 /*!40000 ALTER TABLE `members` DISABLE KEYS */;
-INSERT INTO `members` VALUES (4,'Pam','McDonovan','1091-06-24','my house','Cambridge','Cambrdigeshire','CB2  2AS','Individual','Debit Card',60,1,'my house','Jennah Jameson','Mother','081231232','071231231','Clorhyne','I have had 4 heart attacks.',NULL,'Dr. House','612361263','pam@pam.com','N/A',NULL,NULL),(5,'lkjg','lkjh','1991-05-15','kh','','','     ','','',61,0,'kh','ñlkhñ','ñlk','kl','jh','hlkj','ñlkh',NULL,'lkh','lkj','asdasd@asd.es','N/A',NULL,NULL),(6,'Joana','Ferras','1012-11-12','','','','CB4  2NJ','Individual','Debit Card',62,1,'','Cuenca','','','','','None She is fine!!!',NULL,'House','','skarvin@asd.es','N/A','123123123','123123123'),(10,'sadasd','asdasd','1221-12-12','','','','     ','','',66,1,'','','','','','','',NULL,'','','skarvin@asdfas.es','714 271 422',NULL,NULL),(11,'joan','asda','1990-09-14','','','','     ','','',68,1,'','','','','','','',NULL,'','','skarvin@asd.esa','698 911 330',NULL,NULL),(12,'Isidro','Catalan','1111-01-01','ñlkñlknlkjb','ñkmmkljbgfgjhguigh','ghukghbkghhl','CB4  2SQ','Group','Debit Card',69,1,'ñljnblkn´ñlkñklbjknñjhlj','fas dfad f','asdfsd fasd','sdaf sdf ','asd fasd','lots','asdkjaskjds ek nsgksfghfgh',NULL,'asdas d','asd fasd fasd','asdasd@asdasd.es','972 513 629','',''),(16,'','','1981-06-24','','','','     ','','',71,0,'','','','','','','',NULL,'','','skarvin@gmail.com','330 568 590','',''),(17,'Mr Joan','Donovan','1990-07-12','House 1','Cambrdige','Cambrdigeshire','CB4  2NA','Individual','Cash',72,1,'House 2','My Contact','None','1231231','1231241','Lots and Lots','You dont care mate\r\n\r\n\r\nHAHAHAHA',NULL,'House','','skarvin@marca.es','393 620 591','921231231','666666666'),(18,'assdgf','ssdfsd','1212-12-12','','','','     ','','',73,1,'','','','','','','',NULL,'','','zxczxc@sdfsdgfs.es','822 556 789','',''),(19,'assdgf','ssdfsd','1212-12-12','','','','     ','','',73,1,'','','','','','','',NULL,'','','zxczxc@sdfsdgfs.es','822 556 789','',''),(20,'dfgdfg','dfgdf','1111-11-11','','','','     ','','',74,1,'','','','','','','',NULL,'','','sdfdsf@dfgdrg.com','321 265 755','',''),(21,'Jano','Mano','1980-12-12','','','','     ','','',75,1,'','','','','','','',NULL,'','','janos_hefko@yahoo.co.uk','633 402 358','','');
+INSERT INTO `members` VALUES (4,'Pam','McDonovan','1091-06-24','my house','Cambridge','Cambrdigeshire','CB2  2AS','Individual','Debit Card',60,1,'my house','Jennah Jameson','Mother','081231232','071231231','Clorhyne','I have had 4 heart attacks.',NULL,'Dr. House','612361263','pam@pam.com','N/A',NULL,NULL),(5,'lkjg','lkjh','1991-05-15','kh','','','     ','','',61,0,'kh','Ã±lkhÃ±','Ã±lk','kl','jh','hlkj','Ã±lkh',NULL,'lkh','lkj','asdasd@asd.es','N/A',NULL,NULL),(6,'Joana','Ferras','1012-11-12','','','','CB4  2NJ','Family','Cash',62,1,'','Cuenca','','','','','None She is fine!!!',NULL,'House','','skarvin@asd.es','N/A','123123123','123123123'),(10,'sadasd','asdasd','1221-12-12','','','','     ','','',66,1,'','','','','','','',NULL,'','','skarvin@asdfas.es','714 271 422',NULL,NULL),(11,'joan','asda','1990-09-14','','','','     ','','',68,1,'','','','','','','',NULL,'','','skarvin@asd.esa','698 911 330','',''),(12,'Isidro','Catalan','1111-01-01','Ã±lkÃ±lknlkjb','Ã±kmmkljbgfgjhguigh','ghukghbkghhl','CB4  2SQ','Group','Debit Card',69,1,'Ã±ljnblknÂ´Ã±lkÃ±klbjknÃ±jhlj','fas dfad f','asdfsd fasd','sdaf sdf ','asd fasd','lots','alsdj lasfakjsfdn sladfn lasdkng fÃ±asldbgadfg sdfg',NULL,'asdas d','asd fasd fasd','asdasd@asdasd.es','972 513 629','',''),(16,'','','1981-06-24','','','','     ','','',71,0,'','','','','','','',NULL,'','','skarvin@gmail.com','330 568 590','',''),(17,'Mr Joan','Donovan','1990-07-12','House 1','Cambrdige','Cambrdigeshire','CB4  2NA','Individual','Cash',72,1,'House 2','My Contact','None','1231231','1231241','Lots and Lots','You dont care mate\r\n\r\n\r\nHAHAHAHA',NULL,'House','','skarvin@marca.es','393 620 591','921231231','666666666'),(18,'Jonhy','Cash','1944-02-19','1, Chapman Court','Cambrdige','Cambridgeshire','CB4  2NJ','Group','Cash',73,1,'','','','','','','',NULL,'','','marn@asd.es','442 883 701','542342','09121231'),(19,'asdlksdfj','lkjasdlkj','1221-12-12','lkj','lkj','lk','CB4  ','','',74,1,'kj','','','','','','asdfvÃ±ljadsfgÃ±lkjadfsgÃ±mads Class Hierarchy\r\n\r\nGo to the graphical class hierarchy\r\nThis inheritance list is sorted roughly, but not completely, alphabetically:\r\n\r\n    * OutlookBarNm.BandButton\r\n    * OutlookBarNm.BandPanel\r\n    * OutlookBarNm.BandTagInfo\r\n    * OutlookBarNm.ContentPanel\r\n          o OutlookBarNm.IconPanel\r\n    * Gym_administration.frm_login\r\n    * Gym_administration.frm_main\r\n    * Gym_administration.frm_member\r\n    * Gym_administration.frm_member_list\r\n    * Gym_administration.mySqlConn\r\n    * OutlookBarNm.OutlookBar\r\n    * OutlookBarNm.PanelIcon\r\n    * Gym_administration.Person\r\n          o Gym_administration.Member\r\n          o Gym_administration.Staff\r\n    * Gym_administration.Program\r\n    * Gym_administration.User\r\n    * Gym_administration.Utils\r\n\r\nClass Hierarchy\r\n\r\nGo to the graphical class hierarchy\r\nThis inheritance list is sorted roughly, but not completely, alphabetically:\r\n\r\n    * OutlookBarNm.BandButton\r\n    * OutlookBarNm.BandPanel\r\n    * OutlookBarNm.BandTagInfo\r\n    * OutlookBarNm.ContentPanel\r\n          o OutlookBarNm.IconPanel\r\n    * Gym_administration.frm_login\r\n    * Gym_administration.frm_main\r\n    * Gym_administration.frm_member\r\n    * Gym_administration.frm_member_list\r\n    * Gym_administration.mySqlConn\r\n    * OutlookBarNm.OutlookBar\r\n    * OutlookBarNm.PanelIcon\r\n    * Gym_administration.Person\r\n          o Gym_administration.Member\r\n          o Gym_administration.Staff\r\n    * Gym_administration.Program\r\n    * Gym_administration.User\r\n    * Gym_administration.Utils\r\n\r\n',NULL,'','','skarvin@asdas.es','868 169 653','lkj','asfaslkhj'),(20,'asdlksdfj','lkjasdlkj','1221-12-12','lkj','lkj','lk','CB4  ','','',74,1,'kj','','','','','','asdfvÃ±ljadsfgÃ±lkjadfsgÃ±mads Class Hierarchy\r\n\r\nGo to the graphical class hierarchy\r\nThis inheritance list is sorted roughly, but not completely, alphabetically:\r\n\r\n    * OutlookBarNm.BandButton\r\n    * OutlookBarNm.BandPanel\r\n    * OutlookBarNm.BandTagInfo\r\n    * OutlookBarNm.ContentPanel\r\n          o OutlookBarNm.IconPanel\r\n    * Gym_administration.frm_login\r\n    * Gym_administration.frm_main\r\n    * Gym_administration.frm_member\r\n    * Gym_administration.frm_member_list\r\n    * Gym_administration.mySqlConn\r\n    * OutlookBarNm.OutlookBar\r\n    * OutlookBarNm.PanelIcon\r\n    * Gym_administration.Person\r\n          o Gym_administration.Member\r\n          o Gym_administration.Staff\r\n    * Gym_administration.Program\r\n    * Gym_administration.User\r\n    * Gym_administration.Utils\r\n\r\nClass Hierarchy\r\n\r\nGo to the graphical class hierarchy\r\nThis inheritance list is sorted roughly, but not completely, alphabetically:\r\n\r\n    * OutlookBarNm.BandButton\r\n    * OutlookBarNm.BandPanel\r\n    * OutlookBarNm.BandTagInfo\r\n    * OutlookBarNm.ContentPanel\r\n          o OutlookBarNm.IconPanel\r\n    * Gym_administration.frm_login\r\n    * Gym_administration.frm_main\r\n    * Gym_administration.frm_member\r\n    * Gym_administration.frm_member_list\r\n    * Gym_administration.mySqlConn\r\n    * OutlookBarNm.OutlookBar\r\n    * OutlookBarNm.PanelIcon\r\n    * Gym_administration.Person\r\n          o Gym_administration.Member\r\n          o Gym_administration.Staff\r\n    * Gym_administration.Program\r\n    * Gym_administration.User\r\n    * Gym_administration.Utils\r\n\r\n',NULL,'','','skarvin@asdas.es','868 169 653','lkj','asfaslkhj'),(21,'dasd','asd','1212-12-23','','','','     ','','',75,1,'','','','','','','kl',NULL,'','','sadfas@asdas.es','298 313 269','','sdfsdf');
 /*!40000 ALTER TABLE `members` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -354,8 +353,11 @@ CREATE TABLE `class_instance` (
   PRIMARY KEY (`id_class_instance`),
   KEY `id_class` (`id_class`),
   KEY `id_staff` (`id_staff`),
-  KEY `class_instance_ibfk_3` (`id_room`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  KEY `class_instance_ibfk_3` (`id_room`),
+  CONSTRAINT `class_instance_ibfk_1` FOREIGN KEY (`id_class`) REFERENCES `classes` (`id_class`),
+  CONSTRAINT `class_instance_ibfk_2` FOREIGN KEY (`id_staff`) REFERENCES `staff` (`id_staff`),
+  CONSTRAINT `class_instance_ibfk_3` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id_room`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -370,6 +372,10 @@ UNLOCK TABLES;
 --
 -- Table structure for table `staff`
 --
+
+DROP TABLE IF EXISTS `staff`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 
 DROP TABLE IF EXISTS `staff`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -393,16 +399,19 @@ CREATE TABLE `staff` (
   `emerg_contact_name` varchar(45) DEFAULT NULL,
   `emerg_contact_telephone` varchar(45) DEFAULT NULL,
   `emerg_contact_relation` varchar(45) DEFAULT NULL,
-  `nationality` varchar(80) DEFAULT NULL,
   `allergies` varchar(90) DEFAULT NULL,
   `medicalNotes` text,
   `qualifications` text,
   `phone` varchar(45) DEFAULT NULL,
   `mobile` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
+  `emerg_contact_mobile` varchar(45) DEFAULT NULL,
+  `medical_doctor_name` varchar(45) DEFAULT NULL,
+  `medical_phone` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_staff`),
-  KEY `id_user` (`id_user`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  KEY `id_user` (`id_user`),
+  CONSTRAINT `staff_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
