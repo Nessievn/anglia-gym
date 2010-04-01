@@ -1,4 +1,4 @@
-﻿CREATE DATABASE  IF NOT EXISTS `gym` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE  IF NOT EXISTS `gym` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `gym`;
 -- MySQL dump 10.13  Distrib 5.1.40, for Win32 (ia32)
 --
@@ -99,7 +99,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','21232f297a57a5a743894a0e4a801fc3','manager',1),(60,'pam@pam.com','c29b2d78629b6e875de4975aa4c19019','member',1),(61,'asdasd@asd.es','c29b2d78629b6e875de4975aa4c19019','member',0),(62,'skarvin@asd.es','2a157d0eb15265b90c76ce6cbaaddb4e','member',1),(66,'skarvin@asdfas.es','c29b2d78629b6e875de4975aa4c19019','member',1),(68,'skarvin@asd.esa','e6af806a6406a15e0c71035f176e46d3','member',1),(69,'asdasd@asdasd.es','14e1a4e1dca3afa182db7005365ea7a4','member',1),(71,'skarvin@gmail.com','09e3701a258c25ea16514fb4272a81d3','member',0),(72,'skarvin@marca.es','74803fdf0df9cc0dbc5748743bce962a','member',1),(73,'zxczxc@sdfsdgfs.es','14e1a4e1dca3afa182db7005365ea7a4','member',1),(74,'sdfdsf@dfgdrg.com','95ad068a8b78061f6c4ed0bc68f586b6','member',1),(75,'janos_hefko@yahoo.co.uk','ffd5028b197fc0395be5bece481a5524','member',1);
+INSERT INTO `users` VALUES (1,'admin','21232f297a57a5a743894a0e4a801fc3','manager',1),(60,'pam@pam.com','c29b2d78629b6e875de4975aa4c19019','member',1),(61,'asdasd@asd.es','c29b2d78629b6e875de4975aa4c19019','member',0),(62,'skarvin@asd.es','2a157d0eb15265b90c76ce6cbaaddb4e','member',1),(66,'skarvin@asdfas.es','c29b2d78629b6e875de4975aa4c19019','member',1),(68,'skarvin@asd.esa','e6af806a6406a15e0c71035f176e46d3','member',1),(69,'asdasd@asdasd.es','14e1a4e1dca3afa182db7005365ea7a4','member',1),(71,'skarvin@gmail.com','09e3701a258c25ea16514fb4272a81d3','member',0),(72,'skarvin@marca.es','74803fdf0df9cc0dbc5748743bce962a','member',1),(73,'zxczxc@sdfsdgfs.es','14e1a4e1dca3afa182db7005365ea7a4','member',1),(74,'sdfdsf@dfgdrg.com','95ad068a8b78061f6c4ed0bc68f586b6','member',1),(75,'janos_hefko@yahoo.co.uk','ffd5028b197fc0395be5bece481a5524','member',1),(2,'ric@2.com','21232f297a57a5a743894a0e4a801fc3','manager',1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,7 +147,7 @@ CREATE TABLE `equipment` (
 
 LOCK TABLES `equipment` WRITE;
 /*!40000 ALTER TABLE `equipment` DISABLE KEYS */;
-INSERT INTO `equipment` VALUES (1,'item',0,'pingpongball','pro',100,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0,0,0,0,0),(2,'set',0,'pingpongset','best',0,'pingpongball','pingpongracket',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,4,2,0,0,0,0,0,0,0,0),(3,'set',0,'tennisset','for 2',0,'tennisball','tennisracket',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,6,2,0,0,0,0,0,0,0,0),(4,'item',0,'tennisracket','very nice',8,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0,0,0,0,0),(5,'set',0,'judoset','indoor use only',0,'basketball','','','','','','','','','',1,0,0,0,0,0,0,0,0,0),(6,'item',0,'basketball','brown color',10,'','','','','','','','','','',0,0,0,0,0,0,0,0,0,0),(7,'item',0,'football','pro',10,'','','','','','','','','','',0,0,0,0,0,0,0,0,0,0),(8,'item',0,'pingpongracket','pro',16,'','','','','','','','','','',0,0,0,0,0,0,0,0,0,0),(9,'item',0,'tennnisball','new',100,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(10,'set',0,'sfsafd','dfsadfadf',0,'tennisracket','pingpongball','basketball','football','pingpongball','','','','','',3,4,1,3,4,0,0,0,0,0),(13,'set',0,'chdf','dfghdfgdfg',0,'pingpongball','','','','','','','','','',0,0,0,0,0,0,0,0,0,0),(14,'set',0,'dbdfb','dfbdfb',0,'basketball','','','','','','','','','',1,0,0,0,0,0,0,0,0,0),(15,'set',0,'xcvc','vdsav',0,'pingpongball','','','','','','','','','',1,0,0,0,0,0,0,0,0,0);
+INSERT INTO `equipment` VALUES (1,'item',0,'pingpongball','propro',98,'','','','','','','','','','',0,0,0,0,0,0,0,0,0,0),(2,'set',0,'pingpongset','best',0,'pingpongball','pingpongracket','','','','','','','','',5,2,0,0,0,0,0,0,0,0),(3,'set',0,'tennisset','for 2',0,'tennisball','tennisracket',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,6,2,0,0,0,0,0,0,0,0),(4,'item',0,'tennisracket','very nice',8,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0,0,0,0,0),(5,'set',0,'judoset','indoor use only',0,'basketball','','','','','','','','','',1,0,0,0,0,0,0,0,0,0),(6,'item',0,'basketball','brown color',10,'','','','','','','','','','',0,0,0,0,0,0,0,0,0,0),(7,'item',0,'football','pro',10,'','','','','','','','','','',0,0,0,0,0,0,0,0,0,0),(8,'item',0,'pingpongracket','pro',16,'','','','','','','','','','',0,0,0,0,0,0,0,0,0,0),(9,'item',0,'tennnisball','new',100,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(10,'set',0,'sfsafd','dfsadfadf',0,'tennisracket','pingpongball','basketball','football','pingpongball','','','','','',3,4,1,3,4,0,0,0,0,0),(13,'set',0,'chdf','dfghdfgdfg',0,'pingpongball','','','','','','','','','',0,0,0,0,0,0,0,0,0,0),(14,'set',0,'dbdfb','dfbdfb',0,'basketball','','','','','','','','','',1,0,0,0,0,0,0,0,0,0),(15,'set',0,'xcvc','vdsav',0,'pingpongball','','','','','','','','','',1,0,0,0,0,0,0,0,0,0),(16,'item',0,'xvfaxcv','xcvzscxv',20,'','','','','','','','','','',0,0,0,0,0,0,0,0,0,0),(17,'item',0,'sdfsd','sdfsdf',0,'','','','','','','','','','',0,0,0,0,0,0,0,0,0,0),(18,'item',0,'rtyt','rtyry',0,'','','','','','','','','','',0,0,0,0,0,0,0,0,0,0),(19,'item',0,'yrty','zxczc',0,'','','','','','','','','','',0,0,0,0,0,0,0,0,0,0),(20,'item',0,'23423','234234',0,'','','','','','','','','','',0,0,0,0,0,0,0,0,0,0);
 /*!40000 ALTER TABLE `equipment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -173,6 +173,7 @@ CREATE TABLE `rooms` (
 
 LOCK TABLES `rooms` WRITE;
 /*!40000 ALTER TABLE `rooms` DISABLE KEYS */;
+INSERT INTO `rooms` VALUES (1,'Medium Room','good for medium stuff',100),(2,'Big Room','good for evertyhing',100);
 /*!40000 ALTER TABLE `rooms` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -190,7 +191,7 @@ CREATE TABLE `class_bookings` (
   `booking_date` date DEFAULT NULL,
   PRIMARY KEY (`id_class_booking`) USING BTREE,
   UNIQUE KEY `unique_ind` (`id_member`,`id_class_instance`),
-  KEY `FK_class_bookings_1` (`id_class_instance`),  
+  KEY `FK_class_bookings_1` (`id_class_instance`),
   CONSTRAINT `FK_class_bookings_1` FOREIGN KEY (`id_class_instance`) REFERENCES `class_instance` (`id_class_instance`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_class_bookings_2` FOREIGN KEY (`id_member`) REFERENCES `members` (`id_member`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=latin1;
@@ -202,6 +203,7 @@ CREATE TABLE `class_bookings` (
 
 LOCK TABLES `class_bookings` WRITE;
 /*!40000 ALTER TABLE `class_bookings` DISABLE KEYS */;
+INSERT INTO `class_bookings` VALUES (1,4,1,'2010-04-01');
 /*!40000 ALTER TABLE `class_bookings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -215,12 +217,21 @@ DROP TABLE IF EXISTS `equipment_bookings`;
 CREATE TABLE `equipment_bookings` (
   `id_eq_booking` int(11) NOT NULL,
   `id_staff` int(11) DEFAULT NULL,
-  `id_equipment` int(11) DEFAULT NULL,
   `id_member` int(11) DEFAULT NULL,
   `id_class_instance` int(11) DEFAULT NULL,
   `date_start` datetime DEFAULT NULL,
   `date_due` datetime DEFAULT NULL,
   `isset` binary(1) DEFAULT NULL,
+  `id_equipment1` int(11) DEFAULT NULL,
+  `id_equipment2` int(11) DEFAULT NULL,
+  `id_equipment3` int(11) DEFAULT NULL,
+  `id_equipment4` int(11) DEFAULT NULL,
+  `id_equipment5` int(11) DEFAULT NULL,
+  `amount1` int(11) DEFAULT NULL,
+  `amount2` int(11) DEFAULT NULL,
+  `amount3` int(11) DEFAULT NULL,
+  `amount4` int(11) DEFAULT NULL,
+  `amount5` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_eq_booking`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -231,6 +242,7 @@ CREATE TABLE `equipment_bookings` (
 
 LOCK TABLES `equipment_bookings` WRITE;
 /*!40000 ALTER TABLE `equipment_bookings` DISABLE KEYS */;
+INSERT INTO `equipment_bookings` VALUES (1,NULL,4,NULL,'2010-04-01 00:00:00','2010-04-15 00:00:00',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,NULL,5,NULL,'2010-04-02 00:00:00','2010-04-07 00:00:00',NULL,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,NULL,6,NULL,'2010-04-05 00:00:00','2010-04-08 00:00:00',NULL,3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,1,NULL,NULL,'2010-04-06 00:00:00','2010-04-07 00:00:00',NULL,4,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `equipment_bookings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -256,7 +268,7 @@ CREATE TABLE `classes` (
 
 LOCK TABLES `classes` WRITE;
 /*!40000 ALTER TABLE `classes` DISABLE KEYS */;
-INSERT INTO `classes` VALUES (1,'Yoga','Good for you! :)','Group'),(2,'new','ff','Group'),(3,'fff','fff','Group');
+INSERT INTO `classes` VALUES (1,'Yoga','Good for you! :)','Group'),(2,'new','ff','Group'),(3,'fff','fff','Group'),(4,'czxc','zxczxc','Group'),(5,'sfd','sdfsdf','Group'),(6,'7567','55675','Group'),(7,'gggg','gdf','Personal');
 /*!40000 ALTER TABLE `classes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -292,6 +304,8 @@ DROP TABLE IF EXISTS `members`;
 --
 -- Table structure for table `members`
 --
+
+
 CREATE TABLE `members` (
   `id_member` int(11) NOT NULL AUTO_INCREMENT,
   `firstName` varchar(60) NOT NULL,
@@ -330,7 +344,7 @@ CREATE TABLE `members` (
 
 LOCK TABLES `members` WRITE;
 /*!40000 ALTER TABLE `members` DISABLE KEYS */;
-INSERT INTO `members` VALUES (4,'Pam','McDonovan','1091-06-24','my house','Cambridge','Cambrdigeshire','CB2  2AS','Individual','Debit Card',60,1,'my house','Jennah Jameson','Mother','081231232','071231231','Clorhyne','I have had 4 heart attacks.',NULL,'Dr. House','612361263','pam@pam.com','N/A',NULL,NULL),(5,'lkjg','lkjh','1991-05-15','kh','','','     ','','',61,0,'kh','Ã±lkhÃ±','Ã±lk','kl','jh','hlkj','Ã±lkh',NULL,'lkh','lkj','asdasd@asd.es','N/A',NULL,NULL),(6,'Joana','Ferras','1012-11-12','','','','CB4  2NJ','Family','Cash',62,1,'','Cuenca','','','','','None She is fine!!!',NULL,'House','','skarvin@asd.es','N/A','123123123','123123123'),(10,'sadasd','asdasd','1221-12-12','','','','     ','','',66,1,'','','','','','','',NULL,'','','skarvin@asdfas.es','714 271 422',NULL,NULL),(11,'joan','asda','1990-09-14','','','','     ','','',68,1,'','','','','','','',NULL,'','','skarvin@asd.esa','698 911 330','',''),(12,'Isidro','Catalan','1111-01-01','Ã±lkÃ±lknlkjb','Ã±kmmkljbgfgjhguigh','ghukghbkghhl','CB4  2SQ','Group','Debit Card',69,1,'Ã±ljnblknÂ´Ã±lkÃ±klbjknÃ±jhlj','fas dfad f','asdfsd fasd','sdaf sdf ','asd fasd','lots','alsdj lasfakjsfdn sladfn lasdkng fÃ±asldbgadfg sdfg',NULL,'asdas d','asd fasd fasd','asdasd@asdasd.es','972 513 629','',''),(16,'','','1981-06-24','','','','     ','','',71,0,'','','','','','','',NULL,'','','skarvin@gmail.com','330 568 590','',''),(17,'Mr Joan','Donovan','1990-07-12','House 1','Cambrdige','Cambrdigeshire','CB4  2NA','Individual','Cash',72,1,'House 2','My Contact','None','1231231','1231241','Lots and Lots','You dont care mate\r\n\r\n\r\nHAHAHAHA',NULL,'House','','skarvin@marca.es','393 620 591','921231231','666666666'),(18,'Jonhy','Cash','1944-02-19','1, Chapman Court','Cambrdige','Cambridgeshire','CB4  2NJ','Group','Cash',73,1,'','','','','','','',NULL,'','','marn@asd.es','442 883 701','542342','09121231'),(19,'asdlksdfj','lkjasdlkj','1221-12-12','lkj','lkj','lk','CB4  ','','',74,1,'kj','','','','','','asdfvÃ±ljadsfgÃ±lkjadfsgÃ±mads Class Hierarchy\r\n\r\nGo to the graphical class hierarchy\r\nThis inheritance list is sorted roughly, but not completely, alphabetically:\r\n\r\n    * OutlookBarNm.BandButton\r\n    * OutlookBarNm.BandPanel\r\n    * OutlookBarNm.BandTagInfo\r\n    * OutlookBarNm.ContentPanel\r\n          o OutlookBarNm.IconPanel\r\n    * Gym_administration.frm_login\r\n    * Gym_administration.frm_main\r\n    * Gym_administration.frm_member\r\n    * Gym_administration.frm_member_list\r\n    * Gym_administration.mySqlConn\r\n    * OutlookBarNm.OutlookBar\r\n    * OutlookBarNm.PanelIcon\r\n    * Gym_administration.Person\r\n          o Gym_administration.Member\r\n          o Gym_administration.Staff\r\n    * Gym_administration.Program\r\n    * Gym_administration.User\r\n    * Gym_administration.Utils\r\n\r\nClass Hierarchy\r\n\r\nGo to the graphical class hierarchy\r\nThis inheritance list is sorted roughly, but not completely, alphabetically:\r\n\r\n    * OutlookBarNm.BandButton\r\n    * OutlookBarNm.BandPanel\r\n    * OutlookBarNm.BandTagInfo\r\n    * OutlookBarNm.ContentPanel\r\n          o OutlookBarNm.IconPanel\r\n    * Gym_administration.frm_login\r\n    * Gym_administration.frm_main\r\n    * Gym_administration.frm_member\r\n    * Gym_administration.frm_member_list\r\n    * Gym_administration.mySqlConn\r\n    * OutlookBarNm.OutlookBar\r\n    * OutlookBarNm.PanelIcon\r\n    * Gym_administration.Person\r\n          o Gym_administration.Member\r\n          o Gym_administration.Staff\r\n    * Gym_administration.Program\r\n    * Gym_administration.User\r\n    * Gym_administration.Utils\r\n\r\n',NULL,'','','skarvin@asdas.es','868 169 653','lkj','asfaslkhj'),(20,'asdlksdfj','lkjasdlkj','1221-12-12','lkj','lkj','lk','CB4  ','','',74,1,'kj','','','','','','asdfvÃ±ljadsfgÃ±lkjadfsgÃ±mads Class Hierarchy\r\n\r\nGo to the graphical class hierarchy\r\nThis inheritance list is sorted roughly, but not completely, alphabetically:\r\n\r\n    * OutlookBarNm.BandButton\r\n    * OutlookBarNm.BandPanel\r\n    * OutlookBarNm.BandTagInfo\r\n    * OutlookBarNm.ContentPanel\r\n          o OutlookBarNm.IconPanel\r\n    * Gym_administration.frm_login\r\n    * Gym_administration.frm_main\r\n    * Gym_administration.frm_member\r\n    * Gym_administration.frm_member_list\r\n    * Gym_administration.mySqlConn\r\n    * OutlookBarNm.OutlookBar\r\n    * OutlookBarNm.PanelIcon\r\n    * Gym_administration.Person\r\n          o Gym_administration.Member\r\n          o Gym_administration.Staff\r\n    * Gym_administration.Program\r\n    * Gym_administration.User\r\n    * Gym_administration.Utils\r\n\r\nClass Hierarchy\r\n\r\nGo to the graphical class hierarchy\r\nThis inheritance list is sorted roughly, but not completely, alphabetically:\r\n\r\n    * OutlookBarNm.BandButton\r\n    * OutlookBarNm.BandPanel\r\n    * OutlookBarNm.BandTagInfo\r\n    * OutlookBarNm.ContentPanel\r\n          o OutlookBarNm.IconPanel\r\n    * Gym_administration.frm_login\r\n    * Gym_administration.frm_main\r\n    * Gym_administration.frm_member\r\n    * Gym_administration.frm_member_list\r\n    * Gym_administration.mySqlConn\r\n    * OutlookBarNm.OutlookBar\r\n    * OutlookBarNm.PanelIcon\r\n    * Gym_administration.Person\r\n          o Gym_administration.Member\r\n          o Gym_administration.Staff\r\n    * Gym_administration.Program\r\n    * Gym_administration.User\r\n    * Gym_administration.Utils\r\n\r\n',NULL,'','','skarvin@asdas.es','868 169 653','lkj','asfaslkhj'),(21,'dasd','asd','1212-12-23','','','','     ','','',75,1,'','','','','','','kl',NULL,'','','sadfas@asdas.es','298 313 269','','sdfsdf');
+INSERT INTO `members` VALUES (4,'Pam','McDonovan','1091-06-24','my house','Cambridge','Cambrdigeshire','CB2  2AS','Individual','Debit Card',60,1,'my house','Jennah Jameson','Mother','081231232','071231231','Clorhyne','I have had 4 heart attacks.',NULL,'Dr. House','612361263','pam@pam.com','N/A',NULL,NULL),(5,'lkjg','lkjh','1991-05-15','kh','','','     ','','',61,0,'kh','ñlkhñ','ñlk','kl','jh','hlkj','ñlkh',NULL,'lkh','lkj','asdasd@asd.es','N/A',NULL,NULL),(6,'Joana','Ferras','1012-11-12','','','','CB4  2NJ','Individual','Debit Card',62,1,'','Cuenca','','','','','None She is fine!!!',NULL,'House','','skarvin@asd.es','N/A','123123123','123123123'),(10,'sadasd','asdasd','1221-12-12','','','','     ','','',66,1,'','','','','','','',NULL,'','','skarvin@asdfas.es','714 271 422',NULL,NULL),(11,'joan','asda','1990-09-14','','','','     ','','',68,1,'','','','','','','',NULL,'','','skarvin@asd.esa','698 911 330',NULL,NULL),(12,'Isidro','Catalan','1111-01-01','ñlkñlknlkjb','ñkmmkljbgfgjhguigh','ghukghbkghhl','CB4  2SQ','Group','Debit Card',69,1,'ñljnblkn´ñlkñklbjknñjhlj','fas dfad f','asdfsd fasd','sdaf sdf ','asd fasd','lots','asdkjaskjds ek nsgksfghfgh',NULL,'asdas d','asd fasd fasd','asdasd@asdasd.es','972 513 629','',''),(16,'','','1981-06-24','','','','     ','','',71,0,'','','','','','','',NULL,'','','skarvin@gmail.com','330 568 590','',''),(17,'Mr Joan','Donovan','1990-07-12','House 1','Cambrdige','Cambrdigeshire','CB4  2NA','Individual','Cash',72,1,'House 2','My Contact','None','1231231','1231241','Lots and Lots','You dont care mate\r\n\r\n\r\nHAHAHAHA',NULL,'House','','skarvin@marca.es','393 620 591','921231231','666666666'),(18,'assdgf','ssdfsd','1212-12-12','','','','     ','','',73,1,'','','','','','','',NULL,'','','zxczxc@sdfsdgfs.es','822 556 789','',''),(19,'assdgf','ssdfsd','1212-12-12','','','','     ','','',73,1,'','','','','','','',NULL,'','','zxczxc@sdfsdgfs.es','822 556 789','',''),(20,'dfgdfg','dfgdf','1111-11-11','','','','     ','','',74,1,'','','','','','','',NULL,'','','sdfdsf@dfgdrg.com','321 265 755','',''),(21,'Jano','Mano','1980-12-12','','','','     ','','',75,1,'','','','','','','',NULL,'','','janos_hefko@yahoo.co.uk','633 402 358','','');
 /*!40000 ALTER TABLE `members` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -354,7 +368,7 @@ CREATE TABLE `class_instance` (
   KEY `id_class` (`id_class`),
   KEY `id_staff` (`id_staff`),
   KEY `class_instance_ibfk_3` (`id_room`),
-  CONSTRAINT `class_instance_ibfk_1` FOREIGN KEY (`id_class`) REFERENCES `classes` (`id_class`),
+ CONSTRAINT `class_instance_ibfk_1` FOREIGN KEY (`id_class`) REFERENCES `classes` (`id_class`),
   CONSTRAINT `class_instance_ibfk_2` FOREIGN KEY (`id_staff`) REFERENCES `staff` (`id_staff`),
   CONSTRAINT `class_instance_ibfk_3` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id_room`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
@@ -366,6 +380,7 @@ CREATE TABLE `class_instance` (
 
 LOCK TABLES `class_instance` WRITE;
 /*!40000 ALTER TABLE `class_instance` DISABLE KEYS */;
+INSERT INTO `class_instance` VALUES (1,1,1,'2001-04-10','18:00:00','19:00:00','Daily',1);
 /*!40000 ALTER TABLE `class_instance` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -376,7 +391,6 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `staff`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-
 DROP TABLE IF EXISTS `staff`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -399,18 +413,19 @@ CREATE TABLE `staff` (
   `emerg_contact_name` varchar(45) DEFAULT NULL,
   `emerg_contact_telephone` varchar(45) DEFAULT NULL,
   `emerg_contact_relation` varchar(45) DEFAULT NULL,
+
   `allergies` varchar(90) DEFAULT NULL,
   `medicalNotes` text,
   `qualifications` text,
   `phone` varchar(45) DEFAULT NULL,
   `mobile` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
-  `emerg_contact_mobile` varchar(45) DEFAULT NULL,
+`emerg_contact_mobile` varchar(45) DEFAULT NULL,
   `medical_doctor_name` varchar(45) DEFAULT NULL,
   `medical_phone` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_staff`),
   KEY `id_user` (`id_user`),
-  CONSTRAINT `staff_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE
+CONSTRAINT `staff_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -420,6 +435,7 @@ CREATE TABLE `staff` (
 
 LOCK TABLES `staff` WRITE;
 /*!40000 ALTER TABLE `staff` DISABLE KEYS */;
+
 /*!40000 ALTER TABLE `staff` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -432,4 +448,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-03-30 22:07:24
+-- Dump completed on 2010-03-31 23:27:01
