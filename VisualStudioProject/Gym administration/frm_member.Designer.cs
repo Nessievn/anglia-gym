@@ -80,6 +80,7 @@
             this.label_paymenttype = new System.Windows.Forms.Label();
             this.button_payments = new System.Windows.Forms.Button();
             this.button_remove = new System.Windows.Forms.Button();
+            this.button_equipmentbooking = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label_memberinfo
@@ -160,7 +161,7 @@
             // 
             // txt_mobile
             // 
-            this.txt_mobile.Location = new System.Drawing.Point(236, 203);
+            this.txt_mobile.Location = new System.Drawing.Point(232, 203);
             this.txt_mobile.Margin = new System.Windows.Forms.Padding(4);
             this.txt_mobile.Name = "txt_mobile";
             this.txt_mobile.Size = new System.Drawing.Size(183, 22);
@@ -169,7 +170,7 @@
             // label_mobile
             // 
             this.label_mobile.AutoSize = true;
-            this.label_mobile.Location = new System.Drawing.Point(232, 183);
+            this.label_mobile.Location = new System.Drawing.Point(229, 183);
             this.label_mobile.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_mobile.Name = "label_mobile";
             this.label_mobile.Size = new System.Drawing.Size(49, 17);
@@ -178,7 +179,7 @@
             // 
             // txt_telephone
             // 
-            this.txt_telephone.Location = new System.Drawing.Point(236, 251);
+            this.txt_telephone.Location = new System.Drawing.Point(232, 250);
             this.txt_telephone.Margin = new System.Windows.Forms.Padding(4);
             this.txt_telephone.Name = "txt_telephone";
             this.txt_telephone.Size = new System.Drawing.Size(183, 22);
@@ -187,7 +188,7 @@
             // label_telephone
             // 
             this.label_telephone.AutoSize = true;
-            this.label_telephone.Location = new System.Drawing.Point(232, 231);
+            this.label_telephone.Location = new System.Drawing.Point(229, 229);
             this.label_telephone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_telephone.Name = "label_telephone";
             this.label_telephone.Size = new System.Drawing.Size(76, 17);
@@ -214,7 +215,7 @@
             // 
             // txt_address2
             // 
-            this.txt_address2.Location = new System.Drawing.Point(236, 302);
+            this.txt_address2.Location = new System.Drawing.Point(232, 302);
             this.txt_address2.Margin = new System.Windows.Forms.Padding(4);
             this.txt_address2.Name = "txt_address2";
             this.txt_address2.Size = new System.Drawing.Size(183, 22);
@@ -223,7 +224,7 @@
             // label_address2
             // 
             this.label_address2.AutoSize = true;
-            this.label_address2.Location = new System.Drawing.Point(232, 282);
+            this.label_address2.Location = new System.Drawing.Point(229, 276);
             this.label_address2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_address2.Name = "label_address2";
             this.label_address2.Size = new System.Drawing.Size(72, 17);
@@ -460,7 +461,7 @@
             // label_county
             // 
             this.label_county.AutoSize = true;
-            this.label_county.Location = new System.Drawing.Point(229, 330);
+            this.label_county.Location = new System.Drawing.Point(229, 328);
             this.label_county.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_county.Name = "label_county";
             this.label_county.Size = new System.Drawing.Size(52, 17);
@@ -529,7 +530,7 @@
             this.cmb_type.Location = new System.Drawing.Point(233, 398);
             this.cmb_type.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_type.Name = "cmb_type";
-            this.cmb_type.Size = new System.Drawing.Size(160, 24);
+            this.cmb_type.Size = new System.Drawing.Size(163, 24);
             this.cmb_type.TabIndex = 13;
             // 
             // chk_active
@@ -592,11 +593,22 @@
             this.button_remove.UseVisualStyleBackColor = true;
             this.button_remove.Click += new System.EventHandler(this.button_remove_Click);
             // 
+            // button_equipmentbooking
+            // 
+            this.button_equipmentbooking.Location = new System.Drawing.Point(232, 28);
+            this.button_equipmentbooking.Name = "button_equipmentbooking";
+            this.button_equipmentbooking.Size = new System.Drawing.Size(164, 32);
+            this.button_equipmentbooking.TabIndex = 57;
+            this.button_equipmentbooking.Text = "Equipment Booking";
+            this.button_equipmentbooking.UseVisualStyleBackColor = true;
+            this.button_equipmentbooking.Click += new System.EventHandler(this.button_equipmentbooking_Click);
+            // 
             // frm_member
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(879, 545);
+            this.Controls.Add(this.button_equipmentbooking);
             this.Controls.Add(this.button_remove);
             this.Controls.Add(this.button_payments);
             this.Controls.Add(this.cmb_paymenttype);
@@ -714,5 +726,6 @@
         private System.Windows.Forms.Label label_paymenttype;
         private System.Windows.Forms.Button button_payments;
         private System.Windows.Forms.Button button_remove;
+        private System.Windows.Forms.Button button_equipmentbooking;
     }
 }

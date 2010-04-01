@@ -14,6 +14,7 @@ namespace Gym_administration
     {
         Equipment mbrEquipment;
         frm_equipment_list frmEqList;
+        
 
         //loading from main menu
         public frm_equipment()
@@ -27,7 +28,7 @@ namespace Gym_administration
 
         }
 
-        //loading from equipment list to refresh list after saving new item
+        //loading from equipment list to refresh list after saving added item
         public frm_equipment(frm_equipment_list frmEqList)
         {
             InitializeComponent();
@@ -38,11 +39,37 @@ namespace Gym_administration
             rd_item_Checked();
 
         }
-
+/*
         //loading from equipment list to refresh list after saving edited item
-        public frm_equipment(int iEquipmentId, frm_equipment_list frmEqList)
+        public frm_equipment(bool isBooking, bool isMember, int Id_Person, int iEquipmentId, frm_equipment_list frmEqList)
         {
+            if (isBooking)
+            {
+                frm_equipment_booking_ini(isMember, Id_Person, iEquipmentId, frmEqList);
 
+            }
+            else
+            {
+                frm_equipment_ini(iEquipmentId, frmEqList);
+            }
+        }
+
+        public void frm_equipment_booking_ini(bool isMember, int Id_Person, int iEquipmentId, frm_equipment_list frmEqList)
+        {
+            InitializeComponent();
+            mbrEquipment = new Equipment(iEquipmentId);
+            this.frmEqList = frmEqList;
+
+
+
+        }
+
+
+        public void frm_equipment_ini(int iEquipmentId, frm_equipment_list frmEqList)
+        {
+ */
+        public frm_equipment(bool isBooking, bool isMember, int Id_Person, int iEquipmentId, frm_equipment_list frmEqList)
+        {
             InitializeComponent();
             mbrEquipment = new Equipment(iEquipmentId);
             this.frmEqList = frmEqList;
@@ -90,7 +117,8 @@ namespace Gym_administration
 
             }
         }
-
+        
+        
         //set loadup state
         private void frm_equipment_Load(object sender, EventArgs e)
         {

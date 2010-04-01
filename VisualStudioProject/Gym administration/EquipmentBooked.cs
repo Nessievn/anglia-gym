@@ -1,4 +1,5 @@
-﻿using System;
+﻿//ITS NOT FINISHED, BUT MAYBE THIS CLASS IS USELESS!!!!
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

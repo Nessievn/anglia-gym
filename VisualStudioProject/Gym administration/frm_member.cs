@@ -20,12 +20,13 @@ namespace Gym_administration
             InitializeComponent();
             txt_membernum.Text = Utils.sGenerateNewMemberNumber();
             txt_membernum.ReadOnly = true;
+            button_equipmentbooking.Hide();
         }
         
         public frm_member(int iMemberId)
         {
             InitializeComponent();
-
+            button_equipmentbooking.Show();
             mbrMember = new Member(iMemberId);
             if (mbrMember.IId_member < 1)
                 MessageBox.Show("The member could not be found");
@@ -99,7 +100,7 @@ namespace Gym_administration
 
         private void button_payments_Click(object sender, EventArgs e)
         {
-//CHANGE IT TO PAYMENTS??
+//IMLEMENT IT TO PAYMENTS??
             frm_member_list frm = new frm_member_list();
             frm.MdiParent = this.MdiParent;
             frm.Show();
@@ -120,6 +121,19 @@ namespace Gym_administration
                 mbrMember.bRemove();
                 this.Close();
             }
+        }
+
+        private void button_equipmentbooking_Click(object sender, EventArgs e)
+        {
+
+     
+
+            // Creating the child form login
+                                                                            //isBooking, "isMember", id_member
+            frm_equipment_list frmEquipmentList = new frm_equipment_list(true, true, mbrMember.IId_member );
+            
+            if (Utils.bIsAlreadyOpened(frmEquipmentList)) return;
+            frmEquipmentList.Show();  
         }
 
         
