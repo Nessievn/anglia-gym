@@ -28,184 +28,200 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.label_chooseclass = new System.Windows.Forms.Label();
             this.cmb_classes = new System.Windows.Forms.ComboBox();
             this.cmb_rooms = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label_chooserooms = new System.Windows.Forms.Label();
             this.cmb_instructors = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txt_start = new System.Windows.Forms.MaskedTextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txt_start_time = new System.Windows.Forms.MaskedTextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txt_end_time = new System.Windows.Forms.MaskedTextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label_chooseinstructor = new System.Windows.Forms.Label();
+            this.txt_startdate = new System.Windows.Forms.MaskedTextBox();
+            this.label_date = new System.Windows.Forms.Label();
+            this.txt_starttime = new System.Windows.Forms.MaskedTextBox();
+            this.label_starttime = new System.Windows.Forms.Label();
+            this.label_endtime = new System.Windows.Forms.Label();
+            this.txt_endtime = new System.Windows.Forms.MaskedTextBox();
+            this.label_classinfo = new System.Windows.Forms.Label();
+            this.cmb_equipments = new System.Windows.Forms.ComboBox();
+            this.label_equipment = new System.Windows.Forms.Label();
+            this.button_save = new System.Windows.Forms.Button();
             this.cmb_repeats = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.btn_attendants = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lbl_max = new System.Windows.Forms.Label();
-            this.lbl_current = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.label_repeats = new System.Windows.Forms.Label();
+            this.button_enrollmembers = new System.Windows.Forms.Button();
+            this.button_viewattendants = new System.Windows.Forms.Button();
+            this.groupBox_membersenrolled = new System.Windows.Forms.GroupBox();
+            this.label_maxmembers_amount = new System.Windows.Forms.Label();
+            this.lbl_currentmembers_amount = new System.Windows.Forms.Label();
+            this.label_maxmembers = new System.Windows.Forms.Label();
+            this.label_currentmembers = new System.Windows.Forms.Label();
+            this.button_remove = new System.Windows.Forms.Button();
+            this.groupBox_membersenrolled.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // label_chooseclass
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 108);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Choose Class";
+            this.label_chooseclass.AutoSize = true;
+            this.label_chooseclass.Location = new System.Drawing.Point(15, 133);
+            this.label_chooseclass.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_chooseclass.Name = "label_chooseclass";
+            this.label_chooseclass.Size = new System.Drawing.Size(94, 17);
+            this.label_chooseclass.TabIndex = 0;
+            this.label_chooseclass.Text = "Choose Class";
             // 
             // cmb_classes
             // 
             this.cmb_classes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_classes.FormattingEnabled = true;
-            this.cmb_classes.Location = new System.Drawing.Point(14, 124);
+            this.cmb_classes.Location = new System.Drawing.Point(19, 153);
+            this.cmb_classes.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_classes.Name = "cmb_classes";
-            this.cmb_classes.Size = new System.Drawing.Size(223, 21);
+            this.cmb_classes.Size = new System.Drawing.Size(296, 24);
             this.cmb_classes.TabIndex = 14;
             // 
             // cmb_rooms
             // 
             this.cmb_rooms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_rooms.FormattingEnabled = true;
-            this.cmb_rooms.Location = new System.Drawing.Point(14, 170);
+            this.cmb_rooms.Location = new System.Drawing.Point(19, 209);
+            this.cmb_rooms.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_rooms.Name = "cmb_rooms";
-            this.cmb_rooms.Size = new System.Drawing.Size(223, 21);
+            this.cmb_rooms.Size = new System.Drawing.Size(296, 24);
             this.cmb_rooms.TabIndex = 16;
             this.cmb_rooms.SelectedIndexChanged += new System.EventHandler(this.cmb_rooms_SelectedIndexChanged);
             // 
-            // label2
+            // label_chooserooms
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 154);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 13);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Choose Room";
+            this.label_chooserooms.AutoSize = true;
+            this.label_chooserooms.Location = new System.Drawing.Point(15, 190);
+            this.label_chooserooms.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_chooserooms.Name = "label_chooserooms";
+            this.label_chooserooms.Size = new System.Drawing.Size(97, 17);
+            this.label_chooserooms.TabIndex = 15;
+            this.label_chooserooms.Text = "Choose Room";
             // 
             // cmb_instructors
             // 
             this.cmb_instructors.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_instructors.FormattingEnabled = true;
-            this.cmb_instructors.Location = new System.Drawing.Point(14, 220);
+            this.cmb_instructors.Location = new System.Drawing.Point(19, 271);
+            this.cmb_instructors.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_instructors.Name = "cmb_instructors";
-            this.cmb_instructors.Size = new System.Drawing.Size(223, 21);
+            this.cmb_instructors.Size = new System.Drawing.Size(296, 24);
             this.cmb_instructors.TabIndex = 18;
             // 
-            // label3
+            // label_chooseinstructor
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 204);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 13);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "Choose Instructor";
+            this.label_chooseinstructor.AutoSize = true;
+            this.label_chooseinstructor.Location = new System.Drawing.Point(15, 251);
+            this.label_chooseinstructor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_chooseinstructor.Name = "label_chooseinstructor";
+            this.label_chooseinstructor.Size = new System.Drawing.Size(119, 17);
+            this.label_chooseinstructor.TabIndex = 17;
+            this.label_chooseinstructor.Text = "Choose Instructor";
             // 
-            // txt_start
+            // txt_startdate
             // 
-            this.txt_start.Culture = new System.Globalization.CultureInfo("en-GB");
-            this.txt_start.Location = new System.Drawing.Point(256, 124);
-            this.txt_start.Mask = "00/00/0000";
-            this.txt_start.Name = "txt_start";
-            this.txt_start.Size = new System.Drawing.Size(68, 20);
-            this.txt_start.TabIndex = 19;
-            this.txt_start.ValidatingType = typeof(System.DateTime);
+            this.txt_startdate.Culture = new System.Globalization.CultureInfo("en-GB");
+            this.txt_startdate.Location = new System.Drawing.Point(341, 153);
+            this.txt_startdate.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_startdate.Mask = "00/00/0000";
+            this.txt_startdate.Name = "txt_startdate";
+            this.txt_startdate.Size = new System.Drawing.Size(89, 22);
+            this.txt_startdate.TabIndex = 19;
+            this.txt_startdate.ValidatingType = typeof(System.DateTime);
             // 
-            // label4
+            // label_date
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(253, 108);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(30, 13);
-            this.label4.TabIndex = 20;
-            this.label4.Text = "Date";
+            this.label_date.AutoSize = true;
+            this.label_date.Location = new System.Drawing.Point(337, 133);
+            this.label_date.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_date.Name = "label_date";
+            this.label_date.Size = new System.Drawing.Size(38, 17);
+            this.label_date.TabIndex = 20;
+            this.label_date.Text = "Date";
             // 
-            // txt_start_time
+            // txt_starttime
             // 
-            this.txt_start_time.Culture = new System.Globalization.CultureInfo("en-GB");
-            this.txt_start_time.Location = new System.Drawing.Point(256, 170);
-            this.txt_start_time.Mask = "00:00";
-            this.txt_start_time.Name = "txt_start_time";
-            this.txt_start_time.Size = new System.Drawing.Size(68, 20);
-            this.txt_start_time.TabIndex = 21;
-            this.txt_start_time.ValidatingType = typeof(System.DateTime);
+            this.txt_starttime.Culture = new System.Globalization.CultureInfo("en-GB");
+            this.txt_starttime.Location = new System.Drawing.Point(341, 209);
+            this.txt_starttime.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_starttime.Mask = "00:00";
+            this.txt_starttime.Name = "txt_starttime";
+            this.txt_starttime.Size = new System.Drawing.Size(89, 22);
+            this.txt_starttime.TabIndex = 21;
+            this.txt_starttime.ValidatingType = typeof(System.DateTime);
             // 
-            // label5
+            // label_starttime
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(253, 154);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 13);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "Start Time";
+            this.label_starttime.AutoSize = true;
+            this.label_starttime.Location = new System.Drawing.Point(337, 190);
+            this.label_starttime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_starttime.Name = "label_starttime";
+            this.label_starttime.Size = new System.Drawing.Size(73, 17);
+            this.label_starttime.TabIndex = 22;
+            this.label_starttime.Text = "Start Time";
             // 
-            // label6
+            // label_endtime
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(338, 154);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(52, 13);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "End Time";
+            this.label_endtime.AutoSize = true;
+            this.label_endtime.Location = new System.Drawing.Point(451, 190);
+            this.label_endtime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_endtime.Name = "label_endtime";
+            this.label_endtime.Size = new System.Drawing.Size(68, 17);
+            this.label_endtime.TabIndex = 24;
+            this.label_endtime.Text = "End Time";
             // 
-            // txt_end_time
+            // txt_endtime
             // 
-            this.txt_end_time.Culture = new System.Globalization.CultureInfo("en-GB");
-            this.txt_end_time.Location = new System.Drawing.Point(341, 170);
-            this.txt_end_time.Mask = "00:00";
-            this.txt_end_time.Name = "txt_end_time";
-            this.txt_end_time.Size = new System.Drawing.Size(66, 20);
-            this.txt_end_time.TabIndex = 23;
-            this.txt_end_time.ValidatingType = typeof(System.DateTime);
+            this.txt_endtime.Culture = new System.Globalization.CultureInfo("en-GB");
+            this.txt_endtime.Location = new System.Drawing.Point(455, 209);
+            this.txt_endtime.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_endtime.Mask = "00:00";
+            this.txt_endtime.Name = "txt_endtime";
+            this.txt_endtime.Size = new System.Drawing.Size(87, 22);
+            this.txt_endtime.TabIndex = 23;
+            this.txt_endtime.ValidatingType = typeof(System.DateTime);
             // 
-            // label11
+            // label_classinfo
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(11, 9);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(131, 16);
-            this.label11.TabIndex = 25;
-            this.label11.Text = "Class Information:";
+            this.label_classinfo.AutoSize = true;
+            this.label_classinfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_classinfo.Location = new System.Drawing.Point(15, 11);
+            this.label_classinfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_classinfo.Name = "label_classinfo";
+            this.label_classinfo.Size = new System.Drawing.Size(163, 20);
+            this.label_classinfo.TabIndex = 25;
+            this.label_classinfo.Text = "Class Information:";
             // 
-            // comboBox1
+            // cmb_equipments
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(14, 271);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(393, 21);
-            this.comboBox1.TabIndex = 26;
+            this.cmb_equipments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_equipments.FormattingEnabled = true;
+            this.cmb_equipments.Location = new System.Drawing.Point(19, 334);
+            this.cmb_equipments.Margin = new System.Windows.Forms.Padding(4);
+            this.cmb_equipments.Name = "cmb_equipments";
+            this.cmb_equipments.Size = new System.Drawing.Size(523, 24);
+            this.cmb_equipments.TabIndex = 26;
             // 
-            // label7
+            // label_equipment
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 255);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 13);
-            this.label7.TabIndex = 27;
-            this.label7.Text = "Equipment";
+            this.label_equipment.AutoSize = true;
+            this.label_equipment.Location = new System.Drawing.Point(15, 314);
+            this.label_equipment.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_equipment.Name = "label_equipment";
+            this.label_equipment.Size = new System.Drawing.Size(75, 17);
+            this.label_equipment.TabIndex = 27;
+            this.label_equipment.Text = "Equipment";
             // 
-            // button1
+            // button_save
             // 
-            this.button1.Location = new System.Drawing.Point(331, 309);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button_save.Location = new System.Drawing.Point(441, 380);
+            this.button_save.Margin = new System.Windows.Forms.Padding(4);
+            this.button_save.Name = "button_save";
+            this.button_save.Size = new System.Drawing.Size(100, 28);
+            this.button_save.TabIndex = 28;
+            this.button_save.Text = "Save";
+            this.button_save.UseVisualStyleBackColor = true;
+            this.button_save.Click += new System.EventHandler(this.button1_Click);
             // 
             // cmb_repeats
             // 
@@ -215,133 +231,145 @@
             "Daily",
             "Weekly",
             "Monthly"});
-            this.cmb_repeats.Location = new System.Drawing.Point(256, 220);
+            this.cmb_repeats.Location = new System.Drawing.Point(341, 271);
+            this.cmb_repeats.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_repeats.Name = "cmb_repeats";
-            this.cmb_repeats.Size = new System.Drawing.Size(151, 21);
+            this.cmb_repeats.Size = new System.Drawing.Size(200, 24);
             this.cmb_repeats.TabIndex = 29;
             // 
-            // label8
+            // label_repeats
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(253, 204);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(47, 13);
-            this.label8.TabIndex = 30;
-            this.label8.Text = "Repeats";
+            this.label_repeats.AutoSize = true;
+            this.label_repeats.Location = new System.Drawing.Point(337, 251);
+            this.label_repeats.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_repeats.Name = "label_repeats";
+            this.label_repeats.Size = new System.Drawing.Size(61, 17);
+            this.label_repeats.TabIndex = 30;
+            this.label_repeats.Text = "Repeats";
             // 
-            // btn_attendants
+            // button_enrollmembers
             // 
-            this.btn_attendants.Location = new System.Drawing.Point(217, 309);
-            this.btn_attendants.Name = "btn_attendants";
-            this.btn_attendants.Size = new System.Drawing.Size(108, 23);
-            this.btn_attendants.TabIndex = 31;
-            this.btn_attendants.Text = "Enroll Members";
-            this.btn_attendants.UseVisualStyleBackColor = true;
-            this.btn_attendants.Click += new System.EventHandler(this.btn_attendants_Click);
+            this.button_enrollmembers.Location = new System.Drawing.Point(289, 380);
+            this.button_enrollmembers.Margin = new System.Windows.Forms.Padding(4);
+            this.button_enrollmembers.Name = "button_enrollmembers";
+            this.button_enrollmembers.Size = new System.Drawing.Size(144, 28);
+            this.button_enrollmembers.TabIndex = 31;
+            this.button_enrollmembers.Text = "Enroll Members";
+            this.button_enrollmembers.UseVisualStyleBackColor = true;
+            this.button_enrollmembers.Click += new System.EventHandler(this.button_enrollmembers_Click);
             // 
-            // button2
+            // button_viewattendants
             // 
-            this.button2.Location = new System.Drawing.Point(102, 309);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(109, 23);
-            this.button2.TabIndex = 32;
-            this.button2.Text = "View Attendants";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button_viewattendants.Location = new System.Drawing.Point(136, 380);
+            this.button_viewattendants.Margin = new System.Windows.Forms.Padding(4);
+            this.button_viewattendants.Name = "button_viewattendants";
+            this.button_viewattendants.Size = new System.Drawing.Size(145, 28);
+            this.button_viewattendants.TabIndex = 32;
+            this.button_viewattendants.Text = "View Attendants";
+            this.button_viewattendants.UseVisualStyleBackColor = true;
+            this.button_viewattendants.Click += new System.EventHandler(this.button_viewattendants_Click);
             // 
-            // groupBox1
+            // groupBox_membersenrolled
             // 
-            this.groupBox1.Controls.Add(this.lbl_max);
-            this.groupBox1.Controls.Add(this.lbl_current);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Location = new System.Drawing.Point(12, 37);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(394, 68);
-            this.groupBox1.TabIndex = 33;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Members enrolled";
+            this.groupBox_membersenrolled.Controls.Add(this.label_maxmembers_amount);
+            this.groupBox_membersenrolled.Controls.Add(this.lbl_currentmembers_amount);
+            this.groupBox_membersenrolled.Controls.Add(this.label_maxmembers);
+            this.groupBox_membersenrolled.Controls.Add(this.label_currentmembers);
+            this.groupBox_membersenrolled.Location = new System.Drawing.Point(16, 46);
+            this.groupBox_membersenrolled.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox_membersenrolled.Name = "groupBox_membersenrolled";
+            this.groupBox_membersenrolled.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox_membersenrolled.Size = new System.Drawing.Size(525, 84);
+            this.groupBox_membersenrolled.TabIndex = 33;
+            this.groupBox_membersenrolled.TabStop = false;
+            this.groupBox_membersenrolled.Text = "Members enrolled";
             // 
-            // lbl_max
+            // label_maxmembers_amount
             // 
-            this.lbl_max.AutoSize = true;
-            this.lbl_max.Location = new System.Drawing.Point(316, 31);
-            this.lbl_max.Name = "lbl_max";
-            this.lbl_max.Size = new System.Drawing.Size(13, 13);
-            this.lbl_max.TabIndex = 3;
-            this.lbl_max.Text = "0";
+            this.label_maxmembers_amount.AutoSize = true;
+            this.label_maxmembers_amount.Location = new System.Drawing.Point(421, 38);
+            this.label_maxmembers_amount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_maxmembers_amount.Name = "label_maxmembers_amount";
+            this.label_maxmembers_amount.Size = new System.Drawing.Size(16, 17);
+            this.label_maxmembers_amount.TabIndex = 3;
+            this.label_maxmembers_amount.Text = "0";
             // 
-            // lbl_current
+            // lbl_currentmembers_amount
             // 
-            this.lbl_current.AutoSize = true;
-            this.lbl_current.Location = new System.Drawing.Point(104, 31);
-            this.lbl_current.Name = "lbl_current";
-            this.lbl_current.Size = new System.Drawing.Size(13, 13);
-            this.lbl_current.TabIndex = 2;
-            this.lbl_current.Text = "0";
+            this.lbl_currentmembers_amount.AutoSize = true;
+            this.lbl_currentmembers_amount.Location = new System.Drawing.Point(139, 38);
+            this.lbl_currentmembers_amount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_currentmembers_amount.Name = "lbl_currentmembers_amount";
+            this.lbl_currentmembers_amount.Size = new System.Drawing.Size(16, 17);
+            this.lbl_currentmembers_amount.TabIndex = 2;
+            this.lbl_currentmembers_amount.Text = "0";
             // 
-            // label10
+            // label_maxmembers
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(241, 31);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(79, 13);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Max. Members:";
+            this.label_maxmembers.AutoSize = true;
+            this.label_maxmembers.Location = new System.Drawing.Point(321, 38);
+            this.label_maxmembers.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_maxmembers.Name = "label_maxmembers";
+            this.label_maxmembers.Size = new System.Drawing.Size(103, 17);
+            this.label_maxmembers.TabIndex = 1;
+            this.label_maxmembers.Text = "Max. Members:";
             // 
-            // label9
+            // label_currentmembers
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(17, 31);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(89, 13);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Current members:";
+            this.label_currentmembers.AutoSize = true;
+            this.label_currentmembers.Location = new System.Drawing.Point(23, 38);
+            this.label_currentmembers.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_currentmembers.Name = "label_currentmembers";
+            this.label_currentmembers.Size = new System.Drawing.Size(121, 17);
+            this.label_currentmembers.TabIndex = 0;
+            this.label_currentmembers.Text = "Current members:";
             // 
-            // button3
+            // button_remove
             // 
-            this.button3.Location = new System.Drawing.Point(10, 309);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 34;
-            this.button3.Text = "Remove";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button_remove.Location = new System.Drawing.Point(13, 380);
+            this.button_remove.Margin = new System.Windows.Forms.Padding(4);
+            this.button_remove.Name = "button_remove";
+            this.button_remove.Size = new System.Drawing.Size(100, 28);
+            this.button_remove.TabIndex = 34;
+            this.button_remove.Text = "Remove";
+            this.button_remove.UseVisualStyleBackColor = true;
+            this.button_remove.Click += new System.EventHandler(this.button_remove_Click);
             // 
             // frm_class_arrange
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(424, 349);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.btn_attendants);
-            this.Controls.Add(this.label8);
+            this.ClientSize = new System.Drawing.Size(565, 430);
+            this.Controls.Add(this.button_remove);
+            this.Controls.Add(this.groupBox_membersenrolled);
+            this.Controls.Add(this.button_viewattendants);
+            this.Controls.Add(this.button_enrollmembers);
+            this.Controls.Add(this.label_repeats);
             this.Controls.Add(this.cmb_repeats);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.txt_end_time);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.txt_start_time);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txt_start);
+            this.Controls.Add(this.button_save);
+            this.Controls.Add(this.label_equipment);
+            this.Controls.Add(this.cmb_equipments);
+            this.Controls.Add(this.label_classinfo);
+            this.Controls.Add(this.label_endtime);
+            this.Controls.Add(this.txt_endtime);
+            this.Controls.Add(this.label_starttime);
+            this.Controls.Add(this.txt_starttime);
+            this.Controls.Add(this.label_date);
+            this.Controls.Add(this.txt_startdate);
             this.Controls.Add(this.cmb_instructors);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label_chooseinstructor);
             this.Controls.Add(this.cmb_rooms);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label_chooserooms);
             this.Controls.Add(this.cmb_classes);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label_chooseclass);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_class_arrange";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Class Arrange";
             this.Load += new System.EventHandler(this.frm_class_arrange_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBox_membersenrolled.ResumeLayout(false);
+            this.groupBox_membersenrolled.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -349,31 +377,31 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_chooseclass;
         private System.Windows.Forms.ComboBox cmb_classes;
         private System.Windows.Forms.ComboBox cmb_rooms;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label_chooserooms;
         private System.Windows.Forms.ComboBox cmb_instructors;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MaskedTextBox txt_start;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.MaskedTextBox txt_start_time;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.MaskedTextBox txt_end_time;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label_chooseinstructor;
+        private System.Windows.Forms.MaskedTextBox txt_startdate;
+        private System.Windows.Forms.Label label_date;
+        private System.Windows.Forms.MaskedTextBox txt_starttime;
+        private System.Windows.Forms.Label label_starttime;
+        private System.Windows.Forms.Label label_endtime;
+        private System.Windows.Forms.MaskedTextBox txt_endtime;
+        private System.Windows.Forms.Label label_classinfo;
+        private System.Windows.Forms.ComboBox cmb_equipments;
+        private System.Windows.Forms.Label label_equipment;
+        private System.Windows.Forms.Button button_save;
         private System.Windows.Forms.ComboBox cmb_repeats;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button btn_attendants;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label lbl_max;
-        private System.Windows.Forms.Label lbl_current;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label_repeats;
+        private System.Windows.Forms.Button button_enrollmembers;
+        private System.Windows.Forms.Button button_viewattendants;
+        private System.Windows.Forms.GroupBox groupBox_membersenrolled;
+        private System.Windows.Forms.Label label_maxmembers_amount;
+        private System.Windows.Forms.Label lbl_currentmembers_amount;
+        private System.Windows.Forms.Label label_maxmembers;
+        private System.Windows.Forms.Label label_currentmembers;
+        private System.Windows.Forms.Button button_remove;
     }
 }

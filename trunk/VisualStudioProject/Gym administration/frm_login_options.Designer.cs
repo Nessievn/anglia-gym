@@ -28,89 +28,101 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txt_old = new System.Windows.Forms.TextBox();
-            this.txt_new = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txt_repnew = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.button_changepassw = new System.Windows.Forms.Button();
+            this.label_oldpassw = new System.Windows.Forms.Label();
+            this.txt_oldpassw = new System.Windows.Forms.TextBox();
+            this.txt_newpassw = new System.Windows.Forms.TextBox();
+            this.label_newpassw = new System.Windows.Forms.Label();
+            this.txt_repeatnewpw = new System.Windows.Forms.TextBox();
+            this.label_repeatnewp = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // button_changepassw
             // 
-            this.button1.Location = new System.Drawing.Point(111, 105);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(123, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Change password";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button_changepassw.Location = new System.Drawing.Point(148, 129);
+            this.button_changepassw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_changepassw.Name = "button_changepassw";
+            this.button_changepassw.Size = new System.Drawing.Size(164, 28);
+            this.button_changepassw.TabIndex = 0;
+            this.button_changepassw.Text = "Change password";
+            this.button_changepassw.UseVisualStyleBackColor = true;
+            this.button_changepassw.Click += new System.EventHandler(this.button_changepassw_Click);
             // 
-            // label1
+            // label_oldpassw
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Old password:";
+            this.label_oldpassw.AutoSize = true;
+            this.label_oldpassw.Location = new System.Drawing.Point(19, 22);
+            this.label_oldpassw.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_oldpassw.Name = "label_oldpassw";
+            this.label_oldpassw.Size = new System.Drawing.Size(98, 17);
+            this.label_oldpassw.TabIndex = 1;
+            this.label_oldpassw.Text = "Old password:";
             // 
-            // txt_old
+            // txt_oldpassw
             // 
-            this.txt_old.Location = new System.Drawing.Point(111, 18);
-            this.txt_old.Name = "txt_old";
-            this.txt_old.PasswordChar = '*';
-            this.txt_old.Size = new System.Drawing.Size(151, 20);
-            this.txt_old.TabIndex = 2;
+            this.txt_oldpassw.AcceptsTab = true;
+            this.txt_oldpassw.Location = new System.Drawing.Point(148, 22);
+            this.txt_oldpassw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_oldpassw.Name = "txt_oldpassw";
+            this.txt_oldpassw.PasswordChar = '*';
+            this.txt_oldpassw.Size = new System.Drawing.Size(200, 22);
+            this.txt_oldpassw.TabIndex = 2;
             // 
-            // txt_new
+            // txt_newpassw
             // 
-            this.txt_new.Location = new System.Drawing.Point(111, 44);
-            this.txt_new.Name = "txt_new";
-            this.txt_new.PasswordChar = '*';
-            this.txt_new.Size = new System.Drawing.Size(151, 20);
-            this.txt_new.TabIndex = 4;
+            this.txt_newpassw.AcceptsTab = true;
+            this.txt_newpassw.Location = new System.Drawing.Point(148, 54);
+            this.txt_newpassw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_newpassw.Name = "txt_newpassw";
+            this.txt_newpassw.PasswordChar = '*';
+            this.txt_newpassw.Size = new System.Drawing.Size(200, 22);
+            this.txt_newpassw.TabIndex = 4;
             // 
-            // label2
+            // label_newpassw
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 44);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "New password:";
+            this.label_newpassw.AutoSize = true;
+            this.label_newpassw.Location = new System.Drawing.Point(19, 54);
+            this.label_newpassw.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_newpassw.Name = "label_newpassw";
+            this.label_newpassw.Size = new System.Drawing.Size(103, 17);
+            this.label_newpassw.TabIndex = 3;
+            this.label_newpassw.Text = "New password:";
             // 
-            // txt_repnew
+            // txt_repeatnewpw
             // 
-            this.txt_repnew.Location = new System.Drawing.Point(111, 70);
-            this.txt_repnew.Name = "txt_repnew";
-            this.txt_repnew.PasswordChar = '*';
-            this.txt_repnew.Size = new System.Drawing.Size(151, 20);
-            this.txt_repnew.TabIndex = 6;
+            this.txt_repeatnewpw.AcceptsReturn = true;
+            this.txt_repeatnewpw.AcceptsTab = true;
+            this.txt_repeatnewpw.Location = new System.Drawing.Point(148, 86);
+            this.txt_repeatnewpw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_repeatnewpw.Name = "txt_repeatnewpw";
+            this.txt_repeatnewpw.PasswordChar = '*';
+            this.txt_repeatnewpw.Size = new System.Drawing.Size(200, 22);
+            this.txt_repeatnewpw.TabIndex = 6;
             // 
-            // label3
+            // label_repeatnewp
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 70);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Repeat password:";
+            this.label_repeatnewp.AutoSize = true;
+            this.label_repeatnewp.Location = new System.Drawing.Point(19, 86);
+            this.label_repeatnewp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_repeatnewp.Name = "label_repeatnewp";
+            this.label_repeatnewp.Size = new System.Drawing.Size(122, 17);
+            this.label_repeatnewp.TabIndex = 5;
+            this.label_repeatnewp.Text = "Repeat password:";
             // 
             // frm_login_options
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(281, 140);
-            this.Controls.Add(this.txt_repnew);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txt_new);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txt_old);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(375, 172);
+            this.Controls.Add(this.txt_repeatnewpw);
+            this.Controls.Add(this.label_repeatnewp);
+            this.Controls.Add(this.txt_newpassw);
+            this.Controls.Add(this.label_newpassw);
+            this.Controls.Add(this.txt_oldpassw);
+            this.Controls.Add(this.label_oldpassw);
+            this.Controls.Add(this.button_changepassw);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frm_login_options";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Password Update";
@@ -121,12 +133,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txt_old;
-        private System.Windows.Forms.TextBox txt_new;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txt_repnew;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button_changepassw;
+        private System.Windows.Forms.Label label_oldpassw;
+        private System.Windows.Forms.TextBox txt_oldpassw;
+        private System.Windows.Forms.TextBox txt_newpassw;
+        private System.Windows.Forms.Label label_newpassw;
+        private System.Windows.Forms.TextBox txt_repeatnewpw;
+        private System.Windows.Forms.Label label_repeatnewp;
     }
 }

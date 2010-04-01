@@ -17,7 +17,7 @@ namespace Gym_administration
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button_search_Click(object sender, EventArgs e)
         {
             mySqlConn conn = new mySqlConn();
             conn.connect();
@@ -34,7 +34,7 @@ namespace Gym_administration
             dg_rooms.ReadOnly = true;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button_addroom_Click(object sender, EventArgs e)
         {
             frm_room frmRoom = new frm_room();
             frmRoom.MdiParent = this.MdiParent;
@@ -70,9 +70,6 @@ namespace Gym_administration
             }
         }
 
-        private void dg_rooms_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
     }
 }

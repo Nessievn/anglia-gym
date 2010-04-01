@@ -29,7 +29,7 @@ namespace Gym_administration
 
         }
 
-        private void btn_accept_Click(object sender, EventArgs e)
+        private void button_accept_Click(object sender, EventArgs e)
         {
             mySqlConn conn = new mySqlConn();
             conn.connect();
@@ -52,7 +52,7 @@ namespace Gym_administration
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }

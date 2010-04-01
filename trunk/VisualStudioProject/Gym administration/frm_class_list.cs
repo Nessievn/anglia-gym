@@ -49,14 +49,14 @@ namespace Gym_administration
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button_addclass_Click(object sender, EventArgs e)
         {
             frm_class frmClass = new frm_class();
             frmClass.MdiParent = this.MdiParent;
             frmClass.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button_search_Click(object sender, EventArgs e)
         {
             mySqlConn conn = new mySqlConn();
             conn.connect();
@@ -72,6 +72,7 @@ namespace Gym_administration
             dg_classes.AllowUserToAddRows = false;
             dg_classes.ReadOnly = true;
         }
+
 
 
     }

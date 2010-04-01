@@ -28,73 +28,79 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.label_roomname = new System.Windows.Forms.Label();
             this.txt_roomname = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button_search = new System.Windows.Forms.Button();
             this.dg_rooms = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
+            this.button_addroom = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dg_rooms)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // label_roomname
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 13);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Room Name";
+            this.label_roomname.AutoSize = true;
+            this.label_roomname.Location = new System.Drawing.Point(12, 11);
+            this.label_roomname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_roomname.Name = "label_roomname";
+            this.label_roomname.Size = new System.Drawing.Size(86, 17);
+            this.label_roomname.TabIndex = 16;
+            this.label_roomname.Text = "Room Name";
             // 
             // txt_roomname
             // 
-            this.txt_roomname.Location = new System.Drawing.Point(11, 25);
+            this.txt_roomname.Location = new System.Drawing.Point(15, 31);
+            this.txt_roomname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_roomname.Name = "txt_roomname";
-            this.txt_roomname.Size = new System.Drawing.Size(177, 20);
+            this.txt_roomname.Size = new System.Drawing.Size(235, 22);
             this.txt_roomname.TabIndex = 15;
             // 
-            // button1
+            // button_search
             // 
-            this.button1.Location = new System.Drawing.Point(194, 22);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button_search.Location = new System.Drawing.Point(259, 27);
+            this.button_search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_search.Name = "button_search";
+            this.button_search.Size = new System.Drawing.Size(100, 28);
+            this.button_search.TabIndex = 14;
+            this.button_search.Text = "Search";
+            this.button_search.UseVisualStyleBackColor = true;
+            this.button_search.Click += new System.EventHandler(this.button_search_Click);
             // 
             // dg_rooms
             // 
             this.dg_rooms.AllowUserToAddRows = false;
             this.dg_rooms.AllowUserToDeleteRows = false;
             this.dg_rooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_rooms.Location = new System.Drawing.Point(12, 51);
+            this.dg_rooms.Location = new System.Drawing.Point(16, 63);
+            this.dg_rooms.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dg_rooms.Name = "dg_rooms";
-            this.dg_rooms.Size = new System.Drawing.Size(441, 244);
+            this.dg_rooms.RowTemplate.Height = 24;
+            this.dg_rooms.Size = new System.Drawing.Size(588, 300);
             this.dg_rooms.TabIndex = 13;
-            this.dg_rooms.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_rooms_CellContentClick);
             this.dg_rooms.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_rooms_CellDoubleClick);
             // 
-            // button2
+            // button_addroom
             // 
-            this.button2.Location = new System.Drawing.Point(378, 22);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 17;
-            this.button2.Text = "Add Room";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button_addroom.Location = new System.Drawing.Point(504, 27);
+            this.button_addroom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_addroom.Name = "button_addroom";
+            this.button_addroom.Size = new System.Drawing.Size(100, 28);
+            this.button_addroom.TabIndex = 17;
+            this.button_addroom.Text = "Add Room";
+            this.button_addroom.UseVisualStyleBackColor = true;
+            this.button_addroom.Click += new System.EventHandler(this.button_addroom_Click);
             // 
             // frm_room_list
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(462, 308);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(616, 379);
+            this.Controls.Add(this.button_addroom);
+            this.Controls.Add(this.label_roomname);
             this.Controls.Add(this.txt_roomname);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button_search);
             this.Controls.Add(this.dg_rooms);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frm_room_list";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Room list";
@@ -107,10 +113,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_roomname;
         private System.Windows.Forms.TextBox txt_roomname;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_search;
         private System.Windows.Forms.DataGridView dg_rooms;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button_addroom;
     }
 }

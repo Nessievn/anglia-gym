@@ -28,93 +28,104 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_accept = new System.Windows.Forms.Button();
+            this.button_accept = new System.Windows.Forms.Button();
             this.txt_username = new System.Windows.Forms.TextBox();
             this.txt_password = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.login_info = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label_username = new System.Windows.Forms.Label();
+            this.label_password = new System.Windows.Forms.Label();
+            this.label_pleaselogin = new System.Windows.Forms.Label();
+            this.button_cancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btn_accept
+            // button_accept
             // 
-            this.btn_accept.Location = new System.Drawing.Point(133, 101);
-            this.btn_accept.Name = "btn_accept";
-            this.btn_accept.Size = new System.Drawing.Size(100, 23);
-            this.btn_accept.TabIndex = 0;
-            this.btn_accept.Text = "Accept";
-            this.btn_accept.UseVisualStyleBackColor = true;
-            this.btn_accept.Click += new System.EventHandler(this.btn_accept_Click);
+            this.button_accept.Location = new System.Drawing.Point(177, 124);
+            this.button_accept.Margin = new System.Windows.Forms.Padding(4);
+            this.button_accept.Name = "button_accept";
+            this.button_accept.Size = new System.Drawing.Size(133, 28);
+            this.button_accept.TabIndex = 0;
+            this.button_accept.Text = "Accept";
+            this.button_accept.UseVisualStyleBackColor = true;
+            this.button_accept.Click += new System.EventHandler(this.button_accept_Click);
             // 
             // txt_username
             // 
-            this.txt_username.Text = "admin";
-            this.txt_username.Location = new System.Drawing.Point(133, 35);
+            this.txt_username.AcceptsReturn = true;
+            this.txt_username.AcceptsTab = true;
+            this.txt_username.Location = new System.Drawing.Point(177, 43);
+            this.txt_username.Margin = new System.Windows.Forms.Padding(4);
             this.txt_username.Name = "txt_username";
-            this.txt_username.Size = new System.Drawing.Size(100, 20);
+            this.txt_username.Size = new System.Drawing.Size(132, 22);
             this.txt_username.TabIndex = 1;
+            this.txt_username.Text = "admin";
             // 
             // txt_password
             // 
-            this.txt_password.Text = "admin";
-            this.txt_password.Location = new System.Drawing.Point(133, 61);
+            this.txt_password.AcceptsReturn = true;
+            this.txt_password.AcceptsTab = true;
+            this.txt_password.Location = new System.Drawing.Point(177, 75);
+            this.txt_password.Margin = new System.Windows.Forms.Padding(4);
             this.txt_password.Name = "txt_password";
-            this.txt_password.Size = new System.Drawing.Size(100, 20);
+            this.txt_password.Size = new System.Drawing.Size(132, 22);
             this.txt_password.TabIndex = 2;
+            this.txt_password.Text = "admin";
             this.txt_password.UseSystemPasswordChar = true;
             // 
-            // label1
+            // label_username
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Username";
+            this.label_username.AutoSize = true;
+            this.label_username.Location = new System.Drawing.Point(39, 43);
+            this.label_username.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_username.Name = "label_username";
+            this.label_username.Size = new System.Drawing.Size(73, 17);
+            this.label_username.TabIndex = 3;
+            this.label_username.Text = "Username";
             // 
-            // label2
+            // label_password
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(29, 61);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Password";
+            this.label_password.AutoSize = true;
+            this.label_password.Location = new System.Drawing.Point(39, 75);
+            this.label_password.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_password.Name = "label_password";
+            this.label_password.Size = new System.Drawing.Size(69, 17);
+            this.label_password.TabIndex = 4;
+            this.label_password.Text = "Password";
             // 
-            // login_info
+            // label_pleaselogin
             // 
-            this.login_info.AutoSize = true;
-            this.login_info.Location = new System.Drawing.Point(29, 9);
-            this.login_info.Name = "login_info";
-            this.login_info.Size = new System.Drawing.Size(116, 13);
-            this.login_info.TabIndex = 5;
-            this.login_info.Text = "Please log in to access";
-            
+            this.label_pleaselogin.AutoSize = true;
+            this.label_pleaselogin.Location = new System.Drawing.Point(39, 11);
+            this.label_pleaselogin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_pleaselogin.Name = "label_pleaselogin";
+            this.label_pleaselogin.Size = new System.Drawing.Size(153, 17);
+            this.label_pleaselogin.TabIndex = 5;
+            this.label_pleaselogin.Text = "Please log in to access";
             // 
-            // button1
+            // button_cancel
             // 
-            this.button1.Location = new System.Drawing.Point(27, 101);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Cancel";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button_cancel.Location = new System.Drawing.Point(36, 124);
+            this.button_cancel.Margin = new System.Windows.Forms.Padding(4);
+            this.button_cancel.Name = "button_cancel";
+            this.button_cancel.Size = new System.Drawing.Size(133, 28);
+            this.button_cancel.TabIndex = 6;
+            this.button_cancel.Text = "Cancel";
+            this.button_cancel.UseVisualStyleBackColor = true;
+            this.button_cancel.Click += new System.EventHandler(this.button_cancel_Click);
             // 
             // frm_login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(276, 141);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.login_info);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(368, 174);
+            this.Controls.Add(this.button_cancel);
+            this.Controls.Add(this.label_pleaselogin);
+            this.Controls.Add(this.label_password);
+            this.Controls.Add(this.label_username);
             this.Controls.Add(this.txt_password);
             this.Controls.Add(this.txt_username);
-            this.Controls.Add(this.btn_accept);
+            this.Controls.Add(this.button_accept);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gym Administration Login Form";
@@ -127,13 +138,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btn_accept;
+        private System.Windows.Forms.Button button_accept;
         private System.Windows.Forms.TextBox txt_username;
         private System.Windows.Forms.TextBox txt_password;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label login_info;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label_username;
+        private System.Windows.Forms.Label label_password;
+        private System.Windows.Forms.Label label_pleaselogin;
+        private System.Windows.Forms.Button button_cancel;
     }
 }
 

@@ -42,7 +42,7 @@ namespace Gym_administration
             rd_group.Checked = true;
         }
         //SAVE
-        private void button1_Click(object sender, EventArgs e)
+        private void button_save_Click(object sender, EventArgs e)
         {
             string sType = (rd_group.Checked)?"Group":"Personal";
 
@@ -59,13 +59,13 @@ namespace Gym_administration
             clClass.bSave();
 
         }
-        //CANCEL
-        private void button2_Click(object sender, EventArgs e)
+        //CLOSE
+        private void button_close_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button_remove_Click(object sender, EventArgs e)
         {
             DialogResult res = MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (res == DialogResult.Yes)
@@ -78,40 +78,6 @@ namespace Gym_administration
             }
         }
 
-        private void txt_classdesc_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txt_classname_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rd_personal_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rd_group_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
+ 
     }
 }
