@@ -134,7 +134,7 @@ namespace Gym_administration
                 // Display the new form.
                 mdiFrmClassList.Show();
             }
-//Edit Class Bookings
+//Edit Arranged Class
             else if (sSelectedBand == "manager" && panelIcon.Index.ToString() == "7")
             {
                 // Creating the child form login
@@ -386,7 +386,7 @@ namespace Gym_administration
                     
                     iconPanel1.AddIcon("Add Class", Image.FromFile(Application.StartupPath + "/../../icons/class_add_128.png"), new EventHandler(PanelEvent));
                     iconPanel1.AddIcon("Edit Class", Image.FromFile(Application.StartupPath + "/../../icons/class_edit_128.png"), new EventHandler(PanelEvent));
-                    iconPanel1.AddIcon("Edit Class Bookings", Image.FromFile(Application.StartupPath + "/../../icons/class_book_edit_128.png"), new EventHandler(PanelEvent));
+                    iconPanel1.AddIcon("Edit Arranged Class", Image.FromFile(Application.StartupPath + "/../../icons/class_book_edit_128.png"), new EventHandler(PanelEvent));
                     
                     this.outlookBar.SelectBand(0);
                     outlookBar.Show();
@@ -397,8 +397,8 @@ namespace Gym_administration
 
                     iconPanel2.AddIcon("Add New Member", Image.FromFile(Application.StartupPath + "/../../icons/member_add_128.png"), new EventHandler(PanelEvent));
                     iconPanel2.AddIcon("Edit Member", Image.FromFile(Application.StartupPath + "/../../icons/member_edit_128.png"), new EventHandler(PanelEvent));
-                    iconPanel2.AddIcon("Book Class", Image.FromFile(Application.StartupPath + "/../../icons/class_book_128.png"), new EventHandler(PanelEvent));
-                    iconPanel2.AddIcon("Search Class Bookings", Image.FromFile(Application.StartupPath + "/../../icons/class_book_search_128.png"), new EventHandler(PanelEvent));
+                    iconPanel2.AddIcon("Arrange Class", Image.FromFile(Application.StartupPath + "/../../icons/class_book_128.png"), new EventHandler(PanelEvent));
+                    iconPanel2.AddIcon("Edit Arranged Class", Image.FromFile(Application.StartupPath + "/../../icons/class_book_edit_128.png"), new EventHandler(PanelEvent));
                     iconPanel2.AddIcon("Book Equipment", Image.FromFile(Application.StartupPath + "/../../icons/equipment_book_128.png"), new EventHandler(PanelEvent));
                     iconPanel2.AddIcon("Search Eq. Bookings", Image.FromFile(Application.StartupPath + "/../../icons/equipment_book_search_128.png"), new EventHandler(PanelEvent));
                     iconPanel2.AddIcon("Search Rooms", Image.FromFile(Application.StartupPath + "/../../icons/room_search_128.png"), new EventHandler(PanelEvent));
