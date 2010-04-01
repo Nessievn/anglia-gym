@@ -87,8 +87,7 @@ namespace Gym_administration
             DictionaryEntry de = (DictionaryEntry)cmb_classes.SelectedItem;
             string sIdClass = de.Key.ToString();
 
-            //de = (DictionaryEntry)cmb_instructors.SelectedItem;
-            de = (DictionaryEntry)cmb_rooms.SelectedItem;
+            de = (DictionaryEntry)cmb_instructors.SelectedItem;
             string sIdStaff = de.Key.ToString();
             de = (DictionaryEntry)cmb_rooms.SelectedItem;
             string sIdRoom = de.Key.ToString();
