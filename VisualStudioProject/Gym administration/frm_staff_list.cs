@@ -37,7 +37,7 @@ namespace Gym_administration
 
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button_search_Click(object sender, EventArgs e)
         {
             mySqlConn conn = new mySqlConn();
             conn.connect();
@@ -78,17 +78,20 @@ namespace Gym_administration
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button_addstaffmember_Click(object sender, EventArgs e)
         {
             frm_staff frmStaff = new frm_staff();
             frmStaff.MdiParent = this.MdiParent;
             frmStaff.Show();
         }
+
+        
+        
 
     }
 }

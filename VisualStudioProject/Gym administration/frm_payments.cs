@@ -16,7 +16,7 @@ namespace Gym_administration
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button_addpayments_Click(object sender, EventArgs e)
         {
             frm_member_list frmMemberList = new frm_member_list(true);
             frmMemberList.MdiParent = this.MdiParent;
@@ -43,7 +43,7 @@ namespace Gym_administration
             dg_payments.ReadOnly = true;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }

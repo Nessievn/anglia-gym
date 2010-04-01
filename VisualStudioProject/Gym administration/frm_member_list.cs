@@ -38,7 +38,8 @@ namespace Gym_administration
             this.cb = new ClassBooked();
             this.bPayments = false;
         }
-        private void Form1_Load(object sender, EventArgs e)
+
+        private void frm_member_list_Load(object sender, EventArgs e)
         {
             string sQuery = "";
             mySqlConn conn = new mySqlConn();
@@ -112,7 +113,7 @@ namespace Gym_administration
 
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button_search_Click(object sender, EventArgs e)
         {
             mySqlConn conn = new mySqlConn();
             conn.connect();
@@ -138,10 +139,7 @@ namespace Gym_administration
             dg_members.ReadOnly = true;
         }
 
-        private void dg_members_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
 
     }
 }

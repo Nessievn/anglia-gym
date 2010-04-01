@@ -32,7 +32,7 @@ namespace Gym_administration
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button_save_Click(object sender, EventArgs e)
         {
             try
             {
@@ -53,7 +53,7 @@ namespace Gym_administration
             rmRoom.bSave();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button_remove_Click(object sender, EventArgs e)
         {
 
             DialogResult res = MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -64,14 +64,14 @@ namespace Gym_administration
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
         private void frm_room_Load(object sender, EventArgs e)
         {
-
+            //Startup load
         }
     }
 }

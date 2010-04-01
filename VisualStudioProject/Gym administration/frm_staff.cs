@@ -56,22 +56,19 @@ namespace Gym_administration
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
         private void frm_staff_Load(object sender, EventArgs e)
         {
-
+            //Startup load
         }
 
-        private void cmb_securitylevel_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void button_save_Click(object sender, EventArgs e)
         {
             stfStaff.SFirstName = txt_firstName.Text;
             stfStaff.SLastName = txt_lastName.Text;
@@ -104,14 +101,6 @@ namespace Gym_administration
             stfStaff.bSave();
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
-        private void txt_firstName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

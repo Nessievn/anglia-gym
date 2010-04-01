@@ -1,4 +1,12 @@
-﻿using System;
+﻿//Creates a Gym Class that is a general gym "class activity" (NOT a certain class at a certain time)
+//Constructor (default)     sets id_class to -1 and establishes connection for saving new class
+//Constructor (id_class)    loads in all columns from a single row of the CLASSES table
+//Method 1
+//bRemove   removes a class from the CLASSES table
+//Method 2
+//bSave     saves a new class to the CLASSES table
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

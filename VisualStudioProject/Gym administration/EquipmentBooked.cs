@@ -22,13 +22,6 @@ namespace Gym_administration
             set { id_staff = value; }
         }
 
-        private int id_equipment;
-        public int Id_equipment
-        {
-            get { return id_equipment; }
-            set { id_equipment = value; }
-        }
-
         private int id_member;
         public int Id_member
         {
@@ -63,6 +56,19 @@ namespace Gym_administration
             get { return sIsSet; }
             set { sIsSet = value; }
         }
+        private int id_equipment;
+        public int Id_equipment
+        {
+            get { return id_equipment; }
+            set { id_equipment = value; }
+        }
+        private int sBorrowedAmount;
+        public int SBorrowedAmount
+        {
+            get { return sBorrowedAmount; }
+            set { sBorrowedAmount = value; }
+        }
+
 
 /*
         public EqBooked(int iIdEqBooked)
@@ -70,11 +76,15 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             // We launch the query
-            List<Hashtable> lhResultset = conn.lhSqlQuery("SELECT DISTINCT eb.id_eq_booking, eb.id_class_instance, eb.id_member, m.lastName, eb.id_equipment, e.name, eb.id_staff, s.firstName, eb.date_start, eb.date_due FROM equipment_bookings eb, members m, equipment e, class_instance ci, staff s WHERE eb.id_member = m.id_member AND eb.id_equipment = e.id_equipment AND eb.id_staff = s.id_staff;");
-
+            List<Hashtable> lhResultset = conn.lhSqlQuery("Select * from equipment_bookings WHERE id_eq_bookings = '" + iIdEqBooked + "'");
             // Check if we found the equipment booking
             if ((int)lhResultset.Count > 0)
             {
+
+
+
+
+
                 this.Id_eq_booking = int.Parse(lhResultset[0]["id_eq_booking"].ToString());
                 this.Id_class_instance = int.Parse(lhResultset[0]["id_class_instance"].ToString());
                 this.Id_equipment = int.Parse(lhResultset[0]["id_equipment"].ToString());

@@ -1,4 +1,7 @@
-﻿using System;
+﻿
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -84,7 +87,7 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             // We launch the query
-            List<Hashtable> lhResultset = conn.lhSqlQuery("SELECT ci.id_class_instance, c.name, c.type, c.description, s.firstName, s.id_staff, DATE_FORMAT(ci.date, '%d/%m/%Y') date, ci.start_time, ci.end_time, ci.id_room, c.id_class, ci.frequency FROM classes c, class_instance ci, staff s WHERE ci.id_class = c.id_class AND ci.id_staff = s.id_staff AND ci.id_class_instance = '"+iIdClassBooked+"'");
+            List<Hashtable> lhResultset = conn.lhSqlQuery("SELECT ci.id_class_instance, c.name, c.type, c.description, s.firstName, s.id_staff, DATE_FORMAT(ci.date, '%d/%m/%Y') date, ci.start_time, ci.end_time, ci.id_room, c.id_class, ci.frequency FROM classes c, class_instance ci, staff s WHERE ci.id_class = c.id_class AND ci.id_staff = s.id_staff AND ci.id_class_instance = '" + iIdClassBooked + "'");
 
             // Check if we found the member
             if ((int)lhResultset.Count > 0)

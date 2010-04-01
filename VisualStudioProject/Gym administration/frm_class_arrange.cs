@@ -19,7 +19,7 @@ namespace Gym_administration
         {
             InitializeComponent();
             clbClassBooked = new ClassBooked();
-            btn_attendants.Enabled = false;
+            button_enrollmembers.Enabled = false;
         }
         public frm_class_arrange(int iIdClassBooked, frm_class_arrange_list frmClArrList)
         {
@@ -30,10 +30,10 @@ namespace Gym_administration
                 MessageBox.Show("The class instance could not be found");
             else
             {
-                txt_end_time.Text = clbClassBooked.SEndTime;
-                txt_start.Text = clbClassBooked.SDateStart;
-                txt_start_time.Text = clbClassBooked.SStartTime;
-                btn_attendants.Enabled = true;
+                txt_endtime.Text = clbClassBooked.SEndTime;
+                txt_startdate.Text = clbClassBooked.SDateStart;
+                txt_starttime.Text = clbClassBooked.SStartTime;
+                button_enrollmembers.Enabled = true;
             }
         }
         private void frm_class_arrange_Load(object sender, EventArgs e)
@@ -69,13 +69,13 @@ namespace Gym_administration
                 cmb_repeats.SelectedIndex = cmb_repeats.FindString(clbClassBooked.SFrequency);
                 sQuery = "SELECT COUNT(*) q FROM gym.class_bookings WHERE id_class_instance = '" + this.clbClassBooked.Id_class_instance + "'";
                 List<Hashtable> lhRes = conn.lhSqlQuery(sQuery);
-                lbl_current.Text = lhRes[0]["q"].ToString();
+                lbl_currentmembers_amount.Text = lhRes[0]["q"].ToString();
                 sQuery = "SELECT r.size FROM gym.class_instance ci, gym.rooms r WHERE ci.id_room = r.id_room AND ci.id_class_instance = '" + this.clbClassBooked.Id_class_instance + "'";
                 lhRes = conn.lhSqlQuery(sQuery);
-                lbl_max.Text = lhRes[0]["size"].ToString();
+                label_maxmembers_amount.Text = lhRes[0]["size"].ToString();
             }
             else
-                button3.Enabled = false;
+                button_remove.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -83,10 +83,12 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             // Check data
-            string sDate = Utils.sGetMysqlDate(txt_start.Text);
+            string sDate = Utils.sGetMysqlDate(txt_startdate.Text);
             DictionaryEntry de = (DictionaryEntry)cmb_classes.SelectedItem;
             string sIdClass = de.Key.ToString();
-            de = (DictionaryEntry)cmb_instructors.SelectedItem;
+
+            //de = (DictionaryEntry)cmb_instructors.SelectedItem;
+            de = (DictionaryEntry)cmb_rooms.SelectedItem;
             string sIdStaff = de.Key.ToString();
             de = (DictionaryEntry)cmb_rooms.SelectedItem;
             string sIdRoom = de.Key.ToString();
@@ -95,14 +97,14 @@ namespace Gym_administration
             {
                 MessageBox.Show("Check the date format!");
                 return;
-            }else if(Utils.bValidateTime(txt_start_time.Text) == false || Utils.bValidateTime(txt_start_time.Text) == false)
+            }else if(Utils.bValidateTime(txt_starttime.Text) == false || Utils.bValidateTime(txt_starttime.Text) == false)
             {
                 MessageBox.Show("Check the time format!");
                 return;
             }
             
             // Check if we found the user
-            if (this.clbClassBooked.bCheckOverlap(sDate, sIdRoom, sIdStaff, txt_start_time.Text, txt_end_time.Text))
+            if (this.clbClassBooked.bCheckOverlap(sDate, sIdRoom, sIdStaff, txt_starttime.Text, txt_endtime.Text))
                 MessageBox.Show("The class is overlapping with another class, please specify another date, room or instructor.");
             else
             {
@@ -110,12 +112,12 @@ namespace Gym_administration
                 this.clbClassBooked.RRoom = new Room(int.Parse(sIdRoom));
                 this.clbClassBooked.SClass = new Class(int.Parse(sIdClass));
                 this.clbClassBooked.SDateStart = sDate;
-                this.clbClassBooked.SEndTime = txt_end_time.Text;
+                this.clbClassBooked.SEndTime = txt_endtime.Text;
                 this.clbClassBooked.SFrequency = cmb_repeats.Text;
-                this.clbClassBooked.SStartTime = txt_start_time.Text;
+                this.clbClassBooked.SStartTime = txt_starttime.Text;
                 if (this.clbClassBooked.bSave())
                 {
-                    btn_attendants.Enabled = true;
+                    button_enrollmembers.Enabled = true;
                 }
             }
 
@@ -123,13 +125,13 @@ namespace Gym_administration
 
         }
 
-        private void btn_attendants_Click(object sender, EventArgs e)
+        private void button_enrollmembers_Click(object sender, EventArgs e)
         {
             frm_member_list frmMemberList = new frm_member_list(clbClassBooked,false);
             frmMemberList.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button_viewattendants_Click(object sender, EventArgs e)
         {
             frm_member_list frmMemberList = new frm_member_list(clbClassBooked, true);
             frmMemberList.Show();
@@ -143,11 +145,10 @@ namespace Gym_administration
             string sIdRoom = de.Key.ToString();
             string sQuery = "SELECT size FROM gym.rooms WHERE id_room = '" + sIdRoom + "'";
             List<Hashtable> lhRes = conn.lhSqlQuery(sQuery);
-            lbl_max.Text = lhRes[0]["size"].ToString();
+            label_maxmembers_amount.Text = lhRes[0]["size"].ToString();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
+        private void button_remove_Click(object sender, EventArgs e)        {
             DialogResult res = MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (res == DialogResult.Yes)
             {
@@ -159,5 +160,9 @@ namespace Gym_administration
                 this.Close();
             }
         }
+
+
+
+
     }
 }

@@ -1,4 +1,8 @@
-﻿using System;
+﻿//Form Handler for payments. It lists all payments and let the user add a new payment,
+//where it lists all members, then after selecting a member, 
+//it displays a new form to add a payment to the payment list.
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,10 +32,10 @@ namespace Gym_administration
 
         private void frm_add_payment_Load(object sender, EventArgs e)
         {
-
+            //Startup
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button_addpayment_Click(object sender, EventArgs e)
         {
             if (txt_amount.Text.Length < 1)
             {

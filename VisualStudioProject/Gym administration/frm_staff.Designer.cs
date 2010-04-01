@@ -29,60 +29,60 @@
         private void InitializeComponent()
         {
             this.cmb_position = new System.Windows.Forms.ComboBox();
-            this.label23 = new System.Windows.Forms.Label();
+            this.label_position = new System.Windows.Forms.Label();
             this.cmb_contract = new System.Windows.Forms.ComboBox();
             this.txt_pc = new System.Windows.Forms.MaskedTextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
+            this.label_contract = new System.Windows.Forms.Label();
+            this.label_pc = new System.Windows.Forms.Label();
             this.txt_county = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
+            this.label_county = new System.Windows.Forms.Label();
             this.txt_city = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label_city = new System.Windows.Forms.Label();
+            this.button_cancel = new System.Windows.Forms.Button();
+            this.button_save = new System.Windows.Forms.Button();
             this.txt_medical_notes = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
+            this.label_medical_notes = new System.Windows.Forms.Label();
             this.txt_dob = new System.Windows.Forms.MaskedTextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.txt_emerg_mobile = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
+            this.label_emerg_mobile = new System.Windows.Forms.Label();
             this.txt_emerg_telephone = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
+            this.label_emerg_telephone = new System.Windows.Forms.Label();
             this.txt_allergies = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.label_allergies = new System.Windows.Forms.Label();
             this.txt_emerg_relation = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
+            this.label_emerg_relation = new System.Windows.Forms.Label();
             this.txt_doctor_phone = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.label_doctor_phone = new System.Windows.Forms.Label();
             this.txt_doctor_name = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
+            this.label_doctor_name = new System.Windows.Forms.Label();
             this.txt_emerg_name = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.label_emerg_name = new System.Windows.Forms.Label();
+            this.label_emergencycontact = new System.Windows.Forms.Label();
             this.txt_address2 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.label_address2 = new System.Windows.Forms.Label();
             this.txt_address1 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.label_address1 = new System.Windows.Forms.Label();
             this.txt_telephone = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.label_telephone = new System.Windows.Forms.Label();
             this.txt_email = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.label_email = new System.Windows.Forms.Label();
+            this.label_dob = new System.Windows.Forms.Label();
             this.txt_lastName = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.label_lastName = new System.Windows.Forms.Label();
             this.txt_firstName = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label_firstName = new System.Windows.Forms.Label();
+            this.label_staffinfo = new System.Windows.Forms.Label();
             this.txt_qualifications = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.label_qualifications = new System.Windows.Forms.Label();
+            this.label_mobile = new System.Windows.Forms.Label();
             this.txt_mobile = new System.Windows.Forms.TextBox();
             this.txt_natinsnumb = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label_natinsnumb = new System.Windows.Forms.Label();
             this.txt_contract_start = new System.Windows.Forms.MaskedTextBox();
-            this.label27 = new System.Windows.Forms.Label();
+            this.label_contract_start = new System.Windows.Forms.Label();
             this.txt_contract_finish = new System.Windows.Forms.MaskedTextBox();
-            this.label28 = new System.Windows.Forms.Label();
+            this.label_contract_finish = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cmb_position
@@ -94,20 +94,20 @@
             "Reception",
             "Manager"});
             this.cmb_position.Location = new System.Drawing.Point(233, 350);
-            this.cmb_position.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmb_position.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_position.Name = "cmb_position";
             this.cmb_position.Size = new System.Drawing.Size(160, 24);
             this.cmb_position.TabIndex = 77;
             // 
-            // label23
+            // label_position
             // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(229, 330);
-            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(58, 17);
-            this.label23.TabIndex = 104;
-            this.label23.Text = "Position";
+            this.label_position.AutoSize = true;
+            this.label_position.Location = new System.Drawing.Point(229, 330);
+            this.label_position.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_position.Name = "label_position";
+            this.label_position.Size = new System.Drawing.Size(58, 17);
+            this.label_position.TabIndex = 104;
+            this.label_position.Text = "Position";
             // 
             // cmb_contract
             // 
@@ -119,7 +119,7 @@
             "Part-time",
             "Full-time"});
             this.cmb_contract.Location = new System.Drawing.Point(231, 300);
-            this.cmb_contract.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmb_contract.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_contract.Name = "cmb_contract";
             this.cmb_contract.Size = new System.Drawing.Size(160, 24);
             this.cmb_contract.TabIndex = 74;
@@ -127,114 +127,114 @@
             // txt_pc
             // 
             this.txt_pc.Location = new System.Drawing.Point(13, 300);
-            this.txt_pc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_pc.Margin = new System.Windows.Forms.Padding(4);
             this.txt_pc.Mask = ">LCCC 9LL";
             this.txt_pc.Name = "txt_pc";
             this.txt_pc.Size = new System.Drawing.Size(132, 22);
             this.txt_pc.TabIndex = 73;
             // 
-            // label25
+            // label_contract
             // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(227, 281);
-            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(121, 17);
-            this.label25.TabIndex = 103;
-            this.label25.Text = "Employment Type";
+            this.label_contract.AutoSize = true;
+            this.label_contract.Location = new System.Drawing.Point(227, 281);
+            this.label_contract.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_contract.Name = "label_contract";
+            this.label_contract.Size = new System.Drawing.Size(121, 17);
+            this.label_contract.TabIndex = 103;
+            this.label_contract.Text = "Employment Type";
             // 
-            // label26
+            // label_pc
             // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(9, 281);
-            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(73, 17);
-            this.label26.TabIndex = 102;
-            this.label26.Text = "Post Code";
+            this.label_pc.AutoSize = true;
+            this.label_pc.Location = new System.Drawing.Point(9, 281);
+            this.label_pc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_pc.Name = "label_pc";
+            this.label_pc.Size = new System.Drawing.Size(73, 17);
+            this.label_pc.TabIndex = 102;
+            this.label_pc.Text = "Post Code";
             // 
             // txt_county
             // 
             this.txt_county.Location = new System.Drawing.Point(231, 252);
-            this.txt_county.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_county.Margin = new System.Windows.Forms.Padding(4);
             this.txt_county.Name = "txt_county";
             this.txt_county.Size = new System.Drawing.Size(183, 22);
             this.txt_county.TabIndex = 71;
             // 
-            // label21
+            // label_county
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(227, 233);
-            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(52, 17);
-            this.label21.TabIndex = 101;
-            this.label21.Text = "County";
+            this.label_county.AutoSize = true;
+            this.label_county.Location = new System.Drawing.Point(227, 233);
+            this.label_county.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_county.Name = "label_county";
+            this.label_county.Size = new System.Drawing.Size(52, 17);
+            this.label_county.TabIndex = 101;
+            this.label_county.Text = "County";
             // 
             // txt_city
             // 
             this.txt_city.Location = new System.Drawing.Point(13, 252);
-            this.txt_city.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_city.Margin = new System.Windows.Forms.Padding(4);
             this.txt_city.Name = "txt_city";
             this.txt_city.Size = new System.Drawing.Size(183, 22);
             this.txt_city.TabIndex = 70;
             // 
-            // label22
+            // label_city
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(9, 233);
-            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(31, 17);
-            this.label22.TabIndex = 100;
-            this.label22.Text = "City";
+            this.label_city.AutoSize = true;
+            this.label_city.Location = new System.Drawing.Point(9, 233);
+            this.label_city.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_city.Name = "label_city";
+            this.label_city.Size = new System.Drawing.Size(31, 17);
+            this.label_city.TabIndex = 100;
+            this.label_city.Text = "City";
             // 
-            // button2
+            // button_cancel
             // 
-            this.button2.Location = new System.Drawing.Point(20, 496);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(116, 32);
-            this.button2.TabIndex = 99;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.button_cancel.Location = new System.Drawing.Point(20, 496);
+            this.button_cancel.Margin = new System.Windows.Forms.Padding(4);
+            this.button_cancel.Name = "button_cancel";
+            this.button_cancel.Size = new System.Drawing.Size(116, 32);
+            this.button_cancel.TabIndex = 99;
+            this.button_cancel.Text = "Cancel";
+            this.button_cancel.UseVisualStyleBackColor = true;
+            this.button_cancel.Click += new System.EventHandler(this.button_cancel_Click);
             // 
-            // button1
+            // button_save
             // 
-            this.button1.Location = new System.Drawing.Point(743, 496);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 32);
-            this.button1.TabIndex = 98;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.button_save.Location = new System.Drawing.Point(743, 496);
+            this.button_save.Margin = new System.Windows.Forms.Padding(4);
+            this.button_save.Name = "button_save";
+            this.button_save.Size = new System.Drawing.Size(116, 32);
+            this.button_save.TabIndex = 98;
+            this.button_save.Text = "Save";
+            this.button_save.UseVisualStyleBackColor = true;
+            this.button_save.Click += new System.EventHandler(this.button_save_Click);
             // 
             // txt_medical_notes
             // 
             this.txt_medical_notes.Location = new System.Drawing.Point(463, 304);
-            this.txt_medical_notes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_medical_notes.Margin = new System.Windows.Forms.Padding(4);
             this.txt_medical_notes.Multiline = true;
             this.txt_medical_notes.Name = "txt_medical_notes";
             this.txt_medical_notes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txt_medical_notes.Size = new System.Drawing.Size(395, 73);
             this.txt_medical_notes.TabIndex = 89;
             // 
-            // label20
+            // label_medical_notes
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(459, 284);
-            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(97, 17);
-            this.label20.TabIndex = 97;
-            this.label20.Text = "Medical Notes";
+            this.label_medical_notes.AutoSize = true;
+            this.label_medical_notes.Location = new System.Drawing.Point(459, 284);
+            this.label_medical_notes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_medical_notes.Name = "label_medical_notes";
+            this.label_medical_notes.Size = new System.Drawing.Size(97, 17);
+            this.label_medical_notes.TabIndex = 97;
+            this.label_medical_notes.Text = "Medical Notes";
             // 
             // txt_dob
             // 
             this.txt_dob.Location = new System.Drawing.Point(236, 62);
-            this.txt_dob.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_dob.Margin = new System.Windows.Forms.Padding(4);
             this.txt_dob.Mask = "00/00/0000";
             this.txt_dob.Name = "txt_dob";
             this.txt_dob.Size = new System.Drawing.Size(132, 22);
@@ -255,305 +255,304 @@
             // txt_emerg_mobile
             // 
             this.txt_emerg_mobile.Location = new System.Drawing.Point(675, 110);
-            this.txt_emerg_mobile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_emerg_mobile.Margin = new System.Windows.Forms.Padding(4);
             this.txt_emerg_mobile.Name = "txt_emerg_mobile";
             this.txt_emerg_mobile.Size = new System.Drawing.Size(183, 22);
             this.txt_emerg_mobile.TabIndex = 84;
             // 
-            // label17
+            // label_emerg_mobile
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(671, 90);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(49, 17);
-            this.label17.TabIndex = 95;
-            this.label17.Text = "Mobile";
+            this.label_emerg_mobile.AutoSize = true;
+            this.label_emerg_mobile.Location = new System.Drawing.Point(671, 90);
+            this.label_emerg_mobile.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_emerg_mobile.Name = "label_emerg_mobile";
+            this.label_emerg_mobile.Size = new System.Drawing.Size(49, 17);
+            this.label_emerg_mobile.TabIndex = 95;
+            this.label_emerg_mobile.Text = "Mobile";
             // 
             // txt_emerg_telephone
             // 
             this.txt_emerg_telephone.Location = new System.Drawing.Point(463, 110);
-            this.txt_emerg_telephone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_emerg_telephone.Margin = new System.Windows.Forms.Padding(4);
             this.txt_emerg_telephone.Name = "txt_emerg_telephone";
             this.txt_emerg_telephone.Size = new System.Drawing.Size(183, 22);
             this.txt_emerg_telephone.TabIndex = 82;
             // 
-            // label12
+            // label_emerg_telephone
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(459, 90);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(76, 17);
-            this.label12.TabIndex = 94;
-            this.label12.Text = "Telephone";
+            this.label_emerg_telephone.AutoSize = true;
+            this.label_emerg_telephone.Location = new System.Drawing.Point(459, 90);
+            this.label_emerg_telephone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_emerg_telephone.Name = "label_emerg_telephone";
+            this.label_emerg_telephone.Size = new System.Drawing.Size(76, 17);
+            this.label_emerg_telephone.TabIndex = 94;
+            this.label_emerg_telephone.Text = "Telephone";
             // 
             // txt_allergies
             // 
             this.txt_allergies.Location = new System.Drawing.Point(463, 252);
-            this.txt_allergies.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_allergies.Margin = new System.Windows.Forms.Padding(4);
             this.txt_allergies.Name = "txt_allergies";
             this.txt_allergies.Size = new System.Drawing.Size(183, 22);
             this.txt_allergies.TabIndex = 88;
             // 
-            // label13
+            // label_allergies
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(459, 233);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(62, 17);
-            this.label13.TabIndex = 93;
-            this.label13.Text = "Allergies";
+            this.label_allergies.AutoSize = true;
+            this.label_allergies.Location = new System.Drawing.Point(459, 233);
+            this.label_allergies.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_allergies.Name = "label_allergies";
+            this.label_allergies.Size = new System.Drawing.Size(62, 17);
+            this.label_allergies.TabIndex = 93;
+            this.label_allergies.Text = "Allergies";
             // 
             // txt_emerg_relation
             // 
             this.txt_emerg_relation.Location = new System.Drawing.Point(675, 62);
-            this.txt_emerg_relation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_emerg_relation.Margin = new System.Windows.Forms.Padding(4);
             this.txt_emerg_relation.Name = "txt_emerg_relation";
             this.txt_emerg_relation.Size = new System.Drawing.Size(183, 22);
             this.txt_emerg_relation.TabIndex = 81;
             // 
-            // label14
+            // label_emerg_relation
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(671, 46);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(60, 17);
-            this.label14.TabIndex = 92;
-            this.label14.Text = "Relation";
+            this.label_emerg_relation.AutoSize = true;
+            this.label_emerg_relation.Location = new System.Drawing.Point(671, 46);
+            this.label_emerg_relation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_emerg_relation.Name = "label_emerg_relation";
+            this.label_emerg_relation.Size = new System.Drawing.Size(60, 17);
+            this.label_emerg_relation.TabIndex = 92;
+            this.label_emerg_relation.Text = "Relation";
             // 
             // txt_doctor_phone
             // 
             this.txt_doctor_phone.Location = new System.Drawing.Point(675, 204);
-            this.txt_doctor_phone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_doctor_phone.Margin = new System.Windows.Forms.Padding(4);
             this.txt_doctor_phone.Name = "txt_doctor_phone";
             this.txt_doctor_phone.Size = new System.Drawing.Size(183, 22);
             this.txt_doctor_phone.TabIndex = 87;
             // 
-            // label15
+            // label_doctor_phone
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(671, 183);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(76, 17);
-            this.label15.TabIndex = 91;
-            this.label15.Text = "Telephone";
+            this.label_doctor_phone.AutoSize = true;
+            this.label_doctor_phone.Location = new System.Drawing.Point(671, 183);
+            this.label_doctor_phone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_doctor_phone.Name = "label_doctor_phone";
+            this.label_doctor_phone.Size = new System.Drawing.Size(76, 17);
+            this.label_doctor_phone.TabIndex = 91;
+            this.label_doctor_phone.Text = "Telephone";
             // 
             // txt_doctor_name
             // 
             this.txt_doctor_name.Location = new System.Drawing.Point(463, 204);
-            this.txt_doctor_name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_doctor_name.Margin = new System.Windows.Forms.Padding(4);
             this.txt_doctor_name.Name = "txt_doctor_name";
             this.txt_doctor_name.Size = new System.Drawing.Size(183, 22);
             this.txt_doctor_name.TabIndex = 85;
             // 
-            // label16
+            // label_doctor_name
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(459, 183);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(91, 17);
-            this.label16.TabIndex = 90;
-            this.label16.Text = "Doctor Name";
+            this.label_doctor_name.AutoSize = true;
+            this.label_doctor_name.Location = new System.Drawing.Point(459, 183);
+            this.label_doctor_name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_doctor_name.Name = "label_doctor_name";
+            this.label_doctor_name.Size = new System.Drawing.Size(91, 17);
+            this.label_doctor_name.TabIndex = 90;
+            this.label_doctor_name.Text = "Doctor Name";
             // 
             // txt_emerg_name
             // 
             this.txt_emerg_name.Location = new System.Drawing.Point(463, 62);
-            this.txt_emerg_name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_emerg_name.Margin = new System.Windows.Forms.Padding(4);
             this.txt_emerg_name.Name = "txt_emerg_name";
             this.txt_emerg_name.Size = new System.Drawing.Size(183, 22);
             this.txt_emerg_name.TabIndex = 79;
             // 
-            // label18
+            // label_emerg_name
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(459, 46);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(45, 17);
-            this.label18.TabIndex = 86;
-            this.label18.Text = "Name";
+            this.label_emerg_name.AutoSize = true;
+            this.label_emerg_name.Location = new System.Drawing.Point(459, 46);
+            this.label_emerg_name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_emerg_name.Name = "label_emerg_name";
+            this.label_emerg_name.Size = new System.Drawing.Size(45, 17);
+            this.label_emerg_name.TabIndex = 86;
+            this.label_emerg_name.Text = "Name";
             // 
-            // label11
+            // label_emergencycontact
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(459, 11);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(179, 20);
-            this.label11.TabIndex = 83;
-            this.label11.Text = "Emergency Contact:";
+            this.label_emergencycontact.AutoSize = true;
+            this.label_emergencycontact.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_emergencycontact.Location = new System.Drawing.Point(459, 11);
+            this.label_emergencycontact.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_emergencycontact.Name = "label_emergencycontact";
+            this.label_emergencycontact.Size = new System.Drawing.Size(179, 20);
+            this.label_emergencycontact.TabIndex = 83;
+            this.label_emergencycontact.Text = "Emergency Contact:";
             // 
             // txt_address2
             // 
             this.txt_address2.Location = new System.Drawing.Point(233, 204);
-            this.txt_address2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_address2.Margin = new System.Windows.Forms.Padding(4);
             this.txt_address2.Name = "txt_address2";
             this.txt_address2.Size = new System.Drawing.Size(183, 22);
             this.txt_address2.TabIndex = 69;
             // 
-            // label9
+            // label_address2
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(229, 185);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(72, 17);
-            this.label9.TabIndex = 80;
-            this.label9.Text = "Address 2";
+            this.label_address2.AutoSize = true;
+            this.label_address2.Location = new System.Drawing.Point(229, 185);
+            this.label_address2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_address2.Name = "label_address2";
+            this.label_address2.Size = new System.Drawing.Size(72, 17);
+            this.label_address2.TabIndex = 80;
+            this.label_address2.Text = "Address 2";
             // 
             // txt_address1
             // 
             this.txt_address1.Location = new System.Drawing.Point(13, 204);
-            this.txt_address1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_address1.Margin = new System.Windows.Forms.Padding(4);
             this.txt_address1.Name = "txt_address1";
             this.txt_address1.Size = new System.Drawing.Size(183, 22);
             this.txt_address1.TabIndex = 67;
             // 
-            // label10
+            // label_address1
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 185);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(72, 17);
-            this.label10.TabIndex = 78;
-            this.label10.Text = "Address 1";
+            this.label_address1.AutoSize = true;
+            this.label_address1.Location = new System.Drawing.Point(9, 185);
+            this.label_address1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_address1.Name = "label_address1";
+            this.label_address1.Size = new System.Drawing.Size(72, 17);
+            this.label_address1.TabIndex = 78;
+            this.label_address1.Text = "Address 1";
             // 
             // txt_telephone
             // 
             this.txt_telephone.Location = new System.Drawing.Point(236, 158);
-            this.txt_telephone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_telephone.Margin = new System.Windows.Forms.Padding(4);
             this.txt_telephone.Name = "txt_telephone";
             this.txt_telephone.Size = new System.Drawing.Size(183, 22);
             this.txt_telephone.TabIndex = 66;
             // 
-            // label7
+            // label_telephone
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(232, 138);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 17);
-            this.label7.TabIndex = 75;
-            this.label7.Text = "Telephone";
+            this.label_telephone.AutoSize = true;
+            this.label_telephone.Location = new System.Drawing.Point(232, 138);
+            this.label_telephone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_telephone.Name = "label_telephone";
+            this.label_telephone.Size = new System.Drawing.Size(76, 17);
+            this.label_telephone.TabIndex = 75;
+            this.label_telephone.Text = "Telephone";
             // 
             // txt_email
             // 
             this.txt_email.Location = new System.Drawing.Point(13, 158);
-            this.txt_email.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_email.Margin = new System.Windows.Forms.Padding(4);
             this.txt_email.Name = "txt_email";
             this.txt_email.Size = new System.Drawing.Size(183, 22);
             this.txt_email.TabIndex = 64;
             // 
-            // label8
+            // label_email
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 139);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(47, 17);
-            this.label8.TabIndex = 72;
-            this.label8.Text = "E-Mail";
+            this.label_email.AutoSize = true;
+            this.label_email.Location = new System.Drawing.Point(9, 139);
+            this.label_email.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_email.Name = "label_email";
+            this.label_email.Size = new System.Drawing.Size(47, 17);
+            this.label_email.TabIndex = 72;
+            this.label_email.Text = "E-Mail";
             // 
-            // label5
+            // label_dob
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(232, 42);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(87, 17);
-            this.label5.TabIndex = 65;
-            this.label5.Text = "Date of Birth";
+            this.label_dob.AutoSize = true;
+            this.label_dob.Location = new System.Drawing.Point(232, 42);
+            this.label_dob.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_dob.Name = "label_dob";
+            this.label_dob.Size = new System.Drawing.Size(87, 17);
+            this.label_dob.TabIndex = 65;
+            this.label_dob.Text = "Date of Birth";
             // 
             // txt_lastName
             // 
             this.txt_lastName.Location = new System.Drawing.Point(16, 111);
-            this.txt_lastName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_lastName.Margin = new System.Windows.Forms.Padding(4);
             this.txt_lastName.Name = "txt_lastName";
             this.txt_lastName.Size = new System.Drawing.Size(183, 22);
             this.txt_lastName.TabIndex = 59;
             // 
-            // label4
+            // label_lastName
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 94);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 17);
-            this.label4.TabIndex = 62;
-            this.label4.Text = "Last Name";
+            this.label_lastName.AutoSize = true;
+            this.label_lastName.Location = new System.Drawing.Point(12, 94);
+            this.label_lastName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_lastName.Name = "label_lastName";
+            this.label_lastName.Size = new System.Drawing.Size(76, 17);
+            this.label_lastName.TabIndex = 62;
+            this.label_lastName.Text = "Last Name";
             // 
             // txt_firstName
             // 
             this.txt_firstName.Location = new System.Drawing.Point(16, 62);
-            this.txt_firstName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_firstName.Margin = new System.Windows.Forms.Padding(4);
             this.txt_firstName.Name = "txt_firstName";
             this.txt_firstName.Size = new System.Drawing.Size(183, 22);
             this.txt_firstName.TabIndex = 58;
-            this.txt_firstName.TextChanged += new System.EventHandler(this.txt_firstName_TextChanged);
             // 
-            // label3
+            // label_firstName
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 44);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 17);
-            this.label3.TabIndex = 60;
-            this.label3.Text = "First Name";
+            this.label_firstName.AutoSize = true;
+            this.label_firstName.Location = new System.Drawing.Point(12, 44);
+            this.label_firstName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_firstName.Name = "label_firstName";
+            this.label_firstName.Size = new System.Drawing.Size(76, 17);
+            this.label_firstName.TabIndex = 60;
+            this.label_firstName.Text = "First Name";
             // 
-            // label1
+            // label_staffinfo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 20);
-            this.label1.TabIndex = 55;
-            this.label1.Text = "Staff Info:";
+            this.label_staffinfo.AutoSize = true;
+            this.label_staffinfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_staffinfo.Location = new System.Drawing.Point(16, 11);
+            this.label_staffinfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_staffinfo.Name = "label_staffinfo";
+            this.label_staffinfo.Size = new System.Drawing.Size(92, 20);
+            this.label_staffinfo.TabIndex = 55;
+            this.label_staffinfo.Text = "Staff Info:";
             // 
             // txt_qualifications
             // 
             this.txt_qualifications.Location = new System.Drawing.Point(463, 400);
-            this.txt_qualifications.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_qualifications.Margin = new System.Windows.Forms.Padding(4);
             this.txt_qualifications.Multiline = true;
             this.txt_qualifications.Name = "txt_qualifications";
             this.txt_qualifications.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txt_qualifications.Size = new System.Drawing.Size(395, 77);
             this.txt_qualifications.TabIndex = 105;
             // 
-            // label24
+            // label_qualifications
             // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(459, 378);
-            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(125, 20);
-            this.label24.TabIndex = 106;
-            this.label24.Text = "Qualifications";
+            this.label_qualifications.AutoSize = true;
+            this.label_qualifications.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_qualifications.Location = new System.Drawing.Point(459, 378);
+            this.label_qualifications.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_qualifications.Name = "label_qualifications";
+            this.label_qualifications.Size = new System.Drawing.Size(125, 20);
+            this.label_qualifications.TabIndex = 106;
+            this.label_qualifications.Text = "Qualifications";
             // 
-            // label6
+            // label_mobile
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(232, 91);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 17);
-            this.label6.TabIndex = 68;
-            this.label6.Text = "Mobile";
+            this.label_mobile.AutoSize = true;
+            this.label_mobile.Location = new System.Drawing.Point(232, 91);
+            this.label_mobile.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_mobile.Name = "label_mobile";
+            this.label_mobile.Size = new System.Drawing.Size(49, 17);
+            this.label_mobile.TabIndex = 68;
+            this.label_mobile.Text = "Mobile";
             // 
             // txt_mobile
             // 
             this.txt_mobile.Location = new System.Drawing.Point(236, 111);
-            this.txt_mobile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_mobile.Margin = new System.Windows.Forms.Padding(4);
             this.txt_mobile.Name = "txt_mobile";
             this.txt_mobile.Size = new System.Drawing.Size(183, 22);
             this.txt_mobile.TabIndex = 63;
@@ -561,60 +560,60 @@
             // txt_natinsnumb
             // 
             this.txt_natinsnumb.Location = new System.Drawing.Point(13, 351);
-            this.txt_natinsnumb.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_natinsnumb.Margin = new System.Windows.Forms.Padding(4);
             this.txt_natinsnumb.Name = "txt_natinsnumb";
             this.txt_natinsnumb.Size = new System.Drawing.Size(183, 22);
             this.txt_natinsnumb.TabIndex = 107;
             // 
-            // label2
+            // label_natinsnumb
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 331);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(180, 17);
-            this.label2.TabIndex = 108;
-            this.label2.Text = "National Insurance Number";
+            this.label_natinsnumb.AutoSize = true;
+            this.label_natinsnumb.Location = new System.Drawing.Point(9, 331);
+            this.label_natinsnumb.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_natinsnumb.Name = "label_natinsnumb";
+            this.label_natinsnumb.Size = new System.Drawing.Size(180, 17);
+            this.label_natinsnumb.TabIndex = 108;
+            this.label_natinsnumb.Text = "National Insurance Number";
             // 
             // txt_contract_start
             // 
             this.txt_contract_start.Location = new System.Drawing.Point(13, 401);
-            this.txt_contract_start.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_contract_start.Margin = new System.Windows.Forms.Padding(4);
             this.txt_contract_start.Mask = "00/00/0000";
             this.txt_contract_start.Name = "txt_contract_start";
             this.txt_contract_start.Size = new System.Drawing.Size(132, 22);
             this.txt_contract_start.TabIndex = 109;
             this.txt_contract_start.ValidatingType = typeof(System.DateTime);
             // 
-            // label27
+            // label_contract_start
             // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(9, 382);
-            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(95, 17);
-            this.label27.TabIndex = 110;
-            this.label27.Text = "Contract Start";
+            this.label_contract_start.AutoSize = true;
+            this.label_contract_start.Location = new System.Drawing.Point(9, 382);
+            this.label_contract_start.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_contract_start.Name = "label_contract_start";
+            this.label_contract_start.Size = new System.Drawing.Size(95, 17);
+            this.label_contract_start.TabIndex = 110;
+            this.label_contract_start.Text = "Contract Start";
             // 
             // txt_contract_finish
             // 
             this.txt_contract_finish.Location = new System.Drawing.Point(233, 401);
-            this.txt_contract_finish.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_contract_finish.Margin = new System.Windows.Forms.Padding(4);
             this.txt_contract_finish.Mask = "00/00/0000";
             this.txt_contract_finish.Name = "txt_contract_finish";
             this.txt_contract_finish.Size = new System.Drawing.Size(132, 22);
             this.txt_contract_finish.TabIndex = 111;
             this.txt_contract_finish.ValidatingType = typeof(System.DateTime);
             // 
-            // label28
+            // label_contract_finish
             // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(229, 382);
-            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(102, 17);
-            this.label28.TabIndex = 112;
-            this.label28.Text = "Contract Finish";
+            this.label_contract_finish.AutoSize = true;
+            this.label_contract_finish.Location = new System.Drawing.Point(229, 382);
+            this.label_contract_finish.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_contract_finish.Name = "label_contract_finish";
+            this.label_contract_finish.Size = new System.Drawing.Size(102, 17);
+            this.label_contract_finish.TabIndex = 112;
+            this.label_contract_finish.Text = "Contract Finish";
             // 
             // frm_staff
             // 
@@ -622,62 +621,62 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(879, 545);
             this.Controls.Add(this.txt_contract_finish);
-            this.Controls.Add(this.label28);
+            this.Controls.Add(this.label_contract_finish);
             this.Controls.Add(this.txt_contract_start);
-            this.Controls.Add(this.label27);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label_contract_start);
+            this.Controls.Add(this.label_natinsnumb);
             this.Controls.Add(this.txt_natinsnumb);
-            this.Controls.Add(this.label24);
+            this.Controls.Add(this.label_qualifications);
             this.Controls.Add(this.txt_qualifications);
             this.Controls.Add(this.cmb_position);
-            this.Controls.Add(this.label23);
+            this.Controls.Add(this.label_position);
             this.Controls.Add(this.cmb_contract);
             this.Controls.Add(this.txt_pc);
-            this.Controls.Add(this.label25);
-            this.Controls.Add(this.label26);
+            this.Controls.Add(this.label_contract);
+            this.Controls.Add(this.label_pc);
             this.Controls.Add(this.txt_county);
-            this.Controls.Add(this.label21);
+            this.Controls.Add(this.label_county);
             this.Controls.Add(this.txt_city);
-            this.Controls.Add(this.label22);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label_city);
+            this.Controls.Add(this.button_cancel);
+            this.Controls.Add(this.button_save);
             this.Controls.Add(this.txt_medical_notes);
-            this.Controls.Add(this.label20);
+            this.Controls.Add(this.label_medical_notes);
             this.Controls.Add(this.txt_dob);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.txt_emerg_mobile);
-            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label_emerg_mobile);
             this.Controls.Add(this.txt_emerg_telephone);
-            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label_emerg_telephone);
             this.Controls.Add(this.txt_allergies);
-            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label_allergies);
             this.Controls.Add(this.txt_emerg_relation);
-            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label_emerg_relation);
             this.Controls.Add(this.txt_doctor_phone);
-            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label_doctor_phone);
             this.Controls.Add(this.txt_doctor_name);
-            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label_doctor_name);
             this.Controls.Add(this.txt_emerg_name);
-            this.Controls.Add(this.label18);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label_emerg_name);
+            this.Controls.Add(this.label_emergencycontact);
             this.Controls.Add(this.txt_address2);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label_address2);
             this.Controls.Add(this.txt_address1);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label_address1);
             this.Controls.Add(this.txt_telephone);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label_telephone);
             this.Controls.Add(this.txt_email);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label_email);
             this.Controls.Add(this.txt_mobile);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label_mobile);
+            this.Controls.Add(this.label_dob);
             this.Controls.Add(this.txt_lastName);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label_lastName);
             this.Controls.Add(this.txt_firstName);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label_firstName);
+            this.Controls.Add(this.label_staffinfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_staff";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Staff Form";
@@ -690,59 +689,59 @@
         #endregion
 
         private System.Windows.Forms.ComboBox cmb_position;
-        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label_position;
         private System.Windows.Forms.ComboBox cmb_contract;
         private System.Windows.Forms.MaskedTextBox txt_pc;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label_contract;
+        private System.Windows.Forms.Label label_pc;
         private System.Windows.Forms.TextBox txt_county;
-        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label_county;
         private System.Windows.Forms.TextBox txt_city;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label_city;
+        private System.Windows.Forms.Button button_cancel;
+        private System.Windows.Forms.Button button_save;
         private System.Windows.Forms.TextBox txt_medical_notes;
-        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label_medical_notes;
         private System.Windows.Forms.MaskedTextBox txt_dob;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox txt_emerg_mobile;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label_emerg_mobile;
         private System.Windows.Forms.TextBox txt_emerg_telephone;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label_emerg_telephone;
         private System.Windows.Forms.TextBox txt_allergies;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label_allergies;
         private System.Windows.Forms.TextBox txt_emerg_relation;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label_emerg_relation;
         private System.Windows.Forms.TextBox txt_doctor_phone;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label_doctor_phone;
         private System.Windows.Forms.TextBox txt_doctor_name;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label_doctor_name;
         private System.Windows.Forms.TextBox txt_emerg_name;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label_emerg_name;
+        private System.Windows.Forms.Label label_emergencycontact;
         private System.Windows.Forms.TextBox txt_address2;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label_address2;
         private System.Windows.Forms.TextBox txt_address1;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label_address1;
         private System.Windows.Forms.TextBox txt_telephone;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label_telephone;
         private System.Windows.Forms.TextBox txt_email;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label_email;
+        private System.Windows.Forms.Label label_dob;
         private System.Windows.Forms.TextBox txt_lastName;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label_lastName;
         private System.Windows.Forms.TextBox txt_firstName;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_firstName;
+        private System.Windows.Forms.Label label_staffinfo;
         private System.Windows.Forms.TextBox txt_qualifications;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label_qualifications;
+        private System.Windows.Forms.Label label_mobile;
         private System.Windows.Forms.TextBox txt_mobile;
         private System.Windows.Forms.TextBox txt_natinsnumb;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label_natinsnumb;
         private System.Windows.Forms.MaskedTextBox txt_contract_start;
-        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label_contract_start;
         private System.Windows.Forms.MaskedTextBox txt_contract_finish;
-        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label_contract_finish;
     }
 }

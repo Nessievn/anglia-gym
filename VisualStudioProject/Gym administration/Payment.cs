@@ -1,4 +1,10 @@
-﻿using System;
+﻿//It temporarily holds payment details for saving a new payment
+//Constructor (default)
+//Method 1
+//bSave     saving a new payment
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

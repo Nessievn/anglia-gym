@@ -48,7 +48,7 @@ namespace Gym_administration
                  txt_medical_notes.Text = mbrMember.SMedical_notes;
                  txt_doctor_phone.Text = mbrMember.SMedical_phone;
                  txt_membernum.Text = mbrMember.SMemberNumber;
-                 cmb_payment.Text = mbrMember.SPayment_method;
+                 cmb_paymenttype.Text = mbrMember.SPayment_method;
                  txt_pc.Text = mbrMember.SPostalcode;
                  cmb_type.Text = mbrMember.SType;
                  txt_email.Text = mbrMember.SEmail;
@@ -59,35 +59,11 @@ namespace Gym_administration
 
         private void frm_member_Load(object sender, EventArgs e)
         {
-
+            //Startup load
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void button_save_Click(object sender, EventArgs e)
         {
             mbrMember.SFirstName = txt_firstName.Text;
             mbrMember.SLastName = txt_lastName.Text;
@@ -106,7 +82,7 @@ namespace Gym_administration
             mbrMember.SMedical_notes = txt_medical_notes.Text;
             mbrMember.SMedical_phone = txt_doctor_phone.Text;
             mbrMember.SMemberNumber = txt_membernum.Text;
-            mbrMember.SPayment_method = cmb_payment.Text;
+            mbrMember.SPayment_method = cmb_paymenttype.Text;
             mbrMember.SPicture = "none";
             mbrMember.SPostalcode = txt_pc.Text;
             mbrMember.SType = cmb_type.Text;
@@ -119,24 +95,24 @@ namespace Gym_administration
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        
+
+        private void button_payments_Click(object sender, EventArgs e)
         {
+//CHANGE IT TO PAYMENTS??
             frm_member_list frm = new frm_member_list();
             frm.MdiParent = this.MdiParent;
             frm.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void button3_Click_1(object sender, EventArgs e)
-        {
 
-        }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button_remove_Click(object sender, EventArgs e)
         {
             DialogResult res = MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (res == DialogResult.Yes)
@@ -145,5 +121,8 @@ namespace Gym_administration
                 this.Close();
             }
         }
+
+        
+        
     }
 }
