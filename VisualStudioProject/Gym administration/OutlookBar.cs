@@ -173,7 +173,7 @@ namespace OutlookBarNm
 			}
 		}
 
-		public int Margin
+		public new int Margin
 		{
 			get
 			{

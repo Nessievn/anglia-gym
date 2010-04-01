@@ -48,7 +48,7 @@ namespace Gym_administration
                 dAmount = Decimal.Parse(txt_amount.Text);
             }catch(Exception ex)
             {
-                MessageBox.Show("Check amount format!");
+                MessageBox.Show("Check amount format!" + ex.ToString());
                 return;
             }
           
