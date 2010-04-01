@@ -397,11 +397,11 @@ namespace Gym_administration
 
                     iconPanel2.AddIcon("Add New Member", Image.FromFile(Application.StartupPath + "/../../icons/member_add_128.png"), new EventHandler(PanelEvent));
                     iconPanel2.AddIcon("Edit Member", Image.FromFile(Application.StartupPath + "/../../icons/member_edit_128.png"), new EventHandler(PanelEvent));
-iconPanel2.AddIcon("Book Class", Image.FromFile(Application.StartupPath + "/../../icons/class_book_128.png"), new EventHandler(PanelEvent));
+                    iconPanel2.AddIcon("Book Class", Image.FromFile(Application.StartupPath + "/../../icons/class_book_128.png"), new EventHandler(PanelEvent));
                     iconPanel2.AddIcon("Search Class Bookings", Image.FromFile(Application.StartupPath + "/../../icons/class_book_search_128.png"), new EventHandler(PanelEvent));
                     iconPanel2.AddIcon("Book Equipment", Image.FromFile(Application.StartupPath + "/../../icons/equipment_book_128.png"), new EventHandler(PanelEvent));
-iconPanel2.AddIcon("Search Eq. Bookings", Image.FromFile(Application.StartupPath + "/../../icons/equipment_book_search_128.png"), new EventHandler(PanelEvent));
-iconPanel2.AddIcon("Search Rooms", Image.FromFile(Application.StartupPath + "/../../icons/room_search_128.png"), new EventHandler(PanelEvent));
+                    iconPanel2.AddIcon("Search Eq. Bookings", Image.FromFile(Application.StartupPath + "/../../icons/equipment_book_search_128.png"), new EventHandler(PanelEvent));
+                    iconPanel2.AddIcon("Search Rooms", Image.FromFile(Application.StartupPath + "/../../icons/room_search_128.png"), new EventHandler(PanelEvent));
                     this.outlookBar.SelectBand(0);
                     outlookBar.Show();
                     break;
