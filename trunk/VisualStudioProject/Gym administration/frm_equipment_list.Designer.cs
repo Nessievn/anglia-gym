@@ -127,6 +127,7 @@
             this.Controls.Add(this.button_search);
             this.Controls.Add(this.dg_equipment);
             this.Name = "frm_equipment_list";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_equipment_list";
             ((System.ComponentModel.ISupportInitialize)(this.dg_equipment)).EndInit();
             this.ResumeLayout(false);
