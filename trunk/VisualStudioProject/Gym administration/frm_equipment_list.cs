@@ -12,8 +12,23 @@ namespace Gym_administration
 {
     public partial class frm_equipment_list : Form
     {
+        bool IsBooking;
+        bool IsMember;
+        int Id_Member;
+
         public frm_equipment_list()
         {
+
+            InitializeComponent();
+            rd_item.Checked = true;
+            rd_item_Checked();
+        }
+
+        public frm_equipment_list(bool isBooking, bool isMember, int id_Member)
+        {
+            IsBooking = isBooking;
+            IsMember = isMember;
+            Id_Member = id_Member;
             InitializeComponent();
             rd_item.Checked = true;
             rd_item_Checked();
@@ -44,11 +59,13 @@ namespace Gym_administration
         private void dg_equipment_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
+            if (IsBooking)
+            {
                 try
                 {
                     string sEquipmentId = dg_equipment.Rows[e.RowIndex].Cells[0].Value.ToString();
                     int iEquipmentId = int.Parse(sEquipmentId);
-                    frm_equipment frm_equipment = new frm_equipment(iEquipmentId, this);
+                    frm_equipment frm_equipment = new frm_equipment(IsBooking, IsMember, Id_Member, iEquipmentId, this);
                     frm_equipment.MdiParent = this.MdiParent;
                     frm_equipment.Show();
                 }
@@ -57,6 +74,23 @@ namespace Gym_administration
                     MessageBox.Show(ea.ToString());
                     return;
                 }
+            }
+            else
+            {
+                try
+                {
+                    string sEquipmentId = dg_equipment.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    int iEquipmentId = int.Parse(sEquipmentId);
+                    frm_equipment frm_equipment = new frm_equipment(false, false, -1, iEquipmentId, this);
+                    frm_equipment.MdiParent = this.MdiParent;
+                    frm_equipment.Show();
+                }
+                catch (Exception ea)
+                {
+                    MessageBox.Show(ea.ToString());
+                    return;
+                }
+            }
 
 
 

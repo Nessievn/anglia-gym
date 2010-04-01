@@ -408,7 +408,7 @@ namespace Gym_administration
                 case "all":
                     IconPanel iconPanel3 = new IconPanel("all");
                     this.outlookBar.AddBand("Login Options", iconPanel3);
-                    iconPanel3.AddIcon("Change password", Image.FromFile(Application.StartupPath + "/../../icons/staff.png"), new EventHandler(PanelEvent));
+                    iconPanel3.AddIcon("Change Password", Image.FromFile(Application.StartupPath + "/../../icons/password_edit_128.png"), new EventHandler(PanelEvent));
                     this.outlookBar.SelectBand(0);
                     outlookBar.Show();
                     break;
