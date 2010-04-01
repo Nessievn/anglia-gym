@@ -12,27 +12,27 @@ namespace Gym_administration
 {
     public partial class frm_class_arrange : Form
     {
-        ClassBooked clbClassBooked;
+        ClassInstance ciClassInstance;
         frm_class_arrange_list frmClArrList;
 
         public frm_class_arrange()
         {
             InitializeComponent();
-            clbClassBooked = new ClassBooked();
+            ciClassInstance = new ClassInstance();
             button_enrollmembers.Enabled = false;
         }
         public frm_class_arrange(int iIdClassBooked, frm_class_arrange_list frmClArrList)
         {
             InitializeComponent();
             this.frmClArrList = frmClArrList;
-            clbClassBooked = new ClassBooked(iIdClassBooked);
-            if (clbClassBooked.Id_class_instance == -1)
+            ciClassInstance = new ClassInstance(iIdClassBooked);
+            if (ciClassInstance.Id_class_instance == -1)
                 MessageBox.Show("The class instance could not be found");
             else
             {
-                txt_endtime.Text = clbClassBooked.SEndTime;
-                txt_startdate.Text = clbClassBooked.SDateStart;
-                txt_starttime.Text = clbClassBooked.SStartTime;
+                txt_endtime.Text = ciClassInstance.SEndTime;
+                txt_startdate.Text = ciClassInstance.SDateStart;
+                txt_starttime.Text = ciClassInstance.SStartTime;
                 button_enrollmembers.Enabled = true;
             }
         }
@@ -61,16 +61,16 @@ namespace Gym_administration
             cmb_instructors.DataSource = myItems;
             
             // HERE we select the options with the class instance
-            if (this.clbClassBooked.Id_class_instance != -1)
+            if (this.ciClassInstance.Id_class_instance != -1)
             {
-                cmb_classes.SelectedIndex = cmb_classes.FindString(clbClassBooked.SClass.SName);
-                //cmb_instructors.SelectedIndex = cmb_instructors.FindString(clbClassBooked..SName+' ');
-                cmb_rooms.SelectedIndex = cmb_rooms.FindString(clbClassBooked.RRoom.SName);
-                cmb_repeats.SelectedIndex = cmb_repeats.FindString(clbClassBooked.SFrequency);
-                sQuery = "SELECT COUNT(*) q FROM gym.class_bookings WHERE id_class_instance = '" + this.clbClassBooked.Id_class_instance + "'";
+                cmb_classes.SelectedIndex = cmb_classes.FindString(ciClassInstance.SClass.SName);
+                //cmb_instructors.SelectedIndex = cmb_instructors.FindString(ciClassInstance..SName+' ');
+                cmb_rooms.SelectedIndex = cmb_rooms.FindString(ciClassInstance.RRoom.SName);
+                cmb_repeats.SelectedIndex = cmb_repeats.FindString(ciClassInstance.SFrequency);
+                sQuery = "SELECT COUNT(*) q FROM gym.class_bookings WHERE id_class_instance = '" + this.ciClassInstance.Id_class_instance + "'";
                 List<Hashtable> lhRes = conn.lhSqlQuery(sQuery);
                 lbl_currentmembers_amount.Text = lhRes[0]["q"].ToString();
-                sQuery = "SELECT r.size FROM gym.class_instance ci, gym.rooms r WHERE ci.id_room = r.id_room AND ci.id_class_instance = '" + this.clbClassBooked.Id_class_instance + "'";
+                sQuery = "SELECT r.size FROM gym.class_instance ci, gym.rooms r WHERE ci.id_room = r.id_room AND ci.id_class_instance = '" + this.ciClassInstance.Id_class_instance + "'";
                 lhRes = conn.lhSqlQuery(sQuery);
                 label_maxmembers_amount.Text = lhRes[0]["size"].ToString();
             }
@@ -78,7 +78,7 @@ namespace Gym_administration
                 button_remove.Enabled = false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button_save_Click(object sender, EventArgs e)
         {
             mySqlConn conn = new mySqlConn();
             conn.connect();
@@ -104,18 +104,18 @@ namespace Gym_administration
             }
             
             // Check if we found the user
-            if (this.clbClassBooked.bCheckOverlap(sDate, sIdRoom, sIdStaff, txt_starttime.Text, txt_endtime.Text))
+            if (this.ciClassInstance.bCheckOverlap(sDate, sIdRoom, sIdStaff, txt_starttime.Text, txt_endtime.Text))
                 MessageBox.Show("The class is overlapping with another class, please specify another date, room or instructor.");
             else
             {
-                this.clbClassBooked.Id_staff = int.Parse(sIdStaff);
-                this.clbClassBooked.RRoom = new Room(int.Parse(sIdRoom));
-                this.clbClassBooked.SClass = new Class(int.Parse(sIdClass));
-                this.clbClassBooked.SDateStart = sDate;
-                this.clbClassBooked.SEndTime = txt_endtime.Text;
-                this.clbClassBooked.SFrequency = cmb_repeats.Text;
-                this.clbClassBooked.SStartTime = txt_starttime.Text;
-                if (this.clbClassBooked.bSave())
+                this.ciClassInstance.Id_staff = int.Parse(sIdStaff);
+                this.ciClassInstance.RRoom = new Room(int.Parse(sIdRoom));
+                this.ciClassInstance.SClass = new Class(int.Parse(sIdClass));
+                this.ciClassInstance.SDateStart = sDate;
+                this.ciClassInstance.SEndTime = txt_endtime.Text;
+                this.ciClassInstance.SFrequency = cmb_repeats.Text;
+                this.ciClassInstance.SStartTime = txt_starttime.Text;
+                if (this.ciClassInstance.bSave())
                 {
                     button_enrollmembers.Enabled = true;
                 }
@@ -127,13 +127,13 @@ namespace Gym_administration
 
         private void button_enrollmembers_Click(object sender, EventArgs e)
         {
-            frm_member_list frmMemberList = new frm_member_list(clbClassBooked,false);
+            frm_member_list frmMemberList = new frm_member_list(ciClassInstance,false);
             frmMemberList.Show();
         }
 
         private void button_viewattendants_Click(object sender, EventArgs e)
         {
-            frm_member_list frmMemberList = new frm_member_list(clbClassBooked, true);
+            frm_member_list frmMemberList = new frm_member_list(ciClassInstance, true);
             frmMemberList.Show();
         }
 
@@ -152,7 +152,7 @@ namespace Gym_administration
             DialogResult res = MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (res == DialogResult.Yes)
             {
-                if (this.clbClassBooked.bRemove() == false)
+                if (this.ciClassInstance.bRemove() == false)
                 {
                     MessageBox.Show("Please make sure that there aren't any class instances for this class.");
                 }

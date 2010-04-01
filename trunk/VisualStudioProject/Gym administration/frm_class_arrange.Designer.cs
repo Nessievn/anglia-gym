@@ -221,7 +221,7 @@
             this.button_save.TabIndex = 28;
             this.button_save.Text = "Save";
             this.button_save.UseVisualStyleBackColor = true;
-            this.button_save.Click += new System.EventHandler(this.button1_Click);
+            this.button_save.Click += new System.EventHandler(this.button_save_Click);
             // 
             // cmb_repeats
             // 

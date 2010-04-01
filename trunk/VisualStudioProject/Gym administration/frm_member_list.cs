@@ -14,14 +14,14 @@ namespace Gym_administration
 {
     public partial class frm_member_list : Form
     {
-        public ClassBooked cb;
+        public ClassInstance ciClassInstance;
         public bool bViewAttendants;
         public bool bPayments;
         
-        public frm_member_list(ClassBooked cb_t, bool bViewAttendants)
+        public frm_member_list(ClassInstance ciClassInstance_t, bool bViewAttendants)
         {
             InitializeComponent();
-            this.cb = cb_t;
+            this.ciClassInstance = ciClassInstance_t;
             this.bViewAttendants = bViewAttendants;
             this.bPayments = false;
         }
@@ -35,7 +35,7 @@ namespace Gym_administration
         public frm_member_list()
         {
             InitializeComponent();
-            this.cb = new ClassBooked();
+            this.ciClassInstance = new ClassInstance();
             this.bPayments = false;
         }
 
@@ -48,7 +48,7 @@ namespace Gym_administration
             if(this.bViewAttendants == false)
                 sQuery = "SELECT id_member MID, member_number NO, firstName as 'First Name', lastName 'Last Name', DATE_FORMAT(birthdate,\"%d/%m/%Y\") DOB, email 'EMail' FROM members ORDER BY id_member";
             else
-                sQuery = "SELECT cb.id_member MID, m.member_number NO, m.firstName as 'First Name', m.lastName 'Last Name', DATE_FORMAT(m.birthdate,\"%d/%m/%Y\") DOB, email 'EMail' FROM members m, class_bookings cb WHERE m.id_member = cb.id_member AND cb.id_class_instance = '"+this.cb.Id_class_instance+"' ORDER BY m.id_member";
+                sQuery = "SELECT cb.id_member MID, m.member_number NO, m.firstName as 'First Name', m.lastName 'Last Name', DATE_FORMAT(m.birthdate,\"%d/%m/%Y\") DOB, email 'EMail' FROM members m, class_bookings cb WHERE m.id_member = cb.id_member AND cb.id_class_instance = '" + this.ciClassInstance.Id_class_instance + "' ORDER BY m.id_member";
 
             bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
             dg_members.DataSource = bSource;
@@ -76,16 +76,16 @@ namespace Gym_administration
                     return;
                 }
 
-                if (this.cb.Id_class_instance != -1 && this.bViewAttendants == false)
+                if (this.ciClassInstance.Id_class_instance != -1 && this.bViewAttendants == false)
                 {
                     DialogResult res = MessageBox.Show("Enroll this member to the class?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (res == DialogResult.Yes)
                     {
                         // Check the room size
-                        string sQuery = "SELECT COUNT(*) q FROM gym.class_bookings WHERE id_class_instance = '" + this.cb.Id_class_instance + "'";
+                        string sQuery = "SELECT COUNT(*) q FROM gym.class_bookings WHERE id_class_instance = '" + this.ciClassInstance.Id_class_instance + "'";
                         List<Hashtable> lhRes = conn.lhSqlQuery(sQuery);
                         int iCurrMembers = int.Parse(lhRes[0]["q"].ToString());
-                        sQuery = "SELECT r.size FROM gym.class_instance ci, gym.rooms r WHERE ci.id_room = r.id_room AND ci.id_class_instance = '" + this.cb.Id_class_instance + "'";
+                        sQuery = "SELECT r.size FROM gym.class_instance ci, gym.rooms r WHERE ci.id_room = r.id_room AND ci.id_class_instance = '" + this.ciClassInstance.Id_class_instance + "'";
                         lhRes = conn.lhSqlQuery(sQuery);
                         int iMaxMembers = int.Parse(lhRes[0]["size"].ToString());
                         if (iMaxMembers < iCurrMembers + 1)
@@ -95,8 +95,8 @@ namespace Gym_administration
                         }
 
                         Member mbr_t = new Member(iMbrId);
-                        this.cb.lmAttendants.Add(mbr_t);
-                        this.cb.bSave();
+                        this.ciClassInstance.lmAttendants.Add(mbr_t);
+                        this.ciClassInstance.bSave();
                     }
                 }
                 else

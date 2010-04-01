@@ -68,7 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class.cs" />
-    <Compile Include="ClassBooked.cs" />
+    <Compile Include="ClassInstance.cs" />
     <Compile Include="Equipment.cs" />
     <Compile Include="EquipmentBooked.cs" />
     <Compile Include="frm_add_payment.cs">

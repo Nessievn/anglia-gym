@@ -1,4 +1,6 @@
 ﻿//Holds data for a "Gym Class" that is a general gym "class activity" (NOT a certain class at a certain time)
+//Most closely associated form is frm_class
+//Most closely associated table is CLASSES
 //Constructor (default)     sets id_class to -1 and establishes connection for saving new class
 //Constructor (id_class)    loads in all fields from a single "Gym Class" row of the CLASSES table
 //Method 1
