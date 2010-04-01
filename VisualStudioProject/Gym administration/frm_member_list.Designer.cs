@@ -49,7 +49,7 @@
             this.dg_members.AllowUserToDeleteRows = false;
             this.dg_members.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg_members.Location = new System.Drawing.Point(16, 156);
-            this.dg_members.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dg_members.Margin = new System.Windows.Forms.Padding(4);
             this.dg_members.Name = "dg_members";
             this.dg_members.RowTemplate.Height = 24;
             this.dg_members.Size = new System.Drawing.Size(855, 375);
@@ -59,7 +59,7 @@
             // button_search
             // 
             this.button_search.Location = new System.Drawing.Point(401, 22);
-            this.button_search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_search.Margin = new System.Windows.Forms.Padding(4);
             this.button_search.Name = "button_search";
             this.button_search.Size = new System.Drawing.Size(100, 28);
             this.button_search.TabIndex = 1;
@@ -70,7 +70,7 @@
             // txt_membernum
             // 
             this.txt_membernum.Location = new System.Drawing.Point(17, 25);
-            this.txt_membernum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_membernum.Margin = new System.Windows.Forms.Padding(4);
             this.txt_membernum.Name = "txt_membernum";
             this.txt_membernum.Size = new System.Drawing.Size(235, 22);
             this.txt_membernum.TabIndex = 2;
@@ -98,7 +98,7 @@
             // txt_firstName
             // 
             this.txt_firstName.Location = new System.Drawing.Point(17, 69);
-            this.txt_firstName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_firstName.Margin = new System.Windows.Forms.Padding(4);
             this.txt_firstName.Name = "txt_firstName";
             this.txt_firstName.Size = new System.Drawing.Size(235, 22);
             this.txt_firstName.TabIndex = 4;
@@ -116,7 +116,7 @@
             // txt_lastName
             // 
             this.txt_lastName.Location = new System.Drawing.Point(265, 69);
-            this.txt_lastName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_lastName.Margin = new System.Windows.Forms.Padding(4);
             this.txt_lastName.Name = "txt_lastName";
             this.txt_lastName.Size = new System.Drawing.Size(235, 22);
             this.txt_lastName.TabIndex = 6;
@@ -134,7 +134,7 @@
             // txt_email
             // 
             this.txt_email.Location = new System.Drawing.Point(265, 117);
-            this.txt_email.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_email.Margin = new System.Windows.Forms.Padding(4);
             this.txt_email.Name = "txt_email";
             this.txt_email.Size = new System.Drawing.Size(235, 22);
             this.txt_email.TabIndex = 8;
@@ -153,7 +153,7 @@
             // 
             this.txt_dob.Culture = new System.Globalization.CultureInfo("en-GB");
             this.txt_dob.Location = new System.Drawing.Point(17, 117);
-            this.txt_dob.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_dob.Margin = new System.Windows.Forms.Padding(4);
             this.txt_dob.Mask = "00/00/0000";
             this.txt_dob.Name = "txt_dob";
             this.txt_dob.Size = new System.Drawing.Size(235, 22);
@@ -178,10 +178,10 @@
             this.Controls.Add(this.button_search);
             this.Controls.Add(this.dg_members);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_member_list";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Memebers List Form";
+            this.Text = "Members List Form";
             this.Load += new System.EventHandler(this.frm_member_list_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dg_members)).EndInit();
             this.ResumeLayout(false);
