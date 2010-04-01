@@ -1,4 +1,22 @@
-﻿
+﻿//Holds data for a single class instance (certain class at a certain time)
+//Most closely associated form is frm_class_arrange
+//when frm_class_arrange is called from frm_class_arrange_list
+
+//Used also in
+//      frm_member_list
+
+//Most closely associated table is CLASS_INSTANCE
+//Constructor (default)
+//sets id_class_instance to -1
+//Constructor (id_class_booked)
+//Loads in various info from tables CLASSES, CLASS_INSTANCE and STAFF for this class instance
+//Loads in all atendants for this class instance
+//Method 1
+//Checkoverlap()  ???
+//Method 2
+//bSave() saves into CLASS_INSTANCE table
+//Method 3 
+//bRemove() removes a class instance from CLASS_INSTANCE table
 
 
 using System;
@@ -10,7 +28,7 @@ using System.Windows.Forms;
 
 namespace Gym_administration
 {
-    public class ClassBooked
+    public class ClassInstance
     {
         private int id_class_instance;
 
@@ -77,17 +95,17 @@ namespace Gym_administration
         }
 
 
-        public ClassBooked()
+        public ClassInstance()
         {
             this.id_class_instance = -1;
         }
 
-        public ClassBooked(int iIdClassBooked)
+        public ClassInstance(int iIdClassInstance)
         {
             mySqlConn conn = new mySqlConn();
             conn.connect();
             // We launch the query
-            List<Hashtable> lhResultset = conn.lhSqlQuery("SELECT ci.id_class_instance, c.name, c.type, c.description, s.firstName, s.id_staff, DATE_FORMAT(ci.date, '%d/%m/%Y') date, ci.start_time, ci.end_time, ci.id_room, c.id_class, ci.frequency FROM classes c, class_instance ci, staff s WHERE ci.id_class = c.id_class AND ci.id_staff = s.id_staff AND ci.id_class_instance = '" + iIdClassBooked + "'");
+            List<Hashtable> lhResultset = conn.lhSqlQuery("SELECT ci.id_class_instance, c.name, c.type, c.description, s.firstName, s.id_staff, DATE_FORMAT(ci.date, '%d/%m/%Y') date, ci.start_time, ci.end_time, ci.id_room, c.id_class, ci.frequency FROM classes c, class_instance ci, staff s WHERE ci.id_class = c.id_class AND ci.id_staff = s.id_staff AND ci.id_class_instance = '" + iIdClassInstance + "'");
 
             // Check if we found the member
             if ((int)lhResultset.Count > 0)
@@ -103,7 +121,7 @@ namespace Gym_administration
 
                 // We retrieve the attendants
                 List<Member> Members = new List<Member>();
-                List<Hashtable> lhResultsetMbrs = conn.lhSqlQuery("SELECT * FROM `gym`.`class_bookings` WHERE id_class_instance = '"+iIdClassBooked+"'");
+                List<Hashtable> lhResultsetMbrs = conn.lhSqlQuery("SELECT * FROM `gym`.`class_bookings` WHERE id_class_instance = '"+iIdClassInstance+"'");
                 if ((int)lhResultsetMbrs.Count > 0)
                 {
                     foreach (Hashtable record in lhResultsetMbrs)
