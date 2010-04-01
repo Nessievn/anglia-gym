@@ -1,6 +1,6 @@
 ﻿//Holds data for a single class instance (certain class at a certain time)
-//Most closely associated form is frm_class_arrange
-//when frm_class_arrange is called from frm_class_arrange_list
+//Most closely associated form is frm_class_instance_arrange
+//when frm_class_instance_arrange is called from frm_class_instance_list
 
 //Used also in
 //      frm_member_list

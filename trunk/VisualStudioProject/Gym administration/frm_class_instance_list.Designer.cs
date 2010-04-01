@@ -1,6 +1,6 @@
 ﻿namespace Gym_administration
 {
-    partial class frm_class_arrange_list
+    partial class frm_class_instance_list
     {
         /// <summary>
         /// Required designer variable.
@@ -76,7 +76,7 @@
             this.dg_classes.TabIndex = 22;
             this.dg_classes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_classes_CellDoubleClick);
             // 
-            // frm_class_arrange_list
+            // frm_class_instance_list
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -87,10 +87,10 @@
             this.Controls.Add(this.dg_classes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frm_class_arrange_list";
+            this.Name = "frm_class_instance_list";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Class Arrangements list";
-            this.Load += new System.EventHandler(this.frm_class_arrange_list_Load);
+            this.Load += new System.EventHandler(this.frm_class_instance_list_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dg_classes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

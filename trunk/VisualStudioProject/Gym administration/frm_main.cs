@@ -138,7 +138,7 @@ namespace Gym_administration
             else if (sSelectedBand == "manager" && panelIcon.Index.ToString() == "7")
             {
                 // Creating the child form login
-                frm_class_arrange_list mdiFrmClassArrangeList = new frm_class_arrange_list();
+                frm_class_instance_list mdiFrmClassArrangeList = new frm_class_instance_list();
                 // We check if the form is already opened
                 if (Utils.bIsAlreadyOpened(mdiFrmClassArrangeList)) return;
                 // Set the Parent Form of the Child window.
@@ -181,7 +181,7 @@ namespace Gym_administration
             else if (sSelectedBand == "staff" && panelIcon.Index.ToString() == "2")
             {
                 // Creating the child form login
-                frm_class_arrange mdiFrmClassArrange = new frm_class_arrange();
+                frm_class_instance_arrange mdiFrmClassArrange = new frm_class_instance_arrange();
                 // We check if the form is already opened
                 if (Utils.bIsAlreadyOpened(mdiFrmClassArrange)) return;
                 // Set the Parent Form of the Child window.
@@ -194,7 +194,7 @@ namespace Gym_administration
             else if (sSelectedBand == "staff" && panelIcon.Index.ToString() == "3")
             {
                 // Creating the child form login
-                frm_class_arrange_list mdiFrmClassArrangeList = new frm_class_arrange_list();
+                frm_class_instance_list mdiFrmClassArrangeList = new frm_class_instance_list();
                 // We check if the form is already opened
                 if (Utils.bIsAlreadyOpened(mdiFrmClassArrangeList)) return;
                 // Set the Parent Form of the Child window.

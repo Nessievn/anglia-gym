@@ -1,6 +1,6 @@
 ﻿namespace Gym_administration
 {
-    partial class frm_class_arrange
+    partial class frm_class_instance_arrange
     {
         /// <summary>
         /// Required designer variable.
@@ -367,7 +367,7 @@
             this.Name = "frm_class_arrange";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Class Arrange";
-            this.Load += new System.EventHandler(this.frm_class_arrange_Load);
+            this.Load += new System.EventHandler(this.frm_class_instance_arrange_Load);
             this.groupBox_membersenrolled.ResumeLayout(false);
             this.groupBox_membersenrolled.PerformLayout();
             this.ResumeLayout(false);
