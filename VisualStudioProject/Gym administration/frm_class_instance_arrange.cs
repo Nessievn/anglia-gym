@@ -10,18 +10,18 @@ using System.Windows.Forms;
 
 namespace Gym_administration
 {
-    public partial class frm_class_arrange : Form
+    public partial class frm_class_instance_arrange : Form
     {
         ClassInstance ciClassInstance;
-        frm_class_arrange_list frmClArrList;
+        frm_class_instance_list frmClArrList;
 
-        public frm_class_arrange()
+        public frm_class_instance_arrange()
         {
             InitializeComponent();
             ciClassInstance = new ClassInstance();
             button_enrollmembers.Enabled = false;
         }
-        public frm_class_arrange(int iIdClassBooked, frm_class_arrange_list frmClArrList)
+        public frm_class_instance_arrange(int iIdClassBooked, frm_class_instance_list frmClArrList)
         {
             InitializeComponent();
             this.frmClArrList = frmClArrList;
@@ -36,7 +36,7 @@ namespace Gym_administration
                 button_enrollmembers.Enabled = true;
             }
         }
-        private void frm_class_arrange_Load(object sender, EventArgs e)
+        private void frm_class_instance_arrange_Load(object sender, EventArgs e)
         {
             mySqlConn conn = new mySqlConn();
             conn.connect();

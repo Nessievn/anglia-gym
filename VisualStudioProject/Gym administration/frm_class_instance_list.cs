@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace Gym_administration
 {
-    public partial class frm_class_arrange_list : Form
+    public partial class frm_class_instance_list : Form
     {
-        public frm_class_arrange_list()
+        public frm_class_instance_list()
         {
             InitializeComponent();
         }
@@ -27,7 +27,7 @@ namespace Gym_administration
             dg_classes.AllowUserToAddRows = false;
             dg_classes.ReadOnly = true;
         }
-        private void frm_class_arrange_list_Load(object sender, EventArgs e)
+        private void frm_class_instance_list_Load(object sender, EventArgs e)
         {
             this.vLoadDgClassList();
         }
@@ -38,9 +38,9 @@ namespace Gym_administration
             {
                 string sClassId = dg_classes.Rows[e.RowIndex].Cells[0].Value.ToString();
                 int iClassInstanceId = int.Parse(sClassId);
-                frm_class_arrange frm_class_arrange = new frm_class_arrange(iClassInstanceId, this);
-                frm_class_arrange.MdiParent = this.MdiParent;
-                frm_class_arrange.Show();
+                frm_class_instance_arrange frm_class_instance_arrange = new frm_class_instance_arrange(iClassInstanceId, this);
+                frm_class_instance_arrange.MdiParent = this.MdiParent;
+                frm_class_instance_arrange.Show();
             }
             catch (Exception ea)
             {

@@ -83,17 +83,17 @@
     <Compile Include="frm_class.Designer.cs">
       <DependentUpon>frm_class.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_class_arrange.cs">
+    <Compile Include="frm_class_instance_arrange.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_class_arrange.Designer.cs">
-      <DependentUpon>frm_class_arrange.cs</DependentUpon>
+    <Compile Include="frm_class_instance_arrange.Designer.cs">
+      <DependentUpon>frm_class_instance_arrange.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_class_arrange_list.cs">
+    <Compile Include="frm_class_instance_list.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_class_arrange_list.Designer.cs">
-      <DependentUpon>frm_class_arrange_list.cs</DependentUpon>
+    <Compile Include="frm_class_instance_list.Designer.cs">
+      <DependentUpon>frm_class_instance_list.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_class_list.cs">
       <SubType>Form</SubType>
@@ -104,17 +104,17 @@
     <Compile Include="frm_equipment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_eq_bookings_arrange.cs">
+    <Compile Include="frm_eqbooking_arrange.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_eq_bookings_arrange.Designer.cs">
-      <DependentUpon>frm_eq_bookings_arrange.cs</DependentUpon>
+    <Compile Include="frm_eqbooking_arrange.Designer.cs">
+      <DependentUpon>frm_eqbooking_arrange.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_eq_bookings_arrange_list.cs">
+    <Compile Include="frm_eqbooking_list.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_eq_bookings_arrange_list.Designer.cs">
-      <DependentUpon>frm_eq_bookings_arrange_list.cs</DependentUpon>
+    <Compile Include="frm_eqbooking_list.Designer.cs">
+      <DependentUpon>frm_eqbooking_list.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_login_options.cs">
       <SubType>Form</SubType>
@@ -202,12 +202,12 @@
       <DependentUpon>frm_class.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_class_arrange.resx">
-      <DependentUpon>frm_class_arrange.cs</DependentUpon>
+    <EmbeddedResource Include="frm_class_instance_arrange.resx">
+      <DependentUpon>frm_class_instance_arrange.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_class_arrange_list.resx">
-      <DependentUpon>frm_class_arrange_list.cs</DependentUpon>
+    <EmbeddedResource Include="frm_class_instance_list.resx">
+      <DependentUpon>frm_class_instance_list.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_class_list.resx">
@@ -221,12 +221,12 @@
       <DependentUpon>frm_equipment_list.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_eq_bookings_arrange.resx">
-      <DependentUpon>frm_eq_bookings_arrange.cs</DependentUpon>
+    <EmbeddedResource Include="frm_eqbooking_arrange.resx">
+      <DependentUpon>frm_eqbooking_arrange.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_eq_bookings_arrange_list.resx">
-      <DependentUpon>frm_eq_bookings_arrange_list.cs</DependentUpon>
+    <EmbeddedResource Include="frm_eqbooking_list.resx">
+      <DependentUpon>frm_eqbooking_list.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_login_options.resx">

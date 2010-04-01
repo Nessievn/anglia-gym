@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace Gym_administration
 {
-    public partial class frm_eq_bookings_arrange : Form
+    public partial class frm_eqbooking_arrange : Form
     {
-        public frm_eq_bookings_arrange()
+        public frm_eqbooking_arrange()
         {
             InitializeComponent();
         }

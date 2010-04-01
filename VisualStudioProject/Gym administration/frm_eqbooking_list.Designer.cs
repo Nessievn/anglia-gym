@@ -1,6 +1,6 @@
 ﻿namespace Gym_administration
 {
-    partial class frm_eq_bookings_arrange
+    partial class frm_eqbooking_list
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // frm_eq_bookings_arrange
+            // frm_eqbooking_list
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 474);
-            this.Name = "frm_eq_bookings_arrange";
+            this.ClientSize = new System.Drawing.Size(769, 473);
+            this.Name = "frm_eqbooking_list";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frm_eq_bookings_arrange";
+            this.Text = "frm_eq_bookings_arrange_list";
             this.ResumeLayout(false);
 
         }
