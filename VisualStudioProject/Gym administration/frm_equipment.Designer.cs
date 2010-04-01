@@ -390,6 +390,7 @@
             this.Controls.Add(this.label_itemname);
             this.Controls.Add(this.label_iteminfo);
             this.Name = "frm_equipment";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_equipment";
             this.Load += new System.EventHandler(this.frm_equipment_Load);
             ((System.ComponentModel.ISupportInitialize)(this.counter_item2)).EndInit();

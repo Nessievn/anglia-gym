@@ -36,6 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(636, 359);
             this.Name = "frm_eq_bookings_arrange_list";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_eq_bookings_arrange_list";
             this.ResumeLayout(false);
 
