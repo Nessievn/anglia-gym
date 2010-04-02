@@ -7,16 +7,18 @@
 </head>
 
 <body>
-<form>
 <div id="wrapper">
   <div id="masthead"><a href="home.php"><img border="0" src="images/bannernew.png" height="100%" width="100%" alt="Trees banner image"/></a></div>
     <div id="content"></div>
     <div id="leftpanel">
-  	 	<div id="login">Welcome {member name goes here}
+  	 	<div id="login">
+		<form action="loggedout.php" method=post>
+		Welcome {member name goes here}
 		<br />
         <br />
         Not you? Click Logout to return to the login page.
 		<input type="submit" value="Logout"/>
+		</form>
         </div>
     	<div id="menu">
 	    <a href="changedetails.php"><img border="0" src="images/membermenu1_1.png" alt="Change your Details"/></a>
@@ -30,7 +32,6 @@
 	?>
 	</div>
 </div>
-</form>
 </body>
 </html>
 	

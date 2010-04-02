@@ -7,16 +7,18 @@
 </head>
 
 <body>
-<form>
 <div id="wrapper">
   <div id="masthead"><a href="home.php"><img border="0" src="images/bannernew.png" height="100%" width="100%" alt="Trees banner image"/></a></div>
     <div id="content"></div>
     <div id="leftpanel">
-  	 	<div id="login">Welcome {member name goes here}
-		<br />
-        <br />
-        Not you? Click Logout to return to the login page.
-		<input type="submit" value="Logout"/>
+		<div id="login">
+		<form action="loggedout.php" method=post>
+			Welcome {member name goes here}
+			<br />
+			<br />
+			Not you? Click Logout to return to the login page.
+			<input type="submit" value="Logout"/>
+		</form>
         </div>
     	<div id="menu">
 	    <a href="changedetails.php"><img border="0" src="images/membermenu1_1.png" alt="Change your Details"/></a>
@@ -25,6 +27,7 @@
     </div>
     <div id="centre"><strong>Change Your Details</strong>
     <br />Please note you can only change your contact details online. Any other details you would need to speak to a member of staff at the Fitness Centre.
+	<form action="thankyou.php" method=post>
     <table>
     	<tr>
         	<td>Title: </td>
@@ -93,6 +96,7 @@
         	<td><input type="submit" value="Submit Changes" title="Please click here to submit your changes" /></td>
         </tr>
     </table>
+	</form>
     </div>
 	<div id="footer">
 	<?php
@@ -100,7 +104,6 @@
 	?>
 	</div>
 </div>
-</form>
 </body>
 </html>
 	
