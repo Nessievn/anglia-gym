@@ -12,18 +12,27 @@
   <div id="masthead"><a href="home.php"><img border="0" src="images/bannernew.png" height="100%" width="100%" alt="Trees banner image"/></a></div>
     <div id="content"></div>
     <div id="leftpanel">
-  	 	<div id="login">Welcome {member name goes here}
-		<br />
-        <br />
-        Not you? Click Logout to return to the login page.
-		<input type="submit" value="Logout"/>
+  	 	<div id="login">Please enter your membership details and click the button below to log in.
+			<table>
+	            <tr></tr>
+            	<tr></tr>
+                	<td>Membership Number: </td>
+                    <td><input type="text" /></td>
+                <tr></tr>
+                	<td>Password: </td>
+                    <td><input type="text" /></td>
+                <tr></tr>
+                	<td></td>
+                	<td><input type="submit" value="Login"/></td>
+            </table>
         </div>
     	<div id="menu">
-	    <a href="changedetails.php"><img border="0" src="images/membermenu1_1.png" alt="Change your Details"/></a>
-            <a href="bookclass.php"><img border="0" src="images/membermenu2_2.png" alt="Book a Class"/></a>
-      </div>
+	    <a href="register.php"><img border="0" src="images/nomembermenu1_1.png" alt="Become a Member"/></a>
+            <a href="staff.php"><img border="0" src="images/nomembermenu2_2.png" alt="Meet the Staff"/></a>
+            <a href="contact.php"><img border="0" src="images/nomembermenu3_3.png" alt="Contact Us"/></a>
+		</div>
     </div>
-    <div id="centre">You have been successfully logged out. Please click <a href="home.html">here</a> to return to the home page.</div>
+    <div id="centre">You have been successfully logged out. Please click <a href="home.php">here</a> to return to the home page.</div>
 	<div id="footer">
 	<?php
 	echo date('jS F');
