@@ -59,16 +59,5 @@ namespace Gym_administration.Properties {
                 resourceCulture = value;
             }
         }
-        
-
-
-        internal static System.Drawing.Bitmap title_bar
-        {
-            get
-            {
-                object obj = ResourceManager.GetObject("title_bar", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }
