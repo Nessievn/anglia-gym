@@ -61,6 +61,25 @@ namespace Gym_administration
 
             if (IsBooking)
             {
+
+/*
+                string result = MyMessageBox.ShowBox("Do you want to exit?", "Exit");
+                if (result.Equals("1"))
+                {
+                    MessageBox.Show("OK Button was Clicked");
+                }
+
+                if (result.Equals("2"))
+                {
+                    MessageBox.Show("Cancel Button was Clicked");
+                }
+
+*/
+
+//                DialogResult res = MessageBox.Show("Edit?", "Edit the item instead of borrowing?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+//                if (res == DialogResult.Yes)
+
+
                 try
                 {
                     string sEquipmentId = dg_equipment.Rows[e.RowIndex].Cells[0].Value.ToString();
@@ -84,6 +103,7 @@ namespace Gym_administration
                     frm_equipment frm_equipment = new frm_equipment(false, false, -1, iEquipmentId, this);
                     frm_equipment.MdiParent = this.MdiParent;
                     frm_equipment.Show();
+                    
                 }
                 catch (Exception ea)
                 {
