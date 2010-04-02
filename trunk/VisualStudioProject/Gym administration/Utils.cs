@@ -8,6 +8,9 @@ namespace Gym_administration
 {
     static class Utils
     {
+
+
+
         /**
         * @desc Returns true when the email received is valid 
         * @params [string] sEmail
@@ -160,5 +163,22 @@ namespace Gym_administration
             }
             return false;
         }
+
+   //     static public class MBButton
+     //   {
+            public const UInt32 MB_OK = 0x00000000;
+            public const UInt32 MB_OKCANCEL = 0x00000001;
+            public const UInt32 MB_ABORTRETRYIGNORE = 0x00000002;
+            public const UInt32 MB_YESNOCANCEL = 0x00000003;
+            public const UInt32 MB_YESNO = 0x00000004;
+            public const UInt32 MB_RETRYCANCEL = 0x00000005;
+            public const UInt32 MB_CANCELTRYCONTINUE = 0x00000006;
+            public const UInt32 MB_CUST1 = 0x00000007;
+            public const UInt32 MB_CUST2 = 0x00000008;
+            public const UInt32 MB_CUST3 = 0x00000009;
+            public const UInt32 MB_HELP = 0x00004000;
+    //    }
+ 
+
     }
 }

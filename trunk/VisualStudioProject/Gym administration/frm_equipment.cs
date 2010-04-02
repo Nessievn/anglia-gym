@@ -13,7 +13,11 @@ namespace Gym_administration
     public partial class frm_equipment : Form
     {
         Equipment mbrEquipment;
+        MyMessageBox myMessagebox;
         frm_equipment_list frmEqList;
+        bool IsBooking;
+        bool IsMember;
+        int Id_Person;
         
 
         //loading from main menu
@@ -21,14 +25,23 @@ namespace Gym_administration
         {
             InitializeComponent();
             mbrEquipment = new Equipment();
+            myMessageBox = new MyMessageBox();
+            
             this.frmEqList = null;
             button_vehicle.Show();
             rd_item.Checked = true;
             rd_item_Checked();
 
+
+
+
+            
+            
+
+
         }
 
-        //loading from equipment list to refresh list after saving added item
+        //loading from equipment list to refresh list after saving added new item to itemlist
         public frm_equipment(frm_equipment_list frmEqList)
         {
             InitializeComponent();
@@ -68,11 +81,23 @@ namespace Gym_administration
         public void frm_equipment_ini(int iEquipmentId, frm_equipment_list frmEqList)
         {
  */
-        public frm_equipment(bool isBooking, bool isMember, int Id_Person, int iEquipmentId, frm_equipment_list frmEqList)
+        public frm_equipment(bool isBooking, bool isMember, int id_Person, int iEquipmentId, frm_equipment_list frmEqList)
         {
             InitializeComponent();
             mbrEquipment = new Equipment(iEquipmentId);
             this.frmEqList = frmEqList;
+            IsBooking = isBooking;
+            IsMember = isMember;
+            Id_Person = id_Person;
+
+            if (IsBooking)
+            {
+                button_save.Text = "Borrow";
+            }
+            else
+            {
+                button_save.Text = "Save";
+            }
 
 
 
@@ -228,7 +253,7 @@ namespace Gym_administration
             if (res == DialogResult.Yes)
             {
                 //call list reload in parent form
-                    //if frmEqlist is null, then this form was called from the main menu and list reload is not necessary
+                //if frmEqlist is null, then this form was called from the main menu and list reload is not necessary
                 if (this.frmEqList != null) frmEqList.vLoadEqList(mbrEquipment.SType);
                 mbrEquipment.bRemove();
                 this.Close();
@@ -241,11 +266,16 @@ private void button_vehicle_Click(object sender, EventArgs e)
     //MessageBox.Show("vehicles are going to be here");
     //DictionaryEntry de1 = (DictionaryEntry)cmb_item1.SelectedItem;
     //MessageBox.Show(de1.Key.ToString());
-    MessageBox.Show(cmb_item1.SelectedIndex.ToString() + "/n" + 
+  /*  MessageBox.Show(cmb_item1.SelectedIndex.ToString() + "/n" + 
         cmb_item2.SelectedIndex.ToString() + "/n" + 
         cmb_item3.SelectedIndex.ToString() + "/n" + 
         cmb_item4.SelectedIndex.ToString() + "/n" + 
-        cmb_item5.SelectedIndex.ToString());
+        cmb_item5.SelectedIndex.ToString());*/
+
+
+
+            
+
     
 
 
