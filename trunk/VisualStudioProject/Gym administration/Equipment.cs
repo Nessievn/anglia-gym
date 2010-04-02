@@ -284,7 +284,7 @@ namespace Gym_administration
                 if (this.Id_equipment == -1)
                 {
                     sQuery = "insert into `gym`.`equipment` (`id_equipment`, `type`, `id_vehicle`, `name`, `description`, `currentlyinstock`, `iteminset1`, `iteminset2`, `iteminset3`, `iteminset4`, `iteminset5`, `iteminset6`, `iteminset7`, `iteminset8`, `iteminset9`, `iteminset10`, `amountinset1`, `amountinset2`, `amountinset3`, `amountinset4`, `amountinset5`, `amountinset6`, `amountinset7`, `amountinset8`, `amountinset9`, `amountinset10`) values " +
-                             "(NULL, '" + this.SType + "', '" + this.SId_Vehicle + "', '" + this.SName + "', '" + this.SDescription + "', '" + this.SCurrentlyInStock
+                             "(NULL, '" + this.Id_equipment + "','" + this.SType + "', '" + this.SId_Vehicle + "', '" + this.SName + "', '" + this.SDescription + "', '" + this.SCurrentlyInStock
                              + "', '" + this.SItemInSet1 + "', '" + this.SItemInSet2 + "', '" + this.SItemInSet3 + "', '" + this.SItemInSet4 + "', '" + this.SItemInSet5
                              + "', '" + this.SItemInSet6 + "', '" + this.SItemInSet7 + "', '" + this.SItemInSet8 + "', '" + this.SItemInSet9 + "', '" + this.SItemInSet10
                              + "', '" + this.SAmountInSet1 + "', '" + this.SAmountInSet2 + "', '" + this.SAmountInSet3 + "', '" + this.SAmountInSet4 + "', '" + this.SAmountInSet5
