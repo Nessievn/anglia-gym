@@ -12,8 +12,11 @@ namespace Gym_administration
 {
     public partial class frm_equipment_list : Form
     {
+        EquipmentBooked eqEquipmentBooked;
+        MyMessageBox myMessageBox;
         bool IsBooking;
         bool IsMember;
+        bool IsSet;
         int Id_Member;
 
         public frm_equipment_list()
@@ -26,17 +29,17 @@ namespace Gym_administration
 
         public frm_equipment_list(bool isBooking, bool isMember, int id_Member)
         {
+            InitializeComponent();
             IsBooking = isBooking;
             IsMember = isMember;
             Id_Member = id_Member;
-            InitializeComponent();
             rd_item.Checked = true;
             rd_item_Checked();
         }
 
         private void frm_equipment_list_Load(object sender, EventArgs e)
         {
-            //..
+            myMessageBox = new MyMessageBox();
         }
 
         public void vLoadEqList(string type)
@@ -59,42 +62,46 @@ namespace Gym_administration
         private void dg_equipment_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
+
             if (IsBooking)
             {
-
-/*
-                string result = MyMessageBox.ShowBox("Do you want to exit?", "Exit");
-                if (result.Equals("1"))
+                if (IsSet)
                 {
-                    MessageBox.Show("OK Button was Clicked");
+//question only at SETS!!!
+                    string result = myMessageBox.ShowBox(Utils.MB_CUST2, "Borrow set or edit set?", "Borrow or Edit?","Borrow Set","Edit Set");
+
+                    if (result.Equals("Borrow Set"))
+                    {
+                        //MessageBox.Show("Borrow Button was Clicked");
+                    //borrowing();
+                        return;
+                    }
+                    if (result.Equals("Edit Set"))
+                    {
+                
+                        try
+                        {
+                            string sEquipmentId = dg_equipment.Rows[e.RowIndex].Cells[0].Value.ToString();
+                            int iEquipmentId = int.Parse(sEquipmentId);
+                            frm_equipment frm_equipment = new frm_equipment(IsBooking, IsMember, Id_Member, iEquipmentId, this);
+                            frm_equipment.MdiParent = this.MdiParent;
+                            frm_equipment.Show();
+                        }
+                        catch (Exception ea)
+                        {
+                            MessageBox.Show(ea.ToString());
+                            return;
+                        }
+                    }
+
                 }
-
-                if (result.Equals("2"))
+                else //Not Set (but it is Booking)
                 {
-                    MessageBox.Show("Cancel Button was Clicked");
-                }
-
-*/
-
-//                DialogResult res = MessageBox.Show("Edit?", "Edit the item instead of borrowing?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-//                if (res == DialogResult.Yes)
-
-
-                try
-                {
-                    string sEquipmentId = dg_equipment.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    int iEquipmentId = int.Parse(sEquipmentId);
-                    frm_equipment frm_equipment = new frm_equipment(IsBooking, IsMember, Id_Member, iEquipmentId, this);
-                    frm_equipment.MdiParent = this.MdiParent;
-                    frm_equipment.Show();
-                }
-                catch (Exception ea)
-                {
-                    MessageBox.Show(ea.ToString());
-                    return;
+                    //ITEM booking code here
+                    MessageBox.Show("Item will be borrowed!");
                 }
             }
-            else
+            else //Not Booking (regular equipment edit form)
             {
                 try
                 {
@@ -103,7 +110,6 @@ namespace Gym_administration
                     frm_equipment frm_equipment = new frm_equipment(false, false, -1, iEquipmentId, this);
                     frm_equipment.MdiParent = this.MdiParent;
                     frm_equipment.Show();
-                    
                 }
                 catch (Exception ea)
                 {
@@ -111,9 +117,6 @@ namespace Gym_administration
                     return;
                 }
             }
-
-
-
         }
 
         private void button_addequipment_Click(object sender, EventArgs e)
@@ -147,6 +150,7 @@ namespace Gym_administration
         }
         private void rd_item_Checked()
         {
+            IsSet = false;
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource itemsSource = new BindingSource();
@@ -166,7 +170,7 @@ namespace Gym_administration
 
         private void rd_set_Checked()
         {
-
+            IsSet = true;
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource setsSource = new BindingSource();

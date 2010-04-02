@@ -129,6 +129,7 @@
             this.Name = "frm_equipment_list";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_equipment_list";
+            this.Load += new System.EventHandler(this.frm_equipment_list_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dg_equipment)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

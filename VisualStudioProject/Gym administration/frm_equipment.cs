@@ -12,8 +12,8 @@ namespace Gym_administration
 {
     public partial class frm_equipment : Form
     {
-        Equipment mbrEquipment;
-        MyMessageBox myMessagebox;
+        Equipment eqEquipment;
+        //MyMessageBox myMessageBox;
         frm_equipment_list frmEqList;
         bool IsBooking;
         bool IsMember;
@@ -24,8 +24,8 @@ namespace Gym_administration
         public frm_equipment()
         {
             InitializeComponent();
-            mbrEquipment = new Equipment();
-            myMessageBox = new MyMessageBox();
+            eqEquipment = new Equipment();
+            //myMessageBox = new MyMessageBox();
             
             this.frmEqList = null;
             button_vehicle.Show();
@@ -45,7 +45,7 @@ namespace Gym_administration
         public frm_equipment(frm_equipment_list frmEqList)
         {
             InitializeComponent();
-            mbrEquipment = new Equipment();
+            eqEquipment = new Equipment();
             this.frmEqList = frmEqList;
             button_vehicle.Show();
             rd_item.Checked = true;
@@ -70,7 +70,7 @@ namespace Gym_administration
         public void frm_equipment_booking_ini(bool isMember, int Id_Person, int iEquipmentId, frm_equipment_list frmEqList)
         {
             InitializeComponent();
-            mbrEquipment = new Equipment(iEquipmentId);
+            eqEquipment = new Equipment(iEquipmentId);
             this.frmEqList = frmEqList;
 
 
@@ -84,7 +84,7 @@ namespace Gym_administration
         public frm_equipment(bool isBooking, bool isMember, int id_Person, int iEquipmentId, frm_equipment_list frmEqList)
         {
             InitializeComponent();
-            mbrEquipment = new Equipment(iEquipmentId);
+            eqEquipment = new Equipment(iEquipmentId);
             this.frmEqList = frmEqList;
             IsBooking = isBooking;
             IsMember = isMember;
@@ -92,7 +92,7 @@ namespace Gym_administration
 
             if (IsBooking)
             {
-                button_save.Text = "Borrow";
+                button_save.Text = "Borrow Set";
             }
             else
             {
@@ -102,37 +102,37 @@ namespace Gym_administration
 
 
 
-            if (mbrEquipment.Id_equipment < 1)
+            if (eqEquipment.Id_equipment < 1)
                 MessageBox.Show("The equipment could not be found");
             else
             {
-                if (mbrEquipment.SType == "item")
+                if (eqEquipment.SType == "item")
                 {
                     button_vehicle.Hide();
                     rd_item.Checked = true;
                     rd_item_Checked();
                     rd_set.Hide();
-                    txt_itemname.Text = mbrEquipment.SName;
-                    counter_stock.Value = mbrEquipment.SCurrentlyInStock;
-                    txt_equipmentdesc.Text = mbrEquipment.SDescription;
+                    txt_itemname.Text = eqEquipment.SName;
+                    counter_stock.Value = eqEquipment.SCurrentlyInStock;
+                    txt_equipmentdesc.Text = eqEquipment.SDescription;
 
   
                 }
 
-                else if (mbrEquipment.SType == "set")
+                else if (eqEquipment.SType == "set")
                 {
                     button_vehicle.Hide();
                     rd_set.Checked = true;
                     rd_set_Checked();
                     rd_item.Hide();
-                    txt_setname.Text = mbrEquipment.SName;
-                    txt_equipmentdesc.Text = mbrEquipment.SDescription;
+                    txt_setname.Text = eqEquipment.SName;
+                    txt_equipmentdesc.Text = eqEquipment.SDescription;
 
 
  
 
                 }
-                else if (mbrEquipment.SType == "vehicle")
+                else if (eqEquipment.SType == "vehicle")
                 {
                     //OPEN NEW WINDOW FOR VEHICLES
                     MessageBox.Show("vehicles are going to be here");
@@ -169,10 +169,10 @@ namespace Gym_administration
                     MessageBox.Show("Please insert a name for the equipment.");
                     return;
                 }
-                mbrEquipment.SType = "item";
-                mbrEquipment.SName = txt_itemname.Text;
-                mbrEquipment.SDescription = txt_equipmentdesc.Text;
-                mbrEquipment.SCurrentlyInStock = int.Parse(counter_stock.Value.ToString());
+                eqEquipment.SType = "item";
+                eqEquipment.SName = txt_itemname.Text;
+                eqEquipment.SDescription = txt_equipmentdesc.Text;
+                eqEquipment.SCurrentlyInStock = int.Parse(counter_stock.Value.ToString());
 
 
                 
@@ -185,9 +185,9 @@ namespace Gym_administration
                     MessageBox.Show("Please insert a name for the set.");
                     return;
                 }
-                mbrEquipment.SType = "set";
-                mbrEquipment.SName = txt_setname.Text;
-                mbrEquipment.SDescription = txt_equipmentdesc.Text;
+                eqEquipment.SType = "set";
+                eqEquipment.SName = txt_setname.Text;
+                eqEquipment.SDescription = txt_equipmentdesc.Text;
 
                 if (cmb_item1.SelectedIndex < 1)
                 {
@@ -198,45 +198,45 @@ namespace Gym_administration
                 if (cmb_item1.SelectedIndex > 0)
                 {
                     DictionaryEntry de = (DictionaryEntry)cmb_item1.SelectedItem;
-                    mbrEquipment.SItemInSet1 = de.Value.ToString();
+                    eqEquipment.SItemInSet1 = de.Value.ToString();
                 }
-                mbrEquipment.SAmountInSet1 = int.Parse(counter_item1.Value.ToString());
+                eqEquipment.SAmountInSet1 = int.Parse(counter_item1.Value.ToString());
 
                 if (cmb_item2.SelectedIndex > 0)
                 {
                     DictionaryEntry de2 = (DictionaryEntry)cmb_item2.SelectedItem;
-                    mbrEquipment.SItemInSet2 = de2.Value.ToString();
+                    eqEquipment.SItemInSet2 = de2.Value.ToString();
                 }
-                mbrEquipment.SAmountInSet2 = int.Parse(counter_item2.Value.ToString());
+                eqEquipment.SAmountInSet2 = int.Parse(counter_item2.Value.ToString());
 
                 if (cmb_item3.SelectedIndex > 0)
                 {
                     DictionaryEntry de3 = (DictionaryEntry)cmb_item3.SelectedItem;
-                    mbrEquipment.SItemInSet3 = de3.Value.ToString();
+                    eqEquipment.SItemInSet3 = de3.Value.ToString();
                 }
-                mbrEquipment.SAmountInSet3 = int.Parse(counter_item3.Value.ToString());
+                eqEquipment.SAmountInSet3 = int.Parse(counter_item3.Value.ToString());
 
                 if (cmb_item4.SelectedIndex > 0)
                 {
                     DictionaryEntry de4 = (DictionaryEntry)cmb_item4.SelectedItem;
-                    mbrEquipment.SItemInSet4 = de4.Value.ToString();
+                    eqEquipment.SItemInSet4 = de4.Value.ToString();
                 }
-                mbrEquipment.SAmountInSet4 = int.Parse(counter_item4.Value.ToString());
+                eqEquipment.SAmountInSet4 = int.Parse(counter_item4.Value.ToString());
 
                 if (cmb_item5.SelectedIndex > 0)
                 {
                     DictionaryEntry de5 = (DictionaryEntry)cmb_item5.SelectedItem;
-                    mbrEquipment.SItemInSet5 = de5.Value.ToString();
+                    eqEquipment.SItemInSet5 = de5.Value.ToString();
                 }
-                mbrEquipment.SAmountInSet5 = int.Parse(counter_item5.Value.ToString());
+                eqEquipment.SAmountInSet5 = int.Parse(counter_item5.Value.ToString());
 
             }
 
 
-            mbrEquipment.bSave();
+            eqEquipment.bSave();
             //call list reload in parent form
                 //if frmEqlist is null, then this form was called from the main menu and list reload is not necessary
-            if (this.frmEqList != null) frmEqList.vLoadEqList(mbrEquipment.SType);
+            if (this.frmEqList != null) frmEqList.vLoadEqList(eqEquipment.SType);
             this.Close();
         }
 
@@ -254,8 +254,8 @@ namespace Gym_administration
             {
                 //call list reload in parent form
                 //if frmEqlist is null, then this form was called from the main menu and list reload is not necessary
-                if (this.frmEqList != null) frmEqList.vLoadEqList(mbrEquipment.SType);
-                mbrEquipment.bRemove();
+                if (this.frmEqList != null) frmEqList.vLoadEqList(eqEquipment.SType);
+                eqEquipment.bRemove();
                 this.Close();
             }
         }
@@ -349,7 +349,7 @@ private void button_vehicle_Click(object sender, EventArgs e)
 
             //cmb_item1.SelectedIndex = 0;
             DictionaryEntry dent = (DictionaryEntry)myItems1[0];
-            //mbrEquipment.SItemInSet1 = de.Value.ToString();
+            //eqEquipment.SItemInSet1 = de.Value.ToString();
 
             dent.Value = "none";
             dent.Key = "0";
@@ -382,26 +382,26 @@ private void button_vehicle_Click(object sender, EventArgs e)
             //cmb_item9.DataSource = myItems;
             //cmb_item10.DataSource = myItems;
 
-            cmb_item1.SelectedIndex = cmb_item1.FindString(mbrEquipment.SItemInSet1);
-            cmb_item2.SelectedIndex = cmb_item2.FindString(mbrEquipment.SItemInSet2);
-            cmb_item3.SelectedIndex = cmb_item3.FindString(mbrEquipment.SItemInSet3);
-            cmb_item4.SelectedIndex = cmb_item4.FindString(mbrEquipment.SItemInSet4);
-            cmb_item5.SelectedIndex = cmb_item5.FindString(mbrEquipment.SItemInSet5);
-            //cmb_item6.SelectedIndex = mbrEquipment.SItemInSet6;
-            //cmb_item7.SelectedIndex = mbrEquipment.SItemInSet7;
-            //cmb_item8.SelectedIndex = mbrEquipment.SItemInSet8;
-            //cmb_item9.SelectedIndex = mbrEquipment.SItemInSet9;
-            //cmb_item10.SelectedIndex = mbrEquipment.SItemInSet10;
-            counter_item1.Value = mbrEquipment.SAmountInSet1;
-            counter_item2.Value = mbrEquipment.SAmountInSet2;
-            counter_item3.Value = mbrEquipment.SAmountInSet3;
-            counter_item4.Value = mbrEquipment.SAmountInSet4;
-            counter_item5.Value = mbrEquipment.SAmountInSet5;
-            //counter_item6.Value = mbrEquipment.SAmountInSet6;
-            //counter_item7.Value = mbrEquipment.SAmountInSet7;
-            //counter_item8.Value = mbrEquipment.SAmountInSet8;
-            //counter_item9.Value = mbrEquipment.SAmountInSet9;
-            //counter_item10.Value = mbrEquipment.SAmountInSet10;
+            cmb_item1.SelectedIndex = cmb_item1.FindString(eqEquipment.SItemInSet1);
+            cmb_item2.SelectedIndex = cmb_item2.FindString(eqEquipment.SItemInSet2);
+            cmb_item3.SelectedIndex = cmb_item3.FindString(eqEquipment.SItemInSet3);
+            cmb_item4.SelectedIndex = cmb_item4.FindString(eqEquipment.SItemInSet4);
+            cmb_item5.SelectedIndex = cmb_item5.FindString(eqEquipment.SItemInSet5);
+            //cmb_item6.SelectedIndex = eqEquipment.SItemInSet6;
+            //cmb_item7.SelectedIndex = eqEquipment.SItemInSet7;
+            //cmb_item8.SelectedIndex = eqEquipment.SItemInSet8;
+            //cmb_item9.SelectedIndex = eqEquipment.SItemInSet9;
+            //cmb_item10.SelectedIndex = eqEquipment.SItemInSet10;
+            counter_item1.Value = eqEquipment.SAmountInSet1;
+            counter_item2.Value = eqEquipment.SAmountInSet2;
+            counter_item3.Value = eqEquipment.SAmountInSet3;
+            counter_item4.Value = eqEquipment.SAmountInSet4;
+            counter_item5.Value = eqEquipment.SAmountInSet5;
+            //counter_item6.Value = eqEquipment.SAmountInSet6;
+            //counter_item7.Value = eqEquipment.SAmountInSet7;
+            //counter_item8.Value = eqEquipment.SAmountInSet8;
+            //counter_item9.Value = eqEquipment.SAmountInSet9;
+            //counter_item10.Value = eqEquipment.SAmountInSet10;
 
 
 
