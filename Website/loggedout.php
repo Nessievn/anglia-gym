@@ -7,6 +7,11 @@
 </head>
 
 <body>
+<?php
+session_start();
+session_destroy();
+?>
+
 <form>
 <div id="wrapper">
   <div id="masthead"><a href="home.php"><img border="0" src="images/bannernew.png" height="100%" width="100%" alt="Trees banner image"/></a></div>
