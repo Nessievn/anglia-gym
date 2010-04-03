@@ -32,6 +32,8 @@
             this.button_2 = new System.Windows.Forms.Button();
             this.button_3 = new System.Windows.Forms.Button();
             this.label_Message = new System.Windows.Forms.Label();
+            this.counter = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.counter)).BeginInit();
             this.SuspendLayout();
             // 
             // button_1
@@ -72,11 +74,19 @@
             this.label_Message.Size = new System.Drawing.Size(0, 17);
             this.label_Message.TabIndex = 10;
             // 
+            // counter
+            // 
+            this.counter.Location = new System.Drawing.Point(60, 31);
+            this.counter.Name = "counter";
+            this.counter.Size = new System.Drawing.Size(116, 22);
+            this.counter.TabIndex = 207;
+            // 
             // MyMessageBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(386, 124);
+            this.Controls.Add(this.counter);
             this.Controls.Add(this.label_Message);
             this.Controls.Add(this.button_1);
             this.Controls.Add(this.button_2);
@@ -87,6 +97,7 @@
             this.Name = "MyMessageBox";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Messagebox";
+            ((System.ComponentModel.ISupportInitialize)(this.counter)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -98,5 +109,6 @@
         private System.Windows.Forms.Button button_2;
         private System.Windows.Forms.Button button_3;
         private System.Windows.Forms.Label label_Message;
+        private System.Windows.Forms.NumericUpDown counter;
     }
 }
