@@ -43,18 +43,18 @@
 	$dbname="gym";
 	$tbl="members";
 	
-	mysql_connect("$host","$username","$password") or die("cannot connect");
-	mysql_select_db("$dbname","$tbl") or die ("cannot select database");
-	
+	$link = mysql_connect($host,$username,$password) or die("cannot connect");
+	mysql_select_db($dbname,$link) or die ("cannot select database");
+	$email = $_REQUEST['login'];
+	$password = $_REQUEST['password'];
 	//this protects against MySQL query injections
 	$email = stripslashes($email);
-	$memberno = stripslashes($memberno);
-	$email = mysq_real_escape_string($email);
-	$memberno = mysql_real_escape_string($memberno);
+	$password = stripslashes($password);
+	$email = mysql_real_escape_string($email);
+	$password = mysql_real_escape_string($password);
 		
-	$sql = "SELECT * FROM $tbl WHERE email = '$email' and member_number = '$memberno'";
-	$result = mysql_query($sql);
-	
+	$sql = "SELECT * FROM users WHERE login = '".$email."' and password = MD5('".$password."')";
+	$result = mysql_query($sql, $link);
 	//checks to make sure the result returned is within one row in the database
 	$row = mysql_num_rows($result);
 	

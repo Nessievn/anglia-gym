@@ -16,11 +16,11 @@
 			<table>
 	            <tr></tr>
             	<tr></tr>
-                	<td>Membership Number: </td>
-                    <td><input type="text" /></td>
+                	<td>Login: </td>
+                    <td><input name = 'login' type="text" /></td>
                 <tr></tr>
                 	<td>Password: </td>
-                    <td><input type="text" /></td>
+                    <td><input name = 'password' type="password" /></td>
                 <tr></tr>
                 	<td></td>
                 	<td><input type="submit" value="Login"/></td>
