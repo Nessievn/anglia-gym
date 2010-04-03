@@ -7,6 +7,14 @@
 </head>
 
 <body>
+<?php
+	session_start();
+	if(!session_is_registered(email))
+	{
+		header("location:home.php");
+	}
+?>
+
 <form action="loggedout.php" method=post>
 <div id="wrapper">
   <div id="masthead"><a href="home.php"><img border="0" src="images/bannernew.png" height="100%" width="100%" alt="Trees banner image"/></a></div>
@@ -14,8 +22,6 @@
     <div id="leftpanel">
   	 	<div id="login">
 		<form action="loggedout.php" method=post>
-		Welcome {member name goes here}
-		<br />
         <br />
         Not you? Click Logout to return to the login page.
 		<input type="submit" value="Logout"/>
