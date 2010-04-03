@@ -40,6 +40,10 @@ namespace Gym_administration
         public MyMessageBox()
         {
             InitializeComponent();
+            counter.Hide();
+            button_1.Hide();
+            button_2.Hide();
+            button_3.Hide();
         }
 
         public class MBButton
@@ -54,6 +58,7 @@ namespace Gym_administration
             public const UInt32 MB_CUST1 = 0x00000007;
             public const UInt32 MB_CUST2 = 0x00000008;
             public const UInt32 MB_CUST3 = 0x00000009;
+            public const UInt32 MB_CUST4 = 0x00000010;
             public const UInt32 MB_HELP = 0x00004000;
         }
 
@@ -81,8 +86,6 @@ namespace Gym_administration
             {
                 case MBButton.MB_OK:
                     {
-                        button_1.Hide();
-                        button_2.Hide();
                         button_3.Show();
                         button_3.Text = "Ok";
                         Button3_Value = MBReturn.OK.ToString();
@@ -90,14 +93,12 @@ namespace Gym_administration
                     }
                 case MBButton.MB_OKCANCEL:
                     {
-                        //MessageBox.Show(this);
-                        button_1.Hide();
                         button_2.Show();
-                        button_2.Text = "Cancel";
+                        button_2.Text = "OK";
                         button_3.Show();
-                        button_3.Text = "Ok";
-                        Button2_Value = MBReturn.CANCEL.ToString();
-                        Button3_Value = MBReturn.OK.ToString();
+                        button_3.Text = "Cancel";
+                        Button2_Value = MBReturn.OK.ToString();
+                        Button3_Value = MBReturn.CANCEL.ToString(); 
                         break;
                     }
                 case MBButton.MB_ABORTRETRYIGNORE:
@@ -116,7 +117,7 @@ namespace Gym_administration
                     }
                 case MBButton.MB_YESNOCANCEL:
                     {
-                        this.button_1.Show();
+                        button_1.Show();
                         button_1.Text = "Yes";
                         button_2.Show();
                         button_2.Text = "No";
@@ -130,7 +131,6 @@ namespace Gym_administration
                     }
                 case MBButton.MB_YESNO:
                     {
-                        this.button_1.Hide();
                         button_2.Show();
                         button_2.Text = "Yes";
                         button_3.Show();
@@ -141,7 +141,6 @@ namespace Gym_administration
                     }
                 case MBButton.MB_RETRYCANCEL:
                     {
-                        button_1.Hide();
                         button_2.Show();
                         button_2.Text = "Retry";
                         button_3.Show();
@@ -166,8 +165,6 @@ namespace Gym_administration
                     }
                 case MBButton.MB_HELP:
                     {
-                        button_1.Hide();
-                        button_2.Hide();
                         button_3.Show();
                         button_3.Text = "Help";
                         Button3_Value = MBReturn.HELP.ToString();
@@ -175,8 +172,6 @@ namespace Gym_administration
                     }
                 case MBButton.MB_CUST1:
                     {
-                        button_1.Hide();
-                        button_2.Hide();
                         button_3.Show();
                         button_3.Text = Button1;
                         Button3_Value = Button1;
@@ -184,7 +179,6 @@ namespace Gym_administration
                     }
                 case MBButton.MB_CUST2:
                     {
-                        button_1.Hide();
                         button_2.Show();
                         button_2.Text = Button1;
                         button_3.Show();
@@ -206,11 +200,24 @@ namespace Gym_administration
                         Button1_Value = Button1;
                         Button2_Value = Button2;
                         Button3_Value = Button3;
-                        
+
+                        break;
+                    }
+                case MBButton.MB_CUST4:
+                    {
+                        counter.Show();
+                        counter.Value = 1;
+                        button_2.Show();
+                        button_2.Text = "OK";
+                        button_3.Show();
+                        button_3.Text = "Cancel";
+                        Button2_Value = MBButton.MB_CUST4.ToString();
+                        Button3_Value = MBReturn.CANCEL.ToString(); 
+
                         break;
                     }
 
-
+            
             }
         }
   /*      
@@ -318,7 +325,6 @@ namespace Gym_administration
 
         private void button_1_Click(object sender, EventArgs e)
         {
-
             Button_id = Button1_Value;
             this.Close(); 
         } 
@@ -326,6 +332,17 @@ namespace Gym_administration
         private void button_2_Click(object sender, EventArgs e)
         {
 
+            if (Button2_Value == MBButton.MB_CUST4.ToString())
+                Button2_Value = counter.Value.ToString();
+
+            
+            double Num;
+            bool isNum = double.TryParse(Button2_Value, out Num);
+            if (isNum)
+            {
+                if (int.Parse(Button2_Value) < 1)
+                    MessageBox.Show("You can't choose zero amount, click Cancel instead");
+            }
             Button_id = Button2_Value;
             this.Close(); 
         }

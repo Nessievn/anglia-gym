@@ -15,9 +15,9 @@ namespace Gym_administration
         Equipment eqEquipment;
         //MyMessageBox myMessageBox;
         frm_equipment_list frmEqList;
-        bool IsBooking;
+/*        bool IsBooking;
         bool IsMember;
-        int Id_Person;
+        int Id_Person;*/
         
 
         //loading from main menu
@@ -81,27 +81,18 @@ namespace Gym_administration
         public void frm_equipment_ini(int iEquipmentId, frm_equipment_list frmEqList)
         {
  */
-        public frm_equipment(bool isBooking, bool isMember, int id_Person, int iEquipmentId, frm_equipment_list frmEqList)
+//      public frm_equipment(bool isBooking, bool isMember, int id_Person, int iEquipmentId, frm_equipment_list frmEqList)
+        public frm_equipment(int iEquipmentId, frm_equipment_list frmEqList)
         {
             InitializeComponent();
             eqEquipment = new Equipment(iEquipmentId);
             this.frmEqList = frmEqList;
-            IsBooking = isBooking;
+ 
+/*            IsBooking = isBooking;
             IsMember = isMember;
-            Id_Person = id_Person;
+            Id_Person = id_Person;*/
 
-            if (IsBooking)
-            {
-                button_save.Text = "Borrow Set";
-            }
-            else
-            {
-                button_save.Text = "Save";
-            }
-
-
-
-
+          
             if (eqEquipment.Id_equipment < 1)
                 MessageBox.Show("The equipment could not be found");
             else
@@ -156,7 +147,7 @@ namespace Gym_administration
         //SAVE
         private void button_save_Click(object sender, EventArgs e)
         {
-            //string sType = (rd_group.Checked) ? "Set Name" : "Set Item";
+            
             
 
          

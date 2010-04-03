@@ -17,7 +17,7 @@ namespace Gym_administration
         bool IsBooking;
         bool IsMember;
         bool IsSet;
-        int Id_Member;
+        int Id_Person;
 
         public frm_equipment_list()
         {
@@ -27,12 +27,13 @@ namespace Gym_administration
             rd_item_Checked();
         }
 
-        public frm_equipment_list(bool isBooking, bool isMember, int id_Member)
+        public frm_equipment_list(bool isBooking, bool isMember, int id_Person)
         {
+            
             InitializeComponent();
             IsBooking = isBooking;
             IsMember = isMember;
-            Id_Member = id_Member;
+            Id_Person = id_Person;
             rd_item.Checked = true;
             rd_item_Checked();
         }
@@ -72,8 +73,59 @@ namespace Gym_administration
 
                     if (result.Equals("Borrow Set"))
                     {
+                        this.eqEquipmentBooked = new EquipmentBooked();
+
+                        //fetch equipment number
+                        string sEquipmentId = dg_equipment.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        eqEquipmentBooked.Id_equipment = int.Parse(sEquipmentId);
+
+
+                        if (IsMember)
+                        {
+                            eqEquipmentBooked.SBookingType = "MEMBER_BOOKING";
+                            eqEquipmentBooked.Id_member = Id_Person.ToString();
+                            eqEquipmentBooked.Id_staff = "NULL";
+                            
+                        }
+                        else
+                        {
+                            eqEquipmentBooked.SBookingType = "STAFF_BOOKING";
+                            eqEquipmentBooked.Id_staff = Id_Person.ToString();
+                            eqEquipmentBooked.Id_member = "NULL";
+                        }
+                        eqEquipmentBooked.SDateStart = "2010-04-02";
+                        eqEquipmentBooked.SDateDue = "2010-04-09";
+                        eqEquipmentBooked.SIsSet = true;
+                        //eqEquipmentBooked.SIsReturned = false;
+
+                        //CALCULATE REMAINING AND LET USER SEE HOW MANY LEFT!!!!
+
+                        string iresult = myMessageBox.ShowBox(Utils.MB_CUST4, "", "Amount to Borrow?");
+
+                        //ref  http://social.msdn.microsoft.com/Forums/en-US/winforms/thread/84990ad2-5046-472b-b103-f862bfcd5dbc
+                        double Num;
+                        bool isNum = double.TryParse(iresult, out Num);
+                        if (isNum)
+                        {
+                            if ((int.Parse(iresult) > 0) && (iresult != "Cancel"))
+                            {
+                                eqEquipmentBooked.SBorrowedAmount = int.Parse(iresult);
+                                eqEquipmentBooked.bSave();
+                            }
+
+                        }
+                        
+                        
+                        
+
+                        //DECREASE AMOUNT IN EQUIPMENT.CS
+
+
+
                         //MessageBox.Show("Borrow Button was Clicked");
-                    //borrowing();
+         
+                            
+
                         return;
                     }
                     if (result.Equals("Edit Set"))
@@ -83,7 +135,8 @@ namespace Gym_administration
                         {
                             string sEquipmentId = dg_equipment.Rows[e.RowIndex].Cells[0].Value.ToString();
                             int iEquipmentId = int.Parse(sEquipmentId);
-                            frm_equipment frm_equipment = new frm_equipment(IsBooking, IsMember, Id_Member, iEquipmentId, this);
+                            //frm_equipment frm_equipment = new frm_equipment(IsBooking, IsMember, Id_Member, iEquipmentId, this);
+                            frm_equipment frm_equipment = new frm_equipment(iEquipmentId, this);
                             frm_equipment.MdiParent = this.MdiParent;
                             frm_equipment.Show();
                         }
@@ -98,7 +151,7 @@ namespace Gym_administration
                 else //Not Set (but it is Booking)
                 {
                     //ITEM booking code here
-                    MessageBox.Show("Item will be borrowed!");
+                    MessageBox.Show("SELECT AMOUNT OF ITEM TO BORROW->OK ==>> R U SURE?->YES/NO");
                 }
             }
             else //Not Booking (regular equipment edit form)
@@ -107,7 +160,8 @@ namespace Gym_administration
                 {
                     string sEquipmentId = dg_equipment.Rows[e.RowIndex].Cells[0].Value.ToString();
                     int iEquipmentId = int.Parse(sEquipmentId);
-                    frm_equipment frm_equipment = new frm_equipment(false, false, -1, iEquipmentId, this);
+                    //frm_equipment frm_equipment = new frm_equipment(false, false, -1, iEquipmentId, this);
+                    frm_equipment frm_equipment = new frm_equipment(iEquipmentId, this);
                     frm_equipment.MdiParent = this.MdiParent;
                     frm_equipment.Show();
                 }

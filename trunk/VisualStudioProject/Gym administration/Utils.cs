@@ -176,6 +176,7 @@ namespace Gym_administration
             public const UInt32 MB_CUST1 = 0x00000007;
             public const UInt32 MB_CUST2 = 0x00000008;
             public const UInt32 MB_CUST3 = 0x00000009;
+            public const UInt32 MB_CUST4 = 0x00000010;
             public const UInt32 MB_HELP = 0x00004000;
     //    }
  
