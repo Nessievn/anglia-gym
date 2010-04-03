@@ -7,12 +7,12 @@
 </head>
 
 <body>
-<form>
 <div id="wrapper">
   <div id="masthead"><a href="home.php"><img border="0" src="images/bannernew.png" height="100%" width="100%" alt="Trees banner image"/></a></div>
     <div id="content"></div>
     <div id="leftpanel">
   	 	<div id="login">Please enter your membership details and click the button below to log in.
+			<form action="checklogin.php" method=post>
 			<table>
 	            <tr></tr>
             	<tr></tr>
@@ -25,6 +25,7 @@
                 	<td></td>
                 	<td><input type="submit" value="Login"/></td>
             </table>
+			</form>
         </div>
     	<div id="menu">
 	    <a href="register.php"><img border="0" src="images/nomembermenu1_1.png" alt="Become a Member"/></a>
@@ -40,7 +41,6 @@
 	?>
 	</div>
 </div>
-</form>
 </body>
 </html>
 	
