@@ -1,4 +1,4 @@
-<?
+<?php
 function connect()
 {
 	$host="localhost";
@@ -11,4 +11,5 @@ function connect()
 
 	return $link;
 }
+
 ?>
