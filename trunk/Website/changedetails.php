@@ -30,65 +30,53 @@
 	<form action="thankyou.php" method=post>
     <table>
     	<tr>
-        	<td>Title: </td>
-            <td><input type="text" /></td>
+        	<td>Forename: </td>
+            <td><input type="text" name="firstName"/></td>
             <td></td>
 			<td>Emergency Contact Name: </td>
-            <td><input type="text" /></td>            
-        </tr>
-        <tr>
-        	<td>Forename: </td>
-            <td><input type="text" /></td>
-            <td></td>
-			<td>Emergency Contact Telephone: </td>
-            <td><input type="text" /></td>   
+            <td><input type="text" name="emerg_contact_name"/></td>            
         </tr>
         <tr>
         	<td>Surname: </td>
-            <td><input type="text" /></td>
+            <td><input type="text"  name="lastName"/></td>
             <td></td>
-			<td>Relation to Applicant: </td>
-            <td><input type="text" /></td>   
+			<td>Emergency Contact Telephone: </td>
+            <td><input type="text" name="emerg_contact_phone"/></td>   
         </tr>
         <tr>
         	<td>Address: </td>
-            <td><input type="text" /></td>
+            <td><input type="text" name="address_1"/></td>
+            <td></td>
+			<td>Relation to Applicant: </td>
+            <td><input type="text" name="emerg_contact_relation"/></td>   
         </tr>
         <tr>
         	<td></td>
-            <td><input type="text" /></td>
+            <td><input type="text" name="city"/></td>
         </tr>      
         <tr>
         	<td></td>
-            <td><input type="text" /></td>
-        </tr> 
-        <tr>
-        	<td></td>
-            <td><input type="text" /></td>
+            <td><input type="text" name="county"/></td>
         </tr> 
         <tr>
         	<td>Postcode: </td>
-            <td><input type="text" /></td>
+            <td><input type="text" name="postalcode"/></td>
         </tr> 
         <tr>
         	<td>Home Telephone Number: </td>
-            <td><input type="text" /></td>
+            <td><input type="text" name="phone"/></td>
         </tr>
         <tr>
-        	<td>Evening Telephone Number: </td>
-            <td><input type="text" /></td>
-        </tr>
-        <tr>
-        	<td>Daytime Telephone Number: </td>
-            <td><input type="text" /></td>
+        	<td>Mobile: </td>
+            <td><input type="text" name="mobile"/></td>
         </tr>
         <tr>
         	<td>Email Address: </td>
-            <td><input type="text" /></td>
+            <td><input type="text" name="email"/></td>
         </tr>
         <tr>
         	<td>Medical Conditions: </td>
-            <td><input type="text" height="50" /></td>
+            <td><input type="text" height="50" name="medical_notes"/></td>
             <td></td>
         </tr>
         <tr>
@@ -96,6 +84,58 @@
         	<td><input type="submit" value="Submit Changes" title="Please click here to submit your changes" /></td>
         </tr>
     </table>
+	<?php
+		//includes database connection
+		include("connectMySQL.php");
+	
+		//requests info from text boxes
+		$firstname = $_REQUEST['firstName'];
+		$lastname = $_REQUEST['lastName'];
+		$address = $_REQUEST['address_1'];
+		$city = $_REQUEST['city'];
+		$county = $_REQUEST['county'];
+		$postcode = $_REQUEST['postalcode'];
+		$hometel = $_REQUEST['phone'];
+		$mobtel = $_REQUEST['mobile'];
+		$email = $_REQUEST['email'];
+		$mednotes = $_REQUEST['medical_notes'];
+		$emergname = $_REQUEST['emerg_contact_name'];
+		$emergphone = $_REQUEST['emerg_contact_phone'];
+		$emergrel = $_REQUEST['emerg_contact_relation'];
+	
+		//this protects against MySQL query injections
+		$firstname = stripslashes($firstname);
+		$lastname = stripslashes($lastname);
+		$address = stripslashes($address);
+		$city = stripslashes($city);
+		$county = stripslashes($county);
+		$postcode = stripslashes($postcode);
+		$hometel = stripslashes($hometel);
+		$mobtel = stripslashes($mobtel);
+		$email = stripslashes($email);
+		$mednotes = stripslashes($mednotes);
+		$emergname = stripslashes($emergname);
+		$emergphone = stripslashes($emergphone);
+		$emergrel = stripslashes($emergrel);
+		
+		$firstname = mysql_real_escape_string($firstname);
+		$lastname = mysql_real_escape_string($lastname);
+		$address = mysql_real_escape_string($address);
+		$city = mysql_real_escape_string($city);
+		$county = mysql_real_escape_string($county);
+		$postcode = mysql_real_escape_string($postcode);
+		$hometel = mysql_real_escape_string($hometel);
+		$mobtel = mysql_real_escape_string($mobtel);
+		$email = mysql_real_escape_string($email);
+		$mednotes = mysql_real_escape_string($mednotes);
+		$emergname = mysql_real_escape_string($emergname);
+		$emergphone = mysql_real_escape_string($emergphone);
+		$emergrel = mysql_real_escape_string($emergrel);
+		
+		//sql query
+		$sql = "";
+		
+	?>
 	</form>
     </div>
 	<div id="footer">
