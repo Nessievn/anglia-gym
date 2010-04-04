@@ -37,7 +37,7 @@
 	
 	//based on script from http://www.phpeasystep.com/phptu/6.html - has a snippet to prevent SQL injections
 	
-	include(connectMySQL.php);
+	include("connectMySQL.php");
 	
 	$login = $_REQUEST['login'];
 	$password = $_REQUEST['password'];
