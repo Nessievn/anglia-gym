@@ -37,31 +37,25 @@
 	
 	//based on script from http://www.phpeasystep.com/phptu/6.html - has a snippet to prevent SQL injections
 	
-	$host="localhost";
-	$username="gym";
-	$password="gym";
-	$dbname="gym";
-	$tbl="members";
+	include(connectMySQL.php);
 	
-	$link = mysql_connect($host,$username,$password) or die("cannot connect");
-	mysql_select_db($dbname,$link) or die ("cannot select database");
-	$email = $_REQUEST['login'];
+	$login = $_REQUEST['login'];
 	$password = $_REQUEST['password'];
 	//this protects against MySQL query injections
-	$email = stripslashes($email);
+	$login = stripslashes($login);
 	$password = stripslashes($password);
-	$email = mysql_real_escape_string($email);
+	$login = mysql_real_escape_string($login);
 	$password = mysql_real_escape_string($password);
 		
-	$sql = "SELECT * FROM users WHERE login = '".$email."' and password = MD5('".$password."')";
+	$sql = "SELECT * FROM users WHERE login = '".$login."' and password = MD5('".$password."')";
 	$result = mysql_query($sql, $link);
 	//checks to make sure the result returned is within one row in the database
 	$row = mysql_num_rows($result);
 	
 	if($row == 1)
 	{
-		session_register("email");
-		session_register("memberno");
+		session_register("login");
+		session_register("password");
 		header("location:memberwelcome.php");
 	}
 	else
