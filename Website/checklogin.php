@@ -1,3 +1,6 @@
+<?php
+require("connectMySQL.php");
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -37,8 +40,7 @@
 	
 	//based on script from http://www.phpeasystep.com/phptu/6.html - has a snippet to prevent SQL injections
 	
-	include("connectMySQL.php");
-	
+	$link = connect();	
 	$login = $_REQUEST['login'];
 	$password = $_REQUEST['password'];
 	//this protects against MySQL query injections
