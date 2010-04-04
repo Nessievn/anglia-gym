@@ -16,18 +16,20 @@ require("connectMySQL.php");
     <div id="content"></div>
     <div id="leftpanel">
   	 	<div id="login">Please enter your membership details and click the button below to log in.
+			<form action="checklogin.php" method=post>
 			<table>
 	            <tr></tr>
             	<tr></tr>
-                	<td>Membership Number: </td>
-                    <td><input type="text" /></td>
+                	<td>Login: </td>
+                    <td><input name = 'login' type="text" /></td>
                 <tr></tr>
                 	<td>Password: </td>
-                    <td><input type="text" /></td>
+                    <td><input name = 'password' type="password" /></td>
                 <tr></tr>
                 	<td></td>
                 	<td><input type="submit" value="Login"/></td>
             </table>
+			</form>
         </div>
     	<div id="menu">
 	    	<a href="register.php"><img border="0" src="images/nomembermenu1_1.png" alt="Become a Member"/></a>
