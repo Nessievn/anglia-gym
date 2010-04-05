@@ -1,0 +1,60 @@
+body {margin:0; padding:0; background:#860000 url(/images/bgr_y_footer.jpg) top center repeat-y;}
+table, td {border-collapse:collapse;}
+table, td, img {border:0;}
+form {margin:0; padding:0;}
+td, tr {font:14px tahoma, arial, helvetica, sans-serif; color:#545454; vertical-align:top;  text-align:left;}
+
+a{ color:#860000;}
+a:hover{text-decoration:none;}
+
+ul { margin:0; padding:0; list-style:none;}
+li a {line-height:17px; color:#860000; text-decoration:underline;}
+
+/*header*/
+.bgr_logo{ background:url(/images/bgr_logo.jpg) top left no-repeat; width:100%; height:102px;}
+.bgr_logo img{ margin:40px 0 0 280px;}
+.menu{ height:52px;}
+/*footer*/
+.footer_bgr{ background:url(/images/footer_bgr.jpg) top center no-repeat; width:100%; height:109px; text-align:center; color:#DDD2D2; font-size:9px; padding-top:34px; line-height:18px;}
+.footer_bgr a{ color:#DDD2D2; text-decoration:none}
+.footer_bgr a:hover{ color:#DDD2D2; text-decoration:underline}
+/*content*/
+.size_heit{height:380px;}
+.bgr_left{ background:url(/images/bgr_left.jpg) top left repeat-y; width:71px; height:100%;}
+.bgr_right{ background:url(/images/bgr_right.jpg) top left repeat-y; width:70px; height:100%;}
+.bgr_content{width:625px; height:100%; background:#FFFFFF; }
+.indent_foto{height:351px; background:#CCCCCC; padding:5px 0 0 4px;}
+.indent_foto img{ margin-bottom:3px}
+.box_foto1{margin:12px 0 0 17px;}
+.bgr_big_foto1{background:url(/images/bgr_big_foto.jpg) top left no-repeat;}
+.bgr_big_foto2{background:url(/images/bgr_big_foto2.jpg) top left no-repeat;}
+.size_foto{width:233px; height:357px;}
+.size_foto img{ margin-top:344px;}
+.size_foto .indent_button{ margin:0 154px 0 7px;}
+.indent_content{margin:12px 0 0 7px; width:252px;}
+.indent_content1{margin:12px 0 0 17px; width:589px;}
+.wrapper_content{height:357px; background:#E3E3E3;}
+
+.bgr_form{background:url(/images/bgr_form.jpg) top left no-repeat; width:252px; height:67px;}
+.bgr_form td input{ width:127px; height:18px; color:#000000; font-size:11px; font-family:Tahoma; vertical-align:middle}
+.bgr_form table{ margin:10px 0 0 16px;}
+.bgr_form .f1 img{ vertical-align:middle; margin-left:9px}
+.txt_indent{ margin:15px 0 5px 16px; width:225px;}
+.txt_indent1{ margin:15px 0 15px 16px; width:551px;}
+.img_indent{ margin:2px 8px 0 0; float:left} 
+.bull{ margin:0 0 1px 4px; vertical-align:middle;}
+.sise_col_table{ width:153px; height:21px;}
+
+.f2 td input{ width:218px; height:19px; margin-bottom:2px;}
+.f2 td textarea{ width:218px; height:122px; overflow:auto;}
+.f2 td textarea, input{ font-size:11px; color:#545454; padding:1px 0 1px 4px; font-family:Tahoma;}
+.indent_p p{ padding:0; margin-top:15px;}
+.indent_p{ line-height:13px;}
+.me{ font-size:18px; color:#000000; font-family:Arial;}
+.alinear{ float: left; padding: 10px 10px 10px 10px;	display:inline; /*(*)*/  }
+.emphasize {font-size:16px; color:#545454; font-family:Arial; font-weight: bold;  text-align:center;}
+
+.uvgel {}
+
+
+
