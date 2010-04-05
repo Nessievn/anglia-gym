@@ -57,18 +57,26 @@ else if($_REQUEST["showclass"]!="" && isset($_SESSION["id_member"]))
 	$smarty->assign("class", $class);
 }
 //checks to make sure the result returned is within one row in the database
-else if(isset($_SESSION["id_member"]) && !isset($_REQUEST['book_class']) && $_REQUEST['start'] == "" && $_REQUEST['end'] == "")
+else if(isset($_SESSION["id_member"]))
 {
  	$smarty->assign("template", "bookclass");   
-	$smarty->assign("logged_in", "1");
-	$smarty->assign("name", $_SESSION["name"]);
-}
-else if(isset($_SESSION["id_member"]) && $_REQUEST['start'] != "" && $_REQUEST['end'] != "")
-{
 	$start_date = clean($_REQUEST['start']);
 	$end_date = clean($_REQUEST['end']);
-	
- 	$smarty->assign("template", "showclasses");   
+	if($start_date == "")
+	{
+		$start_date_ = date("d-m-Y");
+		$start_date = date("Y-m-d");
+	}
+	if($end_date == "")
+	{
+	    $end_date = date("d-m-Y");
+            $time = mktime($end_date);
+            $new = strtotime('+ 1 week', $time);
+            $end_date_ = date("d-m-Y", $new); 
+            $end_date = date("Y-m-d", $new); 
+	}
+	$smarty->assign("start", $start_date_);
+	$smarty->assign("end", $end_date_);
 	$smarty->assign("logged_in", "1");
 	$smarty->assign("name", $_SESSION["name"]);
 	// Select all the classes available
