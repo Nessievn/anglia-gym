@@ -59,6 +59,8 @@ namespace Gym_administration
             myItems = conn.alGetComboFromDb(sQuery, "id_staff", "name");
             cmb_instructors.DisplayMember = "Value";
             cmb_instructors.DataSource = myItems;
+
+       
             
             // HERE we select the options with the class instance
             if (this.ciClassInstance.Id_class_instance != -1)
@@ -89,6 +91,8 @@ namespace Gym_administration
 
             de = (DictionaryEntry)cmb_instructors.SelectedItem;
             string sIdStaff = de.Key.ToString();
+
+        
             de = (DictionaryEntry)cmb_rooms.SelectedItem;
             string sIdRoom = de.Key.ToString();
 
