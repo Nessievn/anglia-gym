@@ -62,11 +62,13 @@ else if(isset($_SESSION["id_member"]))
  	$smarty->assign("template", "bookclass");   
 	$start_date = clean($_REQUEST['start']);
 	$end_date = clean($_REQUEST['end']);
+	$start_date_ = date("d-m-Y");
 	if($start_date == "")
 	{
 		$start_date_ = date("d-m-Y");
 		$start_date = date("Y-m-d");
 	}
+	else $start_date_ = date("d-m-Y",strtotime($start_date));
 	if($end_date == "")
 	{
 	    $end_date = date("d-m-Y");
@@ -75,6 +77,8 @@ else if(isset($_SESSION["id_member"]))
             $end_date_ = date("d-m-Y", $new); 
             $end_date = date("Y-m-d", $new); 
 	}
+	else $end_date_ = date("d-m-Y",strtotime($end_date));
+	
 	$smarty->assign("start", $start_date_);
 	$smarty->assign("end", $end_date_);
 	$smarty->assign("logged_in", "1");

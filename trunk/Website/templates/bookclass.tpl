@@ -1,4 +1,4 @@
-<div id="centre"><strong>Book a Class</strong></div>
+<div align="centre"><strong>Book a Class</strong></div>
 <table><tr><td>
     <table>
 <tr>
