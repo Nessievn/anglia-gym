@@ -267,8 +267,8 @@ namespace Gym_administration
                     {
                         if (counter_item1.Value > 0)
                         {
-                            DictionaryEntry de = (DictionaryEntry)cmb_item1.SelectedItem;
-                            eqEquipment.SItemInSet1 = int.Parse(de.Key.ToString());
+                            DictionaryEntry de1 = (DictionaryEntry)cmb_item1.SelectedItem;
+                            eqEquipment.SItemInSet1 = int.Parse(de1.Key.ToString());
                             eqEquipment.SAmountInSet1 = int.Parse(counter_item1.Value.ToString());
                         }
                         else
@@ -463,8 +463,9 @@ private void button_vehicle_Click(object sender, EventArgs e)
             DictionaryEntry dent = (DictionaryEntry)myItems1[0];
             //eqEquipment.SItemInSet1 = de.Value.ToString();
 
-            dent.Value = "none";
             dent.Key = "0";
+            dent.Value = "none";
+            
 
 
             myItems1.Insert(0, dent);
@@ -494,21 +495,56 @@ private void button_vehicle_Click(object sender, EventArgs e)
             //cmb_item9.DataSource = myItems;
             //cmb_item10.DataSource = myItems;
 
-            //if (eqEquipment.SItemInSet1 != "") 
-                cmb_item1.SelectedIndex = eqEquipment.SItemInSet1;
-            //if (eqEquipment.SItemInSet2 != "") 
-                cmb_item2.SelectedIndex = eqEquipment.SItemInSet2;
-            //if (eqEquipment.SItemInSet3 != "") 
-                cmb_item3.SelectedIndex = eqEquipment.SItemInSet3;
-            //if (eqEquipment.SItemInSet4 != "") 
-                cmb_item4.SelectedIndex = eqEquipment.SItemInSet4;
-            //if (eqEquipment.SItemInSet5 != "") 
-                cmb_item5.SelectedIndex = eqEquipment.SItemInSet5;
-            //cmb_item6.SelectedIndex = eqEquipment.SItemInSet6;
-            //cmb_item7.SelectedIndex = eqEquipment.SItemInSet7;
-            //cmb_item8.SelectedIndex = eqEquipment.SItemInSet8;
-            //cmb_item9.SelectedIndex = eqEquipment.SItemInSet9;
-            //cmb_item10.SelectedIndex = eqEquipment.SItemInSet10;
+
+
+            int j = 0;
+            foreach (object i in myItems1)
+            {
+
+                dent = (DictionaryEntry)myItems1[j];
+                if (int.Parse(dent.Key.ToString()) == eqEquipment.SItemInSet1)
+                    cmb_item1.SelectedIndex = j;
+                j++;
+            }
+            j = 0;
+            foreach (object i in myItems1)
+            {
+
+                dent = (DictionaryEntry)myItems1[j];
+                if (int.Parse(dent.Key.ToString()) == eqEquipment.SItemInSet2)
+                    cmb_item2.SelectedIndex = j;
+                j++;
+            }
+            j = 0;
+            foreach (object i in myItems1)
+            {
+
+                dent = (DictionaryEntry)myItems1[j];
+                if (int.Parse(dent.Key.ToString()) == eqEquipment.SItemInSet3)
+                    cmb_item3.SelectedIndex = j;
+                j++;
+            }
+            j = 0;
+            foreach (object i in myItems1)
+            {
+
+                dent = (DictionaryEntry)myItems1[j];
+                if (int.Parse(dent.Key.ToString()) == eqEquipment.SItemInSet4)
+                    cmb_item4.SelectedIndex = j;
+                j++;
+            }
+            j = 0;
+            foreach (object i in myItems1)
+            {
+
+                dent = (DictionaryEntry)myItems1[j];
+                if (int.Parse(dent.Key.ToString()) == eqEquipment.SItemInSet5)
+                    cmb_item5.SelectedIndex = j;
+                j++;
+            }
+
+
+
             counter_item1.Value = eqEquipment.SAmountInSet1;
             counter_item2.Value = eqEquipment.SAmountInSet2;
             counter_item3.Value = eqEquipment.SAmountInSet3;
