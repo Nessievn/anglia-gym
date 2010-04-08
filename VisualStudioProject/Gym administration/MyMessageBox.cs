@@ -36,6 +36,7 @@ namespace Gym_administration
         string Button1_Value;
         string Button2_Value;
         string Button3_Value;
+        int Counter1_PrevValue;
 
         public MyMessageBox()
         {
@@ -43,7 +44,7 @@ namespace Gym_administration
             label_counter1.Hide();
             counter1.Hide();
             label_counter2.Hide();
-            counter2.Hide();
+            label_borrowedcounter.Hide();
             button_1.Hide();
             button_2.Hide();
             button_3.Hide();
@@ -206,14 +207,21 @@ namespace Gym_administration
 
                         break;
                     }
- /*               case MBButton.MB_CUST4:
+                case MBButton.MB_CUST4:
                     {
                         label_counter1.Show();
-                        counter1.Show();
                         counter1.Value = 1;
+                        Counter1_PrevValue = 1;
+                        counter1.Show();
+                        counter1.Minimum = 1;
+                        counter1.Maximum = int.Parse(Button1);
+                        
+                        
+     
                         label_counter2.Show();
-                        counter2.Show();
-                        counter2.Value = int.Parse(Button1);
+                        label_borrowedcounter.Show();
+                        label_borrowedcounter.Text = (int.Parse(Button1)-1).ToString();
+                                                
                         button_1.Show();
                         button_1.Text = "OK";
                         button_3.Show();
@@ -222,7 +230,7 @@ namespace Gym_administration
                         Button3_Value = MBReturn.CANCEL.ToString(); 
 
                         break;
-                    }*/
+                    }
 
             
             }
@@ -244,7 +252,7 @@ namespace Gym_administration
             return Button_id;
         }
 
-        //CUST1
+
         public string ShowBox(UInt32 Type, string txtMessage, string txtTitle, string Button1)
         {
 
@@ -258,7 +266,6 @@ namespace Gym_administration
             return Button_id;
         }
 
-        //CUST2
         public string ShowBox(UInt32 Type, string txtMessage, string txtTitle, string Button1, string Button2)
         {
 
@@ -272,7 +279,6 @@ namespace Gym_administration
             return Button_id;
         }
 
-        //CUST3
         public string ShowBox(UInt32 Type, string txtMessage, string txtTitle, string Button1, string Button2, string Button3)
         {
 
@@ -300,6 +306,11 @@ namespace Gym_administration
 
         private void button_1_Click(object sender, EventArgs e)
         {
+            if (Button1_Value == MBButton.MB_CUST4.ToString())
+                //Button2_Value = counter1.Value.ToString();
+                Button1_Value = label_borrowedcounter.Text;
+
+
             Button_id = Button1_Value;
             this.Close(); 
         } 
@@ -307,17 +318,15 @@ namespace Gym_administration
         private void button_2_Click(object sender, EventArgs e)
         {
 
-            if (Button2_Value == MBButton.MB_CUST4.ToString())
-                Button2_Value = counter1.Value.ToString();
 
             
-            double Num;
+/*            double Num;
             bool isNum = double.TryParse(Button2_Value, out Num);
             if (isNum)
             {
                 if (int.Parse(Button2_Value) < 1)
                     MessageBox.Show("You can't choose zero amount, click Cancel instead");
-            }
+            }*/
             Button_id = Button2_Value;
             this.Close(); 
         }
@@ -329,12 +338,44 @@ namespace Gym_administration
             
         }
 
+
+
+
+
         private void counter1_ValueChanged(object sender, EventArgs e)
         {
-            //if counter1.Value == -1
+
+                //-1
+                if (Counter1_PrevValue > counter1.Value)
+                {
+                    if (counter1.Value < counter1.Maximum)
+                    {
+                        int iCounter2;
+                        iCounter2 = int.Parse(label_borrowedcounter.Text);
+                        iCounter2++;
+                        label_borrowedcounter.Text = iCounter2.ToString();
+
+                        Counter1_PrevValue = int.Parse(counter1.Value.ToString());
+                    }
+                }
+                //+1
+                else if (Counter1_PrevValue < counter1.Value)
+                {
+                    if (counter1.Value > counter1.Minimum)
+                    {
+                        int iCounter2;
+                        iCounter2 = int.Parse(label_borrowedcounter.Text);
+                        iCounter2--;
+                        label_borrowedcounter.Text = iCounter2.ToString();
+
+                        Counter1_PrevValue = int.Parse(counter1.Value.ToString());
+                    }
+
+                }
+
         }
 
-  
+
 
 
  

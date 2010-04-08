@@ -645,6 +645,7 @@
             this.dg_currentborrows.RowTemplate.Height = 24;
             this.dg_currentborrows.Size = new System.Drawing.Size(193, 89);
             this.dg_currentborrows.TabIndex = 114;
+            this.dg_currentborrows.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_currentborrows_CellDoubleClick);
             // 
             // label_currentborrows
             // 

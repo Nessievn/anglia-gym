@@ -12,13 +12,14 @@ namespace Gym_administration
     public partial class frm_staff : Form
     {
         Staff stfStaff;
+        EquipmentBooked eqEquipmentBooked;
 
         public void vLoadBookedList()
         {
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource itemsSource = new BindingSource();
-            string sQuery = "SELECT DISTINCT e.name Name, eb.borrowedamount Amount, eb.date_due Due FROM equipment e, equipment_bookings eb WHERE eb.id_staff = " + stfStaff.IId_staff + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY eb.id_equipment";
+            string sQuery = "SELECT DISTINCT eb.date_due Due, e.name Name, eb.borrowedamount Amount, eb.id_equipment EqID, eb.id_eq_booking BkID FROM equipment e, equipment_bookings eb WHERE eb.id_staff = " + stfStaff.IId_staff + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY Due";
             itemsSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
             dg_currentborrows.DataSource = itemsSource;
             dg_currentborrows.AllowUserToAddRows = false;
@@ -130,6 +131,45 @@ namespace Gym_administration
 
         }
 
+        private void dg_currentborrows_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            string sEquipmentName = dg_currentborrows.Rows[e.RowIndex].Cells[1].Value.ToString();
+            int iBorrowedAmount = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[2].Value.ToString());
+            int iEquipmentId = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[3].Value.ToString());
+            int iEqBookingId = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[4].Value.ToString());
+
+            MyMessageBox myMessageBox = new MyMessageBox();
+            string iresult = myMessageBox.ShowBox(Utils.MB_CUST4, "", "How many " + sEquipmentName + " would you like to return?", iBorrowedAmount.ToString());
+
+
+            //ref  http://social.msdn.microsoft.com/Forums/en-US/winforms/thread/84990ad2-5046-472b-b103-f862bfcd5dbc
+
+
+            double Num;
+            bool isNum = double.TryParse(iresult, out Num);
+            if (isNum)
+            {
+
+                if ((int.Parse(iresult) > 0) && (iresult != "Cancel"))
+                {
+                    this.eqEquipmentBooked = new EquipmentBooked(iEqBookingId);
+                    this.eqEquipmentBooked.SBorrowedAmount = int.Parse(iresult);
+                    this.eqEquipmentBooked.SIsReturned = false;
+                    this.eqEquipmentBooked.bSave();
+                }
+                else
+                {
+                    this.eqEquipmentBooked = new EquipmentBooked(iEqBookingId);
+                    this.eqEquipmentBooked.SBorrowedAmount = 0;
+                    this.eqEquipmentBooked.SIsReturned = true;
+                    this.eqEquipmentBooked.bSave();
+
+                }
+                this.vLoadBookedList();
+            }
+
+        }
 
 
     }
