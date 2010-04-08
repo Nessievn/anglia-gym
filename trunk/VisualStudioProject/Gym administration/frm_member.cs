@@ -13,6 +13,7 @@ namespace Gym_administration
     public partial class frm_member : Form
     {
         Member mbrMember;
+        EquipmentBooked eqEquipmentBooked;
         
 
         public void vLoadBookedList()
@@ -20,11 +21,39 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();    
             conn.connect();
             BindingSource itemsSource = new BindingSource();
-            string sQuery = "SELECT DISTINCT e.name Name, eb.borrowedamount Amount, eb.date_due Due FROM equipment e, equipment_bookings eb WHERE eb.id_member = " + mbrMember.IId_member + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY eb.id_equipment";
+            
+            string sQuery = "SELECT DISTINCT eb.date_due Due, e.name Name, eb.borrowedamount Amount, eb.id_equipment EqID, eb.id_eq_booking BkID FROM equipment e, equipment_bookings eb WHERE eb.id_member = " + mbrMember.IId_member + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY Due";
             itemsSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
             dg_currentborrows.DataSource = itemsSource;
             dg_currentborrows.AllowUserToAddRows = false;
             dg_currentborrows.ReadOnly = true;
+            //WARNING IF DUE DATE EXPIRED??
+            
+            
+            if (dg_currentborrows.RowCount > 0)
+            {
+                int iLateItems = 0;
+                int iRowIndex;
+                for (iRowIndex = 0; iRowIndex < dg_currentborrows.RowCount; iRowIndex++) 
+                {
+                    string sEqDueDate = dg_currentborrows.Rows[iRowIndex].Cells[0].Value.ToString();
+
+                    DateTime today = DateTime.Today;
+                    DateTime due = DateTime.Parse(sEqDueDate);
+                    int result = DateTime.Compare(today, due);
+                    if (result > 0)
+                        iLateItems++;
+                }
+                if (iLateItems>0)
+                    MessageBox.Show("This persom has "+iLateItems+" late, unreturned item(s).");
+            }
+            //eqEquipmentBooked.SDateStart = String.Format("{0:yyyy-MM-dd}", today);
+
+            //eqEquipmentBooked.SDateDue = String.Format("{0:yyyy-MM-dd}", today.AddDays(double.Parse(counter_numberofdays.Value.ToString())));
+            //eqEquipmentBooked.SDateStart = Utils.sGetMysqlDate(txt_startdate.Text);
+            //string strTest = "25 May 2006";
+            //DateTime dtmTest = DateTime.Parse(strTest);
+            //
         }
 
         public frm_member()
@@ -162,6 +191,40 @@ namespace Gym_administration
         private void dg_currentborrows_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             
+            string sEquipmentName = dg_currentborrows.Rows[e.RowIndex].Cells[1].Value.ToString();
+            int iBorrowedAmount = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[2].Value.ToString());
+            //int iEquipmentId = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[3].Value.ToString());
+            int iEqBookingId = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[4].Value.ToString());
+
+            MyMessageBox myMessageBox = new MyMessageBox();
+            string iresult = myMessageBox.ShowBox(Utils.MB_CUST4, "", "How many "+sEquipmentName+" would you like to return?",iBorrowedAmount.ToString());
+ 
+ 
+ 	                        //ref  http://social.msdn.microsoft.com/Forums/en-US/winforms/thread/84990ad2-5046-472b-b103-f862bfcd5dbc
+ 
+ 
+ 	                        double Num;
+ 	                        bool isNum = double.TryParse(iresult, out Num);
+ 	                        if (isNum)
+ 	                        {
+                                
+                                if ((int.Parse(iresult) > 0) && (iresult != "Cancel"))
+                                {
+                                    this.eqEquipmentBooked = new EquipmentBooked(iEqBookingId);
+                                    this.eqEquipmentBooked.SBorrowedAmount = int.Parse(iresult);
+                                    this.eqEquipmentBooked.SIsReturned = false;
+                                    this.eqEquipmentBooked.bSave();
+                                }
+                                else
+                                {
+                                    this.eqEquipmentBooked = new EquipmentBooked(iEqBookingId);
+                                    this.eqEquipmentBooked.SBorrowedAmount = 0;
+                                    this.eqEquipmentBooked.SIsReturned = true;
+                                    this.eqEquipmentBooked.bSave();
+
+                                }
+                                this.vLoadBookedList();
+ 	                        }
 
         }
 

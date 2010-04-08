@@ -176,13 +176,6 @@ namespace Gym_administration
             DateTime today = DateTime.Today;
             eqEquipmentBooked.SDateStart = String.Format("{0:yyyy-MM-dd}", today);
 
-            //eqEquipmentBooked.SDateStart = Utils.sGetMysqlDate(txt_startdate.Text);
-            //string strTest = "25 May 2006";
-            //DateTime dtmTest = DateTime.Parse(strTest);
-            //
-
-            //make the length adjustable???
-
             if (counter_amounttoborrow.Value > 0)
             {
                 eqEquipmentBooked.SDateDue = String.Format("{0:yyyy-MM-dd}", today.AddDays(double.Parse(counter_numberofdays.Value.ToString()))); 
