@@ -105,6 +105,12 @@ namespace Gym_administration
                 MessageBox.Show("Check the time format!");
                 return;
             }
+            else if (cmb_classes.Text == "" || cmb_instructors.Text == "" || cmb_rooms.Text == "")
+            {
+                MessageBox.Show("Missing information to arrange your class. Please check input data.");
+                return;
+            }
+
             
             // Check if we found the user
             if (this.ciClassInstance.bCheckOverlap(sDate, sIdRoom, sIdStaff, txt_starttime.Text, txt_endtime.Text))
