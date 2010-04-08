@@ -130,6 +130,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_equipment_list";
             this.Load += new System.EventHandler(this.frm_equipment_list_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_equipment_list_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dg_equipment)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

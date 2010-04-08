@@ -13,11 +13,12 @@ namespace Gym_administration
     public partial class frm_equipment : Form
     {
         Equipment eqEquipment;
-        //MyMessageBox myMessageBox;
+        EquipmentBooked eqEquipmentBooked;
+        MyMessageBox myMessageBox;
         frm_equipment_list frmEqList;
-/*        bool IsBooking;
+        bool IsBooking;
         bool IsMember;
-        int Id_Person;*/
+        int Id_Person;
         
 
         //loading from main menu
@@ -25,23 +26,15 @@ namespace Gym_administration
         {
             InitializeComponent();
             eqEquipment = new Equipment();
-            //myMessageBox = new MyMessageBox();
-            
+
+
             this.frmEqList = null;
             button_vehicle.Show();
             rd_item.Checked = true;
             rd_item_Checked();
-
-
-
-
-            
-            
-
-
         }
 
-        //loading from equipment list to refresh list after saving added new item to itemlist
+        //loading from equipment list to refresh eq list after saving added new item to itemlist
         public frm_equipment(frm_equipment_list frmEqList)
         {
             InitializeComponent();
@@ -50,49 +43,16 @@ namespace Gym_administration
             button_vehicle.Show();
             rd_item.Checked = true;
             rd_item_Checked();
-
-        }
-/*
-        //loading from equipment list to refresh list after saving edited item
-        public frm_equipment(bool isBooking, bool isMember, int Id_Person, int iEquipmentId, frm_equipment_list frmEqList)
-        {
-            if (isBooking)
-            {
-                frm_equipment_booking_ini(isMember, Id_Person, iEquipmentId, frmEqList);
-
-            }
-            else
-            {
-                frm_equipment_ini(iEquipmentId, frmEqList);
-            }
-        }
-
-        public void frm_equipment_booking_ini(bool isMember, int Id_Person, int iEquipmentId, frm_equipment_list frmEqList)
-        {
-            InitializeComponent();
-            eqEquipment = new Equipment(iEquipmentId);
-            this.frmEqList = frmEqList;
-
-
-
         }
 
 
-        public void frm_equipment_ini(int iEquipmentId, frm_equipment_list frmEqList)
-        {
- */
-//      public frm_equipment(bool isBooking, bool isMember, int id_Person, int iEquipmentId, frm_equipment_list frmEqList)
+        //loading from equipment list to refresh eq list after saving edited item
         public frm_equipment(int iEquipmentId, frm_equipment_list frmEqList)
         {
             InitializeComponent();
             eqEquipment = new Equipment(iEquipmentId);
             this.frmEqList = frmEqList;
- 
-/*            IsBooking = isBooking;
-            IsMember = isMember;
-            Id_Person = id_Person;*/
 
-          
             if (eqEquipment.Id_equipment < 1)
                 MessageBox.Show("The equipment could not be found");
             else
@@ -104,12 +64,8 @@ namespace Gym_administration
                     rd_item_Checked();
                     rd_set.Hide();
                     txt_itemname.Text = eqEquipment.SName;
-                    counter_stock.Value = eqEquipment.SCurrentlyInStock;
                     txt_equipmentdesc.Text = eqEquipment.SDescription;
-
-  
                 }
-
                 else if (eqEquipment.SType == "set")
                 {
                     button_vehicle.Hide();
@@ -118,20 +74,146 @@ namespace Gym_administration
                     rd_item.Hide();
                     txt_setname.Text = eqEquipment.SName;
                     txt_equipmentdesc.Text = eqEquipment.SDescription;
-
-
- 
-
                 }
                 else if (eqEquipment.SType == "vehicle")
                 {
                     //OPEN NEW WINDOW FOR VEHICLES
                     MessageBox.Show("vehicles are going to be here");
                 }
+            }
+        }
+
+        //loading from equipment list to refresh eq list after saving new item booking
+        public frm_equipment(bool isBooking, bool isMember, int id_Person, int iEquipmentId, frm_equipment_list frmEqList)
+        {
+            InitializeComponent();
+            label_amounttoborrow.Visible = true;
+            counter_amounttoborrow.Visible = true;
+            counter_amounttoborrow.Value = 1;
+            label_numberofdays.Visible = true;
+            counter_numberofdays.Visible = true;
+            counter_numberofdays.Value = 7;
+            
+            button_save.Text = "Borrow";
+            this.frmEqList = frmEqList;
+            myMessageBox = new MyMessageBox();
+            eqEquipment = new Equipment(iEquipmentId);
+            IsBooking = isBooking;
+            IsMember = isMember;
+            Id_Person = id_Person;
 
 
+
+            if (eqEquipment.Id_equipment < 1)
+                MessageBox.Show("The equipment could not be found");
+            else
+            {
+                if (eqEquipment.SType == "item")
+                {
+                    button_vehicle.Hide();
+                    rd_item.Checked = true;
+                    rd_item_Checked();
+                    rd_set.Hide();
+                    txt_itemname.Text = eqEquipment.SName;
+                    txt_equipmentdesc.Text = eqEquipment.SDescription;
+                }
+                else if (eqEquipment.SType == "set")
+                {
+                    button_vehicle.Hide();
+                    rd_set.Checked = true;
+                    rd_set_Checked();
+
+                    rd_item.Hide();
+                    txt_setname.Text = eqEquipment.SName;
+                    txt_equipmentdesc.Text = eqEquipment.SDescription;
+                }
+
+                else if (eqEquipment.SType == "vehicle")
+                {
+                    //OPEN NEW WINDOW FOR VEHICLES
+                    MessageBox.Show("vehicles are going to be here");
+                }
+            }
+            txt_itemname.ReadOnly = true;
+            txt_setname.ReadOnly = true;
+            txt_equipmentdesc.ReadOnly = true;
+            cmb_item1.Enabled = false;
+            cmb_item2.Enabled = false;
+            cmb_item3.Enabled = false;
+            cmb_item4.Enabled = false;
+            cmb_item5.Enabled = false;
+            counter_item1.Enabled = false;
+            counter_item2.Enabled = false;
+            counter_item3.Enabled = false;
+            counter_item4.Enabled = false;
+            counter_item5.Enabled = false;
+
+     
+        }
+
+
+        private void save_eq_booking()
+        {
+
+
+            this.eqEquipmentBooked = new EquipmentBooked();
+            eqEquipmentBooked.Id_equipment = eqEquipment.Id_equipment;
+
+
+            if (IsMember)
+            {
+                eqEquipmentBooked.SBookingType = "MEMBER_BOOKING";
+                eqEquipmentBooked.Id_member = Id_Person.ToString();
+                eqEquipmentBooked.Id_staff = "NULL";
 
             }
+            else
+            {
+                eqEquipmentBooked.SBookingType = "STAFF_BOOKING";
+                eqEquipmentBooked.Id_staff = Id_Person.ToString();
+                eqEquipmentBooked.Id_member = "NULL";
+            }
+            DateTime today = DateTime.Today;
+            eqEquipmentBooked.SDateStart = String.Format("{0:yyyy-MM-dd}", today);
+
+            //eqEquipmentBooked.SDateStart = Utils.sGetMysqlDate(txt_startdate.Text);
+            //string strTest = "25 May 2006";
+            //DateTime dtmTest = DateTime.Parse(strTest);
+            //
+
+            //make the length adjustable???
+
+            if (counter_amounttoborrow.Value > 0)
+            {
+                eqEquipmentBooked.SDateDue = String.Format("{0:yyyy-MM-dd}", today.AddDays(double.Parse(counter_numberofdays.Value.ToString()))); 
+                
+            }
+            else
+            {
+                MessageBox.Show("Please set the number of days to borrow to be more than 0.");
+                return;
+            }
+            
+
+
+
+
+            if (counter_amounttoborrow.Value > 0)
+            {
+                eqEquipmentBooked.SBorrowedAmount = int.Parse(counter_amounttoborrow.Value.ToString());
+            }
+            else
+            {
+                MessageBox.Show("Please set the borrowed amount of "+eqEquipment.SType+" to be more than 0.");
+                return;
+            }
+
+            eqEquipmentBooked.SIsReturned = false;
+            
+            eqEquipmentBooked.bSave();
+
+            if (this.frmEqList != null) frmEqList.vLoadEqList(eqEquipment.SType);
+            this.Close();
         }
         
         
@@ -147,88 +229,137 @@ namespace Gym_administration
         //SAVE
         private void button_save_Click(object sender, EventArgs e)
         {
-            
-            
 
-         
-
-            if (rd_item.Checked == true)
+            if (IsBooking)
             {
-
-                if (txt_itemname.Text.Length == 0)
-                {
-                    MessageBox.Show("Please insert a name for the equipment.");
-                    return;
-                }
-                eqEquipment.SType = "item";
-                eqEquipment.SName = txt_itemname.Text;
-                eqEquipment.SDescription = txt_equipmentdesc.Text;
-                eqEquipment.SCurrentlyInStock = int.Parse(counter_stock.Value.ToString());
-
-
-                
-
+                save_eq_booking();
             }
-            else if (rd_set.Checked == true)
+            else
             {
-                if (txt_setname.Text.Length == 0)
+                if (rd_item.Checked == true)
                 {
-                    MessageBox.Show("Please insert a name for the set.");
-                    return;
-                }
-                eqEquipment.SType = "set";
-                eqEquipment.SName = txt_setname.Text;
-                eqEquipment.SDescription = txt_equipmentdesc.Text;
 
-                if (cmb_item1.SelectedIndex < 1)
+                    if (txt_itemname.Text.Length == 0)
+                    {
+                        MessageBox.Show("Please insert a name for the equipment.");
+                        return;
+                    }
+                    eqEquipment.SType = "item";
+                    eqEquipment.SName = txt_itemname.Text;
+                    eqEquipment.SDescription = txt_equipmentdesc.Text;
+
+
+
+
+                }
+                else if (rd_set.Checked == true)
                 {
-                    MessageBox.Show("Please select at least one item for the set!");
-                    return;
+                    if (txt_setname.Text.Length == 0)
+                    {
+                        MessageBox.Show("Please insert a name for the set.");
+                        return;
+                    }
+                    eqEquipment.SType = "set";
+                    eqEquipment.SName = txt_setname.Text;
+                    eqEquipment.SDescription = txt_equipmentdesc.Text;
+
+                    if (cmb_item1.SelectedIndex < 1)
+                    {
+                        MessageBox.Show("Please select at least one item for the set!");
+                        return;
+                    }
+
+
+                    if (cmb_item1.SelectedIndex > 0)
+                    {
+                        if (counter_item1.Value > 0)
+                        {
+                            DictionaryEntry de = (DictionaryEntry)cmb_item1.SelectedItem;
+                            eqEquipment.SItemInSet1 = int.Parse(de.Key.ToString());
+                            eqEquipment.SAmountInSet1 = int.Parse(counter_item1.Value.ToString());
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please set the 1st item's amount to be more than 0.");
+                            return;
+                        }
+                    }
+
+                   
+
+                    if (cmb_item2.SelectedIndex > 0) 
+                    {
+                        if (counter_item2.Value > 0)
+                        {
+                            DictionaryEntry de2 = (DictionaryEntry)cmb_item2.SelectedItem;
+                            eqEquipment.SItemInSet2 = int.Parse(de2.Key.ToString());
+                            eqEquipment.SAmountInSet2 = int.Parse(counter_item2.Value.ToString());
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please set the 2nd item's amount to be more than 0.");
+                            return;
+                        }
+                    }
+                    
+
+                    if (cmb_item3.SelectedIndex > 0)
+                    {
+                        if (counter_item3.Value > 0)
+                        {
+                            DictionaryEntry de3 = (DictionaryEntry)cmb_item3.SelectedItem;
+                            eqEquipment.SItemInSet3 = int.Parse(de3.Key.ToString());
+                            eqEquipment.SAmountInSet3 = int.Parse(counter_item3.Value.ToString());
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please set the 3rd item's amount to be more than 0.");
+                            return;
+                        }
+                    }
+                    
+
+                    if (cmb_item4.SelectedIndex > 0)
+                    {
+                        if (counter_item4.Value > 0)
+                        {
+                            DictionaryEntry de4 = (DictionaryEntry)cmb_item4.SelectedItem;
+                            eqEquipment.SItemInSet4 = int.Parse(de4.Key.ToString());
+                            eqEquipment.SAmountInSet4 = int.Parse(counter_item4.Value.ToString());
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please set the 4th item's amount to be more than 0.");
+                            return;
+                        }
+                    }
+                    
+
+                    if (cmb_item5.SelectedIndex > 0)
+                    {
+                        if (counter_item5.Value > 0)
+                        {
+                            DictionaryEntry de5 = (DictionaryEntry)cmb_item5.SelectedItem;
+                            eqEquipment.SItemInSet5 = int.Parse(de5.Key.ToString());
+                            eqEquipment.SAmountInSet5 = int.Parse(counter_item5.Value.ToString());
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please set the 5th item's amount to be more than 0.");
+                            return;
+                        }
+                    }
+                    
+
                 }
 
-                if (cmb_item1.SelectedIndex > 0)
-                {
-                    DictionaryEntry de = (DictionaryEntry)cmb_item1.SelectedItem;
-                    eqEquipment.SItemInSet1 = de.Value.ToString();
-                }
-                eqEquipment.SAmountInSet1 = int.Parse(counter_item1.Value.ToString());
 
-                if (cmb_item2.SelectedIndex > 0)
-                {
-                    DictionaryEntry de2 = (DictionaryEntry)cmb_item2.SelectedItem;
-                    eqEquipment.SItemInSet2 = de2.Value.ToString();
-                }
-                eqEquipment.SAmountInSet2 = int.Parse(counter_item2.Value.ToString());
-
-                if (cmb_item3.SelectedIndex > 0)
-                {
-                    DictionaryEntry de3 = (DictionaryEntry)cmb_item3.SelectedItem;
-                    eqEquipment.SItemInSet3 = de3.Value.ToString();
-                }
-                eqEquipment.SAmountInSet3 = int.Parse(counter_item3.Value.ToString());
-
-                if (cmb_item4.SelectedIndex > 0)
-                {
-                    DictionaryEntry de4 = (DictionaryEntry)cmb_item4.SelectedItem;
-                    eqEquipment.SItemInSet4 = de4.Value.ToString();
-                }
-                eqEquipment.SAmountInSet4 = int.Parse(counter_item4.Value.ToString());
-
-                if (cmb_item5.SelectedIndex > 0)
-                {
-                    DictionaryEntry de5 = (DictionaryEntry)cmb_item5.SelectedItem;
-                    eqEquipment.SItemInSet5 = de5.Value.ToString();
-                }
-                eqEquipment.SAmountInSet5 = int.Parse(counter_item5.Value.ToString());
-
-            }
-
-
-            eqEquipment.bSave();
-            //call list reload in parent form
+                eqEquipment.bSave();
+                //call list reload in parent form
                 //if frmEqlist is null, then this form was called from the main menu and list reload is not necessary
-            if (this.frmEqList != null) frmEqList.vLoadEqList(eqEquipment.SType);
-            this.Close();
+                if (this.frmEqList != null) frmEqList.vLoadEqList(eqEquipment.SType);
+                this.Close();
+            }
         }
 
         //CANCEL
@@ -254,7 +385,7 @@ namespace Gym_administration
 private void button_vehicle_Click(object sender, EventArgs e)
 {
 
-    //MessageBox.Show("vehicles are going to be here");
+    MessageBox.Show("vehicles are going to be here");
     //DictionaryEntry de1 = (DictionaryEntry)cmb_item1.SelectedItem;
     //MessageBox.Show(de1.Key.ToString());
   /*  MessageBox.Show(cmb_item1.SelectedIndex.ToString() + "/n" + 
@@ -291,9 +422,6 @@ private void button_vehicle_Click(object sender, EventArgs e)
             txt_setname.Text = "";
 
  
-
-            label_stock.Enabled = true;
-            counter_stock.Enabled = true;
 
             label_itemdesc.Show();
             label_itemsetdesc.Hide();
@@ -373,11 +501,16 @@ private void button_vehicle_Click(object sender, EventArgs e)
             //cmb_item9.DataSource = myItems;
             //cmb_item10.DataSource = myItems;
 
-            cmb_item1.SelectedIndex = cmb_item1.FindString(eqEquipment.SItemInSet1);
-            cmb_item2.SelectedIndex = cmb_item2.FindString(eqEquipment.SItemInSet2);
-            cmb_item3.SelectedIndex = cmb_item3.FindString(eqEquipment.SItemInSet3);
-            cmb_item4.SelectedIndex = cmb_item4.FindString(eqEquipment.SItemInSet4);
-            cmb_item5.SelectedIndex = cmb_item5.FindString(eqEquipment.SItemInSet5);
+            //if (eqEquipment.SItemInSet1 != "") 
+                cmb_item1.SelectedIndex = eqEquipment.SItemInSet1;
+            //if (eqEquipment.SItemInSet2 != "") 
+                cmb_item2.SelectedIndex = eqEquipment.SItemInSet2;
+            //if (eqEquipment.SItemInSet3 != "") 
+                cmb_item3.SelectedIndex = eqEquipment.SItemInSet3;
+            //if (eqEquipment.SItemInSet4 != "") 
+                cmb_item4.SelectedIndex = eqEquipment.SItemInSet4;
+            //if (eqEquipment.SItemInSet5 != "") 
+                cmb_item5.SelectedIndex = eqEquipment.SItemInSet5;
             //cmb_item6.SelectedIndex = eqEquipment.SItemInSet6;
             //cmb_item7.SelectedIndex = eqEquipment.SItemInSet7;
             //cmb_item8.SelectedIndex = eqEquipment.SItemInSet8;
@@ -406,9 +539,6 @@ private void button_vehicle_Click(object sender, EventArgs e)
             label_setname.Enabled = true;
             txt_setname.Enabled = true;
 
-
-            label_stock.Enabled = false;
-            counter_stock.Enabled = false;
 
             label_itemdesc.Hide();
             label_itemsetdesc.Show();
@@ -573,6 +703,8 @@ private void button_vehicle_Click(object sender, EventArgs e)
             }
                 
         }
+
+
 
 
 

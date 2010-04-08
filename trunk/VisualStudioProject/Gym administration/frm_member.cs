@@ -13,9 +13,23 @@ namespace Gym_administration
     public partial class frm_member : Form
     {
         Member mbrMember;
+        
+
+        public void vLoadBookedList()
+        {
+            mySqlConn conn = new mySqlConn();    
+            conn.connect();
+            BindingSource itemsSource = new BindingSource();
+            string sQuery = "SELECT DISTINCT e.name Name, eb.borrowedamount Amount, eb.date_due Due FROM equipment e, equipment_bookings eb WHERE eb.id_member = " + mbrMember.IId_member + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY eb.id_equipment";
+            itemsSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
+            dg_currentborrows.DataSource = itemsSource;
+            dg_currentborrows.AllowUserToAddRows = false;
+            dg_currentborrows.ReadOnly = true;
+        }
 
         public frm_member()
         {
+      
             mbrMember = new Member();
             InitializeComponent();
             txt_membernum.Text = Utils.sGenerateNewMemberNumber();
@@ -25,13 +39,19 @@ namespace Gym_administration
         
         public frm_member(int iMemberId)
         {
+            
+ 
             InitializeComponent();
             button_equipmentbooking.Show();
+
             mbrMember = new Member(iMemberId);
             if (mbrMember.IId_member < 1)
                 MessageBox.Show("The member could not be found");
             else
             {
+
+                vLoadBookedList();
+
                  txt_firstName.Text = mbrMember.SFirstName;
                  txt_lastName.Text = mbrMember.SLastName;
                  chk_active.Checked = mbrMember.BIs_active;
@@ -130,13 +150,21 @@ namespace Gym_administration
 
             // Creating the child form login
                                                                             //isBooking, "isMember", id_member
-            frm_equipment_list frmEquipmentList = new frm_equipment_list(true, true, mbrMember.IId_member );
+            frm_equipment_list frmEquipmentList = new frm_equipment_list(true, true, mbrMember.IId_member,this,null );
+            frmEquipmentList.MdiParent = this.MdiParent;
+
             
             if (Utils.bIsAlreadyOpened(frmEquipmentList)) return;
             frmEquipmentList.Show();  
         }
 
-        
+
+        private void dg_currentborrows_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+
+        }
+
         
     }
 }

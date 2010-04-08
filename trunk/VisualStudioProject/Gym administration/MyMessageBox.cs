@@ -40,7 +40,10 @@ namespace Gym_administration
         public MyMessageBox()
         {
             InitializeComponent();
-            counter.Hide();
+            label_counter1.Hide();
+            counter1.Hide();
+            label_counter2.Hide();
+            counter2.Hide();
             button_1.Hide();
             button_2.Hide();
             button_3.Hide();
@@ -203,65 +206,31 @@ namespace Gym_administration
 
                         break;
                     }
-                case MBButton.MB_CUST4:
+ /*               case MBButton.MB_CUST4:
                     {
-                        counter.Show();
-                        counter.Value = 1;
-                        button_2.Show();
-                        button_2.Text = "OK";
+                        label_counter1.Show();
+                        counter1.Show();
+                        counter1.Value = 1;
+                        label_counter2.Show();
+                        counter2.Show();
+                        counter2.Value = int.Parse(Button1);
+                        button_1.Show();
+                        button_1.Text = "OK";
                         button_3.Show();
                         button_3.Text = "Cancel";
-                        Button2_Value = MBButton.MB_CUST4.ToString();
+                        Button1_Value = MBButton.MB_CUST4.ToString();
                         Button3_Value = MBReturn.CANCEL.ToString(); 
 
                         break;
-                    }
+                    }*/
 
             
             }
         }
-  /*      
-        public string ShowBox(UInt32 Type, string txtMessage)
-        {
+        
 
-            newMessageBox = new MyMessageBox();
-            newMessageBox.SetButtonLayout(Type, "", "", "");
-            newMessageBox.label_Message.Text = txtMessage;
-            newMessageBox.ShowDialog();
 
-            return Button_id;
-        }
-        public string ShowBox(UInt32 Type, string txtMessage, string Button1)
-        {
-
-            newMessageBox = new MyMessageBox();
-            newMessageBox.SetButtonLayout(Type, Button1, "", "");
-            newMessageBox.label_Message.Text = txtMessage;
-            newMessageBox.ShowDialog();
-
-            return Button_id;
-        }
-        public string ShowBox(UInt32 Type, string txtMessage, string Button1, string Button2)
-        {
-
-            newMessageBox = new MyMessageBox();
-            newMessageBox.SetButtonLayout(Type, Button1, Button2, "");
-            newMessageBox.label_Message.Text = txtMessage;
-            newMessageBox.ShowDialog();
-
-            return Button_id;
-        }
-        public string ShowBox(UInt32 Type, string txtMessage, string Button1, string Button2, string Button3)
-        {
-
-            newMessageBox = new MyMessageBox();
-            newMessageBox.SetButtonLayout(Type, Button1, Button2, Button3);
-            newMessageBox.label_Message.Text = txtMessage;
-            newMessageBox.ShowDialog();
-
-            return Button_id;
-        }*/
-
+        //DEFAULT
         public string ShowBox(UInt32 Type, string txtMessage, string txtTitle)
         {
 
@@ -274,6 +243,8 @@ namespace Gym_administration
 
             return Button_id;
         }
+
+        //CUST1
         public string ShowBox(UInt32 Type, string txtMessage, string txtTitle, string Button1)
         {
 
@@ -286,6 +257,8 @@ namespace Gym_administration
 
             return Button_id;
         }
+
+        //CUST2
         public string ShowBox(UInt32 Type, string txtMessage, string txtTitle, string Button1, string Button2)
         {
 
@@ -298,6 +271,8 @@ namespace Gym_administration
 
             return Button_id;
         }
+
+        //CUST3
         public string ShowBox(UInt32 Type, string txtMessage, string txtTitle, string Button1, string Button2, string Button3)
         {
 
@@ -333,7 +308,7 @@ namespace Gym_administration
         {
 
             if (Button2_Value == MBButton.MB_CUST4.ToString())
-                Button2_Value = counter.Value.ToString();
+                Button2_Value = counter1.Value.ToString();
 
             
             double Num;
@@ -352,6 +327,11 @@ namespace Gym_administration
             Button_id = Button3_Value;
             this.Close(); 
             
+        }
+
+        private void counter1_ValueChanged(object sender, EventArgs e)
+        {
+            //if counter1.Value == -1
         }
 
   

@@ -40,7 +40,7 @@
             // button_addpayment
             // 
             this.button_addpayment.Location = new System.Drawing.Point(253, 204);
-            this.button_addpayment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_addpayment.Margin = new System.Windows.Forms.Padding(4);
             this.button_addpayment.Name = "button_addpayment";
             this.button_addpayment.Size = new System.Drawing.Size(120, 28);
             this.button_addpayment.TabIndex = 0;
@@ -61,7 +61,7 @@
             // txt_details
             // 
             this.txt_details.Location = new System.Drawing.Point(80, 47);
-            this.txt_details.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_details.Margin = new System.Windows.Forms.Padding(4);
             this.txt_details.Multiline = true;
             this.txt_details.Name = "txt_details";
             this.txt_details.Size = new System.Drawing.Size(292, 137);
@@ -81,7 +81,7 @@
             // 
             this.txt_date.Culture = new System.Globalization.CultureInfo("en-GB");
             this.txt_date.Location = new System.Drawing.Point(80, 201);
-            this.txt_date.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_date.Margin = new System.Windows.Forms.Padding(4);
             this.txt_date.Mask = "00/00/0000";
             this.txt_date.Name = "txt_date";
             this.txt_date.Size = new System.Drawing.Size(132, 22);
@@ -102,7 +102,7 @@
             // 
             this.txt_amount.Culture = new System.Globalization.CultureInfo("en-GB");
             this.txt_amount.Location = new System.Drawing.Point(80, 15);
-            this.txt_amount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_amount.Margin = new System.Windows.Forms.Padding(4);
             this.txt_amount.Mask = "0000.00";
             this.txt_amount.Name = "txt_amount";
             this.txt_amount.Size = new System.Drawing.Size(132, 22);
@@ -121,7 +121,7 @@
             this.Controls.Add(this.label_amount);
             this.Controls.Add(this.button_addpayment);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_add_payment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Payment";

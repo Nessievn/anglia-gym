@@ -116,17 +116,16 @@ CREATE TABLE `equipment` (
   `id_vehicle` int(11) DEFAULT NULL,
   `name` varchar(75) DEFAULT NULL,
   `description` text,
-  `currentlyinstock` int(11) DEFAULT NULL,
-  `iteminset1` varchar(45) DEFAULT NULL,
-  `iteminset2` varchar(45) DEFAULT NULL,
-  `iteminset3` varchar(45) DEFAULT NULL,
-  `iteminset4` varchar(45) DEFAULT NULL,
-  `iteminset5` varchar(45) DEFAULT NULL,
-  `iteminset6` varchar(45) DEFAULT NULL,
-  `iteminset7` varchar(45) DEFAULT NULL,
-  `iteminset8` varchar(45) DEFAULT NULL,
-  `iteminset9` varchar(45) DEFAULT NULL,
-  `iteminset10` varchar(45) DEFAULT NULL,
+  `iteminset1` int(11) DEFAULT NULL,
+  `iteminset2` int(11) DEFAULT NULL,
+  `iteminset3` int(11) DEFAULT NULL,
+  `iteminset4` int(11) DEFAULT NULL,
+  `iteminset5` int(11) DEFAULT NULL,
+  `iteminset6` int(11) DEFAULT NULL,
+  `iteminset7` int(11) DEFAULT NULL,
+  `iteminset8` int(11) DEFAULT NULL,
+  `iteminset9` int(11) DEFAULT NULL,
+  `iteminset10` int(11) DEFAULT NULL,
   `amountinset1` int(11) DEFAULT NULL,
   `amountinset2` int(11) DEFAULT NULL,
   `amountinset3` int(11) DEFAULT NULL,
@@ -147,7 +146,7 @@ CREATE TABLE `equipment` (
 
 LOCK TABLES `equipment` WRITE;
 /*!40000 ALTER TABLE `equipment` DISABLE KEYS */;
-INSERT INTO `equipment` VALUES (1,'item',0,'pingpongball','propro',98,'','','','','','','','','','',0,0,0,0,0,0,0,0,0,0),(2,'set',0,'pingpongset','best',0,'pingpongball','pingpongracket','','','','','','','','',5,2,0,0,0,0,0,0,0,0),(3,'set',0,'tennisset','for 2',0,'tennisball','tennisracket',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,6,2,0,0,0,0,0,0,0,0),(4,'item',0,'tennisracket','very nice',8,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0,0,0,0,0),(5,'set',0,'judoset','indoor use only',0,'basketball','','','','','','','','','',1,0,0,0,0,0,0,0,0,0),(6,'item',0,'basketball','brown color',10,'','','','','','','','','','',0,0,0,0,0,0,0,0,0,0),(7,'item',0,'football','pro',10,'','','','','','','','','','',0,0,0,0,0,0,0,0,0,0),(8,'item',0,'pingpongracket','pro',16,'','','','','','','','','','',0,0,0,0,0,0,0,0,0,0),(9,'item',0,'tennnisball','new',100,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(10,'set',0,'sfsafd','New Set',0,'tennisracket','pingpongball','basketball','football','pingpongball','','','','','',3,4,1,3,4,0,0,0,0,0),(13,'set',0,'chdf','dfghdfgdfg',0,'pingpongball','','','','','','','','','',0,0,0,0,0,0,0,0,0,0),(14,'set',0,'dbdfb','dfbdfb',0,'basketball','','','','','','','','','',1,0,0,0,0,0,0,0,0,0),(15,'set',0,'xcvc','vdsav',0,'pingpongball','','','','','','','','','',1,0,0,0,0,0,0,0,0,0),(16,'item',0,'xvfaxcv','xcvzscxv',20,'','','','','','','','','','',0,0,0,0,0,0,0,0,0,0),(17,'item',0,'sdfsd','sdfsdf',0,'','','','','','','','','','',0,0,0,0,0,0,0,0,0,0),(18,'item',0,'rtyt','rtyry',0,'','','','','','','','','','',0,0,0,0,0,0,0,0,0,0),(19,'item',0,'yrty','zxczc',0,'','','','','','','','','','',0,0,0,0,0,0,0,0,0,0),(20,'item',0,'23423','234234',0,'','','','','','','','','','',0,0,0,0,0,0,0,0,0,0),(21,'item',0,'www','wwwww',3,'','','','','','','','','','',0,0,0,0,0,0,0,0,0,0);
+INSERT INTO `equipment` VALUES (1,'item',0,'Pingpongball','propro',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),(2,'set',0,'Pingpongset','best',1,8,0,0,0,0,0,0,0,0,4,2,0,0,0,0,0,0,0,0),(3,'set',0,'Tennisset','for 2',18,7,0,0,0,0,0,0,0,0,1,2,0,0,0,0,0,0,0,0),(4,'item',0,'Tennisracket','very nice :)',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),(5,'set',0,'Judoset','indoor use only',9,8,0,0,0,0,0,0,0,0,1,2,0,0,0,0,0,0,0,0),(6,'item',0,'Basketball','brown color',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),(7,'item',0,'Football','pro',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),(8,'item',0,'Pingpongracket','pro',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),(9,'item',0,'Tennisball','new',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NULL,NULL),(10,'set',0,'sfsafd','New Set',4,1,6,7,1,0,0,0,0,0,3,4,1,3,4,0,0,0,0,0),(13,'set',0,'chdf','dfghdfgdfg',1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),(14,'set',0,'dbdfb','dfbdfb',6,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0),(15,'set',0,'xcvc','vdsav',1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0),(16,'item',0,'xvfaxcv','xcvzscxv',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),(17,'item',0,'dddd','sdfsdf',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),(18,'item',0,'rtyt','rtyry',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),(19,'item',0,'yrty','zxczc',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),(20,'item',0,'23423','234234',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),(21,'item',0,'www','wwwww',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),(22,'item',0,'Lollipop','Tasty',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),(23,'item',0,'Blah','hah',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),(24,'set',0,'Hehe','Haha',6,23,0,0,0,0,0,0,0,0,2,3,0,0,0,0,0,0,0,0),(25,'item',0,'Newforbooking','new!',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),(26,'set',0,'Newsetforbooking','Spanking new!',4,6,0,0,0,0,0,0,0,0,3,1,0,0,0,0,0,0,0,0),(27,'item',0,'NewTest','ddd',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),(28,'set',0,'NewTestSet','sss',4,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0),(29,'item',0,'Newtest2','sss',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),(30,'set',0,'newsettest2','ddd',1,4,0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0),(31,'item',0,'newww','www',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),(32,'set',0,'ggg','ggggg',1,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0),(33,'set',0,'sdfsd','sdfs',1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),(34,'set',0,'luyo','',4,6,0,0,0,0,0,0,0,0,3,1,0,0,0,0,0,0,0,0);
 /*!40000 ALTER TABLE `equipment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -221,7 +220,6 @@ CREATE TABLE `equipment_bookings` (
   `id_class_instance` int(11) DEFAULT NULL,
   `date_start` datetime DEFAULT NULL,
   `date_due` datetime DEFAULT NULL,
-  `isset` binary(1) DEFAULT NULL,
   `id_equipment` int(11) DEFAULT NULL,
   `borrowedamount` int(11) DEFAULT NULL,
   `isreturned` binary(1) DEFAULT NULL,
@@ -235,7 +233,7 @@ CREATE TABLE `equipment_bookings` (
 
 LOCK TABLES `equipment_bookings` WRITE;
 /*!40000 ALTER TABLE `equipment_bookings` DISABLE KEYS */;
-INSERT INTO `equipment_bookings` VALUES (1,NULL,4,NULL,'2010-04-01 00:00:00','2010-04-15 00:00:00',NULL,1,3,NULL),(2,NULL,5,NULL,'2010-04-02 00:00:00','2010-04-07 00:00:00',NULL,2,2,NULL),(3,NULL,6,NULL,'2010-04-05 00:00:00','2010-04-08 00:00:00',NULL,3,1,NULL),(4,1,NULL,NULL,'2010-04-06 00:00:00','2010-04-07 00:00:00',NULL,4,3,'1'),(5,-1,5,0,'2010-04-02 00:00:00','2010-04-09 00:00:00','1',5,1,NULL),(6,-1,0,0,'2010-04-02 00:00:00','2010-04-09 00:00:00','1',2,1,NULL),(7,-1,0,0,'2010-04-02 00:00:00','2010-04-09 00:00:00','1',2,1,NULL),(8,-1,0,0,'2010-04-02 00:00:00','2010-04-09 00:00:00','1',2,10,NULL),(9,0,5,0,'2010-04-02 00:00:00','2010-04-09 00:00:00','1',2,6,NULL),(10,-1,6,0,'2010-04-02 00:00:00','2010-04-09 00:00:00','1',2,3,NULL),(11,NULL,5,0,'2010-04-02 00:00:00','2010-04-09 00:00:00','1',3,7,NULL);
+INSERT INTO `equipment_bookings` VALUES (1,NULL,4,NULL,'2010-04-01 00:00:00','2010-04-15 00:00:00',1,3,NULL),(2,NULL,5,NULL,'2010-04-02 00:00:00','2010-04-07 00:00:00',2,2,NULL),(3,NULL,6,NULL,'2010-04-05 00:00:00','2010-04-08 00:00:00',3,1,NULL),(4,1,NULL,NULL,'2010-04-06 00:00:00','2010-04-07 00:00:00',4,3,'1'),(5,-1,5,0,'2010-04-02 00:00:00','2010-04-09 00:00:00',5,1,NULL),(6,-1,0,0,'2010-04-02 00:00:00','2010-04-09 00:00:00',2,1,NULL),(7,-1,0,0,'2010-04-02 00:00:00','2010-04-09 00:00:00',2,1,NULL),(8,-1,0,0,'2010-04-02 00:00:00','2010-04-09 00:00:00',2,10,NULL),(9,0,5,0,'2010-04-02 00:00:00','2010-04-09 00:00:00',2,6,NULL),(10,-1,6,0,'2010-04-02 00:00:00','2010-04-09 00:00:00',2,3,NULL),(11,NULL,5,0,'2010-04-02 00:00:00','2010-04-09 00:00:00',3,7,NULL),(12,NULL,5,0,'2010-04-08 00:00:00','2010-04-15 00:00:00',1,1,NULL),(13,NULL,5,0,'2010-04-08 00:00:00','2010-04-15 00:00:00',3,1,NULL),(14,NULL,11,0,'2010-04-08 00:00:00','2010-04-15 00:00:00',4,3,NULL),(15,NULL,11,0,'2010-04-08 00:00:00','2010-04-15 00:00:00',5,2,NULL),(16,NULL,10,0,'2010-04-08 00:00:00','2010-04-13 00:00:00',7,3,NULL),(17,1,NULL,0,'2010-04-08 00:00:00','2010-04-15 00:00:00',3,1,NULL),(18,NULL,10,0,'2010-04-08 00:00:00','2010-04-14 00:00:00',9,2,NULL),(19,NULL,5,0,'2010-04-08 00:00:00','2010-04-15 00:00:00',6,1,NULL),(20,NULL,11,0,'2010-04-08 00:00:00','2010-04-15 00:00:00',16,1,NULL),(21,1,NULL,0,'2010-04-08 00:00:00','2010-04-15 00:00:00',1,1,NULL),(22,1,NULL,0,'2010-04-08 00:00:00','2010-04-15 00:00:00',8,1,NULL),(23,NULL,4,0,'2010-04-08 00:00:00','2010-04-15 00:00:00',6,1,NULL),(24,NULL,12,0,'2010-04-08 00:00:00','2010-04-15 00:00:00',4,1,NULL),(25,1,NULL,0,'2010-04-08 00:00:00','2010-04-15 00:00:00',1,1,NULL),(26,NULL,12,0,'2010-04-08 00:00:00','2010-04-15 00:00:00',7,1,NULL),(27,NULL,12,0,'2010-04-08 00:00:00','2010-04-15 00:00:00',16,1,NULL);
 /*!40000 ALTER TABLE `equipment_bookings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -426,7 +424,7 @@ CONSTRAINT `staff_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`)
 
 LOCK TABLES `staff` WRITE;
 /*!40000 ALTER TABLE `staff` DISABLE KEYS */;
-INSERT INTO `staff` VALUES (0,'Jani','Mani','1980-01-01','78 Tower Bridge','','','CM21 0DF','','','','2010-04-05','2015-12-12',76,'','','','','','','','','','janimani@a.com','','','');
+INSERT INTO `staff` VALUES (1,'Jani','Mani','1980-01-01','78 Tower Bridge','','','CM21 0DF','Full-time','','Instructor','2010-12-12','2015-12-12',76,'','','','','','','','','','janimani@a.com','','','');
 /*!40000 ALTER TABLE `staff` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -439,4 +437,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-04-05 18:56:24
+-- Dump completed on 2010-04-08  6:47:02

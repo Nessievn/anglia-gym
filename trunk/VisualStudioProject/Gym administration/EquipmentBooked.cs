@@ -93,13 +93,6 @@ namespace Gym_administration
             set { sDateDue = value; }
         }
 //TABLE
-        private bool sIsSet;
-        public bool SIsSet
-        {
-            get { return sIsSet; }
-            set { sIsSet = value; }
-        }
-//TABLE
         //as EqID
         private int id_equipment;
         public int Id_equipment
@@ -128,6 +121,17 @@ namespace Gym_administration
             set { sIsReturned = value; }
         }
 
+//DISPLAY/TEMP STORAGE 
+        private int sCurrentlyInStock;
+        public int SCurrentlyInStock
+        {
+            get { return sCurrentlyInStock; }
+            set { sCurrentlyInStock = value; }
+        }
+
+
+
+
         public EquipmentBooked()
         {
 
@@ -144,75 +148,20 @@ namespace Gym_administration
             //List<Hashtable> lhResultset = conn.lhSqlQuery("Select * from equipment_bookings WHERE id_equipment = '" + iIdEqBooking + "'");
 
 
-            List<Hashtable> lhResultset = conn.lhSqlQuery("SELECT IF(eb.id_staff IS NULL, 'MEMBER_BOOKING','STAFF_BOOKING') BookingType, eb.id_eq_booking BookingNr, eb.id_member MemberID, CONCAT(m.lastName, ', ', m.firstName) MemberName, eb.id_staff StaffID, CONCAT(s.lastName, ', ', s.firstName) SaffName, eb.id_equipment EqID,  e.name Equipment, eb.borrowedamount, eb.date_start, eb.date_due, eb.id_class_instance ClassInstance FROM equipment e, equipment_bookings eb LEFT OUTER JOIN staff s ON eb.id_staff = s.id_staff LEFT OUTER JOIN members m ON eb.id_member = m.id_member WHERE e.id_equipment = eb.id_equipment AND eb.id_eq_booking = '" + iIdEqBooking + "'");
+            List<Hashtable> lhResultset = conn.lhSqlQuery("SELECT IF(eb.id_staff IS NULL, 'MEMBER_BOOKING','STAFF_BOOKING') BookingType, eb.id_eq_booking BookingNr, eb.id_member MemberID, CONCAT(m.lastName, ', ', m.firstName) MemberName, eb.id_staff StaffID, CONCAT(s.lastName, ', ', s.firstName) SaffName, eb.id_equipment EqID,  e.name Equipment, e.currentlyinstock eb.borrowedamount, eb.date_start, eb.date_due, eb.id_class_instance ClassInstance FROM equipment e, equipment_bookings eb LEFT OUTER JOIN staff s ON eb.id_staff = s.id_staff LEFT OUTER JOIN members m ON eb.id_member = m.id_member WHERE e.id_equipment = eb.id_equipment AND eb.id_eq_booking = '" + iIdEqBooking + "'");
 
 
             // Check if we found the equipment
             if ((int)lhResultset.Count > 0)
             {
-                
+
                 this.SBookingType = lhResultset[0]["BookingType"].ToString();
                 this.Id_eq_booking = int.Parse(lhResultset[0]["BookingNr"].ToString());
-
-                /*             BookingNr
-                              this.Id_staff = lhResultset[0]["id_staff"].ToString();
-                              MemberID
-                              this.Id_member = int.Parse(lhResultset[0]["id_member"].ToString());
-                              this.Id_class_instance = int.Parse(lhResultset[0]["id_set"].ToString());
-                              this.SName = lhResultset[0]["name"].ToString();
-                              this.SDescription = lhResultset[0]["description"].ToString();
-                              this.SCurrentlyInStock = int.Parse(lhResultset[0]["currentlyinstock"].ToString());
-                              if (this.sType == "set")
-                              {
-                                  this.SItemInSet1 = lhResultset[0]["iteminset1"].ToString();
-                                  this.SItemInSet2 = lhResultset[0]["iteminset2"].ToString();
-                                  this.SItemInSet3 = lhResultset[0]["iteminset3"].ToString();
-                                  this.SItemInSet4 = lhResultset[0]["iteminset4"].ToString();
-                                  this.SItemInSet5 = lhResultset[0]["iteminset5"].ToString();
-                                  this.SItemInSet6 = lhResultset[0]["iteminset6"].ToString();
-                                  this.SItemInSet7 = lhResultset[0]["iteminset7"].ToString();
-                                  this.SItemInSet8 = lhResultset[0]["iteminset8"].ToString();
-                                  this.SItemInSet9 = lhResultset[0]["iteminset9"].ToString();
-                                  this.SItemInSet10 = lhResultset[0]["iteminset10"].ToString();
-                                  this.SAmountInSet1 = int.Parse(lhResultset[0]["amountinset1"].ToString());
-                                  this.SAmountInSet2 = int.Parse(lhResultset[0]["amountinset2"].ToString());
-                                  this.SAmountInSet3 = int.Parse(lhResultset[0]["amountinset3"].ToString());
-                                  this.SAmountInSet4 = int.Parse(lhResultset[0]["amountinset4"].ToString());
-                                  this.SAmountInSet5 = int.Parse(lhResultset[0]["amountinset5"].ToString());
-                                  this.SAmountInSet6 = int.Parse(lhResultset[0]["amountinset6"].ToString());
-                                  this.SAmountInSet7 = int.Parse(lhResultset[0]["amountinset7"].ToString());
-                                  this.SAmountInSet8 = int.Parse(lhResultset[0]["amountinset8"].ToString());
-                                  this.SAmountInSet9 = int.Parse(lhResultset[0]["amountinset9"].ToString());
-                                  this.SAmountInSet10 = int.Parse(lhResultset[0]["amountinset10"].ToString());
-   
-                              }*/
-
+                //this.SCurrentlyInStock = int.Parse(lhResultset[0]["currentlyinstock"].ToString());
+                
             }
         }
-
-/*
-        public bool bRemove()
-        {
-            if (this.Id_equipment != -1)
-            {
-                mySqlConn conn = new mySqlConn();
-                conn.connect();
-                string sQuery = "DELETE FROM equipment WHERE id_equipment = '" + this.Id_equipment + "'";
-                int iRes = conn.iDeleteOrUpdate(sQuery);
-                if (iRes > 0)
-                {
-                    MessageBox.Show("The equipment data has been deleted succesfully!");
-                    return true;
-                }
-                else
-                {
-                    MessageBox.Show("There was a problem deleting the equipment!");
-                    return false;
-                }
-            }
-            return false;
-        }
-*/
+               
 
 
         /**
@@ -235,9 +184,9 @@ namespace Gym_administration
                 if (this.Id_eq_booking == -1)
                 {
                     
-                    sQuery = "insert into `gym`.`equipment_bookings` (`id_eq_booking`, `id_staff`, `id_member`, `id_class_instance`, `date_start`, `date_due`, `isset`, `id_equipment`, `borrowedamount`,`isreturned`) values " +
-                             "(NULL, " + this.Id_staff + ", " + this.Id_member + ", '" + this.Id_class_instance + "', '" + this.SDateStart + "', '" + this.SDateDue
-                             + "', '" + Convert.ToInt16(this.SIsSet) + "', " + this.Id_equipment + ", '" + this.SBorrowedAmount + "', NULL)";
+                    sQuery = "insert into `gym`.`equipment_bookings` (`id_eq_booking`, `id_staff`, `id_member`, `id_class_instance`, `date_start`, `date_due`, `id_equipment`, `borrowedamount`,`isreturned`) values " +
+                             "(NULL, " + this.Id_staff + ", " + this.Id_member + ", " + this.Id_class_instance + ", '" + this.SDateStart + "', '" + this.SDateDue
+                             + "', " + this.Id_equipment + ", " + this.SBorrowedAmount + ", NULL)";
 
                     int iIdEqBooking = conn.iInsert(sQuery);
                     if (iIdEqBooking != -1)
@@ -256,15 +205,7 @@ namespace Gym_administration
                 {
                     sQuery = "UPDATE `gym`.`equipment_bookings` SET `isreturned`='1' WHERE id_eq_booking = '" + this.Id_eq_booking + "'";
 
-                    /*   sQuery = "UPDATE equipment_bookings SET id_staff = '" + this.Id_staff
-                                                        + "', id_member = '" + this.Id_member
-                                                + "', id_class_instance = '" + this.Id_class_instance
-                                                       + "', date_start = '" + this.SDateStart
-                                                         + "', date_due = '" + this.SDateDue
-                                                            + "', isset = '" + this.SIsSet
-                                                     + "', id_equipment = '" + this.Id_equipment
-                                                   + "', borrowedamount = '" + this.SBorrowedAmount + "' " 
-                                                + " WHERE id_eq_booking = '" + this.Id_eq_booking + "'";*/
+                    
 
                     int iRes = conn.iDeleteOrUpdate(sQuery);
                     if (iRes > 0)
