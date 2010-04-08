@@ -83,6 +83,10 @@
             this.label_contract_start = new System.Windows.Forms.Label();
             this.txt_contract_finish = new System.Windows.Forms.MaskedTextBox();
             this.label_contract_finish = new System.Windows.Forms.Label();
+            this.button_equipmentbooking = new System.Windows.Forms.Button();
+            this.dg_currentborrows = new System.Windows.Forms.DataGridView();
+            this.label_currentborrows = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_currentborrows)).BeginInit();
             this.SuspendLayout();
             // 
             // cmb_position
@@ -93,7 +97,7 @@
             "Instructor",
             "Reception",
             "Manager"});
-            this.cmb_position.Location = new System.Drawing.Point(233, 350);
+            this.cmb_position.Location = new System.Drawing.Point(232, 349);
             this.cmb_position.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_position.Name = "cmb_position";
             this.cmb_position.Size = new System.Drawing.Size(160, 24);
@@ -102,7 +106,7 @@
             // label_position
             // 
             this.label_position.AutoSize = true;
-            this.label_position.Location = new System.Drawing.Point(229, 330);
+            this.label_position.Location = new System.Drawing.Point(228, 329);
             this.label_position.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_position.Name = "label_position";
             this.label_position.Size = new System.Drawing.Size(58, 17);
@@ -118,7 +122,7 @@
             "Temporary",
             "Part-time",
             "Full-time"});
-            this.cmb_contract.Location = new System.Drawing.Point(231, 300);
+            this.cmb_contract.Location = new System.Drawing.Point(230, 299);
             this.cmb_contract.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_contract.Name = "cmb_contract";
             this.cmb_contract.Size = new System.Drawing.Size(160, 24);
@@ -136,7 +140,7 @@
             // label_contract
             // 
             this.label_contract.AutoSize = true;
-            this.label_contract.Location = new System.Drawing.Point(227, 281);
+            this.label_contract.Location = new System.Drawing.Point(226, 280);
             this.label_contract.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_contract.Name = "label_contract";
             this.label_contract.Size = new System.Drawing.Size(121, 17);
@@ -155,7 +159,7 @@
             // 
             // txt_county
             // 
-            this.txt_county.Location = new System.Drawing.Point(231, 252);
+            this.txt_county.Location = new System.Drawing.Point(230, 251);
             this.txt_county.Margin = new System.Windows.Forms.Padding(4);
             this.txt_county.Name = "txt_county";
             this.txt_county.Size = new System.Drawing.Size(183, 22);
@@ -164,7 +168,7 @@
             // label_county
             // 
             this.label_county.AutoSize = true;
-            this.label_county.Location = new System.Drawing.Point(227, 233);
+            this.label_county.Location = new System.Drawing.Point(226, 232);
             this.label_county.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_county.Name = "label_county";
             this.label_county.Size = new System.Drawing.Size(52, 17);
@@ -233,7 +237,7 @@
             // 
             // txt_dob
             // 
-            this.txt_dob.Location = new System.Drawing.Point(236, 62);
+            this.txt_dob.Location = new System.Drawing.Point(235, 61);
             this.txt_dob.Margin = new System.Windows.Forms.Padding(4);
             this.txt_dob.Mask = "00/00/0000";
             this.txt_dob.Name = "txt_dob";
@@ -391,7 +395,7 @@
             // 
             // txt_address2
             // 
-            this.txt_address2.Location = new System.Drawing.Point(233, 204);
+            this.txt_address2.Location = new System.Drawing.Point(232, 203);
             this.txt_address2.Margin = new System.Windows.Forms.Padding(4);
             this.txt_address2.Name = "txt_address2";
             this.txt_address2.Size = new System.Drawing.Size(183, 22);
@@ -400,7 +404,7 @@
             // label_address2
             // 
             this.label_address2.AutoSize = true;
-            this.label_address2.Location = new System.Drawing.Point(229, 185);
+            this.label_address2.Location = new System.Drawing.Point(228, 184);
             this.label_address2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_address2.Name = "label_address2";
             this.label_address2.Size = new System.Drawing.Size(72, 17);
@@ -427,7 +431,7 @@
             // 
             // txt_telephone
             // 
-            this.txt_telephone.Location = new System.Drawing.Point(236, 158);
+            this.txt_telephone.Location = new System.Drawing.Point(235, 157);
             this.txt_telephone.Margin = new System.Windows.Forms.Padding(4);
             this.txt_telephone.Name = "txt_telephone";
             this.txt_telephone.Size = new System.Drawing.Size(183, 22);
@@ -436,7 +440,7 @@
             // label_telephone
             // 
             this.label_telephone.AutoSize = true;
-            this.label_telephone.Location = new System.Drawing.Point(232, 138);
+            this.label_telephone.Location = new System.Drawing.Point(231, 137);
             this.label_telephone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_telephone.Name = "label_telephone";
             this.label_telephone.Size = new System.Drawing.Size(76, 17);
@@ -464,7 +468,7 @@
             // label_dob
             // 
             this.label_dob.AutoSize = true;
-            this.label_dob.Location = new System.Drawing.Point(232, 42);
+            this.label_dob.Location = new System.Drawing.Point(231, 41);
             this.label_dob.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_dob.Name = "label_dob";
             this.label_dob.Size = new System.Drawing.Size(87, 17);
@@ -542,7 +546,7 @@
             // label_mobile
             // 
             this.label_mobile.AutoSize = true;
-            this.label_mobile.Location = new System.Drawing.Point(232, 91);
+            this.label_mobile.Location = new System.Drawing.Point(231, 90);
             this.label_mobile.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_mobile.Name = "label_mobile";
             this.label_mobile.Size = new System.Drawing.Size(49, 17);
@@ -551,7 +555,7 @@
             // 
             // txt_mobile
             // 
-            this.txt_mobile.Location = new System.Drawing.Point(236, 111);
+            this.txt_mobile.Location = new System.Drawing.Point(235, 110);
             this.txt_mobile.Margin = new System.Windows.Forms.Padding(4);
             this.txt_mobile.Name = "txt_mobile";
             this.txt_mobile.Size = new System.Drawing.Size(183, 22);
@@ -597,7 +601,7 @@
             // 
             // txt_contract_finish
             // 
-            this.txt_contract_finish.Location = new System.Drawing.Point(233, 401);
+            this.txt_contract_finish.Location = new System.Drawing.Point(13, 446);
             this.txt_contract_finish.Margin = new System.Windows.Forms.Padding(4);
             this.txt_contract_finish.Mask = "00/00/0000";
             this.txt_contract_finish.Name = "txt_contract_finish";
@@ -608,18 +612,58 @@
             // label_contract_finish
             // 
             this.label_contract_finish.AutoSize = true;
-            this.label_contract_finish.Location = new System.Drawing.Point(229, 382);
+            this.label_contract_finish.Location = new System.Drawing.Point(9, 427);
             this.label_contract_finish.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_contract_finish.Name = "label_contract_finish";
             this.label_contract_finish.Size = new System.Drawing.Size(102, 17);
             this.label_contract_finish.TabIndex = 112;
             this.label_contract_finish.Text = "Contract Finish";
             // 
+            // button_equipmentbooking
+            // 
+            this.button_equipmentbooking.Location = new System.Drawing.Point(226, 496);
+            this.button_equipmentbooking.Name = "button_equipmentbooking";
+            this.button_equipmentbooking.Size = new System.Drawing.Size(164, 32);
+            this.button_equipmentbooking.TabIndex = 113;
+            this.button_equipmentbooking.Text = "Equipment Booking";
+            this.button_equipmentbooking.UseVisualStyleBackColor = true;
+            this.button_equipmentbooking.Click += new System.EventHandler(this.button_equipmentbooking_Click);
+            // 
+            // dg_currentborrows
+            // 
+            this.dg_currentborrows.AllowUserToAddRows = false;
+            this.dg_currentborrows.AllowUserToDeleteRows = false;
+            this.dg_currentborrows.AllowUserToResizeColumns = false;
+            this.dg_currentborrows.AllowUserToResizeRows = false;
+            this.dg_currentborrows.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dg_currentborrows.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_currentborrows.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dg_currentborrows.Location = new System.Drawing.Point(230, 400);
+            this.dg_currentborrows.Margin = new System.Windows.Forms.Padding(4);
+            this.dg_currentborrows.Name = "dg_currentborrows";
+            this.dg_currentborrows.RowHeadersVisible = false;
+            this.dg_currentborrows.RowTemplate.Height = 24;
+            this.dg_currentborrows.Size = new System.Drawing.Size(193, 89);
+            this.dg_currentborrows.TabIndex = 114;
+            // 
+            // label_currentborrows
+            // 
+            this.label_currentborrows.AutoSize = true;
+            this.label_currentborrows.Location = new System.Drawing.Point(227, 379);
+            this.label_currentborrows.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_currentborrows.Name = "label_currentborrows";
+            this.label_currentborrows.Size = new System.Drawing.Size(204, 17);
+            this.label_currentborrows.TabIndex = 115;
+            this.label_currentborrows.Text = "Currently Borrowed Equipment:";
+            // 
             // frm_staff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(879, 545);
+            this.Controls.Add(this.label_currentborrows);
+            this.Controls.Add(this.dg_currentborrows);
+            this.Controls.Add(this.button_equipmentbooking);
             this.Controls.Add(this.txt_contract_finish);
             this.Controls.Add(this.label_contract_finish);
             this.Controls.Add(this.txt_contract_start);
@@ -681,6 +725,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Staff Form";
             this.Load += new System.EventHandler(this.frm_staff_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dg_currentborrows)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -743,5 +788,8 @@
         private System.Windows.Forms.Label label_contract_start;
         private System.Windows.Forms.MaskedTextBox txt_contract_finish;
         private System.Windows.Forms.Label label_contract_finish;
+        private System.Windows.Forms.Button button_equipmentbooking;
+        private System.Windows.Forms.DataGridView dg_currentborrows;
+        private System.Windows.Forms.Label label_currentborrows;
     }
 }

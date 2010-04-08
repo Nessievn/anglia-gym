@@ -41,7 +41,6 @@
             this.txt_setname = new System.Windows.Forms.TextBox();
             this.label_setname = new System.Windows.Forms.Label();
             this.button_vehicle = new System.Windows.Forms.Button();
-            this.label_stock = new System.Windows.Forms.Label();
             this.cmb_item1 = new System.Windows.Forms.ComboBox();
             this.cmb_item2 = new System.Windows.Forms.ComboBox();
             this.cmb_item3 = new System.Windows.Forms.ComboBox();
@@ -56,13 +55,17 @@
             this.counter_item5 = new System.Windows.Forms.NumericUpDown();
             this.label_itemsetinfo = new System.Windows.Forms.Label();
             this.label_itemsetdesc = new System.Windows.Forms.Label();
-            this.counter_stock = new System.Windows.Forms.NumericUpDown();
+            this.counter_amounttoborrow = new System.Windows.Forms.NumericUpDown();
+            this.label_amounttoborrow = new System.Windows.Forms.Label();
+            this.counter_numberofdays = new System.Windows.Forms.NumericUpDown();
+            this.label_numberofdays = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.counter_item2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.counter_item1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.counter_item3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.counter_item4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.counter_item5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.counter_stock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counter_amounttoborrow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counter_numberofdays)).BeginInit();
             this.SuspendLayout();
             // 
             // button_remove
@@ -202,16 +205,6 @@
             this.button_vehicle.UseVisualStyleBackColor = true;
             this.button_vehicle.Click += new System.EventHandler(this.button_vehicle_Click);
             // 
-            // label_stock
-            // 
-            this.label_stock.AutoSize = true;
-            this.label_stock.Location = new System.Drawing.Point(108, 111);
-            this.label_stock.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label_stock.Name = "label_stock";
-            this.label_stock.Size = new System.Drawing.Size(119, 17);
-            this.label_stock.TabIndex = 183;
-            this.label_stock.Text = "Currently in Stock";
-            // 
             // cmb_item1
             // 
             this.cmb_item1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -348,19 +341,53 @@
             this.label_itemsetdesc.TabIndex = 205;
             this.label_itemsetdesc.Text = "Item Set Description";
             // 
-            // counter_stock
+            // counter_amounttoborrow
             // 
-            this.counter_stock.Location = new System.Drawing.Point(111, 130);
-            this.counter_stock.Name = "counter_stock";
-            this.counter_stock.Size = new System.Drawing.Size(116, 22);
-            this.counter_stock.TabIndex = 206;
+            this.counter_amounttoborrow.Location = new System.Drawing.Point(79, 132);
+            this.counter_amounttoborrow.Name = "counter_amounttoborrow";
+            this.counter_amounttoborrow.Size = new System.Drawing.Size(116, 22);
+            this.counter_amounttoborrow.TabIndex = 208;
+            this.counter_amounttoborrow.Visible = false;
+            // 
+            // label_amounttoborrow
+            // 
+            this.label_amounttoborrow.AutoSize = true;
+            this.label_amounttoborrow.Location = new System.Drawing.Point(76, 112);
+            this.label_amounttoborrow.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_amounttoborrow.Name = "label_amounttoborrow";
+            this.label_amounttoborrow.Size = new System.Drawing.Size(123, 17);
+            this.label_amounttoborrow.TabIndex = 209;
+            this.label_amounttoborrow.Text = "Amount to borrow:";
+            this.label_amounttoborrow.Visible = false;
+            // 
+            // counter_numberofdays
+            // 
+            this.counter_numberofdays.Location = new System.Drawing.Point(291, 132);
+            this.counter_numberofdays.Name = "counter_numberofdays";
+            this.counter_numberofdays.Size = new System.Drawing.Size(116, 22);
+            this.counter_numberofdays.TabIndex = 210;
+            this.counter_numberofdays.Visible = false;
+            // 
+            // label_numberofdays
+            // 
+            this.label_numberofdays.AutoSize = true;
+            this.label_numberofdays.Location = new System.Drawing.Point(288, 112);
+            this.label_numberofdays.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_numberofdays.Name = "label_numberofdays";
+            this.label_numberofdays.Size = new System.Drawing.Size(184, 17);
+            this.label_numberofdays.TabIndex = 211;
+            this.label_numberofdays.Text = "Number of days until return:";
+            this.label_numberofdays.Visible = false;
             // 
             // frm_equipment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(551, 542);
-            this.Controls.Add(this.counter_stock);
+            this.Controls.Add(this.label_numberofdays);
+            this.Controls.Add(this.counter_numberofdays);
+            this.Controls.Add(this.label_amounttoborrow);
+            this.Controls.Add(this.counter_amounttoborrow);
             this.Controls.Add(this.label_itemsetdesc);
             this.Controls.Add(this.label_itemsetinfo);
             this.Controls.Add(this.counter_item1);
@@ -375,7 +402,6 @@
             this.Controls.Add(this.cmb_item3);
             this.Controls.Add(this.cmb_item4);
             this.Controls.Add(this.cmb_item5);
-            this.Controls.Add(this.label_stock);
             this.Controls.Add(this.button_vehicle);
             this.Controls.Add(this.label_setname);
             this.Controls.Add(this.txt_setname);
@@ -393,12 +419,14 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_equipment";
             this.Load += new System.EventHandler(this.frm_equipment_Load);
+            
             ((System.ComponentModel.ISupportInitialize)(this.counter_item2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.counter_item1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.counter_item3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.counter_item4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.counter_item5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.counter_stock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counter_amounttoborrow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counter_numberofdays)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -419,7 +447,6 @@
         private System.Windows.Forms.TextBox txt_setname;
         private System.Windows.Forms.Label label_setname;
         private System.Windows.Forms.Button button_vehicle;
-        private System.Windows.Forms.Label label_stock;
         private System.Windows.Forms.ComboBox cmb_item1;
         private System.Windows.Forms.ComboBox cmb_item2;
         private System.Windows.Forms.ComboBox cmb_item3;
@@ -434,6 +461,9 @@
         private System.Windows.Forms.NumericUpDown counter_item5;
         private System.Windows.Forms.Label label_itemsetinfo;
         private System.Windows.Forms.Label label_itemsetdesc;
-        private System.Windows.Forms.NumericUpDown counter_stock;
+        private System.Windows.Forms.NumericUpDown counter_amounttoborrow;
+        private System.Windows.Forms.Label label_amounttoborrow;
+        private System.Windows.Forms.NumericUpDown counter_numberofdays;
+        private System.Windows.Forms.Label label_numberofdays;
     }
 }

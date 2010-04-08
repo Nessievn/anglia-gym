@@ -32,8 +32,12 @@
             this.button_2 = new System.Windows.Forms.Button();
             this.button_3 = new System.Windows.Forms.Button();
             this.label_Message = new System.Windows.Forms.Label();
-            this.counter = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.counter)).BeginInit();
+            this.counter1 = new System.Windows.Forms.NumericUpDown();
+            this.label_counter1 = new System.Windows.Forms.Label();
+            this.label_counter2 = new System.Windows.Forms.Label();
+            this.counter2 = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.counter1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counter2)).BeginInit();
             this.SuspendLayout();
             // 
             // button_1
@@ -74,19 +78,49 @@
             this.label_Message.Size = new System.Drawing.Size(0, 17);
             this.label_Message.TabIndex = 10;
             // 
-            // counter
+            // counter1
             // 
-            this.counter.Location = new System.Drawing.Point(60, 31);
-            this.counter.Name = "counter";
-            this.counter.Size = new System.Drawing.Size(116, 22);
-            this.counter.TabIndex = 207;
+            this.counter1.Location = new System.Drawing.Point(60, 31);
+            this.counter1.Name = "counter1";
+            this.counter1.Size = new System.Drawing.Size(116, 22);
+            this.counter1.TabIndex = 207;
+            this.counter1.ValueChanged += new System.EventHandler(this.counter1_ValueChanged);
+            // 
+            // label_counter1
+            // 
+            this.label_counter1.AutoSize = true;
+            this.label_counter1.Location = new System.Drawing.Point(57, 9);
+            this.label_counter1.Name = "label_counter1";
+            this.label_counter1.Size = new System.Drawing.Size(123, 17);
+            this.label_counter1.TabIndex = 208;
+            this.label_counter1.Text = "Amount to borrow:";
+            // 
+            // label_counter2
+            // 
+            this.label_counter2.AutoSize = true;
+            this.label_counter2.Location = new System.Drawing.Point(254, 9);
+            this.label_counter2.Name = "label_counter2";
+            this.label_counter2.Size = new System.Drawing.Size(120, 17);
+            this.label_counter2.TabIndex = 209;
+            this.label_counter2.Text = "Available amount:";
+            // 
+            // counter2
+            // 
+            this.counter2.Location = new System.Drawing.Point(257, 31);
+            this.counter2.Name = "counter2";
+            this.counter2.ReadOnly = true;
+            this.counter2.Size = new System.Drawing.Size(116, 22);
+            this.counter2.TabIndex = 210;
             // 
             // MyMessageBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(386, 124);
-            this.Controls.Add(this.counter);
+            this.Controls.Add(this.counter2);
+            this.Controls.Add(this.label_counter2);
+            this.Controls.Add(this.label_counter1);
+            this.Controls.Add(this.counter1);
             this.Controls.Add(this.label_Message);
             this.Controls.Add(this.button_1);
             this.Controls.Add(this.button_2);
@@ -97,7 +131,8 @@
             this.Name = "MyMessageBox";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Messagebox";
-            ((System.ComponentModel.ISupportInitialize)(this.counter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counter1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.counter2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -109,6 +144,9 @@
         private System.Windows.Forms.Button button_2;
         private System.Windows.Forms.Button button_3;
         private System.Windows.Forms.Label label_Message;
-        private System.Windows.Forms.NumericUpDown counter;
+        private System.Windows.Forms.NumericUpDown counter1;
+        private System.Windows.Forms.Label label_counter1;
+        private System.Windows.Forms.Label label_counter2;
+        private System.Windows.Forms.NumericUpDown counter2;
     }
 }

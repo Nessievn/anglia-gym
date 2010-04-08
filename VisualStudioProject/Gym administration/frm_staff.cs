@@ -12,22 +12,37 @@ namespace Gym_administration
     public partial class frm_staff : Form
     {
         Staff stfStaff;
- 
+
+        public void vLoadBookedList()
+        {
+            mySqlConn conn = new mySqlConn();
+            conn.connect();
+            BindingSource itemsSource = new BindingSource();
+            string sQuery = "SELECT DISTINCT e.name Name, eb.borrowedamount Amount, eb.date_due Due FROM equipment e, equipment_bookings eb WHERE eb.id_staff = " + stfStaff.IId_staff + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY eb.id_equipment";
+            itemsSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
+            dg_currentborrows.DataSource = itemsSource;
+            dg_currentborrows.AllowUserToAddRows = false;
+            dg_currentborrows.ReadOnly = true;
+        }
+
+
         public frm_staff()
         {
             stfStaff = new Staff();
             InitializeComponent();
+            button_equipmentbooking.Hide();
         }
 
         public frm_staff(int iStaffId)
         {
             InitializeComponent();
-            
+            button_equipmentbooking.Show();
             stfStaff = new Staff(iStaffId);
             if (stfStaff.IId_staff < 1)
                 MessageBox.Show("The staff member could not be found");
             else
             {
+                vLoadBookedList();
                  txt_firstName.Text = stfStaff.SFirstName;
                  txt_lastName.Text = stfStaff.SLastName;
                  txt_dob.Text = Utils.sGetCsharpDateFromMysqlDate(stfStaff.SBirthdate);
@@ -100,6 +115,21 @@ namespace Gym_administration
 
             stfStaff.bSave();
         }
+
+        private void button_equipmentbooking_Click(object sender, EventArgs e)
+        {
+
+
+            // Creating the child form login
+            //isBooking, "isMember", id_member
+            frm_equipment_list frmEquipmentList = new frm_equipment_list(true, false, stfStaff.IId_staff,null,this);
+
+            if (Utils.bIsAlreadyOpened(frmEquipmentList)) return;
+            frmEquipmentList.Show();  
+
+
+        }
+
 
 
     }
