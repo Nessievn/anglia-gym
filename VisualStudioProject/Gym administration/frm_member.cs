@@ -178,7 +178,7 @@ namespace Gym_administration
      
 
             // Creating the child form login
-                                                                            //isBooking, "isMember", id_member
+                                                                            //isBooking, "isMember", id_member,frm_member, null
             frm_equipment_list frmEquipmentList = new frm_equipment_list(true, true, mbrMember.IId_member,this,null );
             frmEquipmentList.MdiParent = this.MdiParent;
 
