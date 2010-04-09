@@ -118,8 +118,8 @@ namespace Gym_administration
             else if (sSelectedBand == "manager" && panelIcon.Index.ToString() == "5")
             {
                 frm_class frmClass = new frm_class();
-                frmClass.MdiParent = this.MdiParent;
-                frmClass.Show();
+                //frmClass.MdiParent = this.MdiParent;
+                frmClass.ShowDialog();
             }
 // Edit Class
             else if (sSelectedBand == "manager" && panelIcon.Index.ToString() == "6")

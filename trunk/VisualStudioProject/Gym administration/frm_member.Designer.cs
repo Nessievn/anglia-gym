@@ -83,6 +83,7 @@
             this.button_equipmentbooking = new System.Windows.Forms.Button();
             this.dg_currentborrows = new System.Windows.Forms.DataGridView();
             this.label_currentborrows = new System.Windows.Forms.Label();
+            this.label_dateformat = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dg_currentborrows)).BeginInit();
             this.SuspendLayout();
             // 
@@ -634,11 +635,22 @@
             this.label_currentborrows.TabIndex = 59;
             this.label_currentborrows.Text = "Currently Borrowed Equipment:";
             // 
+            // label_dateformat
+            // 
+            this.label_dateformat.AutoSize = true;
+            this.label_dateformat.Location = new System.Drawing.Point(117, 183);
+            this.label_dateformat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_dateformat.Name = "label_dateformat";
+            this.label_dateformat.Size = new System.Drawing.Size(92, 17);
+            this.label_dateformat.TabIndex = 60;
+            this.label_dateformat.Text = "(dd/mm/yyyy)";
+            // 
             // frm_member
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(879, 545);
+            this.Controls.Add(this.label_dateformat);
             this.Controls.Add(this.label_currentborrows);
             this.Controls.Add(this.dg_currentborrows);
             this.Controls.Add(this.button_equipmentbooking);
@@ -763,5 +775,6 @@
         private System.Windows.Forms.Button button_equipmentbooking;
         private System.Windows.Forms.DataGridView dg_currentborrows;
         private System.Windows.Forms.Label label_currentborrows;
+        private System.Windows.Forms.Label label_dateformat;
     }
 }

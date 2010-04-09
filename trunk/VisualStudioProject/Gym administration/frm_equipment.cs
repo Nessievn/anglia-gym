@@ -17,18 +17,16 @@ namespace Gym_administration
         MyMessageBox myMessageBox;
         frm_equipment_list frmEqList;
         bool IsBooking;
-        bool IsMember;
-        int Id_Person;
+        int Id_Member;
+        int Id_Staff;
         int Id_ClassInstance;
-        
+
 
         //loading from main menu
         public frm_equipment()
         {
             InitializeComponent();
             eqEquipment = new Equipment();
-
-
             this.frmEqList = null;
             button_vehicle.Show();
             rd_item.Checked = true;
@@ -85,8 +83,9 @@ namespace Gym_administration
         }
 
         //loading from equipment list to refresh eq list after saving new item booking
-        public frm_equipment(bool isBooking, bool isMember, int id_Person, int iIdClassInstance, int iEquipmentId, frm_equipment_list frmEqList)
+        public frm_equipment(int id_Member, int id_Staff, int id_ClassInstance, int id_Equipment, frm_equipment_list frmEqList)
         {
+            IsBooking = true;
             InitializeComponent();
             label_amounttoborrow.Visible = true;
             counter_amounttoborrow.Visible = true;
@@ -98,11 +97,10 @@ namespace Gym_administration
             button_save.Text = "Borrow";
             this.frmEqList = frmEqList;
             myMessageBox = new MyMessageBox();
-            eqEquipment = new Equipment(iEquipmentId);
-            IsBooking = isBooking;
-            IsMember = isMember;
-            Id_Person = id_Person;
-            Id_ClassInstance = iIdClassInstance;
+            eqEquipment = new Equipment(id_Equipment);
+            Id_Member = id_Member;
+            Id_Staff = id_Staff;
+            Id_ClassInstance = id_ClassInstance;
 
 
 
@@ -162,25 +160,31 @@ namespace Gym_administration
             eqEquipmentBooked.Id_equipment = eqEquipment.Id_equipment;
 
 
-            if (IsMember)
+            if ((Id_Staff == -1)&&(Id_ClassInstance == -1))
             {
                 eqEquipmentBooked.SBookingType = "MEMBER_BOOKING";
-                eqEquipmentBooked.Id_member = Id_Person.ToString();
+                eqEquipmentBooked.Id_member = this.Id_Member.ToString();
                 eqEquipmentBooked.Id_staff = "NULL";
+                eqEquipmentBooked.Id_class_instance = "NULL";
 
             }
             else if (Id_ClassInstance == -1)
             {
                 eqEquipmentBooked.SBookingType = "STAFF_BOOKING";
-                eqEquipmentBooked.Id_staff = Id_Person.ToString();
                 eqEquipmentBooked.Id_member = "NULL";
+                eqEquipmentBooked.Id_staff = this.Id_Staff.ToString();
+                eqEquipmentBooked.Id_class_instance = "NULL";
             }
             else
             {
                 eqEquipmentBooked.SBookingType = "CLASS_BOOKING";
-                eqEquipmentBooked.Id_staff = "NULL";
                 eqEquipmentBooked.Id_member = "NULL";
-                eqEquipmentBooked.Id_class_instance = this.Id_ClassInstance;
+                eqEquipmentBooked.Id_staff = "NULL";
+                eqEquipmentBooked.Id_class_instance = this.Id_ClassInstance.ToString();
+
+                
+                
+                
 
             }
             DateTime today = DateTime.Today;

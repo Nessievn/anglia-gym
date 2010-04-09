@@ -40,6 +40,7 @@
             this.dg_staff = new System.Windows.Forms.DataGridView();
             this.button_addstaffmember = new System.Windows.Forms.Button();
             this.button_close = new System.Windows.Forms.Button();
+            this.label_dateformat = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dg_staff)).BeginInit();
             this.SuspendLayout();
             // 
@@ -164,11 +165,22 @@
             this.button_close.UseVisualStyleBackColor = true;
             this.button_close.Click += new System.EventHandler(this.button_cancel_Click);
             // 
+            // label_dateformat
+            // 
+            this.label_dateformat.AutoSize = true;
+            this.label_dateformat.Location = new System.Drawing.Point(159, 60);
+            this.label_dateformat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_dateformat.Name = "label_dateformat";
+            this.label_dateformat.Size = new System.Drawing.Size(92, 17);
+            this.label_dateformat.TabIndex = 27;
+            this.label_dateformat.Text = "(dd/mm/yyyy)";
+            // 
             // frm_staff_list
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 548);
+            this.Controls.Add(this.label_dateformat);
             this.Controls.Add(this.button_close);
             this.Controls.Add(this.button_addstaffmember);
             this.Controls.Add(this.txt_dob);
@@ -207,5 +219,6 @@
         private System.Windows.Forms.DataGridView dg_staff;
         private System.Windows.Forms.Button button_addstaffmember;
         private System.Windows.Forms.Button button_close;
+        private System.Windows.Forms.Label label_dateformat;
     }
 }

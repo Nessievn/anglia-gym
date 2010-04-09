@@ -18,39 +18,46 @@ namespace Gym_administration
         frm_staff frmStaff;
         frm_class_instance_arrange frmClass;
         bool IsBooking;
-        bool IsMember;
-        int Id_Person;
+//        bool IsMember;
+        int Id_Member;
+        int Id_Staff;
         int Id_ClassInstance;
 
         public frm_equipment_list()
         {
+            Id_Member = -1;
+            Id_Staff = -1; 
             Id_ClassInstance = -1;
             InitializeComponent();
             this.frmMember = null;
             this.frmStaff = null;
+            this.frmClass = null;
             rd_item.Checked = true;
             rd_item_Checked();
         }
 
-        public frm_equipment_list(bool isBooking, bool isMember, int id_Person,frm_member frmMember, frm_staff frmStaff)
+        public frm_equipment_list(bool isBooking, int id_Member, frm_member frmMember)
         {
-            Id_ClassInstance = -1;
-            InitializeComponent();
             IsBooking = isBooking;
-            IsMember = isMember;
-            if (isMember) 
-            {
-                this.frmMember = frmMember;
-                this.frmStaff = null;
-            }
-            else 
-            {
-                this.frmStaff = frmStaff;
-                this.frmMember = null;
-            }
+            Id_Staff = -1; 
+            Id_ClassInstance = -1;
+            
+            Id_Member = id_Member;
+            this.frmMember = frmMember;
+            InitializeComponent();
+            rd_item.Checked = true;
+            rd_item_Checked();
+        }
 
+        public frm_equipment_list(bool isBooking, int id_Staff, frm_staff frmStaff)
+        {
+            IsBooking = isBooking;
+            Id_Member = -1;
+            Id_ClassInstance = -1;
 
-            Id_Person = id_Person;
+            Id_Staff = id_Staff;
+            this.frmStaff = frmStaff;
+            InitializeComponent();
             rd_item.Checked = true;
             rd_item_Checked();
         }
@@ -58,13 +65,14 @@ namespace Gym_administration
 
         public frm_equipment_list(bool isBooking, int iIdClassInstance, frm_class_instance_arrange frmClass)
         {
-            Id_ClassInstance = -1;
-            InitializeComponent();
-            IsBooking = true;
-            IsMember = false;
-            
+
+            IsBooking = isBooking;
+            Id_Member = -1;
+            Id_Staff = -1;
+
+            Id_ClassInstance = iIdClassInstance;
             this.frmClass = frmClass;
-            this.Id_ClassInstance = iIdClassInstance;
+            InitializeComponent();
             rd_item.Checked = true;
             rd_item_Checked();
         }
@@ -110,9 +118,9 @@ namespace Gym_administration
             {
                 try
                 {
-                    string sEquipmentId = dg_equipment.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    int iEquipmentId = int.Parse(sEquipmentId);
-                    frm_equipment frm_equipment = new frm_equipment(IsBooking, IsMember, Id_Person, Id_ClassInstance, iEquipmentId, this);                    
+                    string sId_Equipment = dg_equipment.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    int id_Equipment = int.Parse(sId_Equipment);
+                    frm_equipment frm_equipment = new frm_equipment(Id_Member, Id_Staff, Id_ClassInstance, id_Equipment, this);                    
                     frm_equipment.MdiParent = this.MdiParent;
                     frm_equipment.Show();
                 }

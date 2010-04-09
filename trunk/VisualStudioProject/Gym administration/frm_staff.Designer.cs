@@ -86,6 +86,9 @@
             this.button_equipmentbooking = new System.Windows.Forms.Button();
             this.dg_currentborrows = new System.Windows.Forms.DataGridView();
             this.label_currentborrows = new System.Windows.Forms.Label();
+            this.label_dateformat = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dg_currentborrows)).BeginInit();
             this.SuspendLayout();
             // 
@@ -657,11 +660,45 @@
             this.label_currentborrows.TabIndex = 115;
             this.label_currentborrows.Text = "Currently Borrowed Equipment:";
             // 
+            // label_dateformat
+            // 
+            this.label_dateformat.AutoSize = true;
+            this.label_dateformat.Location = new System.Drawing.Point(326, 40);
+            this.label_dateformat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_dateformat.Name = "label_dateformat";
+            this.label_dateformat.Size = new System.Drawing.Size(92, 17);
+            this.label_dateformat.TabIndex = 116;
+            this.label_dateformat.Text = "(dd/mm/yyyy)";
+            this.label_dateformat.Click += new System.EventHandler(this.label_dateformat_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(112, 382);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 17);
+            this.label1.TabIndex = 117;
+            this.label1.Text = "(dd/mm/yyyy)";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(119, 427);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(92, 17);
+            this.label2.TabIndex = 118;
+            this.label2.Text = "(dd/mm/yyyy)";
+            // 
             // frm_staff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(879, 545);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label_dateformat);
             this.Controls.Add(this.label_currentborrows);
             this.Controls.Add(this.dg_currentborrows);
             this.Controls.Add(this.button_equipmentbooking);
@@ -792,5 +829,8 @@
         private System.Windows.Forms.Button button_equipmentbooking;
         private System.Windows.Forms.DataGridView dg_currentborrows;
         private System.Windows.Forms.Label label_currentborrows;
+        private System.Windows.Forms.Label label_dateformat;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
