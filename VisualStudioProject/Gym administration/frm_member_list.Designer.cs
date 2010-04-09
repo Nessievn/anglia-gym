@@ -40,6 +40,7 @@
             this.txt_email = new System.Windows.Forms.TextBox();
             this.label_email = new System.Windows.Forms.Label();
             this.txt_dob = new System.Windows.Forms.MaskedTextBox();
+            this.label_dateformat = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dg_members)).BeginInit();
             this.SuspendLayout();
             // 
@@ -160,11 +161,22 @@
             this.txt_dob.TabIndex = 12;
             this.txt_dob.ValidatingType = typeof(System.DateTime);
             // 
+            // label_dateformat
+            // 
+            this.label_dateformat.AutoSize = true;
+            this.label_dateformat.Location = new System.Drawing.Point(160, 97);
+            this.label_dateformat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_dateformat.Name = "label_dateformat";
+            this.label_dateformat.Size = new System.Drawing.Size(92, 17);
+            this.label_dateformat.TabIndex = 13;
+            this.label_dateformat.Text = "(dd/mm/yyyy)";
+            // 
             // frm_member_list
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 542);
+            this.Controls.Add(this.label_dateformat);
             this.Controls.Add(this.txt_dob);
             this.Controls.Add(this.label_email);
             this.Controls.Add(this.label_dob);
@@ -203,5 +215,6 @@
         private System.Windows.Forms.TextBox txt_email;
         private System.Windows.Forms.Label label_email;
         private System.Windows.Forms.MaskedTextBox txt_dob;
+        private System.Windows.Forms.Label label_dateformat;
     }
 }

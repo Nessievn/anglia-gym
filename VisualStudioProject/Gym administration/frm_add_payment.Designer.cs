@@ -35,6 +35,7 @@
             this.txt_date = new System.Windows.Forms.MaskedTextBox();
             this.label_date = new System.Windows.Forms.Label();
             this.txt_amount = new System.Windows.Forms.MaskedTextBox();
+            this.label_dateformat = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button_addpayment
@@ -108,11 +109,22 @@
             this.txt_amount.Size = new System.Drawing.Size(132, 22);
             this.txt_amount.TabIndex = 10;
             // 
+            // label_dateformat
+            // 
+            this.label_dateformat.AutoSize = true;
+            this.label_dateformat.Location = new System.Drawing.Point(77, 221);
+            this.label_dateformat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_dateformat.Name = "label_dateformat";
+            this.label_dateformat.Size = new System.Drawing.Size(82, 17);
+            this.label_dateformat.TabIndex = 11;
+            this.label_dateformat.Text = "dd/mm/yyyy";
+            // 
             // frm_add_payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(405, 247);
+            this.Controls.Add(this.label_dateformat);
             this.Controls.Add(this.txt_amount);
             this.Controls.Add(this.txt_date);
             this.Controls.Add(this.label_date);
@@ -140,5 +152,6 @@
         private System.Windows.Forms.MaskedTextBox txt_date;
         private System.Windows.Forms.Label label_date;
         private System.Windows.Forms.MaskedTextBox txt_amount;
+        private System.Windows.Forms.Label label_dateformat;
     }
 }

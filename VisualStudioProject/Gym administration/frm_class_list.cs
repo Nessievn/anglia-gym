@@ -22,6 +22,11 @@ namespace Gym_administration
 
         private void frm_class_list_Load(object sender, EventArgs e)
         {
+            vLoadClassList();
+        }
+
+        public void vLoadClassList()
+        {
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
@@ -32,13 +37,14 @@ namespace Gym_administration
             dg_classes.ReadOnly = true;
         }
 
+
         private void dg_classes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 string sClassId = dg_classes.Rows[e.RowIndex].Cells[0].Value.ToString();
                 int iClassId = int.Parse(sClassId);
-                frm_class frm_class = new frm_class(iClassId);
+                frm_class frm_class = new frm_class(iClassId, this);
                 frm_class.MdiParent = this.MdiParent;
                 frm_class.Show();
             }
@@ -51,7 +57,7 @@ namespace Gym_administration
 
         private void button_addclass_Click(object sender, EventArgs e)
         {
-            frm_class frmClass = new frm_class();
+            frm_class frmClass = new frm_class(this);
             frmClass.MdiParent = this.MdiParent;
             frmClass.Show();
         }

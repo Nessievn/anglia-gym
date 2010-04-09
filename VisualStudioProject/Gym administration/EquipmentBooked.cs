@@ -68,9 +68,9 @@ namespace Gym_administration
         }
 
 //TABLE
-        private int id_class_instance;
+        private string id_class_instance;
         //as ClassInstance
-        public int Id_class_instance
+        public string Id_class_instance
         {
             get { return id_class_instance; }
             set { id_class_instance = value; }

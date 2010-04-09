@@ -12,15 +12,35 @@ namespace Gym_administration
     public partial class frm_class : Form
     {
         Class clClass;
+        frm_class_list frmClassList;
+
+        //loading from main menu
         public frm_class()
         {
             InitializeComponent();
             clClass = new Class();
+            this.frmClassList = null;
+            button_remove.Hide();
         }
-        public frm_class(int iClassId)
+
+        //loading from class list to refresh class list after saving added new class to classlist
+        public frm_class(frm_class_list frmClassList)
+        {
+            InitializeComponent();
+            clClass = new Class();
+            this.frmClassList = frmClassList;
+            button_remove.Hide();
+        }
+
+
+
+
+
+        public frm_class(int iClassId, frm_class_list frmClassList)
         {
             InitializeComponent();
             clClass = new Class(iClassId);
+            this.frmClassList = frmClassList;
             if (clClass.Id_class < 1)
                 MessageBox.Show("The class could not be found");
             else
@@ -57,8 +77,11 @@ namespace Gym_administration
             clClass.SType = sType;
 
             clClass.bSave();
+            if (this.frmClassList != null) this.frmClassList.vLoadClassList();
+            this.Close();
 
         }
+
         //CLOSE
         private void button_close_Click(object sender, EventArgs e)
         {
@@ -76,6 +99,7 @@ namespace Gym_administration
                 }
                 this.Close();
             }
+            if (this.frmClassList != null) this.frmClassList.vLoadClassList();
         }
 
  

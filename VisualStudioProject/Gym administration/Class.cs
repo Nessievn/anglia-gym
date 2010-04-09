@@ -1,7 +1,13 @@
-﻿//Holds data for a "Gym Class" that is a general gym "class activity" (NOT a certain class at a certain time)
-//Most closely associated form is frm_class
-//Most closely associated table is CLASSES
-//Constructor (default)     sets id_class to -1 and establishes connection for saving new class
+﻿/**
+ * @desc It returns...etc
+ * 
+ * @params [type] 
+ * @return [type] 
+ */
+
+//
+
+//Constructor (default)     
 //Constructor (id_class)    loads in all fields from a single "Gym Class" row of the CLASSES table
 //Method 1
 //bRemove   removes a class from the CLASSES table
@@ -17,41 +23,60 @@ using System.Windows.Forms;
 
 namespace Gym_administration
 {
+
+    /**
+     * @desc It holds data and modifying methods for CLASSES table. 
+     * This is about "Gym Class" that is a general gym "class activity",
+     * (NOT a certain class at a certain time!)
+     * Most closely associated form is frm_class.
+     * Most closely associated table is CLASSES.
+     * @params Incoming parameters are described at the individual constructors.
+     * @return All constructors are void types.
+     */
     class Class
     {
         private int id_class;
-
         public int Id_class
         {
             get { return id_class; }
             set { id_class = value; }
         }
-        private string sName;
 
+        private string sName;
         public string SName
         {
             get { return sName; }
             set { sName = value; }
         }
-        private string sType;
 
+
+        private string sType;
         public string SType
         {
             get { return sType; }
             set { sType = value; }
         }
-        private string sDescription;
 
+        private string sDescription;
         public string SDescription
         {
             get { return sDescription; }
             set { sDescription = value; }
         }
+
+
+        /**
+         * @desc Default constructor.
+         * It sets id_class to -1 and establishes connection for saving new class.
+         * 
+         * @params [type] 
+         * @return [type] 
+         */
         public Class()
         {
             this.id_class = -1;
-            mySqlConn conn = new mySqlConn();
-            conn.connect();
+    //        mySqlConn conn = new mySqlConn();
+      //      conn.connect();
         }
 
         public Class(int iIdClass)
