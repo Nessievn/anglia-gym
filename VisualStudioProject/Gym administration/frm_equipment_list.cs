@@ -18,7 +18,6 @@ namespace Gym_administration
         frm_staff frmStaff;
         frm_class_instance_arrange frmClass;
         bool IsBooking;
-//        bool IsMember;
         int Id_Member;
         int Id_Staff;
         int Id_ClassInstance;
@@ -36,9 +35,9 @@ namespace Gym_administration
             rd_item_Checked();
         }
 
-        public frm_equipment_list(bool isBooking, int id_Member, frm_member frmMember)
+        public frm_equipment_list(int id_Member, frm_member frmMember)
         {
-            IsBooking = isBooking;
+            IsBooking = true;
             Id_Staff = -1; 
             Id_ClassInstance = -1;
             
@@ -49,9 +48,9 @@ namespace Gym_administration
             rd_item_Checked();
         }
 
-        public frm_equipment_list(bool isBooking, int id_Staff, frm_staff frmStaff)
+        public frm_equipment_list(int id_Staff, frm_staff frmStaff)
         {
-            IsBooking = isBooking;
+            IsBooking = true;
             Id_Member = -1;
             Id_ClassInstance = -1;
 
@@ -63,10 +62,10 @@ namespace Gym_administration
         }
 
 
-        public frm_equipment_list(bool isBooking, int iIdClassInstance, frm_class_instance_arrange frmClass)
+        public frm_equipment_list(int iIdClassInstance, frm_class_instance_arrange frmClass)
         {
 
-            IsBooking = isBooking;
+            IsBooking = true;
             Id_Member = -1;
             Id_Staff = -1;
 
@@ -121,8 +120,9 @@ namespace Gym_administration
                     string sId_Equipment = dg_equipment.Rows[e.RowIndex].Cells[0].Value.ToString();
                     int id_Equipment = int.Parse(sId_Equipment);
                     frm_equipment frm_equipment = new frm_equipment(Id_Member, Id_Staff, Id_ClassInstance, id_Equipment, this);                    
-                    frm_equipment.MdiParent = this.MdiParent;
-                    frm_equipment.Show();
+                    //frm_equipment.MdiParent = this.MdiParent;
+                    //frm_equipment.Show();
+                    frm_equipment.ShowDialog();
                 }
                 catch (Exception ea)
                 {
@@ -134,11 +134,12 @@ namespace Gym_administration
             {
                 try
                 {
-                    string sEquipmentId = dg_equipment.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    int iEquipmentId = int.Parse(sEquipmentId);
-                    frm_equipment frm_equipment = new frm_equipment(iEquipmentId, this);
-                    frm_equipment.MdiParent = this.MdiParent;
-                    frm_equipment.Show();
+                    string sId_Equipment = dg_equipment.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    int id_Equipment = int.Parse(sId_Equipment);
+                    frm_equipment frm_equipment = new frm_equipment(id_Equipment, this);
+                    //frm_equipment.MdiParent = this.MdiParent;
+                    //frm_equipment.Show();
+                    frm_equipment.ShowDialog();
                 }
                 catch (Exception ea)
                 {
@@ -151,8 +152,8 @@ namespace Gym_administration
         private void button_addequipment_Click(object sender, EventArgs e)
         {
             frm_equipment frmEquipment = new frm_equipment(this);
-            frmEquipment.MdiParent = this.MdiParent;
-            frmEquipment.Show();
+            //frmEquipment.MdiParent = this.MdiParent;
+            frmEquipment.ShowDialog();
         }
 
         private void button_search_Click(object sender, EventArgs e)

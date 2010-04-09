@@ -39,8 +39,9 @@ namespace Gym_administration
                 string sClassId = dg_classes.Rows[e.RowIndex].Cells[0].Value.ToString();
                 int iClassInstanceId = int.Parse(sClassId);
                 frm_class_instance_arrange frm_class_instance_arrange = new frm_class_instance_arrange(iClassInstanceId, this);
-                frm_class_instance_arrange.MdiParent = this.MdiParent;
-                frm_class_instance_arrange.Show();
+                //frm_class_instance_arrange.MdiParent = this.MdiParent;
+                //frm_class_instance_arrange.Show();
+                frm_class_instance_arrange.ShowDialog();
             }
             catch (Exception ea)
             {

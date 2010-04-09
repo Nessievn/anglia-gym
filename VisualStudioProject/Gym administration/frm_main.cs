@@ -57,10 +57,10 @@ namespace Gym_administration
                 // We check if the form is already opened
                 if (Utils.bIsAlreadyOpened(mdiFrmStaffList)) return;
                 // Set the Parent Form of the Child window.
-                mdiFrmStaffList.MdiParent = this;
-
+                //mdiFrmStaffList.MdiParent = this;
+                //mdiFrmStaffList.Show();  
                 // Display the new form.
-                mdiFrmStaffList.Show();  
+                mdiFrmStaffList.ShowDialog();  
             }
 // Membership fees
             else if (sSelectedBand == "manager" && panelIcon.Index.ToString() == "1")
@@ -70,10 +70,10 @@ namespace Gym_administration
                 // We check if the form is already opened
                 if (Utils.bIsAlreadyOpened(mdiFrmPayments)) return;
                 // Set the Parent Form of the Child window.
-                mdiFrmPayments.MdiParent = this;
-
+                //mdiFrmPayments.MdiParent = this;
+                //mdiFrmPayments.Show();  
                 // Display the new form.
-                mdiFrmPayments.Show();  
+                mdiFrmPayments.ShowDialog();  
             }
 // Edit Room
             else if (sSelectedBand == "manager" && panelIcon.Index.ToString() == "2")
@@ -96,10 +96,10 @@ namespace Gym_administration
                 // We check if the form is already opened
                 if (Utils.bIsAlreadyOpened(mdiFrmEquipment)) return;
                 // Set the Parent Form of the Child window.
-                mdiFrmEquipment.MdiParent = this;
-
+                //mdiFrmEquipment.MdiParent = this;
+                //mdiFrmEquipment.Show();
                 // Display the new form.
-                mdiFrmEquipment.Show();
+                mdiFrmEquipment.ShowDialog();
             }
 // Edit Equipment
             else if (sSelectedBand == "manager" && panelIcon.Index.ToString() == "4")
@@ -109,10 +109,10 @@ namespace Gym_administration
                 // We check if the form is already opened
                 if (Utils.bIsAlreadyOpened(mdiFrmEquipmentList)) return;
                 // Set the Parent Form of the Child window.
-                mdiFrmEquipmentList.MdiParent = this;
-
+                //mdiFrmEquipmentList.MdiParent = this;
+                //mdiFrmEquipmentList.Show();  
                 // Display the new form.
-                mdiFrmEquipmentList.Show();  
+                mdiFrmEquipmentList.ShowDialog();  
             }
 // Add Class
             else if (sSelectedBand == "manager" && panelIcon.Index.ToString() == "5")
@@ -129,10 +129,10 @@ namespace Gym_administration
                 // We check if the form is already opened
                 if (Utils.bIsAlreadyOpened(mdiFrmClassList)) return;
                 // Set the Parent Form of the Child window.
-                mdiFrmClassList.MdiParent = this;
-
+                //mdiFrmClassList.MdiParent = this;
+                //mdiFrmClassList.Show();
                 // Display the new form.
-                mdiFrmClassList.Show();
+                mdiFrmClassList.ShowDialog();
             }
 //Edit Arranged Class
             else if (sSelectedBand == "manager" && panelIcon.Index.ToString() == "7")
@@ -142,10 +142,10 @@ namespace Gym_administration
                 // We check if the form is already opened
                 if (Utils.bIsAlreadyOpened(mdiFrmClassArrangeList)) return;
                 // Set the Parent Form of the Child window.
-                mdiFrmClassArrangeList.MdiParent = this;
-
+                //mdiFrmClassArrangeList.MdiParent = this;
+                //mdiFrmClassArrangeList.Show();
                 // Display the new form.
-                mdiFrmClassArrangeList.Show();
+                mdiFrmClassArrangeList.ShowDialog();
             }
 
 
@@ -158,10 +158,10 @@ namespace Gym_administration
                 // We check if the form is already opened
                 if (Utils.bIsAlreadyOpened(mdiFrmMember)) return;
                 // Set the Parent Form of the Child window.
-                mdiFrmMember.MdiParent = this;
-
+                //mdiFrmMember.MdiParent = this;
+                //mdiFrmMember.Show();  
                 // Display the new form.
-                mdiFrmMember.Show();  
+                mdiFrmMember.ShowDialog();  
             }
 //Edit Member
             else if (sSelectedBand == "staff" && panelIcon.Index.ToString() == "1")
@@ -171,10 +171,10 @@ namespace Gym_administration
                 // We check if the form is already opened
                 if (Utils.bIsAlreadyOpened(mdiFrmMemberList)) return;
                 // Set the Parent Form of the Child window.
-                mdiFrmMemberList.MdiParent = this;
-
+                //mdiFrmMemberList.MdiParent = this;
+                //mdiFrmMemberList.Show();  
                 // Display the new form.
-                mdiFrmMemberList.Show();  
+                mdiFrmMemberList.ShowDialog();  
             }
 
 //Book Class
@@ -185,10 +185,10 @@ namespace Gym_administration
                 // We check if the form is already opened
                 if (Utils.bIsAlreadyOpened(mdiFrmClassArrange)) return;
                 // Set the Parent Form of the Child window.
-                mdiFrmClassArrange.MdiParent = this;
-
+                //mdiFrmClassArrange.MdiParent = this;
+                //mdiFrmClassArrange.Show();
                 // Display the new form.
-                mdiFrmClassArrange.Show();
+                mdiFrmClassArrange.ShowDialog();
             }
 //Search Class Bookings
             else if (sSelectedBand == "staff" && panelIcon.Index.ToString() == "3")
@@ -198,12 +198,12 @@ namespace Gym_administration
                 // We check if the form is already opened
                 if (Utils.bIsAlreadyOpened(mdiFrmClassArrangeList)) return;
                 // Set the Parent Form of the Child window.
-                mdiFrmClassArrangeList.MdiParent = this;
-
+                //mdiFrmClassArrangeList.MdiParent = this;
+                //mdiFrmClassArrangeList.Show();  
                 // Display the new form.
-                mdiFrmClassArrangeList.Show();  
+                mdiFrmClassArrangeList.ShowDialog();  
             }
-// Book Equipment
+/*// Book Equipment
             else if (sSelectedBand == "staff" && panelIcon.Index.ToString() == "4")
             {
 
@@ -212,20 +212,20 @@ namespace Gym_administration
             else if (sSelectedBand == "staff" && panelIcon.Index.ToString() == "5")
             {
 
-            }
+            }*/
 
 // Room Search
-            else if (sSelectedBand == "staff" && panelIcon.Index.ToString() == "6")
+            else if (sSelectedBand == "staff" && panelIcon.Index.ToString() == "4")
             {
           // Creating the child form room
                 frm_room_list mdiFrmRoomList = new frm_room_list();
                 // We check if the form is already opened
                 if (Utils.bIsAlreadyOpened(mdiFrmRoomList)) return;
                 // Set the Parent Form of the Child window.
-                mdiFrmRoomList.MdiParent = this;
-
+                //mdiFrmRoomList.MdiParent = this;
+                //mdiFrmRoomList.Show();
                 // Display the new form.
-                mdiFrmRoomList.Show();  
+                mdiFrmRoomList.ShowDialog();  
             }
 
 
@@ -237,25 +237,26 @@ namespace Gym_administration
                 // We check if the form is already opened
                 if (Utils.bIsAlreadyOpened(mdiFrmLoginOptions)) return;
                 // Set the Parent Form of the Child window.
-                mdiFrmLoginOptions.MdiParent = this;
-
+                //mdiFrmLoginOptions.MdiParent = this;
+                //mdiFrmLoginOptions.Show();
                 // Display the new form.
-                mdiFrmLoginOptions.Show();
+                mdiFrmLoginOptions.ShowDialog();
             }
                 // Log Out
             else if (sSelectedBand == "all" && panelIcon.Index.ToString() == "1")
             {
                 Controls.Remove(this.outlookBar);
 
-                foreach (Form childForm in MdiChildren)
-                    childForm.Close();
+                //foreach (Form childForm in MdiChildren)
+                  //  childForm.Close();
 
                 // Creating the child form login
                 frm_login mdiFrmLogin = new frm_login(this);
                 // Set the Parent Form of the Child window.
-                mdiFrmLogin.MdiParent = this;
+                //mdiFrmLogin.MdiParent = this;
+                //mdiFrmLogin.Show();
                 // Display the new form.
-                mdiFrmLogin.Show();
+                mdiFrmLogin.ShowDialog();
             }
 
         }
@@ -365,9 +366,9 @@ namespace Gym_administration
             // Creating the child form login
             frm_login mdiFrmLogin = new frm_login(this);
             // Set the Parent Form of the Child window.
-            mdiFrmLogin.MdiParent = this;
+            //mdiFrmLogin.MdiParent = this;
             // Display the new form.
-            mdiFrmLogin.Show();     
+            mdiFrmLogin.ShowDialog();     
             
         }
         private void loadOutlookBarButtons(string sProfile)
@@ -399,8 +400,8 @@ namespace Gym_administration
                     iconPanel2.AddIcon("Edit Member", Image.FromFile(Application.StartupPath + "/../../icons/member_edit_128.png"), new EventHandler(PanelEvent));
                     iconPanel2.AddIcon("Arrange Class", Image.FromFile(Application.StartupPath + "/../../icons/class_book_128.png"), new EventHandler(PanelEvent));
                     iconPanel2.AddIcon("Edit Arranged Class", Image.FromFile(Application.StartupPath + "/../../icons/class_book_edit_128.png"), new EventHandler(PanelEvent));
-                    iconPanel2.AddIcon("Book Equipment", Image.FromFile(Application.StartupPath + "/../../icons/equipment_book_128.png"), new EventHandler(PanelEvent));
-                    iconPanel2.AddIcon("Search Eq. Bookings", Image.FromFile(Application.StartupPath + "/../../icons/equipment_book_search_128.png"), new EventHandler(PanelEvent));
+                    //iconPanel2.AddIcon("Book Equipment", Image.FromFile(Application.StartupPath + "/../../icons/equipment_book_128.png"), new EventHandler(PanelEvent));
+                    //iconPanel2.AddIcon("Search Eq. Bookings", Image.FromFile(Application.StartupPath + "/../../icons/equipment_book_search_128.png"), new EventHandler(PanelEvent));
                     iconPanel2.AddIcon("Search Rooms", Image.FromFile(Application.StartupPath + "/../../icons/room_search_128.png"), new EventHandler(PanelEvent));
                     this.outlookBar.SelectBand(0);
                     outlookBar.Show();

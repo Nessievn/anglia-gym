@@ -37,8 +37,9 @@ namespace Gym_administration
         private void button_addroom_Click(object sender, EventArgs e)
         {
             frm_room frmRoom = new frm_room();
-            frmRoom.MdiParent = this.MdiParent;
-            frmRoom.Show();
+            //frmRoom.MdiParent = this.MdiParent;
+            //frmRoom.Show();
+            frmRoom.ShowDialog();
         }
 
         private void frm_room_list_Load(object sender, EventArgs e)
@@ -60,8 +61,9 @@ namespace Gym_administration
                 string sRoomId = dg_rooms.Rows[e.RowIndex].Cells[0].Value.ToString();
                 int iRoomId = int.Parse(sRoomId);
                 frm_room frm_rm = new frm_room(iRoomId);
-                frm_rm.MdiParent = this.MdiParent;
-                frm_rm.Show();
+                //frm_rm.MdiParent = this.MdiParent;
+                //frm_rm.Show();
+                frm_rm.ShowDialog();
             }
             catch (Exception ea)
             {

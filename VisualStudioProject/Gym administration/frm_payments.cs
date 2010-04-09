@@ -18,9 +18,10 @@ namespace Gym_administration
 
         private void button_addpayments_Click(object sender, EventArgs e)
         {
-            frm_member_list frmMemberList = new frm_member_list(true);
-            frmMemberList.MdiParent = this.MdiParent;
-            frmMemberList.Show();
+            frm_member_list frmMemberList = new frm_member_list(this);
+            //frmMemberList.MdiParent = this.MdiParent;
+            //frmMemberList.Show();
+            frmMemberList.ShowDialog();
         }
 
         private void frm_payments_Load(object sender, EventArgs e)

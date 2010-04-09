@@ -201,13 +201,13 @@ namespace Gym_administration
         private void button_enrollmembers_Click(object sender, EventArgs e)
         {
             frm_member_list frmMemberList = new frm_member_list(ciClassInstance,false);
-            frmMemberList.Show();
+            frmMemberList.ShowDialog();
         }
 
         private void button_viewattendants_Click(object sender, EventArgs e)
         {
             frm_member_list frmMemberList = new frm_member_list(ciClassInstance, true);
-            frmMemberList.Show();
+            frmMemberList.ShowDialog();
         }
 
         private void cmb_rooms_SelectedIndexChanged(object sender, EventArgs e)
@@ -239,10 +239,10 @@ namespace Gym_administration
 
             // Creating the child form login
             //isBooking, "isMember", id_member
-            frm_equipment_list frmEquipmentList = new frm_equipment_list(true,this.ciClassInstance.Id_class_instance, this);
+            frm_equipment_list frmEquipmentList = new frm_equipment_list(this.ciClassInstance.Id_class_instance, this);
 
             if (Utils.bIsAlreadyOpened(frmEquipmentList)) return;
-            frmEquipmentList.Show();  
+            frmEquipmentList.ShowDialog();  
 
         }
 

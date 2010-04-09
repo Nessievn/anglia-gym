@@ -45,8 +45,9 @@ namespace Gym_administration
                 string sClassId = dg_classes.Rows[e.RowIndex].Cells[0].Value.ToString();
                 int iClassId = int.Parse(sClassId);
                 frm_class frm_class = new frm_class(iClassId, this);
-                frm_class.MdiParent = this.MdiParent;
-                frm_class.Show();
+                //frm_class.MdiParent = this.MdiParent;
+                //frm_class.Show();
+                frm_class.ShowDialog();
             }
             catch (Exception ea)
             {
@@ -58,8 +59,9 @@ namespace Gym_administration
         private void button_addclass_Click(object sender, EventArgs e)
         {
             frm_class frmClass = new frm_class(this);
-            frmClass.MdiParent = this.MdiParent;
-            frmClass.Show();
+            //frmClass.MdiParent = this.MdiParent;
+            //frmClass.Show();
+            frmClass.ShowDialog();
         }
 
         private void button_search_Click(object sender, EventArgs e)
