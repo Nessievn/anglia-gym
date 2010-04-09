@@ -19,6 +19,7 @@ namespace Gym_administration
         bool IsBooking;
         bool IsMember;
         int Id_Person;
+        int Id_ClassInstance;
         
 
         //loading from main menu
@@ -84,7 +85,7 @@ namespace Gym_administration
         }
 
         //loading from equipment list to refresh eq list after saving new item booking
-        public frm_equipment(bool isBooking, bool isMember, int id_Person, int iEquipmentId, frm_equipment_list frmEqList)
+        public frm_equipment(bool isBooking, bool isMember, int id_Person, int iIdClassInstance, int iEquipmentId, frm_equipment_list frmEqList)
         {
             InitializeComponent();
             label_amounttoborrow.Visible = true;
@@ -101,6 +102,7 @@ namespace Gym_administration
             IsBooking = isBooking;
             IsMember = isMember;
             Id_Person = id_Person;
+            Id_ClassInstance = iIdClassInstance;
 
 
 
@@ -167,11 +169,19 @@ namespace Gym_administration
                 eqEquipmentBooked.Id_staff = "NULL";
 
             }
-            else
+            else if (Id_ClassInstance == -1)
             {
                 eqEquipmentBooked.SBookingType = "STAFF_BOOKING";
                 eqEquipmentBooked.Id_staff = Id_Person.ToString();
                 eqEquipmentBooked.Id_member = "NULL";
+            }
+            else
+            {
+                eqEquipmentBooked.SBookingType = "CLASS_BOOKING";
+                eqEquipmentBooked.Id_staff = "NULL";
+                eqEquipmentBooked.Id_member = "NULL";
+                eqEquipmentBooked.Id_class_instance = this.Id_ClassInstance;
+
             }
             DateTime today = DateTime.Today;
             eqEquipmentBooked.SDateStart = String.Format("{0:yyyy-MM-dd}", today);

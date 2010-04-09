@@ -16,13 +16,15 @@ namespace Gym_administration
         MyMessageBox myMessageBox;
         frm_member frmMember;
         frm_staff frmStaff;
+        frm_class_instance_arrange frmClass;
         bool IsBooking;
         bool IsMember;
         int Id_Person;
+        int Id_ClassInstance;
 
         public frm_equipment_list()
         {
-
+            Id_ClassInstance = -1;
             InitializeComponent();
             this.frmMember = null;
             this.frmStaff = null;
@@ -32,7 +34,7 @@ namespace Gym_administration
 
         public frm_equipment_list(bool isBooking, bool isMember, int id_Person,frm_member frmMember, frm_staff frmStaff)
         {
-            
+            Id_ClassInstance = -1;
             InitializeComponent();
             IsBooking = isBooking;
             IsMember = isMember;
@@ -52,6 +54,21 @@ namespace Gym_administration
             rd_item.Checked = true;
             rd_item_Checked();
         }
+
+
+        public frm_equipment_list(bool isBooking, int iIdClassInstance, frm_class_instance_arrange frmClass)
+        {
+            Id_ClassInstance = -1;
+            InitializeComponent();
+            IsBooking = true;
+            IsMember = false;
+            
+            this.frmClass = frmClass;
+            this.Id_ClassInstance = iIdClassInstance;
+            rd_item.Checked = true;
+            rd_item_Checked();
+        }
+
 
         private void frm_equipment_list_Load(object sender, EventArgs e)
         {
@@ -95,7 +112,7 @@ namespace Gym_administration
                 {
                     string sEquipmentId = dg_equipment.Rows[e.RowIndex].Cells[0].Value.ToString();
                     int iEquipmentId = int.Parse(sEquipmentId);
-                    frm_equipment frm_equipment = new frm_equipment(IsBooking, IsMember, Id_Person, iEquipmentId, this);
+                    frm_equipment frm_equipment = new frm_equipment(IsBooking, IsMember, Id_Person, Id_ClassInstance, iEquipmentId, this);                    
                     frm_equipment.MdiParent = this.MdiParent;
                     frm_equipment.Show();
                 }
