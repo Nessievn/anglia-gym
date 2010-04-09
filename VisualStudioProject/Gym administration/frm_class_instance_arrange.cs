@@ -14,6 +14,7 @@ namespace Gym_administration
     {
         ClassInstance ciClassInstance;
         frm_class_instance_list frmClArrList;
+        EquipmentBooked eqEquipmentBooked;
 
         public frm_class_instance_arrange()
         {
@@ -21,6 +22,7 @@ namespace Gym_administration
             ciClassInstance = new ClassInstance();
             button_enrollmembers.Enabled = false;
         }
+
         public frm_class_instance_arrange(int iIdClassBooked, frm_class_instance_list frmClArrList)
         {
             InitializeComponent();
@@ -30,12 +32,69 @@ namespace Gym_administration
                 MessageBox.Show("The class instance could not be found");
             else
             {
+                vLoadBookedList();
                 txt_endtime.Text = ciClassInstance.SEndTime;
                 txt_startdate.Text = ciClassInstance.SDateStart;
                 txt_starttime.Text = ciClassInstance.SStartTime;
                 button_enrollmembers.Enabled = true;
             }
         }
+
+
+        private void dg_currentborrows_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            string sEquipmentName = dg_currentborrows.Rows[e.RowIndex].Cells[1].Value.ToString();
+            int iBorrowedAmount = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[2].Value.ToString());
+            int iEquipmentId = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[3].Value.ToString());
+            int iEqBookingId = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[4].Value.ToString());
+
+            MyMessageBox myMessageBox = new MyMessageBox();
+            string iresult = myMessageBox.ShowBox(Utils.MB_CUST4, "", "How many " + sEquipmentName + " would you like to return?", iBorrowedAmount.ToString());
+
+
+            //ref  http://social.msdn.microsoft.com/Forums/en-US/winforms/thread/84990ad2-5046-472b-b103-f862bfcd5dbc
+
+
+            double Num;
+            bool isNum = double.TryParse(iresult, out Num);
+            if (isNum)
+            {
+
+                if ((int.Parse(iresult) > 0) && (iresult != "Cancel"))
+                {
+                    this.eqEquipmentBooked = new EquipmentBooked(iEqBookingId);
+                    this.eqEquipmentBooked.SBorrowedAmount = int.Parse(iresult);
+                    this.eqEquipmentBooked.SIsReturned = false;
+                    this.eqEquipmentBooked.bSave();
+                }
+                else
+                {
+                    this.eqEquipmentBooked = new EquipmentBooked(iEqBookingId);
+                    this.eqEquipmentBooked.SBorrowedAmount = 0;
+                    this.eqEquipmentBooked.SIsReturned = true;
+                    this.eqEquipmentBooked.bSave();
+
+                }
+                this.vLoadBookedList();
+            }
+
+        }
+
+
+        public void vLoadBookedList()
+        {
+            mySqlConn conn = new mySqlConn();
+            conn.connect();
+            BindingSource itemsSource = new BindingSource();
+            string sQuery = "SELECT DISTINCT eb.date_due Due, e.name Name, eb.borrowedamount Amount, eb.id_equipment EqID, eb.id_eq_booking BkID FROM equipment e, equipment_bookings eb WHERE eb.id_class_instance = " + ciClassInstance.Id_class_instance + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY Due";
+            itemsSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
+            dg_currentborrows.DataSource = itemsSource;
+            dg_currentborrows.AllowUserToAddRows = false;
+            dg_currentborrows.ReadOnly = true;
+        }
+
+
         private void frm_class_instance_arrange_Load(object sender, EventArgs e)
         {
             mySqlConn conn = new mySqlConn();
@@ -77,7 +136,10 @@ namespace Gym_administration
                 label_maxmembers_amount.Text = lhRes[0]["size"].ToString();
             }
             else
+            {
                 button_remove.Enabled = false;
+                btn_equipment.Enabled = false;
+            }
         }
 
         private void button_save_Click(object sender, EventArgs e)
@@ -127,6 +189,8 @@ namespace Gym_administration
                 if (this.ciClassInstance.bSave())
                 {
                     button_enrollmembers.Enabled = true;
+                    button_remove.Enabled = true;
+                    btn_equipment.Enabled = true;
                 }
             }
 
@@ -168,6 +232,18 @@ namespace Gym_administration
                 frmClArrList.vLoadDgClassList();
                 this.Close();
             }
+        }
+
+        private void btn_equipment_Click(object sender, EventArgs e)
+        {
+
+            // Creating the child form login
+            //isBooking, "isMember", id_member
+            frm_equipment_list frmEquipmentList = new frm_equipment_list(true,this.ciClassInstance.Id_class_instance, this);
+
+            if (Utils.bIsAlreadyOpened(frmEquipmentList)) return;
+            frmEquipmentList.Show();  
+
         }
 
 
