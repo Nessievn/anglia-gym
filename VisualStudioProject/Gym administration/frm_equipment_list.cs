@@ -206,16 +206,13 @@ namespace Gym_administration
 
             if (IsBooking)
             {
-                if (IsMember)
-                {
                     if (this.frmMember != null) frmMember.vLoadBookedList();
-                    //this.Close();
-                }
-                else
-                {
+
                     if (this.frmStaff != null) frmStaff.vLoadBookedList();
-                    //this.Close();
-                }
+
+                    if (this.frmClass != null) frmClass.vLoadBookedList();
+
+
 
             }
 
