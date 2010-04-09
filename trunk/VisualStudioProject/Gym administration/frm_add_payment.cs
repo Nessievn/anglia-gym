@@ -19,10 +19,12 @@ namespace Gym_administration
 
 
         Member mbMember;
+
         public frm_add_payment()
         {
             InitializeComponent();
         }
+
         public frm_add_payment(int iMbrId)
         {
             InitializeComponent();

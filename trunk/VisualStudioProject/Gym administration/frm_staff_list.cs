@@ -26,8 +26,9 @@ namespace Gym_administration
                 string sStaffId = dg_staff.Rows[e.RowIndex].Cells[0].Value.ToString();
                 int iStfId = int.Parse(sStaffId);
                 frm_staff frm_stf = new frm_staff(iStfId);
-                frm_stf.MdiParent = this.MdiParent;
-                frm_stf.Show();
+                //frm_stf.MdiParent = this.MdiParent;
+                //frm_stf.Show();
+                frm_stf.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -86,8 +87,9 @@ namespace Gym_administration
         private void button_addstaffmember_Click(object sender, EventArgs e)
         {
             frm_staff frmStaff = new frm_staff();
-            frmStaff.MdiParent = this.MdiParent;
-            frmStaff.Show();
+            //frmStaff.MdiParent = this.MdiParent;
+            //frmStaff.Show();
+            frmStaff.ShowDialog();
         }
 
         

@@ -151,8 +151,9 @@ namespace Gym_administration
         {
 //IMLEMENT IT TO PAYMENTS??
             frm_member_list frm = new frm_member_list();
-            frm.MdiParent = this.MdiParent;
-            frm.Show();
+            //frm.MdiParent = this.MdiParent;
+            //frm.Show();
+            frm.ShowDialog();
         }
 
         private void button_cancel_Click(object sender, EventArgs e)
@@ -178,13 +179,13 @@ namespace Gym_administration
      
 
             // Creating the child form login
-                                                                            //isBooking, "isMember", id_member,frm_member, null
-            frm_equipment_list frmEquipmentList = new frm_equipment_list(true,mbrMember.IId_member,this);
-            frmEquipmentList.MdiParent = this.MdiParent;
-
+                                                                         
+            frm_equipment_list frmEquipmentList = new frm_equipment_list(mbrMember.IId_member,this);
+            //frmEquipmentList.MdiParent = this.MdiParent;
+            //frmEquipmentList.Show();  
             
-            if (Utils.bIsAlreadyOpened(frmEquipmentList)) return;
-            frmEquipmentList.Show();  
+            //if (Utils.bIsAlreadyOpened(frmEquipmentList)) return;
+            frmEquipmentList.ShowDialog();  
         }
 
 

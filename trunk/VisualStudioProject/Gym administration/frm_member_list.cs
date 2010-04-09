@@ -15,28 +15,27 @@ namespace Gym_administration
     public partial class frm_member_list : Form
     {
         public ClassInstance ciClassInstance;
+        frm_payments frmPayments = null;
         public bool bViewAttendants;
-        public bool bPayments;
+        //public bool bPayments;
         
         public frm_member_list(ClassInstance ciClassInstance_t, bool bViewAttendants)
         {
             InitializeComponent();
             this.ciClassInstance = ciClassInstance_t;
             this.bViewAttendants = bViewAttendants;
-            this.bPayments = false;
         }
 
-        public frm_member_list(bool bPayments)
+        public frm_member_list(frm_payments frmPayments)
         {
             InitializeComponent();
-            this.bPayments = bPayments;
+            this.frmPayments = frmPayments;
         }
        
         public frm_member_list()
         {
             InitializeComponent();
             this.ciClassInstance = new ClassInstance();
-            this.bPayments = false;
         }
 
         private void frm_member_list_Load(object sender, EventArgs e)
@@ -66,12 +65,14 @@ namespace Gym_administration
                 mySqlConn conn = new mySqlConn();
                 conn.connect();
 
-                if (this.bPayments == true)
+                if (this.frmPayments != null)
                 {
                     
                     frm_add_payment frmAddPayment = new frm_add_payment(iMbrId);
-                    frmAddPayment.MdiParent = this.MdiParent;
-                    frmAddPayment.Show();
+                    //frmAddPayment.MdiParent = this.MdiParent;
+                    //frmAddPayment.Show();
+                    frmAddPayment.ShowDialog();
+                    this.frmPayments.vloadDgPayments();
                     this.Close();
                     return;
                 }
@@ -102,8 +103,9 @@ namespace Gym_administration
                 else
                 {
                     frm_member frm_mbr = new frm_member(iMbrId);
-                    frm_mbr.MdiParent = this.MdiParent;
-                    frm_mbr.Show();
+                    //frm_mbr.MdiParent = this.MdiParent;
+                    //frm_mbr.Show();
+                    frm_mbr.ShowDialog();
                 }
             }catch(Exception)
             {

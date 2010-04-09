@@ -123,10 +123,11 @@ namespace Gym_administration
 
             // Creating the child form login
             //isBooking, "isMember", id_member
-            frm_equipment_list frmEquipmentList = new frm_equipment_list(true, stfStaff.IId_staff,this);
+            frm_equipment_list frmEquipmentList = new frm_equipment_list(stfStaff.IId_staff,this);
 
             if (Utils.bIsAlreadyOpened(frmEquipmentList)) return;
-            frmEquipmentList.Show();  
+            //frmEquipmentList.Show();
+            frmEquipmentList.ShowDialog();  
 
 
         }
