@@ -1,20 +1,4 @@
-﻿/**
- * @desc It returns...etc
- * 
- * @params [type] 
- * @return [type] 
- */
-
-//
-
-//Constructor (default)     
-//Constructor (id_class)    loads in all fields from a single "Gym Class" row of the CLASSES table
-//Method 1
-//bRemove   removes a class from the CLASSES table
-//Method 2
-//bSave     saves a new class to the CLASSES table
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,18 +7,19 @@ using System.Windows.Forms;
 
 namespace Gym_administration
 {
-
     /**
-     * @desc It holds data and modifying methods for CLASSES table. 
+     * @desc It holds data and modifying methods for the CLASSES table. 
      * This is about "Gym Class" that is a general gym "class activity",
      * (NOT a certain class at a certain time!)
      * Most closely associated form is frm_class.
      * Most closely associated table is CLASSES.
-     * @params Incoming parameters are described at the individual constructors.
-     * @return All constructors are void types.
+     * @params [none] Incoming parameters are described at the individual constructors.
+     * @return [none] No directly returned data. 
+     * Returns of public methods are described at the individual methods.
      */
     class Class
     {
+        // id_class field from CLASSES table stored here
         private int id_class;
         public int Id_class
         {
@@ -42,6 +27,7 @@ namespace Gym_administration
             set { id_class = value; }
         }
 
+        // name field from CLASSES table stored here
         private string sName;
         public string SName
         {
@@ -49,14 +35,7 @@ namespace Gym_administration
             set { sName = value; }
         }
 
-
-        private string sType;
-        public string SType
-        {
-            get { return sType; }
-            set { sType = value; }
-        }
-
+        // description field from CLASSES table stored here
         private string sDescription;
         public string SDescription
         {
@@ -64,31 +43,44 @@ namespace Gym_administration
             set { sDescription = value; }
         }
 
+        // type field from CLASSES table stored here
+        private string sType;
+        public string SType
+        {
+            get { return sType; }
+            set { sType = value; }
+        }
+
 
         /**
          * @desc Default constructor.
-         * It sets id_class to -1 and establishes connection for saving new class.
+         * Sets id_class to -1 so the fact of this is a new class can be referenced.
          * 
-         * @params [type] 
-         * @return [type] 
+         * @params [none] No input parameter.
+         * @return [none] No directly returned data.
          */
         public Class()
         {
             this.id_class = -1;
-    //        mySqlConn conn = new mySqlConn();
-      //      conn.connect();
         }
 
-        public Class(int iIdClass)
+        /**
+         * @desc Constructor
+         * Loads in all fields from a single "Gym Class" row of the CLASSES table.
+         * @params [int id_Class] This identifies the class uniquely.
+         * @return [none] No directly returned data.
+         */
+        public Class(int id_Class)
         {
+            // Create mysql connection
             mySqlConn conn = new mySqlConn();
             conn.connect();
-            // We launch the query
-            List<Hashtable> lhResultset = conn.lhSqlQuery("Select * from classes WHERE id_class = '" + iIdClass + "'");
-
-            // Check if we found the member
+            // Launch the query to return all fields from a single "Gym Class" row of the CLASSES table
+            List<Hashtable> lhResultset = conn.lhSqlQuery("Select * from classes WHERE id_class = '" + id_Class + "'");
+            // Check if we found the row
             if ((int)lhResultset.Count > 0)
             {
+                // Fill in all class fields with table data
                 this.Id_class = int.Parse(lhResultset[0]["id_class"].ToString());
                 this.SType = lhResultset[0]["type"].ToString();
                 this.SDescription = lhResultset[0]["description"].ToString();
@@ -96,14 +88,24 @@ namespace Gym_administration
             }
         }
 
+        /**
+         * @desc Removes the class from the CLASSES table.
+         * @params [none] No input parameter.
+         * @return [bool] Returns true in case of success, false if there was problem deleting the class.
+         */
         public bool bRemove()
         {
+            // Check if there is a class already loaded in
             if (this.Id_class != -1)
             {
+                // Create mysql connection
                 mySqlConn conn = new mySqlConn();
                 conn.connect();
+                // Create the delete query
                 string sQuery = "DELETE FROM classes WHERE id_class = '" + this.Id_class + "'";
+                // Launch delete query
                 int iRes = conn.iDeleteOrUpdate(sQuery);
+                // Check deletion result
                 if (iRes > 0)
                 {
                     MessageBox.Show("The class data has been deleted succesfully!");
@@ -118,31 +120,40 @@ namespace Gym_administration
             return false;
         }
 
+
         /**
-        * @desc This method will save the object into the database
-        */
+         * @desc This method will save or update a class in the CLASS table
+         * @params [none] No input parameter.
+         * @return [bool] Returns true in case of success, false if there was problem saving/updating the class
+         */
         public bool bSave()
         {
-            // Field checking
+            
             string sQuery;
 
+            // Checking user input
             if (this.SName == "")
             {
                 MessageBox.Show("Please Insert a name.");
             }
             else
             {
+                // Create mysql connection
                 mySqlConn conn = new mySqlConn();
                 conn.connect();
+                // Check whether there is a new id_class assigned to this class, 
+                // if not then this a new class to save
                 if (this.Id_class == -1)
                 {
+                    // Create the save query
                     sQuery = "insert into `gym`.`classes` (`id_class`, `name`, `type`, `description`) values " +
                              "(NULL, '" + this.SName + "', '" + this.SType + "', '" + this.SDescription + "')";
-
-                    int iIdClass = conn.iInsert(sQuery);
-                    if (iIdClass != -1)
+                    // Launch save query
+                    int id_Class = conn.iInsert(sQuery);
+                    // Check saving result
+                    if (id_Class != -1)
                     {
-                        this.Id_class = iIdClass;
+                        this.Id_class = id_Class;
                         MessageBox.Show("The new class has been added to the databse succesfully!");
                         return true;
                     }
@@ -152,12 +163,16 @@ namespace Gym_administration
                         return false;
                     }
                 }
+                // If an id_class already exists for this class instance, then this is an existing class to update
                 else
                 {
+                    // Create update query
                     sQuery = "UPDATE classes SET name = '" + this.SName + "', description = '" + this.SDescription + "' " +
                              " WHERE id_class = '" + this.Id_class + "'";
 
+                    // Launch update query
                     int iRes = conn.iDeleteOrUpdate(sQuery);
+                    // Check update result
                     if (iRes > 0)
                     {
                         MessageBox.Show("The class data has been updated succesfully!");

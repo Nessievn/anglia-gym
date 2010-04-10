@@ -13,7 +13,7 @@ namespace Gym_administration
     public partial class frm_class_instance_arrange : Form
     {
         ClassInstance ciClassInstance;
-        frm_class_instance_list frmClArrList;
+        frm_class_instance_list frmClInstList;
         EquipmentBooked eqEquipmentBooked;
 
         public frm_class_instance_arrange()
@@ -23,11 +23,11 @@ namespace Gym_administration
             button_enrollmembers.Enabled = false;
         }
 
-        public frm_class_instance_arrange(int iIdClassBooked, frm_class_instance_list frmClArrList)
+        public frm_class_instance_arrange(int id_class_booked, frm_class_instance_list frmClInstList)
         {
             InitializeComponent();
-            this.frmClArrList = frmClArrList;
-            ciClassInstance = new ClassInstance(iIdClassBooked);
+            this.frmClInstList = frmClInstList;
+            ciClassInstance = new ClassInstance(id_class_booked);
             if (ciClassInstance.Id_class_instance == -1)
                 MessageBox.Show("The class instance could not be found");
             else
@@ -46,8 +46,8 @@ namespace Gym_administration
 
             string sEquipmentName = dg_currentborrows.Rows[e.RowIndex].Cells[1].Value.ToString();
             int iBorrowedAmount = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[2].Value.ToString());
-            int iEquipmentId = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[3].Value.ToString());
-            int iEqBookingId = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[4].Value.ToString());
+            int id_equipment = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[3].Value.ToString());
+            int id_eq_booking = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[4].Value.ToString());
 
             MyMessageBox myMessageBox = new MyMessageBox();
             string iresult = myMessageBox.ShowBox(Utils.MB_CUST4, "", "How many " + sEquipmentName + " would you like to return?", iBorrowedAmount.ToString());
@@ -63,14 +63,14 @@ namespace Gym_administration
 
                 if ((int.Parse(iresult) > 0) && (iresult != "Cancel"))
                 {
-                    this.eqEquipmentBooked = new EquipmentBooked(iEqBookingId);
+                    this.eqEquipmentBooked = new EquipmentBooked(id_eq_booking);
                     this.eqEquipmentBooked.SBorrowedAmount = int.Parse(iresult);
                     this.eqEquipmentBooked.SIsReturned = false;
                     this.eqEquipmentBooked.bSave();
                 }
                 else
                 {
-                    this.eqEquipmentBooked = new EquipmentBooked(iEqBookingId);
+                    this.eqEquipmentBooked = new EquipmentBooked(id_eq_booking);
                     this.eqEquipmentBooked.SBorrowedAmount = 0;
                     this.eqEquipmentBooked.SIsReturned = true;
                     this.eqEquipmentBooked.bSave();
@@ -124,9 +124,9 @@ namespace Gym_administration
             // HERE we select the options with the class instance
             if (this.ciClassInstance.Id_class_instance != -1)
             {
-                cmb_classes.SelectedIndex = cmb_classes.FindString(ciClassInstance.SClass.SName);
+                cmb_classes.SelectedIndex = cmb_classes.FindString(ciClassInstance.Id_class.SName);
                 //cmb_instructors.SelectedIndex = cmb_instructors.FindString(ciClassInstance..SName+' ');
-                cmb_rooms.SelectedIndex = cmb_rooms.FindString(ciClassInstance.RRoom.SName);
+                cmb_rooms.SelectedIndex = cmb_rooms.FindString(ciClassInstance.Id_room.SName);
                 cmb_repeats.SelectedIndex = cmb_repeats.FindString(ciClassInstance.SFrequency);
                 sQuery = "SELECT COUNT(*) q FROM gym.class_bookings WHERE id_class_instance = '" + this.ciClassInstance.Id_class_instance + "'";
                 List<Hashtable> lhRes = conn.lhSqlQuery(sQuery);
@@ -149,14 +149,14 @@ namespace Gym_administration
             // Check data
             string sDate = Utils.sGetMysqlDate(txt_startdate.Text);
             DictionaryEntry de = (DictionaryEntry)cmb_classes.SelectedItem;
-            string sIdClass = de.Key.ToString();
+            string id_class = de.Key.ToString();
 
             de = (DictionaryEntry)cmb_instructors.SelectedItem;
-            string sIdStaff = de.Key.ToString();
+            string id_staff = de.Key.ToString();
 
         
             de = (DictionaryEntry)cmb_rooms.SelectedItem;
-            string sIdRoom = de.Key.ToString();
+            string id_room = de.Key.ToString();
 
             if(sDate == "0000-00-00")
             {
@@ -175,13 +175,13 @@ namespace Gym_administration
 
             
             // Check if we found the user
-            if (this.ciClassInstance.bCheckOverlap(sDate, sIdRoom, sIdStaff, txt_starttime.Text, txt_endtime.Text))
+            if (this.ciClassInstance.bCheckOverlap(sDate, id_room, id_staff, txt_starttime.Text, txt_endtime.Text))
                 MessageBox.Show("The class is overlapping with another class, please specify another date, room or instructor.");
             else
             {
-                this.ciClassInstance.Id_staff = int.Parse(sIdStaff);
-                this.ciClassInstance.RRoom = new Room(int.Parse(sIdRoom));
-                this.ciClassInstance.SClass = new Class(int.Parse(sIdClass));
+                this.ciClassInstance.Id_staff = int.Parse(id_staff);
+                this.ciClassInstance.Id_room = new Room(int.Parse(id_room));
+                this.ciClassInstance.Id_class = new Class(int.Parse(id_class));
                 this.ciClassInstance.SDateStart = sDate;
                 this.ciClassInstance.SEndTime = txt_endtime.Text;
                 this.ciClassInstance.SFrequency = cmb_repeats.Text;
@@ -215,8 +215,8 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             DictionaryEntry de = (DictionaryEntry)cmb_rooms.SelectedItem;
-            string sIdRoom = de.Key.ToString();
-            string sQuery = "SELECT size FROM gym.rooms WHERE id_room = '" + sIdRoom + "'";
+            string id_room = de.Key.ToString();
+            string sQuery = "SELECT size FROM gym.rooms WHERE id_room = '" + id_room + "'";
             List<Hashtable> lhRes = conn.lhSqlQuery(sQuery);
             label_maxmembers_amount.Text = lhRes[0]["size"].ToString();
         }
@@ -229,7 +229,7 @@ namespace Gym_administration
                 {
                     MessageBox.Show("Please make sure that there aren't any class instances for this class.");
                 }
-                frmClArrList.vLoadDgClassList();
+                frmClInstList.vLoadDgClassList();
                 this.Close();
             }
         }
@@ -238,7 +238,6 @@ namespace Gym_administration
         {
 
             // Creating the child form login
-            //isBooking, "isMember", id_member
             frm_equipment_list frmEquipmentList = new frm_equipment_list(this.ciClassInstance.Id_class_instance, this);
 
             if (Utils.bIsAlreadyOpened(frmEquipmentList)) return;

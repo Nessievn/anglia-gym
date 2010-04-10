@@ -194,7 +194,6 @@ namespace Gym_administration
             
             string sEquipmentName = dg_currentborrows.Rows[e.RowIndex].Cells[1].Value.ToString();
             int iBorrowedAmount = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[2].Value.ToString());
-            //int iEquipmentId = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[3].Value.ToString());
             int iEqBookingId = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[4].Value.ToString());
 
             MyMessageBox myMessageBox = new MyMessageBox();
