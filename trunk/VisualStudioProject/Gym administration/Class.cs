@@ -1,4 +1,39 @@
-﻿using System;
+﻿//Variable naming conventions in this project:
+//
+//Class:
+//ClassName
+//
+//Form Class:
+//frm_windows_form
+//
+//Locally declared forms:
+//frmWindowsForm
+//
+//Primitive types which are private or local to method:
+//int iVariableName, string sVariableName
+//
+//Primitive types which are public or global:
+//int IVariableName, string SVariableName
+//
+//Class type variables which are private or local:
+//clClassName
+//
+//Class type variables which are public or global:
+//ClClassName
+//
+//Exceptions:
+//All table identifiers regardless of primitive type:
+//
+//Private/Local:
+//id_entity_identifier
+//
+//Public/Global
+//Id_entity_identifier
+
+
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
