@@ -124,9 +124,9 @@ namespace Gym_administration
             // HERE we select the options with the class instance
             if (this.ciClassInstance.Id_class_instance != -1)
             {
-                cmb_classes.SelectedIndex = cmb_classes.FindString(ciClassInstance.Id_class.SName);
+                cmb_classes.SelectedIndex = cmb_classes.FindString(ciClassInstance.ClClass.SName);
                 //cmb_instructors.SelectedIndex = cmb_instructors.FindString(ciClassInstance..SName+' ');
-                cmb_rooms.SelectedIndex = cmb_rooms.FindString(ciClassInstance.Id_room.SName);
+                cmb_rooms.SelectedIndex = cmb_rooms.FindString(ciClassInstance.ClRoom.SName);
                 cmb_repeats.SelectedIndex = cmb_repeats.FindString(ciClassInstance.SFrequency);
                 sQuery = "SELECT COUNT(*) q FROM gym.class_bookings WHERE id_class_instance = '" + this.ciClassInstance.Id_class_instance + "'";
                 List<Hashtable> lhRes = conn.lhSqlQuery(sQuery);
@@ -180,8 +180,8 @@ namespace Gym_administration
             else
             {
                 this.ciClassInstance.Id_staff = int.Parse(id_staff);
-                this.ciClassInstance.Id_room = new Room(int.Parse(id_room));
-                this.ciClassInstance.Id_class = new Class(int.Parse(id_class));
+                this.ciClassInstance.ClRoom = new Room(int.Parse(id_room));
+                this.ciClassInstance.ClClass = new Class(int.Parse(id_class));
                 this.ciClassInstance.SDateStart = sDate;
                 this.ciClassInstance.SEndTime = txt_endtime.Text;
                 this.ciClassInstance.SFrequency = cmb_repeats.Text;
