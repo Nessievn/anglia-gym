@@ -28,12 +28,13 @@ namespace Gym_administration
             set { id_class_instance = value; }
         }
 
-        // id_class field from CLASS_INSTANCE table stored here
-        private Class id_class;
-        internal Class Id_class
+        // a 'Gym class' (Class.cs) object is stored here
+//why?
+        private Class clClass;
+        internal Class ClClass
         {
-            get { return id_class; }
-            set { id_class = value; }
+            get { return clClass; }
+            set { clClass = value; }
         }
 
         // id_staff field from CLASS_INSTANCE table stored here
@@ -76,12 +77,13 @@ namespace Gym_administration
             set { sFrequency = value; }
         }
 
-        // id_room field from CLASS_INSTANCE table stored here
-        private Room id_room;
-        internal Room Id_room
+        // a Room (Room.cs) object is stored here
+//why?
+        private Room clRoom;
+        internal Room ClRoom
         {
-            get { return id_room; }
-            set { id_room = value; }
+            get { return clRoom; }
+            set { clRoom = value; }
         }
 
         // A list of members participating in the class instance stored here
@@ -125,8 +127,8 @@ namespace Gym_administration
                 // Fill in all class instance fields with table data
                 this.Id_class_instance = int.Parse(lhResultset[0]["id_class_instance"].ToString());
                 this.Id_staff = int.Parse(lhResultset[0]["id_staff"].ToString());
-                this.Id_room = new Room(int.Parse(lhResultset[0]["id_room"].ToString()));
-                this.Id_class = new Class(int.Parse(lhResultset[0]["id_class"].ToString()));
+                this.ClRoom = new Room(int.Parse(lhResultset[0]["id_room"].ToString()));
+                this.ClClass = new Class(int.Parse(lhResultset[0]["id_class"].ToString()));
                 this.SDateStart = lhResultset[0]["date"].ToString();
                 this.SEndTime = lhResultset[0]["end_time"].ToString();
                 this.SStartTime = lhResultset[0]["start_time"].ToString();
@@ -198,10 +200,9 @@ namespace Gym_administration
             // if not then this a new class to save
             if (this.Id_class_instance == -1)
             {
-//Why this.Id_class.Id_class and this.Id_room.Id_room instead of just this.Id_class and this.Id_room??? 
                 // Create the save query
                 string sQuery = "insert into `gym`.`class_instance` (`id_class_instance`, `id_class`, `id_staff`, `date`, `start_time`, `end_time`, `frequency`, `id_room`) values " +
-                                "(NULL, '" + this.Id_class.Id_class + "', '" + this.Id_staff + "', '" + Utils.sGetMysqlDate(this.SDateStart) + "', '" + this.SStartTime + "', '" + this.SEndTime + "', '" + this.SFrequency + "', '" + this.Id_room.Id_room + "');";
+                                "(NULL, '" + this.ClClass.Id_class + "', '" + this.Id_staff + "', '" + Utils.sGetMysqlDate(this.SDateStart) + "', '" + this.SStartTime + "', '" + this.SEndTime + "', '" + this.SFrequency + "', '" + this.ClRoom.Id_room + "');";
                 // Launch save query
                 int id_class_instance = conn.iInsert(sQuery);
                 // Check saving result
@@ -216,10 +217,10 @@ namespace Gym_administration
                     MessageBox.Show("There has been an error creating the class instance! Contact with your administrator.");
                 }
             }
-            else
+            // If an id_class_instance already exists for this class instance, then this is an existing class instance to update
+            else 
             {
-                // If an id_class_instance already exists for this class instance, then this is an existing class instance to update
-                string sQuery = "UPDATE class_instance SET id_staff= '" + this.Id_staff + "', date = '" + Utils.sGetMysqlDate(this.SDateStart) + "', start_time = '" + this.SStartTime + "', end_time = '" + this.SEndTime + "', frequency = '" + this.SFrequency + "', id_room = '" + this.Id_room.Id_room + "' " +
+                string sQuery = "UPDATE class_instance SET id_staff= '" + this.Id_staff + "', date = '" + Utils.sGetMysqlDate(this.SDateStart) + "', start_time = '" + this.SStartTime + "', end_time = '" + this.SEndTime + "', frequency = '" + this.SFrequency + "', id_room = '" + this.ClRoom.Id_room + "' " +
                                 "WHERE id_class_instance = '" + this.Id_class_instance + "'";
                 // Launch update query
                 int iRes = conn.iDeleteOrUpdate(sQuery);
