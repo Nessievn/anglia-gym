@@ -1,10 +1,12 @@
 ﻿//Variable naming conventions in this project:
 //
-//Class:
-//ClassName
+//Class name:
+//ClassName 
+//(stored in ClassName.cs)
 //
-//Form Class:
-//frm_windows_form
+//Windows Form Class name:
+//frm_windows_form 
+//(stored in frm_windows_form.cs)
 //
 //Locally declared forms:
 //frmWindowsForm
@@ -16,13 +18,15 @@
 //int IVariableName, string SVariableName
 //
 //Class type variables which are private or local:
+//(Locally declared classes)
 //clClassName
 //
 //Class type variables which are public or global:
+//(Locally declared classes)
 //ClClassName
 //
 //Exceptions:
-//All table identifiers regardless of primitive type:
+//All entity identifiers regardless of primitive type:
 //
 //Private/Local:
 //id_entity_identifier
