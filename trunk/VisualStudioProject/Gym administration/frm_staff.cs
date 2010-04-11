@@ -19,7 +19,7 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource itemsSource = new BindingSource();
-            string sQuery = "SELECT DISTINCT eb.date_due Due, e.name Name, eb.borrowedamount Amount, eb.id_equipment EqID, eb.id_eq_booking BkID FROM equipment e, equipment_bookings eb WHERE eb.id_staff = " + stfStaff.IId_staff + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY Due";
+            string sQuery = "SELECT DISTINCT eb.date_due Due, e.name Name, eb.borrowedamount Amount, eb.id_equipment EqID, eb.id_eq_booking BkID FROM equipment e, equipment_bookings eb WHERE eb.id_staff = " + stfStaff.Id_staff + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY Due";
             itemsSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
             dg_currentborrows.DataSource = itemsSource;
             dg_currentborrows.AllowUserToAddRows = false;
@@ -39,34 +39,34 @@ namespace Gym_administration
             InitializeComponent();
             button_equipmentbooking.Show();
             stfStaff = new Staff(iStaffId);
-            if (stfStaff.IId_staff < 1)
+            if (stfStaff.Id_staff < 1)
                 MessageBox.Show("The staff member could not be found");
             else
             {
                 vLoadBookedList();
-                 txt_firstName.Text = stfStaff.SFirstName;
-                 txt_lastName.Text = stfStaff.SLastName;
-                 txt_dob.Text = Utils.sGetCsharpDateFromMysqlDate(stfStaff.SBirthdate);
-                 txt_address1.Text = stfStaff.SAddress_1;
-                 txt_address2.Text = stfStaff.SAaddress_2;
-                 txt_city.Text = stfStaff.SCity;
-                 txt_county.Text = stfStaff.SCounty;
-                 txt_emerg_mobile.Text = stfStaff.SEmerg_contact_mobile;
-                 txt_emerg_name.Text = stfStaff.SEmerg_contact_name;
-                 txt_emerg_telephone.Text = stfStaff.SEmerg_contact_phone;
-                 txt_emerg_relation.Text = stfStaff.SEmerg_contact_relation;
-                 txt_allergies.Text = stfStaff.SMedical_allergies;
-                 txt_doctor_name.Text = stfStaff.SMedical_doctor_name;
-                 txt_medical_notes.Text = stfStaff.SMedical_notes;
-                 txt_qualifications.Text = stfStaff.SQualifications;
-                 txt_doctor_phone.Text = stfStaff.SMedical_phone;
-                 txt_pc.Text = stfStaff.SPostalcode;
-                 cmb_contract.Text = stfStaff.SContractType;
-                 txt_email.Text = stfStaff.SEmail;
-                 txt_mobile.Text = stfStaff.SMobile;
-                 txt_telephone.Text = stfStaff.SPhone;
-                 cmb_position.Text = stfStaff.SPosition;
-                 txt_natinsnumb.Text = stfStaff.SNatInsNumb;
+                 txt_firstName.Text = stfStaff.FirstName;
+                 txt_lastName.Text = stfStaff.LastName;
+                 txt_dob.Text = Utils.sGetCsharpDateFromMysqlDate(stfStaff.Birthdate);
+                 txt_address1.Text = stfStaff.Address_1;
+                 txt_address2.Text = stfStaff.Address_2;
+                 txt_city.Text = stfStaff.City;
+                 txt_county.Text = stfStaff.County;
+                 txt_emerg_mobile.Text = stfStaff.EmergContactMobile;
+                 txt_emerg_name.Text = stfStaff.EmergContactName;
+                 txt_emerg_telephone.Text = stfStaff.EmergContactPhone;
+                 txt_emerg_relation.Text = stfStaff.EmergContactRelation;
+                 txt_allergies.Text = stfStaff.MedicalAllergies;
+                 txt_doctor_name.Text = stfStaff.MedicalDoctorName;
+                 txt_medical_notes.Text = stfStaff.MedicalNotes;
+                 txt_qualifications.Text = stfStaff.Qualifications;
+                 txt_doctor_phone.Text = stfStaff.MedicalPhone;
+                 txt_pc.Text = stfStaff.PostalCode;
+                 cmb_contract.Text = stfStaff.ContractType;
+                 txt_email.Text = stfStaff.Email;
+                 txt_mobile.Text = stfStaff.Mobile;
+                 txt_telephone.Text = stfStaff.Phone;
+                 cmb_position.Text = stfStaff.Position;
+                 txt_natinsnumb.Text = stfStaff.NatInsNumb;
                  txt_contract_start.Text = stfStaff.SContractStart;
                  txt_contract_finish.Text = stfStaff.SContractFinish;
             }
@@ -86,30 +86,30 @@ namespace Gym_administration
 
         private void button_save_Click(object sender, EventArgs e)
         {
-            stfStaff.SFirstName = txt_firstName.Text;
-            stfStaff.SLastName = txt_lastName.Text;
-            stfStaff.SBirthdate = txt_dob.Text;
-            stfStaff.SAaddress_2 = txt_address2.Text;
-            stfStaff.SAddress_1 = txt_address1.Text;
-            stfStaff.SCity = txt_city.Text;
-            stfStaff.SCounty = txt_county.Text;
-            stfStaff.SEmerg_contact_mobile = txt_emerg_mobile.Text;
-            stfStaff.SEmerg_contact_name = txt_emerg_name.Text;
-            stfStaff.SEmerg_contact_phone = txt_emerg_telephone.Text;
-            stfStaff.SEmerg_contact_relation = txt_emerg_relation.Text;
-            stfStaff.SMedical_allergies = txt_allergies.Text;
-            stfStaff.SMedical_doctor_name = txt_doctor_name.Text;
-            stfStaff.SMedical_notes = txt_medical_notes.Text;
-            stfStaff.SQualifications = txt_qualifications.Text;
-            stfStaff.SMedical_phone = txt_doctor_phone.Text;
-            stfStaff.SPosition = cmb_position.Text;
-            stfStaff.SPicture = "none";
-            stfStaff.SPostalcode = txt_pc.Text;
-            stfStaff.SContractType = cmb_contract.Text;
-            stfStaff.SEmail = txt_email.Text;
-            stfStaff.SPhone = txt_telephone.Text;
-            stfStaff.SMobile = txt_mobile.Text;
-            stfStaff.SNatInsNumb = txt_natinsnumb.Text;
+            stfStaff.FirstName = txt_firstName.Text;
+            stfStaff.LastName = txt_lastName.Text;
+            stfStaff.Birthdate = txt_dob.Text;
+            stfStaff.Address_1 = txt_address1.Text;
+            stfStaff.Address_2 = txt_address2.Text;
+            stfStaff.City = txt_city.Text;
+            stfStaff.County = txt_county.Text;
+            stfStaff.EmergContactMobile = txt_emerg_mobile.Text;
+            stfStaff.EmergContactName = txt_emerg_name.Text;
+            stfStaff.EmergContactPhone = txt_emerg_telephone.Text;
+            stfStaff.EmergContactRelation = txt_emerg_relation.Text;
+            stfStaff.MedicalAllergies = txt_allergies.Text;
+            stfStaff.MedicalDoctorName = txt_doctor_name.Text;
+            stfStaff.MedicalNotes = txt_medical_notes.Text;
+            stfStaff.Qualifications = txt_qualifications.Text;
+            stfStaff.MedicalPhone = txt_doctor_phone.Text;
+            stfStaff.Position = cmb_position.Text;
+            stfStaff.Picture = "none";
+            stfStaff.PostalCode = txt_pc.Text;
+            stfStaff.ContractType = cmb_contract.Text;
+            stfStaff.Email = txt_email.Text;
+            stfStaff.Phone = txt_telephone.Text;
+            stfStaff.Mobile = txt_mobile.Text;
+            stfStaff.NatInsNumb = txt_natinsnumb.Text;
             stfStaff.SContractStart = txt_contract_start.Text;
             stfStaff.SContractFinish = txt_contract_finish.Text;
             
@@ -123,7 +123,7 @@ namespace Gym_administration
 
             // Creating the child form login
             //isBooking, "isMember", id_member
-            frm_equipment_list frmEquipmentList = new frm_equipment_list(stfStaff.IId_staff,this);
+            frm_equipment_list frmEquipmentList = new frm_equipment_list(stfStaff.Id_staff,this);
 
             if (Utils.bIsAlreadyOpened(frmEquipmentList)) return;
             //frmEquipmentList.Show();
@@ -140,7 +140,7 @@ namespace Gym_administration
             int iEquipmentId = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[3].Value.ToString());
             int iEqBookingId = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[4].Value.ToString());
 
-            MyMessageBox myMessageBox = new MyMessageBox();
+            frm_message_box myMessageBox = new frm_message_box();
             string iresult = myMessageBox.ShowBox(Utils.MB_CUST4, "", "How many " + sEquipmentName + " would you like to return?", iBorrowedAmount.ToString());
 
 
@@ -155,15 +155,15 @@ namespace Gym_administration
                 if ((int.Parse(iresult) > 0) && (iresult != "Cancel"))
                 {
                     this.eqEquipmentBooked = new EquipmentBooked(iEqBookingId);
-                    this.eqEquipmentBooked.SBorrowedAmount = int.Parse(iresult);
-                    this.eqEquipmentBooked.SIsReturned = false;
+                    this.eqEquipmentBooked.BorrowedAmount = int.Parse(iresult);
+                    this.eqEquipmentBooked.IsReturned = false;
                     this.eqEquipmentBooked.bSave();
                 }
                 else
                 {
                     this.eqEquipmentBooked = new EquipmentBooked(iEqBookingId);
-                    this.eqEquipmentBooked.SBorrowedAmount = 0;
-                    this.eqEquipmentBooked.SIsReturned = true;
+                    this.eqEquipmentBooked.BorrowedAmount = 0;
+                    this.eqEquipmentBooked.IsReturned = true;
                     this.eqEquipmentBooked.bSave();
 
                 }

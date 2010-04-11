@@ -28,17 +28,17 @@ using System.Windows.Forms;
 
 namespace Gym_administration
 {
-    public partial class MyMessageBox : Form
+    public partial class frm_message_box : Form
     {
 
-        MyMessageBox newMessageBox;
+        frm_message_box newMessageBox;
         static string Button_id;
         string Button1_Value;
         string Button2_Value;
         string Button3_Value;
         int Counter1_PrevValue;
 
-        public MyMessageBox()
+        public frm_message_box()
         {
             InitializeComponent();
             label_counter1.Hide();
@@ -242,7 +242,7 @@ namespace Gym_administration
         public string ShowBox(UInt32 Type, string txtMessage, string txtTitle)
         {
 
-            newMessageBox = new MyMessageBox();
+            newMessageBox = new frm_message_box();
             newMessageBox.SetButtonLayout(Type, "", "", "");
             if (txtTitle == "") newMessageBox.Text = "Message";
             else newMessageBox.Text = txtTitle;
@@ -256,7 +256,7 @@ namespace Gym_administration
         public string ShowBox(UInt32 Type, string txtMessage, string txtTitle, string Button1)
         {
 
-            newMessageBox = new MyMessageBox();
+            newMessageBox = new frm_message_box();
             newMessageBox.SetButtonLayout(Type, Button1, "", "");
             if (txtTitle == "") newMessageBox.Text = "Message";
             else newMessageBox.Text = txtTitle;
@@ -269,7 +269,7 @@ namespace Gym_administration
         public string ShowBox(UInt32 Type, string txtMessage, string txtTitle, string Button1, string Button2)
         {
 
-            newMessageBox = new MyMessageBox();
+            newMessageBox = new frm_message_box();
             newMessageBox.SetButtonLayout(Type, Button1, Button2, "");
             if (txtTitle == "") newMessageBox.Text = "Message";
             else newMessageBox.Text = txtTitle;
@@ -282,7 +282,7 @@ namespace Gym_administration
         public string ShowBox(UInt32 Type, string txtMessage, string txtTitle, string Button1, string Button2, string Button3)
         {
 
-            newMessageBox = new MyMessageBox();
+            newMessageBox = new frm_message_box();
             newMessageBox.SetButtonLayout(Type, Button1, Button2, Button3);
             if (txtTitle == "") newMessageBox.Text = "Message";
             else newMessageBox.Text = txtTitle;

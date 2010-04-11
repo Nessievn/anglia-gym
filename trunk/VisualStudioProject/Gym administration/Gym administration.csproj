@@ -162,11 +162,11 @@
       <DependentUpon>frm_staff_list.cs</DependentUpon>
     </Compile>
     <Compile Include="Member.cs" />
-    <Compile Include="MyMessageBox.cs">
+    <Compile Include="frm_message_box.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MyMessageBox.Designer.cs">
-      <DependentUpon>MyMessageBox.cs</DependentUpon>
+    <Compile Include="frm_message_box.Designer.cs">
+      <DependentUpon>frm_message_box.cs</DependentUpon>
     </Compile>
     <Compile Include="mySqlConn.cs" />
     <Compile Include="frm_login.cs">
@@ -256,8 +256,8 @@
       <DependentUpon>frm_staff_list.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyMessageBox.resx">
-      <DependentUpon>MyMessageBox.cs</DependentUpon>
+    <EmbeddedResource Include="frm_message_box.resx">
+      <DependentUpon>frm_message_box.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

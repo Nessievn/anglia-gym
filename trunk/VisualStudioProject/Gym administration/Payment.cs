@@ -13,33 +13,33 @@ namespace Gym_administration
 {
     class Payment
     {
-        private Decimal dAmount;
+        private Decimal amount;
 
-        public Decimal DAmount
+        public Decimal Amount
         {
-            get { return dAmount; }
-            set { dAmount = value; }
+            get { return amount; }
+            set { amount = value; }
         }
-        private string sDate;
+        private string date;
 
-        public string SDate
+        public string Date
         {
-            get { return sDate; }
-            set { sDate = value; }
+            get { return date; }
+            set { date = value; }
         }
-        private string sDetails;
+        private string details;
 
-        public string SDetails
+        public string Details
         {
-            get { return sDetails; }
-            set { sDetails = value; }
+            get { return details; }
+            set { details = value; }
         }
-        private Member mMember;
+        private Member clMember;
 
-        internal Member MMember
+        internal Member ClMember
         {
-            get { return mMember; }
-            set { mMember = value; }
+            get { return clMember; }
+            set { clMember = value; }
         }
 
         public Payment()
@@ -49,9 +49,9 @@ namespace Gym_administration
 
         public bool bSave()
         {
-            if (this.MMember.IId_member != -1)
+            if (this.ClMember.Id_member != -1)
             {
-                string sQuery = "insert into `gym`.`payments` (`id_payment`, `id_member`, `date`, `amount`, `details`) values (NULL, '"+this.MMember.IId_member+"', '"+this.SDate+"', '"+this.DAmount+"', '"+this.SDetails+"');";
+                string sQuery = "insert into `gym`.`payments` (`id_payment`, `id_member`, `date`, `amount`, `details`) values (NULL, '"+this.ClMember.Id_member+"', '"+this.Date+"', '"+this.Amount+"', '"+this.Details+"');";
                 mySqlConn conn = new mySqlConn();
                 conn.connect();
                 int iPayment = conn.iInsert(sQuery);

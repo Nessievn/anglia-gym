@@ -33,9 +33,9 @@ namespace Gym_administration
             else
             {
                 vLoadBookedList();
-                txt_endtime.Text = ciClassInstance.SEndTime;
-                txt_startdate.Text = ciClassInstance.SDateStart;
-                txt_starttime.Text = ciClassInstance.SStartTime;
+                txt_endtime.Text = ciClassInstance.EndTime;
+                txt_startdate.Text = ciClassInstance.DateStart;
+                txt_starttime.Text = ciClassInstance.StartTime;
                 button_enrollmembers.Enabled = true;
             }
         }
@@ -49,30 +49,30 @@ namespace Gym_administration
             int id_equipment = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[3].Value.ToString());
             int id_eq_booking = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[4].Value.ToString());
 
-            MyMessageBox myMessageBox = new MyMessageBox();
-            string iresult = myMessageBox.ShowBox(Utils.MB_CUST4, "", "How many " + sEquipmentName + " would you like to return?", iBorrowedAmount.ToString());
+            frm_message_box myMessageBox = new frm_message_box();
+            string result = myMessageBox.ShowBox(Utils.MB_CUST4, "", "How many " + sEquipmentName + " would you like to return?", iBorrowedAmount.ToString());
 
 
             //ref  http://social.msdn.microsoft.com/Forums/en-US/winforms/thread/84990ad2-5046-472b-b103-f862bfcd5dbc
 
 
             double Num;
-            bool isNum = double.TryParse(iresult, out Num);
+            bool isNum = double.TryParse(result, out Num);
             if (isNum)
             {
 
-                if ((int.Parse(iresult) > 0) && (iresult != "Cancel"))
+                if ((int.Parse(result) > 0) && (result != "Cancel"))
                 {
                     this.eqEquipmentBooked = new EquipmentBooked(id_eq_booking);
-                    this.eqEquipmentBooked.SBorrowedAmount = int.Parse(iresult);
-                    this.eqEquipmentBooked.SIsReturned = false;
+                    this.eqEquipmentBooked.BorrowedAmount = int.Parse(result);
+                    this.eqEquipmentBooked.IsReturned = false;
                     this.eqEquipmentBooked.bSave();
                 }
                 else
                 {
                     this.eqEquipmentBooked = new EquipmentBooked(id_eq_booking);
-                    this.eqEquipmentBooked.SBorrowedAmount = 0;
-                    this.eqEquipmentBooked.SIsReturned = true;
+                    this.eqEquipmentBooked.BorrowedAmount = 0;
+                    this.eqEquipmentBooked.IsReturned = true;
                     this.eqEquipmentBooked.bSave();
 
                 }
@@ -124,10 +124,10 @@ namespace Gym_administration
             // HERE we select the options with the class instance
             if (this.ciClassInstance.Id_class_instance != -1)
             {
-                cmb_classes.SelectedIndex = cmb_classes.FindString(ciClassInstance.ClClass.SName);
-                //cmb_instructors.SelectedIndex = cmb_instructors.FindString(ciClassInstance..SName+' ');
-                cmb_rooms.SelectedIndex = cmb_rooms.FindString(ciClassInstance.ClRoom.SName);
-                cmb_repeats.SelectedIndex = cmb_repeats.FindString(ciClassInstance.SFrequency);
+                cmb_classes.SelectedIndex = cmb_classes.FindString(ciClassInstance.ClClass.Name);
+                //cmb_instructors.SelectedIndex = cmb_instructors.FindString(ciClassInstance.Name+' ');
+                cmb_rooms.SelectedIndex = cmb_rooms.FindString(ciClassInstance.ClRoom.Name);
+                cmb_repeats.SelectedIndex = cmb_repeats.FindString(ciClassInstance.Frequency);
                 sQuery = "SELECT COUNT(*) q FROM gym.class_bookings WHERE id_class_instance = '" + this.ciClassInstance.Id_class_instance + "'";
                 List<Hashtable> lhRes = conn.lhSqlQuery(sQuery);
                 lbl_currentmembers_amount.Text = lhRes[0]["q"].ToString();
@@ -182,10 +182,10 @@ namespace Gym_administration
                 this.ciClassInstance.Id_staff = int.Parse(id_staff);
                 this.ciClassInstance.ClRoom = new Room(int.Parse(id_room));
                 this.ciClassInstance.ClClass = new Class(int.Parse(id_class));
-                this.ciClassInstance.SDateStart = sDate;
-                this.ciClassInstance.SEndTime = txt_endtime.Text;
-                this.ciClassInstance.SFrequency = cmb_repeats.Text;
-                this.ciClassInstance.SStartTime = txt_starttime.Text;
+                this.ciClassInstance.DateStart = sDate;
+                this.ciClassInstance.EndTime = txt_endtime.Text;
+                this.ciClassInstance.Frequency = cmb_repeats.Text;
+                this.ciClassInstance.StartTime = txt_starttime.Text;
                 if (this.ciClassInstance.bSave())
                 {
                     button_enrollmembers.Enabled = true;

@@ -26,9 +26,9 @@ namespace Gym_administration
                 MessageBox.Show("The room could not be found");
             else
             {
-                txt_roomdesc.Text = rmRoom.SDescription;
-                txt_roomname.Text = rmRoom.SName;
-                txt_roomsize.Text = rmRoom.ISize.ToString();
+                txt_roomdesc.Text = rmRoom.Description;
+                txt_roomname.Text = rmRoom.Name;
+                txt_roomsize.Text = rmRoom.Size.ToString();
             }
         }
 
@@ -39,7 +39,7 @@ namespace Gym_administration
                 if (txt_roomsize.Text == "")
                     txt_roomsize.Text = "0";
 
-                rmRoom.ISize = int.Parse(txt_roomsize.Text);
+                rmRoom.Size = int.Parse(txt_roomsize.Text);
             }
             catch (Exception)
             {
@@ -47,8 +47,8 @@ namespace Gym_administration
                 return;
             }
             
-            rmRoom.SDescription = txt_roomdesc.Text;
-            rmRoom.SName = txt_roomname.Text;
+            rmRoom.Description = txt_roomdesc.Text;
+            rmRoom.Name = txt_roomname.Text;
 
             rmRoom.bSave();
         }
