@@ -29,7 +29,6 @@ namespace Gym_administration
         }
 
         // a 'Gym class' (Class.cs) object is stored here
-//why?
         private Class clClass;
         internal Class ClClass
         {
@@ -46,39 +45,38 @@ namespace Gym_administration
         }
 
         // date field from CLASS_INSTANCE table stored here
-        private string sDateStart;
-        public string SDateStart
+        private string dateStart;
+        public string DateStart
         {
-            get { return sDateStart; }
-            set { sDateStart = value; }
+            get { return dateStart; }
+            set { dateStart = value; }
         }
 
         // start_time field from CLASS_INSTANCE table stored here
-        private string sStartTime;
-        public string SStartTime
+        private string startTime;
+        public string StartTime
         {
-            get { return sStartTime; }
-            set { sStartTime = value; }
+            get { return startTime; }
+            set { startTime = value; }
         }
 
         // end_time field from CLASS_INSTANCE table stored here
-        private string sEndTime;
-        public string SEndTime
+        private string endTime;
+        public string EndTime
         {
-            get { return sEndTime; }
-            set { sEndTime = value; }
+            get { return endTime; }
+            set { endTime = value; }
         }
 
         // frequency field from CLASS_INSTANCE table stored here
-        private string sFrequency;
-        public string SFrequency
+        private string frequency;
+        public string Frequency
         {
-            get { return sFrequency; }
-            set { sFrequency = value; }
+            get { return frequency; }
+            set { frequency = value; }
         }
 
         // a Room (Room.cs) object is stored here
-//why?
         private Room clRoom;
         internal Room ClRoom
         {
@@ -86,12 +84,12 @@ namespace Gym_administration
             set { clRoom = value; }
         }
 
-        // A list of members participating in the class instance stored here
-        private List<Member> Members = new List<Member>();
-        internal List<Member> lmAttendants
+        // A list of member objects participating in the class instance stored here
+        private List<Member> lclAttendants = new List<Member>();
+        internal List<Member> LclAttendants
         {
-            get { return Members; }
-            set { Members = value; }
+            get { return lclAttendants; }
+            set { lclAttendants = value; }
         }
 
         /**
@@ -110,7 +108,7 @@ namespace Gym_administration
          * @desc Constructor.  
          * Loads in various info from tables CLASSES, CLASS_INSTANCE and STAFF for this class instance.
          * Loads in all atendants for this class instance.
-         * @params [int id_class_instance] This identifies the class instance uniquely.
+         * @params [int]  id_class_instance identifies the class instance uniquely.
          * @return [none] No directly returned data.
          */
         public ClassInstance(int id_class_instance)
@@ -129,58 +127,59 @@ namespace Gym_administration
                 this.Id_staff = int.Parse(lhResultset[0]["id_staff"].ToString());
                 this.ClRoom = new Room(int.Parse(lhResultset[0]["id_room"].ToString()));
                 this.ClClass = new Class(int.Parse(lhResultset[0]["id_class"].ToString()));
-                this.SDateStart = lhResultset[0]["date"].ToString();
-                this.SEndTime = lhResultset[0]["end_time"].ToString();
-                this.SStartTime = lhResultset[0]["start_time"].ToString();
-                this.SFrequency = lhResultset[0]["frequency"].ToString();
+                this.DateStart = lhResultset[0]["date"].ToString();
+                this.EndTime = lhResultset[0]["end_time"].ToString();
+                this.StartTime = lhResultset[0]["start_time"].ToString();
+                this.Frequency = lhResultset[0]["frequency"].ToString();
 
 
-                // Retrieve all the attendants of this class instance
-                List<Member> Members = new List<Member>();
-//What does the class booking query load into the member list?
-//How does this part work?
+                // Create a list for storing member objects
+                // Load in all records for the same class instance from CLASS_BOOKINGS table (each contains a different member ID)
                 List<Hashtable> lhResultsetMbrs = conn.lhSqlQuery("SELECT * FROM `gym`.`class_bookings` WHERE id_class_instance = '" + id_class_instance + "'");
-                // If there are any attendants enrolled already
+                // If there is any class booking (any member enrolled) exist with the class instance id
                 if ((int)lhResultsetMbrs.Count > 0)
                 {
                     // Create a list of attending members
-                    foreach (Hashtable record in lhResultsetMbrs)
+                    foreach (Hashtable hClassBooking in lhResultsetMbrs)
                     {
-                        int iIdMember = int.Parse(record["id_member"].ToString());
-                        Member mbt_t = new Member(iIdMember);
-                        if(mbt_t.IId_member != -1)
-                            Members.Add(mbt_t);
+                        // Retrieve the member number from the current class booking
+                        int id_member = int.Parse(hClassBooking["id_member"].ToString());
+                        // Create a corresponding member object with all the particular member info loaded into it
+                        Member clMember = new Member(id_member);
+                        // If a member with this id_member actually exist, then add the member object to the list
+                        if(clMember.Id_member != -1)
+                            this.lclAttendants.Add(clMember);
                     }
-                    this.lmAttendants = Members;
                 }
             }
         }
 
         /**
-         * @desc Method for checking if there is any overlap
-         * @params [int id_class_instance, ] This identifies the class instance uniquely.
-         * @return [bool] Returns true if ... and false if ....
+         * @desc Method for checking if there is any overlap of class instances in the same room or same instructor at conflicting times 
+         * @params [string] sDate has the date of the class instance
+         * @params [string] id_room is the room where the class instance takes place
+         * @params [string] id_staff is the instructor on this occasion
+         * @params [string] sStartTime is the start time
+         * @params [string] sEndTime is the end time
+         * @return [bool] Returns true if there is an overlap and false if everything is green ligth
          */
-//Overlap of what?
-        public bool bCheckOverlap(string sDate, string id_room, string id_staff, string sStartTime, string sEndTime)
+        public bool bCheckOverlap(string date, string id_room, string id_staff, string dtartTime, string endTime)
         {
             // Create mysql connection
             mySqlConn conn = new mySqlConn();
             conn.connect();
             // Create the overlap check query
-            string sQuery = "SELECT * FROM gym.class_instance WHERE date = '" + sDate + "' AND (id_room = '" + id_room + "' OR id_staff = '" + id_staff + "') AND (" +
-                            "(start_time BETWEEN '" + sStartTime + "' AND '" + sEndTime + "') OR " +
-                            "(end_time BETWEEN '" + sStartTime + "' AND '" + sEndTime + "') OR " +
-                            "(start_time < '" + sStartTime + "' AND end_time > '" + sEndTime + "') OR " +
-                            "(start_time > '" + sStartTime + "' AND end_time < '" + sEndTime + "'))" + ((this.Id_class_instance != -1)?"  AND id_class_instance != '"+this.Id_class_instance+"'":"");
+            string sQuery = "SELECT * FROM gym.class_instance WHERE date = '" + date + "' AND (id_room = '" + id_room + "' OR id_staff = '" + id_staff + "') AND (" +
+                            "(start_time BETWEEN '" + startTime + "' AND '" + endTime + "') OR " +
+                            "(end_time BETWEEN '" + startTime + "' AND '" + endTime + "') OR " +
+                            "(start_time < '" + startTime + "' AND end_time > '" + endTime + "') OR " +
+                            "(start_time > '" + startTime + "' AND end_time < '" + endTime + "'))" + ((this.Id_class_instance != -1)?"  AND id_class_instance != '"+this.Id_class_instance+"'":"");
             // Launch the overlap check query and load the result into a hashtable
             List<Hashtable> lhResultset = conn.lhSqlQuery(sQuery);
-
-            // Check if we found the user
-//What user? Why?
+            // If there is any result then there is an overlap
             if ((int)lhResultset.Count >= 1)
                 return true;   
-
+            // Otherwise ther is no overlap
             return false;
         }
 
@@ -195,14 +194,14 @@ namespace Gym_administration
             // Create mysql connection
             mySqlConn conn = new mySqlConn();
             conn.connect();
-
+            // SAVING THE CLASS INSTANCE INTO CLASS_INSTANCE
             // Check whether there is a new id_class_instance assigned to this class instance, 
             // if not then this a new class to save
             if (this.Id_class_instance == -1)
             {
                 // Create the save query
                 string sQuery = "insert into `gym`.`class_instance` (`id_class_instance`, `id_class`, `id_staff`, `date`, `start_time`, `end_time`, `frequency`, `id_room`) values " +
-                                "(NULL, '" + this.ClClass.Id_class + "', '" + this.Id_staff + "', '" + Utils.sGetMysqlDate(this.SDateStart) + "', '" + this.SStartTime + "', '" + this.SEndTime + "', '" + this.SFrequency + "', '" + this.ClRoom.Id_room + "');";
+                                "(NULL, '" + this.ClClass.Id_class + "', '" + this.Id_staff + "', '" + Utils.sGetMysqlDate(this.DateStart) + "', '" + this.StartTime + "', '" + this.EndTime + "', '" + this.Frequency + "', '" + this.ClRoom.Id_room + "');";
                 // Launch save query
                 int id_class_instance = conn.iInsert(sQuery);
                 // Check saving result
@@ -220,12 +219,12 @@ namespace Gym_administration
             // If an id_class_instance already exists for this class instance, then this is an existing class instance to update
             else 
             {
-                string sQuery = "UPDATE class_instance SET id_staff= '" + this.Id_staff + "', date = '" + Utils.sGetMysqlDate(this.SDateStart) + "', start_time = '" + this.SStartTime + "', end_time = '" + this.SEndTime + "', frequency = '" + this.SFrequency + "', id_room = '" + this.ClRoom.Id_room + "' " +
+                string sQuery = "UPDATE class_instance SET id_staff= '" + this.Id_staff + "', date = '" + Utils.sGetMysqlDate(this.DateStart) + "', start_time = '" + this.StartTime + "', end_time = '" + this.EndTime + "', frequency = '" + this.Frequency + "', id_room = '" + this.ClRoom.Id_room + "' " +
                                 "WHERE id_class_instance = '" + this.Id_class_instance + "'";
                 // Launch update query
-                int iRes = conn.iDeleteOrUpdate(sQuery);
+                int result = conn.iDeleteOrUpdate(sQuery);
                 // Check update result
-                if (iRes > 0)
+                if (result > 0)
                 {
                     MessageBox.Show("The class booking data has been updated succesfully!");
                 }
@@ -235,23 +234,28 @@ namespace Gym_administration
                     return false;
                 }
             }
-
-//I don't know what's happening here, Isidro please explain this too at some point in the future
-                if (this.lmAttendants.Count > 0)
+            // SAVING THE ATTENDANTS INTO CLASS_BOOKINGS
+                // If there are any attendants save them into the CLASS_BOOKINGS table
+                if (this.lclAttendants.Count > 0)
                 {
-                    StringBuilder sbQuery = new StringBuilder();
-                    sbQuery.Append("insert into `gym`.`class_bookings` (`id_class_booking`, `id_member`, `id_class_instance`, `booking_date`) values ");
-                    // Then we save the attendants
-                    int cnt = 0;
-                    string[] sValues = new string[this.lmAttendants.Count];
-                    foreach (Member mbr in this.lmAttendants)
+
+                    StringBuilder sbQueryClassBooking = new StringBuilder();
+                    // Create the first half of the insert query containing so far only the fields
+                    sbQueryClassBooking.Append("insert into `gym`.`class_bookings` (`id_class_booking`, `id_member`, `id_class_instance`, `booking_date`) values ");
+                    int i = 0;
+                    // Create a string array storing each second half of the queries, that is the values of each booking
+                    string[] aQueryClassBookingValues = new string[this.lclAttendants.Count];
+                    // Copy all values of each booking into each string in the array
+                    foreach (Member clMember in this.lclAttendants)
                     {
-                        sValues[cnt] = "(NULL, '" + mbr.IId_member + "', '" + this.Id_class_instance + "', NOW())";
-                        cnt++;
+                        aQueryClassBookingValues[i] = "(NULL, '" + clMember.Id_member + "', '" + this.Id_class_instance + "', NOW())";
+                        i++;
                     }
-                    sbQuery.Append(string.Join(", ", sValues));
-                    sbQuery.Append(" ON DUPLICATE KEY UPDATE booking_date = booking_date");
-                    int iLastMbrId = conn.iInsert(sbQuery.ToString());
+                    // It is possible to add more than one class booking into the CLASS_BOOKINGS table in the same query at the same time
+                    // so append each set of booking values one after the other at the end of the query, separated by comma
+                    sbQueryClassBooking.Append(string.Join(", ", aQueryClassBookingValues));
+                    sbQueryClassBooking.Append(" ON DUPLICATE KEY UPDATE booking_date = booking_date");
+                    int iLastMbrId = conn.iInsert(sbQueryClassBooking.ToString());
                     if (iLastMbrId != -1)
                     {
                         MessageBox.Show("The attendant has been enrolled!");

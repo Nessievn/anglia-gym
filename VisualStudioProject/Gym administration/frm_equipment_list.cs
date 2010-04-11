@@ -13,20 +13,20 @@ namespace Gym_administration
     public partial class frm_equipment_list : Form
     {
         
-        MyMessageBox myMessageBox;
+        frm_message_box frmMessageBox;
         frm_member frmMember;
         frm_staff frmStaff;
         frm_class_instance_arrange frmClass;
         bool IsBooking;
-        int Id_Member;
-        int Id_Staff;
-        int Id_ClassInstance;
+        int Id_member;
+        int Id_staff;
+        int Id_class_instance;
 
         public frm_equipment_list()
         {
-            Id_Member = -1;
-            Id_Staff = -1; 
-            Id_ClassInstance = -1;
+            Id_member = -1;
+            Id_staff = -1; 
+            Id_class_instance = -1;
             InitializeComponent();
             this.frmMember = null;
             this.frmStaff = null;
@@ -35,26 +35,26 @@ namespace Gym_administration
             rd_item_Checked();
         }
 
-        public frm_equipment_list(int id_Member, frm_member frmMember)
+        public frm_equipment_list(int id_member, frm_member frmMember)
         {
             IsBooking = true;
-            Id_Staff = -1; 
-            Id_ClassInstance = -1;
+            Id_staff = -1; 
+            Id_class_instance = -1;
             
-            Id_Member = id_Member;
+            Id_member = id_member;
             this.frmMember = frmMember;
             InitializeComponent();
             rd_item.Checked = true;
             rd_item_Checked();
         }
 
-        public frm_equipment_list(int id_Staff, frm_staff frmStaff)
+        public frm_equipment_list(int id_staff, frm_staff frmStaff)
         {
             IsBooking = true;
-            Id_Member = -1;
-            Id_ClassInstance = -1;
+            Id_member = -1;
+            Id_class_instance = -1;
 
-            Id_Staff = id_Staff;
+            Id_staff = id_staff;
             this.frmStaff = frmStaff;
             InitializeComponent();
             rd_item.Checked = true;
@@ -62,14 +62,14 @@ namespace Gym_administration
         }
 
 
-        public frm_equipment_list(int iIdClassInstance, frm_class_instance_arrange frmClass)
+        public frm_equipment_list(int id_class_instance, frm_class_instance_arrange frmClass)
         {
 
             IsBooking = true;
-            Id_Member = -1;
-            Id_Staff = -1;
+            Id_member = -1;
+            Id_staff = -1;
 
-            Id_ClassInstance = iIdClassInstance;
+            Id_class_instance = id_class_instance;
             this.frmClass = frmClass;
             InitializeComponent();
             rd_item.Checked = true;
@@ -79,7 +79,7 @@ namespace Gym_administration
 
         private void frm_equipment_list_Load(object sender, EventArgs e)
         {
-            myMessageBox = new MyMessageBox();
+            frmMessageBox = new frm_message_box();
         }
 
         public void vLoadEqList(string type)
@@ -106,7 +106,7 @@ namespace Gym_administration
             if (IsBooking)
             {
                 string sEquipmentName = dg_equipment.Rows[e.RowIndex].Cells[1].Value.ToString();
-                string result = myMessageBox.ShowBox(Utils.MB_CUST2, "Would you like to Edit the " + sEquipmentName + " or Borrow it?", "Edit or Borrow?", "Edit", "Borrow");
+                string result = frmMessageBox.ShowBox(Utils.MB_CUST2, "Would you like to Edit the " + sEquipmentName + " or Borrow it?", "Edit or Borrow?", "Edit", "Borrow");
                 if (result == "Edit") 
                     isBooking = false; 
                 else 
@@ -119,7 +119,7 @@ namespace Gym_administration
                 {
                     string sId_Equipment = dg_equipment.Rows[e.RowIndex].Cells[0].Value.ToString();
                     int id_Equipment = int.Parse(sId_Equipment);
-                    frm_equipment frm_equipment = new frm_equipment(Id_Member, Id_Staff, Id_ClassInstance, id_Equipment, this);                    
+                    frm_equipment frm_equipment = new frm_equipment(Id_member, Id_staff, Id_class_instance, id_Equipment, this);                    
                     //frm_equipment.MdiParent = this.MdiParent;
                     //frm_equipment.Show();
                     frm_equipment.ShowDialog();

@@ -10,52 +10,52 @@ namespace Gym_administration
     class Room
     {
         private int id_room;
-
         public int Id_room
         {
             get { return id_room; }
             set { id_room = value; }
         }
-        private string sName;
 
-        public string SName
+        private string name;
+        public string Name
         {
-            get { return sName; }
-            set { sName = value; }
+            get { return name; }
+            set { name = value; }
         }
-        private int iSize;
 
-        public int ISize
+        private int size;
+        public int Size
         {
-            get { return iSize; }
-            set { iSize = value; }
+            get { return size; }
+            set { size = value; }
         }
-        private string sDescription;
 
-        public string SDescription
+        private string description;
+        public string Description
         {
-            get { return sDescription; }
-            set { sDescription = value; }
+            get { return description; }
+            set { description = value; }
         }
+
         public Room()
         {
             this.id_room = 0;
         }
 
-        public Room(int iIdRoom)
+        public Room(int id_room)
         {
             mySqlConn conn = new mySqlConn();
             conn.connect();
             // We launch the query
-            List<Hashtable> lhResultset = conn.lhSqlQuery("Select * from rooms WHERE id_room = '" + iIdRoom + "'");
+            List<Hashtable> lhResultset = conn.lhSqlQuery("Select * from rooms WHERE id_room = '" + id_room + "'");
 
             // Check if we found the member
             if ((int)lhResultset.Count > 0)
             {
                 this.Id_room = int.Parse(lhResultset[0]["id_room"].ToString());
-                this.ISize = int.Parse(lhResultset[0]["size"].ToString());
-                this.SDescription = lhResultset[0]["description"].ToString();
-                this.SName = lhResultset[0]["name"].ToString();
+                this.Size = int.Parse(lhResultset[0]["size"].ToString());
+                this.Description = lhResultset[0]["description"].ToString();
+                this.Name = lhResultset[0]["name"].ToString();
             }
         }
 
@@ -66,8 +66,8 @@ namespace Gym_administration
                 mySqlConn conn = new mySqlConn();
                 conn.connect();
                 string sQuery = "DELETE FROM rooms WHERE id_room = '"+this.Id_room+"'";
-                int iRes = conn.iDeleteOrUpdate(sQuery);
-                if (iRes > 0)
+                int result = conn.iDeleteOrUpdate(sQuery);
+                if (result > 0)
                 {
                     MessageBox.Show("The room data has been deleted succesfully!");
                     return true;
@@ -89,7 +89,7 @@ namespace Gym_administration
             // Field checking
             string sQuery;
 
-            if (this.SName == "")
+            if (this.Name == "")
             {
                 MessageBox.Show("Please Insert a name.");
             }
@@ -100,7 +100,7 @@ namespace Gym_administration
                 if (this.Id_room == 0)
                 {
                     sQuery = "insert into `gym`.`rooms` (`id_room`, `name`, `size`, `description`) values " +
-                             "(NULL, '" + this.SName + "', '" + this.ISize + "', '" + this.SDescription + "')";
+                             "(NULL, '" + this.Name + "', '" + this.Size + "', '" + this.Description + "')";
 
                     int iIdRoom = conn.iInsert(sQuery);
                     if (iIdRoom != 1)
@@ -117,7 +117,7 @@ namespace Gym_administration
                 }
                 else
                 {
-                    sQuery = "UPDATE rooms SET name = '" + this.SName + "', size = '" + this.ISize + "', description = '" + this.SDescription + "' " +
+                    sQuery = "UPDATE rooms SET name = '" + this.Name + "', size = '" + this.Size + "', description = '" + this.Description + "' " +
                              " WHERE id_room = '" + this.Id_room + "'";
 
                     int iRes = conn.iDeleteOrUpdate(sQuery);

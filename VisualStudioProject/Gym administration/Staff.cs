@@ -10,115 +10,115 @@ namespace Gym_administration
 {
     class Staff : Person
     {
-        private int iId_staff;
+        private int id_staff;
 
-        public int IId_staff
+        public int Id_staff
         {
-            get { return iId_staff; }
-            set { iId_staff = value; }
+            get { return id_staff; }
+            set { id_staff = value; }
         }
 
-        private string sPosition;
+        private string position;
 
-        public string SPosition
+        public string Position
         {
-            get { return sPosition; }
-            set { sPosition = value; }
+            get { return position; }
+            set { position = value; }
         }
 
-        private string sContractType;
+        private string contractType;
 
-        public string SContractType
+        public string ContractType
         {
-            get { return sContractType; }
-            set { sContractType = value; }
+            get { return contractType; }
+            set { contractType = value; }
         }
 
 
-        private string sEmerg_contact_name;
+        private string emergContactName;
 
-        public string SEmerg_contact_name
+        public string EmergContactName
         {
-            get { return sEmerg_contact_name; }
-            set { sEmerg_contact_name = value; }
+            get { return emergContactName; }
+            set { emergContactName = value; }
         }
-        private string sEmerg_contact_relation;
+        private string emergContactRelation;
 
-        public string SEmerg_contact_relation
+        public string EmergContactRelation
         {
-            get { return sEmerg_contact_relation; }
-            set { sEmerg_contact_relation = value; }
+            get { return emergContactRelation; }
+            set { emergContactRelation = value; }
         }
-        private string sEmerg_contact_phone;
+        private string emergContactPhone;
 
-        public string SEmerg_contact_phone
+        public string EmergContactPhone
         {
-            get { return sEmerg_contact_phone; }
-            set { sEmerg_contact_phone = value; }
+            get { return emergContactPhone; }
+            set { emergContactPhone = value; }
         }
-        private string sEmerg_contact_mobile;
+        private string emergContactMobile;
 
-        public string SEmerg_contact_mobile
+        public string EmergContactMobile
         {
-            get { return sEmerg_contact_mobile; }
-            set { sEmerg_contact_mobile = value; }
+            get { return emergContactMobile; }
+            set { emergContactMobile = value; }
         }
-        private string sMedical_allergies;
+        private string medicalAllergies;
 
-        public string SMedical_allergies
+        public string MedicalAllergies
         {
-            get { return sMedical_allergies; }
-            set { sMedical_allergies = value; }
+            get { return medicalAllergies; }
+            set { medicalAllergies = value; }
         }
-        private string sMedical_notes;
+        private string medicalNotes;
 
-        public string SMedical_notes
+        public string MedicalNotes
         {
-            get { return sMedical_notes; }
-            set { sMedical_notes = value; }
+            get { return medicalNotes; }
+            set { medicalNotes = value; }
         }
-        private string sQualifications;
+        private string qualifications;
 
-        public string SQualifications
+        public string Qualifications
         {
-            get { return sQualifications; }
-            set { sQualifications = value; }
+            get { return qualifications; }
+            set { qualifications = value; }
         }
-        private string sPicture;
+        private string picture;
 
-        public string SPicture
+        public string Picture
         {
-            get { return sPicture; }
-            set { sPicture = value; }
+            get { return picture; }
+            set { picture = value; }
         }
-        private string sMedical_doctor_name;
+        private string medicalDoctorName;
 
-        public string SMedical_doctor_name
+        public string MedicalDoctorName
         {
-            get { return sMedical_doctor_name; }
-            set { sMedical_doctor_name = value; }
+            get { return medicalDoctorName; }
+            set { medicalDoctorName = value; }
         }
-        private string sMedical_phone;
+        private string medicalPhone;
 
-        public string SMedical_phone
+        public string MedicalPhone
         {
-            get { return sMedical_phone; }
-            set { sMedical_phone = value; }
+            get { return medicalPhone; }
+            set { medicalPhone = value; }
         }
-        private User usrUser;
+        private User clUser;
 
-        internal User UUser
+        internal User ClUser
         {
-            get { return usrUser; }
-            set { usrUser = value; }
+            get { return clUser; }
+            set { clUser = value; }
         }
 
-        private string sNatInsNumb;
+        private string natInsNumb;
 
-        public string SNatInsNumb
+        public string NatInsNumb
         {
-            get { return sNatInsNumb; }
-            set { sNatInsNumb = value; }
+            get { return natInsNumb; }
+            set { natInsNumb = value; }
         }
 
         private string sContractStart;
@@ -138,8 +138,8 @@ namespace Gym_administration
 
         public Staff()
         {
-            this.iId_staff = 0;
-            this.usrUser = new User();
+            this.Id_staff = 0;
+            this.clUser = new User();
         }
 
         public Staff(int iStaffId)
@@ -152,36 +152,36 @@ namespace Gym_administration
             // Check if we found the staff
             if ((int)lhResultset.Count > 0)
             {
-                this.usrUser = new User();
-                this.usrUser.IId_user = int.Parse(lhResultset[0]["id_user"].ToString());
-                this.usrUser.SLogin = lhResultset[0]["login"].ToString();
-                this.usrUser.SPassword = lhResultset[0]["password"].ToString();
-                this.usrUser.SProfile = lhResultset[0]["profile"].ToString();
-                this.IId_staff = int.Parse(lhResultset[0]["id_staff"].ToString());
-                this.SAaddress_2 = lhResultset[0]["address_2"].ToString();
-                this.SAddress_1 = lhResultset[0]["address_1"].ToString();
-                this.SBirthdate = lhResultset[0]["birthdate"].ToString();
-                this.SCity = lhResultset[0]["city"].ToString();
-                this.SCounty = lhResultset[0]["county"].ToString();
-                this.SEmail = lhResultset[0]["email"].ToString();
-                this.SEmerg_contact_name = lhResultset[0]["emerg_contact_name"].ToString();
-                this.SEmerg_contact_phone = lhResultset[0]["emerg_contact_telephone"].ToString();
-                this.SEmerg_contact_relation = lhResultset[0]["emerg_contact_relation"].ToString();
-                this.SEmerg_contact_mobile = lhResultset[0]["emerg_contact_mobile"].ToString();
-                this.SFirstName = lhResultset[0]["firstName"].ToString();
-                this.SLastName = lhResultset[0]["lastName"].ToString();
-                this.SMedical_allergies = lhResultset[0]["allergies"].ToString();
-                this.SMedical_doctor_name = lhResultset[0]["medical_doctor_name"].ToString();
-                this.SMedical_notes = lhResultset[0]["medicalNotes"].ToString();
-                this.SQualifications = lhResultset[0]["qualifications"].ToString();
-                this.SMedical_phone = lhResultset[0]["medical_phone"].ToString();
-                this.SPicture = "none";
-                this.SPostalcode = lhResultset[0]["postalcode"].ToString();
-                this.sContractType = lhResultset[0]["contract_type"].ToString();
-                this.SMobile = lhResultset[0]["mobile"].ToString();
-                this.SPhone = lhResultset[0]["phone"].ToString();
-                this.SPosition = lhResultset[0]["position"].ToString();
-                this.SNatInsNumb = lhResultset[0]["natinsnumber"].ToString();
+                this.clUser = new User();
+                this.clUser.Id_user = int.Parse(lhResultset[0]["id_user"].ToString());
+                this.clUser.Login = lhResultset[0]["login"].ToString();
+                this.clUser.Password = lhResultset[0]["password"].ToString();
+                this.clUser.Profile = lhResultset[0]["profile"].ToString();
+                this.id_staff = int.Parse(lhResultset[0]["id_staff"].ToString());
+                this.Address_2 = lhResultset[0]["address_2"].ToString();
+                this.Address_1 = lhResultset[0]["address_1"].ToString();
+                this.Birthdate = lhResultset[0]["birthdate"].ToString();
+                this.City = lhResultset[0]["city"].ToString();
+                this.County = lhResultset[0]["county"].ToString();
+                this.Email = lhResultset[0]["email"].ToString();
+                this.EmergContactName = lhResultset[0]["emerg_contact_name"].ToString();
+                this.EmergContactPhone = lhResultset[0]["emerg_contact_telephone"].ToString();
+                this.EmergContactRelation = lhResultset[0]["emerg_contact_relation"].ToString();
+                this.EmergContactMobile = lhResultset[0]["emerg_contact_mobile"].ToString();
+                this.FirstName = lhResultset[0]["firstName"].ToString();
+                this.LastName = lhResultset[0]["lastName"].ToString();
+                this.MedicalAllergies = lhResultset[0]["allergies"].ToString();
+                this.MedicalDoctorName = lhResultset[0]["medical_doctor_name"].ToString();
+                this.MedicalNotes = lhResultset[0]["medicalNotes"].ToString();
+                this.Qualifications = lhResultset[0]["qualifications"].ToString();
+                this.MedicalPhone = lhResultset[0]["medical_phone"].ToString();
+                this.Picture = "none";
+                this.PostalCode = lhResultset[0]["postalcode"].ToString();
+                this.ContractType = lhResultset[0]["contract_type"].ToString();
+                this.Mobile = lhResultset[0]["mobile"].ToString();
+                this.Phone = lhResultset[0]["phone"].ToString();
+                this.Position = lhResultset[0]["position"].ToString();
+                this.NatInsNumb = lhResultset[0]["natinsnumber"].ToString();
                 this.SContractFinish = lhResultset[0]["contract_finish"].ToString();
                 this.SContractStart = lhResultset[0]["contract_start"].ToString();
             }
@@ -193,7 +193,7 @@ namespace Gym_administration
          public bool bSave()
         {
             // Field checking
-            string sMysqlDate = Utils.sGetMysqlDate(this.SBirthdate);
+            string sMysqlDate = Utils.sGetMysqlDate(this.Birthdate);
             string sMysqlStartDate = Utils.sGetMysqlDate(this.SContractStart);
             string sMysqlFinishDate = Utils.sGetMysqlDate(this.SContractFinish);
             string sQuery;
@@ -202,47 +202,47 @@ namespace Gym_administration
             {
                 MessageBox.Show("The date is in incorrect format");
             }
-            else if (Utils.bValidateEmail(this.SEmail) == false)
+            else if (Utils.bValidateEmail(this.Email) == false)
             {
                 MessageBox.Show("The E-Mail address is incorrect");
             }
             else
             {
                 // First the user object is filled
-                usrUser.SLogin = this.SEmail;
-                usrUser.SPassword = this.SBirthdate;
-                usrUser.SProfile = "staff";
-                usrUser.BActive = true;
+                clUser.Login = this.Email;
+                clUser.Password = this.Birthdate;
+                clUser.Profile = "staff";
+                clUser.IsActive = true;
 
                 // then the bSave method is called
-                if (usrUser.bSave())
+                if (clUser.bSave())
                 {
                     mySqlConn conn = new mySqlConn();
                     conn.connect();
 
-                     if (this.IId_staff == 0)
+                     if (this.id_staff == 0)
                     {
                         sQuery = "insert into `gym`.`staff` (`id_staff`, `firstName`, `lastName`, `birthdate`, `address_1`, `city`, `county`, `postalcode`, `contract_type`, `natinsnumber`, `position`, `contract_start`, `contract_finish`, `id_user`, `address_2`, `emerg_contact_name`, `emerg_contact_telephone`, `emerg_contact_relation`, `allergies`, `medicalNotes`, `qualifications`, `phone`, `mobile`, `email`, `emerg_contact_mobile`, `medical_doctor_name`, `medical_phone`) values " +
-                                 "(NULL, '" + this.SFirstName + "', '" + this.SLastName + "', '" + sMysqlDate + "', '" + this.SAddress_1 + "', '" + this.SCity + "', '" + this.SCounty + "', '" + this.SPostalcode + "', '" + this.SContractType + "', '" + this.SNatInsNumb + "', '" + this.SPosition + "', '" + sMysqlStartDate + "', '" + sMysqlFinishDate + "', '" + usrUser.IId_user + "', '" + this.SAaddress_2 + "', '" + this.SEmerg_contact_name + "', '" + this.SEmerg_contact_phone + "', '" + this.SEmerg_contact_relation + "', '" + this.SMedical_allergies + "', '" + this.SMedical_notes + "','" + this.SQualifications + "', '" + this.SPhone + "','" + this.SMobile + "','" + this.SEmail + "','" + this.SEmerg_contact_mobile + "','" + this.SMedical_doctor_name + "','" + this.SMedical_phone + "')";
+                                 "(NULL, '" + this.FirstName + "', '" + this.LastName + "', '" + sMysqlDate + "', '" + this.Address_1 + "', '" + this.City + "', '" + this.County + "', '" + this.PostalCode + "', '" + this.ContractType + "', '" + this.NatInsNumb + "', '" + this.Position + "', '" + sMysqlStartDate + "', '" + sMysqlFinishDate + "', '" + clUser.Id_user + "', '" + this.Address_2 + "', '" + this.EmergContactName + "', '" + this.EmergContactPhone + "', '" + this.EmergContactRelation + "', '" + this.MedicalAllergies + "', '" + this.MedicalNotes + "','" + this.Qualifications + "', '" + this.Phone + "','" + this.Mobile + "','" + this.Email + "','" + this.EmergContactMobile + "','" + this.MedicalDoctorName + "','" + this.MedicalPhone + "')";
 
                         int iMbrId = conn.iInsert(sQuery);
                         if (iMbrId > 1)
                         {
-                            this.IId_staff = iMbrId;
+                            this.id_staff = iMbrId;
                             MessageBox.Show("The new staff member has been added to the databse succesfully!");
                             return true;
                         }
                         else
                         {
                             MessageBox.Show("There was a problem adding the new user, please check your data!");
-                            usrUser.bDelete();
+                            clUser.bDelete();
                             return false;
                         }
                     }
                     else
                     {
-                        sQuery = "UPDATE staff SET firstName = '" + this.SFirstName + "', lastName = '" + this.SLastName + "', birthdate = '" + sMysqlDate + "', address_1 = '" + this.SAddress_1 + "', city = '" + this.SCity + "', county = '" + this.SCounty + "', postalcode = '" + this.SPostalcode + "', contract_type = '" + this.SContractType + "', contract_start = '" + sMysqlStartDate + "', contract_finish = '" + sMysqlFinishDate + "', address_2 = '" + this.SAaddress_2 + "', emerg_contact_name = '" + this.SEmerg_contact_name + "', emerg_contact_relation = '" + this.SEmerg_contact_relation + "', emerg_contact_telephone = '" + this.SEmerg_contact_phone + "', emerg_contact_mobile = '" + this.SEmerg_contact_mobile + "', allergies = '" + this.SMedical_allergies + "', medicalNotes = '" + this.SMedical_notes + "', qualifications = '" + this.SQualifications + "', medical_doctor_name = '" + this.SMedical_doctor_name + "', medical_phone = '" + this.SMedical_phone + "', email = '" + this.SEmail + "', phone = '" + this.SPhone + "', mobile = '" + this.SMobile + "', natinsnumber = '" + this.SNatInsNumb + "', position = '" + this.SPosition + "' " +
-                                 " WHERE id_staff = '"+this.IId_staff+"'";
+                        sQuery = "UPDATE staff SET firstName = '" + this.FirstName + "', lastName = '" + this.LastName + "', birthdate = '" + sMysqlDate + "', address_1 = '" + this.Address_1 + "', city = '" + this.City + "', county = '" + this.County + "', postalcode = '" + this.PostalCode + "', contract_type = '" + this.ContractType + "', contract_start = '" + sMysqlStartDate + "', contract_finish = '" + sMysqlFinishDate + "', address_2 = '" + this.Address_2 + "', emerg_contact_name = '" + this.EmergContactName + "', emerg_contact_relation = '" + this.EmergContactRelation + "', emerg_contact_telephone = '" + this.EmergContactPhone + "', emerg_contact_mobile = '" + this.EmergContactMobile + "', allergies = '" + this.MedicalAllergies + "', medicalNotes = '" + this.MedicalNotes + "', qualifications = '" + this.Qualifications + "', medical_doctor_name = '" + this.MedicalDoctorName + "', medical_phone = '" + this.MedicalPhone + "', email = '" + this.Email + "', phone = '" + this.Phone + "', mobile = '" + this.Mobile + "', natinsnumber = '" + this.NatInsNumb + "', position = '" + this.Position + "' " +
+                                 " WHERE id_staff = '"+this.id_staff+"'";
      
                         int iRes = conn.iDeleteOrUpdate(sQuery);
                         if (iRes > 0)
@@ -253,7 +253,7 @@ namespace Gym_administration
                         else
                         {
                             MessageBox.Show("There was a problem updating the user information, please check your data!");
-                            usrUser.bDelete();
+                            clUser.bDelete();
                             return false;
                         }
                     }

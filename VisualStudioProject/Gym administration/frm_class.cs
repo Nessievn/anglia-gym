@@ -45,11 +45,11 @@ namespace Gym_administration
                 MessageBox.Show("The class could not be found");
             else
             {
-                txt_classdesc.Text = clClass.SDescription;
-                txt_classname.Text = clClass.SName;
-                //txt_classname.Text = clClass.SName;
+                txt_classdesc.Text = clClass.Description;
+                txt_classname.Text = clClass.Name;
+                //txt_classname.Text = clClass.Name;
 
-                if (clClass.SType == "Personal")
+                if (clClass.Type == "Personal")
                     rd_personal.Checked = true;
                 else
                     rd_group.Checked = true;
@@ -72,9 +72,9 @@ namespace Gym_administration
                 return;
             }
 
-            clClass.SDescription = txt_classdesc.Text;
-            clClass.SName = txt_classname.Text;
-            clClass.SType = sType;
+            clClass.Description = txt_classdesc.Text;
+            clClass.Name = txt_classname.Text;
+            clClass.Type = sType;
 
             clClass.bSave();
             if (this.frmClassList != null) this.frmClassList.vLoadClassList();

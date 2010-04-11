@@ -8,86 +8,86 @@ namespace Gym_administration
     // It's an abstract class because it is not instantiable
     public abstract class Person
     {
-        private string sFirstName;
+        private string firstName;
 
-        public string SFirstName
+        public string FirstName
         {
-            get { return sFirstName; }
-            set { sFirstName = value; }
+            get { return firstName; }
+            set { firstName = value; }
         }
-        private string sLastName;
+        private string lastName;
 
-        public string SLastName
+        public string LastName
         {
-            get { return sLastName; }
-            set { sLastName = value; }
+            get { return lastName; }
+            set { lastName = value; }
         }
-        private string sBirthdate;
+        private string birthdate;
 
-        public string SBirthdate
+        public string Birthdate
         {
-            get { return sBirthdate; }
-            set { sBirthdate = value; }
+            get { return birthdate; }
+            set { birthdate = value; }
         }
-        private string sAddress_1;
+        private string address_1;
 
-        public string SAddress_1
+        public string Address_1
         {
-            get { return sAddress_1; }
-            set { sAddress_1 = value; }
+            get { return address_1; }
+            set { address_1 = value; }
         }
-        private string sAaddress_2;
+        private string address_2;
 
-        public string SAaddress_2
+        public string Address_2
         {
-            get { return sAaddress_2; }
-            set { sAaddress_2 = value; }
+            get { return address_2; }
+            set { address_2 = value; }
         }
-        private string sCity;
+        private string city;
 
-        public string SCity
+        public string City
         {
-            get { return sCity; }
-            set { sCity = value; }
+            get { return city; }
+            set { city = value; }
         }
-        private string sCounty;
+        private string county;
 
-        public string SCounty
+        public string County
         {
-            get { return sCounty; }
-            set { sCounty = value; }
+            get { return county; }
+            set { county = value; }
         }
-        private string sPostalcode;
+        private string postalCode;
 
-        public string SPostalcode
+        public string PostalCode
         {
-            get { return sPostalcode; }
-            set { sPostalcode = value; }
-        }
-
-        private string sEmail;
-
-        public string SEmail
-        {
-            get { return sEmail; }
-            set { sEmail = value; }
+            get { return postalCode; }
+            set { postalCode = value; }
         }
 
+        private string email;
 
-        private string sPhone;
-
-        public string SPhone
+        public string Email
         {
-            get { return sPhone; }
-            set { sPhone = value; }
+            get { return email; }
+            set { email = value; }
         }
 
-        private string sMobile;
 
-        public string SMobile
+        private string phone;
+
+        public string Phone
         {
-            get { return sMobile; }
-            set { sMobile = value; }
+            get { return phone; }
+            set { phone = value; }
+        }
+
+        private string mobile;
+
+        public string Mobile
+        {
+            get { return mobile; }
+            set { mobile = value; }
         }
 
     }

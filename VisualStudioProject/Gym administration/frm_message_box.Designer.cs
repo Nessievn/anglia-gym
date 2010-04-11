@@ -1,6 +1,6 @@
 ﻿namespace Gym_administration
 {
-    partial class MyMessageBox
+    partial class frm_message_box
     {
         /// <summary>
         /// Required designer variable.

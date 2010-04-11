@@ -1,39 +1,47 @@
-﻿//Variable naming conventions in this project:
+﻿// Variable naming conventions in this project:
 //
-//Class name:
-//ClassName 
-//(stored in ClassName.cs)
+// Class name:
+// ClassName 
+// (stored in ClassName.cs)
 //
-//Windows Form Class name:
-//frm_windows_form 
-//(stored in frm_windows_form.cs)
+// Windows Form Class name:
+// frm_windows_form 
+// (stored in frm_windows_form.cs)
 //
-//Locally declared forms:
-//frmWindowsForm
+// Locally declared forms:
+// frmWindowsForm
 //
-//Primitive types which are private or local to method:
-//int iVariableName, string sVariableName
+// Primitive types:
+// variableName
 //
-//Primitive types which are public or global:
-//int IVariableName, string SVariableName
+// Get/Set for primitive types:
+// VariableName
 //
-//Class type variables which are private or local:
-//(Locally declared classes)
-//clClassName
+// Arrays, Lists (type of objects are marked if locally declared class as cl (class) or h (hashtable))
+// aArray, lList, lclClassList, lhHashtableList etc
 //
-//Class type variables which are public or global:
-//(Locally declared classes)
-//ClClassName
+// Get set for Arrays, Lists
+// AArray, Llist, LclClassList etc
 //
-//Exceptions:
-//All entity identifiers regardless of primitive type:
+// Class type variables:
+// clClassName
 //
-//Private/Local:
-//id_entity_identifier
+// Get/Set for class type variables :
+// ClClassName
 //
-//Public/Global
-//Id_entity_identifier
-
+// Locally declared classes:
+// cnClassName
+//
+// Exceptions:
+// All entity identifiers regardless of primitive type:
+//
+// Private/Local:
+// id_entity_identifier
+//
+// Public/Global
+// Id_entity_identifier
+//
+// Method return type: bool bSave()
 
 
 
@@ -67,27 +75,27 @@ namespace Gym_administration
         }
 
         // name field from CLASSES table stored here
-        private string sName;
-        public string SName
+        private string name;
+        public string Name
         {
-            get { return sName; }
-            set { sName = value; }
+            get { return name; }
+            set { name = value; }
         }
 
         // description field from CLASSES table stored here
-        private string sDescription;
-        public string SDescription
+        private string description;
+        public string Description
         {
-            get { return sDescription; }
-            set { sDescription = value; }
+            get { return description; }
+            set { description = value; }
         }
 
         // type field from CLASSES table stored here
-        private string sType;
-        public string SType
+        private string type;
+        public string Type
         {
-            get { return sType; }
-            set { sType = value; }
+            get { return type; }
+            set { type = value; }
         }
 
 
@@ -106,7 +114,7 @@ namespace Gym_administration
         /**
          * @desc Constructor
          * Loads in all fields from a single "Gym Class" row of the CLASSES table.
-         * @params [int id_Class] This identifies the class uniquely.
+         * @params [int] id_Class identifies the class uniquely.
          * @return [none] No directly returned data.
          */
         public Class(int id_Class)
@@ -121,9 +129,9 @@ namespace Gym_administration
             {
                 // Fill in all class fields with table data
                 this.Id_class = int.Parse(lhResultset[0]["id_class"].ToString());
-                this.SType = lhResultset[0]["type"].ToString();
-                this.SDescription = lhResultset[0]["description"].ToString();
-                this.SName = lhResultset[0]["name"].ToString();
+                this.Type = lhResultset[0]["type"].ToString();
+                this.Description = lhResultset[0]["description"].ToString();
+                this.Name = lhResultset[0]["name"].ToString();
             }
         }
 
@@ -171,7 +179,7 @@ namespace Gym_administration
             string sQuery;
 
             // Checking user input
-            if (this.SName == "")
+            if (this.Name == "")
             {
                 MessageBox.Show("Please Insert a name.");
             }
@@ -186,7 +194,7 @@ namespace Gym_administration
                 {
                     // Create the save query
                     sQuery = "insert into `gym`.`classes` (`id_class`, `name`, `type`, `description`) values " +
-                             "(NULL, '" + this.SName + "', '" + this.SType + "', '" + this.SDescription + "')";
+                             "(NULL, '" + this.Name + "', '" + this.Type + "', '" + this.Description + "')";
                     // Launch save query
                     int id_Class = conn.iInsert(sQuery);
                     // Check saving result
@@ -206,7 +214,7 @@ namespace Gym_administration
                 else
                 {
                     // Create update query
-                    sQuery = "UPDATE classes SET name = '" + this.SName + "', description = '" + this.SDescription + "' " +
+                    sQuery = "UPDATE classes SET name = '" + this.Name + "', description = '" + this.Description + "' " +
                              " WHERE id_class = '" + this.Id_class + "'";
 
                     // Launch update query

@@ -14,16 +14,16 @@ namespace Gym_administration
 {
     public partial class frm_member_list : Form
     {
-        public ClassInstance ciClassInstance;
+        ClassInstance ciClassInstance;
         frm_payments frmPayments = null;
-        public bool bViewAttendants;
+        public bool BViewAttendants;
         //public bool bPayments;
         
-        public frm_member_list(ClassInstance ciClassInstance_t, bool bViewAttendants)
+        public frm_member_list(ClassInstance ciClassInstance, bool bViewAttendants)
         {
             InitializeComponent();
-            this.ciClassInstance = ciClassInstance_t;
-            this.bViewAttendants = bViewAttendants;
+            this.ciClassInstance = ciClassInstance;
+            this.BViewAttendants = bViewAttendants;
         }
 
         public frm_member_list(frm_payments frmPayments)
@@ -44,7 +44,7 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
-            if(this.bViewAttendants == false)
+            if(this.BViewAttendants == false)
                 sQuery = "SELECT id_member MID, member_number NO, firstName as 'First Name', lastName 'Last Name', DATE_FORMAT(birthdate,\"%d/%m/%Y\") DOB, email 'EMail' FROM members ORDER BY id_member";
             else
                 sQuery = "SELECT cb.id_member MID, m.member_number NO, m.firstName as 'First Name', m.lastName 'Last Name', DATE_FORMAT(m.birthdate,\"%d/%m/%Y\") DOB, email 'EMail' FROM members m, class_bookings cb WHERE m.id_member = cb.id_member AND cb.id_class_instance = '" + this.ciClassInstance.Id_class_instance + "' ORDER BY m.id_member";
@@ -77,7 +77,7 @@ namespace Gym_administration
                     return;
                 }
 
-                if (this.ciClassInstance.Id_class_instance != -1 && this.bViewAttendants == false)
+                if (this.ciClassInstance.Id_class_instance != -1 && this.BViewAttendants == false)
                 {
                     DialogResult res = MessageBox.Show("Enroll this member to the class?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (res == DialogResult.Yes)
@@ -96,7 +96,7 @@ namespace Gym_administration
                         }
 
                         Member mbr_t = new Member(iMbrId);
-                        this.ciClassInstance.lmAttendants.Add(mbr_t);
+                        this.ciClassInstance.LclAttendants.Add(mbr_t);
                         this.ciClassInstance.bSave();
                     }
                 }

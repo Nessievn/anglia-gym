@@ -22,7 +22,7 @@ namespace Gym_administration
             conn.connect();
             BindingSource itemsSource = new BindingSource();
             
-            string sQuery = "SELECT DISTINCT eb.date_due Due, e.name Name, eb.borrowedamount Amount, eb.id_equipment EqID, eb.id_eq_booking BkID FROM equipment e, equipment_bookings eb WHERE eb.id_member = " + mbrMember.IId_member + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY Due";
+            string sQuery = "SELECT DISTINCT eb.date_due Due, e.name Name, eb.borrowedamount Amount, eb.id_equipment EqID, eb.id_eq_booking BkID FROM equipment e, equipment_bookings eb WHERE eb.id_member = " + mbrMember.Id_member + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY Due";
             itemsSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
             dg_currentborrows.DataSource = itemsSource;
             dg_currentborrows.AllowUserToAddRows = false;
@@ -74,36 +74,37 @@ namespace Gym_administration
             button_equipmentbooking.Show();
 
             mbrMember = new Member(iMemberId);
-            if (mbrMember.IId_member < 1)
+            if (mbrMember.Id_member < 1)
                 MessageBox.Show("The member could not be found");
             else
             {
 
                 vLoadBookedList();
 
-                 txt_firstName.Text = mbrMember.SFirstName;
-                 txt_lastName.Text = mbrMember.SLastName;
-                 chk_active.Checked = mbrMember.BIs_active;
-                 txt_dob.Text = Utils.sGetCsharpDateFromMysqlDate(mbrMember.SBirthdate);
-                 txt_address1.Text = mbrMember.SAddress_1;
-                 txt_address2.Text = mbrMember.SAaddress_2;
-                 txt_city.Text = mbrMember.SCity;
-                 txt_county.Text = mbrMember.SCounty;
-                 txt_emerg_mobile.Text = mbrMember.SEmerg_contact_mobile;
-                 txt_emerg_name.Text = mbrMember.SEmerg_contact_name;
-                 txt_emerg_telephone.Text = mbrMember.SEmerg_contact_phone;
-                 txt_emerg_relation.Text = mbrMember.SEmerg_contact_relation;
-                 txt_allergies.Text = mbrMember.SMedical_allergies;
-                 txt_doctor_name.Text = mbrMember.SMedical_doctor_name;
-                 txt_medical_notes.Text = mbrMember.SMedical_notes;
-                 txt_doctor_phone.Text = mbrMember.SMedical_phone;
-                 txt_membernum.Text = mbrMember.SMemberNumber;
-                 cmb_paymenttype.Text = mbrMember.SPayment_method;
-                 txt_pc.Text = mbrMember.SPostalcode;
-                 cmb_type.Text = mbrMember.SType;
-                 txt_email.Text = mbrMember.SEmail;
-                 txt_mobile.Text = mbrMember.SMobile;
-                 txt_telephone.Text = mbrMember.SPhone;
+                 txt_firstName.Text = mbrMember.FirstName;
+                 txt_lastName.Text = mbrMember.LastName;
+                 chk_active.Checked = mbrMember.IsActive;
+                 txt_dob.Text = Utils.sGetCsharpDateFromMysqlDate(mbrMember.Birthdate);
+                 txt_address1.Text = mbrMember.Address_1;
+                 txt_address2.Text = mbrMember.Address_2;
+                 txt_city.Text = mbrMember.City;
+                 txt_county.Text = mbrMember.County;
+                 txt_emerg_mobile.Text = mbrMember.EmergContactMobile;
+                 txt_emerg_name.Text = mbrMember.EmergContactName;
+                 txt_emerg_telephone.Text = mbrMember.EmergContactPhone;
+                 txt_emerg_relation.Text = mbrMember.EmergContactRelation;
+                 txt_allergies.Text = mbrMember.MedicalAllergies;
+                 txt_doctor_name.Text = mbrMember.MedicalDoctorName;
+                 txt_medical_notes.Text = mbrMember.MedicalNotes;
+                 txt_doctor_phone.Text = mbrMember.MedicalPhone;
+                 txt_membernum.Text = mbrMember.Id_member.ToString();
+                 cmb_paymenttype.Text = mbrMember.PaymentMethod;
+                 txt_pc.Text = mbrMember.PostalCode;
+                 cmb_type.Text = mbrMember.Type;
+//!!!
+                 txt_email.Text = mbrMember.Email;
+                 txt_mobile.Text = mbrMember.Mobile;
+                 txt_telephone.Text = mbrMember.Phone;
             }
         }
 
@@ -115,30 +116,30 @@ namespace Gym_administration
 
         private void button_save_Click(object sender, EventArgs e)
         {
-            mbrMember.SFirstName = txt_firstName.Text;
-            mbrMember.SLastName = txt_lastName.Text;
-            mbrMember.BIs_active = (chk_active.Checked) ? true : false;
-            mbrMember.SBirthdate = txt_dob.Text;
-            mbrMember.SAaddress_2 = txt_address2.Text;
-            mbrMember.SAddress_1 = txt_address1.Text;
-            mbrMember.SCity = txt_city.Text;
-            mbrMember.SCounty = txt_county.Text;
-            mbrMember.SEmerg_contact_mobile = txt_emerg_mobile.Text;
-            mbrMember.SEmerg_contact_name = txt_emerg_name.Text;
-            mbrMember.SEmerg_contact_phone = txt_emerg_telephone.Text;
-            mbrMember.SEmerg_contact_relation = txt_emerg_relation.Text;
-            mbrMember.SMedical_allergies = txt_allergies.Text;
-            mbrMember.SMedical_doctor_name = txt_doctor_name.Text;
-            mbrMember.SMedical_notes = txt_medical_notes.Text;
-            mbrMember.SMedical_phone = txt_doctor_phone.Text;
-            mbrMember.SMemberNumber = txt_membernum.Text;
-            mbrMember.SPayment_method = cmb_paymenttype.Text;
-            mbrMember.SPicture = "none";
-            mbrMember.SPostalcode = txt_pc.Text;
-            mbrMember.SType = cmb_type.Text;
-            mbrMember.SEmail = txt_email.Text;
-            mbrMember.SPhone = txt_telephone.Text;
-            mbrMember.SMobile = txt_mobile.Text;
+            mbrMember.FirstName = txt_firstName.Text;
+            mbrMember.LastName = txt_lastName.Text;
+            mbrMember.IsActive = (chk_active.Checked) ? true : false;
+            mbrMember.Birthdate = txt_dob.Text;
+            mbrMember.Address_2 = txt_address2.Text;
+            mbrMember.Address_1 = txt_address1.Text;
+            mbrMember.City = txt_city.Text;
+            mbrMember.County = txt_county.Text;
+            mbrMember.EmergContactMobile = txt_emerg_mobile.Text;
+            mbrMember.EmergContactName = txt_emerg_name.Text;
+            mbrMember.EmergContactPhone = txt_emerg_telephone.Text;
+            mbrMember.EmergContactRelation = txt_emerg_relation.Text;
+            mbrMember.MedicalAllergies = txt_allergies.Text;
+            mbrMember.MedicalDoctorName = txt_doctor_name.Text;
+            mbrMember.MedicalNotes = txt_medical_notes.Text;
+            mbrMember.MedicalPhone = txt_doctor_phone.Text;
+            mbrMember.MemberNumber = txt_membernum.Text;
+            mbrMember.PaymentMethod = cmb_paymenttype.Text;
+            mbrMember.Picture = "none";
+            mbrMember.PostalCode = txt_pc.Text;
+            mbrMember.Type = cmb_type.Text;
+            mbrMember.Email = txt_email.Text;
+            mbrMember.Phone = txt_telephone.Text;
+            mbrMember.Mobile = txt_mobile.Text;
 
             mbrMember.bSave();
 
@@ -180,7 +181,7 @@ namespace Gym_administration
 
             // Creating the child form login
                                                                          
-            frm_equipment_list frmEquipmentList = new frm_equipment_list(mbrMember.IId_member,this);
+            frm_equipment_list frmEquipmentList = new frm_equipment_list(mbrMember.Id_member,this);
             //frmEquipmentList.MdiParent = this.MdiParent;
             //frmEquipmentList.Show();  
             
@@ -192,12 +193,12 @@ namespace Gym_administration
         private void dg_currentborrows_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             
-            string sEquipmentName = dg_currentborrows.Rows[e.RowIndex].Cells[1].Value.ToString();
-            int iBorrowedAmount = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[2].Value.ToString());
-            int iEqBookingId = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[4].Value.ToString());
+            string name = dg_currentborrows.Rows[e.RowIndex].Cells[1].Value.ToString();
+            int borrowedAmount = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[2].Value.ToString());
+            int id_eq_booking = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[4].Value.ToString());
 
-            MyMessageBox myMessageBox = new MyMessageBox();
-            string iresult = myMessageBox.ShowBox(Utils.MB_CUST4, "", "How many "+sEquipmentName+" would you like to return?",iBorrowedAmount.ToString());
+            frm_message_box myMessageBox = new frm_message_box();
+            string iresult = myMessageBox.ShowBox(Utils.MB_CUST4, "", "How many "+name+" would you like to return?",borrowedAmount.ToString());
  
  
  	                        //ref  http://social.msdn.microsoft.com/Forums/en-US/winforms/thread/84990ad2-5046-472b-b103-f862bfcd5dbc
@@ -210,16 +211,16 @@ namespace Gym_administration
                                 
                                 if ((int.Parse(iresult) > 0) && (iresult != "Cancel"))
                                 {
-                                    this.eqEquipmentBooked = new EquipmentBooked(iEqBookingId);
-                                    this.eqEquipmentBooked.SBorrowedAmount = int.Parse(iresult);
-                                    this.eqEquipmentBooked.SIsReturned = false;
+                                    this.eqEquipmentBooked = new EquipmentBooked(id_eq_booking);
+                                    this.eqEquipmentBooked.BorrowedAmount = int.Parse(iresult);
+                                    this.eqEquipmentBooked.IsReturned = false;
                                     this.eqEquipmentBooked.bSave();
                                 }
                                 else
                                 {
-                                    this.eqEquipmentBooked = new EquipmentBooked(iEqBookingId);
-                                    this.eqEquipmentBooked.SBorrowedAmount = 0;
-                                    this.eqEquipmentBooked.SIsReturned = true;
+                                    this.eqEquipmentBooked = new EquipmentBooked(id_eq_booking);
+                                    this.eqEquipmentBooked.BorrowedAmount = 0;
+                                    this.eqEquipmentBooked.IsReturned = true;
                                     this.eqEquipmentBooked.bSave();
 
                                 }
