@@ -1,5 +1,5 @@
 	{if $error == 1}
-	There has been an error while updating your personal details, please check the data, if the error persist, contact with the gym.
+	<font color='red'>{$error_desc}</font>
 	{/if}
     <form action="updatedetails.php" method="post">
     <div id="centre"><strong>Change Your Details</strong>
