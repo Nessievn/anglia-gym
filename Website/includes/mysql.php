@@ -19,4 +19,24 @@ function clean($string)
 	return $string;
 }
 
+function clean_array($aData)
+{
+	$aTmp = array();
+	foreach($aData as $var => $val)
+	{
+		$aTmp[$var] = clean($val);
+	}
+	return $aTmp;
+}
+
+function checkEmail($email){
+
+    if(!preg_match('/^[_A-z0-9-]+((\.|\+)[_A-z0-9-]+)*@[A-z0-9-]+(\.[A-z0-9-]+)*(\.[A-z]{2,4})$/',$email)){
+        return false;
+    } else {
+        return $email;
+    }
+}
+
+
 ?>
