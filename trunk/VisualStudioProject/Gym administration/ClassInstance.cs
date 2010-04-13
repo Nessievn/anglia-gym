@@ -117,30 +117,30 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             // Launch the query to return all all fields from a single class instance row of the CLASS_INSTANCE table.
-            List<Hashtable> lhResultset = conn.lhSqlQuery("SELECT ci.id_class_instance, c.name, c.type, c.description, s.firstName, s.id_staff, DATE_FORMAT(ci.date, '%d/%m/%Y') date, ci.start_time, ci.end_time, ci.id_room, c.id_class, ci.frequency FROM classes c, class_instance ci, staff s WHERE ci.id_class = c.id_class AND ci.id_staff = s.id_staff AND ci.id_class_instance = '" + id_class_instance + "'");
+            List<Hashtable> lhResultSet = conn.lhSqlQuery("SELECT ci.id_class_instance, c.name, c.type, c.description, s.firstName, s.id_staff, DATE_FORMAT(ci.date, '%d/%m/%Y') date, ci.start_time, ci.end_time, ci.id_room, c.id_class, ci.frequency FROM classes c, class_instance ci, staff s WHERE ci.id_class = c.id_class AND ci.id_staff = s.id_staff AND ci.id_class_instance = '" + id_class_instance + "'");
 
             // Check if we found the row
-            if ((int)lhResultset.Count > 0)
+            if ((int)lhResultSet.Count > 0)
             {
                 // Fill in all class instance fields with table data
-                this.Id_class_instance = int.Parse(lhResultset[0]["id_class_instance"].ToString());
-                this.Id_staff = int.Parse(lhResultset[0]["id_staff"].ToString());
-                this.ClRoom = new Room(int.Parse(lhResultset[0]["id_room"].ToString()));
-                this.ClClass = new Class(int.Parse(lhResultset[0]["id_class"].ToString()));
-                this.DateStart = lhResultset[0]["date"].ToString();
-                this.EndTime = lhResultset[0]["end_time"].ToString();
-                this.StartTime = lhResultset[0]["start_time"].ToString();
-                this.Frequency = lhResultset[0]["frequency"].ToString();
+                this.Id_class_instance = int.Parse(lhResultSet[0]["id_class_instance"].ToString());
+                this.Id_staff = int.Parse(lhResultSet[0]["id_staff"].ToString());
+                this.ClRoom = new Room(int.Parse(lhResultSet[0]["id_room"].ToString()));
+                this.ClClass = new Class(int.Parse(lhResultSet[0]["id_class"].ToString()));
+                this.DateStart = lhResultSet[0]["date"].ToString();
+                this.EndTime = lhResultSet[0]["end_time"].ToString();
+                this.StartTime = lhResultSet[0]["start_time"].ToString();
+                this.Frequency = lhResultSet[0]["frequency"].ToString();
 
 
                 // Create a list for storing member objects
                 // Load in all records for the same class instance from CLASS_BOOKINGS table (each contains a different member ID)
-                List<Hashtable> lhResultsetMbrs = conn.lhSqlQuery("SELECT * FROM `gym`.`class_bookings` WHERE id_class_instance = '" + id_class_instance + "'");
+                List<Hashtable> lhResultSetMbrBookings = conn.lhSqlQuery("SELECT * FROM `gym`.`class_bookings` WHERE id_class_instance = '" + id_class_instance + "'");
                 // If there is any class booking (any member enrolled) exist with the class instance id
-                if ((int)lhResultsetMbrs.Count > 0)
+                if ((int)lhResultSetMbrs.Count > 0)
                 {
                     // Create a list of attending members
-                    foreach (Hashtable hClassBooking in lhResultsetMbrs)
+                    foreach (Hashtable hClassBooking in lhResultSetMbrs)
                     {
                         // Retrieve the member number from the current class booking
                         int id_member = int.Parse(hClassBooking["id_member"].ToString());
@@ -175,9 +175,9 @@ namespace Gym_administration
                             "(start_time < '" + startTime + "' AND end_time > '" + endTime + "') OR " +
                             "(start_time > '" + startTime + "' AND end_time < '" + endTime + "'))" + ((this.Id_class_instance != -1)?"  AND id_class_instance != '"+this.Id_class_instance+"'":"");
             // Launch the overlap check query and load the result into a hashtable
-            List<Hashtable> lhResultset = conn.lhSqlQuery(sQuery);
+            List<Hashtable> lhResultSet = conn.lhSqlQuery(sQuery);
             // If there is any result then there is an overlap
-            if ((int)lhResultset.Count >= 1)
+            if ((int)lhResultSet.Count >= 1)
                 return true;   
             // Otherwise ther is no overlap
             return false;

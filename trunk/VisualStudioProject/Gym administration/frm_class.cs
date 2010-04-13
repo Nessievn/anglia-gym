@@ -76,7 +76,7 @@ namespace Gym_administration
             clClass.Name = txt_classname.Text;
             clClass.Type = sType;
 
-            clClass.bSave();
+            clClass.SaveClass();
             if (this.frmClassList != null) this.frmClassList.vLoadClassList();
             this.Close();
 
@@ -93,7 +93,7 @@ namespace Gym_administration
             DialogResult res = MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (res == DialogResult.Yes)
             {
-                if (clClass.bRemove() == false)
+                if (clClass.RemoveClass() == false)
                 {
                     MessageBox.Show("Please make sure that there aren't any class instances for this class.");
                 }

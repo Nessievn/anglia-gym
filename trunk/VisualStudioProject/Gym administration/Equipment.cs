@@ -202,10 +202,10 @@ namespace Gym_administration
                              + "', '" + this.AmountInSet1 + "', '" + this.AmountInSet2 + "', '" + this.AmountInSet3 + "', '" + this.AmountInSet4 + "', '" + this.AmountInSet5 + "')";
 
 
-                    int iIdEquipment = conn.iInsert(sQuery);
-                    if (iIdEquipment != -1)
+                    int id_equipment = conn.iInsert(sQuery);
+                    if (id_equipment != -1)
                     {
-                        this.Id_equipment = iIdEquipment;
+                        this.Id_equipment = id_equipment;
                         MessageBox.Show("The new equipment has been added to the databse succesfully!");
                         return true;
                     }
@@ -234,8 +234,8 @@ namespace Gym_administration
                                      + "', amountinset5 = '" + this.AmountInSet5 + "' "
                                  + " WHERE id_equipment = '" + this.Id_equipment + "'";
 
-                    int iRes = conn.iDeleteOrUpdate(sQuery);
-                    if (iRes > 0)
+                    int result = conn.iDeleteOrUpdate(sQuery);
+                    if (result > 0)
                     {
                         MessageBox.Show("The equipment data has been updated succesfully!");
                         return true;

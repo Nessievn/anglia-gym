@@ -123,15 +123,15 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             // Launch the query to return all fields from a single "Gym Class" row of the CLASSES table
-            List<Hashtable> lhResultset = conn.lhSqlQuery("Select * from classes WHERE id_class = '" + id_Class + "'");
+            List<Hashtable> lhResultSet = conn.lhSqlQuery("Select * from classes WHERE id_class = '" + id_Class + "'");
             // Check if we found the row
-            if ((int)lhResultset.Count > 0)
+            if ((int)lhResultSet.Count > 0)
             {
                 // Fill in all class fields with table data
-                this.Id_class = int.Parse(lhResultset[0]["id_class"].ToString());
-                this.Type = lhResultset[0]["type"].ToString();
-                this.Description = lhResultset[0]["description"].ToString();
-                this.Name = lhResultset[0]["name"].ToString();
+                this.Id_class = int.Parse(lhResultSet[0]["id_class"].ToString());
+                this.Type = lhResultSet[0]["type"].ToString();
+                this.Description = lhResultSet[0]["description"].ToString();
+                this.Name = lhResultSet[0]["name"].ToString();
             }
         }
 
@@ -140,7 +140,7 @@ namespace Gym_administration
          * @params [none] No input parameter.
          * @return [bool] Returns true in case of success, false if there was problem deleting the class.
          */
-        public bool bRemove()
+        public bool RemoveClass()
         {
             // Check if there is a class already loaded in
             if (this.Id_class != -1)
@@ -149,11 +149,11 @@ namespace Gym_administration
                 mySqlConn conn = new mySqlConn();
                 conn.connect();
                 // Create the delete query
-                string sQuery = "DELETE FROM classes WHERE id_class = '" + this.Id_class + "'";
+                string removeClassQuery = "DELETE FROM classes WHERE id_class = '" + this.Id_class + "'";
                 // Launch delete query
-                int iRes = conn.iDeleteOrUpdate(sQuery);
+                int result = conn.iDeleteOrUpdate(removeClassQuery);
                 // Check deletion result
-                if (iRes > 0)
+                if (result > 0)
                 {
                     MessageBox.Show("The class data has been deleted succesfully!");
                     return true;
@@ -173,10 +173,10 @@ namespace Gym_administration
          * @params [none] No input parameter.
          * @return [bool] Returns true in case of success, false if there was problem saving/updating the class
          */
-        public bool bSave()
+        public bool SaveClass()
         {
             
-            string sQuery;
+            string saveClassQuery;
 
             // Checking user input
             if (this.Name == "")
@@ -193,10 +193,10 @@ namespace Gym_administration
                 if (this.Id_class == -1)
                 {
                     // Create the save query
-                    sQuery = "insert into `gym`.`classes` (`id_class`, `name`, `type`, `description`) values " +
+                    saveClassQuery = "insert into `gym`.`classes` (`id_class`, `name`, `type`, `description`) values " +
                              "(NULL, '" + this.Name + "', '" + this.Type + "', '" + this.Description + "')";
                     // Launch save query
-                    int id_Class = conn.iInsert(sQuery);
+                    int id_Class = conn.iInsert(saveClassQuery);
                     // Check saving result
                     if (id_Class != -1)
                     {
@@ -214,13 +214,13 @@ namespace Gym_administration
                 else
                 {
                     // Create update query
-                    sQuery = "UPDATE classes SET name = '" + this.Name + "', description = '" + this.Description + "' " +
+                    saveClassQuery = "UPDATE classes SET name = '" + this.Name + "', description = '" + this.Description + "' " +
                              " WHERE id_class = '" + this.Id_class + "'";
 
                     // Launch update query
-                    int iRes = conn.iDeleteOrUpdate(sQuery);
+                    int result = conn.iDeleteOrUpdate(saveClassQuery);
                     // Check update result
-                    if (iRes > 0)
+                    if (result > 0)
                     {
                         MessageBox.Show("The class data has been updated succesfully!");
                         return true;
