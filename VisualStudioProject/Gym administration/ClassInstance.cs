@@ -135,12 +135,12 @@ namespace Gym_administration
 
                 // Create a list for storing member objects
                 // Load in all records for the same class instance from CLASS_BOOKINGS table (each contains a different member ID)
-                List<Hashtable> lhResultSetMbrBookings = conn.lhSqlQuery("SELECT * FROM `gym`.`class_bookings` WHERE id_class_instance = '" + id_class_instance + "'");
+                List<Hashtable> lhResultSetBookings = conn.lhSqlQuery("SELECT * FROM `gym`.`class_bookings` WHERE id_class_instance = '" + id_class_instance + "'");
                 // If there is any class booking (any member enrolled) exist with the class instance id
-                if ((int)lhResultSetMbrs.Count > 0)
+                if ((int)lhResultSetBookings.Count > 0)
                 {
                     // Create a list of attending members
-                    foreach (Hashtable hClassBooking in lhResultSetMbrs)
+                    foreach (Hashtable hClassBooking in lhResultSetBookings)
                     {
                         // Retrieve the member number from the current class booking
                         int id_member = int.Parse(hClassBooking["id_member"].ToString());
