@@ -140,7 +140,7 @@ namespace Gym_administration
 
         /**
          * @desc Default constructor.
-         * Sets id_equipment to -1 so the fact of this is a new class can be referenced.
+         * Sets id_equipment to -1 so the fact of this is a new equipment can be referenced.
          * 
          * @params [none] No input parameter.
          * @return [none] No directly returned data.
