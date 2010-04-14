@@ -74,7 +74,7 @@ namespace Gym_administration
                 MessageBox.Show("The User could not be found!");
         }
 
-        public bool bUpdatePassword(int id_User, string oldPassword, string newPassword)
+        public bool UpdatePassword(int id_User, string oldPassword, string newPassword)
         {
             mySqlConn conn = new mySqlConn();
             conn.connect();
@@ -87,7 +87,7 @@ namespace Gym_administration
                 return false;
         }
 
-        public bool bSave()
+        public bool SaveUser()
         {
             mySqlConn conn = new mySqlConn();
             conn.connect();
@@ -115,7 +115,7 @@ namespace Gym_administration
             }
             return false;
         }
-        public bool bDelete()
+        public bool DeleteUser()
         {
             mySqlConn conn = new mySqlConn();
             conn.connect();

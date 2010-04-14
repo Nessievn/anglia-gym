@@ -13,7 +13,7 @@
 // Locally declared forms:
 // frmWindowsForm
 //
-// Primitive types:
+// Local primitive types:
 // variableName
 //
 // Get/Set for primitive types:
@@ -25,17 +25,14 @@
 // Get set for Arrays, Lists
 // AArray, Llist, LclClassList etc
 //
-// Class type variables:
+// Class type variables and locally declared classes:
 // clClassName
 //
 // Get/Set for class type variables :
 // ClClassName
 //
-// Locally declared classes:
-// cnClassName
-//
 // Exceptions:
-// All entity identifiers regardless of primitive type:
+// All database entity identifiers regardless of primitive type:
 //
 // Private/Local:
 // id_entity_identifier
@@ -43,7 +40,7 @@
 // Public/Global
 // Id_entity_identifier
 //
-// Method return type: bool bSave()
+// Methos: bool Save()
 
 
 
@@ -104,7 +101,6 @@ namespace Gym_administration
         /**
          * @desc Default constructor.
          * Sets id_class to -1 so the fact of this is a new class can be referenced.
-         * 
          * @params [none] No input parameter.
          * @return [none] No directly returned data.
          */

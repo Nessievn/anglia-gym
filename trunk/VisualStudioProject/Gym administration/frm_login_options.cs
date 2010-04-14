@@ -36,7 +36,7 @@ namespace Gym_administration
                 return;
             }
 
-            if (this.frmParent.UserLogged.bUpdatePassword(this.frmParent.UserLogged.Id_user, txt_oldpassw.Text, txt_newpassw.Text))
+            if (this.frmParent.UserLogged.UpdatePassword(this.frmParent.UserLogged.Id_user, txt_oldpassw.Text, txt_newpassw.Text))
             {
                 MessageBox.Show("The user's password has been updated!");
                 this.Close();

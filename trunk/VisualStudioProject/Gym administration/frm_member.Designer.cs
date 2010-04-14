@@ -533,7 +533,10 @@
             "Family",
             "Student",
             "Company",
-            "Over 60"});
+            "Over 60",
+            "Society",
+            "Sports Team",
+            "Other"});
             this.cmb_type.Location = new System.Drawing.Point(234, 251);
             this.cmb_type.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_type.Name = "cmb_type";

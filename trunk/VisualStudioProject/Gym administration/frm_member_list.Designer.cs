@@ -41,6 +41,8 @@
             this.label_email = new System.Windows.Forms.Label();
             this.txt_dob = new System.Windows.Forms.MaskedTextBox();
             this.label_dateformat = new System.Windows.Forms.Label();
+            this.cmb_type = new System.Windows.Forms.ComboBox();
+            this.label_type = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dg_members)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,7 +91,7 @@
             // label_firstName
             // 
             this.label_firstName.AutoSize = true;
-            this.label_firstName.Location = new System.Drawing.Point(17, 53);
+            this.label_firstName.Location = new System.Drawing.Point(17, 51);
             this.label_firstName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_firstName.Name = "label_firstName";
             this.label_firstName.Size = new System.Drawing.Size(76, 17);
@@ -107,7 +109,7 @@
             // label_lastName
             // 
             this.label_lastName.AutoSize = true;
-            this.label_lastName.Location = new System.Drawing.Point(261, 53);
+            this.label_lastName.Location = new System.Drawing.Point(262, 51);
             this.label_lastName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_lastName.Name = "label_lastName";
             this.label_lastName.Size = new System.Drawing.Size(76, 17);
@@ -171,11 +173,43 @@
             this.label_dateformat.TabIndex = 13;
             this.label_dateformat.Text = "(dd/mm/yyyy)";
             // 
+            // cmb_type
+            // 
+            this.cmb_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_type.FormattingEnabled = true;
+            this.cmb_type.Items.AddRange(new object[] {
+            "Individual",
+            "Group",
+            "Family",
+            "Student",
+            "Company",
+            "Over 60",
+            "Society",
+            "Sports Team",
+            "Other"});
+            this.cmb_type.Location = new System.Drawing.Point(529, 67);
+            this.cmb_type.Margin = new System.Windows.Forms.Padding(4);
+            this.cmb_type.Name = "cmb_type";
+            this.cmb_type.Size = new System.Drawing.Size(163, 24);
+            this.cmb_type.TabIndex = 14;
+            // 
+            // label_type
+            // 
+            this.label_type.AutoSize = true;
+            this.label_type.Location = new System.Drawing.Point(526, 50);
+            this.label_type.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_type.Name = "label_type";
+            this.label_type.Size = new System.Drawing.Size(121, 17);
+            this.label_type.TabIndex = 48;
+            this.label_type.Text = "Membership Type";
+            // 
             // frm_member_list
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 542);
+            this.Controls.Add(this.label_type);
+            this.Controls.Add(this.cmb_type);
             this.Controls.Add(this.label_dateformat);
             this.Controls.Add(this.txt_dob);
             this.Controls.Add(this.label_email);
@@ -216,5 +250,7 @@
         private System.Windows.Forms.Label label_email;
         private System.Windows.Forms.MaskedTextBox txt_dob;
         private System.Windows.Forms.Label label_dateformat;
+        private System.Windows.Forms.ComboBox cmb_type;
+        private System.Windows.Forms.Label label_type;
     }
 }

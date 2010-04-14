@@ -377,34 +377,34 @@ namespace Gym_administration
         {
             switch (sProfile)
             {
-                case "manager":
-                    IconPanel iconPanel1 = new IconPanel("manager");
-                    this.outlookBar.AddBand("Management Functions", iconPanel1);
-                    
-                    iconPanel1.AddIcon("Edit Staff", Image.FromFile(Application.StartupPath + "/../../icons/staff_edit_128.png"), new EventHandler(PanelEvent));
-                    iconPanel1.AddIcon("Membership Fees", Image.FromFile(Application.StartupPath + "/../../icons/payment_128.png"), new EventHandler(PanelEvent));
-                    iconPanel1.AddIcon("Edit Room", Image.FromFile(Application.StartupPath + "/../../icons/room_edit_128.png"), new EventHandler(PanelEvent));
-                    iconPanel1.AddIcon("Add New Equipment", Image.FromFile(Application.StartupPath + "/../../icons/equipment_add_smaller_128.png"), new EventHandler(PanelEvent));
-                    iconPanel1.AddIcon("Edit Equipment", Image.FromFile(Application.StartupPath + "/../../icons/equipment_edit_128.png"), new EventHandler(PanelEvent));
-                    
-                    iconPanel1.AddIcon("Add Class", Image.FromFile(Application.StartupPath + "/../../icons/class_add_128.png"), new EventHandler(PanelEvent));
-                    iconPanel1.AddIcon("Edit Class", Image.FromFile(Application.StartupPath + "/../../icons/class_edit_128.png"), new EventHandler(PanelEvent));
+                case "staff":
+                    IconPanel iconPanel1 = new IconPanel("staff");
+                    this.outlookBar.AddBand("Staff Functions", iconPanel1);
+
+                    iconPanel1.AddIcon("Add New Member", Image.FromFile(Application.StartupPath + "/../../icons/member_add_128.png"), new EventHandler(PanelEvent));
+                    iconPanel1.AddIcon("Edit Member", Image.FromFile(Application.StartupPath + "/../../icons/member_edit_128.png"), new EventHandler(PanelEvent));
+                    iconPanel1.AddIcon("Arrange Class", Image.FromFile(Application.StartupPath + "/../../icons/class_book_128.png"), new EventHandler(PanelEvent));
                     iconPanel1.AddIcon("Edit Arranged Class", Image.FromFile(Application.StartupPath + "/../../icons/class_book_edit_128.png"), new EventHandler(PanelEvent));
-                    
+                    //iconPanel1.AddIcon("Book Equipment", Image.FromFile(Application.StartupPath + "/../../icons/equipment_book_128.png"), new EventHandler(PanelEvent));
+                    iconPanel1.AddIcon("List Eq. Bookings", Image.FromFile(Application.StartupPath + "/../../icons/equipment_book_search_128.png"), new EventHandler(PanelEvent));
+                    iconPanel1.AddIcon("Search Rooms", Image.FromFile(Application.StartupPath + "/../../icons/room_search_128.png"), new EventHandler(PanelEvent));
                     this.outlookBar.SelectBand(0);
                     outlookBar.Show();
                     break;
-                case "staff":
-                    IconPanel iconPanel2 = new IconPanel("staff");
-                    this.outlookBar.AddBand("Staff Functions", iconPanel2);
-
-                    iconPanel2.AddIcon("Add New Member", Image.FromFile(Application.StartupPath + "/../../icons/member_add_128.png"), new EventHandler(PanelEvent));
-                    iconPanel2.AddIcon("Edit Member", Image.FromFile(Application.StartupPath + "/../../icons/member_edit_128.png"), new EventHandler(PanelEvent));
-                    iconPanel2.AddIcon("Arrange Class", Image.FromFile(Application.StartupPath + "/../../icons/class_book_128.png"), new EventHandler(PanelEvent));
+                case "manager":
+                    IconPanel iconPanel2 = new IconPanel("manager");
+                    this.outlookBar.AddBand("Management Functions", iconPanel2);
+                    
+                    iconPanel2.AddIcon("Edit Staff", Image.FromFile(Application.StartupPath + "/../../icons/staff_edit_128.png"), new EventHandler(PanelEvent));
+                    iconPanel2.AddIcon("Membership Fees", Image.FromFile(Application.StartupPath + "/../../icons/payment_128.png"), new EventHandler(PanelEvent));
+                    iconPanel2.AddIcon("Edit Room", Image.FromFile(Application.StartupPath + "/../../icons/room_edit_128.png"), new EventHandler(PanelEvent));
+                    iconPanel2.AddIcon("Add New Equipment", Image.FromFile(Application.StartupPath + "/../../icons/equipment_add_smaller_128.png"), new EventHandler(PanelEvent));
+                    iconPanel2.AddIcon("Edit Equipment", Image.FromFile(Application.StartupPath + "/../../icons/equipment_edit_128.png"), new EventHandler(PanelEvent));
+                    
+                    iconPanel2.AddIcon("Add Class", Image.FromFile(Application.StartupPath + "/../../icons/class_add_128.png"), new EventHandler(PanelEvent));
+                    iconPanel2.AddIcon("Edit Class", Image.FromFile(Application.StartupPath + "/../../icons/class_edit_128.png"), new EventHandler(PanelEvent));
                     iconPanel2.AddIcon("Edit Arranged Class", Image.FromFile(Application.StartupPath + "/../../icons/class_book_edit_128.png"), new EventHandler(PanelEvent));
-                    //iconPanel2.AddIcon("Book Equipment", Image.FromFile(Application.StartupPath + "/../../icons/equipment_book_128.png"), new EventHandler(PanelEvent));
-                    iconPanel2.AddIcon("List Eq. Bookings", Image.FromFile(Application.StartupPath + "/../../icons/equipment_book_search_128.png"), new EventHandler(PanelEvent));
-                    iconPanel2.AddIcon("Search Rooms", Image.FromFile(Application.StartupPath + "/../../icons/room_search_128.png"), new EventHandler(PanelEvent));
+                    
                     this.outlookBar.SelectBand(0);
                     outlookBar.Show();
                     break;
@@ -437,9 +437,8 @@ namespace Gym_administration
             switch (userProfile)
             {
                 case "manager":
-
-                    this.loadOutlookBarButtons("manager");
                     this.loadOutlookBarButtons("staff");
+                    this.loadOutlookBarButtons("manager");
                     break;
 
                 case "staff":
