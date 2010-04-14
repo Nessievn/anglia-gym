@@ -159,23 +159,24 @@
             // label_itemname
             // 
             this.label_itemname.AutoSize = true;
+            this.label_itemname.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_itemname.Location = new System.Drawing.Point(76, 60);
             this.label_itemname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_itemname.Name = "label_itemname";
-            this.label_itemname.Size = new System.Drawing.Size(75, 17);
+            this.label_itemname.Size = new System.Drawing.Size(84, 17);
             this.label_itemname.TabIndex = 171;
             this.label_itemname.Text = "Item Name";
             // 
             // label_iteminfo
             // 
             this.label_iteminfo.AutoSize = true;
-            this.label_iteminfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_iteminfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_iteminfo.Location = new System.Drawing.Point(75, 30);
             this.label_iteminfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_iteminfo.Name = "label_iteminfo";
-            this.label_iteminfo.Size = new System.Drawing.Size(88, 20);
+            this.label_iteminfo.Size = new System.Drawing.Size(97, 20);
             this.label_iteminfo.TabIndex = 169;
-            this.label_iteminfo.Text = "Item Info:";
+            this.label_iteminfo.Text = "ITEM INFO:";
             // 
             // txt_setname
             // 
@@ -188,10 +189,11 @@
             // label_setname
             // 
             this.label_setname.AutoSize = true;
+            this.label_setname.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_setname.Location = new System.Drawing.Point(288, 60);
             this.label_setname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_setname.Name = "label_setname";
-            this.label_setname.Size = new System.Drawing.Size(70, 17);
+            this.label_setname.Size = new System.Drawing.Size(78, 17);
             this.label_setname.TabIndex = 180;
             this.label_setname.Text = "Set Name";
             // 
@@ -268,20 +270,22 @@
             // label_itemamount
             // 
             this.label_itemamount.AutoSize = true;
+            this.label_itemamount.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_itemamount.Location = new System.Drawing.Point(324, 318);
             this.label_itemamount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_itemamount.Name = "label_itemamount";
-            this.label_itemamount.Size = new System.Drawing.Size(126, 17);
+            this.label_itemamount.Size = new System.Drawing.Size(144, 17);
             this.label_itemamount.TabIndex = 195;
             this.label_itemamount.Text = "Item Amount in Set";
             // 
             // label_iteminset
             // 
             this.label_iteminset.AutoSize = true;
+            this.label_iteminset.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_iteminset.Location = new System.Drawing.Point(140, 318);
             this.label_iteminset.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_iteminset.Name = "label_iteminset";
-            this.label_iteminset.Size = new System.Drawing.Size(81, 17);
+            this.label_iteminset.Size = new System.Drawing.Size(93, 17);
             this.label_iteminset.TabIndex = 196;
             this.label_iteminset.Text = "Items in Set";
             // 
@@ -323,13 +327,13 @@
             // label_itemsetinfo
             // 
             this.label_itemsetinfo.AutoSize = true;
-            this.label_itemsetinfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_itemsetinfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_itemsetinfo.Location = new System.Drawing.Point(75, 30);
             this.label_itemsetinfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_itemsetinfo.Name = "label_itemsetinfo";
-            this.label_itemsetinfo.Size = new System.Drawing.Size(122, 20);
+            this.label_itemsetinfo.Size = new System.Drawing.Size(134, 20);
             this.label_itemsetinfo.TabIndex = 203;
-            this.label_itemsetinfo.Text = "Item Set Info:";
+            this.label_itemsetinfo.Text = "ITEM SET INFO:";
             // 
             // label_itemsetdesc
             // 
@@ -389,7 +393,6 @@
             this.Controls.Add(this.label_amounttoborrow);
             this.Controls.Add(this.counter_amounttoborrow);
             this.Controls.Add(this.label_itemsetdesc);
-            this.Controls.Add(this.label_itemsetinfo);
             this.Controls.Add(this.counter_item1);
             this.Controls.Add(this.counter_item2);
             this.Controls.Add(this.counter_item3);
@@ -415,11 +418,11 @@
             this.Controls.Add(this.txt_itemname);
             this.Controls.Add(this.label_itemname);
             this.Controls.Add(this.label_iteminfo);
+            this.Controls.Add(this.label_itemsetinfo);
             this.Name = "frm_equipment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_equipment";
             this.Load += new System.EventHandler(this.frm_equipment_Load);
-            
             ((System.ComponentModel.ISupportInitialize)(this.counter_item2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.counter_item1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.counter_item3)).EndInit();

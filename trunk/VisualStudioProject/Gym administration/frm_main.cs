@@ -207,15 +207,17 @@ namespace Gym_administration
             else if (sSelectedBand == "staff" && panelIcon.Index.ToString() == "4")
             {
 
-            }
-// Search Eq. Bookings
-            else if (sSelectedBand == "staff" && panelIcon.Index.ToString() == "5")
-            {
-
             }*/
+// Search Eq. Bookings
+            else if (sSelectedBand == "staff" && panelIcon.Index.ToString() == "4")
+            {
+                frm_equipment_bookings_list frmEqBookingsList = new frm_equipment_bookings_list();
+                frmEqBookingsList.ShowDialog();
+ 
+            }
 
 // Room Search
-            else if (sSelectedBand == "staff" && panelIcon.Index.ToString() == "4")
+            else if (sSelectedBand == "staff" && panelIcon.Index.ToString() == "5")
             {
           // Creating the child form room
                 frm_room_list mdiFrmRoomList = new frm_room_list();
@@ -401,7 +403,7 @@ namespace Gym_administration
                     iconPanel2.AddIcon("Arrange Class", Image.FromFile(Application.StartupPath + "/../../icons/class_book_128.png"), new EventHandler(PanelEvent));
                     iconPanel2.AddIcon("Edit Arranged Class", Image.FromFile(Application.StartupPath + "/../../icons/class_book_edit_128.png"), new EventHandler(PanelEvent));
                     //iconPanel2.AddIcon("Book Equipment", Image.FromFile(Application.StartupPath + "/../../icons/equipment_book_128.png"), new EventHandler(PanelEvent));
-                    //iconPanel2.AddIcon("Search Eq. Bookings", Image.FromFile(Application.StartupPath + "/../../icons/equipment_book_search_128.png"), new EventHandler(PanelEvent));
+                    iconPanel2.AddIcon("List Eq. Bookings", Image.FromFile(Application.StartupPath + "/../../icons/equipment_book_search_128.png"), new EventHandler(PanelEvent));
                     iconPanel2.AddIcon("Search Rooms", Image.FromFile(Application.StartupPath + "/../../icons/room_search_128.png"), new EventHandler(PanelEvent));
                     this.outlookBar.SelectBand(0);
                     outlookBar.Show();

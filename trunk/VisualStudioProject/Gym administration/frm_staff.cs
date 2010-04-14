@@ -172,10 +172,7 @@ namespace Gym_administration
 
         }
 
-        private void label_dateformat_Click(object sender, EventArgs e)
-        {
-
-        }
+ 
 
 
     }

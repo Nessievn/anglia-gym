@@ -200,10 +200,10 @@ namespace Gym_administration
             if (this.Id_class_instance == -1)
             {
                 // Create the save query
-                string sQuery = "insert into `gym`.`class_instance` (`id_class_instance`, `id_class`, `id_staff`, `date`, `start_time`, `end_time`, `frequency`, `id_room`) values " +
+                string saveClInstanceQuery = "insert into `gym`.`class_instance` (`id_class_instance`, `id_class`, `id_staff`, `date`, `start_time`, `end_time`, `frequency`, `id_room`) values " +
                                 "(NULL, '" + this.ClClass.Id_class + "', '" + this.Id_staff + "', '" + Utils.sGetMysqlDate(this.DateStart) + "', '" + this.StartTime + "', '" + this.EndTime + "', '" + this.Frequency + "', '" + this.ClRoom.Id_room + "');";
                 // Launch save query
-                int id_class_instance = conn.iInsert(sQuery);
+                int id_class_instance = conn.iInsert(saveClInstanceQuery);
                 // Check saving result
                 if (id_class_instance != -1)
                 {
@@ -219,10 +219,10 @@ namespace Gym_administration
             // If an id_class_instance already exists for this class instance, then this is an existing class instance to update
             else 
             {
-                string sQuery = "UPDATE class_instance SET id_staff= '" + this.Id_staff + "', date = '" + Utils.sGetMysqlDate(this.DateStart) + "', start_time = '" + this.StartTime + "', end_time = '" + this.EndTime + "', frequency = '" + this.Frequency + "', id_room = '" + this.ClRoom.Id_room + "' " +
+                string updateClInstanceQuery = "UPDATE class_instance SET id_staff= '" + this.Id_staff + "', date = '" + Utils.sGetMysqlDate(this.DateStart) + "', start_time = '" + this.StartTime + "', end_time = '" + this.EndTime + "', frequency = '" + this.Frequency + "', id_room = '" + this.ClRoom.Id_room + "' " +
                                 "WHERE id_class_instance = '" + this.Id_class_instance + "'";
                 // Launch update query
-                int result = conn.iDeleteOrUpdate(sQuery);
+                int result = conn.iDeleteOrUpdate(updateClInstanceQuery);
                 // Check update result
                 if (result > 0)
                 {
@@ -280,9 +280,9 @@ namespace Gym_administration
                 // Create the delete query
                 string sQuery = "DELETE FROM class_instance WHERE id_class_instance = '" + this.Id_class_instance + "'";
                 // Launch delete query
-                int iRes = conn.iDeleteOrUpdate(sQuery);
+                int result = conn.iDeleteOrUpdate(sQuery);
                 // Check deletion result
-                if (iRes > 0)
+                if (result > 0)
                 {
                     MessageBox.Show("The class data has been deleted succesfully!");
                     return true;

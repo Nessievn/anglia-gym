@@ -17,7 +17,7 @@ namespace Gym_administration
      */
     class Equipment
     {
-
+        // id_equipment field from EQUIPMENT table
         private int id_equipment;
         public int Id_equipment
         {
@@ -25,7 +25,7 @@ namespace Gym_administration
             set { id_equipment = value; }
         }
 
-        //item,set,vehicle
+        // type field from EQUIPMENT table it is an enum field. values: item, set, vehicle
         private string type;
         public string Type
         {
@@ -33,6 +33,7 @@ namespace Gym_administration
             set { type = value; }
         }
 
+        // id_vehicle field from EQUIPMENT table
         private int id_vehicle;
         public int Id_vehicle
         {
@@ -40,6 +41,7 @@ namespace Gym_administration
             set { id_vehicle = value; }
         }
 
+        // name field from EQUIPMENT table
         private string name;
         public string Name
         {
@@ -47,6 +49,7 @@ namespace Gym_administration
             set { name = value; }
         }
 
+        // description field from EQUIPMENT table
         private string description;
         public string Description
         {
@@ -54,61 +57,79 @@ namespace Gym_administration
             set { description = value; }
         }
 
-
+        // A field with the same name from EQUIPMENT table
         private int itemInSet1;
         public int ItemInSet1
         {
             get { return itemInSet1; }
             set { itemInSet1 = value; }
         }
+
+        // A field with the same name from EQUIPMENT table
         private int amountInSet1;
         public int AmountInSet1
         {
             get { return amountInSet1; }
             set { amountInSet1 = value; }
         }
+
+        // A field with the same name from EQUIPMENT table
         private int itemInSet2;
         public int ItemInSet2
         {
             get { return itemInSet2; }
             set { itemInSet2 = value; }
         }
+
+        // A field with the same name from EQUIPMENT table
         private int amountInSet2;
         public int AmountInSet2
         {
             get { return amountInSet2; }
             set { amountInSet2 = value; }
         }
+
+        // A field with the same name from EQUIPMENT table
         private int itemInSet3;
         public int ItemInSet3
         {
             get { return itemInSet3; }
             set { itemInSet3 = value; }
         }
+
+        // A field with the same name from EQUIPMENT table
         private int amountInSet3;
         public int AmountInSet3
         {
             get { return amountInSet3; }
             set { amountInSet3 = value; }
         }
+
+        // A field with the same name from EQUIPMENT table
         private int itemInSet4;
         public int ItemInSet4
         {
             get { return itemInSet4; }
             set { itemInSet4 = value; }
         }
+
+        // A field with the same name from EQUIPMENT table
         private int amountInSet4;
         public int AmountInSet4
         {
             get { return amountInSet4; }
             set { amountInSet4 = value; }
         }
+
+        // A field with the same name from EQUIPMENT table
         private int itemInSet5;
         public int ItemInSet5
         {
             get { return itemInSet5; }
             set { itemInSet5 = value; }
         }
+
+        // A field with the same name from EQUIPMENT table
         private int amountInSet5;
         public int AmountInSet5
         {
@@ -116,29 +137,42 @@ namespace Gym_administration
             set { amountInSet5 = value; }
         }
 
-        
+
+        /**
+         * @desc Default constructor.
+         * Sets id_equipment to -1 so the fact of this is a new class can be referenced.
+         * 
+         * @params [none] No input parameter.
+         * @return [none] No directly returned data.
+         */        
         public Equipment()
         {
             this.id_equipment = -1;
-            mySqlConn conn = new mySqlConn();
-            conn.connect();
         }
 
+        /**
+         * @desc Constructor
+         * Loads in all fields from a single row of the EQUIPMENT table.
+         * @params [int] id_Class identifies the class uniquely.
+         * @return [none] No directly returned data.
+         */
         public Equipment(int id_equipment)
         {
+            // Create mysql connection
             mySqlConn conn = new mySqlConn();
             conn.connect();
-            // We launch the query
+            // Launch the query to return all fields from a single row of the EQUIPMENT table
             List<Hashtable> lhResultset = conn.lhSqlQuery("Select * from equipment WHERE id_equipment = '" + id_equipment + "'");
-
             // Check if we found the equipment
             if ((int)lhResultset.Count > 0)
             {
+                // Fill in all equipment fields with table data
                 this.Id_equipment = int.Parse(lhResultset[0]["id_equipment"].ToString());
                 this.Type = lhResultset[0]["type"].ToString();
                 this.Id_vehicle = int.Parse(lhResultset[0]["id_vehicle"].ToString());
                 this.Name = lhResultset[0]["name"].ToString();
                 this.Description = lhResultset[0]["description"].ToString();
+                // Fill in all equipment set fields with table data
                 if (this.Type == "set")
                 {
                     this.ItemInSet1 = int.Parse(lhResultset[0]["iteminset1"].ToString());
@@ -160,11 +194,15 @@ namespace Gym_administration
         {
             if (this.Id_equipment != -1)
             {
+                // Create mysql connection
                 mySqlConn conn = new mySqlConn();
                 conn.connect();
+                // Create the delete query
                 string sQuery = "DELETE FROM equipment WHERE id_equipment = '" + this.Id_equipment + "'";
-                int iRes = conn.iDeleteOrUpdate(sQuery);
-                if (iRes > 0)
+                // Launch delete query
+                int result = conn.iDeleteOrUpdate(sQuery);
+                // Check deletion result
+                if (result > 0)
                 {
                     MessageBox.Show("The equipment data has been deleted succesfully!");
                     return true;
@@ -179,30 +217,36 @@ namespace Gym_administration
         }
 
         /**
-        * @desc This method will save the object into the database
-        */
+         * @desc This method will save or update an equipment in the EQUIPMENT table
+         * @params [none] No input parameter.
+         * @return [bool] Returns true in case of success, false if there was problem saving/updating the equipment
+         */
         public bool bSave()
         {
-            // Field checking
-            string sQuery;
-
+            string saveEquipmentQuery;
+            // Checking user input
             if (this.Name == "")
             {
                 MessageBox.Show("Please Insert a name.");
             }
             else
             {
+                // Create mysql connection
                 mySqlConn conn = new mySqlConn();
                 conn.connect();
+                // Check whether there is a new id_equipment assigned to this equipment, 
+                // if not then this a new equipment to save
                 if (this.Id_equipment == -1)
                 {
-                    sQuery = "insert into `gym`.`equipment` (`id_equipment`, `type`, `id_vehicle`, `name`, `description`, `iteminset1`, `iteminset2`, `iteminset3`, `iteminset4`, `iteminset5`, `iteminset6`, `iteminset7`, `iteminset8`, `iteminset9`, `iteminset10`, `amountinset1`, `amountinset2`, `amountinset3`, `amountinset4`, `amountinset5`, `amountinset6`, `amountinset7`, `amountinset8`, `amountinset9`, `amountinset10`) values " +
+                    // Create the save query
+                    saveEquipmentQuery = "insert into `gym`.`equipment` (`id_equipment`, `type`, `id_vehicle`, `name`, `description`, `iteminset1`, `iteminset2`, `iteminset3`, `iteminset4`, `iteminset5`, `amountinset1`, `amountinset2`, `amountinset3`, `amountinset4`, `amountinset5`) values " +
                              "(NULL, '" + this.Type + "', '" + this.Id_vehicle + "', '" + this.Name + "', '" + this.Description
                              + "', '" + this.ItemInSet1 + "', '" + this.ItemInSet2 + "', '" + this.ItemInSet3 + "', '" + this.ItemInSet4 + "', '" + this.ItemInSet5
                              + "', '" + this.AmountInSet1 + "', '" + this.AmountInSet2 + "', '" + this.AmountInSet3 + "', '" + this.AmountInSet4 + "', '" + this.AmountInSet5 + "')";
 
-
-                    int id_equipment = conn.iInsert(sQuery);
+                    // Launch save query
+                    int id_equipment = conn.iInsert(saveEquipmentQuery);
+                    // Check saving result
                     if (id_equipment != -1)
                     {
                         this.Id_equipment = id_equipment;
@@ -215,10 +259,11 @@ namespace Gym_administration
                         return false;
                     }
                 }
+                // If an id_equipment already exists for this equipment, then this is an existing equipment to update
                 else
                 {
-
-                    sQuery = "UPDATE equipment SET type = '" + this.Type
+                    // Create update query
+                    string updateEquimentQuery = "UPDATE equipment SET type = '" + this.Type
                                        + "', id_vehicle = '" + this.Id_vehicle
                                              + "', name = '" + this.Name
                                       + "', description = '" + this.Description
@@ -233,8 +278,9 @@ namespace Gym_administration
                                      + "', amountinset4 = '" + this.AmountInSet4
                                      + "', amountinset5 = '" + this.AmountInSet5 + "' "
                                  + " WHERE id_equipment = '" + this.Id_equipment + "'";
-
-                    int result = conn.iDeleteOrUpdate(sQuery);
+                    // Launch update query
+                    int result = conn.iDeleteOrUpdate(updateEquimentQuery);
+                    // Check update result
                     if (result > 0)
                     {
                         MessageBox.Show("The equipment data has been updated succesfully!");

@@ -52,10 +52,11 @@
             // label_amount
             // 
             this.label_amount.AutoSize = true;
+            this.label_amount.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_amount.Location = new System.Drawing.Point(17, 15);
             this.label_amount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_amount.Name = "label_amount";
-            this.label_amount.Size = new System.Drawing.Size(60, 17);
+            this.label_amount.Size = new System.Drawing.Size(67, 17);
             this.label_amount.TabIndex = 2;
             this.label_amount.Text = "Amount:";
             // 
@@ -92,10 +93,11 @@
             // label_date
             // 
             this.label_date.AutoSize = true;
+            this.label_date.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_date.Location = new System.Drawing.Point(17, 204);
             this.label_date.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_date.Name = "label_date";
-            this.label_date.Size = new System.Drawing.Size(42, 17);
+            this.label_date.Size = new System.Drawing.Size(47, 17);
             this.label_date.TabIndex = 9;
             this.label_date.Text = "Date:";
             // 

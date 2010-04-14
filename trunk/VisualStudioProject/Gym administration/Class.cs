@@ -1,4 +1,6 @@
-﻿// Variable naming conventions in this project:
+﻿// Microsoft's Capitalization Conventions from .NET Framework Developer's Guide
+// http://msdn.microsoft.com/en-us/library/ms229043%28v=VS.90%29.aspx
+// We tried to make the variable naming conventions to be very similar in this project: 
 //
 // Class name:
 // ClassName 
@@ -214,11 +216,11 @@ namespace Gym_administration
                 else
                 {
                     // Create update query
-                    saveClassQuery = "UPDATE classes SET name = '" + this.Name + "', description = '" + this.Description + "' " +
+                    string updateClassQuery = "UPDATE classes SET name = '" + this.Name + "', description = '" + this.Description + "' " +
                              " WHERE id_class = '" + this.Id_class + "'";
 
                     // Launch update query
-                    int result = conn.iDeleteOrUpdate(saveClassQuery);
+                    int result = conn.iDeleteOrUpdate(updateClassQuery);
                     // Check update result
                     if (result > 0)
                     {
