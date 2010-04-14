@@ -20,7 +20,7 @@ namespace Gym_administration
     {
 
 
-
+        // A field with the same name from EQUIPMENT_BOOKINGS table
         private int id_eq_booking;
         public int Id_eq_booking
         {
@@ -28,6 +28,7 @@ namespace Gym_administration
             set { id_eq_booking = value; }
         }
 
+        // A field with the same name from EQUIPMENT_BOOKINGS table
         private string id_member;
         public string Id_member
         {
@@ -35,6 +36,7 @@ namespace Gym_administration
             set { id_member = value; }
         }
 
+        // A field with the same name from EQUIPMENT_BOOKINGS table
         private string id_staff;
         public string Id_staff
         {
@@ -42,6 +44,7 @@ namespace Gym_administration
             set { id_staff = value; }
         }
 
+        // A field with the same name from EQUIPMENT_BOOKINGS table
         private string id_class_instance;
         public string Id_class_instance
         {
@@ -49,6 +52,7 @@ namespace Gym_administration
             set { id_class_instance = value; }
         }
 
+        // A field with the same name from EQUIPMENT_BOOKINGS table
         private string dateStart;
         public string DateStart
         {
@@ -56,6 +60,7 @@ namespace Gym_administration
             set { dateStart = value; }
         }
 
+        // A field with the same name from EQUIPMENT_BOOKINGS table
         private string dateDue;
         public string DateDue
         {
@@ -63,6 +68,7 @@ namespace Gym_administration
             set { dateDue = value; }
         }
 
+        // A field with the same name from EQUIPMENT_BOOKINGS table
         private int id_equipment;
         public int Id_equipment
         {
@@ -70,6 +76,7 @@ namespace Gym_administration
             set { id_equipment = value; }
         }
 
+        // A field with the same name from EQUIPMENT_BOOKINGS table
         private int borrowedAmount;
         public int BorrowedAmount
         {
@@ -77,6 +84,7 @@ namespace Gym_administration
             set { borrowedAmount = value; }
         }
 
+        // A field with the same name from EQUIPMENT_BOOKINGS table
         private bool isReturned;
         public bool IsReturned
         {
@@ -85,6 +93,13 @@ namespace Gym_administration
         }
 
 
+        /**
+         * @desc Default constructor.
+         * Sets id_eq_booking to -1 so the fact of this is a new equipment booking can be referenced.
+         * 
+         * @params [none] No input parameter.
+         * @return [none] No directly returned data.
+         */         
         public EquipmentBooked()
         {
 
@@ -92,82 +107,75 @@ namespace Gym_administration
         }
 
 
-
+        /**
+          * @desc Constructor
+          * Loads in the id_eq_booking into its corresponding field to open up a placeholder to
+          * fill with data to modify an existing booking
+          * @params [int] id_Class identifies the class uniquely.
+          * @return [none] No directly returned data.
+          */
         public EquipmentBooked(int id_eq_booking)
         {
             this.Id_eq_booking = id_eq_booking;
-            //mySqlConn conn = new mySqlConn();
-            //conn.connect();
-            // We launch the query
-
-//            List<Hashtable> lhResultset = conn.lhSqlQuery("SELECT eb.id_eq_booking BookingNr, eb.id_member MemberID, CONCAT(m.lastName, ', ', m.firstName) MemberName, eb.id_staff StaffID, CONCAT(s.lastName, ', ', s.firstName) SaffName, eb.id_equipment EqID,  e.name Equipment, eb.borrowedamount, eb.date_start, eb.date_due, eb.id_class_instance ClassInstance FROM equipment e, equipment_bookings eb LEFT OUTER JOIN staff s ON eb.id_staff = s.id_staff LEFT OUTER JOIN members m ON eb.id_member = m.id_member WHERE e.id_equipment = eb.id_equipment AND eb.id_eq_booking = '" + id_eq_booking + "'");
-
-
-            // Check if we found the equipment
-            //if ((int)lhResultset.Count > 0)
-            //{
-
-            //this.Id_eq_booking = int.Parse(lhResultset[0]["BookingNr"].ToString());
-                
-            //}
         }
-               
+
 
 
         /**
-        * @desc This method will save the object into the database
-        */
+         * @desc This method will save or update an equipment booking in the EQUIPMENT_BOOKINGS table
+         * @params [none] No input parameter.
+         * @return [bool] Returns true in case of success, false if there was problem saving/updating the equipment
+         */
         public bool bSave()
         {
-            // Field checking
-            string sQuery;
-
+            string saveEqBookingQuery;
+            // Create mysql connection
             mySqlConn conn = new mySqlConn();
-                conn.connect();
-                if (this.Id_eq_booking == -1)
+            conn.connect();
+            // Check whether there is a new id_eq_booking assigned to this booking, 
+            // if not then this a new equipment booking to save
+            if (this.Id_eq_booking == -1)
+            {
+                // Create the save query
+                saveEqBookingQuery = "insert into `gym`.`equipment_bookings` (`id_eq_booking`, `id_staff`, `id_member`, `id_class_instance`, `date_start`, `date_due`, `id_equipment`, `borrowedamount`,`isreturned`) values " +
+                                     "(NULL, " + this.Id_staff + ", " + this.Id_member + ", " + this.Id_class_instance + ", '" + this.DateStart + "', '" + this.DateDue
+                                     + "', " + this.Id_equipment + ", " + this.BorrowedAmount + ", NULL)";
+                // Launch save query
+                int id_eq_booking = conn.iInsert(saveEqBookingQuery);
+                // Check saving result
+                if (id_eq_booking != -1)
                 {
-                    
-                    sQuery = "insert into `gym`.`equipment_bookings` (`id_eq_booking`, `id_staff`, `id_member`, `id_class_instance`, `date_start`, `date_due`, `id_equipment`, `borrowedamount`,`isreturned`) values " +
-                             "(NULL, " + this.Id_staff + ", " + this.Id_member + ", " + this.Id_class_instance + ", '" + this.DateStart + "', '" + this.DateDue
-                             + "', " + this.Id_equipment + ", " + this.BorrowedAmount + ", NULL)";
-
-                    int iIdEqBooking = conn.iInsert(sQuery);
-                    if (iIdEqBooking != -1)
-                    {
-                        this.Id_eq_booking = iIdEqBooking;
-                        MessageBox.Show("The new equipment booking has been added to the databse succesfully!");
-                        return true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("There was a problem adding the new equipment booking, please check your data!");
-                        return false;
-                    }
+                    this.Id_eq_booking = id_eq_booking;
+                    MessageBox.Show("The new equipment booking has been added to the databse succesfully!");
+                    return true;
                 }
                 else
                 {
-                    sQuery = "UPDATE `gym`.`equipment_bookings` SET `borrowedamount` = "+this.BorrowedAmount+", `isreturned`= "+this.IsReturned+" WHERE id_eq_booking = '" + this.Id_eq_booking + "'";
-
-                    
-
-                    int iRes = conn.iDeleteOrUpdate(sQuery);
-                    if (iRes > 0)
-                    {
-                        MessageBox.Show("The equipment booking data has been updated succesfully!");
-                        return true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("There was a problem updating the equipment booking information, please check your data!");
-                        return false;
-                    }
-
+                    MessageBox.Show("There was a problem adding the new equipment booking, please check your data!");
+                    return false;
                 }
+            }
+            // If an id_eq_booking already exists for this booking, then this is an existing booking to update
+            else
+            {
+                // Create update query
+                string updateEqBookingQuery = "UPDATE `gym`.`equipment_bookings` SET `borrowedamount` = " + this.BorrowedAmount + ", `isreturned`= " + this.IsReturned + " WHERE id_eq_booking = '" + this.Id_eq_booking + "'";
+                // Launch update query
+                int result = conn.iDeleteOrUpdate(updateEqBookingQuery);
+                // Check update result
+                if (result > 0)
+                {
+                    MessageBox.Show("The equipment booking data has been updated succesfully!");
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("There was a problem updating the equipment booking information, please check your data!");
+                    return false;
+                }
+
+            }
             //return true;
         }
-
-
-
-
     }
 }
