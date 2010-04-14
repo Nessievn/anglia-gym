@@ -189,7 +189,7 @@ namespace Gym_administration
          * @params [none] No input parameter.
          * @return [bool] Returns true in case of success, false if there was problem saving/updating the class
          */
-        public bool bSave()
+        public bool SaveClassInstance()
         {
             // Create mysql connection
             mySqlConn conn = new mySqlConn();
@@ -270,7 +270,7 @@ namespace Gym_administration
          * @params [none] No input parameter.
          * @return [bool] Returns true in case of success, false if there was problem deleting the class instance.
          */
-        public bool bRemove()
+        public bool RemoveClassInstance()
         {
             if (this.Id_class_instance != 0)
             {

@@ -215,7 +215,7 @@ namespace Gym_administration
                 clUser.IsActive = true;
 
                 // then the bSave method is called
-                if (clUser.bSave())
+                if (clUser.SaveUser())
                 {
                     mySqlConn conn = new mySqlConn();
                     conn.connect();
@@ -235,7 +235,7 @@ namespace Gym_administration
                         else
                         {
                             MessageBox.Show("There was a problem adding the new user, please check your data!");
-                            clUser.bDelete();
+                            clUser.DeleteUser();
                             return false;
                         }
                     }
@@ -253,7 +253,7 @@ namespace Gym_administration
                         else
                         {
                             MessageBox.Show("There was a problem updating the user information, please check your data!");
-                            clUser.bDelete();
+                            clUser.DeleteUser();
                             return false;
                         }
                     }

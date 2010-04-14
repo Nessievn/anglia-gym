@@ -12,30 +12,30 @@ namespace Gym_administration
 {
     public partial class frm_class_instance_arrange : Form
     {
-        ClassInstance ciClassInstance;
-        frm_class_instance_list frmClInstList;
+        ClassInstance clClassInstance;
+        frm_class_instance_list frmClassInstanceList;
         EquipmentBooked eqEquipmentBooked;
 
         public frm_class_instance_arrange()
         {
             InitializeComponent();
-            ciClassInstance = new ClassInstance();
+            clClassInstance = new ClassInstance();
             button_enrollmembers.Enabled = false;
         }
 
         public frm_class_instance_arrange(int id_class_booked, frm_class_instance_list frmClInstList)
         {
             InitializeComponent();
-            this.frmClInstList = frmClInstList;
-            ciClassInstance = new ClassInstance(id_class_booked);
-            if (ciClassInstance.Id_class_instance == -1)
+            this.frmClassInstanceList = frmClInstList;
+            clClassInstance = new ClassInstance(id_class_booked);
+            if (clClassInstance.Id_class_instance == -1)
                 MessageBox.Show("The class instance could not be found");
             else
             {
                 vLoadBookedList();
-                txt_endtime.Text = ciClassInstance.EndTime;
-                txt_startdate.Text = ciClassInstance.DateStart;
-                txt_starttime.Text = ciClassInstance.StartTime;
+                txt_endtime.Text = clClassInstance.EndTime;
+                txt_startdate.Text = clClassInstance.DateStart;
+                txt_starttime.Text = clClassInstance.StartTime;
                 button_enrollmembers.Enabled = true;
             }
         }
@@ -87,7 +87,7 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource itemsSource = new BindingSource();
-            string sQuery = "SELECT DISTINCT eb.date_due Due, e.name Name, eb.borrowedamount Amount, eb.id_equipment EqID, eb.id_eq_booking BkID FROM equipment e, equipment_bookings eb WHERE eb.id_class_instance = " + ciClassInstance.Id_class_instance + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY Due";
+            string sQuery = "SELECT DISTINCT eb.date_due Due, e.name Name, eb.borrowedamount Amount, eb.id_equipment EqID, eb.id_eq_booking BkID FROM equipment e, equipment_bookings eb WHERE eb.id_class_instance = " + clClassInstance.Id_class_instance + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY Due";
             itemsSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
             dg_currentborrows.DataSource = itemsSource;
             dg_currentborrows.AllowUserToAddRows = false;
@@ -122,16 +122,16 @@ namespace Gym_administration
        
             
             // HERE we select the options with the class instance
-            if (this.ciClassInstance.Id_class_instance != -1)
+            if (this.clClassInstance.Id_class_instance != -1)
             {
-                cmb_classes.SelectedIndex = cmb_classes.FindString(ciClassInstance.ClClass.Name);
-                //cmb_instructors.SelectedIndex = cmb_instructors.FindString(ciClassInstance.Name+' ');
-                cmb_rooms.SelectedIndex = cmb_rooms.FindString(ciClassInstance.ClRoom.Name);
-                cmb_repeats.SelectedIndex = cmb_repeats.FindString(ciClassInstance.Frequency);
-                sQuery = "SELECT COUNT(*) q FROM gym.class_bookings WHERE id_class_instance = '" + this.ciClassInstance.Id_class_instance + "'";
+                cmb_classes.SelectedIndex = cmb_classes.FindString(clClassInstance.ClClass.Name);
+                //cmb_instructors.SelectedIndex = cmb_instructors.FindString(clClassInstance.Name+' ');
+                cmb_rooms.SelectedIndex = cmb_rooms.FindString(clClassInstance.ClRoom.Name);
+                cmb_repeats.SelectedIndex = cmb_repeats.FindString(clClassInstance.Frequency);
+                sQuery = "SELECT COUNT(*) q FROM gym.class_bookings WHERE id_class_instance = '" + this.clClassInstance.Id_class_instance + "'";
                 List<Hashtable> lhRes = conn.lhSqlQuery(sQuery);
                 lbl_currentmembers_amount.Text = lhRes[0]["q"].ToString();
-                sQuery = "SELECT r.size FROM gym.class_instance ci, gym.rooms r WHERE ci.id_room = r.id_room AND ci.id_class_instance = '" + this.ciClassInstance.Id_class_instance + "'";
+                sQuery = "SELECT r.size FROM gym.class_instance ci, gym.rooms r WHERE ci.id_room = r.id_room AND ci.id_class_instance = '" + this.clClassInstance.Id_class_instance + "'";
                 lhRes = conn.lhSqlQuery(sQuery);
                 label_maxmembers_amount.Text = lhRes[0]["size"].ToString();
             }
@@ -175,18 +175,18 @@ namespace Gym_administration
 
             
             // Check if we found the user
-            if (this.ciClassInstance.bCheckOverlap(sDate, id_room, id_staff, txt_starttime.Text, txt_endtime.Text))
+            if (this.clClassInstance.bCheckOverlap(sDate, id_room, id_staff, txt_starttime.Text, txt_endtime.Text))
                 MessageBox.Show("The class is overlapping with another class, please specify another date, room or instructor.");
             else
             {
-                this.ciClassInstance.Id_staff = int.Parse(id_staff);
-                this.ciClassInstance.ClRoom = new Room(int.Parse(id_room));
-                this.ciClassInstance.ClClass = new Class(int.Parse(id_class));
-                this.ciClassInstance.DateStart = sDate;
-                this.ciClassInstance.EndTime = txt_endtime.Text;
-                this.ciClassInstance.Frequency = cmb_repeats.Text;
-                this.ciClassInstance.StartTime = txt_starttime.Text;
-                if (this.ciClassInstance.bSave())
+                this.clClassInstance.Id_staff = int.Parse(id_staff);
+                this.clClassInstance.ClRoom = new Room(int.Parse(id_room));
+                this.clClassInstance.ClClass = new Class(int.Parse(id_class));
+                this.clClassInstance.DateStart = sDate;
+                this.clClassInstance.EndTime = txt_endtime.Text;
+                this.clClassInstance.Frequency = cmb_repeats.Text;
+                this.clClassInstance.StartTime = txt_starttime.Text;
+                if (this.clClassInstance.SaveClassInstance())
                 {
                     button_enrollmembers.Enabled = true;
                     button_remove.Enabled = true;
@@ -200,13 +200,13 @@ namespace Gym_administration
 
         private void button_enrollmembers_Click(object sender, EventArgs e)
         {
-            frm_member_list frmMemberList = new frm_member_list(ciClassInstance,false);
+            frm_member_list frmMemberList = new frm_member_list(clClassInstance,false);
             frmMemberList.ShowDialog();
         }
 
         private void button_viewattendants_Click(object sender, EventArgs e)
         {
-            frm_member_list frmMemberList = new frm_member_list(ciClassInstance, true);
+            frm_member_list frmMemberList = new frm_member_list(clClassInstance, true);
             frmMemberList.ShowDialog();
         }
 
@@ -221,16 +221,23 @@ namespace Gym_administration
             label_maxmembers_amount.Text = lhRes[0]["size"].ToString();
         }
 
-        private void button_remove_Click(object sender, EventArgs e)        {
-            DialogResult res = MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (res == DialogResult.Yes)
+        private void button_remove_Click(object sender, EventArgs e)   
+        {
+            if (dg_currentborrows.RowCount > 0)
+                MessageBox.Show("You can't remove this class as the borrowed equipments has to be returned first!");
+            else
             {
-                if (this.ciClassInstance.bRemove() == false)
+
+                DialogResult res = MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (res == DialogResult.Yes)
                 {
-                    MessageBox.Show("Please make sure that there aren't any class instances for this class.");
+                    if (this.clClassInstance.RemoveClassInstance() == false)
+                    {
+                        MessageBox.Show("Please make sure that there aren't any class instances for this class.");
+                    }
+                    frmClassInstanceList.vLoadDgClassList();
+                    this.Close();
                 }
-                frmClInstList.vLoadDgClassList();
-                this.Close();
             }
         }
 
@@ -238,7 +245,7 @@ namespace Gym_administration
         {
 
             // Creating the child form login
-            frm_equipment_list frmEquipmentList = new frm_equipment_list(this.ciClassInstance.Id_class_instance, this);
+            frm_equipment_list frmEquipmentList = new frm_equipment_list(this.clClassInstance.Id_class_instance, this);
 
             if (Utils.bIsAlreadyOpened(frmEquipmentList)) return;
             frmEquipmentList.ShowDialog();  
