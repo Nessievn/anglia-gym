@@ -84,19 +84,20 @@
             this.dg_currentborrows = new System.Windows.Forms.DataGridView();
             this.label_currentborrows = new System.Windows.Forms.Label();
             this.label_dateformat = new System.Windows.Forms.Label();
+            this.label_emailunique = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dg_currentborrows)).BeginInit();
             this.SuspendLayout();
             // 
             // label_memberinfo
             // 
             this.label_memberinfo.AutoSize = true;
-            this.label_memberinfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_memberinfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_memberinfo.Location = new System.Drawing.Point(16, 9);
             this.label_memberinfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_memberinfo.Name = "label_memberinfo";
-            this.label_memberinfo.Size = new System.Drawing.Size(119, 20);
+            this.label_memberinfo.Size = new System.Drawing.Size(132, 20);
             this.label_memberinfo.TabIndex = 0;
-            this.label_memberinfo.Text = "Member Info:";
+            this.label_memberinfo.Text = "MEMBER INFO:";
             // 
             // label_membernum
             // 
@@ -156,10 +157,11 @@
             // label_dob
             // 
             this.label_dob.AutoSize = true;
+            this.label_dob.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_dob.Location = new System.Drawing.Point(16, 183);
             this.label_dob.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_dob.Name = "label_dob";
-            this.label_dob.Size = new System.Drawing.Size(87, 17);
+            this.label_dob.Size = new System.Drawing.Size(100, 17);
             this.label_dob.TabIndex = 7;
             this.label_dob.Text = "Date of Birth";
             // 
@@ -210,10 +212,11 @@
             // label_email
             // 
             this.label_email.AutoSize = true;
+            this.label_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_email.Location = new System.Drawing.Point(16, 233);
             this.label_email.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_email.Name = "label_email";
-            this.label_email.Size = new System.Drawing.Size(47, 17);
+            this.label_email.Size = new System.Drawing.Size(53, 17);
             this.label_email.TabIndex = 11;
             this.label_email.Text = "E-Mail";
             // 
@@ -256,11 +259,11 @@
             // label_emergencycontact
             // 
             this.label_emergencycontact.AutoSize = true;
-            this.label_emergencycontact.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_emergencycontact.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_emergencycontact.Location = new System.Drawing.Point(455, 9);
             this.label_emergencycontact.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_emergencycontact.Name = "label_emergencycontact";
-            this.label_emergencycontact.Size = new System.Drawing.Size(179, 20);
+            this.label_emergencycontact.Size = new System.Drawing.Size(161, 20);
             this.label_emergencycontact.TabIndex = 19;
             this.label_emergencycontact.Text = "Emergency Contact:";
             // 
@@ -393,11 +396,11 @@
             // label_medical_info
             // 
             this.label_medical_info.AutoSize = true;
-            this.label_medical_info.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_medical_info.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_medical_info.Location = new System.Drawing.Point(455, 146);
             this.label_medical_info.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_medical_info.Name = "label_medical_info";
-            this.label_medical_info.Size = new System.Drawing.Size(180, 20);
+            this.label_medical_info.Size = new System.Drawing.Size(160, 20);
             this.label_medical_info.TabIndex = 36;
             this.label_medical_info.Text = "Medical Information:";
             // 
@@ -645,11 +648,22 @@
             this.label_dateformat.TabIndex = 60;
             this.label_dateformat.Text = "(dd/mm/yyyy)";
             // 
+            // label_emailunique
+            // 
+            this.label_emailunique.AutoSize = true;
+            this.label_emailunique.Location = new System.Drawing.Point(85, 233);
+            this.label_emailunique.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_emailunique.Name = "label_emailunique";
+            this.label_emailunique.Size = new System.Drawing.Size(124, 17);
+            this.label_emailunique.TabIndex = 61;
+            this.label_emailunique.Text = "(has to be unique)";
+            // 
             // frm_member
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(879, 545);
+            this.Controls.Add(this.label_emailunique);
             this.Controls.Add(this.label_dateformat);
             this.Controls.Add(this.label_currentborrows);
             this.Controls.Add(this.dg_currentborrows);
@@ -776,5 +790,6 @@
         private System.Windows.Forms.DataGridView dg_currentborrows;
         private System.Windows.Forms.Label label_currentborrows;
         private System.Windows.Forms.Label label_dateformat;
+        private System.Windows.Forms.Label label_emailunique;
     }
 }

@@ -7,16 +7,19 @@ using System.Windows.Forms;
 
 namespace Gym_administration
 {
+
+    /**
+     * @desc It holds data and modifying methods for the EQUIPMENT_BOOKINGS table. 
+     * Most closely associated forms are frm_member, frm_staff, frm_class.
+     * Most closely associated table is EQUIPMENT_BOOKINGS.
+     * @params [none] Incoming parameters are described at the individual constructors.
+     * @return [none] No directly returned data. 
+     * Returns of public methods are described at the individual methods.
+     */
     class EquipmentBooked
     {
 
 
-        private string bookingType;
-        public string BookingType
-        {
-            get { return bookingType; }
-            set { bookingType = value; }
-        }
 
         private int id_eq_booking;
         public int Id_eq_booking
@@ -32,25 +35,11 @@ namespace Gym_administration
             set { id_member = value; }
         }
 
-        private string memberName;
-        public string MemberName
-        {
-            get { return memberName; }
-            set { memberName = value; }
-        }
-
         private string id_staff;
         public string Id_staff
         {
             get { return id_staff; }
             set { id_staff = value; }
-        }
-
-        private string staffName;
-        public string StaffName
-        {
-            get { return staffName; }
-            set { staffName = value; }
         }
 
         private string id_class_instance;
@@ -106,23 +95,21 @@ namespace Gym_administration
 
         public EquipmentBooked(int id_eq_booking)
         {
-            mySqlConn conn = new mySqlConn();
-            conn.connect();
+            this.Id_eq_booking = id_eq_booking;
+            //mySqlConn conn = new mySqlConn();
+            //conn.connect();
             // We launch the query
-            //List<Hashtable> lhResultset = conn.lhSqlQuery("Select * from equipment_bookings WHERE id_equipment = '" + iIdEqBooking + "'");
 
-
-            List<Hashtable> lhResultset = conn.lhSqlQuery("SELECT IF(eb.id_staff IS NULL, 'MEMBER_BOOKING','STAFF_BOOKING') BookingType, eb.id_eq_booking BookingNr, eb.id_member MemberID, CONCAT(m.lastName, ', ', m.firstName) MemberName, eb.id_staff StaffID, CONCAT(s.lastName, ', ', s.firstName) SaffName, eb.id_equipment EqID,  e.name Equipment, eb.borrowedamount, eb.date_start, eb.date_due, eb.id_class_instance ClassInstance FROM equipment e, equipment_bookings eb LEFT OUTER JOIN staff s ON eb.id_staff = s.id_staff LEFT OUTER JOIN members m ON eb.id_member = m.id_member WHERE e.id_equipment = eb.id_equipment AND eb.id_eq_booking = '" + id_eq_booking + "'");
+//            List<Hashtable> lhResultset = conn.lhSqlQuery("SELECT eb.id_eq_booking BookingNr, eb.id_member MemberID, CONCAT(m.lastName, ', ', m.firstName) MemberName, eb.id_staff StaffID, CONCAT(s.lastName, ', ', s.firstName) SaffName, eb.id_equipment EqID,  e.name Equipment, eb.borrowedamount, eb.date_start, eb.date_due, eb.id_class_instance ClassInstance FROM equipment e, equipment_bookings eb LEFT OUTER JOIN staff s ON eb.id_staff = s.id_staff LEFT OUTER JOIN members m ON eb.id_member = m.id_member WHERE e.id_equipment = eb.id_equipment AND eb.id_eq_booking = '" + id_eq_booking + "'");
 
 
             // Check if we found the equipment
-            if ((int)lhResultset.Count > 0)
-            {
+            //if ((int)lhResultset.Count > 0)
+            //{
 
-                this.BookingType = lhResultset[0]["BookingType"].ToString();
-                this.Id_eq_booking = int.Parse(lhResultset[0]["BookingNr"].ToString());
+            //this.Id_eq_booking = int.Parse(lhResultset[0]["BookingNr"].ToString());
                 
-            }
+            //}
         }
                
 

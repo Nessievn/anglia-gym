@@ -47,13 +47,6 @@ namespace Gym_administration
                 if (iLateItems>0)
                     MessageBox.Show("This persom has "+iLateItems+" late, unreturned item(s).");
             }
-            //eqEquipmentBooked.SDateStart = String.Format("{0:yyyy-MM-dd}", today);
-
-            //eqEquipmentBooked.SDateDue = String.Format("{0:yyyy-MM-dd}", today.AddDays(double.Parse(counter_numberofdays.Value.ToString())));
-            //eqEquipmentBooked.SDateStart = Utils.sGetMysqlDate(txt_startdate.Text);
-            //string strTest = "25 May 2006";
-            //DateTime dtmTest = DateTime.Parse(strTest);
-            //
         }
 
         public frm_member()
@@ -198,21 +191,21 @@ namespace Gym_administration
             int id_eq_booking = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[4].Value.ToString());
 
             frm_message_box myMessageBox = new frm_message_box();
-            string iresult = myMessageBox.ShowBox(Utils.MB_CUST4, "", "How many "+name+" would you like to return?",borrowedAmount.ToString());
+            string result = myMessageBox.ShowBox(Utils.MB_CUST4, "", "How many "+name+" would you like to return?",borrowedAmount.ToString());
  
  
  	                        //ref  http://social.msdn.microsoft.com/Forums/en-US/winforms/thread/84990ad2-5046-472b-b103-f862bfcd5dbc
  
  
  	                        double Num;
- 	                        bool isNum = double.TryParse(iresult, out Num);
+ 	                        bool isNum = double.TryParse(result, out Num);
  	                        if (isNum)
  	                        {
                                 
-                                if ((int.Parse(iresult) > 0) && (iresult != "Cancel"))
+                                if ((int.Parse(result) > 0) && (result != "Cancel"))
                                 {
                                     this.eqEquipmentBooked = new EquipmentBooked(id_eq_booking);
-                                    this.eqEquipmentBooked.BorrowedAmount = int.Parse(iresult);
+                                    this.eqEquipmentBooked.BorrowedAmount = int.Parse(result);
                                     this.eqEquipmentBooked.IsReturned = false;
                                     this.eqEquipmentBooked.bSave();
                                 }

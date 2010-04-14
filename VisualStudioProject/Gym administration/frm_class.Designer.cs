@@ -93,23 +93,24 @@
             // label_name
             // 
             this.label_name.AutoSize = true;
+            this.label_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_name.Location = new System.Drawing.Point(16, 44);
             this.label_name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_name.Name = "label_name";
-            this.label_name.Size = new System.Drawing.Size(45, 17);
+            this.label_name.Size = new System.Drawing.Size(49, 17);
             this.label_name.TabIndex = 160;
             this.label_name.Text = "Name";
             // 
             // label_classinfo
             // 
             this.label_classinfo.AutoSize = true;
-            this.label_classinfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_classinfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_classinfo.Location = new System.Drawing.Point(16, 11);
             this.label_classinfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_classinfo.Name = "label_classinfo";
-            this.label_classinfo.Size = new System.Drawing.Size(100, 20);
+            this.label_classinfo.Size = new System.Drawing.Size(113, 20);
             this.label_classinfo.TabIndex = 157;
-            this.label_classinfo.Text = "Class Info:";
+            this.label_classinfo.Text = "CLASS INFO:";
             // 
             // rd_personal
             // 

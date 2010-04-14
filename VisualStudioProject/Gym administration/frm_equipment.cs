@@ -162,7 +162,6 @@ namespace Gym_administration
 
             if ((Id_staff == -1)&&(Id_class_instance == -1))
             {
-                ebEquipmentBooked.BookingType = "MEMBER_BOOKING";
                 ebEquipmentBooked.Id_member = this.Id_member.ToString();
                 ebEquipmentBooked.Id_staff = "NULL";
                 ebEquipmentBooked.Id_class_instance = "NULL";
@@ -170,22 +169,15 @@ namespace Gym_administration
             }
             else if (Id_class_instance == -1)
             {
-                ebEquipmentBooked.BookingType = "STAFF_BOOKING";
                 ebEquipmentBooked.Id_member = "NULL";
                 ebEquipmentBooked.Id_staff = this.Id_staff.ToString();
                 ebEquipmentBooked.Id_class_instance = "NULL";
             }
             else
             {
-                ebEquipmentBooked.BookingType = "CLASS_BOOKING";
                 ebEquipmentBooked.Id_member = "NULL";
                 ebEquipmentBooked.Id_staff = "NULL";
                 ebEquipmentBooked.Id_class_instance = this.Id_class_instance.ToString();
-
-                
-                
-                
-
             }
             DateTime today = DateTime.Today;
             ebEquipmentBooked.DateStart = String.Format("{0:yyyy-MM-dd}", today);
@@ -417,6 +409,7 @@ private void button_vehicle_Click(object sender, EventArgs e)
         private void rd_item_Checked()
         {
 
+            button_vehicle.Hide();
 
             label_iteminfo.Show();
             label_itemsetinfo.Hide();
@@ -457,6 +450,8 @@ private void button_vehicle_Click(object sender, EventArgs e)
 
         private void rd_set_Checked()
         {
+
+            button_vehicle.Hide();
 
             mySqlConn conn = new mySqlConn();
             conn.connect();
@@ -740,6 +735,7 @@ private void button_vehicle_Click(object sender, EventArgs e)
             }
                 
         }
+
 
 
 

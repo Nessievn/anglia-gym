@@ -161,11 +161,19 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
-            string sQuery = "SELECT id_equipment EID, name Name, id_set Id_Set, description Description FROM equipment WHERE 1 = 1";
+            string sQuery = "";
+            if (rd_item.Checked == true)
+                sQuery = "SELECT id_equipment EID, name Name, description Description FROM equipment WHERE type = 'item' AND 1 = 1";
+            else
+                sQuery = "SELECT id_equipment EID, name Name, description Description FROM equipment WHERE type = 'set' AND 1 = 1";
+
             if (txt_equipmentname.Text != "")
                 sQuery += " AND name LIKE '%" + txt_equipmentname.Text + "%'";
 
             sQuery += "  ORDER BY name";
+
+
+
 
             bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
             dg_equipment.DataSource = bSource;

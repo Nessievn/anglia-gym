@@ -91,23 +91,24 @@
             // label_roomname
             // 
             this.label_roomname.AutoSize = true;
+            this.label_roomname.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_roomname.Location = new System.Drawing.Point(16, 44);
             this.label_roomname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_roomname.Name = "label_roomname";
-            this.label_roomname.Size = new System.Drawing.Size(45, 17);
+            this.label_roomname.Size = new System.Drawing.Size(49, 17);
             this.label_roomname.TabIndex = 110;
             this.label_roomname.Text = "Name";
             // 
             // label_roominfo
             // 
             this.label_roominfo.AutoSize = true;
-            this.label_roominfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_roominfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_roominfo.Location = new System.Drawing.Point(16, 11);
             this.label_roominfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_roominfo.Name = "label_roominfo";
-            this.label_roominfo.Size = new System.Drawing.Size(100, 20);
+            this.label_roominfo.Size = new System.Drawing.Size(110, 20);
             this.label_roominfo.TabIndex = 105;
-            this.label_roominfo.Text = "Room Info:";
+            this.label_roominfo.Text = "ROOM INFO:";
             // 
             // txt_roomdesc
             // 
@@ -155,6 +156,7 @@
             this.Controls.Add(this.txt_roomname);
             this.Controls.Add(this.label_roomname);
             this.Controls.Add(this.label_roominfo);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frm_room";

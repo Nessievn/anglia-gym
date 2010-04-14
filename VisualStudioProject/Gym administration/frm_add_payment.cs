@@ -50,7 +50,7 @@ namespace Gym_administration
                 dAmount = Decimal.Parse(txt_amount.Text);
             }catch(Exception ex)
             {
-                MessageBox.Show("Check amount format!" + " (" + ex.ToString() + ")");
+                MessageBox.Show("Amount can not be empty! (or) Check amount format!" + "\r\n\r\n" + ex.ToString());
                 return;
             }
           

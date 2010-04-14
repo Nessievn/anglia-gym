@@ -76,7 +76,7 @@
             this.cmb_classes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_classes.FormattingEnabled = true;
             this.cmb_classes.Location = new System.Drawing.Point(19, 153);
-            this.cmb_classes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmb_classes.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_classes.Name = "cmb_classes";
             this.cmb_classes.Size = new System.Drawing.Size(296, 24);
             this.cmb_classes.TabIndex = 14;
@@ -86,7 +86,7 @@
             this.cmb_rooms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_rooms.FormattingEnabled = true;
             this.cmb_rooms.Location = new System.Drawing.Point(19, 209);
-            this.cmb_rooms.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmb_rooms.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_rooms.Name = "cmb_rooms";
             this.cmb_rooms.Size = new System.Drawing.Size(296, 24);
             this.cmb_rooms.TabIndex = 16;
@@ -107,7 +107,7 @@
             this.cmb_instructors.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_instructors.FormattingEnabled = true;
             this.cmb_instructors.Location = new System.Drawing.Point(19, 271);
-            this.cmb_instructors.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmb_instructors.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_instructors.Name = "cmb_instructors";
             this.cmb_instructors.Size = new System.Drawing.Size(296, 24);
             this.cmb_instructors.TabIndex = 18;
@@ -126,7 +126,7 @@
             // 
             this.txt_startdate.Culture = new System.Globalization.CultureInfo("en-GB");
             this.txt_startdate.Location = new System.Drawing.Point(341, 153);
-            this.txt_startdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_startdate.Margin = new System.Windows.Forms.Padding(4);
             this.txt_startdate.Mask = "00/00/0000";
             this.txt_startdate.Name = "txt_startdate";
             this.txt_startdate.Size = new System.Drawing.Size(89, 22);
@@ -136,10 +136,11 @@
             // label_date
             // 
             this.label_date.AutoSize = true;
+            this.label_date.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_date.Location = new System.Drawing.Point(337, 133);
             this.label_date.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_date.Name = "label_date";
-            this.label_date.Size = new System.Drawing.Size(38, 17);
+            this.label_date.Size = new System.Drawing.Size(42, 17);
             this.label_date.TabIndex = 20;
             this.label_date.Text = "Date";
             // 
@@ -147,7 +148,7 @@
             // 
             this.txt_starttime.Culture = new System.Globalization.CultureInfo("en-GB");
             this.txt_starttime.Location = new System.Drawing.Point(341, 209);
-            this.txt_starttime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_starttime.Margin = new System.Windows.Forms.Padding(4);
             this.txt_starttime.Mask = "00:00";
             this.txt_starttime.Name = "txt_starttime";
             this.txt_starttime.Size = new System.Drawing.Size(89, 22);
@@ -157,20 +158,22 @@
             // label_starttime
             // 
             this.label_starttime.AutoSize = true;
+            this.label_starttime.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_starttime.Location = new System.Drawing.Point(337, 190);
             this.label_starttime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_starttime.Name = "label_starttime";
-            this.label_starttime.Size = new System.Drawing.Size(73, 17);
+            this.label_starttime.Size = new System.Drawing.Size(83, 17);
             this.label_starttime.TabIndex = 22;
             this.label_starttime.Text = "Start Time";
             // 
             // label_endtime
             // 
             this.label_endtime.AutoSize = true;
+            this.label_endtime.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_endtime.Location = new System.Drawing.Point(451, 190);
             this.label_endtime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_endtime.Name = "label_endtime";
-            this.label_endtime.Size = new System.Drawing.Size(68, 17);
+            this.label_endtime.Size = new System.Drawing.Size(76, 17);
             this.label_endtime.TabIndex = 24;
             this.label_endtime.Text = "End Time";
             // 
@@ -178,7 +181,7 @@
             // 
             this.txt_endtime.Culture = new System.Globalization.CultureInfo("en-GB");
             this.txt_endtime.Location = new System.Drawing.Point(455, 209);
-            this.txt_endtime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_endtime.Margin = new System.Windows.Forms.Padding(4);
             this.txt_endtime.Mask = "00:00";
             this.txt_endtime.Name = "txt_endtime";
             this.txt_endtime.Size = new System.Drawing.Size(87, 22);
@@ -188,13 +191,13 @@
             // label_classinfo
             // 
             this.label_classinfo.AutoSize = true;
-            this.label_classinfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_classinfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_classinfo.Location = new System.Drawing.Point(15, 11);
             this.label_classinfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_classinfo.Name = "label_classinfo";
-            this.label_classinfo.Size = new System.Drawing.Size(163, 20);
+            this.label_classinfo.Size = new System.Drawing.Size(189, 20);
             this.label_classinfo.TabIndex = 25;
-            this.label_classinfo.Text = "Class Information:";
+            this.label_classinfo.Text = "CLASS INFORMATION:";
             // 
             // label_equipment
             // 
@@ -209,7 +212,7 @@
             // button_save
             // 
             this.button_save.Location = new System.Drawing.Point(437, 441);
-            this.button_save.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_save.Margin = new System.Windows.Forms.Padding(4);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(100, 28);
             this.button_save.TabIndex = 28;
@@ -226,7 +229,7 @@
             "Weekly",
             "Monthly"});
             this.cmb_repeats.Location = new System.Drawing.Point(341, 271);
-            this.cmb_repeats.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmb_repeats.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_repeats.Name = "cmb_repeats";
             this.cmb_repeats.Size = new System.Drawing.Size(200, 24);
             this.cmb_repeats.TabIndex = 29;
@@ -244,7 +247,7 @@
             // button_enrollmembers
             // 
             this.button_enrollmembers.Location = new System.Drawing.Point(285, 441);
-            this.button_enrollmembers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_enrollmembers.Margin = new System.Windows.Forms.Padding(4);
             this.button_enrollmembers.Name = "button_enrollmembers";
             this.button_enrollmembers.Size = new System.Drawing.Size(144, 28);
             this.button_enrollmembers.TabIndex = 31;
@@ -255,7 +258,7 @@
             // button_viewattendants
             // 
             this.button_viewattendants.Location = new System.Drawing.Point(132, 441);
-            this.button_viewattendants.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_viewattendants.Margin = new System.Windows.Forms.Padding(4);
             this.button_viewattendants.Name = "button_viewattendants";
             this.button_viewattendants.Size = new System.Drawing.Size(145, 28);
             this.button_viewattendants.TabIndex = 32;
@@ -270,9 +273,9 @@
             this.groupBox_membersenrolled.Controls.Add(this.label_maxmembers);
             this.groupBox_membersenrolled.Controls.Add(this.label_currentmembers);
             this.groupBox_membersenrolled.Location = new System.Drawing.Point(16, 46);
-            this.groupBox_membersenrolled.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_membersenrolled.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox_membersenrolled.Name = "groupBox_membersenrolled";
-            this.groupBox_membersenrolled.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_membersenrolled.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox_membersenrolled.Size = new System.Drawing.Size(525, 84);
             this.groupBox_membersenrolled.TabIndex = 33;
             this.groupBox_membersenrolled.TabStop = false;
@@ -321,7 +324,7 @@
             // button_remove
             // 
             this.button_remove.Location = new System.Drawing.Point(9, 441);
-            this.button_remove.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_remove.Margin = new System.Windows.Forms.Padding(4);
             this.button_remove.Name = "button_remove";
             this.button_remove.Size = new System.Drawing.Size(100, 28);
             this.button_remove.TabIndex = 34;
@@ -332,7 +335,7 @@
             // btn_equipment
             // 
             this.btn_equipment.Location = new System.Drawing.Point(16, 334);
-            this.btn_equipment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_equipment.Margin = new System.Windows.Forms.Padding(4);
             this.btn_equipment.Name = "btn_equipment";
             this.btn_equipment.Size = new System.Drawing.Size(203, 28);
             this.btn_equipment.TabIndex = 35;
@@ -360,7 +363,7 @@
             this.dg_currentborrows.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg_currentborrows.Cursor = System.Windows.Forms.Cursors.Default;
             this.dg_currentborrows.Location = new System.Drawing.Point(227, 334);
-            this.dg_currentborrows.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dg_currentborrows.Margin = new System.Windows.Forms.Padding(4);
             this.dg_currentborrows.Name = "dg_currentborrows";
             this.dg_currentborrows.RowHeadersVisible = false;
             this.dg_currentborrows.RowTemplate.Height = 24;
@@ -409,7 +412,7 @@
             this.Controls.Add(this.cmb_classes);
             this.Controls.Add(this.label_chooseclass);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_class_instance_arrange";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Class Arrange";

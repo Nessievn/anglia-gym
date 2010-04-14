@@ -89,6 +89,7 @@
             this.label_dateformat = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label_star = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dg_currentborrows)).BeginInit();
             this.SuspendLayout();
             // 
@@ -251,11 +252,11 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.Location = new System.Drawing.Point(459, 149);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(180, 20);
+            this.label19.Size = new System.Drawing.Size(160, 20);
             this.label19.TabIndex = 96;
             this.label19.Text = "Medical Information:";
             // 
@@ -388,11 +389,11 @@
             // label_emergencycontact
             // 
             this.label_emergencycontact.AutoSize = true;
-            this.label_emergencycontact.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_emergencycontact.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_emergencycontact.Location = new System.Drawing.Point(459, 11);
             this.label_emergencycontact.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_emergencycontact.Name = "label_emergencycontact";
-            this.label_emergencycontact.Size = new System.Drawing.Size(179, 20);
+            this.label_emergencycontact.Size = new System.Drawing.Size(161, 20);
             this.label_emergencycontact.TabIndex = 83;
             this.label_emergencycontact.Text = "Emergency Contact:";
             // 
@@ -461,20 +462,22 @@
             // label_email
             // 
             this.label_email.AutoSize = true;
+            this.label_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_email.Location = new System.Drawing.Point(9, 139);
             this.label_email.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_email.Name = "label_email";
-            this.label_email.Size = new System.Drawing.Size(47, 17);
+            this.label_email.Size = new System.Drawing.Size(53, 17);
             this.label_email.TabIndex = 72;
             this.label_email.Text = "E-Mail";
             // 
             // label_dob
             // 
             this.label_dob.AutoSize = true;
+            this.label_dob.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_dob.Location = new System.Drawing.Point(231, 41);
             this.label_dob.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_dob.Name = "label_dob";
-            this.label_dob.Size = new System.Drawing.Size(87, 17);
+            this.label_dob.Size = new System.Drawing.Size(100, 17);
             this.label_dob.TabIndex = 65;
             this.label_dob.Text = "Date of Birth";
             // 
@@ -517,13 +520,13 @@
             // label_staffinfo
             // 
             this.label_staffinfo.AutoSize = true;
-            this.label_staffinfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_staffinfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_staffinfo.Location = new System.Drawing.Point(16, 11);
             this.label_staffinfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_staffinfo.Name = "label_staffinfo";
-            this.label_staffinfo.Size = new System.Drawing.Size(92, 20);
+            this.label_staffinfo.Size = new System.Drawing.Size(110, 20);
             this.label_staffinfo.TabIndex = 55;
-            this.label_staffinfo.Text = "Staff Info:";
+            this.label_staffinfo.Text = "STAFF INFO:";
             // 
             // txt_qualifications
             // 
@@ -538,11 +541,11 @@
             // label_qualifications
             // 
             this.label_qualifications.AutoSize = true;
-            this.label_qualifications.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_qualifications.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_qualifications.Location = new System.Drawing.Point(459, 378);
             this.label_qualifications.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_qualifications.Name = "label_qualifications";
-            this.label_qualifications.Size = new System.Drawing.Size(125, 20);
+            this.label_qualifications.Size = new System.Drawing.Size(111, 20);
             this.label_qualifications.TabIndex = 106;
             this.label_qualifications.Text = "Qualifications";
             // 
@@ -595,10 +598,11 @@
             // label_contract_start
             // 
             this.label_contract_start.AutoSize = true;
+            this.label_contract_start.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_contract_start.Location = new System.Drawing.Point(9, 382);
             this.label_contract_start.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_contract_start.Name = "label_contract_start";
-            this.label_contract_start.Size = new System.Drawing.Size(95, 17);
+            this.label_contract_start.Size = new System.Drawing.Size(109, 17);
             this.label_contract_start.TabIndex = 110;
             this.label_contract_start.Text = "Contract Start";
             // 
@@ -615,10 +619,11 @@
             // label_contract_finish
             // 
             this.label_contract_finish.AutoSize = true;
+            this.label_contract_finish.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_contract_finish.Location = new System.Drawing.Point(9, 427);
             this.label_contract_finish.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_contract_finish.Name = "label_contract_finish";
-            this.label_contract_finish.Size = new System.Drawing.Size(102, 17);
+            this.label_contract_finish.Size = new System.Drawing.Size(117, 17);
             this.label_contract_finish.TabIndex = 112;
             this.label_contract_finish.Text = "Contract Finish";
             // 
@@ -663,18 +668,17 @@
             // label_dateformat
             // 
             this.label_dateformat.AutoSize = true;
-            this.label_dateformat.Location = new System.Drawing.Point(326, 40);
+            this.label_dateformat.Location = new System.Drawing.Point(328, 40);
             this.label_dateformat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_dateformat.Name = "label_dateformat";
             this.label_dateformat.Size = new System.Drawing.Size(92, 17);
             this.label_dateformat.TabIndex = 116;
             this.label_dateformat.Text = "(dd/mm/yyyy)";
-            this.label_dateformat.Click += new System.EventHandler(this.label_dateformat_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(112, 382);
+            this.label1.Location = new System.Drawing.Point(117, 382);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 17);
@@ -684,18 +688,29 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(119, 427);
+            this.label2.Location = new System.Drawing.Point(124, 427);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 17);
             this.label2.TabIndex = 118;
             this.label2.Text = "(dd/mm/yyyy)";
             // 
+            // label_star
+            // 
+            this.label_star.AutoSize = true;
+            this.label_star.Location = new System.Drawing.Point(401, 264);
+            this.label_star.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_star.Name = "label_star";
+            this.label_star.Size = new System.Drawing.Size(13, 17);
+            this.label_star.TabIndex = 119;
+            this.label_star.Text = "*";
+            // 
             // frm_staff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(879, 545);
+            this.Controls.Add(this.label_star);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label_dateformat);
@@ -832,5 +847,6 @@
         private System.Windows.Forms.Label label_dateformat;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label_star;
     }
 }
