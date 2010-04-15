@@ -301,95 +301,15 @@ namespace Gym_administration
                 clUser.Password = sMysqlDate;
                 clUser.Profile = "member";
                 // then the bSave method is called
+                mySqlConn conn = new mySqlConn();
+                conn.connect();
+
                 if (clUser.SaveUser())
                 {
-                    
-
-
-
                     if ((this.Id_member >-1)&&(this.FilePath != null) && (this.FilePath.Length > 1))
                     {
-
-                        MySql.Data.MySqlClient.MySqlConnection thisConn;
-                        MySql.Data.MySqlClient.MySqlCommand cmd;
-
-                        thisConn = new MySql.Data.MySqlClient.MySqlConnection();
-                        cmd = new MySql.Data.MySqlClient.MySqlCommand();
-
-
-                        string SQL;
-                        int fileSize;
-                        byte[] rawData;
-                        FileStream fs;
-                        
-
-                        thisConn.ConnectionString = "server=localhost;uid=gym;pwd=gym;database=gym;";
-                        
-
-                        try
-                        {
-                            //string strFileName = "Picture";
-                            fs = new FileStream(this.FilePath, FileMode.Open, FileAccess.Read);
-                            fileSize = int.Parse(fs.Length.ToString());
-
-                            rawData = new byte[fileSize];
-                            fs.Read(rawData, 0, fileSize);
-                            fs.Close();
-                            
-                            thisConn.Open();
-
-                            SQL = "INSERT INTO file VALUES(NULL, @FileName, @FileSize, @File)";
-
-                            cmd.Connection = thisConn;
-                            cmd.CommandText = SQL;
-                            cmd.Parameters.AddWithValue("@FileName", this.FileName);
-                            cmd.Parameters.AddWithValue("@FileSize", fileSize);
-                            cmd.Parameters.AddWithValue("@File", rawData);
-
-                            cmd.ExecuteNonQuery();
-
-                            MySqlDataReader Reader;
-                            cmd.CommandText = ("SELECT LAST_INSERT_ID() id");
-                            Reader = cmd.ExecuteReader();
-                            Reader.Read();
-                            this.Id_file = Reader.GetValue(0).ToString();
-
-                            MessageBox.Show("File Inserted into database successfully!",
-                                                       "Success!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-
-                            thisConn.Close();
-
-              
-      
-                            
-            
-                        }
-                        catch (MySql.Data.MySqlClient.MySqlException ex)
-                        {
-                            MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
-                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-
-
-                        
-
-
-
-
-
-
+                        this.Id_file = conn.uploadFileToDB(this.FilePath, this.FileName);
                     }
-
-
-
-
-
-
-
-                    mySqlConn conn = new mySqlConn();
-                    conn.connect();
-                    
-
 
                     if (this.Id_member == -1)
                     {

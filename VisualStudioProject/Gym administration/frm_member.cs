@@ -62,6 +62,7 @@ namespace Gym_administration
             button_remove.Hide();
             clMember.Id_file = "";
             cmb_type.SelectedIndex = 0;
+
             this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_male_128;
             rd_male.Checked = true;
         }
@@ -121,88 +122,40 @@ namespace Gym_administration
                  txt_telephone.Text = clMember.Phone;
                  txt_sid.Text = clMember.Sid;
                  txt_stcardnumber.Text = clMember.StudCardNumber;
+
+                 mySqlConn conn = new mySqlConn();
+                 conn.connect();
                  if (clMember.Gender == "male")
                  {
                      rd_male.Checked = true;
                      if (clMember.Id_file == "")
-                         this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_male_128;
+                     {
+                         this.pictureBox1.BackgroundImage = conn.loadImageFromDB("1");
+                     }
                      else
-                         loadImage(clMember.Id_file);
+                     {
+                         
+                         pictureBox1.Image = conn.loadImageFromDB(clMember.Id_file);
+                     }
                  }
                  else
                  {
                      rd_female.Checked = true;
                      if (clMember.Id_file == "")
-                         this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_female_128;
+                     {
+                         this.pictureBox1.BackgroundImage = conn.loadImageFromDB("2");
+                     }
                      else
-                         loadImage(clMember.Id_file);
+                     {
+                         pictureBox1.Image = conn.loadImageFromDB(clMember.Id_file);
+                     }
                  }
 
             }
         }
 
 
-        private void loadImage(string id_file)
-        {
 
-
-            MySql.Data.MySqlClient.MySqlConnection conn;
-            MySql.Data.MySqlClient.MySqlCommand cmd;
-            MySql.Data.MySqlClient.MySqlDataReader myData;
-
-            conn = new MySql.Data.MySqlClient.MySqlConnection();
-            cmd = new MySql.Data.MySqlClient.MySqlCommand();
-
-            string SQL;
-            int FileSize;
-            byte[] rawData;
-
-            conn.ConnectionString = "server=localhost;uid=gym;pwd=gym;database=gym;";
-
-            SQL = "SELECT file_name, file_size, file FROM file";
-
-            try
-            {
-                conn.Open();
-
-                cmd.Connection = conn;
-                cmd.CommandText = SQL;
-
-                myData = cmd.ExecuteReader();
-
-                if (!myData.HasRows)
-                    throw new Exception("There are no BLOBs to save");
-
-                myData.Read();
-
-                FileSize = int.Parse(myData.GetUInt32(myData.GetOrdinal("file_size")).ToString());
-                rawData = new byte[FileSize];
-
-                myData.GetBytes(myData.GetOrdinal("file"), 0, rawData, 0, FileSize);
-
-
-                MemoryStream picStream = new MemoryStream(rawData);
-
-
-                pictureBox1.Image = Image.FromStream(picStream);
-
-
-
-                myData.Close();
-                conn.Close();
-            }
-            catch (MySql.Data.MySqlClient.MySqlException ex)
-            {
-                MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
- 
-
-
-
-
-
-        }
 
 
 
@@ -343,6 +296,7 @@ namespace Gym_administration
         {
             if (pictureBox1.Image == null)
             {
+
                 this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_male_128;
             }
         }
@@ -351,6 +305,7 @@ namespace Gym_administration
         {
             if (pictureBox1.Image == null)
             {
+           
                 this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_female_128;
             }
         }
@@ -410,6 +365,7 @@ namespace Gym_administration
                                 this.pictureBox1.Image = null;
                                 clMember.Id_file = "";
                                 clMember.FileName = "";
+                                clMember.FilePath = "";
                                 MessageBox.Show("Image has been marked for deletion,\r\nyou must click on save for\r\nthe deletion to take effect!");
                                 if (rd_male.Checked)
                                     this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_male_128;

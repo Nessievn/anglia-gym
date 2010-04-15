@@ -57,7 +57,7 @@
             this.txt_username.Name = "txt_username";
             this.txt_username.Size = new System.Drawing.Size(132, 22);
             this.txt_username.TabIndex = 1;
-            this.txt_username.Text = "admin";
+            this.txt_username.Text = "admin@ad.min";
             // 
             // txt_password
             // 

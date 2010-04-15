@@ -392,13 +392,15 @@ namespace Gym_administration
         }
         private void loadOutlookBarButtons(string sProfile)
         {
+
             switch (sProfile)
             {
                 case "staff":
                     IconPanel iconPanel1 = new IconPanel("staff");
+  
                     this.outlookBar.AddBand("Staff Functions", iconPanel1);
 
-                    iconPanel1.AddIcon("Add New Member", global::Gym_administration.Properties.Resources.member_add_128, new EventHandler(PanelEvent));
+                    iconPanel1.AddIcon("Add New Member", global::Gym_administration.Properties.Resources.member_add_128, new EventHandler(PanelEvent));                    
                     iconPanel1.AddIcon("Edit Member", global::Gym_administration.Properties.Resources.member_edit_128, new EventHandler(PanelEvent));
                     iconPanel1.AddIcon("Arrange Class", global::Gym_administration.Properties.Resources.class_book_add_128, new EventHandler(PanelEvent));
                     iconPanel1.AddIcon("Edit Arranged Class", global::Gym_administration.Properties.Resources.class_book_edit_128, new EventHandler(PanelEvent));
@@ -421,19 +423,48 @@ namespace Gym_administration
                     iconPanel2.AddIcon("Edit Room List", global::Gym_administration.Properties.Resources.room_edit_128, new EventHandler(PanelEvent));
                     
                     
-                    
+
                     this.outlookBar.SelectBand(0);
                     outlookBar.Show();
                     break;
                 case "all":
                     IconPanel iconPanel3 = new IconPanel("all");
                     this.outlookBar.AddBand("Login Options", iconPanel3);
-                    iconPanel3.AddIcon("Change Password", Image.FromFile(Application.StartupPath + "/../../icons/password_edit_128.png"), new EventHandler(PanelEvent));
+                    iconPanel3.AddIcon("Change Password", global::Gym_administration.Properties.Resources.password_edit_128, new EventHandler(PanelEvent));
                     this.outlookBar.SelectBand(0);
                     outlookBar.Show();
                     break;
             }
         }
+
+        /*
+         *   mySqlConn conn = new mySqlConn();
+             conn.connect();
+         * {
+                            iconPanel1.AddIcon("Add New Member", conn.loadImageFromDB("3"), new EventHandler(PanelEvent));
+                            iconPanel1.AddIcon("Edit Member", conn.loadImageFromDB("4"), new EventHandler(PanelEvent));
+                            iconPanel1.AddIcon("Arrange Class", conn.loadImageFromDB("5"), new EventHandler(PanelEvent));
+                            iconPanel1.AddIcon("Edit Arranged Class", conn.loadImageFromDB("6"), new EventHandler(PanelEvent));
+                            iconPanel1.AddIcon("Edit Equip Bookings", conn.loadImageFromDB("7"), new EventHandler(PanelEvent));
+                            iconPanel1.AddIcon("Edit Room List", conn.loadImageFromDB("8"), new EventHandler(PanelEvent));
+                            this.outlookBar.SelectBand(0);
+                            outlookBar.Show();
+                            break;
+                        case "manager":
+                            IconPanel iconPanel2 = new IconPanel("manager");
+                            this.outlookBar.AddBand("Management Functions", iconPanel2);
+                            iconPanel2.AddIcon("Add New Staff", conn.loadImageFromDB("9"), new EventHandler(PanelEvent));
+                            iconPanel2.AddIcon("Edit Staff", conn.loadImageFromDB("10"), new EventHandler(PanelEvent));
+                            iconPanel2.AddIcon("Membership Fees", conn.loadImageFromDB("11"), new EventHandler(PanelEvent));
+                            iconPanel2.AddIcon("Edit Arranged Class", conn.loadImageFromDB("6"), new EventHandler(PanelEvent));
+                            iconPanel2.AddIcon("Add New Class", conn.loadImageFromDB("12"), new EventHandler(PanelEvent));
+                            iconPanel2.AddIcon("Edit Class", conn.loadImageFromDB("13"), new EventHandler(PanelEvent));
+                            iconPanel2.AddIcon("Add New Equipment", conn.loadImageFromDB("14"), new EventHandler(PanelEvent));
+                            iconPanel2.AddIcon("Edit Equipment", conn.loadImageFromDB("15"), new EventHandler(PanelEvent));
+                            iconPanel2.AddIcon("Edit Room List", conn.loadImageFromDB("8"), new EventHandler(PanelEvent));
+                            */
+
+
         public void vLoadOutlookBar()
         {
             // OUTLOOK BAR!!
