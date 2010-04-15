@@ -24,7 +24,7 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();    
             conn.connect();
             BindingSource itemsSource = new BindingSource();
-            
+            pictureBox1.Image = null;
             string sQuery = "SELECT DISTINCT eb.date_due Due, e.name Name, eb.borrowedamount Amount, eb.id_equipment EqID, eb.id_eq_booking BkID FROM equipment e, equipment_bookings eb WHERE eb.id_member = " + clMember.Id_member + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY Due";
             itemsSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
             dg_currentborrows.DataSource = itemsSource;
@@ -52,7 +52,7 @@ namespace Gym_administration
 
         public frm_member()
         {
-      
+
             clMember = new Member();
             InitializeComponent();
             txt_membernum.Text = Utils.sGenerateNewMemberNumber();
@@ -60,6 +60,24 @@ namespace Gym_administration
             button_equipmentbooking.Hide();
             button_payments.Hide();
             button_remove.Hide();
+            clMember.Id_file = "";
+            cmb_type.SelectedIndex = 0;
+            this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_male_128;
+            rd_male.Checked = true;
+        }
+
+        public frm_member(bool isFromMemberList)
+        {
+
+            clMember = new Member();
+            InitializeComponent();
+            txt_membernum.Text = Utils.sGenerateNewMemberNumber();
+            txt_membernum.ReadOnly = true;
+            button_equipmentbooking.Hide();
+            button_payments.Hide();
+            button_remove.Hide();
+            button_saveOpen.Hide();
+            clMember.Id_file = "";
             cmb_type.SelectedIndex = 0;
             this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_male_128;
             rd_male.Checked = true;
@@ -106,7 +124,7 @@ namespace Gym_administration
                  if (clMember.Gender == "male")
                  {
                      rd_male.Checked = true;
-                     if ((clMember.Id_file == null) || (clMember.Id_file.Length < 1))
+                     if (clMember.Id_file == "")
                          this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_male_128;
                      else
                          loadImage(clMember.Id_file);
@@ -114,7 +132,7 @@ namespace Gym_administration
                  else
                  {
                      rd_female.Checked = true;
-                     if ((clMember.Id_file == null) || (clMember.Id_file.Length < 1))
+                     if (clMember.Id_file == "")
                          this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_female_128;
                      else
                          loadImage(clMember.Id_file);
@@ -126,9 +144,6 @@ namespace Gym_administration
 
         private void loadImage(string id_file)
         {
-
-           // List<Hashtable> result = this.lhSqlQuery("SELECT * FROM file WHERE id_file = "+clMember.Id_file);
-           // clMember.FileSize = result[0]["file_size"].ToString();
 
 
             MySql.Data.MySqlClient.MySqlConnection conn;
@@ -326,7 +341,7 @@ namespace Gym_administration
 
         private void rd_male_Checked(object sender, EventArgs e)
         {
-            if ((clMember.Id_file == null) || (clMember.Id_file.Length < 1))
+            if (pictureBox1.Image == null)
             {
                 this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_male_128;
             }
@@ -334,7 +349,7 @@ namespace Gym_administration
 
         private void rd_female_Checked(object sender, EventArgs e)
         {
-            if ((clMember.Id_file == null) || (clMember.Id_file.Length < 1))
+            if (pictureBox1.Image == null)
             {
                 this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_female_128;
             }
@@ -393,7 +408,8 @@ namespace Gym_administration
                             if (result == "YES")
                             {
                                 this.pictureBox1.Image = null;
-                                clMember.Id_file = null;
+                                clMember.Id_file = "";
+                                clMember.FileName = "";
                                 MessageBox.Show("Image has been marked for deletion,\r\nyou must click on save for\r\nthe deletion to take effect!");
                                 if (rd_male.Checked)
                                     this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_male_128;
@@ -408,17 +424,16 @@ namespace Gym_administration
 
         private void button_saveClose_Click(object sender, EventArgs e)
         {
-            if(saveClick())
+            if (this.saveClick())
                 this.Close();
         }
 
         private void button_saveOpen_Click(object sender, EventArgs e)
         {
-            if (saveClick())
+            if (this.saveClick())
             {
                 
                 this.Dispose();
-                //frm_main.
                 frm_member_list frmMemberList = new frm_member_list();
                 frmMemberList.ShowDialog();
             }

@@ -35,11 +35,21 @@ namespace Gym_administration
             DateTime today = DateTime.Today;
             txt_contract_start.Text = String.Format("{0:dd-MM-yyyy}", today);
         }
+        public frm_staff(bool isFromStaffList)
+        {
+            stfStaff = new Staff();
+            InitializeComponent();
+            button_equipmentbooking.Hide();
+            button_saveOpen.Hide();
+            DateTime today = DateTime.Today;
+            txt_contract_start.Text = String.Format("{0:dd-MM-yyyy}", today);
+        }
 
         public frm_staff(int iStaffId)
         {
             InitializeComponent();
             button_equipmentbooking.Show();
+            button_saveOpen.Hide();
             stfStaff = new Staff(iStaffId);
             if (stfStaff.Id_staff < 1)
                 MessageBox.Show("The staff member could not be found");
@@ -84,9 +94,7 @@ namespace Gym_administration
             //Startup load
         }
 
-
-
-        private void button_save_Click(object sender, EventArgs e)
+        private bool saveClick()
         {
             stfStaff.FirstName = txt_firstName.Text;
             stfStaff.LastName = txt_lastName.Text;
@@ -114,9 +122,14 @@ namespace Gym_administration
             stfStaff.NatInsNumb = txt_natinsnumb.Text;
             stfStaff.SContractStart = txt_contract_start.Text;
             stfStaff.SContractFinish = txt_contract_finish.Text;
-            
 
-            stfStaff.bSave();
+
+            return stfStaff.bSave();
+        }
+
+        private void button_save_Click(object sender, EventArgs e)
+        {
+            saveClick();
         }
 
         private void button_equipmentbooking_Click(object sender, EventArgs e)
@@ -173,6 +186,23 @@ namespace Gym_administration
             }
 
         }
+
+        private void button_saveClose_Click(object sender, EventArgs e)
+        {
+            if (this.saveClick())
+                this.Close();
+        }
+        private void button_saveOpen_Click(object sender, EventArgs e)
+        {
+            if (this.saveClick())
+            {
+
+                this.Dispose();
+                frm_member_list frmMemberList = new frm_member_list();
+                frmMemberList.ShowDialog();
+            }
+        }
+
 
  
 

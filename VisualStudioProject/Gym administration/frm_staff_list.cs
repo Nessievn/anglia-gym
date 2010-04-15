@@ -80,10 +80,6 @@ namespace Gym_administration
             //vLoadStaffList();
         }
 
-        private void dg_staff_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void button_cancel_Click(object sender, EventArgs e)
         {
@@ -92,7 +88,8 @@ namespace Gym_administration
 
         private void button_addstaffmember_Click(object sender, EventArgs e)
         {
-            frm_staff frmStaff = new frm_staff();
+            bool isFromStaffList = true;
+            frm_staff frmStaff = new frm_staff(isFromStaffList);
             //frmStaff.MdiParent = this.MdiParent;
             //frmStaff.Show();
             frmStaff.ShowDialog();

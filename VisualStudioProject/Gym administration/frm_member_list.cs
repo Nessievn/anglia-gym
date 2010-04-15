@@ -198,7 +198,8 @@ namespace Gym_administration
 
         private void button_addNewMember_Click(object sender, EventArgs e)
         {
-            frm_member frmMember = new frm_member();
+            bool isFromMemberList = true;
+            frm_member frmMember = new frm_member(isFromMemberList);
             // We check if the form is already opened
             //if (Utils.bIsAlreadyOpened(mdiFrmMember)) return;
             // Set the Parent Form of the Child window.
