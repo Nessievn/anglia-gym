@@ -36,7 +36,7 @@
             // 
             // button_addpayments
             // 
-            this.button_addpayments.Location = new System.Drawing.Point(715, 335);
+            this.button_addpayments.Location = new System.Drawing.Point(1001, 335);
             this.button_addpayments.Margin = new System.Windows.Forms.Padding(4);
             this.button_addpayments.Name = "button_addpayments";
             this.button_addpayments.Size = new System.Drawing.Size(167, 28);
@@ -47,12 +47,13 @@
             // 
             // dg_payments
             // 
+            this.dg_payments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dg_payments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg_payments.Location = new System.Drawing.Point(16, 15);
             this.dg_payments.Margin = new System.Windows.Forms.Padding(4);
             this.dg_payments.Name = "dg_payments";
             this.dg_payments.RowTemplate.Height = 24;
-            this.dg_payments.Size = new System.Drawing.Size(865, 313);
+            this.dg_payments.Size = new System.Drawing.Size(1152, 313);
             this.dg_payments.TabIndex = 1;
             // 
             // button_close
@@ -70,11 +71,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(897, 378);
+            this.ClientSize = new System.Drawing.Size(1181, 378);
             this.Controls.Add(this.button_close);
             this.Controls.Add(this.dg_payments);
             this.Controls.Add(this.button_addpayments);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_payments";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

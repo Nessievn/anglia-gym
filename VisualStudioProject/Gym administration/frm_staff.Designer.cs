@@ -524,9 +524,9 @@
             this.label_staffinfo.Location = new System.Drawing.Point(16, 11);
             this.label_staffinfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_staffinfo.Name = "label_staffinfo";
-            this.label_staffinfo.Size = new System.Drawing.Size(110, 20);
+            this.label_staffinfo.Size = new System.Drawing.Size(152, 20);
             this.label_staffinfo.TabIndex = 55;
-            this.label_staffinfo.Text = "STAFF INFO:";
+            this.label_staffinfo.Text = "GYM STAFF INFO:";
             // 
             // txt_qualifications
             // 
@@ -776,7 +776,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_staff";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Staff Form";
+            this.Text = "Gym Staff Form";
             this.Load += new System.EventHandler(this.frm_staff_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dg_currentborrows)).EndInit();
             this.ResumeLayout(false);

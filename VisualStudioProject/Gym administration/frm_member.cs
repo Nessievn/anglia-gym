@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Gym_administration
 {
@@ -14,10 +15,12 @@ namespace Gym_administration
     {
         Member clMember;
         EquipmentBooked clEquipmentBooked;
+
         
 
         public void vLoadBookedList()
         {
+
             mySqlConn conn = new mySqlConn();    
             conn.connect();
             BindingSource itemsSource = new BindingSource();
@@ -27,7 +30,6 @@ namespace Gym_administration
             dg_currentborrows.DataSource = itemsSource;
             dg_currentborrows.AllowUserToAddRows = false;
             dg_currentborrows.ReadOnly = true;
-
 
             if (dg_currentborrows.RowCount > 0)
             {
@@ -59,6 +61,8 @@ namespace Gym_administration
             button_payments.Hide();
             button_remove.Hide();
             cmb_type.SelectedIndex = 0;
+            this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_male_128;
+            rd_male.Checked = true;
         }
         
         public frm_member(int id_member)
@@ -67,7 +71,7 @@ namespace Gym_administration
  
             InitializeComponent();
             button_equipmentbooking.Show();
-
+            button_saveOpen.Hide();
             clMember = new Member(id_member);
             if (clMember.Id_member < 1)
                 MessageBox.Show("The member could not be found");
@@ -75,7 +79,6 @@ namespace Gym_administration
             {
 
                 vLoadBookedList();
-
                  txt_firstName.Text = clMember.FirstName;
                  txt_lastName.Text = clMember.LastName;
                  chk_active.Checked = clMember.IsActive;
@@ -93,15 +96,101 @@ namespace Gym_administration
                  txt_medical_notes.Text = clMember.MedicalNotes;
                  txt_doctor_phone.Text = clMember.MedicalPhone;
                  txt_membernum.Text = clMember.Id_member.ToString();
-                 cmb_paymenttype.Text = clMember.PaymentMethod;
                  txt_pc.Text = clMember.PostalCode;
                  cmb_type.Text = clMember.Type;
-//!!!
                  txt_email.Text = clMember.Email;
                  txt_mobile.Text = clMember.Mobile;
                  txt_telephone.Text = clMember.Phone;
+                 txt_sid.Text = clMember.Sid;
+                 txt_stcardnumber.Text = clMember.StudCardNumber;
+                 if (clMember.Gender == "male")
+                 {
+                     rd_male.Checked = true;
+                     if ((clMember.Id_file == null) || (clMember.Id_file.Length < 1))
+                         this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_male_128;
+                     else
+                         loadImage(clMember.Id_file);
+                 }
+                 else
+                 {
+                     rd_female.Checked = true;
+                     if ((clMember.Id_file == null) || (clMember.Id_file.Length < 1))
+                         this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_female_128;
+                     else
+                         loadImage(clMember.Id_file);
+                 }
+
             }
         }
+
+
+        private void loadImage(string id_file)
+        {
+
+           // List<Hashtable> result = this.lhSqlQuery("SELECT * FROM file WHERE id_file = "+clMember.Id_file);
+           // clMember.FileSize = result[0]["file_size"].ToString();
+
+
+            MySql.Data.MySqlClient.MySqlConnection conn;
+            MySql.Data.MySqlClient.MySqlCommand cmd;
+            MySql.Data.MySqlClient.MySqlDataReader myData;
+
+            conn = new MySql.Data.MySqlClient.MySqlConnection();
+            cmd = new MySql.Data.MySqlClient.MySqlCommand();
+
+            string SQL;
+            int FileSize;
+            byte[] rawData;
+
+            conn.ConnectionString = "server=localhost;uid=gym;pwd=gym;database=gym;";
+
+            SQL = "SELECT file_name, file_size, file FROM file";
+
+            try
+            {
+                conn.Open();
+
+                cmd.Connection = conn;
+                cmd.CommandText = SQL;
+
+                myData = cmd.ExecuteReader();
+
+                if (!myData.HasRows)
+                    throw new Exception("There are no BLOBs to save");
+
+                myData.Read();
+
+                FileSize = int.Parse(myData.GetUInt32(myData.GetOrdinal("file_size")).ToString());
+                rawData = new byte[FileSize];
+
+                myData.GetBytes(myData.GetOrdinal("file"), 0, rawData, 0, FileSize);
+
+
+                MemoryStream picStream = new MemoryStream(rawData);
+
+
+                pictureBox1.Image = Image.FromStream(picStream);
+
+
+
+                myData.Close();
+                conn.Close();
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+ 
+
+
+
+
+
+        }
+
+
+
 
         private void frm_member_Load(object sender, EventArgs e)
         {
@@ -110,6 +199,14 @@ namespace Gym_administration
 
 
         private void button_save_Click(object sender, EventArgs e)
+        {
+
+            saveClick();
+
+        }
+
+
+        private bool saveClick()
         {
             clMember.FirstName = txt_firstName.Text;
             clMember.LastName = txt_lastName.Text;
@@ -128,17 +225,20 @@ namespace Gym_administration
             clMember.MedicalNotes = txt_medical_notes.Text;
             clMember.MedicalPhone = txt_doctor_phone.Text;
             clMember.MemberNumber = txt_membernum.Text;
-            clMember.PaymentMethod = cmb_paymenttype.Text;
-            clMember.Picture = "none";
             clMember.PostalCode = txt_pc.Text;
             clMember.Type = cmb_type.Text;
             clMember.Email = txt_email.Text;
             clMember.Phone = txt_telephone.Text;
             clMember.Mobile = txt_mobile.Text;
+            clMember.Sid = txt_sid.Text;
 
-            clMember.SaveMember();
+            clMember.StudCardNumber = txt_stcardnumber.Text;
+            if (rd_male.Checked == true)
+                clMember.Gender = "male";
+            else
+                clMember.Gender = "female";
 
-
+            return clMember.SaveMember();
         }
 
         
@@ -175,10 +275,10 @@ namespace Gym_administration
         private void button_equipmentbooking_Click(object sender, EventArgs e)
         {
 
-     
 
-                                                                         
-            frm_equipment_list frmEquipmentList = new frm_equipment_list(clMember.Id_member,this);
+
+
+            frm_equipment_list frmEquipmentList = new frm_equipment_list(clMember.Id_member, this);
 
             frmEquipmentList.ShowDialog();  
         }
@@ -222,6 +322,109 @@ namespace Gym_administration
  	                        }
 
         }
+
+
+        private void rd_male_Checked(object sender, EventArgs e)
+        {
+            if ((clMember.Id_file == null) || (clMember.Id_file.Length < 1))
+            {
+                this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_male_128;
+            }
+        }
+
+        private void rd_female_Checked(object sender, EventArgs e)
+        {
+            if ((clMember.Id_file == null) || (clMember.Id_file.Length < 1))
+            {
+                this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_female_128;
+            }
+        }
+
+
+
+
+
+
+
+        private void pictureBox1_DoubleClick(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+                OpenFileDialog open = new OpenFileDialog();
+
+                open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+
+                if (open.ShowDialog() == DialogResult.OK)
+                {
+
+                    clMember.FilePath = open.FileName;
+                    FileInfo file = new FileInfo(clMember.FilePath);
+                    clMember.FileName = file.Name;
+                    pictureBox1.Image = new Bitmap(clMember.FilePath);
+                    this.pictureBox1.BackgroundImage = null;
+
+                }
+
+            }
+
+            catch (Exception)
+            {
+
+                throw new ApplicationException("Failed loading image");
+
+            }
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+        
+            switch (e.Button) 
+            {
+
+                case (MouseButtons.Right):
+                    {
+                        frm_message_box frmMessageBox = new frm_message_box();
+                        string result = frmMessageBox.ShowBox(Utils.MB_YESNO, "Would you like to delete the picture?", "Delete?");
+                        MessageBox.Show(result);
+                        if (result == "YES")
+                        {
+                            this.pictureBox1.Image = null;
+                            clMember.Id_file = null;
+                            MessageBox.Show("Image has been marked for deletion,\r\nyou must click on save for\r\nthe deletion to take effect!");
+                            if (rd_male.Checked)
+                                this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_male_128;
+                            else
+                                this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_female_128;
+                        }
+                        break;
+                    }
+            }
+        }
+
+        private void button_saveClose_Click(object sender, EventArgs e)
+        {
+            if(saveClick())
+                this.Close();
+        }
+
+        private void button_saveOpen_Click(object sender, EventArgs e)
+        {
+            if (saveClick())
+            {
+                
+                this.Dispose();
+                //frm_main.
+                frm_member_list frmMemberList = new frm_member_list();
+                frmMemberList.ShowDialog();
+            }
+        }
+
+
+
+
+
 
         
     }

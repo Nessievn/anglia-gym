@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -33,7 +34,7 @@ namespace Gym_administration
         public frm_add_payment(int id_member)
         {
             InitializeComponent();
-            this.clMember = new Member(id_member);
+            clMember = new Member(id_member);
 
         }
 
@@ -42,10 +43,22 @@ namespace Gym_administration
             //Startup
             DateTime today = DateTime.Today;
             txt_date.Text = String.Format("{0:dd-MM-yyyy}", today);
+
+            // Loading Available Staff
+            //TODO: Inform Katie about the Position -> Instructor field
+            mySqlConn conn = new mySqlConn();
+            conn.connect();
+            string sQuery = "SELECT id_staff, CONCAT(lastName,', ', firstName) name FROM staff ORDER BY lastName";
+            ArrayList myItems = conn.alGetComboFromDb(sQuery, "id_staff", "name");
+            cmb_staff.DisplayMember = "Value";
+            cmb_staff.DataSource = myItems;
+            cmb_staff.SelectedIndex = -1;
+
         }
 
         private void button_addpayment_Click(object sender, EventArgs e)
         {
+            
             if (txt_amount.Text.Length < 1)
             {
                 MessageBox.Show("Please specify an amount!");
@@ -69,7 +82,33 @@ namespace Gym_administration
                 return;
             }
 
-            if (this.clMember.AddPayment(amount, date, txt_details.Text))
+
+            string id_staff;
+            if (cmb_staff.SelectedIndex < 0)
+            {
+                MessageBox.Show("Please select someone to receive the payment!");
+                return;
+            }
+            else
+            {
+                    DictionaryEntry de = (DictionaryEntry)cmb_staff.SelectedItem;
+                    id_staff = de.Key.ToString();
+            }
+
+            string paymentMethod;
+            if (cmb_paymentMethod.SelectedIndex < 0)
+            {
+                MessageBox.Show("Please select a payment method!");
+                return;
+            }
+            else
+            {
+                paymentMethod = cmb_paymentMethod.SelectedText;
+            }
+
+            
+
+            if (this.clMember.AddPayment(amount, date, txt_details.Text, txt_receiptNumber.Text, paymentMethod, id_staff))
             {
                 MessageBox.Show("The payment has been added succesfully!");
                 this.Close();
@@ -77,5 +116,10 @@ namespace Gym_administration
             else
                 MessageBox.Show("There was a problem adding your payment, please check your data!");
         }
+
+
+
+
+
     }
 }

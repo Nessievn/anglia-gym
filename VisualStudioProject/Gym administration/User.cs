@@ -120,8 +120,8 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             string sQuery = "DELETE FROM users WHERE id_user = '" + this.Id_user + "'";
-            int iRes = conn.iDeleteOrUpdate(sQuery);
-            if (iRes > 0)
+            int result = conn.iDeleteOrUpdate(sQuery);
+            if (result > 0)
                 return true;
             return false;
         }

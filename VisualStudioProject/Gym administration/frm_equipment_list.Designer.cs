@@ -81,6 +81,7 @@
             // dg_equipment
             // 
             this.dg_equipment.AllowUserToDeleteRows = false;
+            this.dg_equipment.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dg_equipment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg_equipment.Location = new System.Drawing.Point(31, 75);
             this.dg_equipment.Margin = new System.Windows.Forms.Padding(4);
@@ -126,6 +127,7 @@
             this.Controls.Add(this.txt_equipmentname);
             this.Controls.Add(this.button_search);
             this.Controls.Add(this.dg_equipment);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "frm_equipment_list";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_equipment_list";

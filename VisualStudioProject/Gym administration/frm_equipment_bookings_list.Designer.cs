@@ -48,6 +48,7 @@
             this.dg_eqbookings.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.dg_eqbookings.AllowUserToAddRows = false;
             this.dg_eqbookings.AllowUserToDeleteRows = false;
+            this.dg_eqbookings.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dg_eqbookings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg_eqbookings.Location = new System.Drawing.Point(13, 66);
             this.dg_eqbookings.Margin = new System.Windows.Forms.Padding(4);
@@ -64,6 +65,7 @@
             this.ClientSize = new System.Drawing.Size(1180, 394);
             this.Controls.Add(this.label_eqbookingdblclickinfo);
             this.Controls.Add(this.dg_eqbookings);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "frm_equipment_bookings_list";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Equipment Bookings List";

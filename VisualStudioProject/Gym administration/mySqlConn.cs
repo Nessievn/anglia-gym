@@ -185,7 +185,7 @@ namespace Gym_administration
                 command.CommandText = sQuery;
                 command.ExecuteNonQuery();
 
-                List <Hashtable> result = this.lhSqlQuery("SELECT LAST_INSERT_ID() id");
+                List<Hashtable> result = this.lhSqlQuery("SELECT LAST_INSERT_ID() id");
                 sLastInsertId = result[0]["id"].ToString();
                
             }
