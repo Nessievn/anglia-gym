@@ -821,6 +821,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Member Form";
             this.Load += new System.EventHandler(this.frm_member_Load);
+            this.Activated += new System.EventHandler(this.frm_member_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.dg_currentborrows)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

@@ -354,7 +354,7 @@ namespace Gym_administration
 
                 OpenFileDialog open = new OpenFileDialog();
 
-                open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+                open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp; *.png)|*.jpg; *.jpeg; *.gif; *.bmp; *.png";
 
                 if (open.ShowDialog() == DialogResult.OK)
                 {
@@ -385,18 +385,21 @@ namespace Gym_administration
 
                 case (MouseButtons.Right):
                     {
-                        frm_message_box frmMessageBox = new frm_message_box();
-                        string result = frmMessageBox.ShowBox(Utils.MB_YESNO, "Would you like to delete the picture?", "Delete?");
-                        MessageBox.Show(result);
-                        if (result == "YES")
+                        if ((this.pictureBox1.Image != null) && (clMember.Id_file != null))
                         {
-                            this.pictureBox1.Image = null;
-                            clMember.Id_file = null;
-                            MessageBox.Show("Image has been marked for deletion,\r\nyou must click on save for\r\nthe deletion to take effect!");
-                            if (rd_male.Checked)
-                                this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_male_128;
-                            else
-                                this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_female_128;
+                            frm_message_box frmMessageBox = new frm_message_box();
+                            string result = frmMessageBox.ShowBox(Utils.MB_YESNO, "Would you like to delete the picture?", "Delete?");
+                            //MessageBox.Show(result);
+                            if (result == "YES")
+                            {
+                                this.pictureBox1.Image = null;
+                                clMember.Id_file = null;
+                                MessageBox.Show("Image has been marked for deletion,\r\nyou must click on save for\r\nthe deletion to take effect!");
+                                if (rd_male.Checked)
+                                    this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_male_128;
+                                else
+                                    this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_female_128;
+                            }
                         }
                         break;
                     }
@@ -419,6 +422,11 @@ namespace Gym_administration
                 frm_member_list frmMemberList = new frm_member_list();
                 frmMemberList.ShowDialog();
             }
+        }
+
+        private void frm_member_Activated(object sender, EventArgs e)
+        {
+            //vLoadBookedList();
         }
 
 

@@ -200,6 +200,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Staff List";
             this.Load += new System.EventHandler(this.frm_staff_list_Load);
+            this.Activated += new System.EventHandler(this.frm_staff_list_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.dg_staff)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

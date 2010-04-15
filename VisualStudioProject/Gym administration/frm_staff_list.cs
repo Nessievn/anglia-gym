@@ -62,7 +62,8 @@ namespace Gym_administration
             dg_staff.ReadOnly = true;
         }
 
-        private void frm_staff_list_Load(object sender, EventArgs e)
+
+        public void vLoadStaffList()
         {
             mySqlConn conn = new mySqlConn();
             conn.connect();
@@ -72,6 +73,11 @@ namespace Gym_administration
             dg_staff.DataSource = bSource;
             dg_staff.AllowUserToAddRows = false;
             dg_staff.ReadOnly = true;
+        }
+
+        private void frm_staff_list_Load(object sender, EventArgs e)
+        {
+            //vLoadStaffList();
         }
 
         private void dg_staff_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -90,6 +96,11 @@ namespace Gym_administration
             //frmStaff.MdiParent = this.MdiParent;
             //frmStaff.Show();
             frmStaff.ShowDialog();
+        }
+
+        private void frm_staff_list_Activated(object sender, EventArgs e)
+        {
+            vLoadStaffList();
         }
 
         
