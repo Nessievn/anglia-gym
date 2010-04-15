@@ -182,12 +182,8 @@
             this.cmb_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_type.FormattingEnabled = true;
             this.cmb_type.Items.AddRange(new object[] {
+            "All",
             "All Current Students",
-            "All",
-            "All",
-            "All",
-            "All",
-            "All",
             "Student Full Time",
             "Student Part Time",
             "Anglia Ruskin Staff",

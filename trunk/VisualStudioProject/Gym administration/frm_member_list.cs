@@ -130,7 +130,20 @@ namespace Gym_administration
                 sQuery += " AND member_number LIKE '%" + txt_membernum.Text + "%'";
 
             if (cmb_type.SelectedIndex != -1)
-                sQuery += " AND type LIKE '%" + cmb_type.SelectedItem.ToString() + "%'";
+            {
+
+                //
+                  //  sQuery += " AND type LIKE '%%'";
+                if (cmb_type.SelectedIndex == 1)
+                {
+                    sQuery += " AND type LIKE '%Student Full Time%'";
+                    sQuery += " OR type LIKE '%Student Part Time%'";
+                }
+                else if (cmb_type.SelectedIndex != 0)
+                    sQuery += " AND type LIKE '%" + cmb_type.SelectedItem.ToString() + "%'";
+            }
+
+
 
 
             string sDate = Utils.sGetMysqlDate(txt_dob.Text);
