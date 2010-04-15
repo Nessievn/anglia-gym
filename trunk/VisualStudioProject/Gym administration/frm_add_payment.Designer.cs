@@ -36,11 +36,17 @@
             this.label_date = new System.Windows.Forms.Label();
             this.txt_amount = new System.Windows.Forms.MaskedTextBox();
             this.label_dateformat = new System.Windows.Forms.Label();
+            this.cmb_paymentMethod = new System.Windows.Forms.ComboBox();
+            this.label_paymentMethod = new System.Windows.Forms.Label();
+            this.txt_receiptNumber = new System.Windows.Forms.TextBox();
+            this.label_receivedBy = new System.Windows.Forms.Label();
+            this.label_receiptNumber = new System.Windows.Forms.Label();
+            this.cmb_staff = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // button_addpayment
             // 
-            this.button_addpayment.Location = new System.Drawing.Point(253, 204);
+            this.button_addpayment.Location = new System.Drawing.Point(272, 210);
             this.button_addpayment.Margin = new System.Windows.Forms.Padding(4);
             this.button_addpayment.Name = "button_addpayment";
             this.button_addpayment.Size = new System.Drawing.Size(120, 28);
@@ -62,17 +68,17 @@
             // 
             // txt_details
             // 
-            this.txt_details.Location = new System.Drawing.Point(80, 47);
+            this.txt_details.Location = new System.Drawing.Point(80, 142);
             this.txt_details.Margin = new System.Windows.Forms.Padding(4);
             this.txt_details.Multiline = true;
             this.txt_details.Name = "txt_details";
-            this.txt_details.Size = new System.Drawing.Size(292, 137);
+            this.txt_details.Size = new System.Drawing.Size(292, 51);
             this.txt_details.TabIndex = 3;
             // 
             // label_details
             // 
             this.label_details.AutoSize = true;
-            this.label_details.Location = new System.Drawing.Point(16, 50);
+            this.label_details.Location = new System.Drawing.Point(17, 142);
             this.label_details.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_details.Name = "label_details";
             this.label_details.Size = new System.Drawing.Size(55, 17);
@@ -82,7 +88,7 @@
             // txt_date
             // 
             this.txt_date.Culture = new System.Globalization.CultureInfo("en-GB");
-            this.txt_date.Location = new System.Drawing.Point(80, 201);
+            this.txt_date.Location = new System.Drawing.Point(80, 213);
             this.txt_date.Margin = new System.Windows.Forms.Padding(4);
             this.txt_date.Mask = "00/00/0000";
             this.txt_date.Name = "txt_date";
@@ -94,7 +100,7 @@
             // 
             this.label_date.AutoSize = true;
             this.label_date.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_date.Location = new System.Drawing.Point(17, 204);
+            this.label_date.Location = new System.Drawing.Point(17, 216);
             this.label_date.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_date.Name = "label_date";
             this.label_date.Size = new System.Drawing.Size(47, 17);
@@ -104,28 +110,97 @@
             // txt_amount
             // 
             this.txt_amount.Culture = new System.Globalization.CultureInfo("en-GB");
-            this.txt_amount.Location = new System.Drawing.Point(80, 15);
+            this.txt_amount.Location = new System.Drawing.Point(189, 20);
             this.txt_amount.Margin = new System.Windows.Forms.Padding(4);
             this.txt_amount.Mask = "0000.00";
             this.txt_amount.Name = "txt_amount";
-            this.txt_amount.Size = new System.Drawing.Size(132, 22);
+            this.txt_amount.Size = new System.Drawing.Size(79, 22);
             this.txt_amount.TabIndex = 10;
             // 
             // label_dateformat
             // 
             this.label_dateformat.AutoSize = true;
-            this.label_dateformat.Location = new System.Drawing.Point(77, 221);
+            this.label_dateformat.Location = new System.Drawing.Point(77, 192);
             this.label_dateformat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_dateformat.Name = "label_dateformat";
             this.label_dateformat.Size = new System.Drawing.Size(82, 17);
             this.label_dateformat.TabIndex = 11;
             this.label_dateformat.Text = "dd/mm/yyyy";
             // 
+            // cmb_paymentMethod
+            // 
+            this.cmb_paymentMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_paymentMethod.FormattingEnabled = true;
+            this.cmb_paymentMethod.Items.AddRange(new object[] {
+            "Card",
+            "Cash",
+            "Cheque",
+            "Bank Transfer"});
+            this.cmb_paymentMethod.Location = new System.Drawing.Point(189, 110);
+            this.cmb_paymentMethod.Margin = new System.Windows.Forms.Padding(4);
+            this.cmb_paymentMethod.Name = "cmb_paymentMethod";
+            this.cmb_paymentMethod.Size = new System.Drawing.Size(183, 24);
+            this.cmb_paymentMethod.TabIndex = 55;
+            // 
+            // label_paymentMethod
+            // 
+            this.label_paymentMethod.AutoSize = true;
+            this.label_paymentMethod.Location = new System.Drawing.Point(17, 113);
+            this.label_paymentMethod.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_paymentMethod.Name = "label_paymentMethod";
+            this.label_paymentMethod.Size = new System.Drawing.Size(118, 17);
+            this.label_paymentMethod.TabIndex = 56;
+            this.label_paymentMethod.Text = "Payment Method:";
+            // 
+            // txt_receiptNumber
+            // 
+            this.txt_receiptNumber.Location = new System.Drawing.Point(189, 50);
+            this.txt_receiptNumber.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_receiptNumber.Name = "txt_receiptNumber";
+            this.txt_receiptNumber.Size = new System.Drawing.Size(183, 22);
+            this.txt_receiptNumber.TabIndex = 66;
+            // 
+            // label_receivedBy
+            // 
+            this.label_receivedBy.AutoSize = true;
+            this.label_receivedBy.Location = new System.Drawing.Point(17, 83);
+            this.label_receivedBy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_receivedBy.Name = "label_receivedBy";
+            this.label_receivedBy.Size = new System.Drawing.Size(90, 17);
+            this.label_receivedBy.TabIndex = 67;
+            this.label_receivedBy.Text = "Received by:";
+            // 
+            // label_receiptNumber
+            // 
+            this.label_receiptNumber.AutoSize = true;
+            this.label_receiptNumber.Location = new System.Drawing.Point(17, 53);
+            this.label_receiptNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_receiptNumber.Name = "label_receiptNumber";
+            this.label_receiptNumber.Size = new System.Drawing.Size(114, 17);
+            this.label_receiptNumber.TabIndex = 68;
+            this.label_receiptNumber.Text = "Receipt Number:";
+            // 
+            // cmb_staff
+            // 
+            this.cmb_staff.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_staff.FormattingEnabled = true;
+            this.cmb_staff.Location = new System.Drawing.Point(189, 80);
+            this.cmb_staff.Margin = new System.Windows.Forms.Padding(4);
+            this.cmb_staff.Name = "cmb_staff";
+            this.cmb_staff.Size = new System.Drawing.Size(183, 24);
+            this.cmb_staff.TabIndex = 69;
+            // 
             // frm_add_payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(405, 247);
+            this.Controls.Add(this.cmb_staff);
+            this.Controls.Add(this.label_receiptNumber);
+            this.Controls.Add(this.label_receivedBy);
+            this.Controls.Add(this.txt_receiptNumber);
+            this.Controls.Add(this.cmb_paymentMethod);
+            this.Controls.Add(this.label_paymentMethod);
             this.Controls.Add(this.label_dateformat);
             this.Controls.Add(this.txt_amount);
             this.Controls.Add(this.txt_date);
@@ -155,5 +230,11 @@
         private System.Windows.Forms.Label label_date;
         private System.Windows.Forms.MaskedTextBox txt_amount;
         private System.Windows.Forms.Label label_dateformat;
+        private System.Windows.Forms.ComboBox cmb_paymentMethod;
+        private System.Windows.Forms.Label label_paymentMethod;
+        private System.Windows.Forms.TextBox txt_receiptNumber;
+        private System.Windows.Forms.Label label_receivedBy;
+        private System.Windows.Forms.Label label_receiptNumber;
+        private System.Windows.Forms.ComboBox cmb_staff;
     }
 }

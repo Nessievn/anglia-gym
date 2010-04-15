@@ -59,5 +59,19 @@ namespace Gym_administration.Properties {
                 resourceCulture = value;
             }
         }
+        
+        internal static System.Drawing.Bitmap member_female_128 {
+            get {
+                object obj = ResourceManager.GetObject("member_female_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap member_male_128 {
+            get {
+                object obj = ResourceManager.GetObject("member_male_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

@@ -4,6 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections;
+using System.Drawing;
+using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
+using System.Data;
+using System.IO;
 
 
 namespace Gym_administration
@@ -35,6 +40,22 @@ namespace Gym_administration
             get { return memberNumber; }
             set { memberNumber = value; }
         }
+        
+        // Field member_number from MEMBERS table
+        private string sid;
+        public string Sid
+        {
+            get { return sid; }
+            set { sid = value; }
+        }
+        
+        // Field member_number from MEMBERS table
+        private string studCardNumber;
+        public string StudCardNumber
+        {
+            get { return studCardNumber; }
+            set { studCardNumber = value; }
+        }
 
         // Field type from MEMBERS table
         private string type;
@@ -44,13 +65,7 @@ namespace Gym_administration
             set { type = value; }
         }
 
-        // Field payment method from MEMBERS table
-        private string paymentMethod;
-        public string PaymentMethod
-        {
-            get { return paymentMethod; }
-            set { paymentMethod = value; }
-        }
+
 
         // Field is_active from MEMBERS table
         private bool isActive;
@@ -108,12 +123,28 @@ namespace Gym_administration
             set { medicalNotes = value; }
         }
 
-        // A field with the same name from MEMBERS table
-        private string picture;
-        public string Picture
+
+
+        private string id_file;
+        public string Id_file
         {
-            get { return picture; }
-            set { picture = value; }
+            get { return id_file; }
+            set { id_file = value; }
+        }
+
+
+        private string fileName;
+        public string FileName
+        {
+            get { return fileName; }
+            set { fileName = value; }
+        }
+
+        private string filePath;
+        public string FilePath
+        {
+            get { return filePath; }
+            set { filePath = value; }
         }
 
         // Field medical_doctor_name from MEMBERS table
@@ -130,6 +161,14 @@ namespace Gym_administration
         {
             get { return medicalPhone; }
             set { medicalPhone = value; }
+        }        
+        
+        // Field ismale from MEMBERS table
+        private string gender;
+        public string Gender
+        {
+            get { return gender; }
+            set { gender = value; }
         }
 
         // a User (User.cs) object is stored here
@@ -149,7 +188,7 @@ namespace Gym_administration
          */
         public Member()
         {
-            this.id_member = 0;
+            this.id_member = -1;
             this.clUser = new User();
         }
 
@@ -165,6 +204,7 @@ namespace Gym_administration
             // Create mysql connection
             mySqlConn conn = new mySqlConn();
             conn.connect();
+           
             // Launch the query to return all fields from a single row of the MEMBERS table
             List<Hashtable> lhResultset = conn.lhSqlQuery("Select * from members m, users u where u.id_user = m.id_user AND m.id_member = '" + id_member + "'");
             // Check if we found the member
@@ -195,12 +235,15 @@ namespace Gym_administration
                 this.MedicalNotes = lhResultset[0]["medical_notes"].ToString();
                 this.MedicalPhone = lhResultset[0]["medical_phone"].ToString();
                 this.MemberNumber = lhResultset[0]["member_number"].ToString();
-                this.PaymentMethod = lhResultset[0]["payment_method"].ToString();
-                this.Picture = lhResultset[0]["picture"].ToString();
+                this.Id_file = lhResultset[0]["id_file"].ToString();
+
                 this.PostalCode = lhResultset[0]["postalcode"].ToString();
                 this.Type = lhResultset[0]["type"].ToString();
                 this.Mobile = lhResultset[0]["mobile"].ToString();
                 this.Phone = lhResultset[0]["phone"].ToString();
+                this.Sid = lhResultset[0]["sid"].ToString();
+                this.StudCardNumber = lhResultset[0]["studcardnumber"].ToString();
+                this.Gender = lhResultset[0]["gender"].ToString();
             }
         }
 
@@ -211,7 +254,7 @@ namespace Gym_administration
          * @params [desc] desc: comments
          * @return [bool] Returns true in case of success, false if there was a problem
          */
-        public bool AddPayment(Decimal amount, string date, string desc)
+        public bool AddPayment(Decimal amount, string date, string desc, string receiptNumber, string paymentMethod, string receivedBy)
         {
             if (this.Id_member != -1)
             {
@@ -220,6 +263,10 @@ namespace Gym_administration
                 clPayment.Date = date;
                 clPayment.ClMember = this;
                 clPayment.Details = desc;
+                clPayment.ReceiptNumber = receiptNumber;
+                clPayment.PaymentMethod = paymentMethod;
+                clPayment.ReceivedBy = receivedBy;
+                
                 if (clPayment.bSave())
                     return true;
                 else
@@ -254,16 +301,101 @@ namespace Gym_administration
                 clUser.Login = this.Email;
                 clUser.Password = sMysqlDate;
                 clUser.Profile = "member";
-
                 // then the bSave method is called
                 if (clUser.SaveUser())
                 {
+                    
+
+
+
+                    if ((this.Id_member >-1)&&(this.FilePath != null) && (this.FilePath.Length > 1))
+                    {
+
+                        MySql.Data.MySqlClient.MySqlConnection thisConn;
+                        MySql.Data.MySqlClient.MySqlCommand cmd;
+
+                        thisConn = new MySql.Data.MySqlClient.MySqlConnection();
+                        cmd = new MySql.Data.MySqlClient.MySqlCommand();
+
+
+                        string SQL;
+                        int fileSize;
+                        byte[] rawData;
+                        FileStream fs;
+                        
+
+                        thisConn.ConnectionString = "server=localhost;uid=gym;pwd=gym;database=gym;";
+                        
+
+                        try
+                        {
+                            //string strFileName = "Picture";
+                            fs = new FileStream(this.FilePath, FileMode.Open, FileAccess.Read);
+                            fileSize = int.Parse(fs.Length.ToString());
+
+                            rawData = new byte[fileSize];
+                            fs.Read(rawData, 0, fileSize);
+                            fs.Close();
+                            
+                            thisConn.Open();
+
+                            SQL = "INSERT INTO file VALUES(NULL, @FileName, @FileSize, @File)";
+
+                            cmd.Connection = thisConn;
+                            cmd.CommandText = SQL;
+                            cmd.Parameters.AddWithValue("@FileName", this.FileName);
+                            cmd.Parameters.AddWithValue("@FileSize", fileSize);
+                            cmd.Parameters.AddWithValue("@File", rawData);
+
+                            cmd.ExecuteNonQuery();
+
+                            MySqlDataReader Reader;
+                            cmd.CommandText = ("SELECT LAST_INSERT_ID() id");
+                            Reader = cmd.ExecuteReader();
+                            Reader.Read();
+                            this.Id_file = Reader.GetValue(0).ToString();
+
+                            MessageBox.Show("File Inserted into database successfully!",
+                                                       "Success!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                            thisConn.Close();
+
+              
+      
+                            
+            
+                        }
+                        catch (MySql.Data.MySqlClient.MySqlException ex)
+                        {
+                            MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+
+                        
+
+
+
+
+
+
+                    }
+
+
+
+
+
+
+
                     mySqlConn conn = new mySqlConn();
                     conn.connect();
-                    if (this.Id_member == 0)
+                    
+
+
+                    if (this.Id_member == -1)
                     {
-                        sQuery = "insert into `gym`.`members` (`id_member`, `firstName`, `lastName`, `birthdate`, `address_1`, `city`, `county`, `postalcode`, `type`, `payment_method`, `id_user`, `is_active`, `address_2`, `emerg_contact_name`, `emerg_contact_relation`, `emerg_contact_phone`, `emerg_contact_mobile`, `medical_allergies`, `medical_notes`, `picture`, `medical_doctor_name`, `medical_phone`, `email`, `member_number`, `phone`,`mobile`) values " +
-                                 "(NULL, '" + this.FirstName + "', '" + this.LastName + "', '" + sMysqlDate + "', '" + this.Address_1 + "', '" + this.City + "', '" + this.County + "', '" + this.PostalCode + "', '" + this.Type + "', '" + this.PaymentMethod + "', '" + clUser.Id_user + "', '" + ((this.IsActive) ? "1" : "0") + "', '" + this.Address_2 + "', '" + this.EmergContactName + "', '" + this.EmergContactRelation + "', '" + this.EmergContactPhone + "', '" + this.EmergContactMobile + "', '" + this.MedicalAllergies + "', '" + this.MedicalNotes + "', NULL, '" + this.MedicalDoctorName + "', '" + this.MedicalPhone + "', '" + this.Email + "', '" + this.MemberNumber + "','"+this.Phone+"','"+this.Mobile+"')";
+                        sQuery = "insert into `gym`.`members` (`id_member`, `firstName`, `lastName`, `birthdate`, `address_1`, `city`, `county`, `postalcode`, `type`, `id_user`, `is_active`, `address_2`, `emerg_contact_name`, `emerg_contact_relation`, `emerg_contact_phone`, `emerg_contact_mobile`, `medical_allergies`, `medical_notes`, `id_file`, `medical_doctor_name`, `medical_phone`, `email`, `member_number`, `phone`,`mobile`,`sid`,`studcardnumber`,`gender`) values " +
+                                 "(NULL, '" + this.FirstName + "', '" + this.LastName + "', '" + sMysqlDate + "', '" + this.Address_1 + "', '" + this.City + "', '" + this.County + "', '" + this.PostalCode + "', '" + this.Type + "', '" + clUser.Id_user + "', '" + ((this.IsActive) ? "1" : "0") + "', '" + this.Address_2 + "', '" + this.EmergContactName + "', '" + this.EmergContactRelation + "', '" + this.EmergContactPhone + "', '" + this.EmergContactMobile + "', '" + this.MedicalAllergies + "', '" + this.MedicalNotes + "', '" + this.Id_file + "', '" + this.MedicalDoctorName + "', '" + this.MedicalPhone + "', '" + this.Email + "', '" + this.MemberNumber + "','" + this.Phone + "','" + this.Mobile + "','" + this.Sid + "','" + this.StudCardNumber + "','" + this.Gender + "')";
 
                         int id_member = conn.iInsert(sQuery);
                         if (id_member != -1)
@@ -281,8 +413,9 @@ namespace Gym_administration
                     }
                     else
                     {
-                        sQuery = "UPDATE members SET firstName = '" + this.FirstName + "', lastName = '" + this.LastName + "', birthdate = '" + sMysqlDate + "', address_1 = '"+this.Address_1+"', city = '"+this.City+"', county = '"+this.County+"', postalcode = '"+this.PostalCode+"', type = '"+this.Type+"', payment_method = '"+this.PaymentMethod+"', is_active = '"+((this.IsActive) ? "1" : "0")+"', address_2 = '"+this.Address_2+"', emerg_contact_name = '"+this.EmergContactName+"', emerg_contact_relation = '"+this.EmergContactRelation+"', emerg_contact_phone = '"+this.EmergContactPhone+"', emerg_contact_mobile = '"+this.EmergContactMobile+"', medical_allergies = '"+this.MedicalAllergies+"', medical_notes = '"+this.MedicalNotes+"', medical_doctor_name = '"+this.MedicalDoctorName+"', medical_phone = '"+this.MedicalPhone+"', email = '"+this.Email+"', phone = '"+this.Phone+"', mobile = '"+this.Mobile+"' " +
-                                 " WHERE id_member = '"+this.Id_member+"'";
+
+                        sQuery = "UPDATE members SET firstName = '" + this.FirstName + "', lastName = '" + this.LastName + "', birthdate = '" + sMysqlDate + "', address_1 = '" + this.Address_1 + "', city = '" + this.City + "', county = '" + this.County + "', postalcode = '" + this.PostalCode + "', type = '" + this.Type + "', is_active = '" + ((this.IsActive) ? "1" : "0") + "', address_2 = '" + this.Address_2 + "', emerg_contact_name = '" + this.EmergContactName + "', emerg_contact_relation = '" + this.EmergContactRelation + "', emerg_contact_phone = '" + this.EmergContactPhone + "', emerg_contact_mobile = '" + this.EmergContactMobile + "', medical_allergies = '" + this.MedicalAllergies + "', medical_notes = '" + this.MedicalNotes + "', id_file = '" + this.Id_file + "', medical_doctor_name = '" + this.MedicalDoctorName + "', medical_phone = '" + this.MedicalPhone + "', email = '" + this.Email + "', phone = '" + this.Phone + "', mobile = '" + this.Mobile +
+                            "', sid = '" + this.Sid + "', studcardnumber = '" + this.StudCardNumber + "', gender = '" + this.Gender + "' " + " WHERE id_member = '"+this.Id_member+"'";
      
                         int result = conn.iDeleteOrUpdate(sQuery);
                         if (result > 0)
@@ -305,7 +438,7 @@ namespace Gym_administration
                 }
 
             }
-             return true;
+             return false;
         }
 
         public bool RemoveMember()
@@ -318,5 +451,11 @@ namespace Gym_administration
             return true;
                 
         }
+
+
+ 
+
+
+
     }
 }

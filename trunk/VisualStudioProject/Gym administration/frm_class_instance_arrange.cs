@@ -114,7 +114,7 @@ namespace Gym_administration
 
             // Loading Available Instructor
             //TODO: Inform Katie about the Position -> Instructor field
-            sQuery = "SELECT id_staff, CONCAT(firstName,' ', lastName) name FROM staff WHERE position = 'Instructor' ORDER BY id_staff";
+            sQuery = "SELECT id_staff, CONCAT(lastName,', ', firstName) name FROM staff WHERE position = 'Instructor' ORDER BY id_staff";
             myItems = conn.alGetComboFromDb(sQuery, "id_staff", "name");
             cmb_instructors.DisplayMember = "Value";
             cmb_instructors.DataSource = myItems;

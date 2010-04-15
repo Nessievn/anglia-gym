@@ -80,10 +80,12 @@
             // 
             this.dg_classes.AllowUserToAddRows = false;
             this.dg_classes.AllowUserToDeleteRows = false;
+            this.dg_classes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dg_classes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg_classes.Location = new System.Drawing.Point(16, 66);
             this.dg_classes.Margin = new System.Windows.Forms.Padding(4);
             this.dg_classes.Name = "dg_classes";
+            this.dg_classes.RowTemplate.Height = 24;
             this.dg_classes.Size = new System.Drawing.Size(588, 300);
             this.dg_classes.TabIndex = 18;
             this.dg_classes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_classes_CellDoubleClick);
@@ -98,7 +100,7 @@
             this.Controls.Add(this.txt_classname);
             this.Controls.Add(this.button_search);
             this.Controls.Add(this.dg_classes);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_class_list";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

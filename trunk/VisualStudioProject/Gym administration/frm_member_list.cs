@@ -45,14 +45,16 @@ namespace Gym_administration
             conn.connect();
             BindingSource bSource = new BindingSource();
             if(this.BViewAttendants == false)
-                sQuery = "SELECT id_member MID, member_number NO, firstName as 'First Name', lastName 'Last Name', DATE_FORMAT(birthdate,\"%d/%m/%Y\") DOB, email 'EMail' FROM members ORDER BY id_member";
+                sQuery = "SELECT id_member ID, member_number Nr, sid SID, CONCAT(lastName, ', ', firstName) 'Member Name', DATE_FORMAT(birthdate,\"%d-%m-%Y\") DOB, email 'EMail', type Type FROM members ORDER BY lastName";
             else
-                sQuery = "SELECT cb.id_member MID, m.member_number NO, m.firstName as 'First Name', m.lastName 'Last Name', DATE_FORMAT(m.birthdate,\"%d/%m/%Y\") DOB, email 'EMail' FROM members m, class_bookings cb WHERE m.id_member = cb.id_member AND cb.id_class_instance = '" + this.clClassInstance.Id_class_instance + "' ORDER BY m.id_member";
+                sQuery = "SELECT m.id_member ID, m.member_number Nr, CONCAT(m.lastName, ', ', m.firstName) 'Member Name', DATE_FORMAT(m.birthdate,\"%d-%m-%Y\") DOB, email 'EMail' FROM members m, class_bookings cb WHERE m.id_member = cb.id_member AND cb.id_class_instance = '" + this.clClassInstance.Id_class_instance + "' ORDER BY m.id_member";
 
             bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
             dg_members.DataSource = bSource;
             dg_members.AllowUserToAddRows = false;
             dg_members.ReadOnly = true;
+            label_numberOfPeople.Text = dg_members.RowCount.ToString();
+
         }
 
 
@@ -117,7 +119,7 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
-            string sQuery = "SELECT id_member MID, member_number NO, firstName as 'First Name', lastName 'Last Name', DATE_FORMAT(birthdate,\"%d/%m/%Y\") DOB, email 'EMail' FROM members WHERE 1 = 1 ";
+            string sQuery = "SELECT id_member ID, member_number Nr, sid SID, CONCAT(lastName, ', ', firstName) 'Member Name', DATE_FORMAT(birthdate,\"%d-%m-%Y\") DOB, email 'EMail', type Type FROM members WHERE 1 = 1 ";
             if (txt_firstName.Text != "")
                 sQuery += " AND firstName LIKE '%"+txt_firstName.Text+"%'";
             if (txt_lastName.Text != "")
@@ -141,6 +143,37 @@ namespace Gym_administration
             dg_members.DataSource = bSource;
             dg_members.AllowUserToAddRows = false;
             dg_members.ReadOnly = true;
+            label_numberOfPeople.Text = dg_members.RowCount.ToString();
+        }
+
+        private void button_copy_Click(object sender, EventArgs e)
+        {
+
+            frm_message_box frmMessageBox = new frm_message_box();
+            string result = frmMessageBox.ShowBox(Utils.MB_CUST2, "Which delimiter would you like to use? \r\n Its normally a comma (,) ARU mail uses semicolon (;)", "Mass e-mail delimiter selection", ",", ";");
+
+
+            char delimiter = result[0];
+            int counter = 0;
+            string cellValue;
+            string[] saSelectedCellValues = new string[dg_members.SelectedCells.Count];
+
+            for (counter = 0; counter < (dg_members.SelectedCells.Count); counter++)
+            {
+
+                cellValue = dg_members.SelectedCells[counter].Value.ToString();
+                if (cellValue.Length != 0)
+                    saSelectedCellValues[counter] = cellValue;
+            }
+
+
+            Clipboard.SetData(DataFormats.Text, string.Join(delimiter+" ", saSelectedCellValues));
+
+            if (Clipboard.ContainsData(DataFormats.Text))
+                MessageBox.Show(Clipboard.GetData(DataFormats.Text) + "\r\n\r\n is on the Clipboard now!");
+            else
+                MessageBox.Show("Nothing was selected");
+
         }
 
 

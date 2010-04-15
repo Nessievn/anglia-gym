@@ -133,6 +133,7 @@
             // 
             this.dg_staff.AllowUserToAddRows = false;
             this.dg_staff.AllowUserToDeleteRows = false;
+            this.dg_staff.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dg_staff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg_staff.Location = new System.Drawing.Point(13, 119);
             this.dg_staff.Margin = new System.Windows.Forms.Padding(4);
@@ -193,7 +194,7 @@
             this.Controls.Add(this.txt_firstName);
             this.Controls.Add(this.button_search);
             this.Controls.Add(this.dg_staff);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_staff_list";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

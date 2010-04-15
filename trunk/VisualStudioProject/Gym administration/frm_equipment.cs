@@ -402,10 +402,10 @@ private void button_vehicle_Click(object sender, EventArgs e)
 
 }
 
-        private void rd_item_Checked(object sender, EventArgs e)
-        {
-            rd_item_Checked();
-        }
+private void rd_item_Checked(object sender, EventArgs e)
+{
+    rd_item_Checked();
+}
         private void rd_item_Checked()
         {
 

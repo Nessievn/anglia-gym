@@ -52,9 +52,9 @@ namespace Gym_administration
             conn.connect();
             BindingSource bSource = new BindingSource();
             if (this.Id_member == -1)
-                sQuery = "SELECT m.id_member MID, m.member_number NO, m.firstName as 'First Name', m.lastName 'Last Name', p.amount Amount, p.details Details, DATE_FORMAT(p.date,'%d-%m-%Y') 'Date dd-mm-yyyy' FROM members m, payments p WHERE m.id_member = p.id_member ORDER BY p.date";
+                sQuery = "SELECT m.id_member MID, m.member_number NO, CONCAT(m.lastName,', ', m.firstName) Name, p.amount Amount, p.details Details, DATE_FORMAT(p.date,'%d-%m-%Y') 'Date dd-mm-yyyy', CONCAT(s.lastName,', ', s.firstName) 'Received By', p.receiptnumber 'Receipt Number', p.paymentmethod Method FROM members m, payments p, staff s WHERE m.id_member = p.id_member AND s.id_staff = p.receivedby ORDER BY p.date";
             else
-                sQuery = "SELECT m.id_member MID, m.member_number NO, m.firstName as 'First Name', m.lastName 'Last Name', p.amount Amount, p.details Details, DATE_FORMAT(p.date,'%d-%m-%Y') 'Date dd-mm-yyyy' FROM members m, payments p WHERE m.id_member = p.id_member AND m.id_member = " + this.Id_member + " ORDER BY p.date";
+                sQuery = "SELECT m.id_member MID, m.member_number NO, CONCAT(m.lastName,', ', m.firstName) Name, p.amount Amount, p.details Details, DATE_FORMAT(p.date,'%d-%m-%Y') 'Date dd-mm-yyyy', CONCAT(s.lastName,', ', s.firstName) 'Received By', p.receiptnumber 'Receipt Number', p.paymentmethod Method FROM members m, payments p, staff s WHERE m.id_member = p.id_member AND m.id_member = " + this.Id_member + "  AND s.id_staff = p.receivedby ORDER BY p.date";
             bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
 
             dg_payments.DataSource = bSource;

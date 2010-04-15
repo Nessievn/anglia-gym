@@ -117,4 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="txt_medical_notes.Text" xml:space="preserve">
+    <value>Heart trouble: 		y/n
+Chest pain: 		y/n
+Dizzyness:		y/n
+Unconsciousness:		y/n
+Blood pressure:		low/high
+Joint problems:		y/n
+Back pain or injury:		y/n
+Takes medication:		y/n
+Pregnant or recent birth:	y/n
+Operations in 2 years:	y/n
+Doctor is against exercise:	y/n
+Any reason not exercise:	y/n
+Epilepsy:			y/n
+Diabetes:			y/n
+Asthma:			y/n
+Comments/Other:</value>
+  </data>
 </root>

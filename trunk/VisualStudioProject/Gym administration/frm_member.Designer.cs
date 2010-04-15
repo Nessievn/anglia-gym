@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_member));
             this.label_memberinfo = new System.Windows.Forms.Label();
             this.label_membernum = new System.Windows.Forms.Label();
             this.txt_membernum = new System.Windows.Forms.TextBox();
@@ -76,8 +77,6 @@
             this.label_pc = new System.Windows.Forms.Label();
             this.cmb_type = new System.Windows.Forms.ComboBox();
             this.chk_active = new System.Windows.Forms.CheckBox();
-            this.cmb_paymenttype = new System.Windows.Forms.ComboBox();
-            this.label_paymenttype = new System.Windows.Forms.Label();
             this.button_payments = new System.Windows.Forms.Button();
             this.button_remove = new System.Windows.Forms.Button();
             this.button_equipmentbooking = new System.Windows.Forms.Button();
@@ -85,14 +84,24 @@
             this.label_currentborrows = new System.Windows.Forms.Label();
             this.label_dateformat = new System.Windows.Forms.Label();
             this.label_emailunique = new System.Windows.Forms.Label();
+            this.txt_sid = new System.Windows.Forms.TextBox();
+            this.label_sid = new System.Windows.Forms.Label();
+            this.txt_stcardnumber = new System.Windows.Forms.TextBox();
+            this.label_stcardnumber = new System.Windows.Forms.Label();
+            this.button_saveClose = new System.Windows.Forms.Button();
+            this.button_saveOpen = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.rd_male = new System.Windows.Forms.RadioButton();
+            this.rd_female = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dg_currentborrows)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label_memberinfo
             // 
             this.label_memberinfo.AutoSize = true;
             this.label_memberinfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_memberinfo.Location = new System.Drawing.Point(16, 9);
+            this.label_memberinfo.Location = new System.Drawing.Point(13, 8);
             this.label_memberinfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_memberinfo.Name = "label_memberinfo";
             this.label_memberinfo.Size = new System.Drawing.Size(132, 20);
@@ -102,7 +111,7 @@
             // label_membernum
             // 
             this.label_membernum.AutoSize = true;
-            this.label_membernum.Location = new System.Drawing.Point(16, 36);
+            this.label_membernum.Location = new System.Drawing.Point(13, 35);
             this.label_membernum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_membernum.Name = "label_membernum";
             this.label_membernum.Size = new System.Drawing.Size(113, 17);
@@ -120,7 +129,7 @@
             // 
             // txt_firstName
             // 
-            this.txt_firstName.Location = new System.Drawing.Point(16, 107);
+            this.txt_firstName.Location = new System.Drawing.Point(16, 155);
             this.txt_firstName.Margin = new System.Windows.Forms.Padding(4);
             this.txt_firstName.Name = "txt_firstName";
             this.txt_firstName.Size = new System.Drawing.Size(183, 22);
@@ -129,7 +138,7 @@
             // label_firstName
             // 
             this.label_firstName.AutoSize = true;
-            this.label_firstName.Location = new System.Drawing.Point(16, 90);
+            this.label_firstName.Location = new System.Drawing.Point(13, 134);
             this.label_firstName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_firstName.Name = "label_firstName";
             this.label_firstName.Size = new System.Drawing.Size(76, 17);
@@ -138,7 +147,7 @@
             // 
             // txt_lastName
             // 
-            this.txt_lastName.Location = new System.Drawing.Point(16, 156);
+            this.txt_lastName.Location = new System.Drawing.Point(234, 155);
             this.txt_lastName.Margin = new System.Windows.Forms.Padding(4);
             this.txt_lastName.Name = "txt_lastName";
             this.txt_lastName.Size = new System.Drawing.Size(183, 22);
@@ -147,7 +156,7 @@
             // label_lastName
             // 
             this.label_lastName.AutoSize = true;
-            this.label_lastName.Location = new System.Drawing.Point(16, 139);
+            this.label_lastName.Location = new System.Drawing.Point(231, 134);
             this.label_lastName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_lastName.Name = "label_lastName";
             this.label_lastName.Size = new System.Drawing.Size(76, 17);
@@ -158,7 +167,7 @@
             // 
             this.label_dob.AutoSize = true;
             this.label_dob.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_dob.Location = new System.Drawing.Point(16, 183);
+            this.label_dob.Location = new System.Drawing.Point(13, 87);
             this.label_dob.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_dob.Name = "label_dob";
             this.label_dob.Size = new System.Drawing.Size(100, 17);
@@ -167,7 +176,7 @@
             // 
             // txt_mobile
             // 
-            this.txt_mobile.Location = new System.Drawing.Point(234, 56);
+            this.txt_mobile.Location = new System.Drawing.Point(234, 390);
             this.txt_mobile.Margin = new System.Windows.Forms.Padding(4);
             this.txt_mobile.Name = "txt_mobile";
             this.txt_mobile.Size = new System.Drawing.Size(183, 22);
@@ -176,16 +185,16 @@
             // label_mobile
             // 
             this.label_mobile.AutoSize = true;
-            this.label_mobile.Location = new System.Drawing.Point(234, 35);
+            this.label_mobile.Location = new System.Drawing.Point(231, 369);
             this.label_mobile.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_mobile.Name = "label_mobile";
-            this.label_mobile.Size = new System.Drawing.Size(49, 17);
+            this.label_mobile.Size = new System.Drawing.Size(121, 17);
             this.label_mobile.TabIndex = 9;
-            this.label_mobile.Text = "Mobile";
+            this.label_mobile.Text = "Mobile Telephone";
             // 
             // txt_telephone
             // 
-            this.txt_telephone.Location = new System.Drawing.Point(234, 103);
+            this.txt_telephone.Location = new System.Drawing.Point(234, 343);
             this.txt_telephone.Margin = new System.Windows.Forms.Padding(4);
             this.txt_telephone.Name = "txt_telephone";
             this.txt_telephone.Size = new System.Drawing.Size(183, 22);
@@ -194,26 +203,26 @@
             // label_telephone
             // 
             this.label_telephone.AutoSize = true;
-            this.label_telephone.Location = new System.Drawing.Point(234, 82);
+            this.label_telephone.Location = new System.Drawing.Point(231, 322);
             this.label_telephone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_telephone.Name = "label_telephone";
-            this.label_telephone.Size = new System.Drawing.Size(76, 17);
+            this.label_telephone.Size = new System.Drawing.Size(117, 17);
             this.label_telephone.TabIndex = 13;
-            this.label_telephone.Text = "Telephone";
+            this.label_telephone.Text = "Home Telephone";
             // 
             // txt_email
             // 
-            this.txt_email.Location = new System.Drawing.Point(16, 251);
+            this.txt_email.Location = new System.Drawing.Point(16, 451);
             this.txt_email.Margin = new System.Windows.Forms.Padding(4);
             this.txt_email.Name = "txt_email";
-            this.txt_email.Size = new System.Drawing.Size(183, 22);
+            this.txt_email.Size = new System.Drawing.Size(401, 22);
             this.txt_email.TabIndex = 6;
             // 
             // label_email
             // 
             this.label_email.AutoSize = true;
             this.label_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_email.Location = new System.Drawing.Point(16, 233);
+            this.label_email.Location = new System.Drawing.Point(13, 430);
             this.label_email.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_email.Name = "label_email";
             this.label_email.Size = new System.Drawing.Size(53, 17);
@@ -222,54 +231,54 @@
             // 
             // txt_address2
             // 
-            this.txt_address2.Location = new System.Drawing.Point(234, 155);
+            this.txt_address2.Location = new System.Drawing.Point(16, 249);
             this.txt_address2.Margin = new System.Windows.Forms.Padding(4);
             this.txt_address2.Name = "txt_address2";
-            this.txt_address2.Size = new System.Drawing.Size(183, 22);
+            this.txt_address2.Size = new System.Drawing.Size(401, 22);
             this.txt_address2.TabIndex = 9;
             // 
             // label_address2
             // 
             this.label_address2.AutoSize = true;
-            this.label_address2.Location = new System.Drawing.Point(234, 129);
+            this.label_address2.Location = new System.Drawing.Point(13, 228);
             this.label_address2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_address2.Name = "label_address2";
-            this.label_address2.Size = new System.Drawing.Size(72, 17);
+            this.label_address2.Size = new System.Drawing.Size(130, 17);
             this.label_address2.TabIndex = 17;
-            this.label_address2.Text = "Address 2";
+            this.label_address2.Text = "Address UK, Line 2";
             // 
             // txt_address1
             // 
-            this.txt_address1.Location = new System.Drawing.Point(16, 302);
+            this.txt_address1.Location = new System.Drawing.Point(16, 202);
             this.txt_address1.Margin = new System.Windows.Forms.Padding(4);
             this.txt_address1.Name = "txt_address1";
-            this.txt_address1.Size = new System.Drawing.Size(183, 22);
+            this.txt_address1.Size = new System.Drawing.Size(401, 22);
             this.txt_address1.TabIndex = 8;
             // 
             // label_address1
             // 
             this.label_address1.AutoSize = true;
-            this.label_address1.Location = new System.Drawing.Point(16, 282);
+            this.label_address1.Location = new System.Drawing.Point(13, 181);
             this.label_address1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_address1.Name = "label_address1";
-            this.label_address1.Size = new System.Drawing.Size(72, 17);
+            this.label_address1.Size = new System.Drawing.Size(130, 17);
             this.label_address1.TabIndex = 15;
-            this.label_address1.Text = "Address 1";
+            this.label_address1.Text = "Address UK, Line 1";
             // 
             // label_emergencycontact
             // 
             this.label_emergencycontact.AutoSize = true;
             this.label_emergencycontact.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_emergencycontact.Location = new System.Drawing.Point(455, 9);
+            this.label_emergencycontact.Location = new System.Drawing.Point(453, 364);
             this.label_emergencycontact.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_emergencycontact.Name = "label_emergencycontact";
-            this.label_emergencycontact.Size = new System.Drawing.Size(161, 20);
+            this.label_emergencycontact.Size = new System.Drawing.Size(201, 20);
             this.label_emergencycontact.TabIndex = 19;
-            this.label_emergencycontact.Text = "Emergency Contact:";
+            this.label_emergencycontact.Text = "Emergency Contact (UK):";
             // 
             // txt_emerg_telephone
             // 
-            this.txt_emerg_telephone.Location = new System.Drawing.Point(459, 107);
+            this.txt_emerg_telephone.Location = new System.Drawing.Point(457, 451);
             this.txt_emerg_telephone.Margin = new System.Windows.Forms.Padding(4);
             this.txt_emerg_telephone.Name = "txt_emerg_telephone";
             this.txt_emerg_telephone.Size = new System.Drawing.Size(183, 22);
@@ -278,7 +287,7 @@
             // label_emerg_telephone
             // 
             this.label_emerg_telephone.AutoSize = true;
-            this.label_emerg_telephone.Location = new System.Drawing.Point(455, 87);
+            this.label_emerg_telephone.Location = new System.Drawing.Point(454, 430);
             this.label_emerg_telephone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_emerg_telephone.Name = "label_emerg_telephone";
             this.label_emerg_telephone.Size = new System.Drawing.Size(76, 17);
@@ -287,7 +296,7 @@
             // 
             // txt_allergies
             // 
-            this.txt_allergies.Location = new System.Drawing.Point(459, 250);
+            this.txt_allergies.Location = new System.Drawing.Point(648, 202);
             this.txt_allergies.Margin = new System.Windows.Forms.Padding(4);
             this.txt_allergies.Name = "txt_allergies";
             this.txt_allergies.Size = new System.Drawing.Size(183, 22);
@@ -296,7 +305,7 @@
             // label_allergies
             // 
             this.label_allergies.AutoSize = true;
-            this.label_allergies.Location = new System.Drawing.Point(455, 230);
+            this.label_allergies.Location = new System.Drawing.Point(645, 181);
             this.label_allergies.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_allergies.Name = "label_allergies";
             this.label_allergies.Size = new System.Drawing.Size(62, 17);
@@ -305,7 +314,7 @@
             // 
             // txt_emerg_relation
             // 
-            this.txt_emerg_relation.Location = new System.Drawing.Point(671, 59);
+            this.txt_emerg_relation.Location = new System.Drawing.Point(669, 403);
             this.txt_emerg_relation.Margin = new System.Windows.Forms.Padding(4);
             this.txt_emerg_relation.Name = "txt_emerg_relation";
             this.txt_emerg_relation.Size = new System.Drawing.Size(183, 22);
@@ -314,7 +323,7 @@
             // label_emerg_relation
             // 
             this.label_emerg_relation.AutoSize = true;
-            this.label_emerg_relation.Location = new System.Drawing.Point(667, 43);
+            this.label_emerg_relation.Location = new System.Drawing.Point(665, 387);
             this.label_emerg_relation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_emerg_relation.Name = "label_emerg_relation";
             this.label_emerg_relation.Size = new System.Drawing.Size(60, 17);
@@ -323,16 +332,16 @@
             // 
             // txt_doctor_phone
             // 
-            this.txt_doctor_phone.Location = new System.Drawing.Point(671, 202);
+            this.txt_doctor_phone.Location = new System.Drawing.Point(552, 202);
             this.txt_doctor_phone.Margin = new System.Windows.Forms.Padding(4);
             this.txt_doctor_phone.Name = "txt_doctor_phone";
-            this.txt_doctor_phone.Size = new System.Drawing.Size(183, 22);
+            this.txt_doctor_phone.Size = new System.Drawing.Size(88, 22);
             this.txt_doctor_phone.TabIndex = 21;
             // 
             // label_doctor_phone
             // 
             this.label_doctor_phone.AutoSize = true;
-            this.label_doctor_phone.Location = new System.Drawing.Point(667, 181);
+            this.label_doctor_phone.Location = new System.Drawing.Point(549, 181);
             this.label_doctor_phone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_doctor_phone.Name = "label_doctor_phone";
             this.label_doctor_phone.Size = new System.Drawing.Size(76, 17);
@@ -341,16 +350,16 @@
             // 
             // txt_doctor_name
             // 
-            this.txt_doctor_name.Location = new System.Drawing.Point(459, 202);
+            this.txt_doctor_name.Location = new System.Drawing.Point(457, 202);
             this.txt_doctor_name.Margin = new System.Windows.Forms.Padding(4);
             this.txt_doctor_name.Name = "txt_doctor_name";
-            this.txt_doctor_name.Size = new System.Drawing.Size(183, 22);
+            this.txt_doctor_name.Size = new System.Drawing.Size(87, 22);
             this.txt_doctor_name.TabIndex = 20;
             // 
             // label_doctor_name
             // 
             this.label_doctor_name.AutoSize = true;
-            this.label_doctor_name.Location = new System.Drawing.Point(455, 181);
+            this.label_doctor_name.Location = new System.Drawing.Point(454, 181);
             this.label_doctor_name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_doctor_name.Name = "label_doctor_name";
             this.label_doctor_name.Size = new System.Drawing.Size(91, 17);
@@ -359,7 +368,7 @@
             // 
             // txt_emerg_name
             // 
-            this.txt_emerg_name.Location = new System.Drawing.Point(459, 59);
+            this.txt_emerg_name.Location = new System.Drawing.Point(457, 403);
             this.txt_emerg_name.Margin = new System.Windows.Forms.Padding(4);
             this.txt_emerg_name.Name = "txt_emerg_name";
             this.txt_emerg_name.Size = new System.Drawing.Size(183, 22);
@@ -368,7 +377,7 @@
             // label_emerg_name
             // 
             this.label_emerg_name.AutoSize = true;
-            this.label_emerg_name.Location = new System.Drawing.Point(455, 43);
+            this.label_emerg_name.Location = new System.Drawing.Point(454, 382);
             this.label_emerg_name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_emerg_name.Name = "label_emerg_name";
             this.label_emerg_name.Size = new System.Drawing.Size(45, 17);
@@ -377,7 +386,7 @@
             // 
             // txt_emerg_mobile
             // 
-            this.txt_emerg_mobile.Location = new System.Drawing.Point(671, 107);
+            this.txt_emerg_mobile.Location = new System.Drawing.Point(669, 451);
             this.txt_emerg_mobile.Margin = new System.Windows.Forms.Padding(4);
             this.txt_emerg_mobile.Name = "txt_emerg_mobile";
             this.txt_emerg_mobile.Size = new System.Drawing.Size(183, 22);
@@ -386,7 +395,7 @@
             // label_emerg_mobile
             // 
             this.label_emerg_mobile.AutoSize = true;
-            this.label_emerg_mobile.Location = new System.Drawing.Point(667, 87);
+            this.label_emerg_mobile.Location = new System.Drawing.Point(665, 431);
             this.label_emerg_mobile.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_emerg_mobile.Name = "label_emerg_mobile";
             this.label_emerg_mobile.Size = new System.Drawing.Size(49, 17);
@@ -397,7 +406,7 @@
             // 
             this.label_medical_info.AutoSize = true;
             this.label_medical_info.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_medical_info.Location = new System.Drawing.Point(455, 146);
+            this.label_medical_info.Location = new System.Drawing.Point(453, 157);
             this.label_medical_info.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_medical_info.Name = "label_medical_info";
             this.label_medical_info.Size = new System.Drawing.Size(160, 20);
@@ -407,7 +416,7 @@
             // txt_dob
             // 
             this.txt_dob.Culture = new System.Globalization.CultureInfo("en-GB");
-            this.txt_dob.Location = new System.Drawing.Point(16, 203);
+            this.txt_dob.Location = new System.Drawing.Point(16, 108);
             this.txt_dob.Margin = new System.Windows.Forms.Padding(4);
             this.txt_dob.Mask = "00/00/0000";
             this.txt_dob.Name = "txt_dob";
@@ -417,18 +426,19 @@
             // 
             // txt_medical_notes
             // 
-            this.txt_medical_notes.Location = new System.Drawing.Point(459, 302);
+            this.txt_medical_notes.Location = new System.Drawing.Point(457, 249);
             this.txt_medical_notes.Margin = new System.Windows.Forms.Padding(4);
             this.txt_medical_notes.Multiline = true;
             this.txt_medical_notes.Name = "txt_medical_notes";
             this.txt_medical_notes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_medical_notes.Size = new System.Drawing.Size(395, 166);
+            this.txt_medical_notes.Size = new System.Drawing.Size(395, 116);
             this.txt_medical_notes.TabIndex = 23;
+            this.txt_medical_notes.Text = resources.GetString("txt_medical_notes.Text");
             // 
             // label_medical_notes
             // 
             this.label_medical_notes.AutoSize = true;
-            this.label_medical_notes.Location = new System.Drawing.Point(455, 282);
+            this.label_medical_notes.Location = new System.Drawing.Point(454, 228);
             this.label_medical_notes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_medical_notes.Name = "label_medical_notes";
             this.label_medical_notes.Size = new System.Drawing.Size(97, 17);
@@ -437,10 +447,10 @@
             // 
             // button_save
             // 
-            this.button_save.Location = new System.Drawing.Point(739, 494);
+            this.button_save.Location = new System.Drawing.Point(488, 494);
             this.button_save.Margin = new System.Windows.Forms.Padding(4);
             this.button_save.Name = "button_save";
-            this.button_save.Size = new System.Drawing.Size(116, 32);
+            this.button_save.Size = new System.Drawing.Size(75, 32);
             this.button_save.TabIndex = 40;
             this.button_save.Text = "Save";
             this.button_save.UseVisualStyleBackColor = true;
@@ -451,7 +461,7 @@
             this.button_cancel.Location = new System.Drawing.Point(16, 494);
             this.button_cancel.Margin = new System.Windows.Forms.Padding(4);
             this.button_cancel.Name = "button_cancel";
-            this.button_cancel.Size = new System.Drawing.Size(116, 32);
+            this.button_cancel.Size = new System.Drawing.Size(93, 32);
             this.button_cancel.TabIndex = 41;
             this.button_cancel.Text = "Cancel";
             this.button_cancel.UseVisualStyleBackColor = true;
@@ -459,7 +469,7 @@
             // 
             // txt_county
             // 
-            this.txt_county.Location = new System.Drawing.Point(234, 203);
+            this.txt_county.Location = new System.Drawing.Point(234, 296);
             this.txt_county.Margin = new System.Windows.Forms.Padding(4);
             this.txt_county.Name = "txt_county";
             this.txt_county.Size = new System.Drawing.Size(183, 22);
@@ -468,7 +478,7 @@
             // label_county
             // 
             this.label_county.AutoSize = true;
-            this.label_county.Location = new System.Drawing.Point(234, 181);
+            this.label_county.Location = new System.Drawing.Point(231, 275);
             this.label_county.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_county.Name = "label_county";
             this.label_county.Size = new System.Drawing.Size(52, 17);
@@ -477,7 +487,7 @@
             // 
             // txt_city
             // 
-            this.txt_city.Location = new System.Drawing.Point(16, 350);
+            this.txt_city.Location = new System.Drawing.Point(16, 296);
             this.txt_city.Margin = new System.Windows.Forms.Padding(4);
             this.txt_city.Name = "txt_city";
             this.txt_city.Size = new System.Drawing.Size(183, 22);
@@ -486,7 +496,7 @@
             // label_city
             // 
             this.label_city.AutoSize = true;
-            this.label_city.Location = new System.Drawing.Point(16, 330);
+            this.label_city.Location = new System.Drawing.Point(13, 275);
             this.label_city.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_city.Name = "label_city";
             this.label_city.Size = new System.Drawing.Size(31, 17);
@@ -496,7 +506,7 @@
             // txt_pc
             // 
             this.txt_pc.Culture = new System.Globalization.CultureInfo("en-GB");
-            this.txt_pc.Location = new System.Drawing.Point(16, 398);
+            this.txt_pc.Location = new System.Drawing.Point(16, 343);
             this.txt_pc.Margin = new System.Windows.Forms.Padding(4);
             this.txt_pc.Mask = ">LCCC 9LL";
             this.txt_pc.Name = "txt_pc";
@@ -506,17 +516,17 @@
             // label_type
             // 
             this.label_type.AutoSize = true;
-            this.label_type.Location = new System.Drawing.Point(234, 231);
+            this.label_type.Location = new System.Drawing.Point(13, 369);
             this.label_type.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_type.Name = "label_type";
-            this.label_type.Size = new System.Drawing.Size(40, 17);
+            this.label_type.Size = new System.Drawing.Size(48, 17);
             this.label_type.TabIndex = 47;
-            this.label_type.Text = "Type";
+            this.label_type.Text = "Status";
             // 
             // label_pc
             // 
             this.label_pc.AutoSize = true;
-            this.label_pc.Location = new System.Drawing.Point(16, 378);
+            this.label_pc.Location = new System.Drawing.Point(13, 322);
             this.label_pc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_pc.Name = "label_pc";
             this.label_pc.Size = new System.Drawing.Size(73, 17);
@@ -528,19 +538,24 @@
             this.cmb_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_type.FormattingEnabled = true;
             this.cmb_type.Items.AddRange(new object[] {
-            "Individual",
-            "Group",
-            "Family",
-            "Student",
-            "Company",
-            "Over 60",
-            "Society",
-            "Sports Team",
+            "Student Full Time",
+            "Student Part Time",
+            "Anglia Ruskin Staff",
+            "Former Graduate (Alumni)",
+            "Community Monthly",
+            "Community PAYG",
+            "Sport Team (ARU Society)",
+            "Other ARU Society",
+            "Sport Federation",
+            "Summer School",
+            "External Company",
+            "Other Individual",
+            "Other Group",
             "Other"});
-            this.cmb_type.Location = new System.Drawing.Point(234, 251);
+            this.cmb_type.Location = new System.Drawing.Point(16, 390);
             this.cmb_type.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_type.Name = "cmb_type";
-            this.cmb_type.Size = new System.Drawing.Size(163, 24);
+            this.cmb_type.Size = new System.Drawing.Size(183, 24);
             this.cmb_type.TabIndex = 13;
             // 
             // chk_active
@@ -548,7 +563,7 @@
             this.chk_active.AutoSize = true;
             this.chk_active.Checked = true;
             this.chk_active.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_active.Location = new System.Drawing.Point(16, 430);
+            this.chk_active.Location = new System.Drawing.Point(234, 10);
             this.chk_active.Margin = new System.Windows.Forms.Padding(4);
             this.chk_active.Name = "chk_active";
             this.chk_active.Size = new System.Drawing.Size(76, 21);
@@ -556,34 +571,9 @@
             this.chk_active.Text = "Active?";
             this.chk_active.UseVisualStyleBackColor = true;
             // 
-            // cmb_paymenttype
-            // 
-            this.cmb_paymenttype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_paymenttype.FormattingEnabled = true;
-            this.cmb_paymenttype.Items.AddRange(new object[] {
-            "Debit Card",
-            "Cash",
-            "Cheque",
-            "Bank Account"});
-            this.cmb_paymenttype.Location = new System.Drawing.Point(234, 300);
-            this.cmb_paymenttype.Margin = new System.Windows.Forms.Padding(4);
-            this.cmb_paymenttype.Name = "cmb_paymenttype";
-            this.cmb_paymenttype.Size = new System.Drawing.Size(160, 24);
-            this.cmb_paymenttype.TabIndex = 15;
-            // 
-            // label_paymenttype
-            // 
-            this.label_paymenttype.AutoSize = true;
-            this.label_paymenttype.Location = new System.Drawing.Point(234, 280);
-            this.label_paymenttype.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label_paymenttype.Name = "label_paymenttype";
-            this.label_paymenttype.Size = new System.Drawing.Size(99, 17);
-            this.label_paymenttype.TabIndex = 54;
-            this.label_paymenttype.Text = "Payment Type";
-            // 
             // button_payments
             // 
-            this.button_payments.Location = new System.Drawing.Point(432, 494);
+            this.button_payments.Location = new System.Drawing.Point(382, 494);
             this.button_payments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_payments.Name = "button_payments";
             this.button_payments.Size = new System.Drawing.Size(99, 32);
@@ -594,7 +584,7 @@
             // 
             // button_remove
             // 
-            this.button_remove.Location = new System.Drawing.Point(139, 494);
+            this.button_remove.Location = new System.Drawing.Point(116, 494);
             this.button_remove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_remove.Name = "button_remove";
             this.button_remove.Size = new System.Drawing.Size(93, 32);
@@ -605,9 +595,9 @@
             // 
             // button_equipmentbooking
             // 
-            this.button_equipmentbooking.Location = new System.Drawing.Point(250, 494);
+            this.button_equipmentbooking.Location = new System.Drawing.Point(215, 494);
             this.button_equipmentbooking.Name = "button_equipmentbooking";
-            this.button_equipmentbooking.Size = new System.Drawing.Size(164, 32);
+            this.button_equipmentbooking.Size = new System.Drawing.Size(161, 32);
             this.button_equipmentbooking.TabIndex = 57;
             this.button_equipmentbooking.Text = "Equipment Booking";
             this.button_equipmentbooking.UseVisualStyleBackColor = true;
@@ -622,7 +612,7 @@
             this.dg_currentborrows.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dg_currentborrows.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg_currentborrows.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dg_currentborrows.Location = new System.Drawing.Point(234, 350);
+            this.dg_currentborrows.Location = new System.Drawing.Point(662, 35);
             this.dg_currentborrows.Margin = new System.Windows.Forms.Padding(4);
             this.dg_currentborrows.Name = "dg_currentborrows";
             this.dg_currentborrows.RowHeadersVisible = false;
@@ -634,7 +624,7 @@
             // label_currentborrows
             // 
             this.label_currentborrows.AutoSize = true;
-            this.label_currentborrows.Location = new System.Drawing.Point(234, 330);
+            this.label_currentborrows.Location = new System.Drawing.Point(659, 11);
             this.label_currentborrows.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_currentborrows.Name = "label_currentborrows";
             this.label_currentborrows.Size = new System.Drawing.Size(204, 17);
@@ -644,7 +634,7 @@
             // label_dateformat
             // 
             this.label_dateformat.AutoSize = true;
-            this.label_dateformat.Location = new System.Drawing.Point(117, 183);
+            this.label_dateformat.Location = new System.Drawing.Point(121, 87);
             this.label_dateformat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_dateformat.Name = "label_dateformat";
             this.label_dateformat.Size = new System.Drawing.Size(92, 17);
@@ -654,18 +644,122 @@
             // label_emailunique
             // 
             this.label_emailunique.AutoSize = true;
-            this.label_emailunique.Location = new System.Drawing.Point(85, 233);
+            this.label_emailunique.Location = new System.Drawing.Point(74, 430);
             this.label_emailunique.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_emailunique.Name = "label_emailunique";
             this.label_emailunique.Size = new System.Drawing.Size(124, 17);
             this.label_emailunique.TabIndex = 61;
             this.label_emailunique.Text = "(has to be unique)";
             // 
+            // txt_sid
+            // 
+            this.txt_sid.Location = new System.Drawing.Point(234, 56);
+            this.txt_sid.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_sid.Name = "txt_sid";
+            this.txt_sid.Size = new System.Drawing.Size(183, 22);
+            this.txt_sid.TabIndex = 62;
+            // 
+            // label_sid
+            // 
+            this.label_sid.AutoSize = true;
+            this.label_sid.Location = new System.Drawing.Point(231, 35);
+            this.label_sid.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_sid.Name = "label_sid";
+            this.label_sid.Size = new System.Drawing.Size(164, 17);
+            this.label_sid.TabIndex = 63;
+            this.label_sid.Text = "Student ID Number (SID)";
+            // 
+            // txt_stcardnumber
+            // 
+            this.txt_stcardnumber.AcceptsReturn = true;
+            this.txt_stcardnumber.Location = new System.Drawing.Point(234, 108);
+            this.txt_stcardnumber.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_stcardnumber.Name = "txt_stcardnumber";
+            this.txt_stcardnumber.Size = new System.Drawing.Size(183, 22);
+            this.txt_stcardnumber.TabIndex = 64;
+            // 
+            // label_stcardnumber
+            // 
+            this.label_stcardnumber.AutoSize = true;
+            this.label_stcardnumber.Location = new System.Drawing.Point(231, 87);
+            this.label_stcardnumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_stcardnumber.Name = "label_stcardnumber";
+            this.label_stcardnumber.Size = new System.Drawing.Size(145, 17);
+            this.label_stcardnumber.TabIndex = 65;
+            this.label_stcardnumber.Text = "Student Card Number";
+            // 
+            // button_saveClose
+            // 
+            this.button_saveClose.Location = new System.Drawing.Point(571, 494);
+            this.button_saveClose.Margin = new System.Windows.Forms.Padding(4);
+            this.button_saveClose.Name = "button_saveClose";
+            this.button_saveClose.Size = new System.Drawing.Size(116, 32);
+            this.button_saveClose.TabIndex = 66;
+            this.button_saveClose.Text = "Save and Close";
+            this.button_saveClose.UseVisualStyleBackColor = true;
+            this.button_saveClose.Click += new System.EventHandler(this.button_saveClose_Click);
+            // 
+            // button_saveOpen
+            // 
+            this.button_saveOpen.Location = new System.Drawing.Point(695, 494);
+            this.button_saveOpen.Margin = new System.Windows.Forms.Padding(4);
+            this.button_saveOpen.Name = "button_saveOpen";
+            this.button_saveOpen.Size = new System.Drawing.Size(157, 32);
+            this.button_saveOpen.TabIndex = 67;
+            this.button_saveOpen.Text = "Save and Open List";
+            this.button_saveOpen.UseVisualStyleBackColor = true;
+            this.button_saveOpen.Click += new System.EventHandler(this.button_saveOpen_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Location = new System.Drawing.Point(457, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(170, 140);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 68;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.DoubleClick += new System.EventHandler(this.pictureBox1_DoubleClick);
+            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
+            // 
+            // rd_male
+            // 
+            this.rd_male.AutoSize = true;
+            this.rd_male.Location = new System.Drawing.Point(317, 419);
+            this.rd_male.Name = "rd_male";
+            this.rd_male.Size = new System.Drawing.Size(59, 21);
+            this.rd_male.TabIndex = 69;
+            this.rd_male.TabStop = true;
+            this.rd_male.Text = "Male";
+            this.rd_male.UseVisualStyleBackColor = true;
+            this.rd_male.Click += new System.EventHandler(this.rd_male_Checked);
+            // 
+            // rd_female
+            // 
+            this.rd_female.AutoSize = true;
+            this.rd_female.Location = new System.Drawing.Point(234, 419);
+            this.rd_female.Name = "rd_female";
+            this.rd_female.Size = new System.Drawing.Size(75, 21);
+            this.rd_female.TabIndex = 70;
+            this.rd_female.TabStop = true;
+            this.rd_female.Text = "Female";
+            this.rd_female.UseVisualStyleBackColor = true;
+            this.rd_female.Click += new System.EventHandler(this.rd_female_Checked);
+            // 
             // frm_member
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(879, 545);
+            this.Controls.Add(this.rd_female);
+            this.Controls.Add(this.rd_male);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.button_saveOpen);
+            this.Controls.Add(this.button_saveClose);
+            this.Controls.Add(this.txt_stcardnumber);
+            this.Controls.Add(this.label_stcardnumber);
+            this.Controls.Add(this.txt_sid);
+            this.Controls.Add(this.label_sid);
             this.Controls.Add(this.label_emailunique);
             this.Controls.Add(this.label_dateformat);
             this.Controls.Add(this.label_currentborrows);
@@ -673,8 +767,6 @@
             this.Controls.Add(this.button_equipmentbooking);
             this.Controls.Add(this.button_remove);
             this.Controls.Add(this.button_payments);
-            this.Controls.Add(this.cmb_paymenttype);
-            this.Controls.Add(this.label_paymenttype);
             this.Controls.Add(this.chk_active);
             this.Controls.Add(this.cmb_type);
             this.Controls.Add(this.txt_pc);
@@ -686,7 +778,6 @@
             this.Controls.Add(this.label_city);
             this.Controls.Add(this.button_cancel);
             this.Controls.Add(this.button_save);
-            this.Controls.Add(this.txt_medical_notes);
             this.Controls.Add(this.label_medical_notes);
             this.Controls.Add(this.txt_dob);
             this.Controls.Add(this.label_medical_info);
@@ -723,6 +814,7 @@
             this.Controls.Add(this.txt_membernum);
             this.Controls.Add(this.label_membernum);
             this.Controls.Add(this.label_memberinfo);
+            this.Controls.Add(this.txt_medical_notes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_member";
@@ -730,6 +822,7 @@
             this.Text = "Member Form";
             this.Load += new System.EventHandler(this.frm_member_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dg_currentborrows)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -785,8 +878,6 @@
         private System.Windows.Forms.Label label_pc;
         private System.Windows.Forms.ComboBox cmb_type;
         private System.Windows.Forms.CheckBox chk_active;
-        private System.Windows.Forms.ComboBox cmb_paymenttype;
-        private System.Windows.Forms.Label label_paymenttype;
         private System.Windows.Forms.Button button_payments;
         private System.Windows.Forms.Button button_remove;
         private System.Windows.Forms.Button button_equipmentbooking;
@@ -794,5 +885,14 @@
         private System.Windows.Forms.Label label_currentborrows;
         private System.Windows.Forms.Label label_dateformat;
         private System.Windows.Forms.Label label_emailunique;
+        private System.Windows.Forms.TextBox txt_sid;
+        private System.Windows.Forms.Label label_sid;
+        private System.Windows.Forms.TextBox txt_stcardnumber;
+        private System.Windows.Forms.Label label_stcardnumber;
+        private System.Windows.Forms.Button button_saveClose;
+        private System.Windows.Forms.Button button_saveOpen;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.RadioButton rd_male;
+        private System.Windows.Forms.RadioButton rd_female;
     }
 }
