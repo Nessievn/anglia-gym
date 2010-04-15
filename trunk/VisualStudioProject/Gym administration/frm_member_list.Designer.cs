@@ -46,6 +46,7 @@
             this.label_lblNumberOfPeople = new System.Windows.Forms.Label();
             this.label_numberOfPeople = new System.Windows.Forms.Label();
             this.button_copy = new System.Windows.Forms.Button();
+            this.button_addNewMember = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dg_members)).BeginInit();
             this.SuspendLayout();
             // 
@@ -227,7 +228,7 @@
             // label_numberOfPeople
             // 
             this.label_numberOfPeople.AutoSize = true;
-            this.label_numberOfPeople.Location = new System.Drawing.Point(724, 122);
+            this.label_numberOfPeople.Location = new System.Drawing.Point(749, 124);
             this.label_numberOfPeople.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_numberOfPeople.Name = "label_numberOfPeople";
             this.label_numberOfPeople.Size = new System.Drawing.Size(16, 17);
@@ -236,7 +237,7 @@
             // 
             // button_copy
             // 
-            this.button_copy.Location = new System.Drawing.Point(727, 25);
+            this.button_copy.Location = new System.Drawing.Point(727, 23);
             this.button_copy.Margin = new System.Windows.Forms.Padding(4);
             this.button_copy.Name = "button_copy";
             this.button_copy.Size = new System.Drawing.Size(140, 54);
@@ -245,11 +246,23 @@
             this.button_copy.UseVisualStyleBackColor = true;
             this.button_copy.Click += new System.EventHandler(this.button_copy_Click);
             // 
+            // button_addNewMember
+            // 
+            this.button_addNewMember.Location = new System.Drawing.Point(542, 23);
+            this.button_addNewMember.Margin = new System.Windows.Forms.Padding(4);
+            this.button_addNewMember.Name = "button_addNewMember";
+            this.button_addNewMember.Size = new System.Drawing.Size(135, 28);
+            this.button_addNewMember.TabIndex = 52;
+            this.button_addNewMember.Text = "Add New Member";
+            this.button_addNewMember.UseVisualStyleBackColor = true;
+            this.button_addNewMember.Click += new System.EventHandler(this.button_addNewMember_Click);
+            // 
             // frm_member_list
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 542);
+            this.Controls.Add(this.button_addNewMember);
             this.Controls.Add(this.button_copy);
             this.Controls.Add(this.label_numberOfPeople);
             this.Controls.Add(this.label_lblNumberOfPeople);
@@ -274,6 +287,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Members List Form";
             this.Load += new System.EventHandler(this.frm_member_list_Load);
+            this.Activated += new System.EventHandler(this.frm_member_list_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.dg_members)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -300,5 +314,6 @@
         private System.Windows.Forms.Label label_lblNumberOfPeople;
         private System.Windows.Forms.Label label_numberOfPeople;
         private System.Windows.Forms.Button button_copy;
+        private System.Windows.Forms.Button button_addNewMember;
     }
 }

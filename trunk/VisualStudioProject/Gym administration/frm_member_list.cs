@@ -38,22 +38,29 @@ namespace Gym_administration
             this.clClassInstance = new ClassInstance();
         }
 
-        private void frm_member_list_Load(object sender, EventArgs e)
+
+        public void vLoadMemberList()
         {
             string sQuery = "";
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
-            if(this.BViewAttendants == false)
-                sQuery = "SELECT id_member ID, member_number Nr, sid SID, CONCAT(lastName, ', ', firstName) 'Member Name', DATE_FORMAT(birthdate,\"%d-%m-%Y\") DOB, email 'EMail', type Type FROM members ORDER BY lastName";
+            if (this.BViewAttendants == false)
+                sQuery = "SELECT id_member ID, member_number Nr, sid SID, CONCAT(lastName, ', ', firstName) 'Member Name', DATE_FORMAT(birthdate,\"%d-%m-%Y\") DOB, email 'EMail', type Type FROM members ORDER BY ID ";
             else
-                sQuery = "SELECT m.id_member ID, m.member_number Nr, CONCAT(m.lastName, ', ', m.firstName) 'Member Name', DATE_FORMAT(m.birthdate,\"%d-%m-%Y\") DOB, email 'EMail' FROM members m, class_bookings cb WHERE m.id_member = cb.id_member AND cb.id_class_instance = '" + this.clClassInstance.Id_class_instance + "' ORDER BY m.id_member";
+                sQuery = "SELECT m.id_member ID, m.member_number Nr, CONCAT(m.lastName, ', ', m.firstName) 'Member Name', DATE_FORMAT(m.birthdate,\"%d-%m-%Y\") DOB, email 'EMail' FROM members m, class_bookings cb WHERE m.id_member = cb.id_member AND cb.id_class_instance = '" + this.clClassInstance.Id_class_instance + "' ORDER BY ID";
 
             bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
             dg_members.DataSource = bSource;
             dg_members.AllowUserToAddRows = false;
             dg_members.ReadOnly = true;
             label_numberOfPeople.Text = dg_members.RowCount.ToString();
+        }
+
+
+        private void frm_member_list_Load(object sender, EventArgs e)
+        {
+            //vLoadMemberList();
 
         }
 
@@ -150,7 +157,7 @@ namespace Gym_administration
             if (sDate != "0000-00-00")
                 sQuery += " AND birthdate = '" + sDate + "'";
 
-            sQuery += "  ORDER BY id_member";
+            sQuery += "  ORDER BY ID";
 
             bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
             dg_members.DataSource = bSource;
@@ -187,6 +194,23 @@ namespace Gym_administration
             else
                 MessageBox.Show("Nothing was selected");
 
+        }
+
+        private void button_addNewMember_Click(object sender, EventArgs e)
+        {
+            frm_member frmMember = new frm_member();
+            // We check if the form is already opened
+            //if (Utils.bIsAlreadyOpened(mdiFrmMember)) return;
+            // Set the Parent Form of the Child window.
+            //mdiFrmMember.MdiParent = this;
+            //mdiFrmMember.Show();  
+            // Display the new form.
+            frmMember.ShowDialog();  
+        }
+
+        private void frm_member_list_Activated(object sender, EventArgs e)
+        {
+            vLoadMemberList();
         }
 
 
