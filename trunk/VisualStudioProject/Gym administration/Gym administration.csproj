@@ -315,7 +315,6 @@
     <None Include="icons\class_book_edit_128.png" />
     <None Include="icons\class_book_add_128.png" />
     <None Include="icons\class_add_128.png" />
-    <None Include="ClassDiagram2.cd" />
     <None Include="icons\member_female_128.png" />
     <None Include="icons\member_male_128.png" />
   </ItemGroup>

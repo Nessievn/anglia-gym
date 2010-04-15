@@ -6,8 +6,10 @@ using System.Text;
 // MySql Connector must be installed at this point
 using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 using System.Data;
+using System.IO;
 
 namespace Gym_administration
 {
@@ -278,5 +280,161 @@ namespace Gym_administration
             this.connection.Close();
             return iAffectedRows;
         }
+
+
+        public string uploadFileToDB(string filePath, string fileName)
+        {
+
+
+
+            //MySql.Data.MySqlClient.MySqlConnection thisConn;
+            MySql.Data.MySqlClient.MySqlCommand cmd;
+
+            //thisConn = new MySql.Data.MySqlClient.MySqlConnection();
+            cmd = new MySql.Data.MySqlClient.MySqlCommand();
+
+
+            string SQL;
+            int fileSize;
+            byte[] rawData;
+            FileStream fs;
+            string id_file;
+
+            //thisConn.ConnectionString = "server=localhost;uid=gym;pwd=gym;database=gym;";
+
+            if (this.connection.State.ToString() == "Closed")
+            {
+                this.connect();
+                connection.Open();
+            }
+            try
+            {
+                //string strFileName = "Picture";
+                fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+                fileSize = int.Parse(fs.Length.ToString());
+
+                rawData = new byte[fileSize];
+                fs.Read(rawData, 0, fileSize);
+                fs.Close();
+
+                //connection.Open();
+
+                SQL = "INSERT INTO file VALUES(NULL, @FileName, @FileSize, @File)";
+
+                cmd.Connection = connection;
+                cmd.CommandText = SQL;
+                cmd.Parameters.AddWithValue("@FileName", fileName);
+                cmd.Parameters.AddWithValue("@FileSize", fileSize);
+                cmd.Parameters.AddWithValue("@File", rawData);
+
+                
+                cmd.ExecuteNonQuery();
+
+                MySqlDataReader Reader;
+                cmd.CommandText = ("SELECT LAST_INSERT_ID() id");
+                Reader = cmd.ExecuteReader();
+                Reader.Read();
+                id_file = Reader.GetValue(0).ToString();
+
+                MessageBox.Show("File Inserted into database successfully!",
+                                           "Success!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                connection.Close();
+
+                return id_file;
+
+
+
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return "-1";
+            }
+
+
+                        
+
+        }
+
+
+
+
+        public Image loadImageFromDB(string id_file)
+        {
+
+
+            //MySql.Data.MySqlClient.MySqlConnection conn;
+            MySql.Data.MySqlClient.MySqlCommand cmd;
+            MySql.Data.MySqlClient.MySqlDataReader myData;
+
+            //conn = new MySql.Data.MySqlClient.MySqlConnection();
+            cmd = new MySql.Data.MySqlClient.MySqlCommand();
+
+            string SQL;
+            int FileSize;
+            byte[] rawData;
+
+            //conn.ConnectionString = "server=localhost;uid=gym;pwd=gym;database=gym;";
+
+            SQL = "SELECT file_name, file_size, file FROM file WHERE id_file = '" + id_file + "' ";
+
+
+            if (this.connection.State.ToString() == "Closed")
+            {
+                this.connect();
+                connection.Open();
+            }
+            try
+            {
+                //connection.Open();
+
+                cmd.Connection = connection;
+                cmd.CommandText = SQL;
+
+                myData = cmd.ExecuteReader();
+
+                if (!myData.HasRows)
+                    throw new Exception("There are no BLOBs to save");
+
+                myData.Read();
+
+                FileSize = int.Parse(myData.GetUInt32(myData.GetOrdinal("file_size")).ToString());
+                rawData = new byte[FileSize];
+
+                myData.GetBytes(myData.GetOrdinal("file"), 0, rawData, 0, FileSize);
+
+
+                MemoryStream picStream = new MemoryStream(rawData);
+
+
+
+
+                myData.Close();
+                connection.Close();
+                return Image.FromStream(picStream);
+
+
+                
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+
+
+
+
+
+
+        }
+
+
+
+
+
       }
 }
