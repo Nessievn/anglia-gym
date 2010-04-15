@@ -124,4 +124,46 @@
   <data name="member_female_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icons\member_female_128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="class_add_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\class_add_128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="class_book_add_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\class_book_add_128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="class_book_edit_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\class_book_edit_128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="class_edit_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\class_edit_128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="equipment_add_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\equipment_add_128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="equipment_book_edit_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\equipment_book_edit_128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="equipment_edit_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\equipment_edit_128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="member_add_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\member_add_128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="member_edit_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\member_edit_128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="password_edit_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\password_edit_128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="payment_search_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\payment_search_128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="room_edit_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\room_edit_128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="staff_add_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\staff_add_128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="staff_edit_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\staff_edit_128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

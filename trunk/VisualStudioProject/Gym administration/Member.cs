@@ -236,7 +236,6 @@ namespace Gym_administration
                 this.MedicalPhone = lhResultset[0]["medical_phone"].ToString();
                 this.MemberNumber = lhResultset[0]["member_number"].ToString();
                 this.Id_file = lhResultset[0]["id_file"].ToString();
-
                 this.PostalCode = lhResultset[0]["postalcode"].ToString();
                 this.Type = lhResultset[0]["type"].ToString();
                 this.Mobile = lhResultset[0]["mobile"].ToString();

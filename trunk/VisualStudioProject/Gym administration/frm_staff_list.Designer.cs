@@ -142,7 +142,6 @@
             this.dg_staff.Size = new System.Drawing.Size(855, 375);
             this.dg_staff.TabIndex = 13;
             this.dg_staff.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_staff_CellDoubleClick);
-            this.dg_staff.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_staff_CellContentClick);
             // 
             // button_addstaffmember
             // 

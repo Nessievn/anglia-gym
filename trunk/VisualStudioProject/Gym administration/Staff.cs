@@ -264,7 +264,7 @@ namespace Gym_administration
                     return false;
                 }
             }
-            return true;
+            return false;
         }
     }
 }

@@ -60,6 +60,69 @@ namespace Gym_administration.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap class_add_128 {
+            get {
+                object obj = ResourceManager.GetObject("class_add_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap class_book_add_128 {
+            get {
+                object obj = ResourceManager.GetObject("class_book_add_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap class_book_edit_128 {
+            get {
+                object obj = ResourceManager.GetObject("class_book_edit_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap class_edit_128 {
+            get {
+                object obj = ResourceManager.GetObject("class_edit_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap equipment_add_128 {
+            get {
+                object obj = ResourceManager.GetObject("equipment_add_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap equipment_book_edit_128 {
+            get {
+                object obj = ResourceManager.GetObject("equipment_book_edit_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap equipment_edit_128 {
+            get {
+                object obj = ResourceManager.GetObject("equipment_edit_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap member_add_128 {
+            get {
+                object obj = ResourceManager.GetObject("member_add_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap member_edit_128 {
+            get {
+                object obj = ResourceManager.GetObject("member_edit_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap member_female_128 {
             get {
                 object obj = ResourceManager.GetObject("member_female_128", resourceCulture);
@@ -70,6 +133,41 @@ namespace Gym_administration.Properties {
         internal static System.Drawing.Bitmap member_male_128 {
             get {
                 object obj = ResourceManager.GetObject("member_male_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap password_edit_128 {
+            get {
+                object obj = ResourceManager.GetObject("password_edit_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap payment_search_128 {
+            get {
+                object obj = ResourceManager.GetObject("payment_search_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap room_edit_128 {
+            get {
+                object obj = ResourceManager.GetObject("room_edit_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap staff_add_128 {
+            get {
+                object obj = ResourceManager.GetObject("staff_add_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap staff_edit_128 {
+            get {
+                object obj = ResourceManager.GetObject("staff_edit_128", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

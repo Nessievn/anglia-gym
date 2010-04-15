@@ -447,7 +447,7 @@
             // 
             // button_save
             // 
-            this.button_save.Location = new System.Drawing.Point(488, 494);
+            this.button_save.Location = new System.Drawing.Point(653, 494);
             this.button_save.Margin = new System.Windows.Forms.Padding(4);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(75, 32);
@@ -690,7 +690,7 @@
             // 
             // button_saveClose
             // 
-            this.button_saveClose.Location = new System.Drawing.Point(571, 494);
+            this.button_saveClose.Location = new System.Drawing.Point(736, 494);
             this.button_saveClose.Margin = new System.Windows.Forms.Padding(4);
             this.button_saveClose.Name = "button_saveClose";
             this.button_saveClose.Size = new System.Drawing.Size(116, 32);
@@ -701,7 +701,7 @@
             // 
             // button_saveOpen
             // 
-            this.button_saveOpen.Location = new System.Drawing.Point(695, 494);
+            this.button_saveOpen.Location = new System.Drawing.Point(488, 494);
             this.button_saveOpen.Margin = new System.Windows.Forms.Padding(4);
             this.button_saveOpen.Name = "button_saveOpen";
             this.button_saveOpen.Size = new System.Drawing.Size(157, 32);
