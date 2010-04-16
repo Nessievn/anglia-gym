@@ -130,7 +130,7 @@ namespace Gym_administration
                      rd_male.Checked = true;
                      if (clMember.Id_file == "")
                      {
-                         this.pictureBox1.BackgroundImage = conn.loadImageFromDB("1");
+                         this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_male_128;
                      }
                      else
                      {
@@ -143,7 +143,7 @@ namespace Gym_administration
                      rd_female.Checked = true;
                      if (clMember.Id_file == "")
                      {
-                         this.pictureBox1.BackgroundImage = conn.loadImageFromDB("2");
+                         this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_female_128;
                      }
                      else
                      {
