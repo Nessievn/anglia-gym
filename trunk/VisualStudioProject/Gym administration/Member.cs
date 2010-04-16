@@ -251,13 +251,18 @@ namespace Gym_administration
          * @desc Creates a new payment for the opened member
          * @params [decimal] amount: the amount payed
          * @params [string] date: the date of the payment
-         * @params [desc] desc: comments
+         * @params [string] desc: description/comments
+         * @params [string] receiptNumber: receipt number
+         * @params [string] paymentMethod: card/cash/cheque/bank transfer
+         * @params [string] receivedBy: name of person, who received the payment
          * @return [bool] Returns true in case of success, false if there was a problem
          */
         public bool AddPayment(Decimal amount, string date, string desc, string receiptNumber, string paymentMethod, string receivedBy)
         {
+            // The payment can be added to existing members only, not new members
             if (this.Id_member != -1)
             {
+                // Create a payment object and copy into all payment data
                 Payment clPayment = new Payment();
                 clPayment.Amount = amount;
                 clPayment.Date = date;
@@ -266,7 +271,7 @@ namespace Gym_administration
                 clPayment.ReceiptNumber = receiptNumber;
                 clPayment.PaymentMethod = paymentMethod;
                 clPayment.ReceivedBy = receivedBy;
-                
+                // Save payment
                 if (clPayment.bSave())
                     return true;
                 else
@@ -279,17 +284,20 @@ namespace Gym_administration
 
         /**
          * @desc This method will save the object into the database
+         * @return [bool] Returns true in case of success, false if there was a problem
          */
         public bool SaveMember()
         {
-            // Field checking
+            // Convert date into mysql format
             string sMysqlDate = Utils.sGetMysqlDate(this.Birthdate);
             string sQuery;
 
+            // Check Birthdate format
             if (sMysqlDate == "0000-00-00")
             {
                 MessageBox.Show("The Date of Birth is in incorrect format!");
             }
+            // Check e-mail format
             else if (Utils.bValidateEmail(this.Email) == false)
             {
                 MessageBox.Show("The E-Mail address is incorrect!");
@@ -301,23 +309,29 @@ namespace Gym_administration
                 clUser.Login = this.Email;
                 clUser.Password = sMysqlDate;
                 clUser.Profile = "member";
-                // then the bSave method is called
+                // Create mysql connection
                 mySqlConn conn = new mySqlConn();
                 conn.connect();
 
+                // If the User details were correctly saved
                 if (clUser.SaveUser())
                 {
+                    // Check if there is a new picture to save
                     if ((this.FilePath != null) && (this.FilePath.Length > 1))
                     {
                         this.Id_file = conn.uploadFileToDB(this.FilePath, this.FileName);
                     }
 
+                    // The insert query is launched in case of existing members only, not new members
                     if (this.Id_member == -1)
                     {
+                        // Create insert query
                         sQuery = "insert into `gym`.`members` (`id_member`, `firstName`, `lastName`, `birthdate`, `address_1`, `city`, `county`, `postalcode`, `type`, `id_user`, `is_active`, `address_2`, `emerg_contact_name`, `emerg_contact_relation`, `emerg_contact_phone`, `emerg_contact_mobile`, `medical_allergies`, `medical_notes`, `id_file`, `medical_doctor_name`, `medical_phone`, `email`, `member_number`, `phone`,`mobile`,`sid`,`studcardnumber`,`gender`) values " +
                                  "(NULL, '" + this.FirstName + "', '" + this.LastName + "', '" + sMysqlDate + "', '" + this.Address_1 + "', '" + this.City + "', '" + this.County + "', '" + this.PostalCode + "', '" + this.Type + "', '" + clUser.Id_user + "', '" + ((this.IsActive) ? "1" : "0") + "', '" + this.Address_2 + "', '" + this.EmergContactName + "', '" + this.EmergContactRelation + "', '" + this.EmergContactPhone + "', '" + this.EmergContactMobile + "', '" + this.MedicalAllergies + "', '" + this.MedicalNotes + "', '" + this.Id_file + "', '" + this.MedicalDoctorName + "', '" + this.MedicalPhone + "', '" + this.Email + "', '" + this.MemberNumber + "','" + this.Phone + "','" + this.Mobile + "','" + this.Sid + "','" + this.StudCardNumber + "','" + this.Gender + "')";
 
+                        // Launch insert query
                         int id_member = conn.iInsert(sQuery);
+                        // Check if the insert was successful
                         if (id_member != -1)
                         {
                             this.Id_member = id_member;
@@ -331,13 +345,15 @@ namespace Gym_administration
                             return false;
                         }
                     }
+                    // This is a member update
                     else
                     {
-
-                        sQuery = "UPDATE members SET firstName = '" + this.FirstName + "', lastName = '" + this.LastName + "', birthdate = '" + sMysqlDate + "', address_1 = '" + this.Address_1 + "', city = '" + this.City + "', county = '" + this.County + "', postalcode = '" + this.PostalCode + "', type = '" + this.Type + "', is_active = '" + ((this.IsActive) ? "1" : "0") + "', address_2 = '" + this.Address_2 + "', emerg_contact_name = '" + this.EmergContactName + "', emerg_contact_relation = '" + this.EmergContactRelation + "', emerg_contact_phone = '" + this.EmergContactPhone + "', emerg_contact_mobile = '" + this.EmergContactMobile + "', medical_allergies = '" + this.MedicalAllergies + "', medical_notes = '" + this.MedicalNotes + "', id_file = '" + this.Id_file + "', medical_doctor_name = '" + this.MedicalDoctorName + "', medical_phone = '" + this.MedicalPhone + "', email = '" + this.Email + "', phone = '" + this.Phone + "', mobile = '" + this.Mobile +
+                        // Create update query
+                        sQuery = "UPDATE members SET firstName = '" + this.FirstName + "', lastName = '" + this.LastName + "', birthdate = '" + sMysqlDate + "', address_1 = '" + this.Address_1 + "', city = '" + this.City + "', county = '" + this.County + "', postalcode = '" + this.PostalCode + "', type = '" + this.Type + "', is_active = " + ((this.IsActive) ? "1" : "0") + ", address_2 = '" + this.Address_2 + "', emerg_contact_name = '" + this.EmergContactName + "', emerg_contact_relation = '" + this.EmergContactRelation + "', emerg_contact_phone = '" + this.EmergContactPhone + "', emerg_contact_mobile = '" + this.EmergContactMobile + "', medical_allergies = '" + this.MedicalAllergies + "', medical_notes = '" + this.MedicalNotes + "', id_file = '" + this.Id_file + "', medical_doctor_name = '" + this.MedicalDoctorName + "', medical_phone = '" + this.MedicalPhone + "', email = '" + this.Email + "', phone = '" + this.Phone + "', mobile = '" + this.Mobile +
                             "', sid = '" + this.Sid + "', studcardnumber = '" + this.StudCardNumber + "', gender = '" + this.Gender + "' " + " WHERE id_member = '"+this.Id_member+"'";
-     
+                        // Launch update query
                         int result = conn.iDeleteOrUpdate(sQuery);
+                        // Check if the update was successful
                         if (result > 0)
                         {
                             MessageBox.Show("The member data has been updated succesfully!");
@@ -351,6 +367,7 @@ namespace Gym_administration
                         }
                     }
                 }
+                // If the user saving was false, then it was becuase of duplicate e-mail
                 else
                 {
                     MessageBox.Show("The e-mail already exists in the database! Please choose another one.");
@@ -361,14 +378,20 @@ namespace Gym_administration
              return false;
         }
 
+        /**
+         * @desc This method will set a member to be inactive in the database
+         * @return [bool] Returns true in case of success, false if there was a problem
+         */
         public bool RemoveMember()
         {
-            if (this.Id_member != 0)
+            // If an existing member is currently loaded in
+            if (this.Id_member != -1)
             {
+                // Set his active status to inactive
                 this.IsActive = false;
-                this.SaveMember();
+                return this.SaveMember();
             }
-            return true;
+            return false;
                 
         }
 

@@ -13,6 +13,13 @@ using System.IO;
 
 namespace Gym_administration
 {
+
+    /**
+     * @desc It holds methods for managing mysql connections and queries
+     * @params [none] Incoming parameters are described at the individual constructors.
+     * @return [none] No directly returned data. 
+     * Returns of public methods are described at the individual methods.
+     */
     class mySqlConn
     {
         string server;
@@ -281,27 +288,24 @@ namespace Gym_administration
             return iAffectedRows;
         }
 
-
+        /**
+         * @desc This function uploads a file to the database
+         * and returns the id of the the last record inserted 
+         * @params [string] filePath: The path on the hard drive to the file to be inserted
+         * @params [string] fileName: The inserted file's name
+         * @return [int] The id of the last record inserted
+         * or the update
+         */
         public string uploadFileToDB(string filePath, string fileName)
         {
-
-
-
-            //MySql.Data.MySqlClient.MySqlConnection thisConn;
+            // Create a mysql command object
             MySql.Data.MySqlClient.MySqlCommand cmd;
-
-            //thisConn = new MySql.Data.MySqlClient.MySqlConnection();
             cmd = new MySql.Data.MySqlClient.MySqlCommand();
-
-
-            string SQL;
             int fileSize;
             byte[] rawData;
             FileStream fs;
             string id_file;
-
-            //thisConn.ConnectionString = "server=localhost;uid=gym;pwd=gym;database=gym;";
-
+            // The connection is forced when its not connected
             if (this.connection.State.ToString() == "Closed")
             {
                 this.connect();
@@ -309,78 +313,66 @@ namespace Gym_administration
             }
             try
             {
-                //string strFileName = "Picture";
+                // Create a filestream object for the file
                 fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+                // Retrieve the filesize
                 fileSize = int.Parse(fs.Length.ToString());
-
+                // Create a byte[] object for the raw data
                 rawData = new byte[fileSize];
+                // Copy the binary contents of the file into the byte[] object
                 fs.Read(rawData, 0, fileSize);
+                // Close the filestream
                 fs.Close();
-
-                //connection.Open();
-
-                SQL = "INSERT INTO file VALUES(NULL, @FileName, @FileSize, @File)";
-
+                // Add mysql connection to mysql command object
                 cmd.Connection = connection;
-                cmd.CommandText = SQL;
+                // Add insert file query with parameters to mysql command object
+                cmd.CommandText = "INSERT INTO file VALUES(NULL, @FileName, @FileSize, @File)";
+                // Add parameter values to mysql command object
                 cmd.Parameters.AddWithValue("@FileName", fileName);
                 cmd.Parameters.AddWithValue("@FileSize", fileSize);
                 cmd.Parameters.AddWithValue("@File", rawData);
-
-                
+                // Launch query of mysql command object
                 cmd.ExecuteNonQuery();
-
+                // Create a mysql datareader object for holding results of query
                 MySqlDataReader Reader;
-                cmd.CommandText = ("SELECT LAST_INSERT_ID() id");
+                // Create query for checking insert query result
+                cmd.CommandText = "SELECT LAST_INSERT_ID() id";
+                // Launch query for checking insert query result
                 Reader = cmd.ExecuteReader();
+                // Read the reader
                 Reader.Read();
+                // Retrieve reader result
                 id_file = Reader.GetValue(0).ToString();
-
-                MessageBox.Show("File Inserted into database successfully!",
-                                           "Success!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-
+                MessageBox.Show("File Inserted into database successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                // Close the connection
                 connection.Close();
-
+                // Return last inserted file's ID
                 return id_file;
-
-
-
             }
+            // Error catching
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
                 MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return "-1";
             }
-
-
-                        
-
         }
 
-
-
-
+        /**
+         * @desc This function downloads an image from the database
+         * @params [string] id_file: the file ID in the database that has to be downloaded
+         * @return [Image] an image ready to be loaded into a pictureBox
+         */
         public Image loadImageFromDB(string id_file)
         {
-
-
-            //MySql.Data.MySqlClient.MySqlConnection conn;
+            // Create a mysql command object
             MySql.Data.MySqlClient.MySqlCommand cmd;
-            MySql.Data.MySqlClient.MySqlDataReader myData;
-
-            //conn = new MySql.Data.MySqlClient.MySqlConnection();
             cmd = new MySql.Data.MySqlClient.MySqlCommand();
-
-            string SQL;
+            // Create a mysql datareader object
+            MySqlDataReader Reader;
             int FileSize;
             byte[] rawData;
-
-            //conn.ConnectionString = "server=localhost;uid=gym;pwd=gym;database=gym;";
-
-            SQL = "SELECT file_name, file_size, file FROM file WHERE id_file = '" + id_file + "' ";
-
-
+            // The connection is forced when its not connected
             if (this.connection.State.ToString() == "Closed")
             {
                 this.connect();
@@ -388,53 +380,38 @@ namespace Gym_administration
             }
             try
             {
-                //connection.Open();
-
                 cmd.Connection = connection;
-                cmd.CommandText = SQL;
-
-                myData = cmd.ExecuteReader();
-
-                if (!myData.HasRows)
+                // Add query to find and download the image to mysql command object
+                cmd.CommandText = "SELECT file_name, file_size, file FROM file WHERE id_file = '" + id_file + "' ";
+                // Launch query
+                Reader = cmd.ExecuteReader();
+                // If there is 0 result
+                if (!Reader.HasRows)
                     throw new Exception("There are no BLOBs to save");
-
-                myData.Read();
-
-                FileSize = int.Parse(myData.GetUInt32(myData.GetOrdinal("file_size")).ToString());
+                // Read the reader
+                Reader.Read();
+                // retrive the file size from reader data
+                FileSize = int.Parse(Reader.GetUInt32(Reader.GetOrdinal("file_size")).ToString());
+                // Create a new byte[] object foe holding binary image data
                 rawData = new byte[FileSize];
-
-                myData.GetBytes(myData.GetOrdinal("file"), 0, rawData, 0, FileSize);
-
-
+                // Add image data to the byte[] object from reader
+                Reader.GetBytes(Reader.GetOrdinal("file"), 0, rawData, 0, FileSize);
+                // Create memory stream that can be read into Image object as source
                 MemoryStream picStream = new MemoryStream(rawData);
-
-
-
-
-                myData.Close();
+                // Close reader
+                Reader.Close();
+                // Close connection
                 connection.Close();
+                // Return the ready image from memory stream
                 return Image.FromStream(picStream);
-
-
-                
             }
+            // Catch the errors
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
                 MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
-
-
-
-
-
-
         }
-
-
-
-
-
-      }
+    }
 }
