@@ -83,11 +83,11 @@ DROP TABLE IF EXISTS `file`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `file` (
-  `file_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `id_file` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `file_name` varchar(64) NOT NULL,
   `file_size` mediumint(8) unsigned NOT NULL,
   `file` mediumblob NOT NULL,
-  PRIMARY KEY (`file_id`)
+  PRIMARY KEY (`id_file`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -458,4 +458,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-04-16 13:19:47
+-- Dump completed on 2010-04-16 13:24:18
