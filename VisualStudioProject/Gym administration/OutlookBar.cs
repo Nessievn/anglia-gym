@@ -1,3 +1,5 @@
+// Ok Isidro, this is yours to comment! :)
+
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -5,39 +7,33 @@ using System.Windows.Forms;
 namespace OutlookBarNm
 {
 
-
+    /**
+     * @desc This creates the Outlook Bar on the left of the main program
+     * @params [none] Incoming parameters are described at the individual constructors.
+     * @return [none] No directly returned data. 
+     * Returns of public methods are described at the individual methods.
+     */
 	public class OutlookBar : Panel
 	{
-		private int buttonHeight;
-		private int selectedBand;
-		private int selectedBandHeight;
 
+
+        private int selectedBandHeight;
+
+        private int buttonHeight;
 		public int ButtonHeight
 		{
-			get
-			{
-				return buttonHeight;
-			}
-
-			set
-			{
-				buttonHeight=value;
-				// do recalc layout for entire bar
-			}
+			get { return buttonHeight; }
+            set { buttonHeight = value; }   // do recalc layout for entire bar
 		}
 
+        private int selectedBand;
 		public int SelectedBand
 		{
-			get
-			{
-				return selectedBand;
-			}
-			set
-			{
-				SelectBand(value);
-			}
+			get { return selectedBand; }
+			set	{ SelectBand(value); }
 		}
 
+        
 		public OutlookBar()
 		{
 			buttonHeight=25;

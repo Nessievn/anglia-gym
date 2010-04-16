@@ -41,16 +41,16 @@ namespace Gym_administration
 
         public void vLoadMemberList()
         {
-            string sQuery = "";
+            string query = "";
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
             if (this.BViewAttendants == false)
-                sQuery = "SELECT id_member ID, member_number Nr, sid SID, CONCAT(lastName, ', ', firstName) 'Member Name', DATE_FORMAT(birthdate,\"%d-%m-%Y\") DOB, email 'EMail', type Type, IF((is_active= 0), 'INACTIVE','ACTIVE') Status FROM members ORDER BY ID ";
+                query = "SELECT id_member ID, member_number Nr, sid SID, CONCAT(lastName, ', ', firstName) 'Member Name', DATE_FORMAT(birthdate,\"%d-%m-%Y\") DOB, email 'EMail', type Type, IF((is_active= 0), 'INACTIVE','ACTIVE') Status FROM members ORDER BY ID ";
             else
-                sQuery = "SELECT m.id_member ID, m.member_number Nr, sid SID, CONCAT(m.lastName, ', ', m.firstName) 'Member Name', DATE_FORMAT(m.birthdate,\"%d-%m-%Y\") DOB, email 'EMail', type Type, IF((is_active= 0), 'INACTIVE','ACTIVE') Status FROM members m, class_bookings cb WHERE m.id_member = cb.id_member AND cb.id_class_instance = '" + this.clClassInstance.Id_class_instance + "' ORDER BY ID";
+                query = "SELECT m.id_member ID, m.member_number Nr, sid SID, CONCAT(m.lastName, ', ', m.firstName) 'Member Name', DATE_FORMAT(m.birthdate,\"%d-%m-%Y\") DOB, email 'EMail', type Type, IF((is_active= 0), 'INACTIVE','ACTIVE') Status FROM members m, class_bookings cb WHERE m.id_member = cb.id_member AND cb.id_class_instance = '" + this.clClassInstance.Id_class_instance + "' ORDER BY ID";
 
-            bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
+            bSource.DataSource = conn.dtGetTableForDataGrid(query);
             dg_members.DataSource = bSource;
             dg_members.AllowUserToAddRows = false;
             dg_members.ReadOnly = true;
@@ -90,11 +90,11 @@ namespace Gym_administration
                     if (result == DialogResult.Yes)
                     {
                         // Check the room size
-                        string sQuery = "SELECT COUNT(*) q FROM gym.class_bookings WHERE id_class_instance = '" + this.clClassInstance.Id_class_instance + "'";
-                        List<Hashtable> lhRes = conn.lhSqlQuery(sQuery);
+                        string query = "SELECT COUNT(*) q FROM gym.class_bookings WHERE id_class_instance = '" + this.clClassInstance.Id_class_instance + "'";
+                        List<Hashtable> lhRes = conn.lhSqlQuery(query);
                         int iCurrMembers = int.Parse(lhRes[0]["q"].ToString());
-                        sQuery = "SELECT r.size FROM gym.class_instance ci, gym.rooms r WHERE ci.id_room = r.id_room AND ci.id_class_instance = '" + this.clClassInstance.Id_class_instance + "'";
-                        lhRes = conn.lhSqlQuery(sQuery);
+                        query = "SELECT r.size FROM gym.class_instance ci, gym.rooms r WHERE ci.id_room = r.id_room AND ci.id_class_instance = '" + this.clClassInstance.Id_class_instance + "'";
+                        lhRes = conn.lhSqlQuery(query);
                         int iMaxMembers = int.Parse(lhRes[0]["size"].ToString());
                         if (iMaxMembers < iCurrMembers + 1)
                         {
@@ -126,28 +126,28 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
-            string sQuery = "SELECT id_member ID, member_number Nr, sid SID, CONCAT(lastName, ', ', firstName) 'Member Name', DATE_FORMAT(birthdate,\"%d-%m-%Y\") DOB, email 'EMail', type Type, IF((is_active= 0), 'INACTIVE','ACTIVE') Status FROM members WHERE 1 = 1 ";
+            string query = "SELECT id_member ID, member_number Nr, sid SID, CONCAT(lastName, ', ', firstName) 'Member Name', DATE_FORMAT(birthdate,\"%d-%m-%Y\") DOB, email 'EMail', type Type, IF((is_active= 0), 'INACTIVE','ACTIVE') Status FROM members WHERE 1 = 1 ";
             if (txt_firstName.Text != "")
-                sQuery += " AND firstName LIKE '%"+txt_firstName.Text+"%'";
+                query += " AND firstName LIKE '%"+txt_firstName.Text+"%'";
             if (txt_lastName.Text != "")
-                sQuery += " AND lastName LIKE '%" + txt_lastName.Text + "%'";
+                query += " AND lastName LIKE '%" + txt_lastName.Text + "%'";
             if (txt_email.Text != "")
-                sQuery += " AND email LIKE '%" + txt_email.Text + "%'";
+                query += " AND email LIKE '%" + txt_email.Text + "%'";
             if (txt_sid.Text != "")
-                sQuery += " AND sid LIKE '%" + txt_sid.Text + "%'";
+                query += " AND sid LIKE '%" + txt_sid.Text + "%'";
 
             if (cmb_type.SelectedIndex != -1)
             {
 
                 //
-                  //  sQuery += " AND type LIKE '%%'";
+                  //  query += " AND type LIKE '%%'";
                 if (cmb_type.SelectedIndex == 1)
                 {
-                    sQuery += " AND type LIKE '%Student Full Time%'";
-                    sQuery += " OR type LIKE '%Student Part Time%'";
+                    query += " AND type LIKE '%Student Full Time%'";
+                    query += " OR type LIKE '%Student Part Time%'";
                 }
                 else if (cmb_type.SelectedIndex != 0)
-                    sQuery += " AND type LIKE '%" + cmb_type.SelectedItem.ToString() + "%'";
+                    query += " AND type LIKE '%" + cmb_type.SelectedItem.ToString() + "%'";
             }
 
 
@@ -155,11 +155,11 @@ namespace Gym_administration
 
             string sDate = Utils.sGetMysqlDate(txt_dob.Text);
             if (sDate != "0000-00-00")
-                sQuery += " AND birthdate = '" + sDate + "'";
+                query += " AND birthdate = '" + sDate + "'";
 
-            sQuery += "  ORDER BY ID";
+            query += "  ORDER BY ID";
 
-            bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
+            bSource.DataSource = conn.dtGetTableForDataGrid(query);
             dg_members.DataSource = bSource;
             dg_members.AllowUserToAddRows = false;
             dg_members.ReadOnly = true;

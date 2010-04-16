@@ -12,7 +12,7 @@ namespace Gym_administration
 {
     public partial class frm_equipment_bookings_list : Form
     {
-        EquipmentBooked eqEquipmentBooked;
+        EquipmentBooked clEquipmentBooked;
 
         public frm_equipment_bookings_list()
         {
@@ -32,8 +32,8 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
-            string sQuery = "SELECT eb.id_eq_booking BookingNr, eb.id_equipment EqID,  e.name Equipment, eb.borrowedamount Amount, eb.id_member MemberID, CONCAT(m.lastName, ', ', m.firstName) MemberName, eb.id_staff StaffID, CONCAT(s.lastName, ', ', s.firstName) SaffName, eb.id_class_instance ClassID, eb.date_start, eb.date_due FROM equipment e, equipment_bookings eb LEFT OUTER JOIN staff s ON eb.id_staff = s.id_staff LEFT OUTER JOIN members m ON eb.id_member = m.id_member WHERE e.id_equipment = eb.id_equipment AND ((eb.isreturned IS NULL) OR (eb.isreturned = 0)) ORDER BY e.name";
-            bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
+            string query = "SELECT eb.id_eq_booking BookingNr, eb.id_equipment EqID,  e.name Equipment, eb.borrowedamount Amount, eb.id_member MemberID, CONCAT(m.lastName, ', ', m.firstName) MemberName, eb.id_staff StaffID, CONCAT(s.lastName, ', ', s.firstName) SaffName, eb.id_class_instance ClassID, eb.date_start, eb.date_due FROM equipment e, equipment_bookings eb LEFT OUTER JOIN staff s ON eb.id_staff = s.id_staff LEFT OUTER JOIN members m ON eb.id_member = m.id_member WHERE e.id_equipment = eb.id_equipment AND ((eb.isreturned IS NULL) OR (eb.isreturned = 0)) ORDER BY e.name";
+            bSource.DataSource = conn.dtGetTableForDataGrid(query);
             dg_eqbookings.DataSource = bSource;
             dg_eqbookings.AllowUserToAddRows = false;
             dg_eqbookings.ReadOnly = true;
@@ -61,17 +61,17 @@ namespace Gym_administration
 
                                 if ((int.Parse(result) > 0) && (result != "Cancel"))
                                 {
-                                    this.eqEquipmentBooked = new EquipmentBooked(id_eq_booking);
-                                    this.eqEquipmentBooked.BorrowedAmount = int.Parse(result);
-                                    this.eqEquipmentBooked.IsReturned = false;
-                                    this.eqEquipmentBooked.bSave();
+                                    this.clEquipmentBooked = new EquipmentBooked(id_eq_booking);
+                                    this.clEquipmentBooked.BorrowedAmount = int.Parse(result);
+                                    this.clEquipmentBooked.IsReturned = false;
+                                    this.clEquipmentBooked.SaveEquipmentBooking();
                                 }
                                 else if (result != "Cancel")
                                 {
-                                    this.eqEquipmentBooked = new EquipmentBooked(id_eq_booking);
-                                    this.eqEquipmentBooked.BorrowedAmount = 0;
-                                    this.eqEquipmentBooked.IsReturned = true;
-                                    this.eqEquipmentBooked.bSave();
+                                    this.clEquipmentBooked = new EquipmentBooked(id_eq_booking);
+                                    this.clEquipmentBooked.BorrowedAmount = 0;
+                                    this.clEquipmentBooked.IsReturned = true;
+                                    this.clEquipmentBooked.SaveEquipmentBooking();
 
                                 }
                                 this.vLoadBookedList();

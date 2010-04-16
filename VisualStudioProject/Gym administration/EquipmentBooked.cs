@@ -126,9 +126,9 @@ namespace Gym_administration
          * @params [none] No input parameter.
          * @return [bool] Returns true in case of success, false if there was problem saving/updating the equipment
          */
-        public bool bSave()
+        public bool SaveEquipmentBooking()
         {
-            string saveEqBookingQuery;
+            string query;
             // Create mysql connection
             mySqlConn conn = new mySqlConn();
             conn.connect();
@@ -137,11 +137,11 @@ namespace Gym_administration
             if (this.Id_eq_booking == -1)
             {
                 // Create the save query
-                saveEqBookingQuery = "insert into `gym`.`equipment_bookings` (`id_eq_booking`, `id_staff`, `id_member`, `id_class_instance`, `date_start`, `date_due`, `id_equipment`, `borrowedamount`,`isreturned`) values " +
+                query = "insert into `gym`.`equipment_bookings` (`id_eq_booking`, `id_staff`, `id_member`, `id_class_instance`, `date_start`, `date_due`, `id_equipment`, `borrowedamount`,`isreturned`) values " +
                                      "(NULL, " + this.Id_staff + ", " + this.Id_member + ", " + this.Id_class_instance + ", '" + this.DateStart + "', '" + this.DateDue
                                      + "', " + this.Id_equipment + ", " + this.BorrowedAmount + ", NULL)";
                 // Launch save query
-                int id_eq_booking = conn.iInsert(saveEqBookingQuery);
+                int id_eq_booking = conn.iInsert(query);
                 // Check saving result
                 if (id_eq_booking != -1)
                 {
@@ -159,9 +159,9 @@ namespace Gym_administration
             else
             {
                 // Create update query
-                string updateEqBookingQuery = "UPDATE `gym`.`equipment_bookings` SET `borrowedamount` = " + this.BorrowedAmount + ", `isreturned`= " + this.IsReturned + " WHERE id_eq_booking = '" + this.Id_eq_booking + "'";
+                query = "UPDATE `gym`.`equipment_bookings` SET `borrowedamount` = " + this.BorrowedAmount + ", `isreturned`= " + this.IsReturned + " WHERE id_eq_booking = '" + this.Id_eq_booking + "'";
                 // Launch update query
-                int result = conn.iDeleteOrUpdate(updateEqBookingQuery);
+                int result = conn.iDeleteOrUpdate(query);
                 // Check update result
                 if (result > 0)
                 {

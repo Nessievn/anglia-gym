@@ -48,8 +48,8 @@ namespace Gym_administration
             //TODO: Inform Katie about the Position -> Instructor field
             mySqlConn conn = new mySqlConn();
             conn.connect();
-            string sQuery = "SELECT id_staff, CONCAT(lastName,', ', firstName) name FROM staff ORDER BY lastName";
-            ArrayList myItems = conn.alGetComboFromDb(sQuery, "id_staff", "name");
+            string query = "SELECT id_staff, CONCAT(lastName,', ', firstName) name FROM staff ORDER BY lastName";
+            ArrayList myItems = conn.alGetComboFromDb(query, "id_staff", "name");
             cmb_staff.DisplayMember = "Value";
             cmb_staff.DataSource = myItems;
             cmb_staff.SelectedIndex = -1;

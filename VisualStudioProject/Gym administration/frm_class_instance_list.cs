@@ -20,9 +20,9 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
-            string sQuery = "SELECT ci.id_class_instance CID, c.name Name, c.type Type, c.description Description, s.firstName Instructor, DATE_FORMAT(ci.date, '%d/%m/%Y') Date, ci.start_time Start, ci.end_time End FROM classes c, class_instance ci, staff s WHERE ci.id_class = c.id_class AND ci.id_staff = s.id_staff ORDER BY ci.date, ci.start_time";
+            string query = "SELECT ci.id_class_instance CID, c.name Name, c.type Type, c.description Description, s.firstName Instructor, DATE_FORMAT(ci.date, '%d/%m/%Y') Date, ci.start_time Start, ci.end_time End FROM classes c, class_instance ci, staff s WHERE ci.id_class = c.id_class AND ci.id_staff = s.id_staff ORDER BY ci.date, ci.start_time";
 
-            bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
+            bSource.DataSource = conn.dtGetTableForDataGrid(query);
             dg_classes.DataSource = bSource;
             dg_classes.AllowUserToAddRows = false;
             dg_classes.ReadOnly = true;
@@ -55,13 +55,13 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
-            string sQuery = "SELECT ci.id_class_instance CID, c.name Name, c.type Type, c.description Description, s.firstName Instructor, DATE_FORMAT(ci.date, '%d/%m/%Y') Date, ci.start_time Start, ci.end_time End FROM classes c, class_instance ci, staff s WHERE ci.id_class = c.id_class AND ci.id_staff = s.id_staff ";
+            string query = "SELECT ci.id_class_instance CID, c.name Name, c.type Type, c.description Description, s.firstName Instructor, DATE_FORMAT(ci.date, '%d/%m/%Y') Date, ci.start_time Start, ci.end_time End FROM classes c, class_instance ci, staff s WHERE ci.id_class = c.id_class AND ci.id_staff = s.id_staff ";
             if (txt_classname.Text != "")
-                sQuery += " AND c.name LIKE '%" + txt_classname.Text + "%'";
+                query += " AND c.name LIKE '%" + txt_classname.Text + "%'";
 
-            sQuery += " ORDER BY ci.date, ci.start_time";
+            query += " ORDER BY ci.date, ci.start_time";
 
-            bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
+            bSource.DataSource = conn.dtGetTableForDataGrid(query);
             dg_classes.DataSource = bSource;
             dg_classes.AllowUserToAddRows = false;
             dg_classes.ReadOnly = true;

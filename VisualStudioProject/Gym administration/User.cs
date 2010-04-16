@@ -57,9 +57,9 @@ namespace Gym_administration
         {
             mySqlConn conn = new mySqlConn();
             conn.connect();
-            string sQuery = "SELECT * FROM users WHERE id_user = '"+id_user.ToString()+"'";
+            string query = "SELECT * FROM users WHERE id_user = '"+id_user.ToString()+"'";
             // We launch the query
-            List<Hashtable> lhResultset = conn.lhSqlQuery(sQuery);
+            List<Hashtable> lhResultset = conn.lhSqlQuery(query);
 
             // Check if we found the User
             if ((int)lhResultset.Count > 0)
@@ -78,8 +78,8 @@ namespace Gym_administration
         {
             mySqlConn conn = new mySqlConn();
             conn.connect();
-            string sQuery = "UPDATE users SET password = MD5('" + newPassword + "') WHERE id_user = '" + id_user + "' AND password = MD5('" + oldPassword + "')";
-            int iMod = conn.iDeleteOrUpdate(sQuery);
+            string query = "UPDATE users SET password = MD5('" + newPassword + "') WHERE id_user = '" + id_user + "' AND password = MD5('" + oldPassword + "')";
+            int iMod = conn.iDeleteOrUpdate(query);
 
             if (iMod > 0)
                 return true;
@@ -94,21 +94,21 @@ namespace Gym_administration
 
             if (this.Id_user == -1)
             {
-                string sQuery = "insert into users (id_user, login, password, profile, active) " +
+                string query = "insert into users (id_user, login, password, profile, active) " +
                 "values (NULL, '" + this.Login + "', MD5('" + this.Password +
                 "'), '" + this.Profile + "', '" + ((this.isActive) ? "1" : "0") + "')";
 
-                this.id_user = conn.iInsert(sQuery);
+                this.id_user = conn.iInsert(query);
 
                 if (this.id_user > 0)
                     return true;
             }
             else
             {
-                string sQuery = "UPDATE users SET login = '" + this.Login + "', active = '" + ((this.isActive) ? "1" : "0") + "' "+
+                string query = "UPDATE users SET login = '" + this.Login + "', active = '" + ((this.isActive) ? "1" : "0") + "' "+
                                 "WHERE id_user = '" + this.Id_user + "'";
 
-                int iMod = conn.iDeleteOrUpdate(sQuery);
+                int iMod = conn.iDeleteOrUpdate(query);
 
                 if (iMod > 0)
                     return true;
@@ -119,8 +119,8 @@ namespace Gym_administration
         {
             mySqlConn conn = new mySqlConn();
             conn.connect();
-            string sQuery = "DELETE FROM users WHERE id_user = '" + this.Id_user + "'";
-            int result = conn.iDeleteOrUpdate(sQuery);
+            string query = "DELETE FROM users WHERE id_user = '" + this.Id_user + "'";
+            int result = conn.iDeleteOrUpdate(query);
             if (result > 0)
                 return true;
             return false;

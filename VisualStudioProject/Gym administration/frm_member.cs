@@ -25,8 +25,8 @@ namespace Gym_administration
             conn.connect();
             BindingSource itemsSource = new BindingSource();
             pictureBox1.Image = null;
-            string sQuery = "SELECT DISTINCT eb.date_due Due, e.name Name, eb.borrowedamount Amount, eb.id_equipment EqID, eb.id_eq_booking BkID FROM equipment e, equipment_bookings eb WHERE eb.id_member = " + clMember.Id_member + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY Due";
-            itemsSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
+            string query = "SELECT DISTINCT eb.date_due Due, e.name Name, eb.borrowedamount Amount, eb.id_equipment EqID, eb.id_eq_booking BkID FROM equipment e, equipment_bookings eb WHERE eb.id_member = " + clMember.Id_member + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY Due";
+            itemsSource.DataSource = conn.dtGetTableForDataGrid(query);
             dg_currentborrows.DataSource = itemsSource;
             dg_currentborrows.AllowUserToAddRows = false;
             dg_currentborrows.ReadOnly = true;
@@ -276,14 +276,14 @@ namespace Gym_administration
                                     this.clEquipmentBooked = new EquipmentBooked(id_eq_booking);
                                     this.clEquipmentBooked.BorrowedAmount = int.Parse(result);
                                     this.clEquipmentBooked.IsReturned = false;
-                                    this.clEquipmentBooked.bSave();
+                                    this.clEquipmentBooked.SaveEquipmentBooking();
                                 }
                                 else
                                 {
                                     this.clEquipmentBooked = new EquipmentBooked(id_eq_booking);
                                     this.clEquipmentBooked.BorrowedAmount = 0;
                                     this.clEquipmentBooked.IsReturned = true;
-                                    this.clEquipmentBooked.bSave();
+                                    this.clEquipmentBooked.SaveEquipmentBooking();
 
                                 }
                                 this.vLoadBookedList();

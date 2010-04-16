@@ -14,7 +14,7 @@ namespace Gym_administration
     {
         ClassInstance clClassInstance;
         frm_class_instance_list frmClassInstanceList;
-        EquipmentBooked eqEquipmentBooked;
+        EquipmentBooked clEquipmentBooked;
 
         public frm_class_instance_arrange()
         {
@@ -63,17 +63,17 @@ namespace Gym_administration
 
                 if ((int.Parse(result) > 0) && (result != "Cancel"))
                 {
-                    this.eqEquipmentBooked = new EquipmentBooked(id_eq_booking);
-                    this.eqEquipmentBooked.BorrowedAmount = int.Parse(result);
-                    this.eqEquipmentBooked.IsReturned = false;
-                    this.eqEquipmentBooked.bSave();
+                    this.clEquipmentBooked = new EquipmentBooked(id_eq_booking);
+                    this.clEquipmentBooked.BorrowedAmount = int.Parse(result);
+                    this.clEquipmentBooked.IsReturned = false;
+                    this.clEquipmentBooked.SaveEquipmentBooking();
                 }
                 else
                 {
-                    this.eqEquipmentBooked = new EquipmentBooked(id_eq_booking);
-                    this.eqEquipmentBooked.BorrowedAmount = 0;
-                    this.eqEquipmentBooked.IsReturned = true;
-                    this.eqEquipmentBooked.bSave();
+                    this.clEquipmentBooked = new EquipmentBooked(id_eq_booking);
+                    this.clEquipmentBooked.BorrowedAmount = 0;
+                    this.clEquipmentBooked.IsReturned = true;
+                    this.clEquipmentBooked.SaveEquipmentBooking();
 
                 }
                 this.vLoadBookedList();
@@ -87,8 +87,8 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource itemsSource = new BindingSource();
-            string sQuery = "SELECT DISTINCT eb.date_due Due, e.name Name, eb.borrowedamount Amount, eb.id_equipment EqID, eb.id_eq_booking BkID FROM equipment e, equipment_bookings eb WHERE eb.id_class_instance = " + clClassInstance.Id_class_instance + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY Due";
-            itemsSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
+            string query = "SELECT DISTINCT eb.date_due Due, e.name Name, eb.borrowedamount Amount, eb.id_equipment EqID, eb.id_eq_booking BkID FROM equipment e, equipment_bookings eb WHERE eb.id_class_instance = " + clClassInstance.Id_class_instance + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY Due";
+            itemsSource.DataSource = conn.dtGetTableForDataGrid(query);
             dg_currentborrows.DataSource = itemsSource;
             dg_currentborrows.AllowUserToAddRows = false;
             dg_currentborrows.ReadOnly = true;
@@ -101,21 +101,21 @@ namespace Gym_administration
             conn.connect();
             
             // Loading Available Classes
-            string sQuery = "SELECT id_class, name FROM classes ORDER BY id_class";
-            ArrayList myItems = conn.alGetComboFromDb(sQuery, "id_class","name");
+            string query = "SELECT id_class, name FROM classes ORDER BY id_class";
+            ArrayList myItems = conn.alGetComboFromDb(query, "id_class","name");
             cmb_classes.DisplayMember = "Value";
             cmb_classes.DataSource = myItems;
 
             // Loading Available Rooms
-            sQuery = "SELECT id_room, name FROM rooms ORDER BY id_room";
-            myItems = conn.alGetComboFromDb(sQuery, "id_room", "name");
+            query = "SELECT id_room, name FROM rooms ORDER BY id_room";
+            myItems = conn.alGetComboFromDb(query, "id_room", "name");
             cmb_rooms.DisplayMember = "Value";
             cmb_rooms.DataSource = myItems;
 
             // Loading Available Instructor
             //TODO: Inform Katie about the Position -> Instructor field
-            sQuery = "SELECT id_staff, CONCAT(lastName,', ', firstName) name FROM staff WHERE position = 'Instructor' ORDER BY id_staff";
-            myItems = conn.alGetComboFromDb(sQuery, "id_staff", "name");
+            query = "SELECT id_staff, CONCAT(lastName,', ', firstName) name FROM staff WHERE position = 'Instructor' ORDER BY id_staff";
+            myItems = conn.alGetComboFromDb(query, "id_staff", "name");
             cmb_instructors.DisplayMember = "Value";
             cmb_instructors.DataSource = myItems;
 
@@ -128,11 +128,11 @@ namespace Gym_administration
                 //cmb_instructors.SelectedIndex = cmb_instructors.FindString(clClassInstance.Name+' ');
                 cmb_rooms.SelectedIndex = cmb_rooms.FindString(clClassInstance.ClRoom.Name);
                 cmb_repeats.SelectedIndex = cmb_repeats.FindString(clClassInstance.Frequency);
-                sQuery = "SELECT COUNT(*) q FROM gym.class_bookings WHERE id_class_instance = '" + this.clClassInstance.Id_class_instance + "'";
-                List<Hashtable> lhRes = conn.lhSqlQuery(sQuery);
+                query = "SELECT COUNT(*) q FROM gym.class_bookings WHERE id_class_instance = '" + this.clClassInstance.Id_class_instance + "'";
+                List<Hashtable> lhRes = conn.lhSqlQuery(query);
                 lbl_currentmembers_amount.Text = lhRes[0]["q"].ToString();
-                sQuery = "SELECT r.size FROM gym.class_instance ci, gym.rooms r WHERE ci.id_room = r.id_room AND ci.id_class_instance = '" + this.clClassInstance.Id_class_instance + "'";
-                lhRes = conn.lhSqlQuery(sQuery);
+                query = "SELECT r.size FROM gym.class_instance ci, gym.rooms r WHERE ci.id_room = r.id_room AND ci.id_class_instance = '" + this.clClassInstance.Id_class_instance + "'";
+                lhRes = conn.lhSqlQuery(query);
                 label_maxmembers_amount.Text = lhRes[0]["size"].ToString();
             }
             else
@@ -216,8 +216,8 @@ namespace Gym_administration
             conn.connect();
             DictionaryEntry de = (DictionaryEntry)cmb_rooms.SelectedItem;
             string id_room = de.Key.ToString();
-            string sQuery = "SELECT size FROM gym.rooms WHERE id_room = '" + id_room + "'";
-            List<Hashtable> lhRes = conn.lhSqlQuery(sQuery);
+            string query = "SELECT size FROM gym.rooms WHERE id_room = '" + id_room + "'";
+            List<Hashtable> lhRes = conn.lhSqlQuery(query);
             label_maxmembers_amount.Text = lhRes[0]["size"].ToString();
         }
 

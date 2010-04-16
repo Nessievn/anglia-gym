@@ -122,7 +122,7 @@ namespace Gym_administration
         * @desc Execute an arbitrary query string against the active database, very similar
         * to the PHP way. Do not use this function for INSERT, UPDATE, or DELETE queries. 
         *
-        * @param string sQuery
+        * @param string query
         *   The prepared statement query to run. 
         *
         * @return [List<Hashtable>]
@@ -130,7 +130,7 @@ namespace Gym_administration
         *   date can be used with a foreach loop or directly htResultset[index][fieldName]
         *
         */
-        public List<Hashtable> lhSqlQuery(string sQuery)
+        public List<Hashtable> lhSqlQuery(string query)
         {
             // The connection is forced when its not connected
             if (this.connection.State.ToString() == "Closed")
@@ -145,7 +145,7 @@ namespace Gym_administration
             {
                 MySqlCommand command = this.connection.CreateCommand();
                 MySqlDataReader Reader;
-                command.CommandText = sQuery;
+                command.CommandText = query;
                 
                 Reader = command.ExecuteReader();
                 Hashtable resultset_tmp;
@@ -175,11 +175,11 @@ namespace Gym_administration
         /**
          * @desc This function performs an insert statement on the database
          * and returns the id of the the last record inserted 
-         * @params [string] sQuery
+         * @params [string] query
          * @return [int] The id of the last record inserted
          * or the update
          */
-        public int iInsert(string sQuery)
+        public int iInsert(string query)
         {
             string sLastInsertId = "-1";
             // The connection is forced when its not connected
@@ -191,7 +191,7 @@ namespace Gym_administration
             try
             {
                 MySqlCommand command = this.connection.CreateCommand();
-                command.CommandText = sQuery;
+                command.CommandText = query;
                 command.ExecuteNonQuery();
 
                 List<Hashtable> result = this.lhSqlQuery("SELECT LAST_INSERT_ID() id");
@@ -210,17 +210,17 @@ namespace Gym_administration
         /**
          * @desc This function executes the specified query on the database and
          * returns a DataTable ready to use in a DataGridView component.
-         * @params [string] sQuery
+         * @params [string] query
          * @return [DataTable] The DataTable object if there is no data, the object
          * will be returned empty.
          */
-        public DataTable dtGetTableForDataGrid(string sQuery)
+        public DataTable dtGetTableForDataGrid(string query)
         {
             DataTable table = new DataTable();
             MySqlDataAdapter MyDA = new MySqlDataAdapter();
             try
             {
-                MyDA.SelectCommand = new MySqlCommand(sQuery, this.mycGetConnection());
+                MyDA.SelectCommand = new MySqlCommand(query, this.mycGetConnection());
                 MyDA.Fill(table);
             }
             catch (MySqlException e)
@@ -233,14 +233,14 @@ namespace Gym_administration
 
         /**
          * @desc This function Returns the datasource ready to be used in a combobox.
-         * @params [string] sQuery
+         * @params [string] query
          * @return [ArrayList] ArrayList containing the items 
          */
-        public ArrayList alGetComboFromDb(string sQuery, string sFieldId, string sFieldValue)
+        public ArrayList alGetComboFromDb(string query, string sFieldId, string sFieldValue)
         {
             ArrayList alMyItems = new ArrayList();
 
-            List<Hashtable> result = this.lhSqlQuery(sQuery);
+            List<Hashtable> result = this.lhSqlQuery(query);
             foreach (Hashtable record in result)
                 alMyItems.Add(new DictionaryEntry(record[sFieldId].ToString(), record[sFieldValue].ToString()));
 
@@ -251,11 +251,11 @@ namespace Gym_administration
         /**
          * @desc This function returns the id of the the modified 
          * records affected by a Delete or Update sql statement 
-         * @params [string] sQuery
+         * @params [string] query
          * @return [int] The number of modified rows by the delete
          * or the update
          */
-        public int iDeleteOrUpdate(string sQuery)
+        public int iDeleteOrUpdate(string query)
         {
             int iAffectedRows = 0;
             // The connection is forced when its not connected
@@ -267,7 +267,7 @@ namespace Gym_administration
             try
             {
                 MySqlCommand command = this.connection.CreateCommand();
-                command.CommandText = sQuery;
+                command.CommandText = query;
                 iAffectedRows = command.ExecuteNonQuery();
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)

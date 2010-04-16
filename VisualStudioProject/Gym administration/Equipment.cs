@@ -141,10 +141,9 @@ namespace Gym_administration
         /**
          * @desc Default constructor.
          * Sets id_equipment to -1 so the fact of this is a new equipment can be referenced.
-         * 
          * @params [none] No input parameter.
          * @return [none] No directly returned data.
-         */        
+         */
         public Equipment()
         {
             this.id_equipment = -1;
@@ -153,7 +152,7 @@ namespace Gym_administration
         /**
          * @desc Constructor
          * Loads in all fields from a single row of the EQUIPMENT table.
-         * @params [int] id_Class identifies the class uniquely.
+         * @params [int] id_equipment identifies the equipment uniquely.
          * @return [none] No directly returned data.
          */
         public Equipment(int id_equipment)
@@ -190,7 +189,12 @@ namespace Gym_administration
             }
         }
 
-        public bool bRemove()
+        /**
+         * @desc Removes the equipment from the EQUIPMENT table.
+         * @params [none] No input parameter.
+         * @return [bool] Returns true in case of success, false if there was problem deleting the class.
+         */
+        public bool RemoveEquipment()
         {
             if (this.Id_equipment != -1)
             {
@@ -198,9 +202,9 @@ namespace Gym_administration
                 mySqlConn conn = new mySqlConn();
                 conn.connect();
                 // Create the delete query
-                string sQuery = "DELETE FROM equipment WHERE id_equipment = '" + this.Id_equipment + "'";
+                string query = "DELETE FROM equipment WHERE id_equipment = '" + this.Id_equipment + "'";
                 // Launch delete query
-                int result = conn.iDeleteOrUpdate(sQuery);
+                int result = conn.iDeleteOrUpdate(query);
                 // Check deletion result
                 if (result > 0)
                 {
@@ -221,7 +225,7 @@ namespace Gym_administration
          * @params [none] No input parameter.
          * @return [bool] Returns true in case of success, false if there was problem saving/updating the equipment
          */
-        public bool bSave()
+        public bool SaveEquipment()
         {
             string saveEquipmentQuery;
             // Checking user input
@@ -293,7 +297,7 @@ namespace Gym_administration
                     }
                 }
             }
-            return true;
+            return false;
         }
     }
 }

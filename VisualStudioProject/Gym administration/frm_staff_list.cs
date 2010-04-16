@@ -43,20 +43,20 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
-            string sQuery = "SELECT id_staff MID, staff_number NO, firstName as 'First Name', lastName 'Last Name', DATE_FORMAT(birthdate,\"%d/%m/%Y\") DOB, email 'EMail' FROM staffs WHERE 1 = 1 ";
+            string query = "SELECT id_staff MID, staff_number NO, firstName as 'First Name', lastName 'Last Name', DATE_FORMAT(birthdate,\"%d/%m/%Y\") DOB, email 'EMail' FROM staffs WHERE 1 = 1 ";
             if (txt_firstName.Text != "")
-                sQuery += " AND firstName LIKE '%" + txt_firstName.Text + "%'";
+                query += " AND firstName LIKE '%" + txt_firstName.Text + "%'";
             if (txt_lastName.Text != "")
-                sQuery += " AND lastName LIKE '%" + txt_lastName.Text + "%'";
+                query += " AND lastName LIKE '%" + txt_lastName.Text + "%'";
             if (txt_email.Text != "")
-                sQuery += " AND email LIKE '%" + txt_email.Text + "%'";
+                query += " AND email LIKE '%" + txt_email.Text + "%'";
             string sDate = Utils.sGetMysqlDate(txt_dob.Text);
             if (sDate != "0000-00-00")
-                sQuery += " AND birthdate = '" + sDate + "'";
+                query += " AND birthdate = '" + sDate + "'";
 
-            sQuery += "  ORDER BY id_staff";
+            query += "  ORDER BY id_staff";
 
-            bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
+            bSource.DataSource = conn.dtGetTableForDataGrid(query);
             dg_staff.DataSource = bSource;
             dg_staff.AllowUserToAddRows = false;
             dg_staff.ReadOnly = true;
@@ -68,8 +68,8 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
-            string sQuery = "SELECT id_staff MID, firstName as 'First Name', lastName 'Last Name', DATE_FORMAT(birthdate,\"%d/%m/%Y\") DOB, email 'EMail' FROM staff s, users u WHERE u.id_user = s.id_user ORDER BY id_staff";
-            bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
+            string query = "SELECT id_staff MID, firstName as 'First Name', lastName 'Last Name', DATE_FORMAT(birthdate,\"%d/%m/%Y\") DOB, email 'EMail' FROM staff s, users u WHERE u.id_user = s.id_user ORDER BY id_staff";
+            bSource.DataSource = conn.dtGetTableForDataGrid(query);
             dg_staff.DataSource = bSource;
             dg_staff.AllowUserToAddRows = false;
             dg_staff.ReadOnly = true;

@@ -12,15 +12,15 @@ namespace Gym_administration
     public partial class frm_staff : Form
     {
         Staff stfStaff;
-        EquipmentBooked eqEquipmentBooked;
+        EquipmentBooked clEquipmentBooked;
 
         public void vLoadBookedList()
         {
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource itemsSource = new BindingSource();
-            string sQuery = "SELECT DISTINCT eb.date_due Due, e.name Name, eb.borrowedamount Amount, eb.id_equipment EqID, eb.id_eq_booking BkID FROM equipment e, equipment_bookings eb WHERE eb.id_staff = " + stfStaff.Id_staff + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY Due";
-            itemsSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
+            string query = "SELECT DISTINCT eb.date_due Due, e.name Name, eb.borrowedamount Amount, eb.id_equipment EqID, eb.id_eq_booking BkID FROM equipment e, equipment_bookings eb WHERE eb.id_staff = " + stfStaff.Id_staff + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY Due";
+            itemsSource.DataSource = conn.dtGetTableForDataGrid(query);
             dg_currentborrows.DataSource = itemsSource;
             dg_currentborrows.AllowUserToAddRows = false;
             dg_currentborrows.ReadOnly = true;
@@ -125,7 +125,7 @@ namespace Gym_administration
             stfStaff.SContractFinish = txt_contract_finish.Text;
 
 
-            return stfStaff.bSave();
+            return stfStaff.SaveStaff();
         }
 
         private void button_save_Click(object sender, EventArgs e)
@@ -170,17 +170,17 @@ namespace Gym_administration
 
                 if ((int.Parse(iresult) > 0) && (iresult != "Cancel"))
                 {
-                    this.eqEquipmentBooked = new EquipmentBooked(iEqBookingId);
-                    this.eqEquipmentBooked.BorrowedAmount = int.Parse(iresult);
-                    this.eqEquipmentBooked.IsReturned = false;
-                    this.eqEquipmentBooked.bSave();
+                    this.clEquipmentBooked = new EquipmentBooked(iEqBookingId);
+                    this.clEquipmentBooked.BorrowedAmount = int.Parse(iresult);
+                    this.clEquipmentBooked.IsReturned = false;
+                    this.clEquipmentBooked.SaveEquipmentBooking();
                 }
                 else
                 {
-                    this.eqEquipmentBooked = new EquipmentBooked(iEqBookingId);
-                    this.eqEquipmentBooked.BorrowedAmount = 0;
-                    this.eqEquipmentBooked.IsReturned = true;
-                    this.eqEquipmentBooked.bSave();
+                    this.clEquipmentBooked = new EquipmentBooked(iEqBookingId);
+                    this.clEquipmentBooked.BorrowedAmount = 0;
+                    this.clEquipmentBooked.IsReturned = true;
+                    this.clEquipmentBooked.SaveEquipmentBooking();
 
                 }
                 this.vLoadBookedList();

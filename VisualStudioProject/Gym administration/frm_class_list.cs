@@ -30,8 +30,8 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
-            string sQuery = "SELECT id_class CID, name Name, type Type, description Description FROM classes ORDER BY id_class";
-            bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
+            string query = "SELECT id_class CID, name Name, type Type, description Description FROM classes ORDER BY id_class";
+            bSource.DataSource = conn.dtGetTableForDataGrid(query);
             dg_classes.DataSource = bSource;
             dg_classes.AllowUserToAddRows = false;
             dg_classes.ReadOnly = true;
@@ -70,13 +70,13 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
-            string sQuery = "SELECT id_class CID, name Name, type Type, description Description FROM classes WHERE 1 = 1";
+            string query = "SELECT id_class CID, name Name, type Type, description Description FROM classes WHERE 1 = 1";
             if (txt_classname.Text != "")
-                sQuery += " AND name LIKE '%" + txt_classname.Text + "%'";
+                query += " AND name LIKE '%" + txt_classname.Text + "%'";
 
-            sQuery += "  ORDER BY id_class";
+            query += "  ORDER BY id_class";
 
-            bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
+            bSource.DataSource = conn.dtGetTableForDataGrid(query);
             dg_classes.DataSource = bSource;
             dg_classes.AllowUserToAddRows = false;
             dg_classes.ReadOnly = true;

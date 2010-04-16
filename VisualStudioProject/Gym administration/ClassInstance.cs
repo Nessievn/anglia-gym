@@ -169,13 +169,13 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             // Create the overlap check query
-            string sQuery = "SELECT * FROM gym.class_instance WHERE date = '" + date + "' AND (id_room = '" + id_room + "' OR id_staff = '" + id_staff + "') AND (" +
+            string query = "SELECT * FROM gym.class_instance WHERE date = '" + date + "' AND (id_room = '" + id_room + "' OR id_staff = '" + id_staff + "') AND (" +
                             "(start_time BETWEEN '" + startTime + "' AND '" + endTime + "') OR " +
                             "(end_time BETWEEN '" + startTime + "' AND '" + endTime + "') OR " +
                             "(start_time < '" + startTime + "' AND end_time > '" + endTime + "') OR " +
                             "(start_time > '" + startTime + "' AND end_time < '" + endTime + "'))" + ((this.Id_class_instance != -1)?"  AND id_class_instance != '"+this.Id_class_instance+"'":"");
             // Launch the overlap check query and load the result into a hashtable
-            List<Hashtable> lhResultSet = conn.lhSqlQuery(sQuery);
+            List<Hashtable> lhResultSet = conn.lhSqlQuery(query);
             // If there is any result then there is an overlap
             if ((int)lhResultSet.Count >= 1)
                 return true;   
@@ -278,9 +278,9 @@ namespace Gym_administration
                 mySqlConn conn = new mySqlConn();
                 conn.connect();
                 // Create the delete query
-                string sQuery = "DELETE FROM class_instance WHERE id_class_instance = '" + this.Id_class_instance + "'";
+                string query = "DELETE FROM class_instance WHERE id_class_instance = '" + this.Id_class_instance + "'";
                 // Launch delete query
-                int result = conn.iDeleteOrUpdate(sQuery);
+                int result = conn.iDeleteOrUpdate(query);
                 // Check deletion result
                 if (result > 0)
                 {
