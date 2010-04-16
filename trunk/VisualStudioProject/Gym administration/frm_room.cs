@@ -11,24 +11,24 @@ namespace Gym_administration
 {
     public partial class frm_room : Form
     {
-        Room rmRoom;
+        Room clRoom;
 
         public frm_room()
         {
             InitializeComponent();
-            rmRoom = new Room();
+            clRoom = new Room();
         }
         public frm_room(int iIdRoom)
         {
             InitializeComponent();
-            rmRoom = new Room(iIdRoom);
-            if (rmRoom.Id_room < 1)
+            clRoom = new Room(iIdRoom);
+            if (clRoom.Id_room < 1)
                 MessageBox.Show("The room could not be found");
             else
             {
-                txt_roomdesc.Text = rmRoom.Description;
-                txt_roomname.Text = rmRoom.Name;
-                txt_roomsize.Text = rmRoom.Size.ToString();
+                txt_roomdesc.Text = clRoom.Description;
+                txt_roomname.Text = clRoom.Name;
+                txt_roomsize.Text = clRoom.Size.ToString();
             }
         }
 
@@ -39,7 +39,7 @@ namespace Gym_administration
                 if (txt_roomsize.Text == "")
                     txt_roomsize.Text = "0";
 
-                rmRoom.Size = int.Parse(txt_roomsize.Text);
+                clRoom.Size = int.Parse(txt_roomsize.Text);
             }
             catch (Exception)
             {
@@ -47,19 +47,19 @@ namespace Gym_administration
                 return;
             }
             
-            rmRoom.Description = txt_roomdesc.Text;
-            rmRoom.Name = txt_roomname.Text;
+            clRoom.Description = txt_roomdesc.Text;
+            clRoom.Name = txt_roomname.Text;
 
-            rmRoom.bSave();
+            clRoom.SaveRoom();
         }
 
         private void button_remove_Click(object sender, EventArgs e)
         {
 
-            DialogResult res = MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (res == DialogResult.Yes)
+            DialogResult result = MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
             {
-             rmRoom.bRemove();
+             clRoom.RemoveRoom();
              this.Close();
             }
         }

@@ -161,21 +161,21 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
-            string sQuery = "";
+            string query = "";
             if (rd_item.Checked == true)
-                sQuery = "SELECT id_equipment EID, name Name, description Description FROM equipment WHERE type = 'item' AND 1 = 1";
+                query = "SELECT id_equipment EID, name Name, description Description FROM equipment WHERE type = 'item' AND 1 = 1";
             else
-                sQuery = "SELECT id_equipment EID, name Name, description Description FROM equipment WHERE type = 'set' AND 1 = 1";
+                query = "SELECT id_equipment EID, name Name, description Description FROM equipment WHERE type = 'set' AND 1 = 1";
 
             if (txt_equipmentname.Text != "")
-                sQuery += " AND name LIKE '%" + txt_equipmentname.Text + "%'";
+                query += " AND name LIKE '%" + txt_equipmentname.Text + "%'";
 
-            sQuery += "  ORDER BY name";
-
-
+            query += "  ORDER BY name";
 
 
-            bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
+
+
+            bSource.DataSource = conn.dtGetTableForDataGrid(query);
             dg_equipment.DataSource = bSource;
             dg_equipment.AllowUserToAddRows = false;
             dg_equipment.ReadOnly = true;
@@ -191,8 +191,8 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource itemsSource = new BindingSource();
-            string sQuery = "SELECT id_equipment EID, name Name, description Description FROM equipment WHERE type = 'item' ORDER BY id_equipment";
-            itemsSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
+            string query = "SELECT id_equipment EID, name Name, description Description FROM equipment WHERE type = 'item' ORDER BY id_equipment";
+            itemsSource.DataSource = conn.dtGetTableForDataGrid(query);
             dg_equipment.DataSource = itemsSource;
             dg_equipment.AllowUserToAddRows = false;
             dg_equipment.ReadOnly = true;
@@ -210,8 +210,8 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource setsSource = new BindingSource();
-            string sQuery = "SELECT id_equipment EID, name Name, description Description FROM equipment WHERE type = 'set' ORDER BY id_equipment";
-            setsSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
+            string query = "SELECT id_equipment EID, name Name, description Description FROM equipment WHERE type = 'set' ORDER BY id_equipment";
+            setsSource.DataSource = conn.dtGetTableForDataGrid(query);
             dg_equipment.DataSource = setsSource;
             dg_equipment.AllowUserToAddRows = false;
             dg_equipment.ReadOnly = true;

@@ -147,9 +147,9 @@ namespace Gym_administration
                 mySqlConn conn = new mySqlConn();
                 conn.connect();
                 // Create the delete query
-                string removeClassQuery = "DELETE FROM classes WHERE id_class = '" + this.Id_class + "'";
+                string query = "DELETE FROM classes WHERE id_class = '" + this.Id_class + "'";
                 // Launch delete query
-                int result = conn.iDeleteOrUpdate(removeClassQuery);
+                int result = conn.iDeleteOrUpdate(query);
                 // Check deletion result
                 if (result > 0)
                 {
@@ -173,8 +173,8 @@ namespace Gym_administration
          */
         public bool SaveClass()
         {
-            
-            string saveClassQuery;
+
+            string query;
 
             // Checking user input
             if (this.Name == "")
@@ -191,10 +191,10 @@ namespace Gym_administration
                 if (this.Id_class == -1)
                 {
                     // Create the save query
-                    saveClassQuery = "insert into `gym`.`classes` (`id_class`, `name`, `type`, `description`) values " +
+                    query = "insert into `gym`.`classes` (`id_class`, `name`, `type`, `description`) values " +
                              "(NULL, '" + this.Name + "', '" + this.Type + "', '" + this.Description + "')";
                     // Launch save query
-                    int id_Class = conn.iInsert(saveClassQuery);
+                    int id_Class = conn.iInsert(query);
                     // Check saving result
                     if (id_Class != -1)
                     {
@@ -212,11 +212,11 @@ namespace Gym_administration
                 else
                 {
                     // Create update query
-                    string updateClassQuery = "UPDATE classes SET name = '" + this.Name + "', description = '" + this.Description + "' " +
+                    query = "UPDATE classes SET name = '" + this.Name + "', description = '" + this.Description + "' " +
                              " WHERE id_class = '" + this.Id_class + "'";
 
                     // Launch update query
-                    int result = conn.iDeleteOrUpdate(updateClassQuery);
+                    int result = conn.iDeleteOrUpdate(query);
                     // Check update result
                     if (result > 0)
                     {
@@ -230,7 +230,7 @@ namespace Gym_administration
                     }
                 }
             }
-            return true;
+            return false;
         }
     }
 }

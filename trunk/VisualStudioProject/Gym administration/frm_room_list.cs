@@ -22,13 +22,13 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
-            string sQuery = "SELECT id_room RID, name Name, size Size, description Description FROM rooms WHERE 1 = 1";
+            string query = "SELECT id_room RID, name Name, size Size, description Description FROM rooms WHERE 1 = 1";
             if (txt_roomname.Text != "")
-                sQuery += " AND name LIKE '%" + txt_roomname.Text + "%'";
+                query += " AND name LIKE '%" + txt_roomname.Text + "%'";
 
-            sQuery += "  ORDER BY id_room";
+            query += "  ORDER BY id_room";
 
-            bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
+            bSource.DataSource = conn.dtGetTableForDataGrid(query);
             dg_rooms.DataSource = bSource;
             dg_rooms.AllowUserToAddRows = false;
             dg_rooms.ReadOnly = true;
@@ -47,8 +47,8 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
-            string sQuery = "SELECT id_room RID, name Name, size Size, description Description FROM rooms ORDER BY id_room";
-            bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
+            string query = "SELECT id_room RID, name Name, size Size, description Description FROM rooms ORDER BY id_room";
+            bSource.DataSource = conn.dtGetTableForDataGrid(query);
             dg_rooms.DataSource = bSource;
             dg_rooms.AllowUserToAddRows = false;
             dg_rooms.ReadOnly = true;

@@ -5,9 +5,16 @@ using System.Text;
 
 namespace Gym_administration
 {
-    // It's an abstract class because it is not instantiable
+    /**
+     * @desc It's an abstract class because it is not instantiable
+     * @params [none]
+     * @return [none]
+     */
     public abstract class Person
     {
+
+        // Everything here corresponds with fields from STAFF and MEMBER tables
+
         private string firstName;
 
         public string FirstName
