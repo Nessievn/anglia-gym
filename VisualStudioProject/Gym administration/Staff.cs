@@ -198,14 +198,14 @@ namespace Gym_administration
             string sMysqlFinishDate = Utils.sGetMysqlDate(this.SContractFinish);
             string sQuery;
 
-            if (sMysqlDate == "0000-00-00" || sMysqlFinishDate == "0000-00-00" || sMysqlStartDate == "0000-00-00")
-            {
-                MessageBox.Show("The date is in incorrect format");
-            }
+            if (sMysqlDate == "0000-00-00") 
+                MessageBox.Show("The Date of Birth is in incorrect format!");
+            else if (sMysqlStartDate == "0000-00-00")
+                MessageBox.Show("The Contract Start date is in incorrect format!");
+            else if (sMysqlFinishDate == "0000-00-00")
+                MessageBox.Show("The Contract Finish date is in incorrect format!");
             else if (Utils.bValidateEmail(this.Email) == false)
-            {
                 MessageBox.Show("The E-Mail address is incorrect");
-            }
             else
             {
                 // First the user object is filled

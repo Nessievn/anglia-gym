@@ -370,8 +370,8 @@ namespace Gym_administration
         //REMOVE
         private void button_remove_Click(object sender, EventArgs e)
         {
-            DialogResult res = MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (res == DialogResult.Yes)
+            DialogResult result = MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
             {
                 //call list reload in parent form
                 //if frmEqlist is null, then this form was called from the main menu and list reload is not necessary

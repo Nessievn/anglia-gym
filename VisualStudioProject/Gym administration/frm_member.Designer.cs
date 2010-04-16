@@ -93,6 +93,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.rd_male = new System.Windows.Forms.RadioButton();
             this.rd_female = new System.Windows.Forms.RadioButton();
+            this.button_RestoreMedicalText = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dg_currentborrows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -301,6 +302,7 @@
             this.txt_allergies.Name = "txt_allergies";
             this.txt_allergies.Size = new System.Drawing.Size(183, 22);
             this.txt_allergies.TabIndex = 22;
+            this.txt_allergies.Text = "none";
             // 
             // label_allergies
             // 
@@ -447,12 +449,12 @@
             // 
             // button_save
             // 
-            this.button_save.Location = new System.Drawing.Point(653, 494);
+            this.button_save.Location = new System.Drawing.Point(620, 494);
             this.button_save.Margin = new System.Windows.Forms.Padding(4);
             this.button_save.Name = "button_save";
-            this.button_save.Size = new System.Drawing.Size(75, 32);
+            this.button_save.Size = new System.Drawing.Size(108, 32);
             this.button_save.TabIndex = 40;
-            this.button_save.Text = "Save";
+            this.button_save.Text = "Save and Stay";
             this.button_save.UseVisualStyleBackColor = true;
             this.button_save.Click += new System.EventHandler(this.button_save_Click);
             // 
@@ -461,7 +463,7 @@
             this.button_cancel.Location = new System.Drawing.Point(16, 494);
             this.button_cancel.Margin = new System.Windows.Forms.Padding(4);
             this.button_cancel.Name = "button_cancel";
-            this.button_cancel.Size = new System.Drawing.Size(93, 32);
+            this.button_cancel.Size = new System.Drawing.Size(97, 32);
             this.button_cancel.TabIndex = 41;
             this.button_cancel.Text = "Cancel";
             this.button_cancel.UseVisualStyleBackColor = true;
@@ -492,6 +494,7 @@
             this.txt_city.Name = "txt_city";
             this.txt_city.Size = new System.Drawing.Size(183, 22);
             this.txt_city.TabIndex = 10;
+            this.txt_city.TextChanged += new System.EventHandler(this.txt_city_TextChanged);
             // 
             // label_city
             // 
@@ -573,10 +576,10 @@
             // 
             // button_payments
             // 
-            this.button_payments.Location = new System.Drawing.Point(382, 494);
+            this.button_payments.Location = new System.Drawing.Point(371, 494);
             this.button_payments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_payments.Name = "button_payments";
-            this.button_payments.Size = new System.Drawing.Size(99, 32);
+            this.button_payments.Size = new System.Drawing.Size(93, 32);
             this.button_payments.TabIndex = 55;
             this.button_payments.Text = "Payments";
             this.button_payments.UseVisualStyleBackColor = true;
@@ -584,10 +587,10 @@
             // 
             // button_remove
             // 
-            this.button_remove.Location = new System.Drawing.Point(116, 494);
+            this.button_remove.Location = new System.Drawing.Point(120, 494);
             this.button_remove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_remove.Name = "button_remove";
-            this.button_remove.Size = new System.Drawing.Size(93, 32);
+            this.button_remove.Size = new System.Drawing.Size(89, 32);
             this.button_remove.TabIndex = 56;
             this.button_remove.Text = "Remove";
             this.button_remove.UseVisualStyleBackColor = true;
@@ -597,7 +600,7 @@
             // 
             this.button_equipmentbooking.Location = new System.Drawing.Point(215, 494);
             this.button_equipmentbooking.Name = "button_equipmentbooking";
-            this.button_equipmentbooking.Size = new System.Drawing.Size(161, 32);
+            this.button_equipmentbooking.Size = new System.Drawing.Size(150, 32);
             this.button_equipmentbooking.TabIndex = 57;
             this.button_equipmentbooking.Text = "Equipment Booking";
             this.button_equipmentbooking.UseVisualStyleBackColor = true;
@@ -701,10 +704,10 @@
             // 
             // button_saveOpen
             // 
-            this.button_saveOpen.Location = new System.Drawing.Point(488, 494);
+            this.button_saveOpen.Location = new System.Drawing.Point(471, 494);
             this.button_saveOpen.Margin = new System.Windows.Forms.Padding(4);
             this.button_saveOpen.Name = "button_saveOpen";
-            this.button_saveOpen.Size = new System.Drawing.Size(157, 32);
+            this.button_saveOpen.Size = new System.Drawing.Size(141, 32);
             this.button_saveOpen.TabIndex = 67;
             this.button_saveOpen.Text = "Save and Open List";
             this.button_saveOpen.UseVisualStyleBackColor = true;
@@ -746,11 +749,24 @@
             this.rd_female.UseVisualStyleBackColor = true;
             this.rd_female.Click += new System.EventHandler(this.rd_female_Checked);
             // 
+            // button_RestoreMedicalText
+            // 
+            this.button_RestoreMedicalText.Font = new System.Drawing.Font("Microsoft Sans Serif", 3.8F);
+            this.button_RestoreMedicalText.Location = new System.Drawing.Point(552, 228);
+            this.button_RestoreMedicalText.Margin = new System.Windows.Forms.Padding(4);
+            this.button_RestoreMedicalText.Name = "button_RestoreMedicalText";
+            this.button_RestoreMedicalText.Size = new System.Drawing.Size(116, 17);
+            this.button_RestoreMedicalText.TabIndex = 71;
+            this.button_RestoreMedicalText.Text = "RESTORE DEFAULT TEXT";
+            this.button_RestoreMedicalText.UseVisualStyleBackColor = true;
+            this.button_RestoreMedicalText.Click += new System.EventHandler(this.button_RestoreMedicalText_Click);
+            // 
             // frm_member
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(879, 545);
+            this.Controls.Add(this.button_RestoreMedicalText);
             this.Controls.Add(this.rd_female);
             this.Controls.Add(this.rd_male);
             this.Controls.Add(this.pictureBox1);
@@ -895,5 +911,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.RadioButton rd_male;
         private System.Windows.Forms.RadioButton rd_female;
+        private System.Windows.Forms.Button button_RestoreMedicalText;
     }
 }

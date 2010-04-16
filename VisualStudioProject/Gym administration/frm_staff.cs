@@ -37,10 +37,11 @@ namespace Gym_administration
         }
         public frm_staff(bool isFromStaffList)
         {
+
             stfStaff = new Staff();
             InitializeComponent();
-            button_equipmentbooking.Hide();
             button_saveOpen.Hide();
+            button_equipmentbooking.Hide();
             DateTime today = DateTime.Today;
             txt_contract_start.Text = String.Format("{0:dd-MM-yyyy}", today);
         }
