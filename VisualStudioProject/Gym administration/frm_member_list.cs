@@ -46,9 +46,9 @@ namespace Gym_administration
             conn.connect();
             BindingSource bSource = new BindingSource();
             if (this.BViewAttendants == false)
-                sQuery = "SELECT id_member ID, member_number Nr, sid SID, CONCAT(lastName, ', ', firstName) 'Member Name', DATE_FORMAT(birthdate,\"%d-%m-%Y\") DOB, email 'EMail', type Type FROM members ORDER BY ID ";
+                sQuery = "SELECT id_member ID, member_number Nr, sid SID, CONCAT(lastName, ', ', firstName) 'Member Name', DATE_FORMAT(birthdate,\"%d-%m-%Y\") DOB, email 'EMail', type Type, IF((is_active= 0), 'INACTIVE','ACTIVE') Status FROM members ORDER BY ID ";
             else
-                sQuery = "SELECT m.id_member ID, m.member_number Nr, sid SID, CONCAT(m.lastName, ', ', m.firstName) 'Member Name', DATE_FORMAT(m.birthdate,\"%d-%m-%Y\") DOB, email 'EMail' FROM members m, class_bookings cb WHERE m.id_member = cb.id_member AND cb.id_class_instance = '" + this.clClassInstance.Id_class_instance + "' ORDER BY ID";
+                sQuery = "SELECT m.id_member ID, m.member_number Nr, sid SID, CONCAT(m.lastName, ', ', m.firstName) 'Member Name', DATE_FORMAT(m.birthdate,\"%d-%m-%Y\") DOB, email 'EMail', type Type, IF((is_active= 0), 'INACTIVE','ACTIVE') Status FROM members m, class_bookings cb WHERE m.id_member = cb.id_member AND cb.id_class_instance = '" + this.clClassInstance.Id_class_instance + "' ORDER BY ID";
 
             bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
             dg_members.DataSource = bSource;
@@ -126,7 +126,7 @@ namespace Gym_administration
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
-            string sQuery = "SELECT id_member ID, member_number Nr, sid SID, CONCAT(lastName, ', ', firstName) 'Member Name', DATE_FORMAT(birthdate,\"%d-%m-%Y\") DOB, email 'EMail', type Type FROM members WHERE 1 = 1 ";
+            string sQuery = "SELECT id_member ID, member_number Nr, sid SID, CONCAT(lastName, ', ', firstName) 'Member Name', DATE_FORMAT(birthdate,\"%d-%m-%Y\") DOB, email 'EMail', type Type, IF((is_active= 0), 'INACTIVE','ACTIVE') Status FROM members WHERE 1 = 1 ";
             if (txt_firstName.Text != "")
                 sQuery += " AND firstName LIKE '%"+txt_firstName.Text+"%'";
             if (txt_lastName.Text != "")
