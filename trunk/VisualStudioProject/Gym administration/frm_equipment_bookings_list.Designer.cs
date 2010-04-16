@@ -55,7 +55,7 @@
             this.dg_eqbookings.Name = "dg_eqbookings";
             this.dg_eqbookings.RowTemplate.Height = 24;
             this.dg_eqbookings.Size = new System.Drawing.Size(1154, 315);
-            this.dg_eqbookings.TabIndex = 23;
+            this.dg_eqbookings.TabIndex = 0;
             this.dg_eqbookings.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_eqbookings_CellDoubleClick);
             // 
             // frm_equipment_bookings_list

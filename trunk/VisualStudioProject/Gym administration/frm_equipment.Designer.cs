@@ -74,7 +74,7 @@
             this.button_remove.Margin = new System.Windows.Forms.Padding(4);
             this.button_remove.Name = "button_remove";
             this.button_remove.Size = new System.Drawing.Size(116, 32);
-            this.button_remove.TabIndex = 178;
+            this.button_remove.TabIndex = 18;
             this.button_remove.Text = "Remove";
             this.button_remove.UseVisualStyleBackColor = true;
             this.button_remove.Click += new System.EventHandler(this.button_remove_Click);
@@ -87,7 +87,7 @@
             this.rd_item.Margin = new System.Windows.Forms.Padding(4);
             this.rd_item.Name = "rd_item";
             this.rd_item.Size = new System.Drawing.Size(55, 21);
-            this.rd_item.TabIndex = 177;
+            this.rd_item.TabIndex = 2;
             this.rd_item.TabStop = true;
             this.rd_item.Text = "Item";
             this.rd_item.UseVisualStyleBackColor = true;
@@ -100,7 +100,7 @@
             this.rd_set.Margin = new System.Windows.Forms.Padding(4);
             this.rd_set.Name = "rd_set";
             this.rd_set.Size = new System.Drawing.Size(50, 21);
-            this.rd_set.TabIndex = 176;
+            this.rd_set.TabIndex = 3;
             this.rd_set.TabStop = true;
             this.rd_set.Text = "Set";
             this.rd_set.UseVisualStyleBackColor = true;
@@ -124,7 +124,7 @@
             this.txt_equipmentdesc.Name = "txt_equipmentdesc";
             this.txt_equipmentdesc.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txt_equipmentdesc.Size = new System.Drawing.Size(395, 123);
-            this.txt_equipmentdesc.TabIndex = 174;
+            this.txt_equipmentdesc.TabIndex = 1;
             // 
             // button_close
             // 
@@ -132,7 +132,7 @@
             this.button_close.Margin = new System.Windows.Forms.Padding(4);
             this.button_close.Name = "button_close";
             this.button_close.Size = new System.Drawing.Size(116, 32);
-            this.button_close.TabIndex = 173;
+            this.button_close.TabIndex = 17;
             this.button_close.Text = "Close";
             this.button_close.UseVisualStyleBackColor = true;
             this.button_close.Click += new System.EventHandler(this.button_close_Click);
@@ -143,7 +143,7 @@
             this.button_save.Margin = new System.Windows.Forms.Padding(4);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(116, 32);
-            this.button_save.TabIndex = 172;
+            this.button_save.TabIndex = 19;
             this.button_save.Text = "Save";
             this.button_save.UseVisualStyleBackColor = true;
             this.button_save.Click += new System.EventHandler(this.button_save_Click);
@@ -154,7 +154,7 @@
             this.txt_itemname.Margin = new System.Windows.Forms.Padding(4);
             this.txt_itemname.Name = "txt_itemname";
             this.txt_itemname.Size = new System.Drawing.Size(183, 22);
-            this.txt_itemname.TabIndex = 170;
+            this.txt_itemname.TabIndex = 0;
             // 
             // label_itemname
             // 
@@ -184,7 +184,7 @@
             this.txt_setname.Margin = new System.Windows.Forms.Padding(4);
             this.txt_setname.Name = "txt_setname";
             this.txt_setname.Size = new System.Drawing.Size(183, 22);
-            this.txt_setname.TabIndex = 179;
+            this.txt_setname.TabIndex = 4;
             // 
             // label_setname
             // 
@@ -202,7 +202,7 @@
             this.button_vehicle.Location = new System.Drawing.Point(360, 23);
             this.button_vehicle.Name = "button_vehicle";
             this.button_vehicle.Size = new System.Drawing.Size(115, 32);
-            this.button_vehicle.TabIndex = 181;
+            this.button_vehicle.TabIndex = 20;
             this.button_vehicle.Text = "Vehicle";
             this.button_vehicle.UseVisualStyleBackColor = true;
             this.button_vehicle.Click += new System.EventHandler(this.button_vehicle_Click);
@@ -214,7 +214,7 @@
             this.cmb_item1.Location = new System.Drawing.Point(101, 340);
             this.cmb_item1.Name = "cmb_item1";
             this.cmb_item1.Size = new System.Drawing.Size(183, 24);
-            this.cmb_item1.TabIndex = 185;
+            this.cmb_item1.TabIndex = 7;
             this.cmb_item1.SelectedIndexChanged += new System.EventHandler(this.cmb_item1_SelectedIndexChanged);
             this.cmb_item1.SelectedValueChanged += new System.EventHandler(this.cmb_item1_SelectedIndexChanged);
             this.cmb_item1.TextChanged += new System.EventHandler(this.cmb_item1_SelectedIndexChanged);
@@ -226,7 +226,7 @@
             this.cmb_item2.Location = new System.Drawing.Point(101, 369);
             this.cmb_item2.Name = "cmb_item2";
             this.cmb_item2.Size = new System.Drawing.Size(183, 24);
-            this.cmb_item2.TabIndex = 186;
+            this.cmb_item2.TabIndex = 9;
             this.cmb_item2.SelectedIndexChanged += new System.EventHandler(this.cmb_item2_SelectedIndexChanged);
             this.cmb_item2.SelectedValueChanged += new System.EventHandler(this.cmb_item2_SelectedIndexChanged);
             this.cmb_item2.TextChanged += new System.EventHandler(this.cmb_item2_SelectedIndexChanged);
@@ -238,7 +238,7 @@
             this.cmb_item3.Location = new System.Drawing.Point(101, 399);
             this.cmb_item3.Name = "cmb_item3";
             this.cmb_item3.Size = new System.Drawing.Size(183, 24);
-            this.cmb_item3.TabIndex = 187;
+            this.cmb_item3.TabIndex = 11;
             this.cmb_item3.SelectedIndexChanged += new System.EventHandler(this.cmb_item3_SelectedIndexChanged);
             this.cmb_item3.SelectedValueChanged += new System.EventHandler(this.cmb_item3_SelectedIndexChanged);
             this.cmb_item3.TextChanged += new System.EventHandler(this.cmb_item3_SelectedIndexChanged);
@@ -250,7 +250,7 @@
             this.cmb_item4.Location = new System.Drawing.Point(101, 429);
             this.cmb_item4.Name = "cmb_item4";
             this.cmb_item4.Size = new System.Drawing.Size(183, 24);
-            this.cmb_item4.TabIndex = 188;
+            this.cmb_item4.TabIndex = 13;
             this.cmb_item4.SelectedIndexChanged += new System.EventHandler(this.cmb_item4_SelectedIndexChanged);
             this.cmb_item4.SelectedValueChanged += new System.EventHandler(this.cmb_item4_SelectedIndexChanged);
             this.cmb_item4.TextChanged += new System.EventHandler(this.cmb_item4_SelectedIndexChanged);
@@ -262,7 +262,7 @@
             this.cmb_item5.Location = new System.Drawing.Point(101, 459);
             this.cmb_item5.Name = "cmb_item5";
             this.cmb_item5.Size = new System.Drawing.Size(183, 24);
-            this.cmb_item5.TabIndex = 189;
+            this.cmb_item5.TabIndex = 15;
             this.cmb_item5.SelectedIndexChanged += new System.EventHandler(this.cmb_item5_SelectedIndexChanged);
             this.cmb_item5.SelectedValueChanged += new System.EventHandler(this.cmb_item5_SelectedIndexChanged);
             this.cmb_item5.TextChanged += new System.EventHandler(this.cmb_item5_SelectedIndexChanged);
@@ -294,35 +294,35 @@
             this.counter_item2.Location = new System.Drawing.Point(327, 371);
             this.counter_item2.Name = "counter_item2";
             this.counter_item2.Size = new System.Drawing.Size(116, 22);
-            this.counter_item2.TabIndex = 198;
+            this.counter_item2.TabIndex = 10;
             // 
             // counter_item1
             // 
             this.counter_item1.Location = new System.Drawing.Point(327, 341);
             this.counter_item1.Name = "counter_item1";
             this.counter_item1.Size = new System.Drawing.Size(116, 22);
-            this.counter_item1.TabIndex = 199;
+            this.counter_item1.TabIndex = 8;
             // 
             // counter_item3
             // 
             this.counter_item3.Location = new System.Drawing.Point(327, 401);
             this.counter_item3.Name = "counter_item3";
             this.counter_item3.Size = new System.Drawing.Size(116, 22);
-            this.counter_item3.TabIndex = 200;
+            this.counter_item3.TabIndex = 12;
             // 
             // counter_item4
             // 
             this.counter_item4.Location = new System.Drawing.Point(327, 431);
             this.counter_item4.Name = "counter_item4";
             this.counter_item4.Size = new System.Drawing.Size(116, 22);
-            this.counter_item4.TabIndex = 201;
+            this.counter_item4.TabIndex = 14;
             // 
             // counter_item5
             // 
             this.counter_item5.Location = new System.Drawing.Point(327, 461);
             this.counter_item5.Name = "counter_item5";
             this.counter_item5.Size = new System.Drawing.Size(116, 22);
-            this.counter_item5.TabIndex = 202;
+            this.counter_item5.TabIndex = 16;
             // 
             // label_itemsetinfo
             // 
@@ -350,7 +350,7 @@
             this.counter_amounttoborrow.Location = new System.Drawing.Point(79, 132);
             this.counter_amounttoborrow.Name = "counter_amounttoborrow";
             this.counter_amounttoborrow.Size = new System.Drawing.Size(116, 22);
-            this.counter_amounttoborrow.TabIndex = 208;
+            this.counter_amounttoborrow.TabIndex = 5;
             this.counter_amounttoborrow.Visible = false;
             // 
             // label_amounttoborrow
@@ -369,7 +369,7 @@
             this.counter_numberofdays.Location = new System.Drawing.Point(291, 132);
             this.counter_numberofdays.Name = "counter_numberofdays";
             this.counter_numberofdays.Size = new System.Drawing.Size(116, 22);
-            this.counter_numberofdays.TabIndex = 210;
+            this.counter_numberofdays.TabIndex = 6;
             this.counter_numberofdays.Visible = false;
             // 
             // label_numberofdays

@@ -42,7 +42,7 @@
             this.button_addclass.Margin = new System.Windows.Forms.Padding(4);
             this.button_addclass.Name = "button_addclass";
             this.button_addclass.Size = new System.Drawing.Size(100, 28);
-            this.button_addclass.TabIndex = 22;
+            this.button_addclass.TabIndex = 2;
             this.button_addclass.Text = "Add Class";
             this.button_addclass.UseVisualStyleBackColor = true;
             this.button_addclass.Click += new System.EventHandler(this.button_addclass_Click);
@@ -63,7 +63,7 @@
             this.txt_classname.Margin = new System.Windows.Forms.Padding(4);
             this.txt_classname.Name = "txt_classname";
             this.txt_classname.Size = new System.Drawing.Size(235, 22);
-            this.txt_classname.TabIndex = 20;
+            this.txt_classname.TabIndex = 0;
             // 
             // button_search
             // 
@@ -71,7 +71,7 @@
             this.button_search.Margin = new System.Windows.Forms.Padding(4);
             this.button_search.Name = "button_search";
             this.button_search.Size = new System.Drawing.Size(100, 28);
-            this.button_search.TabIndex = 19;
+            this.button_search.TabIndex = 1;
             this.button_search.Text = "Search";
             this.button_search.UseVisualStyleBackColor = true;
             this.button_search.Click += new System.EventHandler(this.button_search_Click);
@@ -87,7 +87,7 @@
             this.dg_classes.Name = "dg_classes";
             this.dg_classes.RowTemplate.Height = 24;
             this.dg_classes.Size = new System.Drawing.Size(588, 300);
-            this.dg_classes.TabIndex = 18;
+            this.dg_classes.TabIndex = 3;
             this.dg_classes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_classes_CellDoubleClick);
             // 
             // frm_class_list

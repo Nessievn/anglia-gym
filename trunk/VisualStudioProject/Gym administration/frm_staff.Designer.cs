@@ -106,7 +106,7 @@
             this.cmb_position.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_position.Name = "cmb_position";
             this.cmb_position.Size = new System.Drawing.Size(160, 24);
-            this.cmb_position.TabIndex = 77;
+            this.cmb_position.TabIndex = 16;
             // 
             // label_position
             // 
@@ -131,7 +131,7 @@
             this.cmb_contract.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_contract.Name = "cmb_contract";
             this.cmb_contract.Size = new System.Drawing.Size(160, 24);
-            this.cmb_contract.TabIndex = 74;
+            this.cmb_contract.TabIndex = 15;
             // 
             // txt_pc
             // 
@@ -140,7 +140,7 @@
             this.txt_pc.Mask = ">LCCC 9LL";
             this.txt_pc.Name = "txt_pc";
             this.txt_pc.Size = new System.Drawing.Size(132, 22);
-            this.txt_pc.TabIndex = 73;
+            this.txt_pc.TabIndex = 8;
             // 
             // label_contract
             // 
@@ -149,7 +149,7 @@
             this.label_contract.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_contract.Name = "label_contract";
             this.label_contract.Size = new System.Drawing.Size(121, 17);
-            this.label_contract.TabIndex = 103;
+            this.label_contract.TabIndex = 119;
             this.label_contract.Text = "Employment Type";
             // 
             // label_pc
@@ -159,7 +159,7 @@
             this.label_pc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_pc.Name = "label_pc";
             this.label_pc.Size = new System.Drawing.Size(73, 17);
-            this.label_pc.TabIndex = 102;
+            this.label_pc.TabIndex = 120;
             this.label_pc.Text = "Post Code";
             // 
             // txt_county
@@ -168,7 +168,7 @@
             this.txt_county.Margin = new System.Windows.Forms.Padding(4);
             this.txt_county.Name = "txt_county";
             this.txt_county.Size = new System.Drawing.Size(183, 22);
-            this.txt_county.TabIndex = 71;
+            this.txt_county.TabIndex = 7;
             // 
             // label_county
             // 
@@ -186,7 +186,7 @@
             this.txt_city.Margin = new System.Windows.Forms.Padding(4);
             this.txt_city.Name = "txt_city";
             this.txt_city.Size = new System.Drawing.Size(183, 22);
-            this.txt_city.TabIndex = 70;
+            this.txt_city.TabIndex = 6;
             // 
             // label_city
             // 
@@ -195,7 +195,7 @@
             this.label_city.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_city.Name = "label_city";
             this.label_city.Size = new System.Drawing.Size(31, 17);
-            this.label_city.TabIndex = 100;
+            this.label_city.TabIndex = 121;
             this.label_city.Text = "City";
             // 
             // button_cancel
@@ -204,7 +204,7 @@
             this.button_cancel.Margin = new System.Windows.Forms.Padding(4);
             this.button_cancel.Name = "button_cancel";
             this.button_cancel.Size = new System.Drawing.Size(116, 32);
-            this.button_cancel.TabIndex = 99;
+            this.button_cancel.TabIndex = 26;
             this.button_cancel.Text = "Cancel";
             this.button_cancel.UseVisualStyleBackColor = true;
             this.button_cancel.Click += new System.EventHandler(this.button_cancel_Click);
@@ -215,7 +215,7 @@
             this.button_save.Margin = new System.Windows.Forms.Padding(4);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(116, 32);
-            this.button_save.TabIndex = 98;
+            this.button_save.TabIndex = 29;
             this.button_save.Text = "Save and Stay";
             this.button_save.UseVisualStyleBackColor = true;
             this.button_save.Click += new System.EventHandler(this.button_save_Click);
@@ -228,7 +228,7 @@
             this.txt_medical_notes.Name = "txt_medical_notes";
             this.txt_medical_notes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txt_medical_notes.Size = new System.Drawing.Size(397, 73);
-            this.txt_medical_notes.TabIndex = 89;
+            this.txt_medical_notes.TabIndex = 24;
             // 
             // label_medical_notes
             // 
@@ -237,7 +237,7 @@
             this.label_medical_notes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_medical_notes.Name = "label_medical_notes";
             this.label_medical_notes.Size = new System.Drawing.Size(97, 17);
-            this.label_medical_notes.TabIndex = 97;
+            this.label_medical_notes.TabIndex = 122;
             this.label_medical_notes.Text = "Medical Notes";
             // 
             // txt_dob
@@ -247,7 +247,7 @@
             this.txt_dob.Mask = "00/00/0000";
             this.txt_dob.Name = "txt_dob";
             this.txt_dob.Size = new System.Drawing.Size(132, 22);
-            this.txt_dob.TabIndex = 61;
+            this.txt_dob.TabIndex = 12;
             this.txt_dob.ValidatingType = typeof(System.DateTime);
             // 
             // label19
@@ -258,7 +258,7 @@
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(160, 20);
-            this.label19.TabIndex = 96;
+            this.label19.TabIndex = 123;
             this.label19.Text = "Medical Information:";
             // 
             // txt_emerg_mobile
@@ -267,7 +267,7 @@
             this.txt_emerg_mobile.Margin = new System.Windows.Forms.Padding(4);
             this.txt_emerg_mobile.Name = "txt_emerg_mobile";
             this.txt_emerg_mobile.Size = new System.Drawing.Size(183, 22);
-            this.txt_emerg_mobile.TabIndex = 84;
+            this.txt_emerg_mobile.TabIndex = 20;
             // 
             // label_emerg_mobile
             // 
@@ -276,7 +276,7 @@
             this.label_emerg_mobile.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_emerg_mobile.Name = "label_emerg_mobile";
             this.label_emerg_mobile.Size = new System.Drawing.Size(49, 17);
-            this.label_emerg_mobile.TabIndex = 95;
+            this.label_emerg_mobile.TabIndex = 124;
             this.label_emerg_mobile.Text = "Mobile";
             // 
             // txt_emerg_telephone
@@ -285,7 +285,7 @@
             this.txt_emerg_telephone.Margin = new System.Windows.Forms.Padding(4);
             this.txt_emerg_telephone.Name = "txt_emerg_telephone";
             this.txt_emerg_telephone.Size = new System.Drawing.Size(183, 22);
-            this.txt_emerg_telephone.TabIndex = 82;
+            this.txt_emerg_telephone.TabIndex = 19;
             // 
             // label_emerg_telephone
             // 
@@ -294,7 +294,7 @@
             this.label_emerg_telephone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_emerg_telephone.Name = "label_emerg_telephone";
             this.label_emerg_telephone.Size = new System.Drawing.Size(76, 17);
-            this.label_emerg_telephone.TabIndex = 94;
+            this.label_emerg_telephone.TabIndex = 125;
             this.label_emerg_telephone.Text = "Telephone";
             // 
             // txt_allergies
@@ -303,7 +303,7 @@
             this.txt_allergies.Margin = new System.Windows.Forms.Padding(4);
             this.txt_allergies.Name = "txt_allergies";
             this.txt_allergies.Size = new System.Drawing.Size(183, 22);
-            this.txt_allergies.TabIndex = 88;
+            this.txt_allergies.TabIndex = 23;
             // 
             // label_allergies
             // 
@@ -312,7 +312,7 @@
             this.label_allergies.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_allergies.Name = "label_allergies";
             this.label_allergies.Size = new System.Drawing.Size(62, 17);
-            this.label_allergies.TabIndex = 93;
+            this.label_allergies.TabIndex = 126;
             this.label_allergies.Text = "Allergies";
             // 
             // txt_emerg_relation
@@ -321,7 +321,7 @@
             this.txt_emerg_relation.Margin = new System.Windows.Forms.Padding(4);
             this.txt_emerg_relation.Name = "txt_emerg_relation";
             this.txt_emerg_relation.Size = new System.Drawing.Size(183, 22);
-            this.txt_emerg_relation.TabIndex = 81;
+            this.txt_emerg_relation.TabIndex = 18;
             // 
             // label_emerg_relation
             // 
@@ -330,7 +330,7 @@
             this.label_emerg_relation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_emerg_relation.Name = "label_emerg_relation";
             this.label_emerg_relation.Size = new System.Drawing.Size(60, 17);
-            this.label_emerg_relation.TabIndex = 92;
+            this.label_emerg_relation.TabIndex = 127;
             this.label_emerg_relation.Text = "Relation";
             // 
             // txt_doctor_phone
@@ -339,7 +339,7 @@
             this.txt_doctor_phone.Margin = new System.Windows.Forms.Padding(4);
             this.txt_doctor_phone.Name = "txt_doctor_phone";
             this.txt_doctor_phone.Size = new System.Drawing.Size(183, 22);
-            this.txt_doctor_phone.TabIndex = 87;
+            this.txt_doctor_phone.TabIndex = 22;
             // 
             // label_doctor_phone
             // 
@@ -348,7 +348,7 @@
             this.label_doctor_phone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_doctor_phone.Name = "label_doctor_phone";
             this.label_doctor_phone.Size = new System.Drawing.Size(76, 17);
-            this.label_doctor_phone.TabIndex = 91;
+            this.label_doctor_phone.TabIndex = 128;
             this.label_doctor_phone.Text = "Telephone";
             // 
             // txt_doctor_name
@@ -357,7 +357,7 @@
             this.txt_doctor_name.Margin = new System.Windows.Forms.Padding(4);
             this.txt_doctor_name.Name = "txt_doctor_name";
             this.txt_doctor_name.Size = new System.Drawing.Size(183, 22);
-            this.txt_doctor_name.TabIndex = 85;
+            this.txt_doctor_name.TabIndex = 21;
             // 
             // label_doctor_name
             // 
@@ -366,7 +366,7 @@
             this.label_doctor_name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_doctor_name.Name = "label_doctor_name";
             this.label_doctor_name.Size = new System.Drawing.Size(91, 17);
-            this.label_doctor_name.TabIndex = 90;
+            this.label_doctor_name.TabIndex = 129;
             this.label_doctor_name.Text = "Doctor Name";
             // 
             // txt_emerg_name
@@ -375,7 +375,7 @@
             this.txt_emerg_name.Margin = new System.Windows.Forms.Padding(4);
             this.txt_emerg_name.Name = "txt_emerg_name";
             this.txt_emerg_name.Size = new System.Drawing.Size(183, 22);
-            this.txt_emerg_name.TabIndex = 79;
+            this.txt_emerg_name.TabIndex = 17;
             // 
             // label_emerg_name
             // 
@@ -384,7 +384,7 @@
             this.label_emerg_name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_emerg_name.Name = "label_emerg_name";
             this.label_emerg_name.Size = new System.Drawing.Size(45, 17);
-            this.label_emerg_name.TabIndex = 86;
+            this.label_emerg_name.TabIndex = 130;
             this.label_emerg_name.Text = "Name";
             // 
             // label_emergencycontact
@@ -404,7 +404,7 @@
             this.txt_address2.Margin = new System.Windows.Forms.Padding(4);
             this.txt_address2.Name = "txt_address2";
             this.txt_address2.Size = new System.Drawing.Size(183, 22);
-            this.txt_address2.TabIndex = 69;
+            this.txt_address2.TabIndex = 5;
             // 
             // label_address2
             // 
@@ -413,7 +413,7 @@
             this.label_address2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_address2.Name = "label_address2";
             this.label_address2.Size = new System.Drawing.Size(72, 17);
-            this.label_address2.TabIndex = 80;
+            this.label_address2.TabIndex = 131;
             this.label_address2.Text = "Address 2";
             // 
             // txt_address1
@@ -422,7 +422,7 @@
             this.txt_address1.Margin = new System.Windows.Forms.Padding(4);
             this.txt_address1.Name = "txt_address1";
             this.txt_address1.Size = new System.Drawing.Size(183, 22);
-            this.txt_address1.TabIndex = 67;
+            this.txt_address1.TabIndex = 4;
             // 
             // label_address1
             // 
@@ -431,7 +431,7 @@
             this.label_address1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_address1.Name = "label_address1";
             this.label_address1.Size = new System.Drawing.Size(72, 17);
-            this.label_address1.TabIndex = 78;
+            this.label_address1.TabIndex = 132;
             this.label_address1.Text = "Address 1";
             // 
             // txt_telephone
@@ -440,7 +440,7 @@
             this.txt_telephone.Margin = new System.Windows.Forms.Padding(4);
             this.txt_telephone.Name = "txt_telephone";
             this.txt_telephone.Size = new System.Drawing.Size(183, 22);
-            this.txt_telephone.TabIndex = 66;
+            this.txt_telephone.TabIndex = 14;
             // 
             // label_telephone
             // 
@@ -449,7 +449,7 @@
             this.label_telephone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_telephone.Name = "label_telephone";
             this.label_telephone.Size = new System.Drawing.Size(76, 17);
-            this.label_telephone.TabIndex = 75;
+            this.label_telephone.TabIndex = 133;
             this.label_telephone.Text = "Telephone";
             // 
             // txt_email
@@ -458,7 +458,7 @@
             this.txt_email.Margin = new System.Windows.Forms.Padding(4);
             this.txt_email.Name = "txt_email";
             this.txt_email.Size = new System.Drawing.Size(183, 22);
-            this.txt_email.TabIndex = 64;
+            this.txt_email.TabIndex = 3;
             // 
             // label_email
             // 
@@ -468,7 +468,7 @@
             this.label_email.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_email.Name = "label_email";
             this.label_email.Size = new System.Drawing.Size(53, 17);
-            this.label_email.TabIndex = 72;
+            this.label_email.TabIndex = 134;
             this.label_email.Text = "E-Mail";
             // 
             // label_dob
@@ -479,7 +479,7 @@
             this.label_dob.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_dob.Name = "label_dob";
             this.label_dob.Size = new System.Drawing.Size(100, 17);
-            this.label_dob.TabIndex = 65;
+            this.label_dob.TabIndex = 136;
             this.label_dob.Text = "Date of Birth";
             // 
             // txt_lastName
@@ -488,7 +488,7 @@
             this.txt_lastName.Margin = new System.Windows.Forms.Padding(4);
             this.txt_lastName.Name = "txt_lastName";
             this.txt_lastName.Size = new System.Drawing.Size(183, 22);
-            this.txt_lastName.TabIndex = 59;
+            this.txt_lastName.TabIndex = 2;
             // 
             // label_lastName
             // 
@@ -497,7 +497,7 @@
             this.label_lastName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_lastName.Name = "label_lastName";
             this.label_lastName.Size = new System.Drawing.Size(76, 17);
-            this.label_lastName.TabIndex = 62;
+            this.label_lastName.TabIndex = 137;
             this.label_lastName.Text = "Last Name";
             // 
             // txt_firstName
@@ -506,7 +506,7 @@
             this.txt_firstName.Margin = new System.Windows.Forms.Padding(4);
             this.txt_firstName.Name = "txt_firstName";
             this.txt_firstName.Size = new System.Drawing.Size(183, 22);
-            this.txt_firstName.TabIndex = 58;
+            this.txt_firstName.TabIndex = 1;
             // 
             // label_firstName
             // 
@@ -515,7 +515,7 @@
             this.label_firstName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_firstName.Name = "label_firstName";
             this.label_firstName.Size = new System.Drawing.Size(76, 17);
-            this.label_firstName.TabIndex = 60;
+            this.label_firstName.TabIndex = 138;
             this.label_firstName.Text = "First Name";
             // 
             // label_staffinfo
@@ -526,7 +526,7 @@
             this.label_staffinfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_staffinfo.Name = "label_staffinfo";
             this.label_staffinfo.Size = new System.Drawing.Size(152, 20);
-            this.label_staffinfo.TabIndex = 55;
+            this.label_staffinfo.TabIndex = 139;
             this.label_staffinfo.Text = "GYM STAFF INFO:";
             // 
             // txt_qualifications
@@ -537,7 +537,7 @@
             this.txt_qualifications.Name = "txt_qualifications";
             this.txt_qualifications.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txt_qualifications.Size = new System.Drawing.Size(397, 91);
-            this.txt_qualifications.TabIndex = 105;
+            this.txt_qualifications.TabIndex = 25;
             // 
             // label_qualifications
             // 
@@ -547,7 +547,7 @@
             this.label_qualifications.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_qualifications.Name = "label_qualifications";
             this.label_qualifications.Size = new System.Drawing.Size(116, 20);
-            this.label_qualifications.TabIndex = 106;
+            this.label_qualifications.TabIndex = 118;
             this.label_qualifications.Text = "Qualifications:";
             // 
             // label_mobile
@@ -557,7 +557,7 @@
             this.label_mobile.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_mobile.Name = "label_mobile";
             this.label_mobile.Size = new System.Drawing.Size(49, 17);
-            this.label_mobile.TabIndex = 68;
+            this.label_mobile.TabIndex = 135;
             this.label_mobile.Text = "Mobile";
             // 
             // txt_mobile
@@ -566,7 +566,7 @@
             this.txt_mobile.Margin = new System.Windows.Forms.Padding(4);
             this.txt_mobile.Name = "txt_mobile";
             this.txt_mobile.Size = new System.Drawing.Size(183, 22);
-            this.txt_mobile.TabIndex = 63;
+            this.txt_mobile.TabIndex = 13;
             // 
             // txt_natinsnumb
             // 
@@ -574,7 +574,7 @@
             this.txt_natinsnumb.Margin = new System.Windows.Forms.Padding(4);
             this.txt_natinsnumb.Name = "txt_natinsnumb";
             this.txt_natinsnumb.Size = new System.Drawing.Size(183, 22);
-            this.txt_natinsnumb.TabIndex = 107;
+            this.txt_natinsnumb.TabIndex = 9;
             // 
             // label_natinsnumb
             // 
@@ -583,7 +583,7 @@
             this.label_natinsnumb.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_natinsnumb.Name = "label_natinsnumb";
             this.label_natinsnumb.Size = new System.Drawing.Size(180, 17);
-            this.label_natinsnumb.TabIndex = 108;
+            this.label_natinsnumb.TabIndex = 117;
             this.label_natinsnumb.Text = "National Insurance Number";
             // 
             // txt_contract_start
@@ -593,7 +593,7 @@
             this.txt_contract_start.Mask = "00/00/0000";
             this.txt_contract_start.Name = "txt_contract_start";
             this.txt_contract_start.Size = new System.Drawing.Size(132, 22);
-            this.txt_contract_start.TabIndex = 109;
+            this.txt_contract_start.TabIndex = 10;
             this.txt_contract_start.ValidatingType = typeof(System.DateTime);
             // 
             // label_contract_start
@@ -604,7 +604,7 @@
             this.label_contract_start.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_contract_start.Name = "label_contract_start";
             this.label_contract_start.Size = new System.Drawing.Size(109, 17);
-            this.label_contract_start.TabIndex = 110;
+            this.label_contract_start.TabIndex = 116;
             this.label_contract_start.Text = "Contract Start";
             // 
             // txt_contract_finish
@@ -614,7 +614,7 @@
             this.txt_contract_finish.Mask = "00/00/0000";
             this.txt_contract_finish.Name = "txt_contract_finish";
             this.txt_contract_finish.Size = new System.Drawing.Size(132, 22);
-            this.txt_contract_finish.TabIndex = 111;
+            this.txt_contract_finish.TabIndex = 11;
             this.txt_contract_finish.ValidatingType = typeof(System.DateTime);
             // 
             // label_contract_finish
@@ -625,7 +625,7 @@
             this.label_contract_finish.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_contract_finish.Name = "label_contract_finish";
             this.label_contract_finish.Size = new System.Drawing.Size(117, 17);
-            this.label_contract_finish.TabIndex = 112;
+            this.label_contract_finish.TabIndex = 115;
             this.label_contract_finish.Text = "Contract Finish";
             // 
             // button_equipmentbooking
@@ -633,7 +633,7 @@
             this.button_equipmentbooking.Location = new System.Drawing.Point(229, 500);
             this.button_equipmentbooking.Name = "button_equipmentbooking";
             this.button_equipmentbooking.Size = new System.Drawing.Size(164, 32);
-            this.button_equipmentbooking.TabIndex = 113;
+            this.button_equipmentbooking.TabIndex = 27;
             this.button_equipmentbooking.Text = "Equipment Booking";
             this.button_equipmentbooking.UseVisualStyleBackColor = true;
             this.button_equipmentbooking.Click += new System.EventHandler(this.button_equipmentbooking_Click);
@@ -653,7 +653,7 @@
             this.dg_currentborrows.RowHeadersVisible = false;
             this.dg_currentborrows.RowTemplate.Height = 24;
             this.dg_currentborrows.Size = new System.Drawing.Size(193, 112);
-            this.dg_currentborrows.TabIndex = 114;
+            this.dg_currentborrows.TabIndex = 31;
             this.dg_currentborrows.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_currentborrows_CellDoubleClick);
             // 
             // label_currentborrows
@@ -663,7 +663,7 @@
             this.label_currentborrows.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_currentborrows.Name = "label_currentborrows";
             this.label_currentborrows.Size = new System.Drawing.Size(204, 17);
-            this.label_currentborrows.TabIndex = 115;
+            this.label_currentborrows.TabIndex = 34;
             this.label_currentborrows.Text = "Currently Borrowed Equipment:";
             // 
             // label_dateformat
@@ -673,7 +673,7 @@
             this.label_dateformat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_dateformat.Name = "label_dateformat";
             this.label_dateformat.Size = new System.Drawing.Size(92, 17);
-            this.label_dateformat.TabIndex = 116;
+            this.label_dateformat.TabIndex = 33;
             this.label_dateformat.Text = "(dd/mm/yyyy)";
             // 
             // label1
@@ -683,7 +683,7 @@
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 17);
-            this.label1.TabIndex = 117;
+            this.label1.TabIndex = 32;
             this.label1.Text = "(dd/mm/yyyy)";
             // 
             // label2
@@ -693,7 +693,7 @@
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 17);
-            this.label2.TabIndex = 118;
+            this.label2.TabIndex = 31;
             this.label2.Text = "(dd/mm/yyyy)";
             // 
             // button_saveClose
@@ -702,7 +702,7 @@
             this.button_saveClose.Margin = new System.Windows.Forms.Padding(4);
             this.button_saveClose.Name = "button_saveClose";
             this.button_saveClose.Size = new System.Drawing.Size(116, 32);
-            this.button_saveClose.TabIndex = 120;
+            this.button_saveClose.TabIndex = 30;
             this.button_saveClose.Text = "Save and Close";
             this.button_saveClose.UseVisualStyleBackColor = true;
             this.button_saveClose.Click += new System.EventHandler(this.button_saveClose_Click);
@@ -713,7 +713,7 @@
             this.button_saveOpen.Margin = new System.Windows.Forms.Padding(4);
             this.button_saveOpen.Name = "button_saveOpen";
             this.button_saveOpen.Size = new System.Drawing.Size(149, 32);
-            this.button_saveOpen.TabIndex = 121;
+            this.button_saveOpen.TabIndex = 28;
             this.button_saveOpen.Text = "Save and Open List";
             this.button_saveOpen.UseVisualStyleBackColor = true;
             this.button_saveOpen.Click += new System.EventHandler(this.button_saveOpen_Click);
@@ -788,6 +788,7 @@
             this.Controls.Add(this.label_staffinfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "frm_staff";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gym Staff Form";

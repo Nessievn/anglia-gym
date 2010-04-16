@@ -44,7 +44,7 @@
             this.button_addequipment.Margin = new System.Windows.Forms.Padding(4);
             this.button_addequipment.Name = "button_addequipment";
             this.button_addequipment.Size = new System.Drawing.Size(127, 28);
-            this.button_addequipment.TabIndex = 27;
+            this.button_addequipment.TabIndex = 3;
             this.button_addequipment.Text = "Add Equipment";
             this.button_addequipment.UseVisualStyleBackColor = true;
             this.button_addequipment.Click += new System.EventHandler(this.button_addequipment_Click);
@@ -65,7 +65,7 @@
             this.txt_equipmentname.Margin = new System.Windows.Forms.Padding(4);
             this.txt_equipmentname.Name = "txt_equipmentname";
             this.txt_equipmentname.Size = new System.Drawing.Size(235, 22);
-            this.txt_equipmentname.TabIndex = 25;
+            this.txt_equipmentname.TabIndex = 0;
             // 
             // button_search
             // 
@@ -73,7 +73,7 @@
             this.button_search.Margin = new System.Windows.Forms.Padding(4);
             this.button_search.Name = "button_search";
             this.button_search.Size = new System.Drawing.Size(100, 28);
-            this.button_search.TabIndex = 24;
+            this.button_search.TabIndex = 1;
             this.button_search.Text = "Search";
             this.button_search.UseVisualStyleBackColor = true;
             this.button_search.Click += new System.EventHandler(this.button_search_Click);
@@ -89,6 +89,7 @@
             this.dg_equipment.RowTemplate.Height = 24;
             this.dg_equipment.Size = new System.Drawing.Size(588, 300);
             this.dg_equipment.TabIndex = 23;
+            this.dg_equipment.TabStop = false;
             this.dg_equipment.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_equipment_CellDoubleClick);
             // 
             // rd_item
@@ -97,7 +98,7 @@
             this.rd_item.Location = new System.Drawing.Point(155, 12);
             this.rd_item.Name = "rd_item";
             this.rd_item.Size = new System.Drawing.Size(62, 21);
-            this.rd_item.TabIndex = 28;
+            this.rd_item.TabIndex = 2;
             this.rd_item.TabStop = true;
             this.rd_item.Text = "Items";
             this.rd_item.UseVisualStyleBackColor = true;

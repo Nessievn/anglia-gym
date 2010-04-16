@@ -43,10 +43,10 @@
             // button_cancel
             // 
             this.button_cancel.Location = new System.Drawing.Point(176, 334);
-            this.button_cancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_cancel.Margin = new System.Windows.Forms.Padding(4);
             this.button_cancel.Name = "button_cancel";
             this.button_cancel.Size = new System.Drawing.Size(116, 32);
-            this.button_cancel.TabIndex = 149;
+            this.button_cancel.TabIndex = 5;
             this.button_cancel.Text = "Cancel";
             this.button_cancel.UseVisualStyleBackColor = true;
             this.button_cancel.Click += new System.EventHandler(this.button_cancel_Click);
@@ -54,10 +54,10 @@
             // button_save
             // 
             this.button_save.Location = new System.Drawing.Point(300, 334);
-            this.button_save.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_save.Margin = new System.Windows.Forms.Padding(4);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(116, 32);
-            this.button_save.TabIndex = 148;
+            this.button_save.TabIndex = 6;
             this.button_save.Text = "Save";
             this.button_save.UseVisualStyleBackColor = true;
             this.button_save.Click += new System.EventHandler(this.button_save_Click);
@@ -65,10 +65,10 @@
             // txt_roomsize
             // 
             this.txt_roomsize.Location = new System.Drawing.Point(20, 111);
-            this.txt_roomsize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_roomsize.Margin = new System.Windows.Forms.Padding(4);
             this.txt_roomsize.Name = "txt_roomsize";
             this.txt_roomsize.Size = new System.Drawing.Size(183, 22);
-            this.txt_roomsize.TabIndex = 109;
+            this.txt_roomsize.TabIndex = 2;
             // 
             // label_roomsize
             // 
@@ -83,10 +83,10 @@
             // txt_roomname
             // 
             this.txt_roomname.Location = new System.Drawing.Point(20, 62);
-            this.txt_roomname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_roomname.Margin = new System.Windows.Forms.Padding(4);
             this.txt_roomname.Name = "txt_roomname";
             this.txt_roomname.Size = new System.Drawing.Size(183, 22);
-            this.txt_roomname.TabIndex = 108;
+            this.txt_roomname.TabIndex = 1;
             // 
             // label_roomname
             // 
@@ -113,12 +113,12 @@
             // txt_roomdesc
             // 
             this.txt_roomdesc.Location = new System.Drawing.Point(20, 159);
-            this.txt_roomdesc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_roomdesc.Margin = new System.Windows.Forms.Padding(4);
             this.txt_roomdesc.Multiline = true;
             this.txt_roomdesc.Name = "txt_roomdesc";
             this.txt_roomdesc.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txt_roomdesc.Size = new System.Drawing.Size(395, 166);
-            this.txt_roomdesc.TabIndex = 155;
+            this.txt_roomdesc.TabIndex = 3;
             // 
             // label_roomdesc
             // 
@@ -133,10 +133,10 @@
             // button_remove
             // 
             this.button_remove.Location = new System.Drawing.Point(21, 334);
-            this.button_remove.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_remove.Margin = new System.Windows.Forms.Padding(4);
             this.button_remove.Name = "button_remove";
             this.button_remove.Size = new System.Drawing.Size(116, 32);
-            this.button_remove.TabIndex = 157;
+            this.button_remove.TabIndex = 4;
             this.button_remove.Text = "Remove";
             this.button_remove.UseVisualStyleBackColor = true;
             this.button_remove.Click += new System.EventHandler(this.button_remove_Click);
@@ -158,7 +158,7 @@
             this.Controls.Add(this.label_roominfo);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_room";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Room Form";

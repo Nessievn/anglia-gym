@@ -408,7 +408,7 @@ namespace Gym_administration
 
         private void button_RestoreMedicalText_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("This will delete all current medical notes!", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("This will delete all current medical notes!\r\nAre you sure?\r\n\r\n(You must click on save for\r\nthe modifications to take effect!)", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_member));

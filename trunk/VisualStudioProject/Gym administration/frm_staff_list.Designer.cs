@@ -51,7 +51,7 @@
             this.txt_dob.Mask = "00/00/0000";
             this.txt_dob.Name = "txt_dob";
             this.txt_dob.Size = new System.Drawing.Size(235, 22);
-            this.txt_dob.TabIndex = 24;
+            this.txt_dob.TabIndex = 2;
             this.txt_dob.ValidatingType = typeof(System.DateTime);
             // 
             // label_email
@@ -80,7 +80,7 @@
             this.txt_email.Margin = new System.Windows.Forms.Padding(4);
             this.txt_email.Name = "txt_email";
             this.txt_email.Size = new System.Drawing.Size(235, 22);
-            this.txt_email.TabIndex = 21;
+            this.txt_email.TabIndex = 3;
             // 
             // label_lastName
             // 
@@ -98,7 +98,7 @@
             this.txt_lastName.Margin = new System.Windows.Forms.Padding(4);
             this.txt_lastName.Name = "txt_lastName";
             this.txt_lastName.Size = new System.Drawing.Size(235, 22);
-            this.txt_lastName.TabIndex = 19;
+            this.txt_lastName.TabIndex = 0;
             // 
             // label_firstName
             // 
@@ -116,7 +116,7 @@
             this.txt_firstName.Margin = new System.Windows.Forms.Padding(4);
             this.txt_firstName.Name = "txt_firstName";
             this.txt_firstName.Size = new System.Drawing.Size(235, 22);
-            this.txt_firstName.TabIndex = 17;
+            this.txt_firstName.TabIndex = 1;
             // 
             // button_search
             // 
@@ -124,7 +124,7 @@
             this.button_search.Margin = new System.Windows.Forms.Padding(4);
             this.button_search.Name = "button_search";
             this.button_search.Size = new System.Drawing.Size(100, 28);
-            this.button_search.TabIndex = 14;
+            this.button_search.TabIndex = 4;
             this.button_search.Text = "Search";
             this.button_search.UseVisualStyleBackColor = true;
             this.button_search.Click += new System.EventHandler(this.button_search_Click);
@@ -140,7 +140,7 @@
             this.dg_staff.Name = "dg_staff";
             this.dg_staff.RowTemplate.Height = 24;
             this.dg_staff.Size = new System.Drawing.Size(855, 375);
-            this.dg_staff.TabIndex = 13;
+            this.dg_staff.TabIndex = 6;
             this.dg_staff.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_staff_CellDoubleClick);
             // 
             // button_addstaffmember
@@ -149,7 +149,7 @@
             this.button_addstaffmember.Margin = new System.Windows.Forms.Padding(4);
             this.button_addstaffmember.Name = "button_addstaffmember";
             this.button_addstaffmember.Size = new System.Drawing.Size(155, 28);
-            this.button_addstaffmember.TabIndex = 25;
+            this.button_addstaffmember.TabIndex = 5;
             this.button_addstaffmember.Text = "Add Staff Member";
             this.button_addstaffmember.UseVisualStyleBackColor = true;
             this.button_addstaffmember.Click += new System.EventHandler(this.button_addstaffmember_Click);
@@ -160,7 +160,7 @@
             this.button_close.Margin = new System.Windows.Forms.Padding(4);
             this.button_close.Name = "button_close";
             this.button_close.Size = new System.Drawing.Size(155, 28);
-            this.button_close.TabIndex = 26;
+            this.button_close.TabIndex = 7;
             this.button_close.Text = "Close";
             this.button_close.UseVisualStyleBackColor = true;
             this.button_close.Click += new System.EventHandler(this.button_cancel_Click);
@@ -195,6 +195,7 @@
             this.Controls.Add(this.dg_staff);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimizeBox = false;
             this.Name = "frm_staff_list";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Staff List";

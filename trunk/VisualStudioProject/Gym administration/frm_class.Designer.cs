@@ -58,7 +58,7 @@
             this.txt_classdesc.Name = "txt_classdesc";
             this.txt_classdesc.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txt_classdesc.Size = new System.Drawing.Size(395, 166);
-            this.txt_classdesc.TabIndex = 164;
+            this.txt_classdesc.TabIndex = 1;
             // 
             // button_close
             // 
@@ -66,7 +66,7 @@
             this.button_close.Margin = new System.Windows.Forms.Padding(4);
             this.button_close.Name = "button_close";
             this.button_close.Size = new System.Drawing.Size(116, 32);
-            this.button_close.TabIndex = 163;
+            this.button_close.TabIndex = 4;
             this.button_close.Text = "Cancel";
             this.button_close.UseVisualStyleBackColor = true;
             this.button_close.Click += new System.EventHandler(this.button_close_Click);
@@ -77,7 +77,7 @@
             this.button_save.Margin = new System.Windows.Forms.Padding(4);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(116, 32);
-            this.button_save.TabIndex = 162;
+            this.button_save.TabIndex = 6;
             this.button_save.Text = "Save";
             this.button_save.UseVisualStyleBackColor = true;
             this.button_save.Click += new System.EventHandler(this.button_save_Click);
@@ -88,7 +88,7 @@
             this.txt_classname.Margin = new System.Windows.Forms.Padding(4);
             this.txt_classname.Name = "txt_classname";
             this.txt_classname.Size = new System.Drawing.Size(183, 22);
-            this.txt_classname.TabIndex = 158;
+            this.txt_classname.TabIndex = 0;
             // 
             // label_name
             // 
@@ -119,7 +119,7 @@
             this.rd_personal.Margin = new System.Windows.Forms.Padding(4);
             this.rd_personal.Name = "rd_personal";
             this.rd_personal.Size = new System.Drawing.Size(85, 21);
-            this.rd_personal.TabIndex = 166;
+            this.rd_personal.TabIndex = 2;
             this.rd_personal.TabStop = true;
             this.rd_personal.Text = "Personal";
             this.rd_personal.UseVisualStyleBackColor = true;
@@ -131,7 +131,7 @@
             this.rd_group.Margin = new System.Windows.Forms.Padding(4);
             this.rd_group.Name = "rd_group";
             this.rd_group.Size = new System.Drawing.Size(69, 21);
-            this.rd_group.TabIndex = 167;
+            this.rd_group.TabIndex = 3;
             this.rd_group.TabStop = true;
             this.rd_group.Text = "Group";
             this.rd_group.UseVisualStyleBackColor = true;
@@ -142,7 +142,7 @@
             this.button_remove.Margin = new System.Windows.Forms.Padding(4);
             this.button_remove.Name = "button_remove";
             this.button_remove.Size = new System.Drawing.Size(116, 32);
-            this.button_remove.TabIndex = 168;
+            this.button_remove.TabIndex = 5;
             this.button_remove.Text = "Remove";
             this.button_remove.UseVisualStyleBackColor = true;
             this.button_remove.Click += new System.EventHandler(this.button_remove_Click);

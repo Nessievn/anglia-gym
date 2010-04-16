@@ -79,7 +79,7 @@
             this.cmb_classes.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_classes.Name = "cmb_classes";
             this.cmb_classes.Size = new System.Drawing.Size(296, 24);
-            this.cmb_classes.TabIndex = 14;
+            this.cmb_classes.TabIndex = 0;
             // 
             // cmb_rooms
             // 
@@ -89,7 +89,7 @@
             this.cmb_rooms.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_rooms.Name = "cmb_rooms";
             this.cmb_rooms.Size = new System.Drawing.Size(296, 24);
-            this.cmb_rooms.TabIndex = 16;
+            this.cmb_rooms.TabIndex = 1;
             this.cmb_rooms.SelectedIndexChanged += new System.EventHandler(this.cmb_rooms_SelectedIndexChanged);
             // 
             // label_chooserooms
@@ -110,7 +110,7 @@
             this.cmb_instructors.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_instructors.Name = "cmb_instructors";
             this.cmb_instructors.Size = new System.Drawing.Size(296, 24);
-            this.cmb_instructors.TabIndex = 18;
+            this.cmb_instructors.TabIndex = 2;
             // 
             // label_chooseinstructor
             // 
@@ -130,7 +130,7 @@
             this.txt_startdate.Mask = "00/00/0000";
             this.txt_startdate.Name = "txt_startdate";
             this.txt_startdate.Size = new System.Drawing.Size(89, 22);
-            this.txt_startdate.TabIndex = 19;
+            this.txt_startdate.TabIndex = 3;
             this.txt_startdate.ValidatingType = typeof(System.DateTime);
             // 
             // label_date
@@ -152,7 +152,7 @@
             this.txt_starttime.Mask = "00:00";
             this.txt_starttime.Name = "txt_starttime";
             this.txt_starttime.Size = new System.Drawing.Size(89, 22);
-            this.txt_starttime.TabIndex = 21;
+            this.txt_starttime.TabIndex = 4;
             this.txt_starttime.ValidatingType = typeof(System.DateTime);
             // 
             // label_starttime
@@ -185,7 +185,7 @@
             this.txt_endtime.Mask = "00:00";
             this.txt_endtime.Name = "txt_endtime";
             this.txt_endtime.Size = new System.Drawing.Size(87, 22);
-            this.txt_endtime.TabIndex = 23;
+            this.txt_endtime.TabIndex = 5;
             this.txt_endtime.ValidatingType = typeof(System.DateTime);
             // 
             // label_classinfo
@@ -215,7 +215,7 @@
             this.button_save.Margin = new System.Windows.Forms.Padding(4);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(100, 28);
-            this.button_save.TabIndex = 28;
+            this.button_save.TabIndex = 12;
             this.button_save.Text = "Save";
             this.button_save.UseVisualStyleBackColor = true;
             this.button_save.Click += new System.EventHandler(this.button_save_Click);
@@ -232,7 +232,7 @@
             this.cmb_repeats.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_repeats.Name = "cmb_repeats";
             this.cmb_repeats.Size = new System.Drawing.Size(200, 24);
-            this.cmb_repeats.TabIndex = 29;
+            this.cmb_repeats.TabIndex = 6;
             // 
             // label_repeats
             // 
@@ -250,7 +250,7 @@
             this.button_enrollmembers.Margin = new System.Windows.Forms.Padding(4);
             this.button_enrollmembers.Name = "button_enrollmembers";
             this.button_enrollmembers.Size = new System.Drawing.Size(144, 28);
-            this.button_enrollmembers.TabIndex = 31;
+            this.button_enrollmembers.TabIndex = 11;
             this.button_enrollmembers.Text = "Enroll Members";
             this.button_enrollmembers.UseVisualStyleBackColor = true;
             this.button_enrollmembers.Click += new System.EventHandler(this.button_enrollmembers_Click);
@@ -261,7 +261,7 @@
             this.button_viewattendants.Margin = new System.Windows.Forms.Padding(4);
             this.button_viewattendants.Name = "button_viewattendants";
             this.button_viewattendants.Size = new System.Drawing.Size(145, 28);
-            this.button_viewattendants.TabIndex = 32;
+            this.button_viewattendants.TabIndex = 10;
             this.button_viewattendants.Text = "View Attendants";
             this.button_viewattendants.UseVisualStyleBackColor = true;
             this.button_viewattendants.Click += new System.EventHandler(this.button_viewattendants_Click);
@@ -327,7 +327,7 @@
             this.button_remove.Margin = new System.Windows.Forms.Padding(4);
             this.button_remove.Name = "button_remove";
             this.button_remove.Size = new System.Drawing.Size(100, 28);
-            this.button_remove.TabIndex = 34;
+            this.button_remove.TabIndex = 9;
             this.button_remove.Text = "Remove";
             this.button_remove.UseVisualStyleBackColor = true;
             this.button_remove.Click += new System.EventHandler(this.button_remove_Click);
@@ -338,7 +338,7 @@
             this.btn_equipment.Margin = new System.Windows.Forms.Padding(4);
             this.btn_equipment.Name = "btn_equipment";
             this.btn_equipment.Size = new System.Drawing.Size(203, 28);
-            this.btn_equipment.TabIndex = 35;
+            this.btn_equipment.TabIndex = 7;
             this.btn_equipment.Text = "Equipment Booking";
             this.btn_equipment.UseVisualStyleBackColor = true;
             this.btn_equipment.Click += new System.EventHandler(this.btn_equipment_Click);
@@ -368,7 +368,7 @@
             this.dg_currentborrows.RowHeadersVisible = false;
             this.dg_currentborrows.RowTemplate.Height = 24;
             this.dg_currentborrows.Size = new System.Drawing.Size(308, 89);
-            this.dg_currentborrows.TabIndex = 116;
+            this.dg_currentborrows.TabIndex = 8;
             this.dg_currentborrows.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_currentborrows_CellDoubleClick);
             // 
             // label_dateformat
