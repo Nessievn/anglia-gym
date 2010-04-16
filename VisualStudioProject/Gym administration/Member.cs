@@ -124,7 +124,7 @@ namespace Gym_administration
         }
 
 
-
+        // Field id_file from MEMBERS and FILE tabe for referencing from FILE table
         private string id_file;
         public string Id_file
         {
@@ -132,7 +132,7 @@ namespace Gym_administration
             set { id_file = value; }
         }
 
-
+        // Field file_name from FILE table
         private string fileName;
         public string FileName
         {
@@ -140,6 +140,7 @@ namespace Gym_administration
             set { fileName = value; }
         }
 
+        // Variable for storing file path
         private string filePath;
         public string FilePath
         {

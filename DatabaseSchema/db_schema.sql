@@ -1,4 +1,4 @@
-﻿CREATE DATABASE  IF NOT EXISTS `gym` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE  IF NOT EXISTS `gym` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `gym`;
 -- MySQL dump 10.13  Distrib 5.1.40, for Win32 (ia32)
 --
@@ -76,34 +76,6 @@ LOCK TABLES `equipment_vehicle` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `users`
---
-
-DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users` (
-  `id_user` int(11) NOT NULL AUTO_INCREMENT,
-  `login` varchar(50) NOT NULL,
-  `password` varchar(33) NOT NULL,
-  `profile` varchar(50) DEFAULT NULL,
-  `active` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id_user`),
-  UNIQUE KEY `login_UNIQUE` (`login`)
-) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `users`
---
-
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','21232f297a57a5a743894a0e4a801fc3','manager',1),(2,'d@e.f','a21653c0d8bfc7a610adce04a20563a3','member',1),(3,'asdasd@asd.es','c29b2d78629b6e875de4975aa4c19019','member',1),(4,'skarvin@asd.es','2a157d0eb15265b90c76ce6cbaaddb4e','member',1),(5,'skarvin@asdfas.es','c29b2d78629b6e875de4975aa4c19019','member',1),(18,'e@T.a','bcef43f532a3dd35af1c6bcf7228d3f2','member',1),(6,'t@r.h','4117a218ebdf403bf4093536232846f2','member',1),(7,'t@r.k','bcef43f532a3dd35af1c6bcf7228d3f2','member',1),(8,'skarvin@marca.es','74803fdf0df9cc0dbc5748743bce962a','member',1),(9,'w@f.h','9079a1ada998a8b38edb9dd011887d35','member',1),(10,'sdfdsf@dfgdrg.com','6189bd36da9400207d59ab95e73b3810','member',1),(11,'janos_hefko@yahoo.co.uk','ffd5028b197fc0395be5bece481a5524','member',1),(12,'ric@2.com','21232f297a57a5a743894a0e4a801fc3','manager',1),(13,'janimani@a.com','a07d6d3386eb54a223ad282dee1fbfe4','member',1),(14,'e@q.a','e0e73285f609bde970589181a0e1d915','member',1),(15,'a@b.c','1ff38bb62e741aef065a57f555f4b838','member',1),(16,'r@g.v','47310bbcef87ae0a6257bb2b5d1d2046','member',1),(17,'e@T.h','bcef43f532a3dd35af1c6bcf7228d3f2','member',1),(19,'e@T.b','bcef43f532a3dd35af1c6bcf7228d3f2','member',1),(20,'e@T.c','bcef43f532a3dd35af1c6bcf7228d3f2','member',1),(21,'e@T.d','bcef43f532a3dd35af1c6bcf7228d3f2','member',1),(22,'e@T.e','bcef43f532a3dd35af1c6bcf7228d3f2','member',1),(23,'e@T.f','bcef43f532a3dd35af1c6bcf7228d3f2','staff',1),(24,'e@T.g','bcef43f532a3dd35af1c6bcf7228d3f2','staff',1);
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `file`
 --
 
@@ -178,7 +150,7 @@ CREATE TABLE `rooms` (
   `description` text,
   `size` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_room`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -208,7 +180,7 @@ CREATE TABLE `class_bookings` (
   KEY `FK_class_bookings_1` (`id_class_instance`),
   CONSTRAINT `FK_class_bookings_1` FOREIGN KEY (`id_class_instance`) REFERENCES `class_instance` (`id_class_instance`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_class_bookings_2` FOREIGN KEY (`id_member`) REFERENCES `members` (`id_member`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,7 +211,7 @@ CREATE TABLE `equipment_bookings` (
   `borrowedamount` int(11) DEFAULT NULL,
   `isreturned` binary(1) DEFAULT NULL,
   PRIMARY KEY (`id_eq_booking`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -265,7 +237,7 @@ CREATE TABLE `classes` (
   `description` text,
   `type` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_class`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -274,7 +246,7 @@ CREATE TABLE `classes` (
 
 LOCK TABLES `classes` WRITE;
 /*!40000 ALTER TABLE `classes` DISABLE KEYS */;
-INSERT INTO `classes` VALUES (11,'Newtest','','Group'),(2,'Aerobic','sss','Group'),(1,'Badminton','Hehe','Personal'),(0,'Yoga','Good for you!','Group'),(18,'34','34534','Group'),(19,'sdgd','fgdg','Group'),(20,'fsdf','sdfsdf','Group'),(21,'dgfdg','dfgdfg','Group'),(22,'uhrfh','fghfgh','Group'),(23,'dance','break','Group');
+INSERT INTO `classes` VALUES (0,'Yoga','Good for you!','Group'),(1,'Badminton','Hehe','Personal'),(2,'Aerobic','sss','Group'),(11,'Newtest','','Group'),(18,'34','34534','Group'),(19,'sdgd','fgdg','Group'),(20,'fsdf','sdfsdf','Group'),(21,'dgfdg','dfgdfg','Group'),(22,'uhrfh','fghfgh','Group'),(23,'dance','break','Group');
 /*!40000 ALTER TABLE `classes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -297,8 +269,7 @@ CREATE TABLE `payments` (
   PRIMARY KEY (`id_payment`),
   KEY `id_member` (`id_member`),
   CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`id_member`) REFERENCES `members` (`id_member`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -350,7 +321,8 @@ CREATE TABLE `members` (
   PRIMARY KEY (`id_member`),
   KEY `id_user` (`id_user`),
   CONSTRAINT `members_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `members`
@@ -382,10 +354,10 @@ CREATE TABLE `class_instance` (
   KEY `id_class` (`id_class`),
   KEY `id_staff` (`id_staff`),
   KEY `class_instance_ibfk_3` (`id_room`),
- CONSTRAINT `class_instance_ibfk_1` FOREIGN KEY (`id_class`) REFERENCES `classes` (`id_class`),
+  CONSTRAINT `class_instance_ibfk_1` FOREIGN KEY (`id_class`) REFERENCES `classes` (`id_class`),
   CONSTRAINT `class_instance_ibfk_2` FOREIGN KEY (`id_staff`) REFERENCES `staff` (`id_staff`),
   CONSTRAINT `class_instance_ibfk_3` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id_room`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -394,7 +366,7 @@ CREATE TABLE `class_instance` (
 
 LOCK TABLES `class_instance` WRITE;
 /*!40000 ALTER TABLE `class_instance` DISABLE KEYS */;
-INSERT INTO `class_instance` VALUES (39,0,1,'2010-12-12','18:18:00','18:19:00','',1),(38,0,1,'2010-05-05','19:00:00','20:00:00','Daily',1);
+INSERT INTO `class_instance` VALUES (38,0,1,'2010-05-05','19:00:00','20:00:00','Daily',1),(39,0,1,'2010-12-12','18:18:00','18:19:00','',1);
 /*!40000 ALTER TABLE `class_instance` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -435,8 +407,8 @@ CREATE TABLE `staff` (
   `medical_phone` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_staff`),
   KEY `id_user` (`id_user`),
-CONSTRAINT `staff_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  CONSTRAINT `staff_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -449,6 +421,33 @@ INSERT INTO `staff` VALUES (1,'Jani','Mani','1980-01-01','78 Tower Bridge','',''
 /*!40000 ALTER TABLE `staff` ENABLE KEYS */;
 UNLOCK TABLES;
 
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id_user` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(50) NOT NULL,
+  `password` varchar(33) NOT NULL,
+  `profile` varchar(50) DEFAULT NULL,
+  `active` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_user`),
+  UNIQUE KEY `login_UNIQUE` (`login`)
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'admin@ad.min','21232f297a57a5a743894a0e4a801fc3','manager',1),(2,'d@e.f','a21653c0d8bfc7a610adce04a20563a3','member',1),(3,'asdasd@asd.es','c29b2d78629b6e875de4975aa4c19019','member',1),(4,'skarvin@asd.es','2a157d0eb15265b90c76ce6cbaaddb4e','member',1),(5,'skarvin@asdfas.es','c29b2d78629b6e875de4975aa4c19019','member',1),(6,'t@r.h','4117a218ebdf403bf4093536232846f2','member',1),(7,'t@r.k','bcef43f532a3dd35af1c6bcf7228d3f2','member',1),(8,'skarvin@marca.es','74803fdf0df9cc0dbc5748743bce962a','member',1),(9,'w@f.h','9079a1ada998a8b38edb9dd011887d35','member',1),(10,'sdfdsf@dfgdrg.com','6189bd36da9400207d59ab95e73b3810','member',1),(11,'janos_hefko@yahoo.co.uk','ffd5028b197fc0395be5bece481a5524','member',1),(12,'ric@2.com','21232f297a57a5a743894a0e4a801fc3','manager',1),(13,'janimani@a.com','a07d6d3386eb54a223ad282dee1fbfe4','member',1),(14,'e@q.a','e0e73285f609bde970589181a0e1d915','member',1),(15,'a@b.c','1ff38bb62e741aef065a57f555f4b838','member',1),(16,'r@g.v','47310bbcef87ae0a6257bb2b5d1d2046','member',1),(17,'e@T.h','bcef43f532a3dd35af1c6bcf7228d3f2','member',1),(18,'e@T.a','bcef43f532a3dd35af1c6bcf7228d3f2','member',1),(19,'e@T.b','bcef43f532a3dd35af1c6bcf7228d3f2','member',1),(20,'e@T.c','bcef43f532a3dd35af1c6bcf7228d3f2','member',1),(21,'e@T.d','bcef43f532a3dd35af1c6bcf7228d3f2','member',1),(22,'e@T.e','bcef43f532a3dd35af1c6bcf7228d3f2','member',1),(23,'e@T.f','bcef43f532a3dd35af1c6bcf7228d3f2','staff',1),(24,'e@T.g','bcef43f532a3dd35af1c6bcf7228d3f2','staff',1);
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -459,4 +458,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-04-15 11:25:32
+-- Dump completed on 2010-04-16 13:19:47
