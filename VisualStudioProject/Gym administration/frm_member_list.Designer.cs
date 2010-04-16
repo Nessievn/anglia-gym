@@ -30,8 +30,8 @@
         {
             this.dg_members = new System.Windows.Forms.DataGridView();
             this.button_search = new System.Windows.Forms.Button();
-            this.txt_membernum = new System.Windows.Forms.TextBox();
-            this.label_membernum = new System.Windows.Forms.Label();
+            this.txt_sid = new System.Windows.Forms.TextBox();
+            this.label_sid = new System.Windows.Forms.Label();
             this.label_firstName = new System.Windows.Forms.Label();
             this.txt_firstName = new System.Windows.Forms.TextBox();
             this.label_lastName = new System.Windows.Forms.Label();
@@ -61,7 +61,7 @@
             this.dg_members.Name = "dg_members";
             this.dg_members.RowTemplate.Height = 24;
             this.dg_members.Size = new System.Drawing.Size(855, 375);
-            this.dg_members.TabIndex = 0;
+            this.dg_members.TabIndex = 10;
             this.dg_members.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_members_CellDoubleClick);
             // 
             // button_search
@@ -70,28 +70,28 @@
             this.button_search.Margin = new System.Windows.Forms.Padding(4);
             this.button_search.Name = "button_search";
             this.button_search.Size = new System.Drawing.Size(100, 28);
-            this.button_search.TabIndex = 1;
+            this.button_search.TabIndex = 7;
             this.button_search.Text = "Search";
             this.button_search.UseVisualStyleBackColor = true;
             this.button_search.Click += new System.EventHandler(this.button_search_Click);
             // 
-            // txt_membernum
+            // txt_sid
             // 
-            this.txt_membernum.Location = new System.Drawing.Point(16, 25);
-            this.txt_membernum.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_membernum.Name = "txt_membernum";
-            this.txt_membernum.Size = new System.Drawing.Size(235, 22);
-            this.txt_membernum.TabIndex = 2;
+            this.txt_sid.Location = new System.Drawing.Point(16, 25);
+            this.txt_sid.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_sid.Name = "txt_sid";
+            this.txt_sid.Size = new System.Drawing.Size(235, 22);
+            this.txt_sid.TabIndex = 0;
             // 
-            // label_membernum
+            // label_sid
             // 
-            this.label_membernum.AutoSize = true;
-            this.label_membernum.Location = new System.Drawing.Point(13, 4);
-            this.label_membernum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label_membernum.Name = "label_membernum";
-            this.label_membernum.Size = new System.Drawing.Size(113, 17);
-            this.label_membernum.TabIndex = 3;
-            this.label_membernum.Text = "Member Number";
+            this.label_sid.AutoSize = true;
+            this.label_sid.Location = new System.Drawing.Point(13, 4);
+            this.label_sid.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_sid.Name = "label_sid";
+            this.label_sid.Size = new System.Drawing.Size(164, 17);
+            this.label_sid.TabIndex = 3;
+            this.label_sid.Text = "Student ID Number (SID)";
             // 
             // label_firstName
             // 
@@ -109,7 +109,7 @@
             this.txt_firstName.Margin = new System.Windows.Forms.Padding(4);
             this.txt_firstName.Name = "txt_firstName";
             this.txt_firstName.Size = new System.Drawing.Size(235, 22);
-            this.txt_firstName.TabIndex = 4;
+            this.txt_firstName.TabIndex = 3;
             // 
             // label_lastName
             // 
@@ -127,7 +127,7 @@
             this.txt_lastName.Margin = new System.Windows.Forms.Padding(4);
             this.txt_lastName.Name = "txt_lastName";
             this.txt_lastName.Size = new System.Drawing.Size(235, 22);
-            this.txt_lastName.TabIndex = 6;
+            this.txt_lastName.TabIndex = 4;
             // 
             // label_dob
             // 
@@ -145,7 +145,7 @@
             this.txt_email.Margin = new System.Windows.Forms.Padding(4);
             this.txt_email.Name = "txt_email";
             this.txt_email.Size = new System.Drawing.Size(235, 22);
-            this.txt_email.TabIndex = 8;
+            this.txt_email.TabIndex = 6;
             // 
             // label_email
             // 
@@ -165,7 +165,7 @@
             this.txt_dob.Mask = "00/00/0000";
             this.txt_dob.Name = "txt_dob";
             this.txt_dob.Size = new System.Drawing.Size(235, 22);
-            this.txt_dob.TabIndex = 12;
+            this.txt_dob.TabIndex = 5;
             this.txt_dob.ValidatingType = typeof(System.DateTime);
             // 
             // label_dateformat
@@ -203,7 +203,7 @@
             this.cmb_type.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_type.Name = "cmb_type";
             this.cmb_type.Size = new System.Drawing.Size(163, 24);
-            this.cmb_type.TabIndex = 14;
+            this.cmb_type.TabIndex = 2;
             // 
             // label_type
             // 
@@ -241,7 +241,7 @@
             this.button_copy.Margin = new System.Windows.Forms.Padding(4);
             this.button_copy.Name = "button_copy";
             this.button_copy.Size = new System.Drawing.Size(140, 54);
-            this.button_copy.TabIndex = 51;
+            this.button_copy.TabIndex = 9;
             this.button_copy.Text = "Copy all selected cells to clipboard";
             this.button_copy.UseVisualStyleBackColor = true;
             this.button_copy.Click += new System.EventHandler(this.button_copy_Click);
@@ -252,7 +252,7 @@
             this.button_addNewMember.Margin = new System.Windows.Forms.Padding(4);
             this.button_addNewMember.Name = "button_addNewMember";
             this.button_addNewMember.Size = new System.Drawing.Size(135, 28);
-            this.button_addNewMember.TabIndex = 52;
+            this.button_addNewMember.TabIndex = 8;
             this.button_addNewMember.Text = "Add New Member";
             this.button_addNewMember.UseVisualStyleBackColor = true;
             this.button_addNewMember.Click += new System.EventHandler(this.button_addNewMember_Click);
@@ -277,8 +277,8 @@
             this.Controls.Add(this.txt_lastName);
             this.Controls.Add(this.label_firstName);
             this.Controls.Add(this.txt_firstName);
-            this.Controls.Add(this.label_membernum);
-            this.Controls.Add(this.txt_membernum);
+            this.Controls.Add(this.label_sid);
+            this.Controls.Add(this.txt_sid);
             this.Controls.Add(this.button_search);
             this.Controls.Add(this.dg_members);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -298,8 +298,8 @@
 
         private System.Windows.Forms.DataGridView dg_members;
         private System.Windows.Forms.Button button_search;
-        private System.Windows.Forms.TextBox txt_membernum;
-        private System.Windows.Forms.Label label_membernum;
+        private System.Windows.Forms.TextBox txt_sid;
+        private System.Windows.Forms.Label label_sid;
         private System.Windows.Forms.Label label_firstName;
         private System.Windows.Forms.TextBox txt_firstName;
         private System.Windows.Forms.Label label_lastName;

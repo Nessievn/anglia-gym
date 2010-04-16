@@ -48,7 +48,7 @@ namespace Gym_administration
             if (this.BViewAttendants == false)
                 sQuery = "SELECT id_member ID, member_number Nr, sid SID, CONCAT(lastName, ', ', firstName) 'Member Name', DATE_FORMAT(birthdate,\"%d-%m-%Y\") DOB, email 'EMail', type Type FROM members ORDER BY ID ";
             else
-                sQuery = "SELECT m.id_member ID, m.member_number Nr, CONCAT(m.lastName, ', ', m.firstName) 'Member Name', DATE_FORMAT(m.birthdate,\"%d-%m-%Y\") DOB, email 'EMail' FROM members m, class_bookings cb WHERE m.id_member = cb.id_member AND cb.id_class_instance = '" + this.clClassInstance.Id_class_instance + "' ORDER BY ID";
+                sQuery = "SELECT m.id_member ID, m.member_number Nr, sid SID, CONCAT(m.lastName, ', ', m.firstName) 'Member Name', DATE_FORMAT(m.birthdate,\"%d-%m-%Y\") DOB, email 'EMail' FROM members m, class_bookings cb WHERE m.id_member = cb.id_member AND cb.id_class_instance = '" + this.clClassInstance.Id_class_instance + "' ORDER BY ID";
 
             bSource.DataSource = conn.dtGetTableForDataGrid(sQuery);
             dg_members.DataSource = bSource;
@@ -133,8 +133,8 @@ namespace Gym_administration
                 sQuery += " AND lastName LIKE '%" + txt_lastName.Text + "%'";
             if (txt_email.Text != "")
                 sQuery += " AND email LIKE '%" + txt_email.Text + "%'";
-            if (txt_membernum.Text != "")
-                sQuery += " AND member_number LIKE '%" + txt_membernum.Text + "%'";
+            if (txt_sid.Text != "")
+                sQuery += " AND sid LIKE '%" + txt_sid.Text + "%'";
 
             if (cmb_type.SelectedIndex != -1)
             {

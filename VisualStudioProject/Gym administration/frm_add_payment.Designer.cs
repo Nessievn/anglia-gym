@@ -50,7 +50,7 @@
             this.button_addpayment.Margin = new System.Windows.Forms.Padding(4);
             this.button_addpayment.Name = "button_addpayment";
             this.button_addpayment.Size = new System.Drawing.Size(120, 28);
-            this.button_addpayment.TabIndex = 0;
+            this.button_addpayment.TabIndex = 6;
             this.button_addpayment.Text = "Add Payment";
             this.button_addpayment.UseVisualStyleBackColor = true;
             this.button_addpayment.Click += new System.EventHandler(this.button_addpayment_Click);
@@ -73,7 +73,7 @@
             this.txt_details.Multiline = true;
             this.txt_details.Name = "txt_details";
             this.txt_details.Size = new System.Drawing.Size(292, 51);
-            this.txt_details.TabIndex = 3;
+            this.txt_details.TabIndex = 4;
             // 
             // label_details
             // 
@@ -93,7 +93,7 @@
             this.txt_date.Mask = "00/00/0000";
             this.txt_date.Name = "txt_date";
             this.txt_date.Size = new System.Drawing.Size(132, 22);
-            this.txt_date.TabIndex = 8;
+            this.txt_date.TabIndex = 5;
             this.txt_date.ValidatingType = typeof(System.DateTime);
             // 
             // label_date
@@ -115,7 +115,7 @@
             this.txt_amount.Mask = "0000.00";
             this.txt_amount.Name = "txt_amount";
             this.txt_amount.Size = new System.Drawing.Size(79, 22);
-            this.txt_amount.TabIndex = 10;
+            this.txt_amount.TabIndex = 0;
             // 
             // label_dateformat
             // 
@@ -140,7 +140,7 @@
             this.cmb_paymentMethod.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_paymentMethod.Name = "cmb_paymentMethod";
             this.cmb_paymentMethod.Size = new System.Drawing.Size(183, 24);
-            this.cmb_paymentMethod.TabIndex = 55;
+            this.cmb_paymentMethod.TabIndex = 3;
             // 
             // label_paymentMethod
             // 
@@ -158,7 +158,7 @@
             this.txt_receiptNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txt_receiptNumber.Name = "txt_receiptNumber";
             this.txt_receiptNumber.Size = new System.Drawing.Size(183, 22);
-            this.txt_receiptNumber.TabIndex = 66;
+            this.txt_receiptNumber.TabIndex = 1;
             // 
             // label_receivedBy
             // 
@@ -188,7 +188,7 @@
             this.cmb_staff.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_staff.Name = "cmb_staff";
             this.cmb_staff.Size = new System.Drawing.Size(183, 24);
-            this.cmb_staff.TabIndex = 69;
+            this.cmb_staff.TabIndex = 2;
             // 
             // frm_add_payment
             // 

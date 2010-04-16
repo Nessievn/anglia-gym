@@ -40,10 +40,10 @@
             // button_changepassw
             // 
             this.button_changepassw.Location = new System.Drawing.Point(148, 129);
-            this.button_changepassw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_changepassw.Margin = new System.Windows.Forms.Padding(4);
             this.button_changepassw.Name = "button_changepassw";
             this.button_changepassw.Size = new System.Drawing.Size(164, 28);
-            this.button_changepassw.TabIndex = 0;
+            this.button_changepassw.TabIndex = 3;
             this.button_changepassw.Text = "Change password";
             this.button_changepassw.UseVisualStyleBackColor = true;
             this.button_changepassw.Click += new System.EventHandler(this.button_changepassw_Click);
@@ -62,21 +62,21 @@
             // 
             this.txt_oldpassw.AcceptsTab = true;
             this.txt_oldpassw.Location = new System.Drawing.Point(148, 22);
-            this.txt_oldpassw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_oldpassw.Margin = new System.Windows.Forms.Padding(4);
             this.txt_oldpassw.Name = "txt_oldpassw";
             this.txt_oldpassw.PasswordChar = '*';
             this.txt_oldpassw.Size = new System.Drawing.Size(200, 22);
-            this.txt_oldpassw.TabIndex = 2;
+            this.txt_oldpassw.TabIndex = 0;
             // 
             // txt_newpassw
             // 
             this.txt_newpassw.AcceptsTab = true;
             this.txt_newpassw.Location = new System.Drawing.Point(148, 54);
-            this.txt_newpassw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_newpassw.Margin = new System.Windows.Forms.Padding(4);
             this.txt_newpassw.Name = "txt_newpassw";
             this.txt_newpassw.PasswordChar = '*';
             this.txt_newpassw.Size = new System.Drawing.Size(200, 22);
-            this.txt_newpassw.TabIndex = 4;
+            this.txt_newpassw.TabIndex = 1;
             // 
             // label_newpassw
             // 
@@ -93,11 +93,11 @@
             this.txt_repeatnewpw.AcceptsReturn = true;
             this.txt_repeatnewpw.AcceptsTab = true;
             this.txt_repeatnewpw.Location = new System.Drawing.Point(148, 86);
-            this.txt_repeatnewpw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_repeatnewpw.Margin = new System.Windows.Forms.Padding(4);
             this.txt_repeatnewpw.Name = "txt_repeatnewpw";
             this.txt_repeatnewpw.PasswordChar = '*';
             this.txt_repeatnewpw.Size = new System.Drawing.Size(200, 22);
-            this.txt_repeatnewpw.TabIndex = 6;
+            this.txt_repeatnewpw.TabIndex = 2;
             // 
             // label_repeatnewp
             // 
@@ -122,7 +122,8 @@
             this.Controls.Add(this.label_oldpassw);
             this.Controls.Add(this.button_changepassw);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "frm_login_options";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Password Update";

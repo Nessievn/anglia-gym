@@ -52,7 +52,7 @@
             this.txt_roomname.Margin = new System.Windows.Forms.Padding(4);
             this.txt_roomname.Name = "txt_roomname";
             this.txt_roomname.Size = new System.Drawing.Size(235, 22);
-            this.txt_roomname.TabIndex = 15;
+            this.txt_roomname.TabIndex = 1;
             // 
             // button_search
             // 
@@ -60,7 +60,7 @@
             this.button_search.Margin = new System.Windows.Forms.Padding(4);
             this.button_search.Name = "button_search";
             this.button_search.Size = new System.Drawing.Size(100, 28);
-            this.button_search.TabIndex = 14;
+            this.button_search.TabIndex = 2;
             this.button_search.Text = "Search";
             this.button_search.UseVisualStyleBackColor = true;
             this.button_search.Click += new System.EventHandler(this.button_search_Click);
@@ -76,7 +76,7 @@
             this.dg_rooms.Name = "dg_rooms";
             this.dg_rooms.RowTemplate.Height = 24;
             this.dg_rooms.Size = new System.Drawing.Size(588, 300);
-            this.dg_rooms.TabIndex = 13;
+            this.dg_rooms.TabIndex = 4;
             this.dg_rooms.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_rooms_CellDoubleClick);
             // 
             // button_addroom
@@ -85,7 +85,7 @@
             this.button_addroom.Margin = new System.Windows.Forms.Padding(4);
             this.button_addroom.Name = "button_addroom";
             this.button_addroom.Size = new System.Drawing.Size(100, 28);
-            this.button_addroom.TabIndex = 17;
+            this.button_addroom.TabIndex = 3;
             this.button_addroom.Text = "Add Room";
             this.button_addroom.UseVisualStyleBackColor = true;
             this.button_addroom.Click += new System.EventHandler(this.button_addroom_Click);

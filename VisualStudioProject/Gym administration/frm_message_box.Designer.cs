@@ -45,7 +45,7 @@
             this.button_1.Margin = new System.Windows.Forms.Padding(4);
             this.button_1.Name = "button_1";
             this.button_1.Size = new System.Drawing.Size(99, 31);
-            this.button_1.TabIndex = 9;
+            this.button_1.TabIndex = 0;
             this.button_1.UseVisualStyleBackColor = true;
             this.button_1.Click += new System.EventHandler(this.button_1_Click);
             // 
@@ -55,7 +55,7 @@
             this.button_2.Margin = new System.Windows.Forms.Padding(4);
             this.button_2.Name = "button_2";
             this.button_2.Size = new System.Drawing.Size(99, 31);
-            this.button_2.TabIndex = 8;
+            this.button_2.TabIndex = 1;
             this.button_2.UseVisualStyleBackColor = true;
             this.button_2.Click += new System.EventHandler(this.button_2_Click);
             // 
@@ -65,7 +65,7 @@
             this.button_3.Margin = new System.Windows.Forms.Padding(4);
             this.button_3.Name = "button_3";
             this.button_3.Size = new System.Drawing.Size(99, 31);
-            this.button_3.TabIndex = 7;
+            this.button_3.TabIndex = 2;
             this.button_3.UseVisualStyleBackColor = true;
             this.button_3.Click += new System.EventHandler(this.button_3_Click);
             // 
@@ -83,7 +83,7 @@
             this.counter1.Name = "counter1";
             this.counter1.ReadOnly = true;
             this.counter1.Size = new System.Drawing.Size(116, 22);
-            this.counter1.TabIndex = 207;
+            this.counter1.TabIndex = 0;
             this.counter1.ValueChanged += new System.EventHandler(this.counter1_ValueChanged);
             // 
             // label_counter1
@@ -114,7 +114,7 @@
             this.label_borrowedcounter.Text = "0";
             this.label_borrowedcounter.Visible = false;
             // 
-            // MyMessageBox
+            // frm_message_box
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -130,7 +130,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "MyMessageBox";
+            this.Name = "frm_message_box";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Messagebox";
             ((System.ComponentModel.ISupportInitialize)(this.counter1)).EndInit();

@@ -127,6 +127,7 @@
             this.txt_membernum.ReadOnly = true;
             this.txt_membernum.Size = new System.Drawing.Size(183, 22);
             this.txt_membernum.TabIndex = 1;
+            this.txt_membernum.TabStop = false;
             // 
             // txt_firstName
             // 
@@ -134,7 +135,7 @@
             this.txt_firstName.Margin = new System.Windows.Forms.Padding(4);
             this.txt_firstName.Name = "txt_firstName";
             this.txt_firstName.Size = new System.Drawing.Size(183, 22);
-            this.txt_firstName.TabIndex = 2;
+            this.txt_firstName.TabIndex = 3;
             // 
             // label_firstName
             // 
@@ -152,7 +153,7 @@
             this.txt_lastName.Margin = new System.Windows.Forms.Padding(4);
             this.txt_lastName.Name = "txt_lastName";
             this.txt_lastName.Size = new System.Drawing.Size(183, 22);
-            this.txt_lastName.TabIndex = 3;
+            this.txt_lastName.TabIndex = 4;
             // 
             // label_lastName
             // 
@@ -181,7 +182,7 @@
             this.txt_mobile.Margin = new System.Windows.Forms.Padding(4);
             this.txt_mobile.Name = "txt_mobile";
             this.txt_mobile.Size = new System.Drawing.Size(183, 22);
-            this.txt_mobile.TabIndex = 5;
+            this.txt_mobile.TabIndex = 12;
             // 
             // label_mobile
             // 
@@ -199,7 +200,7 @@
             this.txt_telephone.Margin = new System.Windows.Forms.Padding(4);
             this.txt_telephone.Name = "txt_telephone";
             this.txt_telephone.Size = new System.Drawing.Size(183, 22);
-            this.txt_telephone.TabIndex = 7;
+            this.txt_telephone.TabIndex = 10;
             // 
             // label_telephone
             // 
@@ -217,7 +218,7 @@
             this.txt_email.Margin = new System.Windows.Forms.Padding(4);
             this.txt_email.Name = "txt_email";
             this.txt_email.Size = new System.Drawing.Size(401, 22);
-            this.txt_email.TabIndex = 6;
+            this.txt_email.TabIndex = 15;
             // 
             // label_email
             // 
@@ -236,7 +237,7 @@
             this.txt_address2.Margin = new System.Windows.Forms.Padding(4);
             this.txt_address2.Name = "txt_address2";
             this.txt_address2.Size = new System.Drawing.Size(401, 22);
-            this.txt_address2.TabIndex = 9;
+            this.txt_address2.TabIndex = 6;
             // 
             // label_address2
             // 
@@ -254,7 +255,7 @@
             this.txt_address1.Margin = new System.Windows.Forms.Padding(4);
             this.txt_address1.Name = "txt_address1";
             this.txt_address1.Size = new System.Drawing.Size(401, 22);
-            this.txt_address1.TabIndex = 8;
+            this.txt_address1.TabIndex = 5;
             // 
             // label_address1
             // 
@@ -283,7 +284,7 @@
             this.txt_emerg_telephone.Margin = new System.Windows.Forms.Padding(4);
             this.txt_emerg_telephone.Name = "txt_emerg_telephone";
             this.txt_emerg_telephone.Size = new System.Drawing.Size(183, 22);
-            this.txt_emerg_telephone.TabIndex = 18;
+            this.txt_emerg_telephone.TabIndex = 22;
             // 
             // label_emerg_telephone
             // 
@@ -301,7 +302,7 @@
             this.txt_allergies.Margin = new System.Windows.Forms.Padding(4);
             this.txt_allergies.Name = "txt_allergies";
             this.txt_allergies.Size = new System.Drawing.Size(183, 22);
-            this.txt_allergies.TabIndex = 22;
+            this.txt_allergies.TabIndex = 18;
             this.txt_allergies.Text = "none";
             // 
             // label_allergies
@@ -320,7 +321,7 @@
             this.txt_emerg_relation.Margin = new System.Windows.Forms.Padding(4);
             this.txt_emerg_relation.Name = "txt_emerg_relation";
             this.txt_emerg_relation.Size = new System.Drawing.Size(183, 22);
-            this.txt_emerg_relation.TabIndex = 17;
+            this.txt_emerg_relation.TabIndex = 21;
             // 
             // label_emerg_relation
             // 
@@ -338,7 +339,7 @@
             this.txt_doctor_phone.Margin = new System.Windows.Forms.Padding(4);
             this.txt_doctor_phone.Name = "txt_doctor_phone";
             this.txt_doctor_phone.Size = new System.Drawing.Size(88, 22);
-            this.txt_doctor_phone.TabIndex = 21;
+            this.txt_doctor_phone.TabIndex = 17;
             // 
             // label_doctor_phone
             // 
@@ -356,7 +357,7 @@
             this.txt_doctor_name.Margin = new System.Windows.Forms.Padding(4);
             this.txt_doctor_name.Name = "txt_doctor_name";
             this.txt_doctor_name.Size = new System.Drawing.Size(87, 22);
-            this.txt_doctor_name.TabIndex = 20;
+            this.txt_doctor_name.TabIndex = 16;
             // 
             // label_doctor_name
             // 
@@ -374,7 +375,7 @@
             this.txt_emerg_name.Margin = new System.Windows.Forms.Padding(4);
             this.txt_emerg_name.Name = "txt_emerg_name";
             this.txt_emerg_name.Size = new System.Drawing.Size(183, 22);
-            this.txt_emerg_name.TabIndex = 16;
+            this.txt_emerg_name.TabIndex = 20;
             // 
             // label_emerg_name
             // 
@@ -392,7 +393,7 @@
             this.txt_emerg_mobile.Margin = new System.Windows.Forms.Padding(4);
             this.txt_emerg_mobile.Name = "txt_emerg_mobile";
             this.txt_emerg_mobile.Size = new System.Drawing.Size(183, 22);
-            this.txt_emerg_mobile.TabIndex = 19;
+            this.txt_emerg_mobile.TabIndex = 23;
             // 
             // label_emerg_mobile
             // 
@@ -423,7 +424,7 @@
             this.txt_dob.Mask = "00/00/0000";
             this.txt_dob.Name = "txt_dob";
             this.txt_dob.Size = new System.Drawing.Size(132, 22);
-            this.txt_dob.TabIndex = 4;
+            this.txt_dob.TabIndex = 2;
             this.txt_dob.ValidatingType = typeof(System.DateTime);
             // 
             // txt_medical_notes
@@ -434,7 +435,7 @@
             this.txt_medical_notes.Name = "txt_medical_notes";
             this.txt_medical_notes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txt_medical_notes.Size = new System.Drawing.Size(395, 116);
-            this.txt_medical_notes.TabIndex = 23;
+            this.txt_medical_notes.TabIndex = 19;
             this.txt_medical_notes.Text = resources.GetString("txt_medical_notes.Text");
             // 
             // label_medical_notes
@@ -453,7 +454,7 @@
             this.button_save.Margin = new System.Windows.Forms.Padding(4);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(108, 32);
-            this.button_save.TabIndex = 40;
+            this.button_save.TabIndex = 29;
             this.button_save.Text = "Save and Stay";
             this.button_save.UseVisualStyleBackColor = true;
             this.button_save.Click += new System.EventHandler(this.button_save_Click);
@@ -464,7 +465,7 @@
             this.button_cancel.Margin = new System.Windows.Forms.Padding(4);
             this.button_cancel.Name = "button_cancel";
             this.button_cancel.Size = new System.Drawing.Size(97, 32);
-            this.button_cancel.TabIndex = 41;
+            this.button_cancel.TabIndex = 24;
             this.button_cancel.Text = "Cancel";
             this.button_cancel.UseVisualStyleBackColor = true;
             this.button_cancel.Click += new System.EventHandler(this.button_cancel_Click);
@@ -475,7 +476,7 @@
             this.txt_county.Margin = new System.Windows.Forms.Padding(4);
             this.txt_county.Name = "txt_county";
             this.txt_county.Size = new System.Drawing.Size(183, 22);
-            this.txt_county.TabIndex = 11;
+            this.txt_county.TabIndex = 8;
             // 
             // label_county
             // 
@@ -493,7 +494,7 @@
             this.txt_city.Margin = new System.Windows.Forms.Padding(4);
             this.txt_city.Name = "txt_city";
             this.txt_city.Size = new System.Drawing.Size(183, 22);
-            this.txt_city.TabIndex = 10;
+            this.txt_city.TabIndex = 7;
             this.txt_city.TextChanged += new System.EventHandler(this.txt_city_TextChanged);
             // 
             // label_city
@@ -514,7 +515,7 @@
             this.txt_pc.Mask = ">LCCC 9LL";
             this.txt_pc.Name = "txt_pc";
             this.txt_pc.Size = new System.Drawing.Size(132, 22);
-            this.txt_pc.TabIndex = 12;
+            this.txt_pc.TabIndex = 9;
             // 
             // label_type
             // 
@@ -559,7 +560,7 @@
             this.cmb_type.Margin = new System.Windows.Forms.Padding(4);
             this.cmb_type.Name = "cmb_type";
             this.cmb_type.Size = new System.Drawing.Size(183, 24);
-            this.cmb_type.TabIndex = 13;
+            this.cmb_type.TabIndex = 11;
             // 
             // chk_active
             // 
@@ -571,6 +572,7 @@
             this.chk_active.Name = "chk_active";
             this.chk_active.Size = new System.Drawing.Size(76, 21);
             this.chk_active.TabIndex = 14;
+            this.chk_active.TabStop = false;
             this.chk_active.Text = "Active?";
             this.chk_active.UseVisualStyleBackColor = true;
             // 
@@ -580,7 +582,7 @@
             this.button_payments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_payments.Name = "button_payments";
             this.button_payments.Size = new System.Drawing.Size(93, 32);
-            this.button_payments.TabIndex = 55;
+            this.button_payments.TabIndex = 27;
             this.button_payments.Text = "Payments";
             this.button_payments.UseVisualStyleBackColor = true;
             this.button_payments.Click += new System.EventHandler(this.button_payments_Click);
@@ -591,7 +593,7 @@
             this.button_remove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_remove.Name = "button_remove";
             this.button_remove.Size = new System.Drawing.Size(89, 32);
-            this.button_remove.TabIndex = 56;
+            this.button_remove.TabIndex = 25;
             this.button_remove.Text = "Remove";
             this.button_remove.UseVisualStyleBackColor = true;
             this.button_remove.Click += new System.EventHandler(this.button_remove_Click);
@@ -601,7 +603,7 @@
             this.button_equipmentbooking.Location = new System.Drawing.Point(215, 494);
             this.button_equipmentbooking.Name = "button_equipmentbooking";
             this.button_equipmentbooking.Size = new System.Drawing.Size(150, 32);
-            this.button_equipmentbooking.TabIndex = 57;
+            this.button_equipmentbooking.TabIndex = 26;
             this.button_equipmentbooking.Text = "Equipment Booking";
             this.button_equipmentbooking.UseVisualStyleBackColor = true;
             this.button_equipmentbooking.Click += new System.EventHandler(this.button_equipmentbooking_Click);
@@ -660,7 +662,7 @@
             this.txt_sid.Margin = new System.Windows.Forms.Padding(4);
             this.txt_sid.Name = "txt_sid";
             this.txt_sid.Size = new System.Drawing.Size(183, 22);
-            this.txt_sid.TabIndex = 62;
+            this.txt_sid.TabIndex = 0;
             // 
             // label_sid
             // 
@@ -679,7 +681,7 @@
             this.txt_stcardnumber.Margin = new System.Windows.Forms.Padding(4);
             this.txt_stcardnumber.Name = "txt_stcardnumber";
             this.txt_stcardnumber.Size = new System.Drawing.Size(183, 22);
-            this.txt_stcardnumber.TabIndex = 64;
+            this.txt_stcardnumber.TabIndex = 1;
             // 
             // label_stcardnumber
             // 
@@ -697,7 +699,7 @@
             this.button_saveClose.Margin = new System.Windows.Forms.Padding(4);
             this.button_saveClose.Name = "button_saveClose";
             this.button_saveClose.Size = new System.Drawing.Size(116, 32);
-            this.button_saveClose.TabIndex = 66;
+            this.button_saveClose.TabIndex = 30;
             this.button_saveClose.Text = "Save and Close";
             this.button_saveClose.UseVisualStyleBackColor = true;
             this.button_saveClose.Click += new System.EventHandler(this.button_saveClose_Click);
@@ -708,7 +710,7 @@
             this.button_saveOpen.Margin = new System.Windows.Forms.Padding(4);
             this.button_saveOpen.Name = "button_saveOpen";
             this.button_saveOpen.Size = new System.Drawing.Size(141, 32);
-            this.button_saveOpen.TabIndex = 67;
+            this.button_saveOpen.TabIndex = 28;
             this.button_saveOpen.Text = "Save and Open List";
             this.button_saveOpen.UseVisualStyleBackColor = true;
             this.button_saveOpen.Click += new System.EventHandler(this.button_saveOpen_Click);
@@ -731,8 +733,7 @@
             this.rd_male.Location = new System.Drawing.Point(317, 419);
             this.rd_male.Name = "rd_male";
             this.rd_male.Size = new System.Drawing.Size(59, 21);
-            this.rd_male.TabIndex = 69;
-            this.rd_male.TabStop = true;
+            this.rd_male.TabIndex = 14;
             this.rd_male.Text = "Male";
             this.rd_male.UseVisualStyleBackColor = true;
             this.rd_male.Click += new System.EventHandler(this.rd_male_Checked);
@@ -743,7 +744,7 @@
             this.rd_female.Location = new System.Drawing.Point(234, 419);
             this.rd_female.Name = "rd_female";
             this.rd_female.Size = new System.Drawing.Size(75, 21);
-            this.rd_female.TabIndex = 70;
+            this.rd_female.TabIndex = 13;
             this.rd_female.TabStop = true;
             this.rd_female.Text = "Female";
             this.rd_female.UseVisualStyleBackColor = true;
@@ -757,6 +758,7 @@
             this.button_RestoreMedicalText.Name = "button_RestoreMedicalText";
             this.button_RestoreMedicalText.Size = new System.Drawing.Size(116, 17);
             this.button_RestoreMedicalText.TabIndex = 71;
+            this.button_RestoreMedicalText.TabStop = false;
             this.button_RestoreMedicalText.Text = "RESTORE DEFAULT TEXT";
             this.button_RestoreMedicalText.UseVisualStyleBackColor = true;
             this.button_RestoreMedicalText.Click += new System.EventHandler(this.button_RestoreMedicalText_Click);
@@ -833,6 +835,7 @@
             this.Controls.Add(this.txt_medical_notes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "frm_member";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Member Form";

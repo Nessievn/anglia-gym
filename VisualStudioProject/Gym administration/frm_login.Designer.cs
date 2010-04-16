@@ -43,7 +43,7 @@
             this.button_accept.Margin = new System.Windows.Forms.Padding(4);
             this.button_accept.Name = "button_accept";
             this.button_accept.Size = new System.Drawing.Size(133, 28);
-            this.button_accept.TabIndex = 0;
+            this.button_accept.TabIndex = 2;
             this.button_accept.Text = "Accept";
             this.button_accept.UseVisualStyleBackColor = true;
             this.button_accept.Click += new System.EventHandler(this.button_accept_Click);
@@ -56,7 +56,7 @@
             this.txt_username.Margin = new System.Windows.Forms.Padding(4);
             this.txt_username.Name = "txt_username";
             this.txt_username.Size = new System.Drawing.Size(132, 22);
-            this.txt_username.TabIndex = 1;
+            this.txt_username.TabIndex = 0;
             this.txt_username.Text = "admin@ad.min";
             // 
             // txt_password
@@ -67,7 +67,7 @@
             this.txt_password.Margin = new System.Windows.Forms.Padding(4);
             this.txt_password.Name = "txt_password";
             this.txt_password.Size = new System.Drawing.Size(132, 22);
-            this.txt_password.TabIndex = 2;
+            this.txt_password.TabIndex = 1;
             this.txt_password.Text = "admin";
             this.txt_password.UseSystemPasswordChar = true;
             // 
@@ -107,7 +107,7 @@
             this.button_cancel.Margin = new System.Windows.Forms.Padding(4);
             this.button_cancel.Name = "button_cancel";
             this.button_cancel.Size = new System.Drawing.Size(133, 28);
-            this.button_cancel.TabIndex = 6;
+            this.button_cancel.TabIndex = 3;
             this.button_cancel.Text = "Cancel";
             this.button_cancel.UseVisualStyleBackColor = true;
             this.button_cancel.Click += new System.EventHandler(this.button_cancel_Click);
