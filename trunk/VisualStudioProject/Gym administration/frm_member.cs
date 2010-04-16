@@ -400,6 +400,22 @@ namespace Gym_administration
             //vLoadBookedList();
         }
 
+        private void txt_city_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_city.Text == "Cambridge")
+                txt_county.Text = "Cambridgeshire";
+        }
+
+        private void button_RestoreMedicalText_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("This will delete all current medical notes!", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_member));
+                this.txt_medical_notes.Text = resources.GetString("txt_medical_notes.Text");
+            }
+        }
+
 
 
 

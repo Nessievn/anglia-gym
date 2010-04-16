@@ -288,11 +288,11 @@ namespace Gym_administration
 
             if (sMysqlDate == "0000-00-00")
             {
-                MessageBox.Show("The birth date is in incorrect format");
+                MessageBox.Show("The Date of Birth is in incorrect format!");
             }
             else if (Utils.bValidateEmail(this.Email) == false)
             {
-                MessageBox.Show("The E-Mail address is incorrect");
+                MessageBox.Show("The E-Mail address is incorrect!");
             }
             else
             {
@@ -307,7 +307,7 @@ namespace Gym_administration
 
                 if (clUser.SaveUser())
                 {
-                    if ((this.Id_member >-1)&&(this.FilePath != null) && (this.FilePath.Length > 1))
+                    if ((this.FilePath != null) && (this.FilePath.Length > 1))
                     {
                         this.Id_file = conn.uploadFileToDB(this.FilePath, this.FileName);
                     }
@@ -353,7 +353,7 @@ namespace Gym_administration
                 }
                 else
                 {
-                    MessageBox.Show("The e-mail already exists in the database!, please choose another one.");
+                    MessageBox.Show("The e-mail already exists in the database! Please choose another one.");
                     return false;
                 }
 
