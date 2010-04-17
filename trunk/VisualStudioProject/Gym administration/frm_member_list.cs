@@ -169,14 +169,13 @@ namespace Gym_administration
         private void button_copy_Click(object sender, EventArgs e)
         {
 
-            frm_message_box frmMessageBox = new frm_message_box();
-            string result = frmMessageBox.ShowBox(Utils.MB_CUST2, "Which delimiter would you like to use? \r\n Its normally a comma (,) ARU mail uses semicolon (;)", "Mass e-mail delimiter selection", ",", ";");
+            string[] saSelectedCellValues = new string[dg_members.SelectedCells.Count];
 
-
-            char delimiter = result[0];
+            
+            
             int counter = 0;
             string cellValue;
-            string[] saSelectedCellValues = new string[dg_members.SelectedCells.Count];
+            
 
             for (counter = 0; counter < (dg_members.SelectedCells.Count); counter++)
             {
@@ -186,7 +185,11 @@ namespace Gym_administration
                     saSelectedCellValues[counter] = cellValue;
             }
 
+            frm_message_box frmMessageBox = new frm_message_box();
+            string result = frmMessageBox.ShowBox(Utils.MB_CUST2, "Which delimiter would you like to use? \r\n Its normally a comma (,) ARU mail uses semicolon (;)", "Mass e-mail delimiter selection", ",", ";");
 
+            char delimiter = result[0];
+            
             Clipboard.SetData(DataFormats.Text, string.Join(delimiter+" ", saSelectedCellValues));
 
             if (Clipboard.ContainsData(DataFormats.Text))
