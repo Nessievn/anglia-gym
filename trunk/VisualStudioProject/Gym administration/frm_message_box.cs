@@ -1,4 +1,11 @@
-﻿/*  MyMessageBox myMessagebox; //put this before class constructor
+﻿/* References used:
+ * Creating a Custom Message Box
+ * http://www.codeguru.com/csharp/.net/net_general/eventsanddelegates/article.php/c13193
+ * Create Custom Dialog like MessageBox
+ * http://bytes.com/topic/c-sharp/answers/227206-create-custom-dialog-like-messagebox
+ * /
+
+/*  MyMessageBox myMessagebox; //put this before class constructor
  *  myMessageBox = new MyMessageBox(); //put this into frm_"yourclassname"_Load()
 //Then use it like this anywhere in class:
 //default title "Message" and default buttons yes/no

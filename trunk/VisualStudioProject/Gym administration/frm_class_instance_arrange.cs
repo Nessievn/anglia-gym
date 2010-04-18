@@ -84,7 +84,7 @@ namespace Gym_administration
             int borrowedAmount = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[2].Value.ToString());
             int id_equipment = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[3].Value.ToString());
             int id_eq_booking = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[4].Value.ToString());
-            // Show return dialog for confirming returned amount
+            // Show return dialog for confirming amount to be returned
             frm_message_box myMessageBox = new frm_message_box();
             string result = myMessageBox.ShowBox(Utils.MB_CUST4, "", "How many " + equipmentName + " would you like to return?", borrowedAmount.ToString());
 
@@ -96,7 +96,7 @@ namespace Gym_administration
             bool isNum = double.TryParse(result, out Num);
             if (isNum)
             {
-                // If the are actually something to return but not everything
+                // If the is something to return but not everything
                 if ((int.Parse(result) > 0) && (result != "Cancel"))
                 {
                     // Save the new amount into eq. booking
@@ -105,7 +105,7 @@ namespace Gym_administration
                     this.clEquipmentBooked.IsReturned = false;
                     this.clEquipmentBooked.SaveEquipmentBooking();
                 }
-                // If everything was returned
+                // If everything is to be returned
                 else
                 {
                     // Mark the booking as returned

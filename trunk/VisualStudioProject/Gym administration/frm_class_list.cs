@@ -63,7 +63,6 @@ namespace Gym_administration
             dg_classes.DataSource = itemsSource;
             dg_classes.AllowUserToAddRows = false;
             dg_classes.ReadOnly = true;
-            dg_classes.Columns[3].Width = 300;
         }
 
 
