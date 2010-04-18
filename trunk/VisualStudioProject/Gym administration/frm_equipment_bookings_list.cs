@@ -78,11 +78,11 @@ namespace Gym_administration
         {
             // Retrieve equipment booking details from grid row
             int id_eq_booking = int.Parse(dg_eqbookings.Rows[e.RowIndex].Cells[0].Value.ToString());
-            string name = dg_eqbookings.Rows[e.RowIndex].Cells[2].Value.ToString();
+            string equipmentName = dg_eqbookings.Rows[e.RowIndex].Cells[2].Value.ToString();
             int borrowedAmount = int.Parse(dg_eqbookings.Rows[e.RowIndex].Cells[3].Value.ToString());
             // Show return dialog for confirming amount to be returned
             frm_message_box myMessageBox = new frm_message_box();
-            string result = myMessageBox.ShowBox(Utils.MB_CUST4, "", "How many "+name+" would you like to return?",borrowedAmount.ToString());
+            string result = myMessageBox.ShowBox(Utils.MB_CUST4, "", "How many "+equipmentName+" would you like to return?",borrowedAmount.ToString());
 
             // Reference how to use TryParse
             //ref  http://social.msdn.microsoft.com/Forums/en-US/winforms/thread/84990ad2-5046-472b-b103-f862bfcd5dbc
@@ -92,7 +92,7 @@ namespace Gym_administration
  	        bool isNum = double.TryParse(result, out Num);
             if (isNum)
             {
-                // If the is something to return but not everything
+                // If there is something to return but not everything
                 if ((int.Parse(result) > 0) && (result != "Cancel"))
                 {
                     // Save the new amount into eq. booking
@@ -101,7 +101,7 @@ namespace Gym_administration
                     this.clEquipmentBooked.IsReturned = false;
                     this.clEquipmentBooked.SaveEquipmentBooking();
                 }
-                // If everything is to be returned
+                // If all amount of this booking is to be returned
                 else if (result != "Cancel")
                 {
                     // Mark the booking as returned

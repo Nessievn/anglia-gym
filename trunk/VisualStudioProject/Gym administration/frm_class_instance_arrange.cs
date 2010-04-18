@@ -78,13 +78,12 @@ namespace Gym_administration
           * @params [none] No input parameter. 
           * @return [none] No directly returned data. 
           */ 
-        private void dg_currentborrows_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dg_eqbookings_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             // Retrieve equipment booking details from grid row
-            string equipmentName = dg_currentborrows.Rows[e.RowIndex].Cells[1].Value.ToString();
-            int borrowedAmount = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[2].Value.ToString());
-            int id_equipment = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[3].Value.ToString());
-            int id_eq_booking = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[4].Value.ToString());
+            string equipmentName = dg_eqbookings.Rows[e.RowIndex].Cells[1].Value.ToString();
+            int borrowedAmount = int.Parse(dg_eqbookings.Rows[e.RowIndex].Cells[2].Value.ToString());
+            int id_eq_booking = int.Parse(dg_eqbookings.Rows[e.RowIndex].Cells[4].Value.ToString());
             // Show return dialog for confirming amount to be returned
             frm_message_box myMessageBox = new frm_message_box();
             string result = myMessageBox.ShowBox(Utils.MB_CUST4, "", "How many " + equipmentName + " would you like to return?", borrowedAmount.ToString());
@@ -97,7 +96,7 @@ namespace Gym_administration
             bool isNum = double.TryParse(result, out Num);
             if (isNum)
             {
-                // If the is something to return but not everything
+                // If there is something to return but not everything
                 if ((int.Parse(result) > 0) && (result != "Cancel"))
                 {
                     // Save the new amount into eq. booking
@@ -106,7 +105,7 @@ namespace Gym_administration
                     this.clEquipmentBooked.IsReturned = false;
                     this.clEquipmentBooked.SaveEquipmentBooking();
                 }
-                // If everything is to be returned
+                // If all amount of this booking is to be returned
                 else
                 {
                     // Mark the booking as returned
@@ -139,9 +138,9 @@ namespace Gym_administration
             // Launch query and load result into source
             itemsSource.DataSource = conn.dtGetTableForDataGrid(query);
             // Assign source to grid
-            dg_currentborrows.DataSource = itemsSource;
-            dg_currentborrows.AllowUserToAddRows = false;
-            dg_currentborrows.ReadOnly = true;
+            dg_eqbookings.DataSource = itemsSource;
+            dg_eqbookings.AllowUserToAddRows = false;
+            dg_eqbookings.ReadOnly = true;
         }
 
         /** 
@@ -173,9 +172,7 @@ namespace Gym_administration
             myItems = conn.alGetComboFromDB(query, "id_staff", "name");
             cmb_instructors.DisplayMember = "Value";
             cmb_instructors.DataSource = myItems;
-
-       
-            
+  
             // Set the options on form to be in par with the class instance
             if (this.clClassInstance.Id_class_instance != -1)
             {
@@ -240,7 +237,7 @@ namespace Gym_administration
             }
 
             
-            // Check if we found the user
+            // Check if the user was found
             if (this.clClassInstance.bCheckOverlap(sDate, id_room, id_staff, txt_starttime.Text, txt_endtime.Text))
                 MessageBox.Show("The class is overlapping with another class, please specify another date, room or instructor.");
             else
@@ -316,7 +313,7 @@ namespace Gym_administration
           */ 
         private void button_remove_Click(object sender, EventArgs e)   
         {
-            if (dg_currentborrows.RowCount > 0)
+            if (dg_eqbookings.RowCount > 0)
                 MessageBox.Show("You can't remove this class as the borrowed equipments has to be returned first!");
             else
             {
