@@ -54,6 +54,7 @@ namespace Gym_administration
         public void vloadDgPayments()
         {
             string query = "";
+            // Create mysql connection           
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();

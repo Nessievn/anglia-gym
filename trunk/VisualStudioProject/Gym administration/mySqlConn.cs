@@ -26,7 +26,7 @@ namespace Gym_administration
         string database;
         string user;
         string password;
-        string sMyConString;
+        string MyConString;
         MySqlConnection connection;
 
         /**
@@ -66,9 +66,9 @@ namespace Gym_administration
         *   The connection string returned 
         *
         */
-        public string sGetMyConnString()
+        public string GetMyConnString()
         {
-            return this.sMyConString;
+            return this.MyConString;
         }
 
         /**
@@ -77,10 +77,10 @@ namespace Gym_administration
         */
         public void connect()
         {
-            this.sMyConString = "server=" + this.server + ";User Id=" + this.user + ";password=" + this.password + ";Persist Security Info=True;database=" + this.database + ";";
+            this.MyConString = "server=" + this.server + ";User Id=" + this.user + ";password=" + this.password + ";Persist Security Info=True;database=" + this.database + ";";
             try
             {
-                this.connection = new MySqlConnection(this.sMyConString);
+                this.connection = new MySqlConnection(this.MyConString);
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
@@ -179,9 +179,9 @@ namespace Gym_administration
          * @return [int] The id of the last record inserted
          * or the update
          */
-        public int iInsert(string query)
+        public int InsertToDB(string query)
         {
-            string sLastInsertId = "-1";
+            string lastInsertId = "-1";
             // The connection is forced when its not connected
             if (this.connection.State.ToString() == "Closed")
             {
@@ -195,7 +195,7 @@ namespace Gym_administration
                 command.ExecuteNonQuery();
 
                 List<Hashtable> result = this.lhSqlQuery("SELECT LAST_INSERT_ID() id");
-                sLastInsertId = result[0]["id"].ToString();
+                lastInsertId = result[0]["id"].ToString();
                
             }
             catch (Exception ex)
@@ -205,7 +205,7 @@ namespace Gym_administration
             }
 
             this.connection.Close();
-            return int.Parse(sLastInsertId);
+            return int.Parse(lastInsertId);
         }
         /**
          * @desc This function executes the specified query on the database and
@@ -236,13 +236,13 @@ namespace Gym_administration
          * @params [string] query
          * @return [ArrayList] ArrayList containing the items 
          */
-        public ArrayList alGetComboFromDb(string query, string sFieldId, string sFieldValue)
+        public ArrayList alGetComboFromDB(string query, string fieldId, string fieldValue)
         {
             ArrayList alMyItems = new ArrayList();
 
             List<Hashtable> result = this.lhSqlQuery(query);
             foreach (Hashtable record in result)
-                alMyItems.Add(new DictionaryEntry(record[sFieldId].ToString(), record[sFieldValue].ToString()));
+                alMyItems.Add(new DictionaryEntry(record[fieldId].ToString(), record[fieldValue].ToString()));
 
             return alMyItems;
 
@@ -255,9 +255,9 @@ namespace Gym_administration
          * @return [int] The number of modified rows by the delete
          * or the update
          */
-        public int iDeleteOrUpdate(string query)
+        public int DeleteOrUpdate(string query)
         {
-            int iAffectedRows = 0;
+            int affectedRows = 0;
             // The connection is forced when its not connected
             if (this.connection.State.ToString() == "Closed")
             {
@@ -268,7 +268,7 @@ namespace Gym_administration
             {
                 MySqlCommand command = this.connection.CreateCommand();
                 command.CommandText = query;
-                iAffectedRows = command.ExecuteNonQuery();
+                affectedRows = command.ExecuteNonQuery();
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
@@ -285,7 +285,7 @@ namespace Gym_administration
             }
 
             this.connection.Close();
-            return iAffectedRows;
+            return affectedRows;
         }
 
         /**

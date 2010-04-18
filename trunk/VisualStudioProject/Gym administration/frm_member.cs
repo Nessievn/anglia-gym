@@ -21,6 +21,7 @@ namespace Gym_administration
         public void vLoadBookedList()
         {
 
+            // Create mysql connection            
             mySqlConn conn = new mySqlConn();    
             conn.connect();
             BindingSource itemsSource = new BindingSource();
@@ -123,7 +124,8 @@ namespace Gym_administration
                  txt_sid.Text = clMember.Sid;
                  txt_stcardnumber.Text = clMember.StudCardNumber;
 
-                 mySqlConn conn = new mySqlConn();
+                 // Create mysql connection            
+                mySqlConn conn = new mySqlConn();
                  conn.connect();
                  if (clMember.Gender == "male")
                  {
@@ -166,7 +168,13 @@ namespace Gym_administration
         }
 
 
-        private void button_save_Click(object sender, EventArgs e)
+        /** 
+          * @desc Executes when the "Save and Stay" button is clicked
+	      * If the saving is ok, then leaves the form open for further editing
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */
+        private void button_saveStay_Click(object sender, EventArgs e)
         {
 
             saveClick();
@@ -174,6 +182,12 @@ namespace Gym_administration
         }
 
 
+        /** 
+          * @desc Executes when the "Save and Close", "Save and Open List" or "Save and Stay" button is clicked
+	      * It copies user input into member object and then calls for saving the member
+          * @params [none] No input parameter. 
+          * @return [bool] Returns true in case of success. 
+          */
         private bool saveClick()
         {
             clMember.FirstName = txt_firstName.Text;
@@ -217,14 +231,19 @@ namespace Gym_administration
             frmPayments.ShowDialog();
         }
 
-
+        // Close this form
         private void button_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
 
-
+        /** 
+          * @desc Executes when the "Remove" button is clicked
+	      * It asks for confirmation and then calls for removing the member
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */
         private void button_remove_Click(object sender, EventArgs e)
         {
             if (dg_currentborrows.RowCount > 0)
@@ -242,9 +261,6 @@ namespace Gym_administration
 
         private void button_equipmentbooking_Click(object sender, EventArgs e)
         {
-
-
-
 
             frm_equipment_list frmEquipmentList = new frm_equipment_list(clMember.Id_member, this);
 
@@ -378,12 +394,24 @@ namespace Gym_administration
             }
         }
 
+        /** 
+          * @desc Executes when the "Save and Close" button is clicked
+	      * If the saving is ok, then closes the member form
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */
         private void button_saveClose_Click(object sender, EventArgs e)
         {
             if (this.saveClick())
                 this.Close();
         }
 
+        /** 
+          * @desc Executes when the "Save and Close" button is clicked
+	      * If the saving is ok, then closes the member form and opens up the member list
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */
         private void button_saveOpen_Click(object sender, EventArgs e)
         {
             if (this.saveClick())

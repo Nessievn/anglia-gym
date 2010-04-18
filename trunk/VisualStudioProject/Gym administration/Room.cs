@@ -103,7 +103,7 @@ namespace Gym_administration
                 // Create the delete query
                 string query = "DELETE FROM rooms WHERE id_room = '"+this.Id_room+"'";
                 // Launch delete query
-                int result = conn.iDeleteOrUpdate(query);
+                int result = conn.DeleteOrUpdate(query);
                 // Check deletion result
                 if (result > 0)
                 {
@@ -146,7 +146,7 @@ namespace Gym_administration
                     query = "insert into `gym`.`rooms` (`id_room`, `name`, `size`, `description`) values " +
                              "(NULL, '" + this.Name + "', '" + this.Size + "', '" + this.Description + "')";
                     // Launch insert query
-                    int id_room = conn.iInsert(query);
+                    int id_room = conn.InsertToDB(query);
                     // Check saving result
                     if (id_room != -1)
                     {
@@ -167,7 +167,7 @@ namespace Gym_administration
                     query = "UPDATE rooms SET name = '" + this.Name + "', size = '" + this.Size + "', description = '" + this.Description + "' " +
                              " WHERE id_room = '" + this.Id_room + "'";
                     // Launch update query
-                    int result = conn.iDeleteOrUpdate(query);
+                    int result = conn.DeleteOrUpdate(query);
                     // Check update reults
                     if (result > -1)
                     {

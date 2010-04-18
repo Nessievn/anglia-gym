@@ -111,7 +111,7 @@ namespace Gym_administration
           * @desc Constructor
           * Loads in the id_eq_booking into its corresponding field to open up a placeholder to
           * fill with data to modify an existing booking
-          * @params [int] id_Class identifies the class uniquely.
+          * @params [int] id_class identifies the class uniquely.
           * @return [none] No directly returned data.
           */
         public EquipmentBooked(int id_eq_booking)
@@ -141,7 +141,7 @@ namespace Gym_administration
                                      "(NULL, " + this.Id_staff + ", " + this.Id_member + ", " + this.Id_class_instance + ", '" + this.DateStart + "', '" + this.DateDue
                                      + "', " + this.Id_equipment + ", " + this.BorrowedAmount + ", NULL)";
                 // Launch save query
-                int id_eq_booking = conn.iInsert(query);
+                int id_eq_booking = conn.InsertToDB(query);
                 // Check saving result
                 if (id_eq_booking != -1)
                 {
@@ -161,7 +161,7 @@ namespace Gym_administration
                 // Create update query
                 query = "UPDATE `gym`.`equipment_bookings` SET `borrowedamount` = " + this.BorrowedAmount + ", `isreturned`= " + this.IsReturned + " WHERE id_eq_booking = '" + this.Id_eq_booking + "'";
                 // Launch update query
-                int result = conn.iDeleteOrUpdate(query);
+                int result = conn.DeleteOrUpdate(query);
                 // Check update result
                 if (result > 0)
                 {

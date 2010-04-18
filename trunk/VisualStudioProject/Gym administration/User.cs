@@ -116,7 +116,7 @@ namespace Gym_administration
 	    // Create update password query
             string query = "UPDATE users SET password = MD5('" + newPassword + "') WHERE id_user = '" + id_user + "' AND password = MD5('" + oldPassword + "')";
 	    // Launch update password query
-            int result = conn.iDeleteOrUpdate(query);
+            int result = conn.DeleteOrUpdate(query);
 	    // Check update result
             if (result > 0)
                 return true;
@@ -143,7 +143,7 @@ namespace Gym_administration
                 "values (NULL, '" + this.Login + "', MD5('" + this.Password +
                 "'), '" + this.Profile + "', '" + ((this.isActive) ? "1" : "0") + "')";
 		// Launch insert query
-                this.id_user = conn.iInsert(query);
+                this.id_user = conn.InsertToDB(query);
 		// Check result
                 if (this.id_user > 0)
                     return true;
@@ -155,7 +155,7 @@ namespace Gym_administration
                 string query = "UPDATE users SET login = '" + this.Login + "', active = '" + ((this.isActive) ? "1" : "0") + "' "+
                                 "WHERE id_user = '" + this.Id_user + "'";
 		// Launch update query
-                int result = conn.iDeleteOrUpdate(query);
+                int result = conn.DeleteOrUpdate(query);
 		// Check update result
                 if (result > 0)
                     return true;
@@ -177,7 +177,7 @@ namespace Gym_administration
 	    // Create delete query
             string query = "DELETE FROM users WHERE id_user = '" + this.Id_user + "'";
 	    // Check delet query result
-            int result = conn.iDeleteOrUpdate(query);
+            int result = conn.DeleteOrUpdate(query);
             if (result > 0)
                 return true;
             return false;

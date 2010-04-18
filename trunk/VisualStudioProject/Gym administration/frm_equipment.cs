@@ -28,7 +28,6 @@ namespace Gym_administration
             InitializeComponent();
             clEquipment = new Equipment();
             this.frmEqList = null;
-            button_vehicle.Show();
             rd_item.Checked = true;
             rd_item_Checked();
         }
@@ -39,7 +38,6 @@ namespace Gym_administration
             InitializeComponent();
             clEquipment = new Equipment();
             this.frmEqList = frmEqList;
-            button_vehicle.Show();
             rd_item.Checked = true;
             rd_item_Checked();
         }
@@ -58,7 +56,6 @@ namespace Gym_administration
             {
                 if (clEquipment.Type == "item")
                 {
-                    button_vehicle.Hide();
                     rd_item.Checked = true;
                     rd_item_Checked();
                     rd_set.Hide();
@@ -67,7 +64,6 @@ namespace Gym_administration
                 }
                 else if (clEquipment.Type == "set")
                 {
-                    button_vehicle.Hide();
                     rd_set.Checked = true;
                     rd_set_Checked();
                     rd_item.Hide();
@@ -110,7 +106,6 @@ namespace Gym_administration
             {
                 if (clEquipment.Type == "item")
                 {
-                    button_vehicle.Hide();
                     rd_item.Checked = true;
                     rd_item_Checked();
                     rd_set.Hide();
@@ -119,7 +114,6 @@ namespace Gym_administration
                 }
                 else if (clEquipment.Type == "set")
                 {
-                    button_vehicle.Hide();
                     rd_set.Checked = true;
                     rd_set_Checked();
 
@@ -224,8 +218,13 @@ namespace Gym_administration
         }
 
 
- 
-        //SAVE
+
+        /** 
+          * @desc Executes when the "Save" button is clicked
+	      * It copies user input into equipment object and then calls for saving the equipment
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */
         private void button_save_Click(object sender, EventArgs e)
         {
 
@@ -367,7 +366,12 @@ namespace Gym_administration
             this.Close();
         }
 
-        //REMOVE
+        /** 
+          * @desc Executes when the "Remove" button is clicked
+	      * It asks for confirmation and then calls for removing the Equipment.
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */ 
         private void button_remove_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -381,26 +385,6 @@ namespace Gym_administration
             }
         }
 
-private void button_vehicle_Click(object sender, EventArgs e)
-{
-
-    MessageBox.Show("vehicles are going to be here");
-    //DictionaryEntry de1 = (DictionaryEntry)cmb_item1.SelectedItem;
-    //MessageBox.Show(de1.Key.ToString());
-  /*  MessageBox.Show(cmb_item1.SelectedIndex.ToString() + "/n" + 
-        cmb_item2.SelectedIndex.ToString() + "/n" + 
-        cmb_item3.SelectedIndex.ToString() + "/n" + 
-        cmb_item4.SelectedIndex.ToString() + "/n" + 
-        cmb_item5.SelectedIndex.ToString());*/
-
-
-
-            
-
-    
-
-
-}
 
 private void rd_item_Checked(object sender, EventArgs e)
 {
@@ -409,7 +393,6 @@ private void rd_item_Checked(object sender, EventArgs e)
         private void rd_item_Checked()
         {
 
-            button_vehicle.Hide();
 
             label_iteminfo.Show();
             label_itemsetinfo.Hide();
@@ -451,8 +434,7 @@ private void rd_item_Checked(object sender, EventArgs e)
         private void rd_set_Checked()
         {
 
-            button_vehicle.Hide();
-
+            // Create mysql connection            
             mySqlConn conn = new mySqlConn();
             conn.connect();
 
@@ -462,11 +444,11 @@ private void rd_item_Checked(object sender, EventArgs e)
 
             // Loading Available Items
             string query = "SELECT id_equipment, name FROM equipment WHERE type = 'item' ORDER BY id_equipment";
-            ArrayList myItems1 = conn.alGetComboFromDb(query, "id_equipment", "name");
-            ArrayList myItems2 = conn.alGetComboFromDb(query, "id_equipment", "name");
-            ArrayList myItems3 = conn.alGetComboFromDb(query, "id_equipment", "name");
-            ArrayList myItems4 = conn.alGetComboFromDb(query, "id_equipment", "name");
-            ArrayList myItems5 = conn.alGetComboFromDb(query, "id_equipment", "name");
+            ArrayList myItems1 = conn.alGetComboFromDB(query, "id_equipment", "name");
+            ArrayList myItems2 = conn.alGetComboFromDB(query, "id_equipment", "name");
+            ArrayList myItems3 = conn.alGetComboFromDB(query, "id_equipment", "name");
+            ArrayList myItems4 = conn.alGetComboFromDB(query, "id_equipment", "name");
+            ArrayList myItems5 = conn.alGetComboFromDB(query, "id_equipment", "name");
 
             //cmb_item1.SelectedIndex = 0;
             DictionaryEntry dent = (DictionaryEntry)myItems1[0];

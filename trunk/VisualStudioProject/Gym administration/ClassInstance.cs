@@ -203,7 +203,7 @@ namespace Gym_administration
                 string saveClInstanceQuery = "insert into `gym`.`class_instance` (`id_class_instance`, `id_class`, `id_staff`, `date`, `start_time`, `end_time`, `frequency`, `id_room`) values " +
                                 "(NULL, '" + this.ClClass.Id_class + "', '" + this.Id_staff + "', '" + Utils.sGetMysqlDate(this.DateStart) + "', '" + this.StartTime + "', '" + this.EndTime + "', '" + this.Frequency + "', '" + this.ClRoom.Id_room + "');";
                 // Launch save query
-                int id_class_instance = conn.iInsert(saveClInstanceQuery);
+                int id_class_instance = conn.InsertToDB(saveClInstanceQuery);
                 // Check saving result
                 if (id_class_instance != -1)
                 {
@@ -222,7 +222,7 @@ namespace Gym_administration
                 string updateClInstanceQuery = "UPDATE class_instance SET id_staff= '" + this.Id_staff + "', date = '" + Utils.sGetMysqlDate(this.DateStart) + "', start_time = '" + this.StartTime + "', end_time = '" + this.EndTime + "', frequency = '" + this.Frequency + "', id_room = '" + this.ClRoom.Id_room + "' " +
                                 "WHERE id_class_instance = '" + this.Id_class_instance + "'";
                 // Launch update query
-                int result = conn.iDeleteOrUpdate(updateClInstanceQuery);
+                int result = conn.DeleteOrUpdate(updateClInstanceQuery);
                 // Check update result
                 if (result > 0)
                 {
@@ -255,8 +255,8 @@ namespace Gym_administration
                     // so append each set of booking values one after the other at the end of the query, separated by comma
                     sbQueryClassBooking.Append(string.Join(", ", aQueryClassBookingValues));
                     sbQueryClassBooking.Append(" ON DUPLICATE KEY UPDATE booking_date = booking_date");
-                    int iLastMbrId = conn.iInsert(sbQueryClassBooking.ToString());
-                    if (iLastMbrId != -1)
+                    int lastMemberId = conn.InsertToDB(sbQueryClassBooking.ToString());
+                    if (lastMemberId != -1)
                     {
                         MessageBox.Show("The attendant has been enrolled!");
                     }
@@ -280,7 +280,7 @@ namespace Gym_administration
                 // Create the delete query
                 string query = "DELETE FROM class_instance WHERE id_class_instance = '" + this.Id_class_instance + "'";
                 // Launch delete query
-                int result = conn.iDeleteOrUpdate(query);
+                int result = conn.DeleteOrUpdate(query);
                 // Check deletion result
                 if (result > 0)
                 {

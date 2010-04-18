@@ -29,6 +29,7 @@ namespace Gym_administration
 
         public void vLoadBookedList()
         {
+            // Create mysql connection            
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();

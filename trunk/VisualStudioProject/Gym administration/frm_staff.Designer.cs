@@ -39,7 +39,7 @@
             this.txt_city = new System.Windows.Forms.TextBox();
             this.label_city = new System.Windows.Forms.Label();
             this.button_cancel = new System.Windows.Forms.Button();
-            this.button_save = new System.Windows.Forms.Button();
+            this.button_saveStay = new System.Windows.Forms.Button();
             this.txt_medical_notes = new System.Windows.Forms.TextBox();
             this.label_medical_notes = new System.Windows.Forms.Label();
             this.txt_dob = new System.Windows.Forms.MaskedTextBox();
@@ -209,16 +209,16 @@
             this.button_cancel.UseVisualStyleBackColor = true;
             this.button_cancel.Click += new System.EventHandler(this.button_cancel_Click);
             // 
-            // button_save
+            // button_saveStay
             // 
-            this.button_save.Location = new System.Drawing.Point(618, 500);
-            this.button_save.Margin = new System.Windows.Forms.Padding(4);
-            this.button_save.Name = "button_save";
-            this.button_save.Size = new System.Drawing.Size(116, 32);
-            this.button_save.TabIndex = 29;
-            this.button_save.Text = "Save and Stay";
-            this.button_save.UseVisualStyleBackColor = true;
-            this.button_save.Click += new System.EventHandler(this.button_save_Click);
+            this.button_saveStay.Location = new System.Drawing.Point(618, 500);
+            this.button_saveStay.Margin = new System.Windows.Forms.Padding(4);
+            this.button_saveStay.Name = "button_saveStay";
+            this.button_saveStay.Size = new System.Drawing.Size(116, 32);
+            this.button_saveStay.TabIndex = 29;
+            this.button_saveStay.Text = "Save and Stay";
+            this.button_saveStay.UseVisualStyleBackColor = true;
+            this.button_saveStay.Click += new System.EventHandler(this.button_saveStay_Click);
             // 
             // txt_medical_notes
             // 
@@ -750,7 +750,7 @@
             this.Controls.Add(this.txt_city);
             this.Controls.Add(this.label_city);
             this.Controls.Add(this.button_cancel);
-            this.Controls.Add(this.button_save);
+            this.Controls.Add(this.button_saveStay);
             this.Controls.Add(this.txt_medical_notes);
             this.Controls.Add(this.label_medical_notes);
             this.Controls.Add(this.txt_dob);
@@ -812,7 +812,7 @@
         private System.Windows.Forms.TextBox txt_city;
         private System.Windows.Forms.Label label_city;
         private System.Windows.Forms.Button button_cancel;
-        private System.Windows.Forms.Button button_save;
+        private System.Windows.Forms.Button button_saveStay;
         private System.Windows.Forms.TextBox txt_medical_notes;
         private System.Windows.Forms.Label label_medical_notes;
         private System.Windows.Forms.MaskedTextBox txt_dob;

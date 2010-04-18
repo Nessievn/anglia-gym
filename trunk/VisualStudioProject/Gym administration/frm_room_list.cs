@@ -19,6 +19,7 @@ namespace Gym_administration
 
         private void button_search_Click(object sender, EventArgs e)
         {
+            // Create mysql connection           
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
@@ -44,6 +45,7 @@ namespace Gym_administration
 
         private void frm_room_list_Load(object sender, EventArgs e)
         {
+            // Create mysql connection            
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();

@@ -32,6 +32,13 @@ namespace Gym_administration
             }
         }
 
+
+        /** 
+          * @desc Executes when the "Save" button is clicked
+	      * It checks user input and then calls for saving the new room
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */
         private void button_save_Click(object sender, EventArgs e)
         {
             try
@@ -53,6 +60,12 @@ namespace Gym_administration
             clRoom.SaveRoom();
         }
 
+        /** 
+          * @desc Executes when the "Remove" button is clicked
+	      * It asks for confirmation and then calls for removing the room
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */
         private void button_remove_Click(object sender, EventArgs e)
         {
 

@@ -204,7 +204,7 @@ namespace Gym_administration
                 // Create the delete query
                 string query = "DELETE FROM equipment WHERE id_equipment = '" + this.Id_equipment + "'";
                 // Launch delete query
-                int result = conn.iDeleteOrUpdate(query);
+                int result = conn.DeleteOrUpdate(query);
                 // Check deletion result
                 if (result > 0)
                 {
@@ -249,7 +249,7 @@ namespace Gym_administration
                              + "', '" + this.AmountInSet1 + "', '" + this.AmountInSet2 + "', '" + this.AmountInSet3 + "', '" + this.AmountInSet4 + "', '" + this.AmountInSet5 + "')";
 
                     // Launch save query
-                    int id_equipment = conn.iInsert(saveEquipmentQuery);
+                    int id_equipment = conn.InsertToDB(saveEquipmentQuery);
                     // Check saving result
                     if (id_equipment != -1)
                     {
@@ -283,7 +283,7 @@ namespace Gym_administration
                                      + "', amountinset5 = '" + this.AmountInSet5 + "' "
                                  + " WHERE id_equipment = '" + this.Id_equipment + "'";
                     // Launch update query
-                    int result = conn.iDeleteOrUpdate(updateEquimentQuery);
+                    int result = conn.DeleteOrUpdate(updateEquimentQuery);
                     // Check update result
                     if (result > 0)
                     {
