@@ -82,11 +82,12 @@ namespace Gym_administration
             // Create mysql connection
             mySqlConn conn = new mySqlConn();
             conn.connect();
+            // Create query
             string query = "SELECT * FROM users WHERE id_user = '"+id_user.ToString()+"'";
             // Launch the query to return all fields from a single row of the USERS table
             List<Hashtable> lhResultset = conn.lhSqlQuery(query);
 
-            // Check if we found the User
+            // Check the user was found
             if ((int)lhResultset.Count > 0)
             {
                 // Fill in all user fields with table data

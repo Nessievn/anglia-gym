@@ -286,8 +286,6 @@
             this.Name = "frm_member_list";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Members List Form";
-            this.Load += new System.EventHandler(this.frm_member_list_Load);
-            this.Activated += new System.EventHandler(this.frm_member_list_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.dg_members)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

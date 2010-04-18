@@ -13,19 +13,7 @@ namespace Gym_administration
     {
         Staff stfStaff;
         EquipmentBooked clEquipmentBooked;
-
-        public void vLoadBookedList()
-        {
-            // Create mysql connection           
-            mySqlConn conn = new mySqlConn();
-            conn.connect();
-            BindingSource itemsSource = new BindingSource();
-            string query = "SELECT DISTINCT eb.date_due Due, e.name Name, eb.borrowedamount Amount, eb.id_equipment EqID, eb.id_eq_booking BkID FROM equipment e, equipment_bookings eb WHERE eb.id_staff = " + stfStaff.Id_staff + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY Due";
-            itemsSource.DataSource = conn.dtGetTableForDataGrid(query);
-            dg_currentborrows.DataSource = itemsSource;
-            dg_currentborrows.AllowUserToAddRows = false;
-            dg_currentborrows.ReadOnly = true;
-        }
+        frm_staff_list frmStaffList;
 
 
         public frm_staff()
@@ -36,9 +24,9 @@ namespace Gym_administration
             DateTime today = DateTime.Today;
             txt_contract_start.Text = String.Format("{0:dd-MM-yyyy}", today);
         }
-        public frm_staff(bool isFromStaffList)
+        public frm_staff(frm_staff_list frmStaffList)
         {
-
+            this.frmStaffList = frmStaffList;
             stfStaff = new Staff();
             InitializeComponent();
             button_saveOpen.Hide();
@@ -47,8 +35,9 @@ namespace Gym_administration
             txt_contract_start.Text = String.Format("{0:dd-MM-yyyy}", today);
         }
 
-        public frm_staff(int iStaffId)
+        public frm_staff(int iStaffId, frm_staff_list frmStaffList)
         {
+            this.frmStaffList = frmStaffList;
             InitializeComponent();
             button_equipmentbooking.Show();
             button_saveOpen.Hide();
@@ -85,6 +74,21 @@ namespace Gym_administration
                  txt_contract_finish.Text = stfStaff.SContractFinish;
             }
         }
+
+
+        public void vLoadBookedList()
+        {
+            // Create mysql connection           
+            mySqlConn conn = new mySqlConn();
+            conn.connect();
+            BindingSource itemsSource = new BindingSource();
+            string query = "SELECT DISTINCT eb.date_due Due, e.name Name, eb.borrowedamount Amount, eb.id_equipment EqID, eb.id_eq_booking BkID FROM equipment e, equipment_bookings eb WHERE eb.id_staff = " + stfStaff.Id_staff + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY Due";
+            itemsSource.DataSource = conn.dtGetTableForDataGrid(query);
+            dg_currentborrows.DataSource = itemsSource;
+            dg_currentborrows.AllowUserToAddRows = false;
+            dg_currentborrows.ReadOnly = true;
+        }
+
 
         private void button_cancel_Click(object sender, EventArgs e)
         {
@@ -144,6 +148,7 @@ namespace Gym_administration
         private void button_saveStay_Click(object sender, EventArgs e)
         {
             saveClick();
+            button_equipmentbooking.Show();
         }
 
         private void button_equipmentbooking_Click(object sender, EventArgs e)
@@ -210,7 +215,11 @@ namespace Gym_administration
         private void button_saveClose_Click(object sender, EventArgs e)
         {
             if (this.saveClick())
+            {
+                // Refresh the list in parent window and close this one
+                if (this.frmStaffList != null) this.frmStaffList.vLoadStaffList();
                 this.Close();
+            }
         }
 
         /** 
@@ -223,10 +232,9 @@ namespace Gym_administration
         {
             if (this.saveClick())
             {
-
                 this.Dispose();
-                frm_member_list frmMemberList = new frm_member_list();
-                frmMemberList.ShowDialog();
+                frm_staff_list frmStaffList = new frm_staff_list();
+                frmStaffList.ShowDialog();
             }
         }
 
