@@ -84,14 +84,14 @@
             this.txt_contract_finish = new System.Windows.Forms.MaskedTextBox();
             this.label_contract_finish = new System.Windows.Forms.Label();
             this.button_equipmentbooking = new System.Windows.Forms.Button();
-            this.dg_currentborrows = new System.Windows.Forms.DataGridView();
-            this.label_currentborrows = new System.Windows.Forms.Label();
+            this.dg_eqbookings = new System.Windows.Forms.DataGridView();
+            this.label_eqbookings = new System.Windows.Forms.Label();
             this.label_dateformat = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button_saveClose = new System.Windows.Forms.Button();
             this.button_saveOpen = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dg_currentborrows)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_eqbookings)).BeginInit();
             this.SuspendLayout();
             // 
             // cmb_position
@@ -638,33 +638,33 @@
             this.button_equipmentbooking.UseVisualStyleBackColor = true;
             this.button_equipmentbooking.Click += new System.EventHandler(this.button_equipmentbooking_Click);
             // 
-            // dg_currentborrows
+            // dg_eqbookings
             // 
-            this.dg_currentborrows.AllowUserToAddRows = false;
-            this.dg_currentborrows.AllowUserToDeleteRows = false;
-            this.dg_currentborrows.AllowUserToResizeColumns = false;
-            this.dg_currentborrows.AllowUserToResizeRows = false;
-            this.dg_currentborrows.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dg_currentborrows.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_currentborrows.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dg_currentborrows.Location = new System.Drawing.Point(229, 381);
-            this.dg_currentborrows.Margin = new System.Windows.Forms.Padding(4);
-            this.dg_currentborrows.Name = "dg_currentborrows";
-            this.dg_currentborrows.RowHeadersVisible = false;
-            this.dg_currentborrows.RowTemplate.Height = 24;
-            this.dg_currentborrows.Size = new System.Drawing.Size(193, 112);
-            this.dg_currentborrows.TabIndex = 31;
-            this.dg_currentborrows.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_currentborrows_CellDoubleClick);
+            this.dg_eqbookings.AllowUserToAddRows = false;
+            this.dg_eqbookings.AllowUserToDeleteRows = false;
+            this.dg_eqbookings.AllowUserToResizeColumns = false;
+            this.dg_eqbookings.AllowUserToResizeRows = false;
+            this.dg_eqbookings.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dg_eqbookings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_eqbookings.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dg_eqbookings.Location = new System.Drawing.Point(229, 381);
+            this.dg_eqbookings.Margin = new System.Windows.Forms.Padding(4);
+            this.dg_eqbookings.Name = "dg_eqbookings";
+            this.dg_eqbookings.RowHeadersVisible = false;
+            this.dg_eqbookings.RowTemplate.Height = 24;
+            this.dg_eqbookings.Size = new System.Drawing.Size(193, 112);
+            this.dg_eqbookings.TabIndex = 31;
+            this.dg_eqbookings.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_eqbookings_CellDoubleClick);
             // 
-            // label_currentborrows
+            // label_eqbookings
             // 
-            this.label_currentborrows.AutoSize = true;
-            this.label_currentborrows.Location = new System.Drawing.Point(226, 360);
-            this.label_currentborrows.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label_currentborrows.Name = "label_currentborrows";
-            this.label_currentborrows.Size = new System.Drawing.Size(204, 17);
-            this.label_currentborrows.TabIndex = 34;
-            this.label_currentborrows.Text = "Currently Borrowed Equipment:";
+            this.label_eqbookings.AutoSize = true;
+            this.label_eqbookings.Location = new System.Drawing.Point(226, 360);
+            this.label_eqbookings.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_eqbookings.Name = "label_eqbookings";
+            this.label_eqbookings.Size = new System.Drawing.Size(204, 17);
+            this.label_eqbookings.TabIndex = 34;
+            this.label_eqbookings.Text = "Currently Borrowed Equipment:";
             // 
             // label_dateformat
             // 
@@ -728,8 +728,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label_dateformat);
-            this.Controls.Add(this.label_currentborrows);
-            this.Controls.Add(this.dg_currentborrows);
+            this.Controls.Add(this.label_eqbookings);
+            this.Controls.Add(this.dg_eqbookings);
             this.Controls.Add(this.button_equipmentbooking);
             this.Controls.Add(this.txt_contract_finish);
             this.Controls.Add(this.label_contract_finish);
@@ -792,8 +792,7 @@
             this.Name = "frm_staff";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gym Staff Form";
-            this.Load += new System.EventHandler(this.frm_staff_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dg_currentborrows)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_eqbookings)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -857,8 +856,8 @@
         private System.Windows.Forms.MaskedTextBox txt_contract_finish;
         private System.Windows.Forms.Label label_contract_finish;
         private System.Windows.Forms.Button button_equipmentbooking;
-        private System.Windows.Forms.DataGridView dg_currentborrows;
-        private System.Windows.Forms.Label label_currentborrows;
+        private System.Windows.Forms.DataGridView dg_eqbookings;
+        private System.Windows.Forms.Label label_eqbookings;
         private System.Windows.Forms.Label label_dateformat;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

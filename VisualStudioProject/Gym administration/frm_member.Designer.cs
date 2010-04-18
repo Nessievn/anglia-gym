@@ -80,8 +80,8 @@
             this.button_payments = new System.Windows.Forms.Button();
             this.button_remove = new System.Windows.Forms.Button();
             this.button_equipmentbooking = new System.Windows.Forms.Button();
-            this.dg_currentborrows = new System.Windows.Forms.DataGridView();
-            this.label_currentborrows = new System.Windows.Forms.Label();
+            this.dg_eqbookings = new System.Windows.Forms.DataGridView();
+            this.label_eqbookings = new System.Windows.Forms.Label();
             this.label_dateformat = new System.Windows.Forms.Label();
             this.label_emailunique = new System.Windows.Forms.Label();
             this.txt_sid = new System.Windows.Forms.TextBox();
@@ -94,7 +94,7 @@
             this.rd_male = new System.Windows.Forms.RadioButton();
             this.rd_female = new System.Windows.Forms.RadioButton();
             this.button_RestoreMedicalText = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dg_currentborrows)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_eqbookings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -608,33 +608,33 @@
             this.button_equipmentbooking.UseVisualStyleBackColor = true;
             this.button_equipmentbooking.Click += new System.EventHandler(this.button_equipmentbooking_Click);
             // 
-            // dg_currentborrows
+            // dg_eqbookings
             // 
-            this.dg_currentborrows.AllowUserToAddRows = false;
-            this.dg_currentborrows.AllowUserToDeleteRows = false;
-            this.dg_currentborrows.AllowUserToResizeColumns = false;
-            this.dg_currentborrows.AllowUserToResizeRows = false;
-            this.dg_currentborrows.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dg_currentborrows.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_currentborrows.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dg_currentborrows.Location = new System.Drawing.Point(662, 35);
-            this.dg_currentborrows.Margin = new System.Windows.Forms.Padding(4);
-            this.dg_currentborrows.Name = "dg_currentborrows";
-            this.dg_currentborrows.RowHeadersVisible = false;
-            this.dg_currentborrows.RowTemplate.Height = 24;
-            this.dg_currentborrows.Size = new System.Drawing.Size(193, 118);
-            this.dg_currentborrows.TabIndex = 58;
-            this.dg_currentborrows.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_currentborrows_CellDoubleClick);
+            this.dg_eqbookings.AllowUserToAddRows = false;
+            this.dg_eqbookings.AllowUserToDeleteRows = false;
+            this.dg_eqbookings.AllowUserToResizeColumns = false;
+            this.dg_eqbookings.AllowUserToResizeRows = false;
+            this.dg_eqbookings.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dg_eqbookings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_eqbookings.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dg_eqbookings.Location = new System.Drawing.Point(662, 35);
+            this.dg_eqbookings.Margin = new System.Windows.Forms.Padding(4);
+            this.dg_eqbookings.Name = "dg_eqbookings";
+            this.dg_eqbookings.RowHeadersVisible = false;
+            this.dg_eqbookings.RowTemplate.Height = 24;
+            this.dg_eqbookings.Size = new System.Drawing.Size(193, 118);
+            this.dg_eqbookings.TabIndex = 58;
+            this.dg_eqbookings.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_eqbookings_CellDoubleClick);
             // 
-            // label_currentborrows
+            // label_eqbookings
             // 
-            this.label_currentborrows.AutoSize = true;
-            this.label_currentborrows.Location = new System.Drawing.Point(659, 11);
-            this.label_currentborrows.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label_currentborrows.Name = "label_currentborrows";
-            this.label_currentborrows.Size = new System.Drawing.Size(204, 17);
-            this.label_currentborrows.TabIndex = 59;
-            this.label_currentborrows.Text = "Currently Borrowed Equipment:";
+            this.label_eqbookings.AutoSize = true;
+            this.label_eqbookings.Location = new System.Drawing.Point(659, 11);
+            this.label_eqbookings.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_eqbookings.Name = "label_eqbookings";
+            this.label_eqbookings.Size = new System.Drawing.Size(204, 17);
+            this.label_eqbookings.TabIndex = 59;
+            this.label_eqbookings.Text = "Currently Borrowed Equipment:";
             // 
             // label_dateformat
             // 
@@ -780,8 +780,8 @@
             this.Controls.Add(this.label_sid);
             this.Controls.Add(this.label_emailunique);
             this.Controls.Add(this.label_dateformat);
-            this.Controls.Add(this.label_currentborrows);
-            this.Controls.Add(this.dg_currentborrows);
+            this.Controls.Add(this.label_eqbookings);
+            this.Controls.Add(this.dg_eqbookings);
             this.Controls.Add(this.button_equipmentbooking);
             this.Controls.Add(this.button_remove);
             this.Controls.Add(this.button_payments);
@@ -839,7 +839,7 @@
             this.Name = "frm_member";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Member Form";
-            ((System.ComponentModel.ISupportInitialize)(this.dg_currentborrows)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_eqbookings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -899,8 +899,8 @@
         private System.Windows.Forms.Button button_payments;
         private System.Windows.Forms.Button button_remove;
         private System.Windows.Forms.Button button_equipmentbooking;
-        private System.Windows.Forms.DataGridView dg_currentborrows;
-        private System.Windows.Forms.Label label_currentborrows;
+        private System.Windows.Forms.DataGridView dg_eqbookings;
+        private System.Windows.Forms.Label label_eqbookings;
         private System.Windows.Forms.Label label_dateformat;
         private System.Windows.Forms.Label label_emailunique;
         private System.Windows.Forms.TextBox txt_sid;

@@ -54,11 +54,11 @@
             this.label_currentmembers = new System.Windows.Forms.Label();
             this.button_remove = new System.Windows.Forms.Button();
             this.btn_equipment = new System.Windows.Forms.Button();
-            this.label_currentborrows = new System.Windows.Forms.Label();
-            this.dg_currentborrows = new System.Windows.Forms.DataGridView();
+            this.label_eqbookings = new System.Windows.Forms.Label();
+            this.dg_eqbookings = new System.Windows.Forms.DataGridView();
             this.label_dateformat = new System.Windows.Forms.Label();
             this.groupBox_membersenrolled.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dg_currentborrows)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_eqbookings)).BeginInit();
             this.SuspendLayout();
             // 
             // label_chooseclass
@@ -343,33 +343,33 @@
             this.btn_equipment.UseVisualStyleBackColor = true;
             this.btn_equipment.Click += new System.EventHandler(this.btn_equipment_Click);
             // 
-            // label_currentborrows
+            // label_eqbookings
             // 
-            this.label_currentborrows.AutoSize = true;
-            this.label_currentborrows.Location = new System.Drawing.Point(339, 313);
-            this.label_currentborrows.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label_currentborrows.Name = "label_currentborrows";
-            this.label_currentborrows.Size = new System.Drawing.Size(204, 17);
-            this.label_currentborrows.TabIndex = 117;
-            this.label_currentborrows.Text = "Currently Borrowed Equipment:";
+            this.label_eqbookings.AutoSize = true;
+            this.label_eqbookings.Location = new System.Drawing.Point(339, 313);
+            this.label_eqbookings.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_eqbookings.Name = "label_eqbookings";
+            this.label_eqbookings.Size = new System.Drawing.Size(204, 17);
+            this.label_eqbookings.TabIndex = 117;
+            this.label_eqbookings.Text = "Currently Borrowed Equipment:";
             // 
-            // dg_currentborrows
+            // dg_eqbookings
             // 
-            this.dg_currentborrows.AllowUserToAddRows = false;
-            this.dg_currentborrows.AllowUserToDeleteRows = false;
-            this.dg_currentborrows.AllowUserToResizeColumns = false;
-            this.dg_currentborrows.AllowUserToResizeRows = false;
-            this.dg_currentborrows.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dg_currentborrows.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_currentborrows.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dg_currentborrows.Location = new System.Drawing.Point(227, 334);
-            this.dg_currentborrows.Margin = new System.Windows.Forms.Padding(4);
-            this.dg_currentborrows.Name = "dg_currentborrows";
-            this.dg_currentborrows.RowHeadersVisible = false;
-            this.dg_currentborrows.RowTemplate.Height = 24;
-            this.dg_currentborrows.Size = new System.Drawing.Size(308, 89);
-            this.dg_currentborrows.TabIndex = 8;
-            this.dg_currentborrows.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_currentborrows_CellDoubleClick);
+            this.dg_eqbookings.AllowUserToAddRows = false;
+            this.dg_eqbookings.AllowUserToDeleteRows = false;
+            this.dg_eqbookings.AllowUserToResizeColumns = false;
+            this.dg_eqbookings.AllowUserToResizeRows = false;
+            this.dg_eqbookings.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dg_eqbookings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_eqbookings.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dg_eqbookings.Location = new System.Drawing.Point(227, 334);
+            this.dg_eqbookings.Margin = new System.Windows.Forms.Padding(4);
+            this.dg_eqbookings.Name = "dg_eqbookings";
+            this.dg_eqbookings.RowHeadersVisible = false;
+            this.dg_eqbookings.RowTemplate.Height = 24;
+            this.dg_eqbookings.Size = new System.Drawing.Size(308, 89);
+            this.dg_eqbookings.TabIndex = 8;
+            this.dg_eqbookings.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_eqbookings_CellDoubleClick);
             // 
             // label_dateformat
             // 
@@ -387,8 +387,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 484);
             this.Controls.Add(this.label_dateformat);
-            this.Controls.Add(this.label_currentborrows);
-            this.Controls.Add(this.dg_currentborrows);
+            this.Controls.Add(this.label_eqbookings);
+            this.Controls.Add(this.dg_eqbookings);
             this.Controls.Add(this.btn_equipment);
             this.Controls.Add(this.button_remove);
             this.Controls.Add(this.groupBox_membersenrolled);
@@ -419,7 +419,7 @@
             this.Load += new System.EventHandler(this.frm_class_instance_arrange_Load);
             this.groupBox_membersenrolled.ResumeLayout(false);
             this.groupBox_membersenrolled.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dg_currentborrows)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_eqbookings)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -453,8 +453,8 @@
         private System.Windows.Forms.Label label_currentmembers;
         private System.Windows.Forms.Button button_remove;
         private System.Windows.Forms.Button btn_equipment;
-        private System.Windows.Forms.Label label_currentborrows;
-        private System.Windows.Forms.DataGridView dg_currentborrows;
+        private System.Windows.Forms.Label label_eqbookings;
+        private System.Windows.Forms.DataGridView dg_eqbookings;
         private System.Windows.Forms.Label label_dateformat;
     }
 }

@@ -209,17 +209,17 @@ namespace Gym_administration
             // Launch query and load result into source
             itemsSource.DataSource = conn.dtGetTableForDataGrid(query);
             // Assign source to grid
-            dg_currentborrows.DataSource = itemsSource;
-            dg_currentborrows.AllowUserToAddRows = false;
-            dg_currentborrows.ReadOnly = true;
-            // Check for unreturned items, if there is any, then report ir to user!
-            if (dg_currentborrows.RowCount > 0)
+            dg_eqbookings.DataSource = itemsSource;
+            dg_eqbookings.AllowUserToAddRows = false;
+            dg_eqbookings.ReadOnly = true;
+            // Check for unreturned items, if there is any, then report ir to the user!
+            if (dg_eqbookings.RowCount > 0)
             {
                 int lateItems = 0;
                 int rowIndex;
-                for (rowIndex = 0; rowIndex < dg_currentborrows.RowCount; rowIndex++)
+                for (rowIndex = 0; rowIndex < dg_eqbookings.RowCount; rowIndex++)
                 {
-                    string eqDueDate = dg_currentborrows.Rows[rowIndex].Cells[0].Value.ToString();
+                    string eqDueDate = dg_eqbookings.Rows[rowIndex].Cells[0].Value.ToString();
 
                     DateTime today = DateTime.Today;
                     DateTime due = DateTime.Parse(eqDueDate);
@@ -321,7 +321,7 @@ namespace Gym_administration
         private void button_remove_Click(object sender, EventArgs e)
         {
             // If there are still equipments borrowed, the member can't be deleted!
-            if (dg_currentborrows.RowCount > 0)
+            if (dg_eqbookings.RowCount > 0)
                 MessageBox.Show("You can't remove this member as the borrowed equipments has to be returned first!");
             // else there are no outstanding borrowed equipments
             else
@@ -353,49 +353,60 @@ namespace Gym_administration
 
 
         /** 
-          * @desc Executes when a grid cell is double clicked on the member list
-	      * It loads in the member belonging to the cell
+          * @desc Executes when a grid cell is double clicked on the borrowed equipment list
+	      * It loads in the equipment return dialog belonging to the cell
           * @params [none] No input parameter. 
           * @return [none] No directly returned data. 
           */ 
-        private void dg_currentborrows_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dg_eqbookings_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Retrieve member details from grid row
-            string name = dg_currentborrows.Rows[e.RowIndex].Cells[1].Value.ToString();
-            int borrowedAmount = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[2].Value.ToString());
-            int id_eq_booking = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[4].Value.ToString());
-
+            // Retrieve equipment booking details from grid row
+            string equipmentName = dg_eqbookings.Rows[e.RowIndex].Cells[1].Value.ToString();
+            int borrowedAmount = int.Parse(dg_eqbookings.Rows[e.RowIndex].Cells[2].Value.ToString());
+            int id_eq_booking = int.Parse(dg_eqbookings.Rows[e.RowIndex].Cells[4].Value.ToString());
+            // Show return dialog for confirming amount to be returned
             frm_message_box myMessageBox = new frm_message_box();
-            string result = myMessageBox.ShowBox(Utils.MB_CUST4, "", "How many "+name+" would you like to return?",borrowedAmount.ToString());
+            string result = myMessageBox.ShowBox(Utils.MB_CUST4, "", "How many "+equipmentName+" would you like to return?",borrowedAmount.ToString());
 
+            // Reference how to use TryParse
+            //ref  http://social.msdn.microsoft.com/Forums/en-US/winforms/thread/84990ad2-5046-472b-b103-f862bfcd5dbc
 
- 
+            // Check the result of user input
  	        double Num;
  	        bool isNum = double.TryParse(result, out Num);
             if (isNum)
             {
-
+                // If there is something to return but not everything
                 if ((int.Parse(result) > 0) && (result != "Cancel"))
                 {
+                    // Save the new amount into eq. booking
                     this.clEquipmentBooked = new EquipmentBooked(id_eq_booking);
                     this.clEquipmentBooked.BorrowedAmount = int.Parse(result);
                     this.clEquipmentBooked.IsReturned = false;
                     this.clEquipmentBooked.SaveEquipmentBooking();
                 }
+                // If all amount of this booking is to be returned
                 else
                 {
+                    // Mark the booking as returned
                     this.clEquipmentBooked = new EquipmentBooked(id_eq_booking);
                     this.clEquipmentBooked.BorrowedAmount = 0;
                     this.clEquipmentBooked.IsReturned = true;
                     this.clEquipmentBooked.SaveEquipmentBooking();
 
                 }
+                // Refresh eq. booking list
                 this.vLoadBookedList();
             }
 
         }
 
-
+        /** 
+          * @desc Executes when rd_male radiobutton is checked
+          * Sets default male image as background image if no picture is loaded
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */
         private void rd_male_Checked(object sender, EventArgs e)
         {
             if (pictureBox1.Image == null)
@@ -405,6 +416,12 @@ namespace Gym_administration
             }
         }
 
+        /** 
+          * @desc Executes when rd_female radiobutton is checked
+          * Sets default female image as background image if no picture is loaded
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */
         private void rd_female_Checked(object sender, EventArgs e)
         {
             if (pictureBox1.Image == null)
@@ -416,27 +433,32 @@ namespace Gym_administration
 
 
 
-
-
-
-
+        /** 
+          * @desc Executes when pictureBox1 is double clicked
+          * Lets the user to load in a piture for the current member
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */
         private void pictureBox1_DoubleClick(object sender, EventArgs e)
         {
-
+            // Try to open an user selected image file
             try
             {
-
                 OpenFileDialog open = new OpenFileDialog();
 
                 open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp; *.png)|*.jpg; *.jpeg; *.gif; *.bmp; *.png";
 
                 if (open.ShowDialog() == DialogResult.OK)
                 {
-
+                    // Store the file's path
                     clMember.FilePath = open.FileName;
+                    // Create a fileinfo object for the file
                     FileInfo file = new FileInfo(clMember.FilePath);
+                    // Store file's name
                     clMember.FileName = file.Name;
+                    // Display the image on form
                     pictureBox1.Image = new Bitmap(clMember.FilePath);
+                    // Delete the default image from background
                     this.pictureBox1.BackgroundImage = null;
 
                 }
@@ -451,26 +473,36 @@ namespace Gym_administration
             }
         }
 
+        /** 
+          * @desc Executes mouse hovers over pictureBox1
+          * It lets the user remove the association between member and its current picture
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
         
             switch (e.Button) 
             {
-
+                // In case of right mouse click
                 case (MouseButtons.Right):
                     {
+                        // If there is a picture currently loaded in and there is an association between the picture and the member
                         if ((this.pictureBox1.Image != null) && (clMember.Id_file != null))
                         {
+                            // Ask user confirmation
                             frm_message_box frmMessageBox = new frm_message_box();
                             string result = frmMessageBox.ShowBox(Utils.MB_YESNO, "Would you like to delete the picture?", "Delete?");
-                            //MessageBox.Show(result);
                             if (result == "YES")
                             {
+                                // remove all association between member and current picture
                                 this.pictureBox1.Image = null;
                                 clMember.Id_file = "";
                                 clMember.FileName = "";
                                 clMember.FilePath = "";
+                                // Warn the user that he has to save the modifications
                                 MessageBox.Show("Image has been marked for deletion,\r\nyou must click on save for\r\nthe deletion to take effect!");
+                                // Display default images as per genders
                                 if (rd_male.Checked)
                                     this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_male_128;
                                 else
@@ -501,7 +533,7 @@ namespace Gym_administration
         }
 
         /** 
-          * @desc Executes when the "Save and Close" button is clicked
+          * @desc Executes when the "Save and Open" button is clicked
 	      * If the saving is ok, then closes the member form and opens up the member list
           * This button is never shown on a member form which was just called form a member list.
           * @params [none] No input parameter. 
@@ -517,13 +549,14 @@ namespace Gym_administration
             }
         }
 
-
+        // Fill in county if city iS Cambridge
         private void txt_city_TextChanged(object sender, EventArgs e)
         {
             if (txt_city.Text == "Cambridge")
                 txt_county.Text = "Cambridgeshire";
         }
 
+        // Restore default medical history text
         private void button_RestoreMedicalText_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("This will delete all current medical notes!\r\nAre you sure?\r\n\r\n(You must click on save for\r\nthe modifications to take effect!)", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
