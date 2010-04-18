@@ -31,8 +31,6 @@ namespace Gym_administration
             InitializeComponent();
         }
 
-
-
         /** 
           * @desc This method loads in every time the frm_class_list is instantiated
           * @params [none] No input parameter. 

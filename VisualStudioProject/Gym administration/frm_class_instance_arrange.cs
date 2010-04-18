@@ -37,6 +37,7 @@ namespace Gym_administration
             clClassInstance = new ClassInstance();
             // A class instance that doesn't exist yet, shouldn't enroll members
             button_enrollmembers.Enabled = false;
+            frmClassInstanceList = null;
         }
 
 
@@ -319,15 +320,15 @@ namespace Gym_administration
                 MessageBox.Show("You can't remove this class as the borrowed equipments has to be returned first!");
             else
             {
-
                 DialogResult result= MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result== DialogResult.Yes)
                 {
                     if (this.clClassInstance.RemoveClassInstance() == false)
                     {
+                        //???
                         MessageBox.Show("Please make sure that there aren't any class instances for this class.");
                     }
-                    frmClassInstanceList.vLoadDgClassList();
+                    if (frmClassInstanceList != null) frmClassInstanceList.vLoadDgClassList();
                     this.Close();
                 }
             }

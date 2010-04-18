@@ -293,6 +293,7 @@ namespace Gym_administration
                     return false;
                 }
             }
+            MessageBox.Show("There is no class id!");
             return false;
         }
     }

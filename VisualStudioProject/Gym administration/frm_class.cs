@@ -9,7 +9,6 @@ using System.Windows.Forms;
 
 namespace Gym_administration
 {
-
     /**
      * @desc Form Handler for classes. 
      * It is for adding or modifying a class.
@@ -19,13 +18,10 @@ namespace Gym_administration
      */    
     public partial class frm_class : Form
     {
-
         Class clClass;
 	    // Declare a reference to the class list, so this object can call its methods
         // This is basically for calling a refresh of the class list just before this form is closed
         frm_class_list frmClassList;
-
-
 
        /** 
         * @desc Default constructor for creating new class from main menu.
@@ -41,8 +37,8 @@ namespace Gym_administration
             this.frmClassList = null;
             // Hide the Remove button as a class not yet existing can't be removed
             button_remove.Hide();
+            rd_group.Checked = false;
         }
-
 
         /** 
          * @desc Constructor for creating new class, that was opened from class list.
@@ -55,28 +51,28 @@ namespace Gym_administration
         {
             InitializeComponent();
             clClass = new Class();
- 	    // Create reference to the parent form (frm_class_list)
+            // Create reference to the parent form (frm_class_list)
             this.frmClassList = frmClassList;
 	    // Hide the Remove button as a new class can't be removed
             button_remove.Hide();
+            rd_group.Checked = false;
         }
-
 
         /** 
           * @desc Constructor for editing an existing class.
           * (To be able to refresh class list after saving the edited class)
 	      * @params [int] id_class: identifies the class to modify
           * @params [frm_class_list] frmClassList: by taking this parameter there will be a reference
-          * to the class list so it can be refreshed after saving the new class
+          * to the class list so it can be refreshed after saving the edited class
           * @return [none] No directly returned data. 
           */
         public frm_class(int id_class, frm_class_list frmClassList)
         {
             InitializeComponent();
-            // Load in class details for specified class
-            clClass = new Class(id_class);
             // Create reference to the parent form (frm_class_list)
             this.frmClassList = frmClassList;
+            // Load in class details for specified class
+            clClass = new Class(id_class);
             // Check if there was such a class in the database
             if (clClass.Id_class == -1)
                 MessageBox.Show("The class could not be found");
@@ -90,17 +86,8 @@ namespace Gym_administration
                     rd_personal.Checked = true;
                 else
                     rd_group.Checked = true;
-                    
             }
         }
-
-
-        //Set radiobutton to default state
-        private void frm_class_Load(object sender, EventArgs e)
-        {
-            rd_group.Checked = false;
-        }
-
 
         /** 
           * @desc Executes when the "Save" button is clicked
@@ -111,14 +98,12 @@ namespace Gym_administration
         private void button_save_Click(object sender, EventArgs e)
         {
             string type = (rd_group.Checked)?"Group":"Personal";
-
             // Check user inputs and formats
             if(txt_classname.Text.Length == 0)
             {
                 MessageBox.Show("Please insert a name for the class.");
                 return;
             }
-
             clClass.Description = txt_classdesc.Text;
             clClass.Name = txt_classname.Text;
             clClass.Type = type;
@@ -127,7 +112,6 @@ namespace Gym_administration
             // Refresh the class list in previous form
             if (this.frmClassList != null) this.frmClassList.vLoadClassList();
             this.Close();
-
         }
 
         // Close this form

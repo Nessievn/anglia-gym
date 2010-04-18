@@ -22,12 +22,14 @@ namespace Gym_administration
         public frm_payments()
         {
             InitializeComponent();
+            vloadDgPayments();
         }
 
         public frm_payments(int id_member)
         {
             InitializeComponent();
             this.Id_member = id_member;
+            vloadDgPayments();
         }
 
         private void button_addpayments_Click(object sender, EventArgs e)
@@ -35,8 +37,6 @@ namespace Gym_administration
             if (this.Id_member == -1)
             {
                 frm_member_list frmMemberList = new frm_member_list(this);
-                //frmMemberList.MdiParent = this.MdiParent;
-                //frmMemberList.Show();
                 frmMemberList.ShowDialog();
             }
             else
@@ -44,11 +44,6 @@ namespace Gym_administration
                 frm_add_payment frmAddPayment = new frm_add_payment(this.Id_member);
                 frmAddPayment.ShowDialog();
             }
-        }
-
-        private void frm_payments_Load(object sender, EventArgs e)
-        {
-            //this.vloadDgPayments();
         }
 
         public void vloadDgPayments()
@@ -59,9 +54,9 @@ namespace Gym_administration
             conn.connect();
             BindingSource bSource = new BindingSource();
             if (this.Id_member == -1)
-                query = "SELECT m.id_member MID, m.member_number NO, CONCAT(m.lastName,', ', m.firstName) Name, p.amount Amount, p.details Details, DATE_FORMAT(p.date,'%d-%m-%Y') 'Date dd-mm-yyyy', CONCAT(s.lastName,', ', s.firstName) 'Received By', p.receiptnumber 'Receipt Number', p.paymentmethod Method FROM members m, payments p, staff s WHERE m.id_member = p.id_member AND s.id_staff = p.receivedby ORDER BY p.date";
+                query = "SELECT m.id_member MID, m.member_number NO, CONCAT(m.lastName,', ', m.firstName) Name, p.amount Amount, p.details Details, DATE_FORMAT(p.date,'%d-%m-%Y') 'Date dd-mm-yyyy', CONCAT(s.lastName,', ', s.firstName) 'Received By', p.receiptnumber 'Receipt Number', p.paymentmethod Method FROM members m, payments p, staff s WHERE m.id_member = p.id_member AND s.id_staff = p.receivedby ORDER BY m.id_member";
             else
-                query = "SELECT m.id_member MID, m.member_number NO, CONCAT(m.lastName,', ', m.firstName) Name, p.amount Amount, p.details Details, DATE_FORMAT(p.date,'%d-%m-%Y') 'Date dd-mm-yyyy', CONCAT(s.lastName,', ', s.firstName) 'Received By', p.receiptnumber 'Receipt Number', p.paymentmethod Method FROM members m, payments p, staff s WHERE m.id_member = p.id_member AND m.id_member = " + this.Id_member + "  AND s.id_staff = p.receivedby ORDER BY p.date";
+                query = "SELECT m.id_member MID, m.member_number NO, CONCAT(m.lastName,', ', m.firstName) Name, p.amount Amount, p.details Details, DATE_FORMAT(p.date,'%d-%m-%Y') 'Date dd-mm-yyyy', CONCAT(s.lastName,', ', s.firstName) 'Received By', p.receiptnumber 'Receipt Number', p.paymentmethod Method FROM members m, payments p, staff s WHERE m.id_member = p.id_member AND m.id_member = " + this.Id_member + "  AND s.id_staff = p.receivedby ORDER BY m.id_member";
             bSource.DataSource = conn.dtGetTableForDataGrid(query);
 
             dg_payments.DataSource = bSource;
@@ -74,10 +69,6 @@ namespace Gym_administration
             this.Close();
         }
 
-        private void frm_payments_Activated(object sender, EventArgs e)
-        {
-            this.vloadDgPayments();
-        }
     }
 }
 

@@ -17,17 +17,29 @@ namespace Gym_administration
         public frm_staff_list()
         {
             InitializeComponent();
+            vLoadStaffList();
         }
+
+        public void vLoadStaffList()
+        {
+            // Create mysql connection          
+            mySqlConn conn = new mySqlConn();
+            conn.connect();
+            BindingSource bSource = new BindingSource();
+            string query = "SELECT id_staff MID, firstName as 'First Name', lastName 'Last Name', DATE_FORMAT(birthdate,\"%d/%m/%Y\") DOB, email 'EMail' FROM staff s, users u WHERE u.id_user = s.id_user ORDER BY id_staff";
+            bSource.DataSource = conn.dtGetTableForDataGrid(query);
+            dg_staff.DataSource = bSource;
+            dg_staff.AllowUserToAddRows = false;
+            dg_staff.ReadOnly = true;
+        }
+
 
         private void dg_staff_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                string sStaffId = dg_staff.Rows[e.RowIndex].Cells[0].Value.ToString();
-                int iStfId = int.Parse(sStaffId);
-                frm_staff frm_stf = new frm_staff(iStfId);
-                //frm_stf.MdiParent = this.MdiParent;
-                //frm_stf.Show();
+                int id_staff = int.Parse(dg_staff.Rows[e.RowIndex].Cells[0].Value.ToString());
+                frm_staff frm_stf = new frm_staff(id_staff, this);
                 frm_stf.ShowDialog();
             }
             catch (Exception ex)
@@ -63,26 +75,6 @@ namespace Gym_administration
             dg_staff.ReadOnly = true;
         }
 
-
-        public void vLoadStaffList()
-        {
-            // Create mysql connection          
-            mySqlConn conn = new mySqlConn();
-            conn.connect();
-            BindingSource bSource = new BindingSource();
-            string query = "SELECT id_staff MID, firstName as 'First Name', lastName 'Last Name', DATE_FORMAT(birthdate,\"%d/%m/%Y\") DOB, email 'EMail' FROM staff s, users u WHERE u.id_user = s.id_user ORDER BY id_staff";
-            bSource.DataSource = conn.dtGetTableForDataGrid(query);
-            dg_staff.DataSource = bSource;
-            dg_staff.AllowUserToAddRows = false;
-            dg_staff.ReadOnly = true;
-        }
-
-        private void frm_staff_list_Load(object sender, EventArgs e)
-        {
-            //vLoadStaffList();
-        }
-
-
         private void button_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -90,17 +82,12 @@ namespace Gym_administration
 
         private void button_addstaffmember_Click(object sender, EventArgs e)
         {
-            bool isFromStaffList = true;
-            frm_staff frmStaff = new frm_staff(isFromStaffList);
-            //frmStaff.MdiParent = this.MdiParent;
-            //frmStaff.Show();
+            
+            frm_staff frmStaff = new frm_staff(this);
             frmStaff.ShowDialog();
         }
 
-        private void frm_staff_list_Activated(object sender, EventArgs e)
-        {
-            vLoadStaffList();
-        }
+
 
         
         

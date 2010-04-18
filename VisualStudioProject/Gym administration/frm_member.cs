@@ -35,46 +35,25 @@ using System.IO;
 
 namespace Gym_administration
 {
+    /**
+     * @desc Form Handler for members. 
+     * It is for adding or modifying a member.
+     * @params [none] Incoming parameters are described at the individual constructors.
+     * @return [none] No directly returned data. 
+     * Returns of public methods are described at the individual methods.
+     */   
     public partial class frm_member : Form
     {
         Member clMember;
         EquipmentBooked clEquipmentBooked;
+        frm_member_list frmMemberList;
 
-        
-
-        public void vLoadBookedList()
-        {
-
-            // Create mysql connection            
-            mySqlConn conn = new mySqlConn();    
-            conn.connect();
-            BindingSource itemsSource = new BindingSource();
-            pictureBox1.Image = null;
-            string query = "SELECT DISTINCT eb.date_due Due, e.name Name, eb.borrowedamount Amount, eb.id_equipment EqID, eb.id_eq_booking BkID FROM equipment e, equipment_bookings eb WHERE eb.id_member = " + clMember.Id_member + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY Due";
-            itemsSource.DataSource = conn.dtGetTableForDataGrid(query);
-            dg_currentborrows.DataSource = itemsSource;
-            dg_currentborrows.AllowUserToAddRows = false;
-            dg_currentborrows.ReadOnly = true;
-
-            if (dg_currentborrows.RowCount > 0)
-            {
-                int lateItems = 0;
-                int rowIndex;
-                for (rowIndex = 0; rowIndex < dg_currentborrows.RowCount; rowIndex++) 
-                {
-                    string eqDueDate = dg_currentborrows.Rows[rowIndex].Cells[0].Value.ToString();
-
-                    DateTime today = DateTime.Today;
-                    DateTime due = DateTime.Parse(eqDueDate);
-                    int result = DateTime.Compare(today, due);
-                    if (result > 0)
-                        lateItems++;
-                }
-                if (lateItems>0)
-                    MessageBox.Show("This persom has "+lateItems+" late, unreturned item(s).");
-            }
-        }
-
+        /** 
+         * @desc Default constructor for creating new member from main menu.
+         * This is for loading from main menu, 
+         * @params [none] No input parameter. 
+         * @return [none] No directly returned data. 
+         */ 
         public frm_member()
         {
 
@@ -82,8 +61,13 @@ namespace Gym_administration
             InitializeComponent();
             txt_membernum.Text = Utils.sGenerateNewMemberNumber();
             txt_membernum.ReadOnly = true;
+            // Members who don't yet exist can't book equipment
+            // This will be available once the "Save and Stay" is executed successfully
             button_equipmentbooking.Hide();
+            // Members who don't yet exist can't book equipment
+            // This will be available once the "Save and Stay" is executed successfully
             button_payments.Hide();
+            // Members who don't yet exist can't be deleted
             button_remove.Hide();
             clMember.Id_file = "";
             cmb_type.SelectedIndex = 0;
@@ -92,36 +76,63 @@ namespace Gym_administration
             rd_male.Checked = true;
         }
 
-        public frm_member(bool isFromMemberList)
+        /** 
+          * @desc Constructor for creating new member, that was opened from member list.
+          * (To be able to refresh member list after saving the new member)
+          * @params [frm_member_list] frmMemberList: by taking this parameter there will be a reference
+          * to the member list so it can be refreshed after saving the new member
+          * @return [none] No directly returned data. 
+          */
+        public frm_member(frm_member_list frmMemberList)
         {
-
+            // Create reference to the parent form
+            this.frmMemberList = frmMemberList;
+            // create new member object
             clMember = new Member();
             InitializeComponent();
             txt_membernum.Text = Utils.sGenerateNewMemberNumber();
             txt_membernum.ReadOnly = true;
+            // equipmentbooking, add payments and remove member buttons are hidden until saving (creating) the member
             button_equipmentbooking.Hide();
             button_payments.Hide();
             button_remove.Hide();
+            // As this was opened from a member list there is no need to open a new one after closing
             button_saveOpen.Hide();
             clMember.Id_file = "";
+            // Set a default type (Full time student)
             cmb_type.SelectedIndex = 0;
-            this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_male_128;
+            // Set default gender and image
             rd_male.Checked = true;
-        }
-        
-        public frm_member(int id_member)
-        {
+            this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_male_128;
             
- 
+        }
+
+        /** 
+          * @desc Constructor for editing an existing member.
+          * (To be able to refresh member list after saving the edited member)
+	      * @params [int] id_member: identifies the member to modify
+          * @params [frm_member_list] frmMemberList: by taking this parameter there will be a reference
+          * to the member list so it can be refreshed after saving the edited member
+          * @return [none] No directly returned data. 
+          */        
+        public frm_member(int id_member, frm_member_list frmMemberList)
+        {
             InitializeComponent();
-            button_equipmentbooking.Show();
-            button_saveOpen.Hide();
+            // Create reference to the parent form
+            this.frmMemberList = frmMemberList;
+            // Load in member details for specified member
             clMember = new Member(id_member);
+            
+            button_equipmentbooking.Show();
+            button_payments.Show();
+            button_remove.Show();
+            button_saveOpen.Hide();
+
             if (clMember.Id_member < 1)
                 MessageBox.Show("The member could not be found");
             else
             {
-
+                // If the member was found, load in all member details into member object from database
                 vLoadBookedList();
                  txt_firstName.Text = clMember.FirstName;
                  txt_lastName.Text = clMember.LastName;
@@ -151,6 +162,8 @@ namespace Gym_administration
                  // Create mysql connection            
                 mySqlConn conn = new mySqlConn();
                  conn.connect();
+                // If there is a corresponing picture for this member, then load it in,
+                // else show default image, depending on gender
                  if (clMember.Gender == "male")
                  {
                      rd_male.Checked = true;
@@ -183,18 +196,46 @@ namespace Gym_administration
 
 
 
-
-
-
-        private void frm_member_Load(object sender, EventArgs e)
+        public void vLoadBookedList()
         {
-            //Startup load
+
+            // Create mysql connection            
+            mySqlConn conn = new mySqlConn();
+            conn.connect();
+            // Create source for grid
+            BindingSource itemsSource = new BindingSource();
+            // Create query
+            string query = "SELECT DISTINCT eb.date_due Due, e.name Name, eb.borrowedamount Amount, eb.id_equipment EqID, eb.id_eq_booking BkID FROM equipment e, equipment_bookings eb WHERE eb.id_member = " + clMember.Id_member + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY Due";
+            // Launch query and load result into source
+            itemsSource.DataSource = conn.dtGetTableForDataGrid(query);
+            // Assign source to grid
+            dg_currentborrows.DataSource = itemsSource;
+            dg_currentborrows.AllowUserToAddRows = false;
+            dg_currentborrows.ReadOnly = true;
+            // Check for unreturned items, if there is any, then report ir to user!
+            if (dg_currentborrows.RowCount > 0)
+            {
+                int lateItems = 0;
+                int rowIndex;
+                for (rowIndex = 0; rowIndex < dg_currentborrows.RowCount; rowIndex++)
+                {
+                    string eqDueDate = dg_currentborrows.Rows[rowIndex].Cells[0].Value.ToString();
+
+                    DateTime today = DateTime.Today;
+                    DateTime due = DateTime.Parse(eqDueDate);
+                    int result = DateTime.Compare(today, due);
+                    if (result > 0)
+                        lateItems++;
+                }
+                if (lateItems > 0)
+                    MessageBox.Show("This persom has " + lateItems + " late, unreturned item(s).");
+            }
         }
 
 
         /** 
           * @desc Executes when the "Save and Stay" button is clicked
-	      * If the saving is ok, then leaves the form open for further editing
+	      * It calls for saving, then leaves the form open for further editing
           * @params [none] No input parameter. 
           * @return [none] No directly returned data. 
           */
@@ -202,6 +243,9 @@ namespace Gym_administration
         {
 
             saveClick();
+            button_equipmentbooking.Show();
+            button_payments.Show();
+            button_remove.Show();
 
         }
 
@@ -214,6 +258,7 @@ namespace Gym_administration
           */
         private bool saveClick()
         {
+            // Copy all form fields into member object fields
             clMember.FirstName = txt_firstName.Text;
             clMember.LastName = txt_lastName.Text;
             clMember.IsActive = (chk_active.Checked) ? true : false;
@@ -243,19 +288,24 @@ namespace Gym_administration
                 clMember.Gender = "male";
             else
                 clMember.Gender = "female";
-
+            // Call for saving the member
             return clMember.SaveMember();
         }
 
-        
 
+        /** 
+          * @desc Executes when the "Payments" button is clicked
+          * It displays the add payment form instantiated for this specific member
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */
         private void button_payments_Click(object sender, EventArgs e)
         {
             frm_payments frmPayments = new frm_payments(clMember.Id_member);
             frmPayments.ShowDialog();
         }
 
-        // Close this form
+        // Close/Cancel
         private void button_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -270,31 +320,47 @@ namespace Gym_administration
           */
         private void button_remove_Click(object sender, EventArgs e)
         {
+            // If there are still equipments borrowed, the member can't be deleted!
             if (dg_currentborrows.RowCount > 0)
                 MessageBox.Show("You can't remove this member as the borrowed equipments has to be returned first!");
+            // else there are no outstanding borrowed equipments
             else
-            {
+            {   // Confirm member removal
                 DialogResult result = MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
+                    // Remove the member
                     clMember.RemoveMember();
+                    // refresh parent member list if this was called from a member list
+                    if (frmMemberList != null) this.frmMemberList.vLoadMemberList();
                     this.Close();
                 }
             }
         }
 
+
+        /** 
+          * @desc Executes when the "Equipment Booking" button is clicked
+          * It displays the equipment list for borrowing form instantiated for this specific member
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */
         private void button_equipmentbooking_Click(object sender, EventArgs e)
         {
-
             frm_equipment_list frmEquipmentList = new frm_equipment_list(clMember.Id_member, this);
-
             frmEquipmentList.ShowDialog();  
         }
 
 
+        /** 
+          * @desc Executes when a grid cell is double clicked on the member list
+	      * It loads in the member belonging to the cell
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */ 
         private void dg_currentborrows_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            // Retrieve member details from grid row
             string name = dg_currentborrows.Rows[e.RowIndex].Cells[1].Value.ToString();
             int borrowedAmount = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[2].Value.ToString());
             int id_eq_booking = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[4].Value.ToString());
@@ -424,13 +490,20 @@ namespace Gym_administration
           */
         private void button_saveClose_Click(object sender, EventArgs e)
         {
+            //  If saving the member was successful
             if (this.saveClick())
+            {
+                // Refresh the list in parent window and close this one
+                if (this.frmMemberList != null) this.frmMemberList.vLoadMemberList();
                 this.Close();
+            }
+
         }
 
         /** 
           * @desc Executes when the "Save and Close" button is clicked
 	      * If the saving is ok, then closes the member form and opens up the member list
+          * This button is never shown on a member form which was just called form a member list.
           * @params [none] No input parameter. 
           * @return [none] No directly returned data. 
           */
@@ -438,17 +511,12 @@ namespace Gym_administration
         {
             if (this.saveClick())
             {
-                
                 this.Dispose();
                 frm_member_list frmMemberList = new frm_member_list();
                 frmMemberList.ShowDialog();
             }
         }
 
-        private void frm_member_Activated(object sender, EventArgs e)
-        {
-            //vLoadBookedList();
-        }
 
         private void txt_city_TextChanged(object sender, EventArgs e)
         {

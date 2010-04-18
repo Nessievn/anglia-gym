@@ -80,8 +80,6 @@
             this.Name = "frm_payments";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Payments";
-            this.Load += new System.EventHandler(this.frm_payments_Load);
-            this.Activated += new System.EventHandler(this.frm_payments_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.dg_payments)).EndInit();
             this.ResumeLayout(false);
 

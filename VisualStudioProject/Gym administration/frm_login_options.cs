@@ -9,22 +9,50 @@ using System.Windows.Forms;
 
 namespace Gym_administration
 {
+
+    /**
+     * @desc Form Handler for login options. 
+     * It lets th user to change password
+     * @params [none] Incoming parameters are described at the individual constructors.
+     * @return [none] No directly returned data. 
+     * Returns of public methods are described at the individual methods.
+     */  
     public partial class frm_login_options : Form
     {
-        private frm_main frmParent;
+        private frm_main frmMain;
 
+
+        /** 
+         * @desc Default constructor
+         * @params [none] No input parameter. 
+         * @return [none] No directly returned data. 
+         */ 
         public frm_login_options()
         {
             InitializeComponent();
         }
-        public frm_login_options(frm_main parent)
+
+        /** 
+          * @desc Constructor for editing user password
+          * @params [frm_main] frmMain:
+          * @return [none] No directly returned data. 
+          */
+        public frm_login_options(frm_main frmMain)
         {
             InitializeComponent();
-            this.frmParent = parent;
+            this.frmMain = frmMain;
         }
 
+
+        /** 
+          * @desc Executes when the "Change Password" button is clicked
+	      * It checks user input and then calls for saving the new password.
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */ 
         private void button_changepassw_Click(object sender, EventArgs e)
         {
+            // Check user imputs and formats
             if (txt_newpassw.Text != txt_repeatnewpw.Text)
             {
                 MessageBox.Show("The passwords does not match");
@@ -36,7 +64,8 @@ namespace Gym_administration
                 return;
             }
 
-            if (this.frmParent.UserLogged.UpdatePassword(this.frmParent.UserLogged.Id_user, txt_oldpassw.Text, txt_newpassw.Text))
+            // Update the user's password
+            if (this.frmMain.UserLogged.UpdatePassword(this.frmMain.UserLogged.Id_user, txt_oldpassw.Text, txt_newpassw.Text))
             {
                 MessageBox.Show("The user's password has been updated!");
                 this.Close();

@@ -167,7 +167,6 @@
             this.Name = "frm_class";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Class Form";
-            this.Load += new System.EventHandler(this.frm_class_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

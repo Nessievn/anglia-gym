@@ -32,26 +32,30 @@ namespace Gym_administration
         ClassInstance clClassInstance;
         frm_payments frmPayments = null;
         public bool viewAttendants;
-        //public bool bPayments;
         
         public frm_member_list(ClassInstance clClassInstance, bool viewAttendants)
         {
             InitializeComponent();
             this.clClassInstance = clClassInstance;
             this.viewAttendants = viewAttendants;
+            vLoadMemberList();
         }
 
         public frm_member_list(frm_payments frmPayments)
         {
             InitializeComponent();
             this.frmPayments = frmPayments;
+            vLoadMemberList();
         }
        
         public frm_member_list()
         {
             InitializeComponent();
             this.clClassInstance = new ClassInstance();
+            vLoadMemberList();
         }
+
+
 
 
         public void vLoadMemberList()
@@ -71,13 +75,6 @@ namespace Gym_administration
             dg_members.AllowUserToAddRows = false;
             dg_members.ReadOnly = true;
             label_numberOfPeople.Text = dg_members.RowCount.ToString();
-        }
-
-
-        private void frm_member_list_Load(object sender, EventArgs e)
-        {
-            //vLoadMemberList();
-
         }
 
 
@@ -126,7 +123,7 @@ namespace Gym_administration
                 }
                 else
                 {
-                    frm_member frmMember = new frm_member(id_member);
+                    frm_member frmMember = new frm_member(id_member, this);
 
                     frmMember.ShowDialog();
                 }
@@ -219,24 +216,9 @@ namespace Gym_administration
 
         private void button_addNewMember_Click(object sender, EventArgs e)
         {
-            bool isFromMemberList = true;
-            frm_member frmMember = new frm_member(isFromMemberList);
-            // We check if the form is already opened
-            //if (Utils.bIsAlreadyOpened(mdiFrmMember)) return;
-            // Set the Parent Form of the Child window.
-            //mdiFrmMember.MdiParent = this;
-            //mdiFrmMember.Show();  
-            // Display the new form.
+            frm_member frmMember = new frm_member(this);
             frmMember.ShowDialog();  
         }
-
-        private void frm_member_list_Activated(object sender, EventArgs e)
-        {
-            vLoadMemberList();
-        }
-
-
-
 
 
     }

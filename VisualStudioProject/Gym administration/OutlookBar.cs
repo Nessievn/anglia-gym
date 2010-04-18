@@ -1,4 +1,17 @@
-// Ok Isidro, this is yours to comment! :)
+/** Ok Isidro, this is yours to comment! :)
+ * 
+ * References used:
+ * 
+ * C# Corner - Home  » Windows Controls  » Outlook Bar Control
+ * http://www.c-sharpcorner.com/UploadFile/ivar/OutlookBarIL11212005014057AM/OutlookBarIL.aspx
+ * 
+ * Code Projetc - Desktop Development » Selection Controls » General - An Outlook Bar Implementation
+ * http://www.codeproject.com/KB/selection/csoutlookbar.aspx
+ * 
+ * Code Project - Desktop Development » Menus » Docking bars - OutlookBar: A Simplified Outlook Style Sidebar Control 
+ * http://www.codeproject.com/KB/menus/OutlookBar.aspx
+ */
+
 
 using System;
 using System.Drawing;
@@ -158,7 +171,7 @@ namespace OutlookBarNm
 	{
 		protected int iconSpacing;
 		protected int margin;
-        public string sBandName;
+        public string BandName;
         
 
 		public int IconSpacing
@@ -177,9 +190,9 @@ namespace OutlookBarNm
 			}
 		}
 
-		public IconPanel(string sBandName)
+		public IconPanel(string bandName)
 		{
-            this.sBandName = sBandName;
+            this.BandName = bandName;
 
 			margin=10;
 			iconSpacing=128+15+10;	// icon height + text height + margin
