@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,46 +9,84 @@ using System.Windows.Forms;
 
 namespace Gym_administration
 {
+
+    /**
+     * @desc 
+     * Form Handler for classes. 
+     * It is for adding or modifying a class.
+     * @params [none] Incoming parameters are described at the individual constructors.
+     * @return [none] No directly returned data. 
+     * Returns of public methods are described at the individual methods.
+     */    
     public partial class frm_class : Form
     {
+
         Class clClass;
+	    // Declare a reference to the class list, so this object can call its methods
+        // This is basically for calling a refresh of the class list just before this form is closed
         frm_class_list frmClassList;
 
-        //loading from main menu
+
+
+       /** 
+        * @desc Default constructor for creating new class from main menu.
+        * This is for loading from main menu, 
+        * the class list reference is not necessary so it will be set to null
+        * @params [none] No input parameter. 
+        * @return [none] No directly returned data. 
+        */ 
         public frm_class()
         {
             InitializeComponent();
             clClass = new Class();
             this.frmClassList = null;
+	    // Hide the Remove button as a new class can't be removed
             button_remove.Hide();
         }
 
-        //loading from class list to refresh class list after saving added new class to classlist
+
+         /** 
+          * @desc Constructor for creating new class from class list.
+          * Loading from class list to refresh class list after saving new class
+          * @params [frm_class_list] frmClassList: by taking this parameter there will be a reference
+          * to the class list so it can be refreshed after saving the new class
+          * @return [none] No directly returned data. 
+          */ 
         public frm_class(frm_class_list frmClassList)
         {
             InitializeComponent();
             clClass = new Class();
+ 	    // Create reference to the parent form (frm_class_list)
             this.frmClassList = frmClassList;
+	    // Hide the Remove button as a new class can't be removed
             button_remove.Hide();
         }
 
 
-
-
-
-        public frm_class(int iClassId, frm_class_list frmClassList)
+        /** 
+          * @desc Constructor for editing an existing class.
+          * Loading from class list to refresh class list after saving new class
+	      * @params [int] id_class: identifies the class to return
+          * @params [frm_class_list] frmClassList: by taking this parameter there will be a reference
+          * to the class list so it can be refreshed after saving the new class
+          * @return [none] No directly returned data. 
+          */
+        public frm_class(int id_class, frm_class_list frmClassList)
         {
             InitializeComponent();
-            clClass = new Class(iClassId);
+	    // Load in class details for specified class
+            clClass = new Class(id_class);
+ 	    // Create reference to the parent form (frm_class_list)
             this.frmClassList = frmClassList;
-            if (clClass.Id_class < 1)
+	    // Check if there was such a class in the database
+            if (clClass.Id_class == -1)
                 MessageBox.Show("The class could not be found");
+	    // If the class was found
             else
             {
+		// Display table field contents on form
                 txt_classdesc.Text = clClass.Description;
                 txt_classname.Text = clClass.Name;
-                //txt_classname.Text = clClass.Name;
-
                 if (clClass.Type == "Personal")
                     rd_personal.Checked = true;
                 else
@@ -56,16 +94,26 @@ namespace Gym_administration
                     
             }
         }
+
+
         //Set radiobutton to default state
         private void frm_class_Load(object sender, EventArgs e)
         {
-            rd_group.Checked = true;
+            rd_group.Checked = false;
         }
-        //SAVE
+
+
+        /** 
+          * @desc Executes when the "Save" button is clicked
+	      * It checks user input and then calls for saving the new class.
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */ 
         private void button_save_Click(object sender, EventArgs e)
         {
-            string sType = (rd_group.Checked)?"Group":"Personal";
+            string type = (rd_group.Checked)?"Group":"Personal";
 
+            // Check user inputs and formats
             if(txt_classname.Text.Length == 0)
             {
                 MessageBox.Show("Please insert a name for the class.");
@@ -74,34 +122,45 @@ namespace Gym_administration
 
             clClass.Description = txt_classdesc.Text;
             clClass.Name = txt_classname.Text;
-            clClass.Type = sType;
-
+            clClass.Type = type;
+            // Calling the method to save the new class
             clClass.SaveClass();
+            // Refresh the class list in previous form
             if (this.frmClassList != null) this.frmClassList.vLoadClassList();
             this.Close();
 
         }
 
-        //CLOSE
+        // Close form
         private void button_close_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /** 
+          * @desc Executes when the "Remove" button is clicked
+	      * It asks for confirmation and then calls for saving the new class.
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */ 
         private void button_remove_Click(object sender, EventArgs e)
         {
-            DialogResult res = MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (res == DialogResult.Yes)
+            // Confirming action
+            DialogResult result = MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
             {
+                // Check remove result
                 if (clClass.RemoveClass() == false)
                 {
                     MessageBox.Show("Please make sure that there aren't any class instances for this class.");
                 }
                 this.Close();
             }
+            // Refresh the class list in previous form
             if (this.frmClassList != null) this.frmClassList.vLoadClassList();
         }
 
  
     }
 }
+

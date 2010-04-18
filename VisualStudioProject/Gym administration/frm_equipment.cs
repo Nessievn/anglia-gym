@@ -507,7 +507,7 @@ private void rd_item_Checked(object sender, EventArgs e)
 
 
             int j = 0;
-            foreach (object i in myItems1)
+            foreach (object o in myItems1)
             {
 
                 dent = (DictionaryEntry)myItems1[j];
@@ -516,7 +516,7 @@ private void rd_item_Checked(object sender, EventArgs e)
                 j++;
             }
             j = 0;
-            foreach (object i in myItems1)
+            foreach (object o in myItems1)
             {
 
                 dent = (DictionaryEntry)myItems1[j];
@@ -525,7 +525,7 @@ private void rd_item_Checked(object sender, EventArgs e)
                 j++;
             }
             j = 0;
-            foreach (object i in myItems1)
+            foreach (object o in myItems1)
             {
 
                 dent = (DictionaryEntry)myItems1[j];
@@ -534,7 +534,7 @@ private void rd_item_Checked(object sender, EventArgs e)
                 j++;
             }
             j = 0;
-            foreach (object i in myItems1)
+            foreach (object o in myItems1)
             {
 
                 dent = (DictionaryEntry)myItems1[j];
@@ -543,7 +543,7 @@ private void rd_item_Checked(object sender, EventArgs e)
                 j++;
             }
             j = 0;
-            foreach (object i in myItems1)
+            foreach (object o in myItems1)
             {
 
                 dent = (DictionaryEntry)myItems1[j];

@@ -1,7 +1,3 @@
-﻿//Form Handler for payments. It lists all payments and let the user add a new payment,
-//where it lists all members, then after selecting a member, 
-//it displays a new form to add a payment to the payment list.
-
 using System;
 using System.Collections.Generic;
 using System.Collections;
@@ -15,7 +11,8 @@ using System.Windows.Forms;
 namespace Gym_administration
 {
     /**
-     * @desc Add payment form.
+     * @desc Form Handler for adding new payments to members.
+     * It is for adding a new payment to the database.
      * @params [none] Incoming parameters are described at the individual constructors.
      * @return [none] No directly returned data. 
      * Returns of public methods are described at the individual methods.
@@ -23,42 +20,75 @@ namespace Gym_administration
     public partial class frm_add_payment : Form
     {
 
-
+	// Declare a member object
         Member clMember;
 
+        /** 
+          * @desc Default constructor. 
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */ 
         public frm_add_payment()
         {
             InitializeComponent();
         }
 
-        public frm_add_payment(int id_member)
+        /** 
+          * @desc Constructor 
+          * Create a payment for a specific member
+          * @params [int] id_member identifies the member who is to pay uniquely
+          * @return [none] No directly returned data. 
+          */ 
+         public frm_add_payment(int id_member)
         {
             InitializeComponent();
+	    // Create a member object
             clMember = new Member(id_member);
 
         }
 
+        /** 
+          * @desc Loads in when the object instance first instantiated
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */ 
         private void frm_add_payment_Load(object sender, EventArgs e)
         {
-            //Startup
+	    // Store todays date
             DateTime today = DateTime.Today;
+	    // Convert date to display format
             txt_date.Text = String.Format("{0:dd-MM-yyyy}", today);
 
             // Loading Available Staff
-            //TODO: Inform Katie about the Position -> Instructor field
+//TODO: Inform Katie about the Position -> Instructor field
+	    // Create mysl connection
             mySqlConn conn = new mySqlConn();
             conn.connect();
+	    // Create query for returning all staff for selection of payment "received by"
             string query = "SELECT id_staff, CONCAT(lastName,', ', firstName) name FROM staff ORDER BY lastName";
+	    // Load result into an arraylist
             ArrayList myItems = conn.alGetComboFromDb(query, "id_staff", "name");
+	    // Set combobox to display value
             cmb_staff.DisplayMember = "Value";
+            // Set myItems a combobox source
             cmb_staff.DataSource = myItems;
+            // Set combobox index to be -1 so it can be checked if the user won't select anything here
+// TODO: SET THIS TO BE A CONSTANT AS THE CURRENTLY LOGGED IN STAFF??
             cmb_staff.SelectedIndex = -1;
 
         }
 
+
+        /** 
+          * @desc Executes when the "Add Payment" button is clicked
+	      * It checks user input and then calls for saving the new payment.
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */
         private void button_addpayment_Click(object sender, EventArgs e)
         {
-            
+
+            // Check user inputs and formats
             if (txt_amount.Text.Length < 1)
             {
                 MessageBox.Show("Please specify an amount!");
@@ -106,8 +136,8 @@ namespace Gym_administration
                 paymentMethod = cmb_paymentMethod.SelectedText;
             }
 
-            
 
+            // Calling the method to save the new payment and checking if it was successfull
             if (this.clMember.AddPayment(amount, date, txt_details.Text, txt_receiptNumber.Text, paymentMethod, id_staff))
             {
                 MessageBox.Show("The payment has been added succesfully!");
@@ -123,3 +153,4 @@ namespace Gym_administration
 
     }
 }
+
