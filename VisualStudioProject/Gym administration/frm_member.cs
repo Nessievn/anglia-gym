@@ -1,4 +1,28 @@
-﻿using System;
+﻿/*
+ *  Windows Developer Center >  Windows Forms Forums  >  Windows Forms General  >  How can i create a "right-click menu" i C#  
+ * http://social.msdn.microsoft.com/Forums/en-US/winforms/thread/790cd8be-0ba8-4f10-95a8-c88f1023d6e7
+ * 
+ * Mouse left click, right click, middle click, hover : Mouse Event « Event « C# / C Sharp
+ * http://www.java2s.com/Code/CSharp/Event/Mouseleftclickrightclickmiddleclickhover.htm
+ * 
+ * MESHPLEX - C Sharp/String Literals
+ * http://www.meshplex.org/wiki/C_Sharp/String_Literals
+ * 
+ * MySQL 5.1 with Maria Reference Manual :: 20 Connectors and APIs :: 20.2 MySQL Connector/NET :: 20.2.4 Connector/NET Programming :: 20.2.4.7 Handling BLOB Data With Connector/NET
+ * http://dev.mysql.com/doc/refman/5.1-maria/en/connector-net-programming-blob.html#connector-net-programming-blob-writing
+ * 
+ * C# Online.net - Working with Images—Using the Bitmap Class
+ * http://en.csharp-online.net/Working_with_Images%E2%80%94Using_the_Bitmap_Class
+ * 
+  * DevAsp.net - How to load Image in C# and set properties of the Picture Box 
+ * http://www.devasp.net/net/articles/display/385.html
+ * 
+ * Windows Developer Center >  Windows Forms Forums  >  Windows Forms General  >  How to check string is number or not in C#  
+ * http://social.msdn.microsoft.com/Forums/en-US/winforms/thread/84990ad2-5046-472b-b103-f862bfcd5dbc
+ * 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Collections;
 using System.ComponentModel;
@@ -277,33 +301,31 @@ namespace Gym_administration
 
             frm_message_box myMessageBox = new frm_message_box();
             string result = myMessageBox.ShowBox(Utils.MB_CUST4, "", "How many "+name+" would you like to return?",borrowedAmount.ToString());
- 
- 
- 	                        //ref  http://social.msdn.microsoft.com/Forums/en-US/winforms/thread/84990ad2-5046-472b-b103-f862bfcd5dbc
- 
- 
- 	                        double Num;
- 	                        bool isNum = double.TryParse(result, out Num);
- 	                        if (isNum)
- 	                        {
-                                
-                                if ((int.Parse(result) > 0) && (result != "Cancel"))
-                                {
-                                    this.clEquipmentBooked = new EquipmentBooked(id_eq_booking);
-                                    this.clEquipmentBooked.BorrowedAmount = int.Parse(result);
-                                    this.clEquipmentBooked.IsReturned = false;
-                                    this.clEquipmentBooked.SaveEquipmentBooking();
-                                }
-                                else
-                                {
-                                    this.clEquipmentBooked = new EquipmentBooked(id_eq_booking);
-                                    this.clEquipmentBooked.BorrowedAmount = 0;
-                                    this.clEquipmentBooked.IsReturned = true;
-                                    this.clEquipmentBooked.SaveEquipmentBooking();
 
-                                }
-                                this.vLoadBookedList();
- 	                        }
+
+ 
+ 	        double Num;
+ 	        bool isNum = double.TryParse(result, out Num);
+            if (isNum)
+            {
+
+                if ((int.Parse(result) > 0) && (result != "Cancel"))
+                {
+                    this.clEquipmentBooked = new EquipmentBooked(id_eq_booking);
+                    this.clEquipmentBooked.BorrowedAmount = int.Parse(result);
+                    this.clEquipmentBooked.IsReturned = false;
+                    this.clEquipmentBooked.SaveEquipmentBooking();
+                }
+                else
+                {
+                    this.clEquipmentBooked = new EquipmentBooked(id_eq_booking);
+                    this.clEquipmentBooked.BorrowedAmount = 0;
+                    this.clEquipmentBooked.IsReturned = true;
+                    this.clEquipmentBooked.SaveEquipmentBooking();
+
+                }
+                this.vLoadBookedList();
+            }
 
         }
 

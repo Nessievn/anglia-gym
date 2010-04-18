@@ -11,8 +11,7 @@ namespace Gym_administration
 {
 
     /**
-     * @desc 
-     * Form Handler for classes. 
+     * @desc Form Handler for classes. 
      * It is for adding or modifying a class.
      * @params [none] Incoming parameters are described at the individual constructors.
      * @return [none] No directly returned data. 
@@ -40,18 +39,18 @@ namespace Gym_administration
             InitializeComponent();
             clClass = new Class();
             this.frmClassList = null;
-	    // Hide the Remove button as a new class can't be removed
+            // Hide the Remove button as a class not yet existing can't be removed
             button_remove.Hide();
         }
 
 
-         /** 
-          * @desc Constructor for creating new class from class list.
-          * Loading from class list to refresh class list after saving new class
-          * @params [frm_class_list] frmClassList: by taking this parameter there will be a reference
-          * to the class list so it can be refreshed after saving the new class
-          * @return [none] No directly returned data. 
-          */ 
+        /** 
+         * @desc Constructor for creating new class, that was opened from class list.
+         * (To be able to refresh class list after saving the new class)
+         * @params [frm_class_list] frmClassList: by taking this parameter there will be a reference
+         * to the class list so it can be refreshed after saving the new class
+         * @return [none] No directly returned data. 
+         */
         public frm_class(frm_class_list frmClassList)
         {
             InitializeComponent();
@@ -65,8 +64,8 @@ namespace Gym_administration
 
         /** 
           * @desc Constructor for editing an existing class.
-          * Loading from class list to refresh class list after saving new class
-	      * @params [int] id_class: identifies the class to return
+          * (To be able to refresh class list after saving the edited class)
+	      * @params [int] id_class: identifies the class to modify
           * @params [frm_class_list] frmClassList: by taking this parameter there will be a reference
           * to the class list so it can be refreshed after saving the new class
           * @return [none] No directly returned data. 
@@ -74,17 +73,17 @@ namespace Gym_administration
         public frm_class(int id_class, frm_class_list frmClassList)
         {
             InitializeComponent();
-	    // Load in class details for specified class
+            // Load in class details for specified class
             clClass = new Class(id_class);
- 	    // Create reference to the parent form (frm_class_list)
+            // Create reference to the parent form (frm_class_list)
             this.frmClassList = frmClassList;
-	    // Check if there was such a class in the database
+            // Check if there was such a class in the database
             if (clClass.Id_class == -1)
                 MessageBox.Show("The class could not be found");
-	    // If the class was found
+            // If the class was found
             else
             {
-		// Display table field contents on form
+                // Display table field contents on form
                 txt_classdesc.Text = clClass.Description;
                 txt_classname.Text = clClass.Name;
                 if (clClass.Type == "Personal")
