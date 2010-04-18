@@ -31,6 +31,7 @@ namespace Gym_administration
 
         private void button_accept_Click(object sender, EventArgs e)
         {
+            // Create mysql connection            
             mySqlConn conn = new mySqlConn();
             conn.connect();
             // We launch the query

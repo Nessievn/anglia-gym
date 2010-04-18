@@ -16,6 +16,7 @@ namespace Gym_administration
 
         public void vLoadBookedList()
         {
+            // Create mysql connection           
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource itemsSource = new BindingSource();
@@ -95,6 +96,12 @@ namespace Gym_administration
             //Startup load
         }
 
+        /** 
+          * @desc Executes when the "Save and Close", "Save and Open List" or "Save and Stay" button is clicked
+	      * It copies user input into staff object and then calls for saving the staff
+          * @params [none] No input parameter. 
+          * @return [bool] Returns true in case of success. 
+          */
         private bool saveClick()
         {
             stfStaff.FirstName = txt_firstName.Text;
@@ -128,7 +135,13 @@ namespace Gym_administration
             return stfStaff.SaveStaff();
         }
 
-        private void button_save_Click(object sender, EventArgs e)
+        /** 
+          * @desc Executes when the "Save and Stay" button is clicked
+	      * If the saving is ok, then leaves the form open for further editing
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */
+        private void button_saveStay_Click(object sender, EventArgs e)
         {
             saveClick();
         }
@@ -157,21 +170,21 @@ namespace Gym_administration
             int iEqBookingId = int.Parse(dg_currentborrows.Rows[e.RowIndex].Cells[4].Value.ToString());
 
             frm_message_box myMessageBox = new frm_message_box();
-            string iresult = myMessageBox.ShowBox(Utils.MB_CUST4, "", "How many " + sEquipmentName + " would you like to return?", iBorrowedAmount.ToString());
+            string result = myMessageBox.ShowBox(Utils.MB_CUST4, "", "How many " + sEquipmentName + " would you like to return?", iBorrowedAmount.ToString());
 
 
             //ref  http://social.msdn.microsoft.com/Forums/en-US/winforms/thread/84990ad2-5046-472b-b103-f862bfcd5dbc
 
 
             double Num;
-            bool isNum = double.TryParse(iresult, out Num);
+            bool isNum = double.TryParse(result, out Num);
             if (isNum)
             {
 
-                if ((int.Parse(iresult) > 0) && (iresult != "Cancel"))
+                if ((int.Parse(result) > 0) && (result != "Cancel"))
                 {
                     this.clEquipmentBooked = new EquipmentBooked(iEqBookingId);
-                    this.clEquipmentBooked.BorrowedAmount = int.Parse(iresult);
+                    this.clEquipmentBooked.BorrowedAmount = int.Parse(result);
                     this.clEquipmentBooked.IsReturned = false;
                     this.clEquipmentBooked.SaveEquipmentBooking();
                 }
@@ -188,11 +201,24 @@ namespace Gym_administration
 
         }
 
+        /** 
+          * @desc Executes when the "Save and Close" button is clicked
+	      * If the saving is ok, then closes the member form
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */
         private void button_saveClose_Click(object sender, EventArgs e)
         {
             if (this.saveClick())
                 this.Close();
         }
+
+        /** 
+          * @desc Executes when the "Save and Close" button is clicked
+	      * If the saving is ok, then closes the member form and opens up the member list
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */
         private void button_saveOpen_Click(object sender, EventArgs e)
         {
             if (this.saveClick())

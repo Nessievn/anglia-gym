@@ -99,7 +99,7 @@ namespace Gym_administration
                 mySqlConn conn = new mySqlConn();
                 conn.connect();
                 // Launch insert query
-                int payment = conn.iInsert(query);
+                int payment = conn.InsertToDB(query);
                 // Check if the insert was succesful
                 if (payment != -1)
                     return true;

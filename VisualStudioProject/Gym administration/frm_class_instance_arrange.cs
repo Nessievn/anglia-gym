@@ -156,20 +156,20 @@ namespace Gym_administration
             
             // Loading Available Classes
             string query = "SELECT id_class, name FROM classes ORDER BY id_class";
-            ArrayList myItems = conn.alGetComboFromDb(query, "id_class","name");
+            ArrayList myItems = conn.alGetComboFromDB(query, "id_class","name");
             cmb_classes.DisplayMember = "Value";
             cmb_classes.DataSource = myItems;
 
             // Loading Available Rooms
             query = "SELECT id_room, name FROM rooms ORDER BY id_room";
-            myItems = conn.alGetComboFromDb(query, "id_room", "name");
+            myItems = conn.alGetComboFromDB(query, "id_room", "name");
             cmb_rooms.DisplayMember = "Value";
             cmb_rooms.DataSource = myItems;
 
             // Loading Available Instructor
             //TODO: Inform Katie about the Position -> Instructor field
             query = "SELECT id_staff, CONCAT(lastName,', ', firstName) name FROM staff WHERE position = 'Instructor' ORDER BY id_staff";
-            myItems = conn.alGetComboFromDb(query, "id_staff", "name");
+            myItems = conn.alGetComboFromDB(query, "id_staff", "name");
             cmb_instructors.DisplayMember = "Value";
             cmb_instructors.DataSource = myItems;
 
@@ -261,29 +261,58 @@ namespace Gym_administration
 
         }
 
+        /** 
+          * @desc Executes when the "Enroll" button is clicked
+	      * It opens up a member list for enrolling to class instance, but not for viewing attendants
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */ 
         private void button_enrollmembers_Click(object sender, EventArgs e)
         {
+            // Params: this clClassInstance and a false boolean viewAttendants
             frm_member_list frmMemberList = new frm_member_list(clClassInstance,false);
             frmMemberList.ShowDialog();
         }
 
+        /** 
+          * @desc Executes when the "View Attendants" button is clicked
+	      * It opens up a member list for viewing the attendants to this class instance
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */ 
         private void button_viewattendants_Click(object sender, EventArgs e)
         {
+            // Params: this clClassInstance and a true boolean viewAttendants
             frm_member_list frmMemberList = new frm_member_list(clClassInstance, true);
             frmMemberList.ShowDialog();
         }
 
+        /** 
+          * @desc Update the max members allowed in room based on currently selected room
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */ 
         private void cmb_rooms_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Create mysql connection
             mySqlConn conn = new mySqlConn();
             conn.connect();
+            // Get room id
             DictionaryEntry de = (DictionaryEntry)cmb_rooms.SelectedItem;
             string id_room = de.Key.ToString();
+            // Get room size based on room id
             string query = "SELECT size FROM gym.rooms WHERE id_room = '" + id_room + "'";
             List<Hashtable> lhRes = conn.lhSqlQuery(query);
+            // Display new size
             label_maxmembers_amount.Text = lhRes[0]["size"].ToString();
         }
 
+        /** 
+          * @desc Executes when the "Remove" button is clicked
+	      * It asks for confirmation and then calls for removing the class instance.
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */ 
         private void button_remove_Click(object sender, EventArgs e)   
         {
             if (dg_currentborrows.RowCount > 0)
@@ -291,8 +320,8 @@ namespace Gym_administration
             else
             {
 
-                DialogResult res = MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (res == DialogResult.Yes)
+                DialogResult result= MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result== DialogResult.Yes)
                 {
                     if (this.clClassInstance.RemoveClassInstance() == false)
                     {
@@ -304,19 +333,19 @@ namespace Gym_administration
             }
         }
 
+
+        /** 
+          * @desc Executes when the "Equipment" button is clicked
+	      * It opens up an equipment list for borrowing
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */ 
         private void btn_equipment_Click(object sender, EventArgs e)
         {
 
-            // Creating the child form login
             frm_equipment_list frmEquipmentList = new frm_equipment_list(this.clClassInstance.Id_class_instance, this);
-
-            if (Utils.bIsAlreadyOpened(frmEquipmentList)) return;
             frmEquipmentList.ShowDialog();  
 
         }
-
-
-
-
     }
 }

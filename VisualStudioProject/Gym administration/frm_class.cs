@@ -131,7 +131,7 @@ namespace Gym_administration
 
         }
 
-        // Close form
+        // Close this form
         private void button_close_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -139,7 +139,7 @@ namespace Gym_administration
 
         /** 
           * @desc Executes when the "Remove" button is clicked
-	      * It asks for confirmation and then calls for saving the new class.
+	      * It asks for confirmation and then calls for removing the class.
           * @params [none] No input parameter. 
           * @return [none] No directly returned data. 
           */ 

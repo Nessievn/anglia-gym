@@ -16,14 +16,14 @@ namespace Gym_administration
     {
         ClassInstance clClassInstance;
         frm_payments frmPayments = null;
-        public bool BViewAttendants;
+        public bool viewAttendants;
         //public bool bPayments;
         
-        public frm_member_list(ClassInstance clClassInstance, bool bViewAttendants)
+        public frm_member_list(ClassInstance clClassInstance, bool viewAttendants)
         {
             InitializeComponent();
             this.clClassInstance = clClassInstance;
-            this.BViewAttendants = bViewAttendants;
+            this.viewAttendants = viewAttendants;
         }
 
         public frm_member_list(frm_payments frmPayments)
@@ -42,10 +42,11 @@ namespace Gym_administration
         public void vLoadMemberList()
         {
             string query = "";
+            // Create mysql connection            
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
-            if (this.BViewAttendants == false)
+            if (this.viewAttendants == false)
                 query = "SELECT id_member ID, member_number Nr, sid SID, CONCAT(lastName, ', ', firstName) 'Member Name', DATE_FORMAT(birthdate,\"%d-%m-%Y\") DOB, email 'EMail', type Type, IF((is_active= 0), 'INACTIVE','ACTIVE') Status FROM members ORDER BY ID ";
             else
                 query = "SELECT m.id_member ID, m.member_number Nr, sid SID, CONCAT(m.lastName, ', ', m.firstName) 'Member Name', DATE_FORMAT(m.birthdate,\"%d-%m-%Y\") DOB, email 'EMail', type Type, IF((is_active= 0), 'INACTIVE','ACTIVE') Status FROM members m, class_bookings cb WHERE m.id_member = cb.id_member AND cb.id_class_instance = '" + this.clClassInstance.Id_class_instance + "' ORDER BY ID";
@@ -70,6 +71,7 @@ namespace Gym_administration
             try
             {
                 int id_member = int.Parse(dg_members.Rows[e.RowIndex].Cells[0].Value.ToString());
+                // Create mysql connection            
                 mySqlConn conn = new mySqlConn();
                 conn.connect();
 
@@ -84,7 +86,7 @@ namespace Gym_administration
                     return;
                 }
 
-                if (this.clClassInstance.Id_class_instance != -1 && this.BViewAttendants == false)
+                if (this.clClassInstance.Id_class_instance != -1 && this.viewAttendants == false)
                 {
                     DialogResult result = MessageBox.Show("Enroll this member to the class?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
@@ -92,26 +94,26 @@ namespace Gym_administration
                         // Check the room size
                         string query = "SELECT COUNT(*) q FROM gym.class_bookings WHERE id_class_instance = '" + this.clClassInstance.Id_class_instance + "'";
                         List<Hashtable> lhRes = conn.lhSqlQuery(query);
-                        int iCurrMembers = int.Parse(lhRes[0]["q"].ToString());
+                        int currMembers = int.Parse(lhRes[0]["q"].ToString());
                         query = "SELECT r.size FROM gym.class_instance ci, gym.rooms r WHERE ci.id_room = r.id_room AND ci.id_class_instance = '" + this.clClassInstance.Id_class_instance + "'";
                         lhRes = conn.lhSqlQuery(query);
-                        int iMaxMembers = int.Parse(lhRes[0]["size"].ToString());
-                        if (iMaxMembers < iCurrMembers + 1)
+                        int maxMembers = int.Parse(lhRes[0]["size"].ToString());
+                        if (maxMembers < currMembers + 1)
                         {
                             MessageBox.Show("Sorry! This room does not allow more bookings!");
                             return;
                         }
 
-                        Member mbr_t = new Member(id_member);
-                        this.clClassInstance.LclAttendants.Add(mbr_t);
+                        Member clMember = new Member(id_member);
+                        this.clClassInstance.LclAttendants.Add(clMember);
                         this.clClassInstance.SaveClassInstance();
                     }
                 }
                 else
                 {
-                    frm_member frm_mbr = new frm_member(id_member);
+                    frm_member frmMember = new frm_member(id_member);
 
-                    frm_mbr.ShowDialog();
+                    frmMember.ShowDialog();
                 }
             }catch(Exception)
             {
@@ -123,6 +125,7 @@ namespace Gym_administration
 
         private void button_search_Click(object sender, EventArgs e)
         {
+            // Create mysql connection            
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();

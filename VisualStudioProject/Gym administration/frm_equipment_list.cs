@@ -158,6 +158,7 @@ namespace Gym_administration
 
         private void button_search_Click(object sender, EventArgs e)
         {
+            // Create mysql connection            
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource bSource = new BindingSource();
@@ -188,6 +189,7 @@ namespace Gym_administration
         }
         private void rd_item_Checked()
         {
+            // Create mysql connection            
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource itemsSource = new BindingSource();
@@ -207,6 +209,7 @@ namespace Gym_administration
 
         private void rd_set_Checked()
         {
+            // Create mysql connection         
             mySqlConn conn = new mySqlConn();
             conn.connect();
             BindingSource setsSource = new BindingSource();

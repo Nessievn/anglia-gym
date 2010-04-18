@@ -112,16 +112,16 @@ namespace Gym_administration
         /**
          * @desc Constructor
          * Loads in all fields from a single "Gym Class" row of the CLASSES table.
-         * @params [int] id_Class identifies the class uniquely.
+         * @params [int] id_class identifies the class uniquely.
          * @return [none] No directly returned data.
          */
-        public Class(int id_Class)
+        public Class(int id_class)
         {
             // Create mysql connection
             mySqlConn conn = new mySqlConn();
             conn.connect();
             // Launch the query to return all fields from a single "Gym Class" row of the CLASSES table
-            List<Hashtable> lhResultSet = conn.lhSqlQuery("Select * from classes WHERE id_class = '" + id_Class + "'");
+            List<Hashtable> lhResultSet = conn.lhSqlQuery("Select * from classes WHERE id_class = '" + id_class + "'");
             // Check if we found the row
             if ((int)lhResultSet.Count > 0)
             {
@@ -149,7 +149,7 @@ namespace Gym_administration
                 // Create the delete query
                 string query = "DELETE FROM classes WHERE id_class = '" + this.Id_class + "'";
                 // Launch delete query
-                int result = conn.iDeleteOrUpdate(query);
+                int result = conn.DeleteOrUpdate(query);
                 // Check deletion result
                 if (result > 0)
                 {
@@ -194,11 +194,11 @@ namespace Gym_administration
                     query = "insert into `gym`.`classes` (`id_class`, `name`, `type`, `description`) values " +
                              "(NULL, '" + this.Name + "', '" + this.Type + "', '" + this.Description + "')";
                     // Launch save query
-                    int id_Class = conn.iInsert(query);
+                    int id_class = conn.InsertToDB(query);
                     // Check saving result
-                    if (id_Class != -1)
+                    if (id_class != -1)
                     {
-                        this.Id_class = id_Class;
+                        this.Id_class = id_class;
                         MessageBox.Show("The new class has been added to the databse succesfully!");
                         return true;
                     }
@@ -216,7 +216,7 @@ namespace Gym_administration
                              " WHERE id_class = '" + this.Id_class + "'";
 
                     // Launch update query
-                    int result = conn.iDeleteOrUpdate(query);
+                    int result = conn.DeleteOrUpdate(query);
                     // Check update result
                     if (result > 0)
                     {

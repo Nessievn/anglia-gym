@@ -40,7 +40,6 @@
             this.label_iteminfo = new System.Windows.Forms.Label();
             this.txt_setname = new System.Windows.Forms.TextBox();
             this.label_setname = new System.Windows.Forms.Label();
-            this.button_vehicle = new System.Windows.Forms.Button();
             this.cmb_item1 = new System.Windows.Forms.ComboBox();
             this.cmb_item2 = new System.Windows.Forms.ComboBox();
             this.cmb_item3 = new System.Windows.Forms.ComboBox();
@@ -196,16 +195,6 @@
             this.label_setname.Size = new System.Drawing.Size(78, 17);
             this.label_setname.TabIndex = 180;
             this.label_setname.Text = "Set Name";
-            // 
-            // button_vehicle
-            // 
-            this.button_vehicle.Location = new System.Drawing.Point(360, 23);
-            this.button_vehicle.Name = "button_vehicle";
-            this.button_vehicle.Size = new System.Drawing.Size(115, 32);
-            this.button_vehicle.TabIndex = 20;
-            this.button_vehicle.Text = "Vehicle";
-            this.button_vehicle.UseVisualStyleBackColor = true;
-            this.button_vehicle.Click += new System.EventHandler(this.button_vehicle_Click);
             // 
             // cmb_item1
             // 
@@ -405,7 +394,6 @@
             this.Controls.Add(this.cmb_item3);
             this.Controls.Add(this.cmb_item4);
             this.Controls.Add(this.cmb_item5);
-            this.Controls.Add(this.button_vehicle);
             this.Controls.Add(this.label_setname);
             this.Controls.Add(this.txt_setname);
             this.Controls.Add(this.button_remove);
@@ -449,7 +437,6 @@
         private System.Windows.Forms.Label label_iteminfo;
         private System.Windows.Forms.TextBox txt_setname;
         private System.Windows.Forms.Label label_setname;
-        private System.Windows.Forms.Button button_vehicle;
         private System.Windows.Forms.ComboBox cmb_item1;
         private System.Windows.Forms.ComboBox cmb_item2;
         private System.Windows.Forms.ComboBox cmb_item3;

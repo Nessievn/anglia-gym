@@ -67,7 +67,7 @@ namespace Gym_administration
 	    // Create query for returning all staff for selection of payment "received by"
             string query = "SELECT id_staff, CONCAT(lastName,', ', firstName) name FROM staff ORDER BY lastName";
 	    // Load result into an arraylist
-            ArrayList myItems = conn.alGetComboFromDb(query, "id_staff", "name");
+            ArrayList myItems = conn.alGetComboFromDB(query, "id_staff", "name");
 	    // Set combobox to display value
             cmb_staff.DisplayMember = "Value";
             // Set myItems a combobox source
