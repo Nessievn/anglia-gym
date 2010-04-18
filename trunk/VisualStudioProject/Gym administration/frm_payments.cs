@@ -1,4 +1,10 @@
-﻿using System;
+//RENAME THIS TO frm_payments_list!!!
+     /* Form Handler for payments. It lists all payments and let the user add a new payment,
+     * where it lists all members, then after selecting a member, 
+     * it displays a new form to add a payment to the payment list.*/
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -73,3 +79,4 @@ namespace Gym_administration
         }
     }
 }
+

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -183,7 +183,7 @@ namespace Gym_administration
         /**
          * @desc Default constructor.
          * Sets id_member to -1 so the fact of this is a new member can be referenced.
-         * Cretaes a new user parent class instance.
+         * Creates a new user parent class instance.
          * @params [none] No input parameter.
          * @return [none] No directly returned data.
          */
@@ -197,7 +197,7 @@ namespace Gym_administration
         /**
          * @desc Constructor
          * Loads in all fields from a single row of the MEMBERS table.
-         * @params [int] id_Class identifies the class uniquely.
+         * @params [int] id_member identifies the member uniquely.
          * @return [none] No directly returned data.
          */
         public Member(int id_member)
@@ -211,7 +211,7 @@ namespace Gym_administration
             // Check if we found the member
             if ((int)lhResultset.Count > 0)
             {
-                // Fill in all class and parent class fields with table data
+                // Fill in all member and parent user fields with table data
                 this.clUser = new User();
                 this.clUser.Id_user = int.Parse(lhResultset[0]["id_user"].ToString());
                 this.clUser.Login = lhResultset[0]["login"].ToString();
@@ -260,7 +260,7 @@ namespace Gym_administration
         public bool AddPayment(Decimal amount, string date, string desc, string receiptNumber, string paymentMethod, string receivedBy)
         {
             // The payment can be added to existing members only, not new members
-            if (this.Id_member != -1)
+            if (Id_member != -1)
             {
                 // Create a payment object and copy into all payment data
                 Payment clPayment = new Payment();
@@ -367,7 +367,7 @@ namespace Gym_administration
                         }
                     }
                 }
-                // If the user saving was false, then it was becuase of duplicate e-mail
+                // If the user saving was false, then it was becuase of duplicate e-mail at this point
                 else
                 {
                     MessageBox.Show("The e-mail already exists in the database! Please choose another one.");
@@ -402,3 +402,4 @@ namespace Gym_administration
 
     }
 }
+
