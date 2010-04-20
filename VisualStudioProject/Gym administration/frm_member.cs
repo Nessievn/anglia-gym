@@ -20,6 +20,11 @@
  * Windows Developer Center >  Windows Forms Forums  >  Windows Forms General  >  How to check string is number or not in C#  
  * http://social.msdn.microsoft.com/Forums/en-US/winforms/thread/84990ad2-5046-472b-b103-f862bfcd5dbc
  * 
+ * 
+ * bytes > c# / c sharp > c# / c sharp questions - C# Tool tip text
+
+ * http://bytes.com/topic/c-sharp/answers/272413-c-tool-tip-text
+ * 
  */
 
 using System;
@@ -242,10 +247,12 @@ namespace Gym_administration
         private void button_saveStay_Click(object sender, EventArgs e)
         {
 
-            saveClick();
-            button_equipmentbooking.Show();
-            button_payments.Show();
-            button_remove.Show();
+            if (saveClick())
+            {
+                button_equipmentbooking.Show();
+                button_payments.Show();
+                button_remove.Show();
+            }
 
         }
 

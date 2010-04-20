@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_member));
             this.label_memberinfo = new System.Windows.Forms.Label();
             this.label_membernum = new System.Windows.Forms.Label();
@@ -94,6 +95,7 @@
             this.rd_male = new System.Windows.Forms.RadioButton();
             this.rd_female = new System.Windows.Forms.RadioButton();
             this.button_RestoreMedicalText = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dg_eqbookings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -724,6 +726,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 68;
             this.pictureBox1.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox1, "Double click: Load new picture \r\nRight click: Delete picture");
             this.pictureBox1.DoubleClick += new System.EventHandler(this.pictureBox1_DoubleClick);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
@@ -913,5 +916,6 @@
         private System.Windows.Forms.RadioButton rd_male;
         private System.Windows.Forms.RadioButton rd_female;
         private System.Windows.Forms.Button button_RestoreMedicalText;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
