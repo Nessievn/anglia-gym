@@ -154,8 +154,10 @@ namespace Gym_administration
           */
         private void button_saveStay_Click(object sender, EventArgs e)
         {
-            saveClick();
-            button_equipmentbooking.Show();
+            if (saveClick())
+            {
+                button_equipmentbooking.Show();
+            }
         }
 
         private void button_equipmentbooking_Click(object sender, EventArgs e)
