@@ -1,6 +1,6 @@
 ﻿namespace Gym_administration
 {
-    partial class frm_payments
+    partial class frm_payment_list
     {
         /// <summary>
         /// Required designer variable.

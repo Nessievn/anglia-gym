@@ -23,7 +23,12 @@ namespace Gym_administration
         EquipmentBooked clEquipmentBooked;
         frm_staff_list frmStaffList;
 
-
+        /** 
+         * @desc Default constructor for creating new staff from main menu.
+         * This is for loading from main menu, 
+         * @params [none] No input parameter. 
+         * @return [none] No directly returned data. 
+         */ 
         public frm_staff()
         {
             clStaff = new Staff();
@@ -33,7 +38,12 @@ namespace Gym_administration
             txt_contract_start.Text = String.Format("{0:dd-MM-yyyy}", today);
         }
 
-
+        /** 
+          * @desc Constructor for creating new staff, that was opened from staff list.
+          * @params [frm_staff_list] frmStaffList: by taking this parameter there will be a reference
+          * to the staff list so it can be refreshed after saving the new staff
+          * @return [none] No directly returned data. 
+          */
         public frm_staff(frm_staff_list frmStaffList)
         {
             this.frmStaffList = frmStaffList;
@@ -45,17 +55,27 @@ namespace Gym_administration
             txt_contract_start.Text = String.Format("{0:dd-MM-yyyy}", today);
         }
 
+        /** 
+          * @desc Constructor for editing an existing staff.
+	      * @params [int] id_staff: identifies the staff to modify
+          * @params [frm_staff_list] frmStaffList: by taking this parameter there will be a reference
+          * to the staff list so it can be refreshed after saving the edited staff
+          * @return [none] No directly returned data. 
+          */ 
         public frm_staff(int id_staff, frm_staff_list frmStaffList)
         {
+            // Create reference to the parent form
             this.frmStaffList = frmStaffList;
             InitializeComponent();
             button_equipmentbooking.Show();
             button_saveOpen.Hide();
+            // Load in staff details for specified staff
             clStaff = new Staff(id_staff);
             if (clStaff.Id_staff < 1)
                 MessageBox.Show("The staff member could not be found");
             else
             {
+                // If the staff was found, load in all staff details into staff object from database
                 vLoadBookedList();
                  txt_firstName.Text = clStaff.FirstName;
                  txt_lastName.Text = clStaff.LastName;
@@ -86,20 +106,48 @@ namespace Gym_administration
         }
 
 
+        /** 
+          * @desc This method refreshes the booked equipment list
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */
         public void vLoadBookedList()
         {
-            // Create mysql connection           
+
+            // Create mysql connection            
             mySqlConn conn = new mySqlConn();
             conn.connect();
+            // Create source for grid
             BindingSource itemsSource = new BindingSource();
+            // Create query
             string query = "SELECT DISTINCT eb.date_due Due, e.name Name, eb.borrowedamount Amount, eb.id_equipment EqID, eb.id_eq_booking BkID FROM equipment e, equipment_bookings eb WHERE eb.id_staff = " + clStaff.Id_staff + " AND (eb.isreturned = 0 OR eb.isreturned is NULL) AND eb.id_equipment = e.id_equipment ORDER BY Due";
+            // Launch query and load result into source
             itemsSource.DataSource = conn.dtGetTableForDataGrid(query);
+            // Assign source to grid
             dg_eqbookings.DataSource = itemsSource;
             dg_eqbookings.AllowUserToAddRows = false;
             dg_eqbookings.ReadOnly = true;
+            // Check for unreturned items, if there is any, then report ir to the user!
+            if (dg_eqbookings.RowCount > 0)
+            {
+                int lateItems = 0;
+                int rowIndex;
+                for (rowIndex = 0; rowIndex < dg_eqbookings.RowCount; rowIndex++)
+                {
+                    string eqDueDate = dg_eqbookings.Rows[rowIndex].Cells[0].Value.ToString();
+
+                    DateTime today = DateTime.Today;
+                    DateTime due = DateTime.Parse(eqDueDate);
+                    int result = DateTime.Compare(today, due);
+                    if (result > 0)
+                        lateItems++;
+                }
+                if (lateItems > 0)
+                    MessageBox.Show("This persom has " + lateItems + " late, unreturned item(s).");
+            }
         }
 
-
+        // Cancel/Close
         private void button_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -160,6 +208,12 @@ namespace Gym_administration
             }
         }
 
+        /** 
+          * @desc Executes when the "Equipment Booking" button is clicked
+          * It displays the equipment list for borrowing form instantiated for this specific staff
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */
         private void button_equipmentbooking_Click(object sender, EventArgs e)
         {
             frm_equipment_list frmEquipmentList = new frm_equipment_list(clStaff.Id_staff,this);

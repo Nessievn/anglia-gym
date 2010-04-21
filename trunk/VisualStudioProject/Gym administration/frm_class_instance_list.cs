@@ -33,7 +33,7 @@ namespace Gym_administration
         }
 
         /** 
-          * @desc This method refreshes the booked class instances list
+          * @desc This method refreshes the class instance list
           * @params [none] No input parameter. 
           * @return [none] No directly returned data. 
           */ 
@@ -93,7 +93,7 @@ namespace Gym_administration
 	      * It creates a new list of class instances based on search criteria given by the user
           * @params [none] No input parameter. 
           * @return [none] No directly returned data. 
-          */ 
+          */
         private void button_search_Click(object sender, EventArgs e)
         {
             // Create mysql connection           
@@ -101,12 +101,11 @@ namespace Gym_administration
             conn.connect();
             // Create source for grid
             BindingSource itemsSource = new BindingSource();
-            // Create query
+            // Create start of query
             string query = "SELECT ci.id_class_instance CID, c.name Name, c.type Type, c.description Description, s.firstName Instructor, DATE_FORMAT(ci.date, '%d/%m/%Y') Date, ci.start_time Start, ci.end_time End FROM classes c, class_instance ci, staff s WHERE ci.id_class = c.id_class AND ci.id_staff = s.id_staff ";
             // Check user input and create query for search
             if (txt_classname.Text != "")
                 query += " AND c.name LIKE '%" + txt_classname.Text + "%'";
-
             query += " ORDER BY ci.date, ci.start_time";
             // Launch query and load result into source
             itemsSource.DataSource = conn.dtGetTableForDataGrid(query);

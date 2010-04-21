@@ -200,7 +200,11 @@ namespace Gym_administration
 
 
 
-
+        /** 
+          * @desc This method refreshes the booked equipment list
+          * @params [none] No input parameter. 
+          * @return [none] No directly returned data. 
+          */ 
         public void vLoadBookedList()
         {
 
@@ -308,7 +312,7 @@ namespace Gym_administration
           */
         private void button_payments_Click(object sender, EventArgs e)
         {
-            frm_payments frmPayments = new frm_payments(clMember.Id_member);
+            frm_payment_list frmPayments = new frm_payment_list(clMember.Id_member);
             frmPayments.ShowDialog();
         }
 
@@ -337,10 +341,12 @@ namespace Gym_administration
                 if (result == DialogResult.Yes)
                 {
                     // Remove the member
-                    clMember.RemoveMember();
-                    // refresh parent member list if this was called from a member list
-                    if (frmMemberList != null) this.frmMemberList.vLoadMemberList();
-                    this.Close();
+                    if (clMember.RemoveMember())
+                    {
+                        // refresh parent member list if this was called from a member list
+                        if (frmMemberList != null) this.frmMemberList.vLoadMemberList();
+                        this.Close();
+                    }
                 }
             }
         }

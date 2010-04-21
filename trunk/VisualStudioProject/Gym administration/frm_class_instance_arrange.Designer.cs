@@ -42,7 +42,7 @@
             this.txt_endtime = new System.Windows.Forms.MaskedTextBox();
             this.label_classinfo = new System.Windows.Forms.Label();
             this.label_equipment = new System.Windows.Forms.Label();
-            this.button_save = new System.Windows.Forms.Button();
+            this.button_saveClose = new System.Windows.Forms.Button();
             this.cmb_repeats = new System.Windows.Forms.ComboBox();
             this.label_repeats = new System.Windows.Forms.Label();
             this.button_enrollmembers = new System.Windows.Forms.Button();
@@ -53,10 +53,12 @@
             this.label_maxmembers = new System.Windows.Forms.Label();
             this.label_currentmembers = new System.Windows.Forms.Label();
             this.button_remove = new System.Windows.Forms.Button();
-            this.btn_equipment = new System.Windows.Forms.Button();
+            this.button_equipmentbooking = new System.Windows.Forms.Button();
             this.label_eqbookings = new System.Windows.Forms.Label();
             this.dg_eqbookings = new System.Windows.Forms.DataGridView();
             this.label_dateformat = new System.Windows.Forms.Label();
+            this.button_saveOpen = new System.Windows.Forms.Button();
+            this.button_saveStay = new System.Windows.Forms.Button();
             this.groupBox_membersenrolled.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_eqbookings)).BeginInit();
             this.SuspendLayout();
@@ -64,7 +66,7 @@
             // label_chooseclass
             // 
             this.label_chooseclass.AutoSize = true;
-            this.label_chooseclass.Location = new System.Drawing.Point(15, 133);
+            this.label_chooseclass.Location = new System.Drawing.Point(16, 132);
             this.label_chooseclass.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_chooseclass.Name = "label_chooseclass";
             this.label_chooseclass.Size = new System.Drawing.Size(94, 17);
@@ -95,7 +97,7 @@
             // label_chooserooms
             // 
             this.label_chooserooms.AutoSize = true;
-            this.label_chooserooms.Location = new System.Drawing.Point(15, 190);
+            this.label_chooserooms.Location = new System.Drawing.Point(16, 190);
             this.label_chooserooms.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_chooserooms.Name = "label_chooserooms";
             this.label_chooserooms.Size = new System.Drawing.Size(97, 17);
@@ -115,7 +117,7 @@
             // label_chooseinstructor
             // 
             this.label_chooseinstructor.AutoSize = true;
-            this.label_chooseinstructor.Location = new System.Drawing.Point(15, 251);
+            this.label_chooseinstructor.Location = new System.Drawing.Point(16, 250);
             this.label_chooseinstructor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_chooseinstructor.Name = "label_chooseinstructor";
             this.label_chooseinstructor.Size = new System.Drawing.Size(119, 17);
@@ -202,23 +204,23 @@
             // label_equipment
             // 
             this.label_equipment.AutoSize = true;
-            this.label_equipment.Location = new System.Drawing.Point(15, 314);
+            this.label_equipment.Location = new System.Drawing.Point(16, 313);
             this.label_equipment.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_equipment.Name = "label_equipment";
             this.label_equipment.Size = new System.Drawing.Size(75, 17);
             this.label_equipment.TabIndex = 27;
             this.label_equipment.Text = "Equipment";
             // 
-            // button_save
+            // button_saveClose
             // 
-            this.button_save.Location = new System.Drawing.Point(437, 441);
-            this.button_save.Margin = new System.Windows.Forms.Padding(4);
-            this.button_save.Name = "button_save";
-            this.button_save.Size = new System.Drawing.Size(100, 28);
-            this.button_save.TabIndex = 12;
-            this.button_save.Text = "Save";
-            this.button_save.UseVisualStyleBackColor = true;
-            this.button_save.Click += new System.EventHandler(this.button_save_Click);
+            this.button_saveClose.Location = new System.Drawing.Point(423, 444);
+            this.button_saveClose.Margin = new System.Windows.Forms.Padding(4);
+            this.button_saveClose.Name = "button_saveClose";
+            this.button_saveClose.Size = new System.Drawing.Size(119, 32);
+            this.button_saveClose.TabIndex = 12;
+            this.button_saveClose.Text = "Save and Close";
+            this.button_saveClose.UseVisualStyleBackColor = true;
+            this.button_saveClose.Click += new System.EventHandler(this.button_saveClose_Click);
             // 
             // cmb_repeats
             // 
@@ -246,10 +248,10 @@
             // 
             // button_enrollmembers
             // 
-            this.button_enrollmembers.Location = new System.Drawing.Point(285, 441);
+            this.button_enrollmembers.Location = new System.Drawing.Point(19, 406);
             this.button_enrollmembers.Margin = new System.Windows.Forms.Padding(4);
             this.button_enrollmembers.Name = "button_enrollmembers";
-            this.button_enrollmembers.Size = new System.Drawing.Size(144, 28);
+            this.button_enrollmembers.Size = new System.Drawing.Size(203, 28);
             this.button_enrollmembers.TabIndex = 11;
             this.button_enrollmembers.Text = "Enroll Members";
             this.button_enrollmembers.UseVisualStyleBackColor = true;
@@ -257,10 +259,10 @@
             // 
             // button_viewattendants
             // 
-            this.button_viewattendants.Location = new System.Drawing.Point(132, 441);
+            this.button_viewattendants.Location = new System.Drawing.Point(19, 370);
             this.button_viewattendants.Margin = new System.Windows.Forms.Padding(4);
             this.button_viewattendants.Name = "button_viewattendants";
-            this.button_viewattendants.Size = new System.Drawing.Size(145, 28);
+            this.button_viewattendants.Size = new System.Drawing.Size(203, 28);
             this.button_viewattendants.TabIndex = 10;
             this.button_viewattendants.Text = "View Attendants";
             this.button_viewattendants.UseVisualStyleBackColor = true;
@@ -323,25 +325,25 @@
             // 
             // button_remove
             // 
-            this.button_remove.Location = new System.Drawing.Point(9, 441);
+            this.button_remove.Location = new System.Drawing.Point(19, 444);
             this.button_remove.Margin = new System.Windows.Forms.Padding(4);
             this.button_remove.Name = "button_remove";
-            this.button_remove.Size = new System.Drawing.Size(100, 28);
+            this.button_remove.Size = new System.Drawing.Size(100, 32);
             this.button_remove.TabIndex = 9;
             this.button_remove.Text = "Remove";
             this.button_remove.UseVisualStyleBackColor = true;
             this.button_remove.Click += new System.EventHandler(this.button_remove_Click);
             // 
-            // btn_equipment
+            // button_equipmentbooking
             // 
-            this.btn_equipment.Location = new System.Drawing.Point(16, 334);
-            this.btn_equipment.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_equipment.Name = "btn_equipment";
-            this.btn_equipment.Size = new System.Drawing.Size(203, 28);
-            this.btn_equipment.TabIndex = 7;
-            this.btn_equipment.Text = "Equipment Booking";
-            this.btn_equipment.UseVisualStyleBackColor = true;
-            this.btn_equipment.Click += new System.EventHandler(this.btn_equipment_Click);
+            this.button_equipmentbooking.Location = new System.Drawing.Point(19, 334);
+            this.button_equipmentbooking.Margin = new System.Windows.Forms.Padding(4);
+            this.button_equipmentbooking.Name = "button_equipmentbooking";
+            this.button_equipmentbooking.Size = new System.Drawing.Size(203, 28);
+            this.button_equipmentbooking.TabIndex = 7;
+            this.button_equipmentbooking.Text = "Equipment Booking";
+            this.button_equipmentbooking.UseVisualStyleBackColor = true;
+            this.button_equipmentbooking.Click += new System.EventHandler(this.btn_equipment_Click);
             // 
             // label_eqbookings
             // 
@@ -362,12 +364,12 @@
             this.dg_eqbookings.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dg_eqbookings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg_eqbookings.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dg_eqbookings.Location = new System.Drawing.Point(227, 334);
+            this.dg_eqbookings.Location = new System.Drawing.Point(234, 334);
             this.dg_eqbookings.Margin = new System.Windows.Forms.Padding(4);
             this.dg_eqbookings.Name = "dg_eqbookings";
             this.dg_eqbookings.RowHeadersVisible = false;
             this.dg_eqbookings.RowTemplate.Height = 24;
-            this.dg_eqbookings.Size = new System.Drawing.Size(308, 89);
+            this.dg_eqbookings.Size = new System.Drawing.Size(308, 100);
             this.dg_eqbookings.TabIndex = 8;
             this.dg_eqbookings.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_eqbookings_CellDoubleClick);
             // 
@@ -381,22 +383,46 @@
             this.label_dateformat.TabIndex = 118;
             this.label_dateformat.Text = "(dd/mm/yyyy)";
             // 
+            // button_saveOpen
+            // 
+            this.button_saveOpen.Location = new System.Drawing.Point(158, 444);
+            this.button_saveOpen.Margin = new System.Windows.Forms.Padding(4);
+            this.button_saveOpen.Name = "button_saveOpen";
+            this.button_saveOpen.Size = new System.Drawing.Size(141, 32);
+            this.button_saveOpen.TabIndex = 119;
+            this.button_saveOpen.Text = "Save and Open List";
+            this.button_saveOpen.UseVisualStyleBackColor = true;
+            this.button_saveOpen.Click += new System.EventHandler(this.button_saveOpen_Click);
+            // 
+            // button_saveStay
+            // 
+            this.button_saveStay.Location = new System.Drawing.Point(307, 444);
+            this.button_saveStay.Margin = new System.Windows.Forms.Padding(4);
+            this.button_saveStay.Name = "button_saveStay";
+            this.button_saveStay.Size = new System.Drawing.Size(108, 32);
+            this.button_saveStay.TabIndex = 120;
+            this.button_saveStay.Text = "Save and Stay";
+            this.button_saveStay.UseVisualStyleBackColor = true;
+            this.button_saveStay.Click += new System.EventHandler(this.button_saveStay_Click);
+            // 
             // frm_class_instance_arrange
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 484);
+            this.ClientSize = new System.Drawing.Size(565, 489);
+            this.Controls.Add(this.button_saveStay);
+            this.Controls.Add(this.button_saveOpen);
             this.Controls.Add(this.label_dateformat);
             this.Controls.Add(this.label_eqbookings);
             this.Controls.Add(this.dg_eqbookings);
-            this.Controls.Add(this.btn_equipment);
+            this.Controls.Add(this.button_equipmentbooking);
             this.Controls.Add(this.button_remove);
             this.Controls.Add(this.groupBox_membersenrolled);
             this.Controls.Add(this.button_viewattendants);
             this.Controls.Add(this.button_enrollmembers);
             this.Controls.Add(this.label_repeats);
             this.Controls.Add(this.cmb_repeats);
-            this.Controls.Add(this.button_save);
+            this.Controls.Add(this.button_saveClose);
             this.Controls.Add(this.label_equipment);
             this.Controls.Add(this.label_classinfo);
             this.Controls.Add(this.label_endtime);
@@ -441,7 +467,7 @@
         private System.Windows.Forms.MaskedTextBox txt_endtime;
         private System.Windows.Forms.Label label_classinfo;
         private System.Windows.Forms.Label label_equipment;
-        private System.Windows.Forms.Button button_save;
+        private System.Windows.Forms.Button button_saveClose;
         private System.Windows.Forms.ComboBox cmb_repeats;
         private System.Windows.Forms.Label label_repeats;
         private System.Windows.Forms.Button button_enrollmembers;
@@ -452,9 +478,11 @@
         private System.Windows.Forms.Label label_maxmembers;
         private System.Windows.Forms.Label label_currentmembers;
         private System.Windows.Forms.Button button_remove;
-        private System.Windows.Forms.Button btn_equipment;
+        private System.Windows.Forms.Button button_equipmentbooking;
         private System.Windows.Forms.Label label_eqbookings;
         private System.Windows.Forms.DataGridView dg_eqbookings;
         private System.Windows.Forms.Label label_dateformat;
+        private System.Windows.Forms.Button button_saveOpen;
+        private System.Windows.Forms.Button button_saveStay;
     }
 }

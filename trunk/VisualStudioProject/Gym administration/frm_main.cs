@@ -85,7 +85,7 @@ namespace Gym_administration
 // Membership fees
             else if (selectedBand == "manager" && panelIcon.Index.ToString() == "2")
             {
-                frm_payments frmPayments = new frm_payments();
+                frm_payment_list frmPayments = new frm_payment_list();
                 frmPayments.ShowDialog();  
             }
 //Edit Arranged Class

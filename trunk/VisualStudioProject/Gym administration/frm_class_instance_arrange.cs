@@ -35,8 +35,11 @@ namespace Gym_administration
         {
             InitializeComponent();
             clClassInstance = new ClassInstance();
-            // A class instance that doesn't exist yet, shouldn't enroll members
+            // A class instance that doesn't exist yet, shouldn't enroll members, book items and so on
+            button_equipmentbooking.Enabled = false;
+            button_viewattendants.Enabled = false;
             button_enrollmembers.Enabled = false;
+            button_remove.Enabled = false;
             frmClassInstanceList = null;
         }
 
@@ -66,8 +69,11 @@ namespace Gym_administration
                 txt_endtime.Text = clClassInstance.EndTime;
                 txt_startdate.Text = clClassInstance.DateStart;
                 txt_starttime.Text = clClassInstance.StartTime;
-                // Let new members to enroll
+                // Let booking items and new members to enroll and so on
+                button_equipmentbooking.Enabled = true;
+                button_viewattendants.Enabled = true;
                 button_enrollmembers.Enabled = true;
+                button_remove.Enabled = true;
             }
         }
 
@@ -173,7 +179,7 @@ namespace Gym_administration
             cmb_instructors.DisplayMember = "Value";
             cmb_instructors.DataSource = myItems;
   
-            // Set the options on form to be in par with the class instance
+            // Copy the details of the class instancs to the form
             if (this.clClassInstance.Id_class_instance != -1)
             {
                 cmb_classes.SelectedIndex = cmb_classes.FindString(clClassInstance.ClClass.Name);
@@ -190,9 +196,12 @@ namespace Gym_administration
             }
             else
             {
-                // If the class instance does not exist yet, it is not possible to ass member or equipment to it
+                // If the class instance was not found, it is not possible to assign member or equipment to it
+                button_equipmentbooking.Enabled = false;
+                button_viewattendants.Enabled = false;
+                button_enrollmembers.Enabled = false;
                 button_remove.Enabled = false;
-                btn_equipment.Enabled = false;
+                button_equipmentbooking.Enabled = false;
             }
         }
 
@@ -202,9 +211,22 @@ namespace Gym_administration
           * @params [none] No input parameter. 
           * @return [none] No directly returned data. 
           */ 
-        private void button_save_Click(object sender, EventArgs e)
+        private void button_saveClose_Click(object sender, EventArgs e)
         {
-            // create mysql connection
+            //  If saving the class instance was successful
+            if (this.saveClick())
+            {
+                // Refresh the list in parent window and close this one
+                if (this.frmClassInstanceList != null) this.frmClassInstanceList.vLoadDgClassList();
+                this.Close();
+            }
+
+
+        }
+
+        private bool saveClick()
+        {
+                   // create mysql connection
             mySqlConn conn = new mySqlConn();
             conn.connect();
 
@@ -224,16 +246,16 @@ namespace Gym_administration
             if(sDate == "0000-00-00")
             {
                 MessageBox.Show("Check the date format!");
-                return;
+                return false;
             }else if(Utils.bValidateTime(txt_starttime.Text) == false || Utils.bValidateTime(txt_starttime.Text) == false)
             {
                 MessageBox.Show("Check the time format!");
-                return;
+                return false;
             }
             else if (cmb_classes.Text == "" || cmb_instructors.Text == "" || cmb_rooms.Text == "")
             {
                 MessageBox.Show("Missing information to arrange your class. Please check input data.");
-                return;
+                return false;
             }
 
             
@@ -250,13 +272,10 @@ namespace Gym_administration
                 this.clClassInstance.Frequency = cmb_repeats.Text;
                 this.clClassInstance.StartTime = txt_starttime.Text;
                 if (this.clClassInstance.SaveClassInstance())
-                {
-                    button_enrollmembers.Enabled = true;
-                    button_remove.Enabled = true;
-                    btn_equipment.Enabled = true;
-                }
-            }
+                    return true;
 
+            }
+            return false;
         }
 
         /** 
@@ -325,8 +344,11 @@ namespace Gym_administration
                         //???
                         MessageBox.Show("Please make sure that there aren't any class instances for this class.");
                     }
-                    if (frmClassInstanceList != null) frmClassInstanceList.vLoadDgClassList();
-                    this.Close();
+                    else
+                    {
+                        if (frmClassInstanceList != null) frmClassInstanceList.vLoadDgClassList();
+                        this.Close();
+                    }
                 }
             }
         }
@@ -344,6 +366,28 @@ namespace Gym_administration
             frm_equipment_list frmEquipmentList = new frm_equipment_list(this.clClassInstance.Id_class_instance, this);
             frmEquipmentList.ShowDialog();  
 
+        }
+
+        private void button_saveOpen_Click(object sender, EventArgs e)
+        {
+            //  If saving the class instance was successful
+            if (this.saveClick())
+            {
+                // Refresh the list in parent window and close this one
+                if (this.frmClassInstanceList != null) this.frmClassInstanceList.vLoadDgClassList();
+                this.Close();
+            }
+        }
+
+        private void button_saveStay_Click(object sender, EventArgs e)
+        {
+            if (saveClick())
+            {
+                button_equipmentbooking.Enabled = true;
+                button_viewattendants.Enabled = true;
+                button_enrollmembers.Enabled = true;
+                button_remove.Enabled = true;
+            }
         }
     }
 }

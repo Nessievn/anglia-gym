@@ -423,11 +423,13 @@ namespace Gym_administration
                 }
 
                 // Call for saving/updating the equipment
-                clEquipment.SaveEquipment();
-                //Call list reload in parent form
-                //if frmEqlist is null, then this form was called from the main menu and list reload is not necessary
-                if (this.frmEqList != null) frmEqList.vLoadEqList(clEquipment.Type);
-                this.Close();
+                if (clEquipment.SaveEquipment())
+                {
+                    //Call list reload in parent form
+                    //if frmEqlist is null, then this form was called from the main menu and list reload is not necessary
+                    if (this.frmEqList != null) frmEqList.vLoadEqList(clEquipment.Type);
+                    this.Close();
+                }
             }
         }
 
@@ -448,11 +450,13 @@ namespace Gym_administration
             DialogResult result = MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                //call list reload in parent form
-                //if frmEqlist is null, then this form was called from the main menu and list reload is not necessary
-                if (this.frmEqList != null) frmEqList.vLoadEqList(clEquipment.Type);
-                clEquipment.RemoveEquipment();
-                this.Close();
+                if (clEquipment.RemoveEquipment())
+                {
+                    //call list reload in parent form
+                    //if frmEqlist is null, then this form was called from the main menu and list reload is not necessary
+                    if (this.frmEqList != null) frmEqList.vLoadEqList(clEquipment.Type);
+                    this.Close();
+                }
             }
         }
 
