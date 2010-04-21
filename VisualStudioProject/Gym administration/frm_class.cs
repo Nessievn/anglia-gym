@@ -108,10 +108,12 @@ namespace Gym_administration
             clClass.Name = txt_classname.Text;
             clClass.Type = type;
             // Calling the method to save the new class
-            clClass.SaveClass();
-            // Refresh the class list in previous form
-            if (this.frmClassList != null) this.frmClassList.vLoadClassList();
-            this.Close();
+            if (clClass.SaveClass())
+            {
+                // Refresh the class list in previous form
+                if (this.frmClassList != null) this.frmClassList.vLoadClassList();
+                this.Close();
+            }
         }
 
         // Close this form
@@ -137,10 +139,14 @@ namespace Gym_administration
                 {
                     MessageBox.Show("Please make sure that there aren't any class instances for this class.");
                 }
-                this.Close();
+                else
+                {
+                    if (this.frmClassList != null) this.frmClassList.vLoadClassList();
+                    this.Close();
+                }
             }
             // Refresh the class list in previous form
-            if (this.frmClassList != null) this.frmClassList.vLoadClassList();
+            
         }
 
  

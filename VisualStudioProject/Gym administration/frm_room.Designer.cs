@@ -162,7 +162,6 @@
             this.Name = "frm_room";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Room Form";
-            this.Load += new System.EventHandler(this.frm_room_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

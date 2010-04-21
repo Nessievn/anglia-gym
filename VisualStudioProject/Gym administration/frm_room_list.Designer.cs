@@ -105,7 +105,6 @@
             this.Name = "frm_room_list";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Room list";
-            this.Load += new System.EventHandler(this.frm_room_list_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dg_rooms)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
