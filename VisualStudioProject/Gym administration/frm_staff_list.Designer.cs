@@ -46,84 +46,75 @@
             // 
             // txt_dob
             // 
-            this.txt_dob.Location = new System.Drawing.Point(15, 80);
-            this.txt_dob.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_dob.Location = new System.Drawing.Point(11, 65);
             this.txt_dob.Mask = "00/00/0000";
             this.txt_dob.Name = "txt_dob";
-            this.txt_dob.Size = new System.Drawing.Size(235, 22);
+            this.txt_dob.Size = new System.Drawing.Size(177, 20);
             this.txt_dob.TabIndex = 2;
             this.txt_dob.ValidatingType = typeof(System.DateTime);
             // 
             // label_email
             // 
             this.label_email.AutoSize = true;
-            this.label_email.Location = new System.Drawing.Point(259, 60);
-            this.label_email.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_email.Location = new System.Drawing.Point(194, 49);
             this.label_email.Name = "label_email";
-            this.label_email.Size = new System.Drawing.Size(47, 17);
+            this.label_email.Size = new System.Drawing.Size(36, 13);
             this.label_email.TabIndex = 23;
             this.label_email.Text = "E-Mail";
             // 
             // label_dob
             // 
             this.label_dob.AutoSize = true;
-            this.label_dob.Location = new System.Drawing.Point(15, 60);
-            this.label_dob.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_dob.Location = new System.Drawing.Point(11, 49);
             this.label_dob.Name = "label_dob";
-            this.label_dob.Size = new System.Drawing.Size(87, 17);
+            this.label_dob.Size = new System.Drawing.Size(66, 13);
             this.label_dob.TabIndex = 22;
             this.label_dob.Text = "Date of Birth";
             // 
             // txt_email
             // 
-            this.txt_email.Location = new System.Drawing.Point(263, 80);
-            this.txt_email.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_email.Location = new System.Drawing.Point(197, 65);
             this.txt_email.Name = "txt_email";
-            this.txt_email.Size = new System.Drawing.Size(235, 22);
+            this.txt_email.Size = new System.Drawing.Size(177, 20);
             this.txt_email.TabIndex = 3;
             // 
             // label_lastName
             // 
             this.label_lastName.AutoSize = true;
-            this.label_lastName.Location = new System.Drawing.Point(259, 16);
-            this.label_lastName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_lastName.Location = new System.Drawing.Point(194, 13);
             this.label_lastName.Name = "label_lastName";
-            this.label_lastName.Size = new System.Drawing.Size(76, 17);
+            this.label_lastName.Size = new System.Drawing.Size(58, 13);
             this.label_lastName.TabIndex = 20;
             this.label_lastName.Text = "Last Name";
             // 
             // txt_lastName
             // 
-            this.txt_lastName.Location = new System.Drawing.Point(263, 32);
-            this.txt_lastName.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_lastName.Location = new System.Drawing.Point(197, 26);
             this.txt_lastName.Name = "txt_lastName";
-            this.txt_lastName.Size = new System.Drawing.Size(235, 22);
+            this.txt_lastName.Size = new System.Drawing.Size(177, 20);
             this.txt_lastName.TabIndex = 0;
             // 
             // label_firstName
             // 
             this.label_firstName.AutoSize = true;
-            this.label_firstName.Location = new System.Drawing.Point(15, 16);
-            this.label_firstName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_firstName.Location = new System.Drawing.Point(11, 13);
             this.label_firstName.Name = "label_firstName";
-            this.label_firstName.Size = new System.Drawing.Size(76, 17);
+            this.label_firstName.Size = new System.Drawing.Size(57, 13);
             this.label_firstName.TabIndex = 18;
             this.label_firstName.Text = "First Name";
             // 
             // txt_firstName
             // 
-            this.txt_firstName.Location = new System.Drawing.Point(15, 32);
-            this.txt_firstName.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_firstName.Location = new System.Drawing.Point(11, 26);
             this.txt_firstName.Name = "txt_firstName";
-            this.txt_firstName.Size = new System.Drawing.Size(235, 22);
+            this.txt_firstName.Size = new System.Drawing.Size(177, 20);
             this.txt_firstName.TabIndex = 1;
             // 
             // button_search
             // 
-            this.button_search.Location = new System.Drawing.Point(519, 78);
-            this.button_search.Margin = new System.Windows.Forms.Padding(4);
+            this.button_search.Location = new System.Drawing.Point(389, 63);
             this.button_search.Name = "button_search";
-            this.button_search.Size = new System.Drawing.Size(100, 28);
+            this.button_search.Size = new System.Drawing.Size(75, 23);
             this.button_search.TabIndex = 4;
             this.button_search.Text = "Search";
             this.button_search.UseVisualStyleBackColor = true;
@@ -135,20 +126,18 @@
             this.dg_staff.AllowUserToDeleteRows = false;
             this.dg_staff.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dg_staff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_staff.Location = new System.Drawing.Point(13, 119);
-            this.dg_staff.Margin = new System.Windows.Forms.Padding(4);
+            this.dg_staff.Location = new System.Drawing.Point(10, 97);
             this.dg_staff.Name = "dg_staff";
             this.dg_staff.RowTemplate.Height = 24;
-            this.dg_staff.Size = new System.Drawing.Size(855, 375);
+            this.dg_staff.Size = new System.Drawing.Size(641, 305);
             this.dg_staff.TabIndex = 6;
             this.dg_staff.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_staff_CellDoubleClick);
             // 
             // button_addstaffmember
             // 
-            this.button_addstaffmember.Location = new System.Drawing.Point(713, 76);
-            this.button_addstaffmember.Margin = new System.Windows.Forms.Padding(4);
+            this.button_addstaffmember.Location = new System.Drawing.Point(535, 62);
             this.button_addstaffmember.Name = "button_addstaffmember";
-            this.button_addstaffmember.Size = new System.Drawing.Size(155, 28);
+            this.button_addstaffmember.Size = new System.Drawing.Size(116, 23);
             this.button_addstaffmember.TabIndex = 5;
             this.button_addstaffmember.Text = "Add Staff Member";
             this.button_addstaffmember.UseVisualStyleBackColor = true;
@@ -156,10 +145,9 @@
             // 
             // button_close
             // 
-            this.button_close.Location = new System.Drawing.Point(709, 505);
-            this.button_close.Margin = new System.Windows.Forms.Padding(4);
+            this.button_close.Location = new System.Drawing.Point(532, 410);
             this.button_close.Name = "button_close";
-            this.button_close.Size = new System.Drawing.Size(155, 28);
+            this.button_close.Size = new System.Drawing.Size(116, 23);
             this.button_close.TabIndex = 7;
             this.button_close.Text = "Close";
             this.button_close.UseVisualStyleBackColor = true;
@@ -168,18 +156,17 @@
             // label_dateformat
             // 
             this.label_dateformat.AutoSize = true;
-            this.label_dateformat.Location = new System.Drawing.Point(159, 60);
-            this.label_dateformat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_dateformat.Location = new System.Drawing.Point(119, 49);
             this.label_dateformat.Name = "label_dateformat";
-            this.label_dateformat.Size = new System.Drawing.Size(92, 17);
+            this.label_dateformat.Size = new System.Drawing.Size(71, 13);
             this.label_dateformat.TabIndex = 27;
             this.label_dateformat.Text = "(dd/mm/yyyy)";
             // 
             // frm_staff_list
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(880, 548);
+            this.ClientSize = new System.Drawing.Size(660, 445);
             this.Controls.Add(this.label_dateformat);
             this.Controls.Add(this.button_close);
             this.Controls.Add(this.button_addstaffmember);
@@ -193,8 +180,7 @@
             this.Controls.Add(this.txt_firstName);
             this.Controls.Add(this.button_search);
             this.Controls.Add(this.dg_staff);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MinimizeBox = false;
             this.Name = "frm_staff_list";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

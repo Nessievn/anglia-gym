@@ -298,6 +298,11 @@ namespace Gym_administration
             frmMember.ShowDialog();  
         }
 
+        private void frm_member_list_Load(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }

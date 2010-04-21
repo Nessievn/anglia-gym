@@ -39,27 +39,24 @@
             // label_roomname
             // 
             this.label_roomname.AutoSize = true;
-            this.label_roomname.Location = new System.Drawing.Point(12, 11);
-            this.label_roomname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_roomname.Location = new System.Drawing.Point(9, 9);
             this.label_roomname.Name = "label_roomname";
-            this.label_roomname.Size = new System.Drawing.Size(86, 17);
+            this.label_roomname.Size = new System.Drawing.Size(66, 13);
             this.label_roomname.TabIndex = 16;
             this.label_roomname.Text = "Room Name";
             // 
             // txt_roomname
             // 
-            this.txt_roomname.Location = new System.Drawing.Point(15, 31);
-            this.txt_roomname.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_roomname.Location = new System.Drawing.Point(11, 25);
             this.txt_roomname.Name = "txt_roomname";
-            this.txt_roomname.Size = new System.Drawing.Size(235, 22);
+            this.txt_roomname.Size = new System.Drawing.Size(177, 20);
             this.txt_roomname.TabIndex = 1;
             // 
             // button_search
             // 
-            this.button_search.Location = new System.Drawing.Point(259, 27);
-            this.button_search.Margin = new System.Windows.Forms.Padding(4);
+            this.button_search.Location = new System.Drawing.Point(194, 22);
             this.button_search.Name = "button_search";
-            this.button_search.Size = new System.Drawing.Size(100, 28);
+            this.button_search.Size = new System.Drawing.Size(75, 23);
             this.button_search.TabIndex = 2;
             this.button_search.Text = "Search";
             this.button_search.UseVisualStyleBackColor = true;
@@ -71,20 +68,18 @@
             this.dg_rooms.AllowUserToDeleteRows = false;
             this.dg_rooms.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dg_rooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_rooms.Location = new System.Drawing.Point(16, 63);
-            this.dg_rooms.Margin = new System.Windows.Forms.Padding(4);
+            this.dg_rooms.Location = new System.Drawing.Point(12, 51);
             this.dg_rooms.Name = "dg_rooms";
             this.dg_rooms.RowTemplate.Height = 24;
-            this.dg_rooms.Size = new System.Drawing.Size(588, 300);
+            this.dg_rooms.Size = new System.Drawing.Size(441, 244);
             this.dg_rooms.TabIndex = 4;
             this.dg_rooms.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_rooms_CellDoubleClick);
             // 
             // button_addroom
             // 
-            this.button_addroom.Location = new System.Drawing.Point(504, 27);
-            this.button_addroom.Margin = new System.Windows.Forms.Padding(4);
+            this.button_addroom.Location = new System.Drawing.Point(378, 22);
             this.button_addroom.Name = "button_addroom";
-            this.button_addroom.Size = new System.Drawing.Size(100, 28);
+            this.button_addroom.Size = new System.Drawing.Size(75, 23);
             this.button_addroom.TabIndex = 3;
             this.button_addroom.Text = "Add Room";
             this.button_addroom.UseVisualStyleBackColor = true;
@@ -92,16 +87,15 @@
             // 
             // frm_room_list
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(616, 379);
+            this.ClientSize = new System.Drawing.Size(462, 308);
             this.Controls.Add(this.button_addroom);
             this.Controls.Add(this.label_roomname);
             this.Controls.Add(this.txt_roomname);
             this.Controls.Add(this.button_search);
             this.Controls.Add(this.dg_rooms);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frm_room_list";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Room list";

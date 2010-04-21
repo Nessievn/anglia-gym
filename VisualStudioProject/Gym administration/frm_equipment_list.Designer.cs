@@ -40,10 +40,9 @@
             // 
             // button_addequipment
             // 
-            this.button_addequipment.Location = new System.Drawing.Point(492, 40);
-            this.button_addequipment.Margin = new System.Windows.Forms.Padding(4);
+            this.button_addequipment.Location = new System.Drawing.Point(369, 32);
             this.button_addequipment.Name = "button_addequipment";
-            this.button_addequipment.Size = new System.Drawing.Size(127, 28);
+            this.button_addequipment.Size = new System.Drawing.Size(95, 23);
             this.button_addequipment.TabIndex = 3;
             this.button_addequipment.Text = "Add Equipment";
             this.button_addequipment.UseVisualStyleBackColor = true;
@@ -52,27 +51,24 @@
             // label_equipmentname
             // 
             this.label_equipmentname.AutoSize = true;
-            this.label_equipmentname.Location = new System.Drawing.Point(27, 24);
-            this.label_equipmentname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_equipmentname.Location = new System.Drawing.Point(20, 20);
             this.label_equipmentname.Name = "label_equipmentname";
-            this.label_equipmentname.Size = new System.Drawing.Size(116, 17);
+            this.label_equipmentname.Size = new System.Drawing.Size(88, 13);
             this.label_equipmentname.TabIndex = 26;
             this.label_equipmentname.Text = "Equipment Name";
             // 
             // txt_equipmentname
             // 
-            this.txt_equipmentname.Location = new System.Drawing.Point(30, 43);
-            this.txt_equipmentname.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_equipmentname.Location = new System.Drawing.Point(22, 35);
             this.txt_equipmentname.Name = "txt_equipmentname";
-            this.txt_equipmentname.Size = new System.Drawing.Size(235, 22);
+            this.txt_equipmentname.Size = new System.Drawing.Size(177, 20);
             this.txt_equipmentname.TabIndex = 0;
             // 
             // button_search
             // 
-            this.button_search.Location = new System.Drawing.Point(274, 40);
-            this.button_search.Margin = new System.Windows.Forms.Padding(4);
+            this.button_search.Location = new System.Drawing.Point(206, 32);
             this.button_search.Name = "button_search";
-            this.button_search.Size = new System.Drawing.Size(100, 28);
+            this.button_search.Size = new System.Drawing.Size(75, 23);
             this.button_search.TabIndex = 1;
             this.button_search.Text = "Search";
             this.button_search.UseVisualStyleBackColor = true;
@@ -83,11 +79,10 @@
             this.dg_equipment.AllowUserToDeleteRows = false;
             this.dg_equipment.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dg_equipment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_equipment.Location = new System.Drawing.Point(31, 75);
-            this.dg_equipment.Margin = new System.Windows.Forms.Padding(4);
+            this.dg_equipment.Location = new System.Drawing.Point(23, 61);
             this.dg_equipment.Name = "dg_equipment";
             this.dg_equipment.RowTemplate.Height = 24;
-            this.dg_equipment.Size = new System.Drawing.Size(588, 300);
+            this.dg_equipment.Size = new System.Drawing.Size(441, 244);
             this.dg_equipment.TabIndex = 23;
             this.dg_equipment.TabStop = false;
             this.dg_equipment.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_equipment_CellDoubleClick);
@@ -95,9 +90,10 @@
             // rd_item
             // 
             this.rd_item.AutoSize = true;
-            this.rd_item.Location = new System.Drawing.Point(155, 12);
+            this.rd_item.Location = new System.Drawing.Point(116, 10);
+            this.rd_item.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rd_item.Name = "rd_item";
-            this.rd_item.Size = new System.Drawing.Size(62, 21);
+            this.rd_item.Size = new System.Drawing.Size(50, 17);
             this.rd_item.TabIndex = 2;
             this.rd_item.TabStop = true;
             this.rd_item.Text = "Items";
@@ -107,9 +103,10 @@
             // rd_set
             // 
             this.rd_set.AutoSize = true;
-            this.rd_set.Location = new System.Drawing.Point(274, 12);
+            this.rd_set.Location = new System.Drawing.Point(206, 10);
+            this.rd_set.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rd_set.Name = "rd_set";
-            this.rd_set.Size = new System.Drawing.Size(57, 21);
+            this.rd_set.Size = new System.Drawing.Size(46, 17);
             this.rd_set.TabIndex = 29;
             this.rd_set.TabStop = true;
             this.rd_set.Text = "Sets";
@@ -118,9 +115,9 @@
             // 
             // frm_equipment_list
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(647, 399);
+            this.ClientSize = new System.Drawing.Size(479, 318);
             this.Controls.Add(this.rd_set);
             this.Controls.Add(this.rd_item);
             this.Controls.Add(this.button_addequipment);
@@ -128,7 +125,8 @@
             this.Controls.Add(this.txt_equipmentname);
             this.Controls.Add(this.button_search);
             this.Controls.Add(this.dg_equipment);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frm_equipment_list";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_equipment_list";
