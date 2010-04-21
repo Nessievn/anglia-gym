@@ -5,9 +5,9 @@ require 'smarty/libs/Smarty.class.php';
 $smarty = new Smarty;
 $smarty->compile_check = true;
 $smarty->debugging = false;
-$req_data = clean_array($_REQUEST);
-session_start();
 $link = connect();	
+$req_data = clean_array($_REQUEST);
+@session_start();
 //checks to make sure the result returned is within one row in the database
 if(isset($_SESSION["id_member"]) && !isset($req_data['details_update']))
 {
