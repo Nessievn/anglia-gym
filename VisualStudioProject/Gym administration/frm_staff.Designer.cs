@@ -91,6 +91,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button_saveClose = new System.Windows.Forms.Button();
             this.button_saveOpen = new System.Windows.Forms.Button();
+            this.button_remove = new System.Windows.Forms.Button();
+            this.chk_active = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dg_eqbookings)).BeginInit();
             this.SuspendLayout();
             // 
@@ -657,11 +659,37 @@
             this.button_saveOpen.UseVisualStyleBackColor = true;
             this.button_saveOpen.Click += new System.EventHandler(this.button_saveOpen_Click);
             // 
+            // button_remove
+            // 
+            this.button_remove.Location = new System.Drawing.Point(100, 406);
+            this.button_remove.Margin = new System.Windows.Forms.Padding(2);
+            this.button_remove.Name = "button_remove";
+            this.button_remove.Size = new System.Drawing.Size(67, 26);
+            this.button_remove.TabIndex = 140;
+            this.button_remove.Text = "Remove";
+            this.button_remove.UseVisualStyleBackColor = true;
+            this.button_remove.Click += new System.EventHandler(this.button_remove_Click);
+            // 
+            // chk_active
+            // 
+            this.chk_active.AutoSize = true;
+            this.chk_active.Checked = true;
+            this.chk_active.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_active.Location = new System.Drawing.Point(173, 6);
+            this.chk_active.Name = "chk_active";
+            this.chk_active.Size = new System.Drawing.Size(62, 17);
+            this.chk_active.TabIndex = 141;
+            this.chk_active.TabStop = false;
+            this.chk_active.Text = "Active?";
+            this.chk_active.UseVisualStyleBackColor = true;
+            // 
             // frm_staff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(659, 443);
+            this.Controls.Add(this.chk_active);
+            this.Controls.Add(this.button_remove);
             this.Controls.Add(this.button_saveOpen);
             this.Controls.Add(this.button_saveClose);
             this.Controls.Add(this.label2);
@@ -801,5 +829,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button_saveClose;
         private System.Windows.Forms.Button button_saveOpen;
+        private System.Windows.Forms.Button button_remove;
+        private System.Windows.Forms.CheckBox chk_active;
     }
 }

@@ -100,8 +100,9 @@ namespace Gym_administration
                  txt_telephone.Text = clStaff.Phone;
                  cmb_position.Text = clStaff.Position;
                  txt_natinsnumb.Text = clStaff.NatInsNumb;
-                 txt_contract_start.Text = clStaff.SContractStart;
-                 txt_contract_finish.Text = clStaff.SContractFinish;
+                 txt_contract_start.Text = Utils.sGetCsharpDateFromMysqlDate(clStaff.SContractStart);
+                 txt_contract_finish.Text = Utils.sGetCsharpDateFromMysqlDate(clStaff.SContractFinish);
+                 chk_active.Checked = clStaff.IsActive;
             }
         }
 
@@ -298,6 +299,33 @@ namespace Gym_administration
                 this.Dispose();
                 frm_staff_list frmStaffList = new frm_staff_list();
                 frmStaffList.ShowDialog();
+            }
+        }
+       /** 
+        * @desc Executes when the "Remove" button is clicked
+        * It asks for confirmation and then calls for removing the staff
+        * @params [none] No input parameter. 
+        * @return [none] No directly returned data. 
+        */
+        private void button_remove_Click(object sender, EventArgs e)
+        {
+            // If there are still equipments borrowed, the staff can't be deleted!
+            if (dg_eqbookings.RowCount > 0)
+                MessageBox.Show("You can't remove this staff as the borrowed equipments has to be returned first!");
+            // else there are no outstanding borrowed equipments
+            else
+            {   // Confirm member removal
+                DialogResult result = MessageBox.Show("Are you sure?", "Delete entry", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    // Remove the member
+                    if (clStaff.RemoveStaff())
+                    {
+                        // refresh parent member list if this was called from a member list
+                        if (frmStaffList != null) this.frmStaffList.vLoadStaffList();
+                        this.Close();
+                    }
+                }
             }
         }
 
