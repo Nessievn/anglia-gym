@@ -158,6 +158,14 @@ namespace Gym_administration
         }
 
 
+        // Field is_active from STAFF table
+        private bool isActive;
+        public bool IsActive
+        {
+            get { return isActive; }
+            set { isActive = value; }
+        }
+
         /**
          * @desc Default constructor.
          * Sets id_staff to -1 so the fact of this is a new staff can be referenced.
@@ -200,6 +208,7 @@ namespace Gym_administration
                 this.Address_1 = lhResultset[0]["address_1"].ToString();
                 this.Birthdate = lhResultset[0]["birthdate"].ToString();
                 this.City = lhResultset[0]["city"].ToString();
+                this.IsActive = (lhResultset[0]["is_active"].ToString() == "True") ? true : false;
                 this.County = lhResultset[0]["county"].ToString();
                 this.Email = lhResultset[0]["email"].ToString();
                 this.EmergContactName = lhResultset[0]["emerg_contact_name"].ToString();
@@ -266,8 +275,8 @@ namespace Gym_administration
                     if (Id_staff == -1)
                     {
 			// Create insert query 
-                        query = "insert into `gym`.`staff` (`id_staff`, `firstName`, `lastName`, `birthdate`, `address_1`, `city`, `county`, `postalcode`, `contract_type`, `natinsnumber`, `position`, `contract_start`, `contract_finish`, `id_user`, `address_2`, `emerg_contact_name`, `emerg_contact_telephone`, `emerg_contact_relation`, `allergies`, `medicalNotes`, `qualifications`, `phone`, `mobile`, `email`, `emerg_contact_mobile`, `medical_doctor_name`, `medical_phone`) values " +
-                                 "(NULL, '" + this.FirstName + "', '" + this.LastName + "', '" + sMysqlDate + "', '" + this.Address_1 + "', '" + this.City + "', '" + this.County + "', '" + this.PostalCode + "', '" + this.ContractType + "', '" + this.NatInsNumb + "', '" + this.Position + "', '" + sMysqlStartDate + "', '" + sMysqlFinishDate + "', '" + clUser.Id_user + "', '" + this.Address_2 + "', '" + this.EmergContactName + "', '" + this.EmergContactPhone + "', '" + this.EmergContactRelation + "', '" + this.MedicalAllergies + "', '" + this.MedicalNotes + "','" + this.Qualifications + "', '" + this.Phone + "','" + this.Mobile + "','" + this.Email + "','" + this.EmergContactMobile + "','" + this.MedicalDoctorName + "','" + this.MedicalPhone + "')";
+                        query = "insert into `gym`.`staff` (`id_staff`, `firstName`, `lastName`, `birthdate`, `address_1`, `city`, `county`, `postalcode`, `contract_type`, `natinsnumber`, `position`, `contract_start`, `contract_finish`, `id_user`, `address_2`, `emerg_contact_name`, `emerg_contact_telephone`, `emerg_contact_relation`, `allergies`, `medicalNotes`, `qualifications`, `phone`, `mobile`, `email`, `emerg_contact_mobile`, `medical_doctor_name`, `medical_phone`, `is_active`) values " +
+                                "(NULL, '" + this.FirstName + "', '" + this.LastName + "', '" + sMysqlDate + "', '" + this.Address_1 + "', '" + this.City + "', '" + this.County + "', '" + this.PostalCode + "', '" + this.ContractType + "', '" + this.NatInsNumb + "', '" + this.Position + "', '" + sMysqlStartDate + "', '" + sMysqlFinishDate + "', '" + clUser.Id_user + "', '" + this.Address_2 + "', '" + this.EmergContactName + "', '" + this.EmergContactPhone + "', '" + this.EmergContactRelation + "', '" + this.MedicalAllergies + "', '" + this.MedicalNotes + "','" + this.Qualifications + "', '" + this.Phone + "','" + this.Mobile + "','" + this.Email + "','" + this.EmergContactMobile + "','" + this.MedicalDoctorName + "','" + this.MedicalPhone + "','" + ((this.IsActive) ? "1" : "0") +"')";
                         // Launch insert query
                         int id_staff = conn.InsertToDB(query);
                         // Check if the insert was successful
@@ -288,8 +297,8 @@ namespace Gym_administration
                     else
                     {
                         // Create update query
-                        query = "UPDATE staff SET firstName = '" + this.FirstName + "', lastName = '" + this.LastName + "', birthdate = '" + sMysqlDate + "', address_1 = '" + this.Address_1 + "', city = '" + this.City + "', county = '" + this.County + "', postalcode = '" + this.PostalCode + "', contract_type = '" + this.ContractType + "', contract_start = '" + sMysqlStartDate + "', contract_finish = '" + sMysqlFinishDate + "', address_2 = '" + this.Address_2 + "', emerg_contact_name = '" + this.EmergContactName + "', emerg_contact_relation = '" + this.EmergContactRelation + "', emerg_contact_telephone = '" + this.EmergContactPhone + "', emerg_contact_mobile = '" + this.EmergContactMobile + "', allergies = '" + this.MedicalAllergies + "', medicalNotes = '" + this.MedicalNotes + "', qualifications = '" + this.Qualifications + "', medical_doctor_name = '" + this.MedicalDoctorName + "', medical_phone = '" + this.MedicalPhone + "', email = '" + this.Email + "', phone = '" + this.Phone + "', mobile = '" + this.Mobile + "', natinsnumber = '" + this.NatInsNumb + "', position = '" + this.Position + "' " +
-                                 " WHERE id_staff = '"+this.id_staff+"'";
+                        query = "UPDATE staff SET firstName = '" + this.FirstName + "', lastName = '" + this.LastName + "', birthdate = '" + sMysqlDate + "', address_1 = '" + this.Address_1 + "', city = '" + this.City + "', county = '" + this.County + "', postalcode = '" + this.PostalCode + "', contract_type = '" + this.ContractType + "', contract_start = '" + sMysqlStartDate + "', contract_finish = '" + sMysqlFinishDate + "', address_2 = '" + this.Address_2 + "', emerg_contact_name = '" + this.EmergContactName + "', emerg_contact_relation = '" + this.EmergContactRelation + "', emerg_contact_telephone = '" + this.EmergContactPhone + "', emerg_contact_mobile = '" + this.EmergContactMobile + "', allergies = '" + this.MedicalAllergies + "', medicalNotes = '" + this.MedicalNotes + "', qualifications = '" + this.Qualifications + "', medical_doctor_name = '" + this.MedicalDoctorName + "', medical_phone = '" + this.MedicalPhone + "', email = '" + this.Email + "', phone = '" + this.Phone + "', mobile = '" + this.Mobile + "', natinsnumber = '" + this.NatInsNumb + "', position = '" + this.Position + "', is_active = " + ((this.IsActive) ? "1" : "0") +
+                                " WHERE id_staff = '"+this.id_staff+"'";
                         // Launch update query     
                         int result = conn.DeleteOrUpdate(query);
                         // Check if the update was successful
@@ -315,6 +324,25 @@ namespace Gym_administration
             }
             return false;
         }
+
+
+         /**
+          * @desc This method will set a staff to be inactive in the database
+          * @return [bool] Returns true in case of success, false if there was a problem
+          */
+         public bool RemoveStaff()
+         {
+             // If an existing member is currently loaded in
+             if (this.Id_staff != -1)
+             {
+                 // Set his active status to inactive
+                 this.IsActive = false;
+                 return this.SaveStaff();
+             }
+             return false;
+
+         }
+
     }
 }
 
