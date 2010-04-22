@@ -36,7 +36,7 @@ namespace Gym_administration
             clClass = new Class();
             this.frmClassList = null;
             // Hide the Remove button as a class not yet existing can't be removed
-            button_remove.Hide();
+            button_remove.Enabled = false;
             rd_group.Checked = false;
         }
 
@@ -54,7 +54,7 @@ namespace Gym_administration
             // Create reference to the parent form (frm_class_list)
             this.frmClassList = frmClassList;
 	    // Hide the Remove button as a new class can't be removed
-            button_remove.Hide();
+            button_remove.Enabled = false;
             rd_group.Checked = false;
         }
 

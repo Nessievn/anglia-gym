@@ -33,7 +33,7 @@ namespace Gym_administration
         {
             clStaff = new Staff();
             InitializeComponent();
-            button_equipmentbooking.Hide();
+            button_equipmentbooking.Enabled = false;
             DateTime today = DateTime.Today;
             txt_contract_start.Text = String.Format("{0:dd-MM-yyyy}", today);
         }
@@ -50,7 +50,7 @@ namespace Gym_administration
             clStaff = new Staff();
             InitializeComponent();
             button_saveOpen.Hide();
-            button_equipmentbooking.Hide();
+            button_equipmentbooking.Enabled = false;
             DateTime today = DateTime.Today;
             txt_contract_start.Text = String.Format("{0:dd-MM-yyyy}", today);
         }
@@ -67,7 +67,7 @@ namespace Gym_administration
             // Create reference to the parent form
             this.frmStaffList = frmStaffList;
             InitializeComponent();
-            button_equipmentbooking.Show();
+            button_equipmentbooking.Enabled = true;
             button_saveOpen.Hide();
             // Load in staff details for specified staff
             clStaff = new Staff(id_staff);
@@ -205,7 +205,7 @@ namespace Gym_administration
         {
             if (saveClick())
             {
-                button_equipmentbooking.Show();
+                button_equipmentbooking.Enabled = true;
             }
         }
 

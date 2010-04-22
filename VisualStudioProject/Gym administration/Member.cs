@@ -41,21 +41,7 @@ namespace Gym_administration
             set { memberNumber = value; }
         }
         
-        // Field member_number from MEMBERS table
-        private string sid;
-        public string Sid
-        {
-            get { return sid; }
-            set { sid = value; }
-        }
-        
-        // Field member_number from MEMBERS table
-        private string studCardNumber;
-        public string StudCardNumber
-        {
-            get { return studCardNumber; }
-            set { studCardNumber = value; }
-        }
+
 
         // Field type from MEMBERS table
         private string type;
@@ -241,8 +227,7 @@ namespace Gym_administration
                 this.Type = lhResultset[0]["type"].ToString();
                 this.Mobile = lhResultset[0]["mobile"].ToString();
                 this.Phone = lhResultset[0]["phone"].ToString();
-                this.Sid = lhResultset[0]["sid"].ToString();
-                this.StudCardNumber = lhResultset[0]["studcardnumber"].ToString();
+
                 this.Gender = lhResultset[0]["gender"].ToString();
             }
         }
@@ -326,8 +311,8 @@ namespace Gym_administration
                     if (this.Id_member == -1)
                     {
                         // Create insert query
-                        query = "insert into `gym`.`members` (`id_member`, `firstName`, `lastName`, `birthdate`, `address_1`, `city`, `county`, `postalcode`, `type`, `id_user`, `is_active`, `address_2`, `emerg_contact_name`, `emerg_contact_relation`, `emerg_contact_phone`, `emerg_contact_mobile`, `medical_allergies`, `medical_notes`, `id_file`, `medical_doctor_name`, `medical_phone`, `email`, `member_number`, `phone`,`mobile`,`sid`,`studcardnumber`,`gender`) values " +
-                                 "(NULL, '" + this.FirstName + "', '" + this.LastName + "', '" + mysqlDate + "', '" + this.Address_1 + "', '" + this.City + "', '" + this.County + "', '" + this.PostalCode + "', '" + this.Type + "', '" + clUser.Id_user + "', '" + ((this.IsActive) ? "1" : "0") + "', '" + this.Address_2 + "', '" + this.EmergContactName + "', '" + this.EmergContactRelation + "', '" + this.EmergContactPhone + "', '" + this.EmergContactMobile + "', '" + this.MedicalAllergies + "', '" + this.MedicalNotes + "', '" + this.Id_file + "', '" + this.MedicalDoctorName + "', '" + this.MedicalPhone + "', '" + this.Email + "', '" + this.MemberNumber + "','" + this.Phone + "','" + this.Mobile + "','" + this.Sid + "','" + this.StudCardNumber + "','" + this.Gender + "')";
+                        query = "insert into `gym`.`members` (`id_member`, `firstName`, `lastName`, `birthdate`, `address_1`, `city`, `county`, `postalcode`, `type`, `id_user`, `is_active`, `address_2`, `emerg_contact_name`, `emerg_contact_relation`, `emerg_contact_phone`, `emerg_contact_mobile`, `medical_allergies`, `medical_notes`, `id_file`, `medical_doctor_name`, `medical_phone`, `email`, `member_number`, `phone`,`mobile`,`gender`) values " +
+                                 "(NULL, '" + this.FirstName + "', '" + this.LastName + "', '" + mysqlDate + "', '" + this.Address_1 + "', '" + this.City + "', '" + this.County + "', '" + this.PostalCode + "', '" + this.Type + "', '" + clUser.Id_user + "', '" + ((this.IsActive) ? "1" : "0") + "', '" + this.Address_2 + "', '" + this.EmergContactName + "', '" + this.EmergContactRelation + "', '" + this.EmergContactPhone + "', '" + this.EmergContactMobile + "', '" + this.MedicalAllergies + "', '" + this.MedicalNotes + "', '" + this.Id_file + "', '" + this.MedicalDoctorName + "', '" + this.MedicalPhone + "', '" + this.Email + "', '" + this.MemberNumber + "','" + this.Phone + "','" + this.Mobile + "','" + this.Gender + "')";
 
                         // Launch insert query
                         int id_member = conn.InsertToDB(query);
@@ -350,7 +335,7 @@ namespace Gym_administration
                     {
                         // Create update query
                         query = "UPDATE members SET firstName = '" + this.FirstName + "', lastName = '" + this.LastName + "', birthdate = '" + mysqlDate + "', address_1 = '" + this.Address_1 + "', city = '" + this.City + "', county = '" + this.County + "', postalcode = '" + this.PostalCode + "', type = '" + this.Type + "', is_active = " + ((this.IsActive) ? "1" : "0") + ", address_2 = '" + this.Address_2 + "', emerg_contact_name = '" + this.EmergContactName + "', emerg_contact_relation = '" + this.EmergContactRelation + "', emerg_contact_phone = '" + this.EmergContactPhone + "', emerg_contact_mobile = '" + this.EmergContactMobile + "', medical_allergies = '" + this.MedicalAllergies + "', medical_notes = '" + this.MedicalNotes + "', id_file = '" + this.Id_file + "', medical_doctor_name = '" + this.MedicalDoctorName + "', medical_phone = '" + this.MedicalPhone + "', email = '" + this.Email + "', phone = '" + this.Phone + "', mobile = '" + this.Mobile +
-                            "', sid = '" + this.Sid + "', studcardnumber = '" + this.StudCardNumber + "', gender = '" + this.Gender + "' " + " WHERE id_member = '"+this.Id_member+"'";
+                            "', gender = '" + this.Gender + "' " + " WHERE id_member = '"+this.Id_member+"'";
                         // Launch update query
                         int result = conn.DeleteOrUpdate(query);
                         // Check if the update was successful
