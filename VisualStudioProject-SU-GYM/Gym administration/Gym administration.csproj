@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{98B9770B-7CC7-4BB4-A879-1399DBAA2527}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Gym_administration</RootNamespace>
+    <AssemblyName>Gym administration</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ManifestCertificateThumbprint>FC7595EC0C7E8362751732F3BE33FDBFABEF8D82</ManifestCertificateThumbprint>
+    <ManifestKeyFile>Gym administration_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>true</GenerateManifests>
+    <SignManifests>true</SignManifests>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <PublishUrl>c:\deploy\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.2.2.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class.cs" />
+    <Compile Include="ClassInstance.cs" />
+    <Compile Include="Equipment.cs" />
+    <Compile Include="EquipmentBooked.cs" />
+    <Compile Include="frm_add_payment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_add_payment.Designer.cs">
+      <DependentUpon>frm_add_payment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_class.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_class.Designer.cs">
+      <DependentUpon>frm_class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_class_instance_arrange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_class_instance_arrange.Designer.cs">
+      <DependentUpon>frm_class_instance_arrange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_class_instance_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_class_instance_list.Designer.cs">
+      <DependentUpon>frm_class_instance_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_class_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_class_list.Designer.cs">
+      <DependentUpon>frm_class_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_equipment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_equipment_bookings_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_equipment_bookings_list.Designer.cs">
+      <DependentUpon>frm_equipment_bookings_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_login_options.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_login_options.Designer.cs">
+      <DependentUpon>frm_login_options.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_equipment.Designer.cs">
+      <DependentUpon>frm_equipment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_equipment_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_equipment_list.Designer.cs">
+      <DependentUpon>frm_equipment_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_member_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_member_list.Designer.cs">
+      <DependentUpon>frm_member_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_member.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_member.Designer.cs">
+      <DependentUpon>frm_member.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_payment_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_payment_list.Designer.cs">
+      <DependentUpon>frm_payment_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_room.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_room.Designer.cs">
+      <DependentUpon>frm_room.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_room_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_room_list.Designer.cs">
+      <DependentUpon>frm_room_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_staff.Designer.cs">
+      <DependentUpon>frm_staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_staff_list.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_staff_list.Designer.cs">
+      <DependentUpon>frm_staff_list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Member.cs" />
+    <Compile Include="frm_message_box.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_message_box.Designer.cs">
+      <DependentUpon>frm_message_box.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mySqlConn.cs" />
+    <Compile Include="frm_login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_login.Designer.cs">
+      <DependentUpon>frm_login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_main.Designer.cs">
+      <DependentUpon>frm_main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OutlookBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Payment.cs" />
+    <Compile Include="Person.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frm_add_payment.resx">
+      <DependentUpon>frm_add_payment.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_class.resx">
+      <DependentUpon>frm_class.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_class_instance_arrange.resx">
+      <DependentUpon>frm_class_instance_arrange.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_class_instance_list.resx">
+      <DependentUpon>frm_class_instance_list.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_class_list.resx">
+      <DependentUpon>frm_class_list.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_equipment.resx">
+      <DependentUpon>frm_equipment.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_equipment_bookings_list.resx">
+      <DependentUpon>frm_equipment_bookings_list.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_equipment_list.resx">
+      <DependentUpon>frm_equipment_list.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_login_options.resx">
+      <DependentUpon>frm_login_options.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_member_list.resx">
+      <DependentUpon>frm_member_list.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_login.resx">
+      <DependentUpon>frm_login.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_main.resx">
+      <DependentUpon>frm_main.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_member.resx">
+      <DependentUpon>frm_member.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_payment_list.resx">
+      <DependentUpon>frm_payment_list.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_room.resx">
+      <DependentUpon>frm_room.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_room_list.resx">
+      <DependentUpon>frm_room_list.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_staff.resx">
+      <DependentUpon>frm_staff.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_staff_list.resx">
+      <DependentUpon>frm_staff_list.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_message_box.resx">
+      <DependentUpon>frm_message_box.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Room.cs" />
+    <Compile Include="Staff.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="Utils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.ico" />
+    <None Include="Gym administration_TemporaryKey.pfx" />
+    <None Include="icons\staff_edit_128.png" />
+    <None Include="icons\staff_add_128.png" />
+    <None Include="icons\room_edit_128.png" />
+    <None Include="icons\payment_search_128.png" />
+    <None Include="icons\password_edit_128.png" />
+    <None Include="icons\member_edit_128.png" />
+    <None Include="icons\member_add_128.png" />
+    <None Include="icons\equipment_edit_128.png" />
+    <None Include="icons\equipment_book_edit_128.png" />
+    <None Include="icons\equipment_add_128.png" />
+    <None Include="icons\class_edit_128.png" />
+    <None Include="icons\class_book_edit_128.png" />
+    <None Include="icons\class_book_add_128.png" />
+    <None Include="icons\class_add_128.png" />
+    <None Include="icons\member_female_128.png" />
+    <None Include="icons\member_male_128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

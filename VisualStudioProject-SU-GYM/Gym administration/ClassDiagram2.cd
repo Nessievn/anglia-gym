@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Gym_administration.Class">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAIAQAAAQEAAAEBAAAAAAAAAAAAAAAAAAAAAAQI=</HashCode>
+      <FileName>Class.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Gym_administration.ClassBooked">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAABiEAAAcgBAABAAAACAAQAAgAEAACAAAEBAAAAQY=</HashCode>
+      <FileName>ClassBooked.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Gym_administration.Equipment" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAIAQAAAAEAAAAAAAABAAAAAQCAAAAAgAAAAAQI=</HashCode>
+      <FileName>Equipment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Gym_administration.EquipmentBooked">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EquipmentBooked.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Gym_administration.Member" Collapsed="true">
+    <Position X="0.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAEKgAAAAAFEgAABYIGIAKAAgAAAgIJAAwCgQIUI=</HashCode>
+      <FileName>Member.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Gym_administration.mySqlConn">
+    <Position X="4.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQEAABAAAAAAAABAkAABAAAAAAAAAAgAAAEAAkAIAQI=</HashCode>
+      <FileName>mySqlConn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Gym_administration.Payment" Collapsed="true">
+    <Position X="6" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAIAAAASAAAAEAAAAAAAAAAAAAAAgAAAAIAAACAAQA=</HashCode>
+      <FileName>Payment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Gym_administration.Person">
+    <Position X="2" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQQEAAgkIAAAACAAAAAAAAAgAAAAABgACABcAEEARA=</HashCode>
+      <FileName>Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Gym_administration.Room" Collapsed="true">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAIAQACAAEAAgAAAAAAIAAAACAAAAAAAAAAAAQI=</HashCode>
+      <FileName>Room.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Gym_administration.Staff">
+    <Position X="2.75" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACAIQEKgAAAABBEAACwZIGIIKgAgAAIAAKABgAgAIUA=</HashCode>
+      <FileName>Staff.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Gym_administration.User" Collapsed="true">
+    <Position X="4.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAACQAAAQAAAIEAAAiAAAAIAIABAACAAAAAQA=</HashCode>
+      <FileName>User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Gym_administration.Utils" Collapsed="true">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAEAAAAAAAAAAAIgAAAAQAAAEAQAAAAAA=</HashCode>
+      <FileName>Utils.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>
