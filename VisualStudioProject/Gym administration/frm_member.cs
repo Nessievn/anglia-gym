@@ -176,8 +176,15 @@ namespace Gym_administration
                      }
                      else
                      {
-                         
-                         pictureBox1.Image = conn.loadImageFromDB(clMember.Id_file);
+                         try
+                         {
+                             pictureBox1.Image = conn.loadImageFromDB(clMember.Id_file);
+                         }
+                         catch (Exception e)
+                         {
+                             MessageBox.Show("Picture error, please assign anothe picture to this member!\r\n\r\n" + e);
+                             this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_male_128;
+                         }
                      }
                  }
                  else
@@ -189,7 +196,16 @@ namespace Gym_administration
                      }
                      else
                      {
-                         pictureBox1.Image = conn.loadImageFromDB(clMember.Id_file);
+                         try
+                         {
+                             pictureBox1.Image = conn.loadImageFromDB(clMember.Id_file);
+                         }
+                         catch (Exception e)
+                         {
+                             MessageBox.Show("Picture error, please assign anothe picture to this member!\r\n\r\n" + e);
+                             this.pictureBox1.BackgroundImage = global::Gym_administration.Properties.Resources.member_female_128;
+                         }
+
                      }
                  }
 
