@@ -56,6 +56,9 @@ Showing classes between {$start} and {$end}
 </td></tr></table>
 {else}
         No classes available between the dates {$start} and {$end}
+        </tbody>
+</table>
+</td></tr></table>
 {/if}
 
     {literal}
