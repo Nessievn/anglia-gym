@@ -122,7 +122,7 @@ namespace Gym_administration
             else if (selectedBand == "manager" && panelIcon.Index.ToString() == "8")
             {
                 frm_room_list frmRoomList = new frm_room_list();
-                frmRoomList.Show();
+                frmRoomList.ShowDialog();
             }
 /////////////////////  STAFF OPTIONS BAND //////////////////////
 // Add Member

@@ -68,12 +68,12 @@ namespace Gym_administration
             txt_membernum.ReadOnly = true;
             // Members who don't yet exist can't book equipment
             // This will be available once the "Save and Stay" is executed successfully
-            button_equipmentbooking.Hide();
+            button_equipmentbooking.Enabled = false;
             // Members who don't yet exist can't book equipment
             // This will be available once the "Save and Stay" is executed successfully
-            button_payments.Hide();
+            button_payments.Enabled = false;
             // Members who don't yet exist can't be deleted
-            button_remove.Hide();
+            button_remove.Enabled = false;
             clMember.Id_file = "";
             cmb_type.SelectedIndex = 0;
 
@@ -98,9 +98,9 @@ namespace Gym_administration
             txt_membernum.Text = Utils.sGenerateNewMemberNumber();
             txt_membernum.ReadOnly = true;
             // equipmentbooking, add payments and remove member buttons are hidden until saving (creating) the member
-            button_equipmentbooking.Hide();
-            button_payments.Hide();
-            button_remove.Hide();
+            button_equipmentbooking.Enabled = false;
+            button_payments.Enabled = false;
+            button_remove.Enabled = false;
             // As this was opened from a member list there is no need to open a new one after closing
             button_saveOpen.Hide();
             clMember.Id_file = "";
@@ -128,9 +128,9 @@ namespace Gym_administration
             // Load in member details for specified member
             clMember = new Member(id_member);
             
-            button_equipmentbooking.Show();
-            button_payments.Show();
-            button_remove.Show();
+            button_equipmentbooking.Enabled = true;
+            button_payments.Enabled = true;
+            button_remove.Enabled = true;
             button_saveOpen.Hide();
 
             if (clMember.Id_member < 1)
@@ -161,8 +161,6 @@ namespace Gym_administration
                  txt_email.Text = clMember.Email;
                  txt_mobile.Text = clMember.Mobile;
                  txt_telephone.Text = clMember.Phone;
-                 txt_sid.Text = clMember.Sid;
-                 txt_stcardnumber.Text = clMember.StudCardNumber;
 
                  // Create mysql connection            
                 mySqlConn conn = new mySqlConn();
@@ -253,9 +251,9 @@ namespace Gym_administration
 
             if (saveClick())
             {
-                button_equipmentbooking.Show();
-                button_payments.Show();
-                button_remove.Show();
+                button_equipmentbooking.Enabled = true;
+                button_payments.Enabled = true;
+                button_remove.Enabled = true;
             }
 
         }
@@ -292,9 +290,7 @@ namespace Gym_administration
             clMember.Email = txt_email.Text;
             clMember.Phone = txt_telephone.Text;
             clMember.Mobile = txt_mobile.Text;
-            clMember.Sid = txt_sid.Text;
 
-            clMember.StudCardNumber = txt_stcardnumber.Text;
             if (rd_male.Checked == true)
                 clMember.Gender = "male";
             else

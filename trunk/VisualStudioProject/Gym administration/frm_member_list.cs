@@ -102,11 +102,11 @@ namespace Gym_administration
             // If this is not for viewing current attendants for a class instance
             if (this.viewAttendants == false)
                 // Create query for displaying all members
-                query = "SELECT id_member ID, member_number Nr, sid SID, CONCAT(lastName, ', ', firstName) 'Member Name', DATE_FORMAT(birthdate,\"%d-%m-%Y\") DOB, email 'EMail', type Type, IF((is_active= 0), 'INACTIVE','ACTIVE') Status FROM members ORDER BY ID ";
+                query = "SELECT id_member ID, member_number Nr, CONCAT(lastName, ', ', firstName) 'Member Name', DATE_FORMAT(birthdate,\"%d-%m-%Y\") DOB, email 'EMail', type Type, IF((is_active= 0), 'INACTIVE','ACTIVE') Status FROM members ORDER BY ID ";
             // If this is for viewing current attendants for a class instance
             else
                 // Create query for displaying only members who attend this class instance
-                query = "SELECT m.id_member ID, m.member_number Nr, sid SID, CONCAT(m.lastName, ', ', m.firstName) 'Member Name', DATE_FORMAT(m.birthdate,\"%d-%m-%Y\") DOB, email 'EMail', type Type, IF((is_active= 0), 'INACTIVE','ACTIVE') Status FROM members m, class_bookings cb WHERE m.id_member = cb.id_member AND cb.id_class_instance = '" + this.clClassInstance.Id_class_instance + "' ORDER BY ID";
+                query = "SELECT m.id_member ID, m.member_number Nr, CONCAT(m.lastName, ', ', m.firstName) 'Member Name', DATE_FORMAT(m.birthdate,\"%d-%m-%Y\") DOB, email 'EMail', type Type, IF((is_active= 0), 'INACTIVE','ACTIVE') Status FROM members m, class_bookings cb WHERE m.id_member = cb.id_member AND cb.id_class_instance = '" + this.clClassInstance.Id_class_instance + "' ORDER BY ID";
             // Launch query and load result into source
             itemsSource.DataSource = conn.dtGetTableForDataGrid(query);
             // Assign source to grid
@@ -218,7 +218,7 @@ namespace Gym_administration
             // Create source for grid
             BindingSource itemsSource = new BindingSource();
             // Create start of query
-            string query = "SELECT id_member ID, member_number Nr, sid SID, CONCAT(lastName, ', ', firstName) 'Member Name', DATE_FORMAT(birthdate,\"%d-%m-%Y\") DOB, email 'EMail', type Type, IF((is_active= 0), 'INACTIVE','ACTIVE') Status FROM members WHERE 1 = 1 ";
+            string query = "SELECT id_member ID, member_number Nr, CONCAT(lastName, ', ', firstName) 'Member Name', DATE_FORMAT(birthdate,\"%d-%m-%Y\") DOB, email 'EMail', type Type, IF((is_active= 0), 'INACTIVE','ACTIVE') Status FROM members WHERE 1 = 1 ";
             // Check user input and create query for search
             if (txt_firstName.Text != "")
                 query += " AND firstName LIKE '%"+txt_firstName.Text+"%'";
@@ -226,16 +226,8 @@ namespace Gym_administration
                 query += " AND lastName LIKE '%" + txt_lastName.Text + "%'";
             if (txt_email.Text != "")
                 query += " AND email LIKE '%" + txt_email.Text + "%'";
-            if (txt_sid.Text != "")
-                query += " AND sid LIKE '%" + txt_sid.Text + "%'";
             if (cmb_type.SelectedIndex != -1)
             {
-                if (cmb_type.SelectedIndex == 1)
-                {
-                    query += " AND type LIKE '%Student Full Time%'";
-                    query += " OR type LIKE '%Student Part Time%'";
-                }
-                else if (cmb_type.SelectedIndex != 0)
                     query += " AND type LIKE '%" + cmb_type.SelectedItem.ToString() + "%'";
             }
             string sDate = Utils.sGetMysqlDate(txt_dob.Text);
@@ -275,7 +267,7 @@ namespace Gym_administration
             }
             // Offer choice of delimiter
             frm_message_box frmMessageBox = new frm_message_box();
-            string result = frmMessageBox.ShowBox(Utils.MB_CUST2, "Which delimiter would you like to use? \r\n Its normally a comma (,) ARU mail uses semicolon (;)", "Mass e-mail delimiter selection", ",", ";");
+            string result = frmMessageBox.ShowBox(Utils.MB_CUST2, "Which delimiter would you like to use? \r\n Its normally a comma (,) some mail uses semicolon (;)", "Mass e-mail delimiter selection", ",", ";");
             char delimiter = result[0];
             // Copy everything to clipboard            
             Clipboard.SetData(DataFormats.Text, string.Join(delimiter+" ", saSelectedCellValues));

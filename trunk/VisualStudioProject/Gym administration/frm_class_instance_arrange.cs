@@ -74,6 +74,7 @@ namespace Gym_administration
                 button_viewattendants.Enabled = true;
                 button_enrollmembers.Enabled = true;
                 button_remove.Enabled = true;
+                button_saveOpen.Hide();
             }
         }
 
