@@ -8,7 +8,7 @@
  * @params [string] end The ending date of the class to display the classes available
  * @return [none] No directly returned data. 
  */
- 
+
 /**
  * We make the mysql functions available
  */
@@ -35,6 +35,12 @@ $req_data = clean_array($_REQUEST);
 $smarty = new Smarty;
 $smarty->compile_check = true;
 $smarty->debugging = false;
+
+/**
+ * Starts the session to make all the session variables available
+ */
+@session_start();
+
 
 /**
  * If we want to enroll a member on a class
