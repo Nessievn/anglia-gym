@@ -48,7 +48,15 @@ $cache_expire = session_cache_expire();
 /**
  * Starts the session to make all the session variables available
  */
-session_start();
+@session_start();
+
+/**
+ * Smarty object creation
+ */
+$smarty = new Smarty;
+$smarty->compile_check = true;
+$smarty->debugging = false;
+
 /**
  * Logout
  */
