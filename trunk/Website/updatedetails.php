@@ -1,14 +1,55 @@
 <?php
+/**
+ * @desc It shows and updates the member's contact details
+ * @param [string] details_update It is 1 when we update the details
+ * @param [string] email Member's email
+ * @param [string] emerg_contact_name Member's emergency contact name
+ * @param [string] emerg_contact_phone Member's emergency contact phone number
+ * @param [string] emerg_contact_relation Member's emergency contact relationship
+ * @param [string] address_1 Member's address line 1
+ * @param [string] address_2 Member's address line 2
+ * @param [string] postalcode Member's postal code
+ * @param [string] phone Member's landline number
+ * @param [string] mobile Member's mobile phone
+ * @param [string] medical_notes Member's medical notes
+ * @return [none] No directly returned data. 
+ */
+ 
+/**
+ * We make the mysql functions available
+ */
 require("includes/mysql.php");
+
+/**
+ * Smarty template engine
+ */
 require 'smarty/libs/Smarty.class.php';
 
+/**
+ * Connect to the database
+ */
+$link = connect();	
+
+/**
+ * We clean the incoming data first
+ */
+$req_data = clean_array($_REQUEST);
+
+/**
+ * Smarty object creation
+ */
 $smarty = new Smarty;
 $smarty->compile_check = true;
 $smarty->debugging = false;
-$link = connect();	
-$req_data = clean_array($_REQUEST);
+
+/**
+ * Starts the session to make all the session variables available
+ */
 @session_start();
-//checks to make sure the result returned is within one row in the database
+
+/**
+ * It shows the member's details
+ */
 if(isset($_SESSION["id_member"]) && !isset($req_data['details_update']))
 {
 	$smarty->assign("logged_in", "1");
@@ -24,6 +65,9 @@ if(isset($_SESSION["id_member"]) && !isset($req_data['details_update']))
 		$smarty->assign("user_data", $row);
 	}
 }
+/**
+ * Update the member's details
+ */
 else if($req_data['details_update'] == "1" && isset($_SESSION["id_member"]))
 {
 	if(checkEmail($req_data['email']) == false)
@@ -65,11 +109,17 @@ else if($req_data['details_update'] == "1" && isset($_SESSION["id_member"]))
 	$smarty->assign("user_data", $req_data);							    
 
 }
+/**
+ * No valid login
+ */
 else
 {
 	$smarty->assign("template", "wronglogin");
 }
 
+/**
+ * We display the page
+ */
 $smarty->display('layout.tpl');
 	
 ?>

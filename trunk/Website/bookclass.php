@@ -1,23 +1,52 @@
 <?php
+/**
+ * @desc It holds all the functions to handle class bookings.
+ * @params [string] enroll_to The class id
+ * @params [string] cancel_booking The class id to cancel the booking
+ * @params [string] showclass The class id to show the class
+ * @params [string] start The starting date of the class to display the classes available
+ * @params [string] end The ending date of the class to display the classes available
+ * @return [none] No directly returned data. 
+ */
+ 
+/**
+ * We make the mysql functions available
+ */
 require("includes/mysql.php");
+
+/**
+ * Smarty template engine
+ */
 require 'smarty/libs/Smarty.class.php';
 
-$smarty = new Smarty;
+/**
+ * Connect to the database
+ */
+$link = connect();	
 
+/**
+ * We clean the incoming data first
+ */
+$req_data = clean_array($_REQUEST);
+
+/**
+ * Smarty object creation
+ */
+$smarty = new Smarty;
 $smarty->compile_check = true;
 $smarty->debugging = false;
 
-session_start();
-$link = connect();	
-if(isset($_SESSION["id_member"]) && isset($_REQUEST['enroll_to']) && $_REQUEST['enroll_to'] != "")
+/**
+ * If we want to enroll a member on a class
+ */
+if(isset($_SESSION["id_member"]) && isset($req_data['enroll_to']) && $req_data['enroll_to'] != "")
 {
 	echo "<script>
 	var answer = confirm('Enroll tho this class?')
 	if (!answer) history.back();
 	</script>";
 	
-	//TODO: Check if there is enough room
-	$sQuery = "INSERT INTO class_bookings (id_member, id_class_instance, booking_date) VALUES ('".$_SESSION["id_member"]."','".$_REQUEST["enroll_to"]."',NOW())  ON DUPLICATE KEY UPDATE booking_date=NOW()";
+	$sQuery = "INSERT INTO class_bookings (id_member, id_class_instance, booking_date) VALUES ('".$_SESSION["id_member"]."','".$req_data["enroll_to"]."',NOW())  ON DUPLICATE KEY UPDATE booking_date=NOW()";
 	$result = mysql_query($sQuery);
 	$iId = mysql_insert_id();
 	if($iId > 0)
@@ -26,15 +55,17 @@ if(isset($_SESSION["id_member"]) && isset($_REQUEST['enroll_to']) && $_REQUEST['
 		echo "<script>alert('You have already a booking on this class.');</script>";
 	echo "<script>history.back();</script>";
 }
-else if(isset($_SESSION["id_member"]) && isset($_REQUEST['cancel_booking']) && $_REQUEST['cancel_booking'] != "")
+/**
+ * If we want to cancel a booking
+ */
+else if(isset($_SESSION["id_member"]) && isset($req_data['cancel_booking']) && $req_data['cancel_booking'] != "")
 {
 	echo "<script>
 	var answer = confirm('Cancel booking on this class?')
 	if (!answer) history.back();
 	</script>";
 	
-	//TODO: Check if there is enough room
-	$sQuery = "DELETE FROM class_bookings WHERE id_member = '".$_SESSION["id_member"]."' AND id_class_instance = '".$_REQUEST['cancel_booking']."'";
+	$sQuery = "DELETE FROM class_bookings WHERE id_member = '".$_SESSION["id_member"]."' AND id_class_instance = '".$req_data['cancel_booking']."'";
 	$result = mysql_query($sQuery);
 	$iNum = mysql_affected_rows();
 	if($iNum > 0)
@@ -43,25 +74,29 @@ else if(isset($_SESSION["id_member"]) && isset($_REQUEST['cancel_booking']) && $
 		echo "<script>alert('There was an error cancelling your booking!');</script>";
 	echo "<script>history.back();</script>";
 }
-
-else if($_REQUEST["showclass"]!="" && isset($_SESSION["id_member"]))
+/**
+ * If we want to display the class information
+ */
+else if($req_data["showclass"]!="" && isset($_SESSION["id_member"]))
 {
-	$iClassId = clean($_REQUEST["showclass"]);
+	$iClassId = $req_data["showclass"];
  	$smarty->assign("template", "showclass");   
 	$smarty->assign("logged_in", "1");
 	$smarty->assign("name", $_SESSION["name"]);
-	// Select all the classes available
+	// Selects all the class information
 	$sQuery = "SELECT c.description, c.type, r.name, ci.id_class_instance, ci.date, c.name, ci.start_time, ci.end_time, CONCAT(s.firstName, ' ', s.lastName) instructorName, IF(cb.id_member IS NULL,'NOT_BOOKED','BOOKED') isBooked, r.name roomName FROM classes c, staff s, rooms r, class_instance ci LEFT OUTER JOIN class_bookings cb ON cb.id_member = '".$_SESSION["id_member"]."' AND cb.id_class_instance = ci.id_class_instance WHERE r.id_room = ci.id_room AND s.id_staff = ci.id_staff AND c.id_class = ci.id_class AND ci.id_class_instance = '".$iClassId."'";
 	$result = mysql_query($sQuery);
 	$class = mysql_fetch_array($result);
 	$smarty->assign("class", $class);
 }
-//checks to make sure the result returned is within one row in the database
+/**
+ * Default case to display the calendar for selection class and booking
+ */
 else if(isset($_SESSION["id_member"]))
 {
  	$smarty->assign("template", "bookclass");   
-	$start_date = clean($_REQUEST['start']);
-	$end_date = clean($_REQUEST['end']);
+	$start_date = $req_data['start'];
+	$end_date = $req_data['end'];
 	$start_date_ = date("d-m-Y");
 	if($start_date == "")
 	{
@@ -90,11 +125,16 @@ else if(isset($_SESSION["id_member"]))
 		$classes[] = $row;
 	$smarty->assign("classes", $classes);
 }
+/**
+ * If there is no user id in the session variable, we display a wrong login template
+ */
 else
 {
 	$smarty->assign("template", "wronglogin");
 }
-
+/**
+ * We display the default layout
+ */
 $smarty->display('layout.tpl');
 	
 ?>
