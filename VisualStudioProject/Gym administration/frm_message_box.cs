@@ -243,11 +243,11 @@ namespace Gym_administration
                         label_counter2.Show();
                         label_borrowedcounter.Show();
                         label_borrowedcounter.Text = (int.Parse(Button1)-1).ToString();
-                        button_1.Show();
-                        button_1.Text = "OK";
+                        button_2.Show();
+                        button_2.Text = "OK";
                         button_3.Show();
                         button_3.Text = "Cancel";
-                        Button1_Value = MBButton.MB_CUST4.ToString();
+                        Button2_Value = MBButton.MB_CUST4.ToString();
                         Button3_Value = MBReturn.CANCEL.ToString(); 
                         break;
                     }
@@ -347,9 +347,6 @@ namespace Gym_administration
           */
         private void button_1_Click(object sender, EventArgs e)
         {
-            // If this is an item return dialog, then the result is to be the amount returned
-            if (Button1_Value == MBButton.MB_CUST4.ToString())
-                 Button1_Value = label_borrowedcounter.Text;
             // Pass the result to return method
             Button_id = Button1_Value;
             this.Close(); 
@@ -362,6 +359,9 @@ namespace Gym_administration
           */
         private void button_2_Click(object sender, EventArgs e)
         {
+            // If this is an item return dialog, then the result is to be the amount returned
+            if (Button2_Value == MBButton.MB_CUST4.ToString())
+                Button2_Value = label_borrowedcounter.Text;
             // Pass the result to return method
             Button_id = Button2_Value;
             this.Close(); 
