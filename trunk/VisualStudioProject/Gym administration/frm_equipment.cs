@@ -70,6 +70,7 @@ namespace Gym_administration
             clEquipment = new Equipment();
             this.frmEqList = null;
             // Set default state of form
+            button_remove.Enabled = false;
             rd_item.Checked = true;
             rd_item_Checked();
         }
@@ -87,6 +88,7 @@ namespace Gym_administration
             InitializeComponent();
             clEquipment = new Equipment();
             this.frmEqList = frmEqList;
+            button_remove.Enabled = false;
             rd_item.Checked = true;
             rd_item_Checked();
         }

@@ -31,6 +31,7 @@ namespace Gym_administration
         {
             InitializeComponent();
             clRoom = new Room();
+            button_remove.Enabled = false;
         }
 
         /** 
@@ -43,6 +44,7 @@ namespace Gym_administration
             this.frmRoomList = frmRoomList;
             InitializeComponent();
             clRoom = new Room();
+            button_remove.Enabled = false;
         }
 
         /** 
