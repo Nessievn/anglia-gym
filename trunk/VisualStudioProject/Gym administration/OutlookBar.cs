@@ -1,5 +1,4 @@
-/** Ok Isidro, this is yours to comment! :)
- * 
+/** 
  * References used:
  * 
  * C# Corner - Home  » Windows Controls  » Outlook Bar Control

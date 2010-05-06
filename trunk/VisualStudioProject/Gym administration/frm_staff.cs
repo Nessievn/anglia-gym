@@ -33,9 +33,11 @@ namespace Gym_administration
         {
             clStaff = new Staff();
             InitializeComponent();
+            this.Text = "Add New Gym Staff Form";
             button_equipmentbooking.Enabled = false;
             DateTime today = DateTime.Today;
             txt_contract_start.Text = String.Format("{0:dd-MM-yyyy}", today);
+            
         }
 
         /** 
@@ -49,10 +51,12 @@ namespace Gym_administration
             this.frmStaffList = frmStaffList;
             clStaff = new Staff();
             InitializeComponent();
-            button_saveOpen.Hide();
+            this.Text = "Add New Gym Staff Form";
+            button_saveOpen.Enabled = false;
             button_equipmentbooking.Enabled = false;
             DateTime today = DateTime.Today;
             txt_contract_start.Text = String.Format("{0:dd-MM-yyyy}", today);
+            
         }
 
         /** 
@@ -67,8 +71,9 @@ namespace Gym_administration
             // Create reference to the parent form
             this.frmStaffList = frmStaffList;
             InitializeComponent();
+            this.Text = "Edit Gym Staff Form";
             button_equipmentbooking.Enabled = true;
-            button_saveOpen.Hide();
+            button_saveOpen.Enabled = false; 
             // Load in staff details for specified staff
             clStaff = new Staff(id_staff);
             if (clStaff.Id_staff < 1)
@@ -76,6 +81,7 @@ namespace Gym_administration
             else
             {
                 // If the staff was found, load in all staff details into staff object from database
+
                 vLoadBookedList();
                  txt_firstName.Text = clStaff.FirstName;
                  txt_lastName.Text = clStaff.LastName;

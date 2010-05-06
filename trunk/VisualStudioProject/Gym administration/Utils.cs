@@ -177,6 +177,26 @@ namespace Gym_administration
         }
 
 
+        static public string escapeChar(string strToEsc)
+        {
+            if (strToEsc.IndexOf("'") > -1)
+            {
+                strToEsc = strToEsc.Replace("'", @"\'");
+            } 
+            if (strToEsc.IndexOf("’") > -1)
+            {
+                strToEsc = strToEsc.Replace("’", @"\'");
+            }
+            if (strToEsc.IndexOf("‘") > -1)
+            {
+                strToEsc = strToEsc.Replace("‘", @"\'");
+            }
+            if (strToEsc.IndexOf(@"\") > -1)
+            {
+                strToEsc = strToEsc.Replace("\\", @"\\");
+            }
+            return strToEsc;
+        } 
 
     }
 }

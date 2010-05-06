@@ -30,6 +30,7 @@ namespace Gym_administration
         public frm_room()
         {
             InitializeComponent();
+            this.Text = "Add New Room Form";
             clRoom = new Room();
             button_remove.Enabled = false;
         }
@@ -43,6 +44,7 @@ namespace Gym_administration
         {
             this.frmRoomList = frmRoomList;
             InitializeComponent();
+            this.Text = "Add New Room Form";
             clRoom = new Room();
             button_remove.Enabled = false;
         }
@@ -57,6 +59,7 @@ namespace Gym_administration
         {
             this.frmRoomList = frmRoomList;
             InitializeComponent();
+            this.Text = "Edit Room Form";
             clRoom = new Room(id_room);
             if (clRoom.Id_room < 1)
                 MessageBox.Show("The room could not be found");

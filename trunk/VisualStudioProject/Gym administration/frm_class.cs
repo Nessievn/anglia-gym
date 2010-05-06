@@ -33,6 +33,7 @@ namespace Gym_administration
         public frm_class()
         {
             InitializeComponent();
+            this.Text = "Create a New Type of Gym Class";
             clClass = new Class();
             this.frmClassList = null;
             // Hide the Remove button as a class not yet existing can't be removed
@@ -50,6 +51,7 @@ namespace Gym_administration
         public frm_class(frm_class_list frmClassList)
         {
             InitializeComponent();
+            this.Text = "Create a New Type of Gym Class";
             clClass = new Class();
             // Create reference to the parent form (frm_class_list)
             this.frmClassList = frmClassList;
@@ -69,6 +71,7 @@ namespace Gym_administration
         public frm_class(int id_class, frm_class_list frmClassList)
         {
             InitializeComponent();
+            this.Text = "Edit an existing Gym Class";
             // Create reference to the parent form (frm_class_list)
             this.frmClassList = frmClassList;
             // Load in class details for specified class

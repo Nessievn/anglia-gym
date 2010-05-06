@@ -757,7 +757,7 @@
             this.MaximizeBox = false;
             this.Name = "frm_staff";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gym Staff Form";
+            this.Text = "";
             ((System.ComponentModel.ISupportInitialize)(this.dg_eqbookings)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
