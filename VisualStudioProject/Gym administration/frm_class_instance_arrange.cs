@@ -34,6 +34,7 @@ namespace Gym_administration
         public frm_class_instance_arrange()
         {
             InitializeComponent();
+            this.Text = "Add New Class Instance";
             clClassInstance = new ClassInstance();
             // A class instance that doesn't exist yet, shouldn't enroll members, book items and so on
             button_equipmentbooking.Enabled = false;
@@ -55,6 +56,7 @@ namespace Gym_administration
         public frm_class_instance_arrange(int id_class_booked, frm_class_instance_list frmClInstList)
         {
             InitializeComponent();
+            this.Text = "Edit Class Instance";
             this.frmClassInstanceList = frmClInstList;
             // Load in the class instance details
             clClassInstance = new ClassInstance(id_class_booked);
@@ -74,7 +76,7 @@ namespace Gym_administration
                 button_viewattendants.Enabled = true;
                 button_enrollmembers.Enabled = true;
                 button_remove.Enabled = true;
-                button_saveOpen.Hide();
+                button_saveOpen.Enabled = false;
             }
         }
 

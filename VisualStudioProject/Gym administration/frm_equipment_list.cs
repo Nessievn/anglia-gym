@@ -45,6 +45,7 @@ namespace Gym_administration
             Id_staff = -1; 
             Id_class_instance = -1;
             InitializeComponent();
+            this.Text = "Equipment List - Double Click on a Row to Edit Item/Set";
             this.frmMember = null;
             this.frmStaff = null;
             this.frmClassInstanceArrange = null;
@@ -68,6 +69,7 @@ namespace Gym_administration
             Id_member = id_member;
             this.frmMember = frmMember;
             InitializeComponent();
+            this.Text = "Equipment List - Double Click on a Row to Edit or Borrow an Item/Set";
             rd_item.Checked = true;
             vLoadEqList("item");
         }
@@ -88,6 +90,7 @@ namespace Gym_administration
             Id_staff = id_staff;
             this.frmStaff = frmStaff;
             InitializeComponent();
+            this.Text = "Equipment List - Double Click on a Row to Edit or Borrow an Item/Set";
             rd_item.Checked = true;
             vLoadEqList("item");
         }
@@ -109,6 +112,7 @@ namespace Gym_administration
             Id_class_instance = id_class_instance;
             this.frmClassInstanceArrange = frmClassInstanceArrange;
             InitializeComponent();
+            this.Text = "Equipment List - Double Click on a Row to Edit or Borrow an Item/Set";
             rd_item.Checked = true;
             vLoadEqList("item");
         }

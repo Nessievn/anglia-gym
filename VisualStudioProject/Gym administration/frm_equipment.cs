@@ -67,6 +67,7 @@ namespace Gym_administration
         public frm_equipment()
         {
             InitializeComponent();
+            this.Text = "Add New Equipment";
             clEquipment = new Equipment();
             this.frmEqList = null;
             // Set default state of form
@@ -86,6 +87,7 @@ namespace Gym_administration
         public frm_equipment(frm_equipment_list frmEqList)
         {
             InitializeComponent();
+            this.Text = "Add New Equipment";
             clEquipment = new Equipment();
             this.frmEqList = frmEqList;
             button_remove.Enabled = false;
@@ -105,6 +107,7 @@ namespace Gym_administration
         public frm_equipment(int id_equipment, frm_equipment_list frmEqList)
         {
             InitializeComponent();
+            this.Text = "Edit Equipment";
             // Load in equipment details for specified equipment
             clEquipment = new Equipment(id_equipment);
             // Create reference to the parent form (frm_equipment_list)
@@ -151,6 +154,7 @@ namespace Gym_administration
             // Store the fact on class global level that this is a booking
             IsBooking = true;
             InitializeComponent();
+            this.Text = "Borrow Equipment";
             // Set up equipment form for bookings
             label_amounttoborrow.Visible = true;
             counter_amounttoborrow.Visible = true;

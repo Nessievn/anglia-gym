@@ -64,6 +64,7 @@ namespace Gym_administration
 
             clMember = new Member();
             InitializeComponent();
+            this.Text = "Add New Member Form";
             txt_membernum.Text = Utils.sGenerateNewMemberNumber();
             txt_membernum.ReadOnly = true;
             // Members who don't yet exist can't book equipment
@@ -95,6 +96,7 @@ namespace Gym_administration
             // create new member object
             clMember = new Member();
             InitializeComponent();
+            this.Text = "Add New Member Form";
             txt_membernum.Text = Utils.sGenerateNewMemberNumber();
             txt_membernum.ReadOnly = true;
             // equipmentbooking, add payments and remove member buttons are hidden until saving (creating) the member
@@ -102,7 +104,7 @@ namespace Gym_administration
             button_payments.Enabled = false;
             button_remove.Enabled = false;
             // As this was opened from a member list there is no need to open a new one after closing
-            button_saveOpen.Hide();
+            button_saveOpen.Enabled = false;
             clMember.Id_file = "";
             // Set a default type (Full time student)
             cmb_type.SelectedIndex = 0;
@@ -123,6 +125,7 @@ namespace Gym_administration
         public frm_member(int id_member, frm_member_list frmMemberList)
         {
             InitializeComponent();
+            this.Text = "Edit Member Form";
             // Create reference to the parent form
             this.frmMemberList = frmMemberList;
             // Load in member details for specified member
@@ -131,7 +134,7 @@ namespace Gym_administration
             button_equipmentbooking.Enabled = true;
             button_payments.Enabled = true;
             button_remove.Enabled = true;
-            button_saveOpen.Hide();
+            button_saveOpen.Enabled = false;
 
             if (clMember.Id_member < 1)
                 MessageBox.Show("The member could not be found");
