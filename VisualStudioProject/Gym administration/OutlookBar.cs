@@ -2,13 +2,13 @@
  * References used:
  * 
  * C# Corner - Home  » Windows Controls  » Outlook Bar Control
- * http://www.c-sharpcorner.com/UploadFile/ivar/OutlookBarIL11212005014057AM/OutlookBarIL.aspx
+ * (Ivar, 2002)
  * 
  * Code Projetc - Desktop Development » Selection Controls » General - An Outlook Bar Implementation
- * http://www.codeproject.com/KB/selection/csoutlookbar.aspx
+ * (Clifton, M. 2003)
  * 
  * Code Project - Desktop Development » Menus » Docking bars - OutlookBar: A Simplified Outlook Style Sidebar Control 
- * http://www.codeproject.com/KB/menus/OutlookBar.aspx
+ * (Kuijpers, H., 2006)
  */
 
 

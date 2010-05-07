@@ -98,7 +98,7 @@ namespace Gym_administration
             string result = myMessageBox.ShowBox(Utils.MB_CUST4, "", "How many " + equipmentName + " would you like to return?", borrowedAmount.ToString());
 
             // Reference how to use TryParse
-            //ref  http://social.msdn.microsoft.com/Forums/en-US/winforms/thread/84990ad2-5046-472b-b103-f862bfcd5dbc
+            //reference in Bibliography (Alani, S., 2006)
 
             // Check the result of user input
             double Num;

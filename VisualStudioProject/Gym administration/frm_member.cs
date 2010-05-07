@@ -1,29 +1,27 @@
 ﻿/*
- *  Windows Developer Center >  Windows Forms Forums  >  Windows Forms General  >  How can i create a "right-click menu" i C#  
- * http://social.msdn.microsoft.com/Forums/en-US/winforms/thread/790cd8be-0ba8-4f10-95a8-c88f1023d6e7
+ * Windows Developer Center >  Windows Forms Forums  >  Windows Forms General  >  How can i create a "right-click menu" i C#  
+ * (CSharpFreak, 2006)
  * 
  * Mouse left click, right click, middle click, hover : Mouse Event « Event « C# / C Sharp
- * http://www.java2s.com/Code/CSharp/Event/Mouseleftclickrightclickmiddleclickhover.htm
+ * (Java2s.com, 2010)
  * 
  * MESHPLEX - C Sharp/String Literals
- * http://www.meshplex.org/wiki/C_Sharp/String_Literals
+ * (Meshplex, 2008)
  * 
- * MySQL 5.1 with Maria Reference Manual :: 20 Connectors and APIs :: 20.2 MySQL Connector/NET :: 20.2.4 Connector/NET Programming :: 20.2.4.7 Handling BLOB Data With Connector/NET
- * http://dev.mysql.com/doc/refman/5.1-maria/en/connector-net-programming-blob.html#connector-net-programming-blob-writing
+ * MySQL :: PROBLEM: INSERT Blob-Data
+ * (Vaupel, R., 2009)
  * 
  * C# Online.net - Working with Images—Using the Bitmap Class
- * http://en.csharp-online.net/Working_with_Images%E2%80%94Using_the_Bitmap_Class
+   (C# Online.NET, 2010)
  * 
-  * DevAsp.net - How to load Image in C# and set properties of the Picture Box 
- * http://www.devasp.net/net/articles/display/385.html
+ * DevAsp.net - How to load Image in C# and set properties of the Picture Box 
+ * (DevAsp, 2006)
  * 
  * Windows Developer Center >  Windows Forms Forums  >  Windows Forms General  >  How to check string is number or not in C#  
- * http://social.msdn.microsoft.com/Forums/en-US/winforms/thread/84990ad2-5046-472b-b103-f862bfcd5dbc
- * 
+ * (Alani, S. 2006)
  * 
  * bytes > c# / c sharp > c# / c sharp questions - C# Tool tip text
-
- * http://bytes.com/topic/c-sharp/answers/272413-c-tool-tip-text
+ * (Rae, M. 2005)
  * 
  */
 
@@ -397,7 +395,7 @@ namespace Gym_administration
             string result = myMessageBox.ShowBox(Utils.MB_CUST4, "", "How many "+equipmentName+" would you like to return?",borrowedAmount.ToString());
 
             // Reference how to use TryParse
-            //ref  http://social.msdn.microsoft.com/Forums/en-US/winforms/thread/84990ad2-5046-472b-b103-f862bfcd5dbc
+            //ref in Bibliography at (Alani, S., 2006)
 
             // Check the result of user input
  	        double Num;

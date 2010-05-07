@@ -1,22 +1,14 @@
 ﻿/*
  * References used:
- * The C# Station Tutorial
- * by Joe Mayo, 8/25/02, updated 3/12/03, 2/22/08, 1/12/09
- * Lesson 14: Introduction to Delegates and Events
- * http://www.csharp-station.com/Tutorials/Lesson14.aspx
+ * The C# Station Tutorial - Lesson 14: Introduction to Delegates and Events (Mayo, 2009)
  * 
- * DeBugging
- * ComboBox Defaullt Value?
- * http://www.debugging.com/bug/12621
+ * ComboBox Default Value? (Evilertoaster, 2010)
  * 
- * MySQL 5.1 Reference Manual :: 11 Functions and Operators :: 11.6 Date and Time Functions
- * http://dev.mysql.com/doc/refman/5.1/en/date-and-time-functions.html#function_date
+ * MySQL 5.1 Reference Manual :: 11 Functions and Operators :: 11.6 Date and Time Functions (MySql, 2010)
  * 
- * String Format for DateTime [C#]
- * http://www.csharp-examples.net/string-format-datetime/
+ * String Format for DateTime [C#] (Slama, 2008)
  * 
- * .NET Framework Class Library - DateTime Methods
- * http://msdn.microsoft.com/en-us/library/system.datetime_methods%28v=VS.90%29.aspx
+ * .NET Framework Class Library - DateTime Methods (MSDN, 2010)
  * 
  */
 
