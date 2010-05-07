@@ -1,5 +1,5 @@
 ﻿// Microsoft's Capitalization Conventions from .NET Framework Developer's Guide
-// http://msdn.microsoft.com/en-us/library/ms229043%28v=VS.90%29.aspx
+// (Microsoft, 2010)
 // We tried to make the variable naming conventions to be very similar in this project: 
 //
 // Class name:

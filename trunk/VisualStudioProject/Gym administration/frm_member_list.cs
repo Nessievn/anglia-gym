@@ -1,16 +1,16 @@
 ﻿/** References used:
  * 
  * bytes > c# / c sharp > c# / c sharp questions - line break in message box
- * http://bytes.com/topic/c-sharp/answers/866510-line-break-message-box
+ * (Aranbs, 2009)
  * 
  * .NET Framework Class Library - DataGridView.SelectedCells Property 
- * http://msdn.microsoft.com/en-us/library/system.windows.forms.datagridview.selectedcells.aspx
+ * (MSDN, 2010c.)
  * 
  * .NET Framework Class Library - Clipboard Class
- * http://msdn.microsoft.com/en-us/library/system.windows.forms.clipboard.aspx
+ * (MSDN, 2010a.)
  * 
  * .NET Framework Class Library - Clipboard.ContainsData Method 
- * http://msdn.microsoft.com/en-us/library/system.windows.forms.clipboard.containsdata.aspx
+ * (MSDN, 2010b.)
  * 
  */
 using System;

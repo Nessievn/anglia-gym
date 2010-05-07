@@ -1,9 +1,11 @@
 ﻿/* References used:
  * Creating a Custom Message Box
- * http://www.codeguru.com/csharp/.net/net_general/eventsanddelegates/article.php/c13193
- * http://www.codeguru.com/csharp/.net/net_general/eventsanddelegates/article.php/c13193__2/
+ * (Hussain, S., 2007)
+ * 
+ * 
  * Create Custom Dialog like MessageBox
- * http://bytes.com/topic/c-sharp/answers/227206-create-custom-dialog-like-messagebox
+ * (Drumm, D., 2005)
+ * 
  * 
  *  MyMessageBox myMessagebox; //put this before class constructor
  *  myMessageBox = new MyMessageBox(); //put this into frm_"yourclassname"_Load()
